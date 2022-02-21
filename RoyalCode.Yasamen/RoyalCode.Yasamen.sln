@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32210.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Yasamen.Demos.Wasm", "RoyalCode.Yasamen.Demos.Wasm\RoyalCode.Yasamen.Demos.Wasm.csproj", "{0A0E925C-B3E2-4E54-B02F-5BB566171296}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Demos.Wasm", "RoyalCode.Yasamen.Demos.Wasm\RoyalCode.Yasamen.Demos.Wasm.csproj", "{0A0E925C-B3E2-4E54-B02F-5BB566171296}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{C1EE0F8C-7FA0-47AC-82C9-A634489C6206}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{E2305804-FC03-4917-81A2-DAA052064C88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Yasamen.Layout", "RoyalCode.Yasamen.Layout\RoyalCode.Yasamen.Layout.csproj", "{03273557-E1C5-4DA1-81B2-1248F0E1F048}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Yasamen.Commons", "RoyalCode.Yasamen.Commons\RoyalCode.Yasamen.Commons.csproj", "{40D9C988-B246-4B13-83BC-D4C767D82906}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +23,22 @@ Global
 		{0A0E925C-B3E2-4E54-B02F-5BB566171296}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A0E925C-B3E2-4E54-B02F-5BB566171296}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A0E925C-B3E2-4E54-B02F-5BB566171296}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03273557-E1C5-4DA1-81B2-1248F0E1F048}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03273557-E1C5-4DA1-81B2-1248F0E1F048}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03273557-E1C5-4DA1-81B2-1248F0E1F048}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03273557-E1C5-4DA1-81B2-1248F0E1F048}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40D9C988-B246-4B13-83BC-D4C767D82906}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40D9C988-B246-4B13-83BC-D4C767D82906}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40D9C988-B246-4B13-83BC-D4C767D82906}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40D9C988-B246-4B13-83BC-D4C767D82906}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0A0E925C-B3E2-4E54-B02F-5BB566171296} = {C1EE0F8C-7FA0-47AC-82C9-A634489C6206}
+		{03273557-E1C5-4DA1-81B2-1248F0E1F048} = {E2305804-FC03-4917-81A2-DAA052064C88}
+		{40D9C988-B246-4B13-83BC-D4C767D82906} = {E2305804-FC03-4917-81A2-DAA052064C88}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {274B8D8D-7446-4563-A4F0-0000A0C7209B}
