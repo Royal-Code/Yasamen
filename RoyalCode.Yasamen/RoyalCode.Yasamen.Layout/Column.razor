@@ -1,0 +1,75 @@
+﻿
+@implements IHasColumns
+
+<div b-flex-col @attributes="Attributes" style="@FlexColStyle"
+     col="@Cols" tcol="@TabletCols" pcol="@PhoneCols" qcol="@Quarters"
+     xs="@XsCols" sm="@SmCols" lg="@LgCols" xl="@XlCols"
+     fullsize="@Fullsize" fullsize-xs="@XsFullsize" fullsize-sm="@SmFullsize" fullsize-lg="@LgFullsize" fullsize-xl="@XlFullsize">
+    @ChildContent
+</div>
+
+@code {
+
+    [CascadingParameter]
+    public ContainerContext? ContainerContext { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> Attributes { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public int Cols { get; set; } = 12;
+
+    [Parameter]
+    public int? TabletCols { get; set; }
+
+    [Parameter]
+    public int? PhoneCols { get; set; }
+
+    [Parameter]
+    public int? Quarters { get; set; }
+
+    [Parameter]
+    public int? XsCols { get; set; }
+
+    [Parameter]
+    public int? SmCols { get; set; }
+
+    [Parameter]
+    public int? LgCols { get; set; }
+
+    [Parameter]
+    public int? XlCols { get; set; }
+
+    [Parameter]
+    public bool Fullsize { get; set; }
+
+    [Parameter]
+    public bool XsFullsize { get; set; }
+
+    [Parameter]
+    public bool SmFullsize { get; set; }
+
+    [Parameter]
+    public bool LgFullsize { get; set; }
+
+    [Parameter]
+    public bool XlFullsize { get; set; }
+
+    [Parameter]
+    public object ParentFlexCols { get; set; }
+
+    private string? FlexColStyle => ContainerContext is not null
+        ? ((IHasColumns)this).GetVariableValues()
+        : null;
+
+    protected override void OnParametersSet()
+    {
+        if (ParentFlexCols is not null && ParentFlexCols is IHasColumns other)
+            ((IHasColumns)this).CopyFrom(other);
+
+        base.OnParametersSet();
+    }
+}

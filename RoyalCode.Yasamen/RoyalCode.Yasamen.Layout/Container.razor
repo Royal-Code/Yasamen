@@ -1,0 +1,38 @@
+﻿
+<div b-flex-row style="@FlexRowStyle">
+    <div b-flex-row-flex @attributes="Attributes">
+        @if (Columns.HasValue)
+        {
+            <CascadingValue Value="context" IsFixed="true" >
+                @ChildContent
+            </CascadingValue>
+        }
+        else
+        {
+            @ChildContent
+        }
+    </div>
+</div>
+
+@code {
+    private ContainerContext? context;
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> Attributes { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public int? Columns { get; set; }
+
+    private string? FlexRowStyle => Columns.HasValue
+        ? $"--b-cols-columns: {Columns.Value};"
+        : null;
+
+    protected override void OnParametersSet()
+    {
+        if (Columns.HasValue)
+            context = new ContainerContext(Columns.Value);
+    }
+}
