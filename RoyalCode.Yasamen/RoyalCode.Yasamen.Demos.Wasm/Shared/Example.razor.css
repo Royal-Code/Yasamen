@@ -1,0 +1,26 @@
+﻿
+div {
+    padding: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid silver;
+    border-radius: 10px;
+}
+
+    div.justify {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    div:not(.compact) ::deep > :not(:first-child):not(:last-child) {
+        margin-left: .3rem;
+        margin-right: .3rem;
+    }
+
+    div:not(.compact) ::deep > :first-child {
+        margin-right: .3rem;
+    }
+
+    div:not(.compact) ::deep > :last-child {
+        margin-left: .3rem;
+    }

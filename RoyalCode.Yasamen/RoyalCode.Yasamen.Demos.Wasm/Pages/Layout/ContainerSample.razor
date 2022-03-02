@@ -1,0 +1,221 @@
+﻿
+@page "/Containers"
+
+<h1>Containers and Columns</h1>
+
+<h3>Exemplo básico</h3>
+
+<Example>
+
+    <h5>Três colunas de tamanho 4, completando 12, uma linha.</h5>
+
+    <Container style="border: 1px solid #ffa6e0; background-color: #f9ceea;">
+        <Column Cols="4">
+            <div class="box">Cols 4</div>
+        </Column>
+        <Column Cols="4">
+            <div class="box">Cols 4</div>
+        </Column>
+        <Column Cols="4">
+            <div class="box">Cols 4</div>
+        </Column>
+    </Container>
+
+    <h5>Os doze tamanhos</h5>
+
+    <Container style="border: 1px solid #ffa6e0; background-color: #f9ceea;">
+        <Column Cols="1">
+            <div class="box">Cols 1</div>
+        </Column>
+        <Column Cols="11">
+            <div class="box">Cols 11</div>
+        </Column>
+        <Column Cols="2">
+            <div class="box">Cols 2</div>
+        </Column>
+        <Column Cols="10">
+            <div class="box">Cols 10</div>
+        </Column>
+        <Column Cols="3">
+            <div class="box">Cols 3</div>
+        </Column>
+        <Column Cols="9">
+            <div class="box">Cols 9</div>
+        </Column>
+        <Column Cols="4">
+            <div class="box">Cols 4</div>
+        </Column>
+        <Column Cols="8">
+            <div class="box">Cols 8</div>
+        </Column>
+        <Column Cols="5">
+            <div class="box">Cols 5</div>
+        </Column>
+        <Column Cols="7">
+            <div class="box">Cols 7</div>
+        </Column>
+        <Column Cols="6">
+            <div class="box">Cols 6</div>
+        </Column>
+        <Column Cols="6">
+            <div class="box">Cols 6</div>
+        </Column>
+    </Container>
+
+</Example>
+
+<h3>Alinhamentos</h3>
+
+<Example>
+
+    <h5>Ao início</h5>
+
+    <Container Align="Align.Start" style="border: 1px solid #ffa6e0; background-color: #f9ceea; min-height:100px;">
+        <Column Cols="4">
+            <div class="box">Cols 4</div>
+        </Column>
+        <Column Cols="4">
+            <div class="box">Cols 4</div>
+        </Column>
+        <Column Cols="4">
+            <div class="box">Cols 4</div>
+        </Column>
+    </Container>
+
+    <h5>Ao centro</h5>
+
+    <Container Align="Align.Center" style="border: 1px solid #ffa6e0; background-color: #f9ceea; min-height:100px;">
+        <Column Cols="4">
+            <div class="box">Cols 4</div>
+        </Column>
+        <Column Cols="4">
+            <div class="box">Cols 4</div>
+        </Column>
+        <Column Cols="4">
+            <div class="box">Cols 4</div>
+        </Column>
+    </Container>
+
+    <h5>Ao fim</h5>
+
+    <Container Align="Align.End" style="border: 1px solid #ffa6e0; background-color: #f9ceea; min-height:100px;">
+        <Column Cols="4">
+            <div class="box">Cols 4</div>
+        </Column>
+        <Column Cols="4">
+            <div class="box">Cols 4</div>
+        </Column>
+        <Column Cols="4">
+            <div class="box">Cols 4</div>
+        </Column>
+    </Container>
+
+    <h5>Alinhamento nas colunas</h5>
+
+    <Container style="border: 1px solid #ffa6e0; background-color: #f9ceea; min-height:100px;">
+        <Column Cols="4" Align="Align.Start">
+            <div class="box">Cols 4</div>
+        </Column>
+        <Column Cols="4" Align="Align.Center">
+            <div class="box">Cols 4</div>
+        </Column>
+        <Column Cols="4" Align="Align.End">
+            <div class="box">Cols 4</div>
+        </Column>
+    </Container>
+
+</Example>
+
+<h4>Justificando</h4>
+
+<Example >
+
+    <h5>No inicio</h5>
+
+    <Container Justify="Justify.Start" style="border: 1px solid #ffa6e0; background-color: #f9ceea;">
+        <Column Cols="2">
+            <div class="box">Cols 2</div>
+        </Column>
+        <Column Cols="2">
+            <div class="box">Cols 2</div>
+        </Column>
+        <Column Cols="2">
+            <div class="box">Cols 2</div>
+        </Column>
+    </Container>
+
+    <h5>No Centro</h5>
+
+    <Container Justify="Justify.Center" style="border: 1px solid #ffa6e0; background-color: #f9ceea;">
+        <Column Cols="2">
+            <div class="box">Cols 2</div>
+        </Column>
+        <Column Cols="2">
+            <div class="box">Cols 2</div>
+        </Column>
+        <Column Cols="2">
+            <div class="box">Cols 2</div>
+        </Column>
+    </Container>
+
+    <h5>No fim</h5>
+
+    <Container Justify="Justify.End" style="border: 1px solid #ffa6e0; background-color: #f9ceea;">
+        <Column Cols="2">
+            <div class="box">Cols 2</div>
+        </Column>
+        <Column Cols="2">
+            <div class="box">Cols 2</div>
+        </Column>
+        <Column Cols="2">
+            <div class="box">Cols 2</div>
+        </Column>
+    </Container>
+
+    <h5>Ao redor</h5>
+
+    <Container Justify="Justify.Around" style="border: 1px solid #ffa6e0; background-color: #f9ceea;">
+        <Column Cols="2">
+            <div class="box">Cols 2</div>
+        </Column>
+        <Column Cols="2">
+            <div class="box">Cols 2</div>
+        </Column>
+        <Column Cols="2">
+            <div class="box">Cols 2</div>
+        </Column>
+    </Container>
+
+    <h5>Entremeio</h5>
+
+    <Container Justify="Justify.Between" style="border: 1px solid #ffa6e0; background-color: #f9ceea;">
+        <Column Cols="2">
+            <div class="box">Cols 2</div>
+        </Column>
+        <Column Cols="2">
+            <div class="box">Cols 2</div>
+        </Column>
+        <Column Cols="2">
+            <div class="box">Cols 2</div>
+        </Column>
+    </Container>
+
+    <h5>Uniformemente</h5>
+
+    <Container Justify="Justify.Evenly" style="border: 1px solid #ffa6e0; background-color: #f9ceea;">
+        <Column Cols="2">
+            <div class="box">Cols 2</div>
+        </Column>
+        <Column Cols="2">
+            <div class="box">Cols 2</div>
+        </Column>
+        <Column Cols="2">
+            <div class="box">Cols 2</div>
+        </Column>
+    </Container>
+
+</Example>
+
+@code {
+
+}

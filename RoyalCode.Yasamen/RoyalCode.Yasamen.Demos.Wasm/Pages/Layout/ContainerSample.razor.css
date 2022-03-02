@@ -1,0 +1,12 @@
+﻿
+.box {
+    border: 1px solid #e397bb;
+    background-color: #dfbcd4;
+    height: 36px;
+    width: 100%;
+}
+
+h5 {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}

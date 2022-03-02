@@ -4,9 +4,9 @@ using System.Text;
 namespace RoyalCode.Yasamen.Layout;
 
 /// <summary>
-/// Interface para componentes que possuem colunas flex;
+/// Interface para componentes de colunas de um Grid com possibilidade de definir os tamanhos.
 /// </summary>
-internal interface IHasColumns
+internal interface IHasColumnSizes
 {
     int Cols { get; set; }
 
@@ -55,7 +55,7 @@ internal interface IHasColumns
         return sb.ToString();
     }
 
-    void CopyFrom(IHasColumns other)
+    void CopyFrom(IHasColumnSizes other)
     {
         Cols = other.Cols;
         TabletCols = other.TabletCols;

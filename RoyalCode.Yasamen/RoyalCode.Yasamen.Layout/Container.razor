@@ -1,6 +1,6 @@
 ﻿
 <div b-flex-row style="@FlexRowStyle">
-    <div b-flex-row-flex @attributes="Attributes">
+    <div b-flex-row-flex @attributes="Attributes" class="@Classes">
         @if (Columns.HasValue)
         {
             <CascadingValue Value="context" IsFixed="true" >
@@ -17,14 +17,28 @@
 @code {
     private ContainerContext? context;
 
+    private CssClassMap Classes => CssClassMap.Create(
+        Align.ToItemsCssClass(), 
+        Justify.ToContentCssClass(),
+        AdditionalClasses!);
+
     [Parameter(CaptureUnmatchedValues = true)]
-    public Dictionary<string, object> Attributes { get; set; }
+    public Dictionary<string, object>? Attributes { get; set; }
+
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
 
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
     [Parameter]
     public int? Columns { get; set; }
+
+    [Parameter]
+    public Align Align { get; set; }
+
+    [Parameter]
+    public Justify Justify { get; set; }
 
     private string? FlexRowStyle => Columns.HasValue
         ? $"--b-cols-columns: {Columns.Value};"

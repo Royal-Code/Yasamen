@@ -1,0 +1,20 @@
+﻿
+<div class="@JustifyClass @CompactClass">
+    @ChildContent
+</div>
+
+@code {
+
+    private string JustifyClass => Justify ? "justify" : null;
+
+    private string CompactClass => Compact ? "compact" : null;
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public bool Justify { get; set; }
+
+    [Parameter]
+    public bool Compact { get; set; }
+}

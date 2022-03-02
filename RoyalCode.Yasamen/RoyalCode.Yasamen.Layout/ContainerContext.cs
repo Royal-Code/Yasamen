@@ -1,9 +1,8 @@
 ﻿
-
 namespace RoyalCode.Yasamen.Layout;
 
 /// <summary>
-/// Context with the quantity of collumns for the container.
+/// Context with the quantity of columns for the container.
 /// </summary>
-/// <param name="Columns">Qunatity of collumns</param>
+/// <param name="Columns">Quantity of columns</param>
 public record ContainerContext(int Columns);

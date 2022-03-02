@@ -1,7 +1,7 @@
 ﻿
-@implements IHasColumns
+@implements IHasColumnSizes
 
-<div b-flex-col @attributes="Attributes" style="@FlexColStyle"
+<div b-flex-col class="@Classes" @attributes="Attributes" style="@ColumnStyle"
      col="@Cols" tcol="@TabletCols" pcol="@PhoneCols" qcol="@Quarters"
      xs="@XsCols" sm="@SmCols" lg="@LgCols" xl="@XlCols"
      fullsize="@Fullsize" fullsize-xs="@XsFullsize" fullsize-sm="@SmFullsize" fullsize-lg="@LgFullsize" fullsize-xl="@XlFullsize">
@@ -9,12 +9,19 @@
 </div>
 
 @code {
+    private CssClassMap Classes => CssClassMap.Create(Align.ToSelfCssClass(), AdditionalClasses!);
 
     [CascadingParameter]
     public ContainerContext? ContainerContext { get; set; }
 
     [Parameter(CaptureUnmatchedValues = true)]
-    public Dictionary<string, object> Attributes { get; set; }
+    public Dictionary<string, object>? Attributes { get; set; }
+
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
+
+    [Parameter]
+    public Align Align { get; set; }
 
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
@@ -59,16 +66,16 @@
     public bool XlFullsize { get; set; }
 
     [Parameter]
-    public object ParentFlexCols { get; set; }
+    public object? ParentColumn { get; set; }
 
-    private string? FlexColStyle => ContainerContext is not null
-        ? ((IHasColumns)this).GetVariableValues()
+    private string? ColumnStyle => ContainerContext is not null
+        ? ((IHasColumnSizes)this).GetVariableValues()
         : null;
 
     protected override void OnParametersSet()
     {
-        if (ParentFlexCols is not null && ParentFlexCols is IHasColumns other)
-            ((IHasColumns)this).CopyFrom(other);
+        if (ParentColumn is not null && ParentColumn is IHasColumnSizes other)
+            ((IHasColumnSizes)this).CopyFrom(other);
 
         base.OnParametersSet();
     }
