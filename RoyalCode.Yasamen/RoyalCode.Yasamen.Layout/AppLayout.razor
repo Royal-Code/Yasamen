@@ -1,6 +1,35 @@
 ﻿
+<CascadingValue Value="context" IsFixed=true>
+    <div b-app-layout @attributes="Attributes">
+        <header>
+            <AppNavBar>
 
+            </AppNavBar>
+        </header>
+        <main b-app-main class="@InteractedCssClass" @ref="mainRef">
+            @Main
+        </main>
+
+        <AppFooter>
+            @Footer
+        </AppFooter>
+    </div>
+</CascadingValue>
 
 @code {
 
+    private static LayoutContext context = new LayoutContext();
+
+    private ElementReference mainRef;
+
+    public string InteractedCssClass => context.GetInteractedCssClass();
+
+    [Parameter]
+    public RenderFragment Main { get; set; }
+
+    [Parameter]
+    public RenderFragment Footer { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> Attributes { get; set; }
 }

@@ -1,5 +1,20 @@
-﻿<h3>AppFooter</h3>
+﻿
+<footer b-app-footer class="@Classes" @attributes="Attributes" @ref="footerRef">
+
+</footer>
 
 @code {
 
+    private CssClassMap Classes => CssClassMap.Create(LayouContext.GetInteractedCssClass());
+
+    private ElementReference footerRef;
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> Attributes { get; set; }
+
+    [CascadingParameter]
+    public LayoutContext LayouContext { get; set; }
 }

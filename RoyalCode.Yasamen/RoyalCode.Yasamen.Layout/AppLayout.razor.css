@@ -1,0 +1,77 @@
+﻿
+div[b-app-layout] {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--b-theme-background, #f8f8f8);
+}
+
+main {
+    display: block;
+    position: relative;
+    overflow: auto;
+    flex: 1 1 0%;
+    transition: var(--b-layout-transition, all 0.3s);
+}
+
+::deep [b-app-footer] {
+    transition: var(--b-layout-transition, all 0.3s);
+}
+
+main ::deep > * {
+    transition: var(--b-layout-transition, all 0.3s);
+    margin: 5px 10px 20px 10px;
+    padding: 0 10px 0 10px;
+}
+
+@media screen and (min-width: 1024px) {
+    main:not(.b-menu-interacted) {
+        padding-left: var(--b-aside-menu--width, var(--b-theme-aside-menu--width));
+    }
+
+    ::deep [b-app-footer]:not(.b-menu-interacted) {
+        margin-left: var(--b-aside-menu--width, var(--b-theme-aside-menu--width));
+        width: calc(100% - var(--b-aside-menu--width, var(--b-theme-aside-menu--width)));
+    }
+}
+
+@media screen and (min-width: 1044px) {
+    main.b-menu-interacted ::deep > *:not([fluid]) {
+        max-width: 1024px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (min-width: 1240px) {
+    main.b-menu-interacted ::deep > *:not([fluid]) {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    main.b-menu-interacted ::deep > *:not([fluid]) {
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (min-width: 1620px) {
+    main.b-menu-interacted ::deep > *:not([fluid]) {
+        max-width: 1600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (min-width: 1240px) {
+    main.b-menu-interacted ::deep > *:not([fluid])[medium] {
+        max-width: 1200px;
+        /* margin-left: auto;
+        margin-right: auto; */
+    }
+}

@@ -1,0 +1,327 @@
+﻿:root {
+    /**/
+    --b-theme-main: #002A5D;
+    --b-theme-background: #F2F2F2;
+    --b-theme-content: #FFFFFF;
+    --b-theme-content-highlight: #E6E6E6;
+    --b-theme-content-divisor: #707070;
+    --b-theme-aside-menu: #5F6A7D;
+    --b-theme-aside-menu-highlight: #556072;
+    /**/
+    --b-theme-header--min-height: 50px;
+    --b-theme-header-brand--min-width: 196px;
+    --b-theme-header-phone--min-height: 46px;
+    --b-theme-header-brand-phone--min-width: 72px;
+    --b-theme-aside-menu--width: 240px;
+    --b-theme-footer--height: 50px;
+    /**/
+    --b-theme-primary-d7: #03204B;
+    --b-theme-primary-d6: #052B65;
+    --b-theme-primary-d5: #06367E;
+    --b-theme-primary-d4: #074197;
+    --b-theme-primary-d3: #094CB1;
+    --b-theme-primary-d2: #0A57CA;
+    --b-theme-primary-d1: #0B62E3;
+    --b-theme-primary: #0D6DFD;
+    --b-theme-primary-l1: #257BFD;
+    --b-theme-primary-l2: #3D8AFD;
+    --b-theme-primary-l3: #5598FD;
+    --b-theme-primary-l4: #6DA7FD;
+    --b-theme-primary-l5: #86B6FE;
+    --b-theme-primary-l6: #9EC4FE;
+    --b-theme-primary-l7: #B6D3FE;
+    /**/
+    --b-theme-secondary-d7: #202325;
+    --b-theme-secondary-d6: #2B2E32;
+    --b-theme-secondary-d5: #363A3E;
+    --b-theme-secondary-d4: #40464B;
+    --b-theme-secondary-d3: #4B5157;
+    --b-theme-secondary-d2: #565D64;
+    --b-theme-secondary-d1: #616970;
+    --b-theme-secondary: #6C757D;
+    --b-theme-secondary-l1: #7A828A;
+    --b-theme-secondary-l2: #899097;
+    --b-theme-secondary-l3: #989EA4;
+    --b-theme-secondary-l4: #A6ACB1;
+    --b-theme-secondary-l5: #B5BABE;
+    --b-theme-secondary-l6: #C4C7CB;
+    --b-theme-secondary-l7: #D2D5D8;
+    /**/
+    --b-theme-success-d7: #0C3215;
+    --b-theme-success-d6: #10421C;
+    --b-theme-success-d5: #145323;
+    --b-theme-success-d4: #18642A;
+    --b-theme-success-d3: #1C7431;
+    --b-theme-success-d2: #208538;
+    --b-theme-success-d1: #24963F;
+    --b-theme-success: #28A746;
+    --b-theme-success-l1: #3DAF58;
+    --b-theme-success-l2: #53B86B;
+    --b-theme-success-l3: #68C17D;
+    --b-theme-success-l4: #7ECA90;
+    --b-theme-success-l5: #93D3A2;
+    --b-theme-success-l6: #A9DBB5;
+    --b-theme-success-l7: #BEE4C7;
+    /**/
+    --b-theme-info-d7: #063037;
+    --b-theme-info-d6: #094149;
+    --b-theme-info-d5: #0B515C;
+    --b-theme-info-d4: #0D616E;
+    --b-theme-info-d3: #107280;
+    --b-theme-info-d2: #128293;
+    --b-theme-info-d1: #1492A5;
+    --b-theme-info: #17A3B8;
+    --b-theme-info-l1: #2EACBF;
+    --b-theme-info-l2: #45B5C6;
+    --b-theme-info-l3: #5CBECD;
+    --b-theme-info-l4: #73C7D4;
+    --b-theme-info-l5: #8BD1DB;
+    --b-theme-info-l6: #A2DAE2;
+    --b-theme-info-l7: #B9E3E9;
+    /**/
+    --b-theme-warning-d7: #4C3902;
+    --b-theme-warning-d6: #664D02;
+    --b-theme-warning-d5: #7F6003;
+    --b-theme-warning-d4: #997304;
+    --b-theme-warning-d3: #B28704;
+    --b-theme-warning-d2: #CC9A05;
+    --b-theme-warning-d1: #E5AD06;
+    --b-theme-warning: #FFC107;
+    --b-theme-warning-l1: #FFC71F;
+    --b-theme-warning-l2: #FFCD38;
+    --b-theme-warning-l3: #FFD351;
+    --b-theme-warning-l4: #FFD96A;
+    --b-theme-warning-l5: #FFE083;
+    --b-theme-warning-l6: #FFE69B;
+    --b-theme-warning-l7: #FFECB4;
+    /**/
+    --b-theme-danger-d7: #420F14;
+    --b-theme-danger-d6: #58151B;
+    --b-theme-danger-d5: #6E1A22;
+    --b-theme-danger-d4: #841F29;
+    --b-theme-danger-d3: #9A2530;
+    --b-theme-danger-d2: #B02A37;
+    --b-theme-danger-d1: #C62F3E;
+    --b-theme-danger: #DC3545;
+    --b-theme-danger-l1: #DF4957;
+    --b-theme-danger-l2: #E35D6A;
+    --b-theme-danger-l3: #E6717C;
+    --b-theme-danger-l4: #EA858F;
+    --b-theme-danger-l5: #ED9AA2;
+    --b-theme-danger-l6: #F1AEB4;
+    --b-theme-danger-l7: #F4C2C7;
+}
+
+.main-as-primary {
+    --b-theme-primary: var(--b-theme-main);
+}
+
+/**/
+
+.theme-darken-1 {
+    --b-theme-primary: var(--b-theme-primary-d1);
+    --b-theme-secondary: var(--b-theme-secondary-d1);
+    --b-theme-success: var(--b-theme-success-d1);
+    --b-theme-info: var(--b-theme-info-d1);
+    --b-theme-warning: var(--b-theme-warning-d1);
+    --b-theme-danger: var(--b-theme-danger-d1);
+}
+
+.theme-darken-2 {
+    --b-theme-primary: var(--b-theme-primary-d2);
+    --b-theme-secondary: var(--b-theme-secondary-d2);
+    --b-theme-success: var(--b-theme-success-d2);
+    --b-theme-info: var(--b-theme-info-d2);
+    --b-theme-warning: var(--b-theme-warning-d2);
+    --b-theme-danger: var(--b-theme-danger-d2);
+}
+
+.theme-darken-3 {
+    --b-theme-primary: var(--b-theme-primary-d3);
+    --b-theme-secondary: var(--b-theme-secondary-d3);
+    --b-theme-success: var(--b-theme-success-d3);
+    --b-theme-info: var(--b-theme-info-d3);
+    --b-theme-warning: var(--b-theme-warning-d3);
+    --b-theme-danger: var(--b-theme-danger-d3);
+}
+
+.theme-darken-4 {
+    --b-theme-primary: var(--b-theme-primary-d4);
+    --b-theme-secondary: var(--b-theme-secondary-d4);
+    --b-theme-success: var(--b-theme-success-d4);
+    --b-theme-info: var(--b-theme-info-d4);
+    --b-theme-warning: var(--b-theme-warning-d4);
+    --b-theme-danger: var(--b-theme-danger-d4);
+}
+
+.theme-darken-5 {
+    --b-theme-primary: var(--b-theme-primary-d5);
+    --b-theme-secondary: var(--b-theme-secondary-d5);
+    --b-theme-success: var(--b-theme-success-d5);
+    --b-theme-info: var(--b-theme-info-d5);
+    --b-theme-warning: var(--b-theme-warning-d5);
+    --b-theme-danger: var(--b-theme-danger-d5);
+}
+
+.theme-darken-6 {
+    --b-theme-primary: var(--b-theme-primary-d6);
+    --b-theme-secondary: var(--b-theme-secondary-d6);
+    --b-theme-success: var(--b-theme-success-d6);
+    --b-theme-info: var(--b-theme-info-d6);
+    --b-theme-warning: var(--b-theme-warning-d6);
+    --b-theme-danger: var(--b-theme-danger-d6);
+}
+
+.theme-darken-7 {
+    --b-theme-primary: var(--b-theme-primary-d7);
+    --b-theme-secondary: var(--b-theme-secondary-d7);
+    --b-theme-success: var(--b-theme-success-d7);
+    --b-theme-info: var(--b-theme-info-d7);
+    --b-theme-warning: var(--b-theme-warning-d7);
+    --b-theme-danger: var(--b-theme-danger-d7);
+}
+
+.theme-lighten-1 {
+    --b-theme-primary: var(--b-theme-primary-l1);
+    --b-theme-secondary: var(--b-theme-secondary-l1);
+    --b-theme-success: var(--b-theme-success-l1);
+    --b-theme-info: var(--b-theme-info-l1);
+    --b-theme-warning: var(--b-theme-warning-l1);
+    --b-theme-danger: var(--b-theme-danger-l1);
+}
+
+.theme-lighten-2 {
+    --b-theme-primary: var(--b-theme-primary-l2);
+    --b-theme-secondary: var(--b-theme-secondary-l2);
+    --b-theme-success: var(--b-theme-success-l2);
+    --b-theme-info: var(--b-theme-info-l2);
+    --b-theme-warning: var(--b-theme-warning-l2);
+    --b-theme-danger: var(--b-theme-danger-l2);
+}
+
+.theme-lighten-3 {
+    --b-theme-primary: var(--b-theme-primary-l3);
+    --b-theme-secondary: var(--b-theme-secondary-l3);
+    --b-theme-success: var(--b-theme-success-l3);
+    --b-theme-info: var(--b-theme-info-l3);
+    --b-theme-warning: var(--b-theme-warning-l3);
+    --b-theme-danger: var(--b-theme-danger-l3);
+}
+
+.theme-lighten-4 {
+    --b-theme-primary: var(--b-theme-primary-l4);
+    --b-theme-secondary: var(--b-theme-secondary-l4);
+    --b-theme-success: var(--b-theme-success-l4);
+    --b-theme-info: var(--b-theme-info-l4);
+    --b-theme-warning: var(--b-theme-warning-l4);
+    --b-theme-danger: var(--b-theme-danger-l4);
+}
+
+.theme-lighten-5 {
+    --b-theme-primary: var(--b-theme-primary-l5);
+    --b-theme-secondary: var(--b-theme-secondary-l5);
+    --b-theme-success: var(--b-theme-success-l5);
+    --b-theme-info: var(--b-theme-info-l5);
+    --b-theme-warning: var(--b-theme-warning-l5);
+    --b-theme-danger: var(--b-theme-danger-l5);
+}
+
+.theme-lighten-6 {
+    --b-theme-primary: var(--b-theme-primary-l6);
+    --b-theme-secondary: var(--b-theme-secondary-l6);
+    --b-theme-success: var(--b-theme-success-l6);
+    --b-theme-info: var(--b-theme-info-l6);
+    --b-theme-warning: var(--b-theme-warning-l6);
+    --b-theme-danger: var(--b-theme-danger-l6);
+}
+
+.theme-lighten-7 {
+    --b-theme-primary: var(--b-theme-primary-l7);
+    --b-theme-secondary: var(--b-theme-secondary-l7);
+    --b-theme-success: var(--b-theme-success-l7);
+    --b-theme-info: var(--b-theme-info-l7);
+    --b-theme-warning: var(--b-theme-warning-l7);
+    --b-theme-danger: var(--b-theme-danger-l7);
+}
+
+/**/
+
+.theme-primary-darken-1 {
+    --b-theme-primary: var(--b-theme-primary-d1);
+}
+
+.theme-primary-darken-2 {
+    --b-theme-primary: var(--b-theme-primary-d2);
+}
+
+.theme-primary-darken-3 {
+    --b-theme-primary: var(--b-theme-primary-d3);
+}
+
+.theme-primary-darken-4 {
+    --b-theme-primary: var(--b-theme-primary-d4);
+}
+
+.theme-primary-darken-5 {
+    --b-theme-primary: var(--b-theme-primary-d5);
+}
+
+.theme-primary-darken-6 {
+    --b-theme-primary: var(--b-theme-primary-d6);
+}
+
+.theme-primary-darken-7 {
+    --b-theme-primary: var(--b-theme-primary-d7);
+}
+
+.theme-primary-lighten-1 {
+    --b-theme-primary: var(--b-theme-primary-l1);
+}
+
+.theme-primary-lighten-2 {
+    --b-theme-primary: var(--b-theme-primary-l2);
+}
+
+.theme-primary-lighten-3 {
+    --b-theme-primary: var(--b-theme-primary-l3);
+}
+
+.theme-primary-lighten-4 {
+    --b-theme-primary: var(--b-theme-primary-l4);
+}
+
+.theme-primary-lighten-5 {
+    --b-theme-primary: var(--b-theme-primary-l5);
+}
+
+.theme-primary-lighten-6 {
+    --b-theme-primary: var(--b-theme-primary-l6);
+}
+
+.theme-primary-lighten-7 {
+    --b-theme-primary: var(--b-theme-primary-l7);
+}
+
+.theme-primary {
+    --b-theme-current: var(--b-theme-primary);
+}
+
+.theme-secondary {
+    --b-theme-current: var(--b-theme-secondary);
+}
+
+.theme-success {
+    --b-theme-current: var(--b-theme-success);
+}
+
+.theme-info {
+    --b-theme-current: var(--b-theme-info);
+}
+
+.theme-warning {
+    --b-theme-current: var(--b-theme-warning);
+}
+
+.theme-danger {
+    --b-theme-current: var(--b-theme-danger);
+}

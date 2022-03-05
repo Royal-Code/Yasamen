@@ -1,6 +1,6 @@
 ﻿using Microsoft.JSInterop;
 
-namespace RoyalCode.Yasamen.Commons
+namespace RoyalCode.Yasamen.Commons.Modules
 {
     public class JsModuleBase
     {

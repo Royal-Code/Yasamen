@@ -1,0 +1,29 @@
+﻿
+footer {
+    width: 100%;
+    z-index: 1010;
+    position: relative;
+    bottom: 0;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    display: block;
+    align-items: flex-start;
+    font-size: .75rem;
+    color: var(--b-theme-main, gainsboro);
+}
+
+@media(max-width: 1300px) {
+    footer {
+        padding-left: 0;
+    }
+}
+
+@media(max-width: 999px) {
+}
+
+@media(max-width: 799px) {
+}
+
+@media(max-width: 249px) {
+}
