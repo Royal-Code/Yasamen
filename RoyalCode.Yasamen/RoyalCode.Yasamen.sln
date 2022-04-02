@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Layout", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Commons", "RoyalCode.Yasamen.Commons\RoyalCode.Yasamen.Commons.csproj", "{40D9C988-B246-4B13-83BC-D4C767D82906}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Yasamen.Spinners", "RoyalCode.Yasamen.Spinners\RoyalCode.Yasamen.Spinners.csproj", "{F24A2296-ADC5-48DF-817A-3348FE2A82C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Spinners", "RoyalCode.Yasamen.Spinners\RoyalCode.Yasamen.Spinners.csproj", "{F24A2296-ADC5-48DF-817A-3348FE2A82C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
