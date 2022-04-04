@@ -1,11 +1,15 @@
-﻿
-<CascadingValue Value="context" IsFixed=true>
-    <div b-app-layout @attributes="Attributes">
-        <header>
-            <AppNavBar>
+﻿<CascadingValue Value="context" IsFixed=true>
+    <div b-app-layout @attributes="Attributes" style="">
+        <AppNavBar>
+            <Start>
+                <div style="border: 1px solid #e397bb; background-color: #dfbcd4; min-height: 36px; width: 300px;"></div>    
+            </Start>
+        </AppNavBar>
 
-            </AppNavBar>
-        </header>
+        <AppSideMenu>
+            <div style="border: 1px solid #e397bb; background-color: #dfbcd4; min-height: 36px; width: 100%;"></div>
+        </AppSideMenu>
+
         <main b-app-main class="@InteractedCssClass" @ref="mainRef">
             @Main
         </main>
@@ -32,4 +36,5 @@
 
     [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object> Attributes { get; set; }
+
 }

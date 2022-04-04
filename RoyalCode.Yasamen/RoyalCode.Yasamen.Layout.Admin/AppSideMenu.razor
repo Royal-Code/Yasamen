@@ -1,0 +1,12 @@
+
+<div b-app-side-menu>
+    <nav>
+        @ChildContent
+    </nav>    
+</div>
+
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+}

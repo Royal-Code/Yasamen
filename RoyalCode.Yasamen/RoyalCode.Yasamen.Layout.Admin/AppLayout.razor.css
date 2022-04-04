@@ -11,21 +11,21 @@ main {
     display: block;
     position: relative;
     overflow: auto;
-    flex: 1 1 0%;
-    transition: var(--b-layout-transition, all 0.3s);
+    flex: 1 1 0;
+    transition: var(--b-layout-transition, 'all 0.3s');
 }
 
 ::deep [b-app-footer] {
-    transition: var(--b-layout-transition, all 0.3s);
+    transition: var(--b-layout-transition, 'all 0.3s');
 }
 
 main ::deep > * {
-    transition: var(--b-layout-transition, all 0.3s);
+    transition: var(--b-layout-transition, 'all 0.3s');
     margin: 5px 10px 20px 10px;
     padding: 0 10px 0 10px;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1200px) {
     main:not(.b-menu-interacted) {
         padding-left: var(--b-aside-menu--width, var(--b-theme-aside-menu--width));
     }
@@ -71,7 +71,5 @@ main ::deep > * {
 @media screen and (min-width: 1240px) {
     main.b-menu-interacted ::deep > *:not([fluid])[medium] {
         max-width: 1200px;
-        /* margin-left: auto;
-        margin-right: auto; */
     }
 }

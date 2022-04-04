@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Commons",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Spinners", "RoyalCode.Yasamen.Spinners\RoyalCode.Yasamen.Spinners.csproj", "{F24A2296-ADC5-48DF-817A-3348FE2A82C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Yasamen.Layout.Admin", "RoyalCode.Yasamen.Layout.Admin\RoyalCode.Yasamen.Layout.Admin.csproj", "{21824EB1-BCD1-4EFD-91B2-B622644BEB05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{F24A2296-ADC5-48DF-817A-3348FE2A82C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F24A2296-ADC5-48DF-817A-3348FE2A82C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F24A2296-ADC5-48DF-817A-3348FE2A82C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21824EB1-BCD1-4EFD-91B2-B622644BEB05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21824EB1-BCD1-4EFD-91B2-B622644BEB05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21824EB1-BCD1-4EFD-91B2-B622644BEB05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21824EB1-BCD1-4EFD-91B2-B622644BEB05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{03273557-E1C5-4DA1-81B2-1248F0E1F048} = {E2305804-FC03-4917-81A2-DAA052064C88}
 		{40D9C988-B246-4B13-83BC-D4C767D82906} = {E2305804-FC03-4917-81A2-DAA052064C88}
 		{F24A2296-ADC5-48DF-817A-3348FE2A82C2} = {E2305804-FC03-4917-81A2-DAA052064C88}
+		{21824EB1-BCD1-4EFD-91B2-B622644BEB05} = {E2305804-FC03-4917-81A2-DAA052064C88}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {274B8D8D-7446-4563-A4F0-0000A0C7209B}

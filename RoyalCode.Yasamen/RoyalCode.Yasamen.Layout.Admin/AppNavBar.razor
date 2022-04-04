@@ -5,26 +5,28 @@
 @inject ToggleJsModule ToggleJs
 @implements IAsyncDisposable
 
-<nav b-app-nav-bar class="@HeaderClass" @ref="navRef">
-    @if (UseStart)
-    {
-        <div class="start">
-            @Start
-        </div>
-    }
-    @if (UseMiddle)
-    {
-        <div class="middle">
-            @Middle
-        </div>
-    }
-    @if (UseEnd)
-    {
-        <div class="end">
-            @End
-        </div>
-    }
-</nav>
+<header b-app-header>
+    <nav b-app-nav-bar class="@HeaderClass" @ref="navRef">
+        @if (UseStart)
+        {
+            <div class="start">
+                @Start
+            </div>
+        }
+        @if (UseMiddle)
+        {
+            <div class="middle">
+                @Middle
+            </div>
+        }
+        @if (UseEnd)
+        {
+            <div class="end">
+                @End
+            </div>
+        }
+    </nav>
+</header>
 
 @code {
     private bool scrolled;
@@ -50,7 +52,7 @@
     public bool UseStart { get; set; } = true;
 
     [Parameter]
-    public bool UseMiddle { get; set; } = false;
+    public bool UseMiddle { get; set; }
 
     [Parameter]
     public bool UseEnd { get; set; } = true;
@@ -74,9 +76,9 @@
             listener = await ScrollJs.Register(ScrolledHandler);
             LayoutContext.AddMenuInteracted(async (interacted) =>
             {
-                await ToggleJs.CssClassToggle(navRef, 
-                    LayoutContextCssClassesExtensions.IsInteractedClass, 
-                    LayoutContextCssClassesExtensions.IsNotInteractedClass, 
+                await ToggleJs.CssClassToggle(navRef,
+                    LayoutContextCssClassesExtensions.IsInteractedClass,
+                    LayoutContextCssClassesExtensions.IsNotInteractedClass,
                     interacted);
             });
         }
@@ -93,4 +95,5 @@
     {
         await listener.DisposeAsync();
     }
+
 }
