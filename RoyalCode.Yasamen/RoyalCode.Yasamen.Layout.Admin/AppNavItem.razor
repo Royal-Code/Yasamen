@@ -1,0 +1,21 @@
+
+<li class="app-nav-item">
+    <NavLink class="app-nav-link" href="@(HRef ?? string.Empty)" Match="@InternalMatch">
+        @Label
+    </NavLink>
+</li>
+
+@code {
+
+    private NavLinkMatch InternalMatch => Match
+        ?? (string.IsNullOrWhiteSpace(HRef) ? NavLinkMatch.All : NavLinkMatch.Prefix);
+
+    [Parameter]
+    public string? HRef { get; set; } = string.Empty;
+
+    [Parameter]
+    public NavLinkMatch? Match { get; set; }
+    
+    [Parameter]
+    public string? Label { get; set; }
+}

@@ -21,8 +21,11 @@
     /* nav-menu */
     --b-theme-nav-menu--width: 240px;
     --b-theme-nav-menu--background-color: #54606A;
-    --b-theme-nav-menu--background-color--hover: #646E7A;
-    --b-theme-nav-menu--background-color--active: #456;
+    --b-theme-nav-menu-item--color: #D7E0E7;
+    --b-theme-nav-menu-item--font-size: 0.8rem;
+    --b-theme-nav-menu-item--background-color: #54606A;
+    --b-theme-nav-menu-item--background-color--hover: rgba(1, 1, 1, 0.1);
+    --b-theme-nav-menu-item--background-color--active: rgba(1, 1, 1, 0.2);
     /* main */
     --b-theme-main--margin: 10px 10px 0 10px;
     --b-theme-main--padding: 0;
