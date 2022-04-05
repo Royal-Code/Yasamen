@@ -2,74 +2,147 @@
 div[b-app-layout] {
     min-height: 100vh;
     width: 100%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
     background: var(--b-theme-background, #f8f8f8);
 }
 
+/* header */
+
+header {
+    height: var(--b-theme-header--height, 50px);
+    border: var(--b-theme-header--border, none);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--b-theme-header--z-index, 1030);
+    transition: box-shadow 400ms linear 0s;
+    display: inline-grid;
+}
+
+/* page-content */
+
+.app-page-content {
+    padding-top: var(--b-theme-header--height, 50px);
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+/* menu-content */
+
+.app-menu-content {
+    min-width: var(--b-theme-nav-menu--width, 240px);
+    align-self: stretch;
+    background-color: var(--b-theme-nav-menu--background-color, #567);
+    transition: var(--b-theme-transition);
+}
+
+/* center-content */
+
+.app-center-content {
+    width: 100%;
+    align-self: stretch;
+    display: grid;
+}
+
+/* main-content */
+
 main {
-    display: block;
-    position: relative;
-    overflow: auto;
-    flex: 1 1 0;
-    transition: var(--b-layout-transition, 'all 0.3s');
+    margin: var(--b-theme-main--margin);
+    padding: var(--b-theme-main--padding);
 }
 
-::deep [b-app-footer] {
-    transition: var(--b-layout-transition, 'all 0.3s');
+/* footer-content */
+
+footer {
+    align-self: end;
+    min-height: var(--b-theme-footer--min-height, 50px);
+    background: var(--b-theme-footer--background-color, #D2D2D2);
+    display: flex;
+    align-items: center;
 }
 
-main ::deep > * {
-    transition: var(--b-layout-transition, 'all 0.3s');
-    margin: 5px 10px 20px 10px;
-    padding: 0 10px 0 10px;
+/* app-aside-content */
+.app-aside-content {
+    display: none;
 }
 
-@media screen and (min-width: 1200px) {
-    main:not(.b-menu-interacted) {
-        padding-left: var(--b-aside-menu--width, var(--b-theme-aside-menu--width));
+/* --- screen -- phone  --- */
+
+@media screen and (max-width: 667px) {
+    header {
+        height: var(--b-theme-header--phone--height, 46px);
     }
-
-    ::deep [b-app-footer]:not(.b-menu-interacted) {
-        margin-left: var(--b-aside-menu--width, var(--b-theme-aside-menu--width));
-        width: calc(100% - var(--b-aside-menu--width, var(--b-theme-aside-menu--width)));
-    }
-}
-
-@media screen and (min-width: 1044px) {
-    main.b-menu-interacted ::deep > *:not([fluid]) {
-        max-width: 1024px;
-        margin-left: auto;
-        margin-right: auto;
+    .app-page-content {
+        padding-top: var(--b-theme-header--phone--height, 46px);
     }
 }
 
-@media screen and (min-width: 1240px) {
-    main.b-menu-interacted ::deep > *:not([fluid]) {
-        max-width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
+/* -------------------------- */
+/*main {*/
+/*    display: block;*/
+/*    position: relative;*/
+/*    overflow: auto;*/
+/*    flex: 1 1 0;*/
+/*    transition: var(--b-layout-transition, 'all 0.3s');*/
+/*}*/
 
-@media screen and (min-width: 1440px) {
-    main.b-menu-interacted ::deep > *:not([fluid]) {
-        max-width: 1400px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
+/*::deep [b-app-footer] {*/
+/*    transition: var(--b-layout-transition, 'all 0.3s');*/
+/*}*/
 
-@media screen and (min-width: 1620px) {
-    main.b-menu-interacted ::deep > *:not([fluid]) {
-        max-width: 1600px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
+/*main ::deep > * {*/
+/*    transition: var(--b-layout-transition, 'all 0.3s');*/
+/*    margin: 5px 10px 20px 10px;*/
+/*    padding: 0 10px 0 10px;*/
+/*}*/
 
-@media screen and (min-width: 1240px) {
-    main.b-menu-interacted ::deep > *:not([fluid])[medium] {
-        max-width: 1200px;
-    }
-}
+/*@media screen and (min-width: 1200px) {*/
+/*    main:not(.b-menu-interacted) {*/
+/*        padding-left: var(--b-aside-menu--width, var(--b-theme-aside-menu--width));*/
+/*    }*/
+
+/*    ::deep [b-app-footer]:not(.b-menu-interacted) {*/
+/*        margin-left: var(--b-aside-menu--width, var(--b-theme-aside-menu--width));*/
+/*        width: calc(100% - var(--b-aside-menu--width, var(--b-theme-aside-menu--width)));*/
+/*    }*/
+/*}*/
+
+/*@media screen and (min-width: 1044px) {*/
+/*    main.b-menu-interacted ::deep > *:not([fluid]) {*/
+/*        max-width: 1024px;*/
+/*        margin-left: auto;*/
+/*        margin-right: auto;*/
+/*    }*/
+/*}*/
+
+/*@media screen and (min-width: 1240px) {*/
+/*    main.b-menu-interacted ::deep > *:not([fluid]) {*/
+/*        max-width: 1200px;*/
+/*        margin-left: auto;*/
+/*        margin-right: auto;*/
+/*    }*/
+/*}*/
+
+/*@media screen and (min-width: 1440px) {*/
+/*    main.b-menu-interacted ::deep > *:not([fluid]) {*/
+/*        max-width: 1400px;*/
+/*        margin-left: auto;*/
+/*        margin-right: auto;*/
+/*    }*/
+/*}*/
+
+/*@media screen and (min-width: 1620px) {*/
+/*    main.b-menu-interacted ::deep > *:not([fluid]) {*/
+/*        max-width: 1600px;*/
+/*        margin-left: auto;*/
+/*        margin-right: auto;*/
+/*    }*/
+/*}*/
+
+/*@media screen and (min-width: 1240px) {*/
+/*    main.b-menu-interacted ::deep > *:not([fluid])[medium] {*/
+/*        max-width: 1200px;*/
+/*    }*/
+/*}*/

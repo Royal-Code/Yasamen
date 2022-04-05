@@ -1,0 +1,6 @@
+
+div {
+    height: var(--b-theme-header--height);
+    width: var(--b-theme-nav-menu--width);
+    background-color: var(--b-theme-main);
+}

@@ -1,0 +1,35 @@
+
+[b-box] {
+    height: 36px;
+    width: 100%;
+}
+
+.pink {
+    border: 1px solid #e397bb;
+    background-color: #dfbcd4;
+}
+
+.green {
+    border: 1px solid #28A746;
+    background-color: #7ECA90;
+}
+
+.b-yellow {
+    border: 1px solid #FFC107;
+    background-color: #FFECB4;
+}
+
+.b-blue {
+    border: 1px solid #257BFD;
+    background-color: #9EC4FE;
+}
+
+.b-grey {
+    border: 1px solid #899097;
+    background-color: #B5BABE;
+}
+
+.b-cyan {
+    border: 1px solid #2EACBF;
+    background-color: #73C7D4;
+}

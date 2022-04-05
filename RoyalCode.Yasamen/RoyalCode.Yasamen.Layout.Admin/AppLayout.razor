@@ -1,22 +1,36 @@
 ﻿<CascadingValue Value="context" IsFixed=true>
-    <div b-app-layout @attributes="Attributes" style="">
-        <AppNavBar>
-            <Start>
-                <div style="border: 1px solid #e397bb; background-color: #dfbcd4; min-height: 36px; width: 300px;"></div>    
-            </Start>
-        </AppNavBar>
-
-        <AppSideMenu>
-            <div style="border: 1px solid #e397bb; background-color: #dfbcd4; min-height: 36px; width: 100%;"></div>
-        </AppSideMenu>
-
-        <main b-app-main class="@InteractedCssClass" @ref="mainRef">
-            @Main
-        </main>
-
-        <AppFooter>
-            @Footer
-        </AppFooter>
+    <div b-app-layout @attributes="Attributes">
+        <header class="app-top-content">
+            <AppNavBar>
+                <Start>
+                    @TopStart
+                </Start>
+                <Middle>
+                    @TopCenter
+                </Middle>
+                <End>
+                    @TopEnd
+                </End>
+            </AppNavBar>
+        </header>
+        <div class="app-page-content">
+            <div class="app-menu-content">
+                <AppNavMenu>
+                    @Menu
+                </AppNavMenu>
+            </div>
+            <div class="app-center-content">
+                <main class="app-main-content" @ref="mainRef">
+                    @Main
+                </main>
+                <footer class="app-footer-content">
+                    @Footer
+                </footer>
+            </div>
+        </div>
+        <div class="app-aside-content">
+            
+        </div>
     </div>
 </CascadingValue>
 
@@ -34,6 +48,18 @@
     [Parameter]
     public RenderFragment Footer { get; set; }
 
+    [Parameter]
+    public RenderFragment TopStart { get; set; }
+    
+    [Parameter]
+    public RenderFragment TopCenter { get; set; }
+    
+    [Parameter]
+    public RenderFragment TopEnd { get; set; }
+    
+    [Parameter]
+    public RenderFragment Menu { get; set; }
+    
     [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object> Attributes { get; set; }
 

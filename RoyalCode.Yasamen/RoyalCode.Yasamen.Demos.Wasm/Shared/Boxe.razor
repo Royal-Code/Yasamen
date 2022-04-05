@@ -1,0 +1,15 @@
+
+<div b-box @attributes="Attributes" class="@ColorValue">
+    
+</div>
+
+@code {
+
+    private string ColorValue => Color ?? "pink";
+    
+    [Parameter]
+    public string? Color { get; set; }
+    
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> Attributes { get; set; }
+}

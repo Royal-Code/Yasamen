@@ -2,7 +2,10 @@
 @page "/AppLayout"
 
 <h3>AppLayoutSample</h3>
+<input name="height" @bind="Value" />
+<div style="height: @Value; width: 100px; border: 1px solid red;" ></div>
 
 @code {
 
+    public string Value { get; set; } = "100px";
 }

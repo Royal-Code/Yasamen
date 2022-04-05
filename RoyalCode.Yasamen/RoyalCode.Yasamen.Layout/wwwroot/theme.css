@@ -1,17 +1,34 @@
 ﻿:root {
-    /**/
+    /* general */
     --b-theme-main: #002A5D;
     --b-theme-background: #F2F2F2;
+    --b-theme-transition: all 0,3s;
+    /**/
     --b-theme-content: #FFFFFF;
     --b-theme-content-highlight: #E6E6E6;
     --b-theme-content-divisor: #707070;
-    --b-theme-aside-menu: #5F6A7D;
-    --b-theme-aside-menu-highlight: #556072;
-    /**/
-    --b-theme-header--min-height: 50px;
-    --b-theme-header-brand--min-width: 196px;
-    --b-theme-aside-menu--width: 240px;
-    --b-theme-footer--height: 50px;
+    --b-theme-aside-menu: #5F6A7D; /* del */
+    --b-theme-aside-menu-highlight: #556072; /* del */
+    /* header */
+    --b-theme-header--height: 50px;
+    --b-theme-header--border: none;
+    --b-theme-header--z-index: 1030;
+    --b-theme-header--phone--height: 46px;
+    /* nav-bar */
+    --b-theme-nav-bar--background-color: #FFF;
+    --b-theme-nav-bar--backdrop-filter: blur(.25rem);
+    --b-theme-nav-bar--moz--background-color: rgba(255,255,255,0.9);
+    /* nav-menu */
+    --b-theme-nav-menu--width: 240px;
+    --b-theme-nav-menu--background-color: #54606A;
+    --b-theme-nav-menu--background-color--hover: #646E7A;
+    --b-theme-nav-menu--background-color--active: #456;
+    /* main */
+    --b-theme-main--margin: 10px 10px 0 10px;
+    --b-theme-main--padding: 0;
+    /* footer */
+    --b-theme-footer--min-height: 50px;
+    --b-theme-footer--background-color: #C4D0DA;
     /**/
     --b-theme-primary-d7: #03204B;
     --b-theme-primary-d6: #052B65;

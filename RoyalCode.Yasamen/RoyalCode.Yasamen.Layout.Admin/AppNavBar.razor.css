@@ -4,19 +4,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: var(--app-nav-bar--color, var(--b-theme-primary));
-    width: var(--app-nav-bar--width, 100%);
-    min-height: var(--app-nav-bar--min-height, var(--b-theme-header--min-height));
-    border: var(--app-nav-bar--border, none);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: var(--b-app-nav-bar--z-index, 1030);
-    transition: box-shadow 400ms linear 0s;
-    background-color: var(--b-app-nav-bar--background-color, #fff);
-    -webkit-backdrop-filter: var(--b-app-nav-bar--backdrop, blur(.25rem));
-    backdrop-filter: var(--b-app-nav-bar--backdrop, blur(.25rem));
+    color: var(--b-theme-primary);
+    background-color: var(--b-theme-nav-bar--background-color, #fff);
+    -webkit-backdrop-filter: var(--b-theme-nav-bar--backdrop-filter, blur(.25rem));
+    backdrop-filter: var(--b-theme-nav-bar--backdrop-filter, blur(.25rem));
 }
 
     nav > div {
@@ -50,12 +41,6 @@
             box-shadow: var(--b-app-nav-bar--shadow-scrolled, 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12));
         }
 
-@media screen and (max-width: 667px) {
-    nav {
-        min-height: var(--b-app-nav-bar-phone--min-height, var(--b-theme-header-phone--min-height));
-    }
-}
-
 @media screen and (max-width: 879px) {
     nav > .middle {
         display: none;
@@ -83,11 +68,6 @@
 
 @-moz-document url-prefix() {
     nav {
-        background-color: var(--v-app-nav-bar--background-color, rgba(255,255,255,0.9));
+        background-color: var(--b-theme-nav-bar--moz--background-color, rgba(255,255,255,0.9));
     }
-}
-
-.height-adjust {
-    min-height: var(--b-app-nav-bar--min-height, var(--b-theme-header--min-height));
-    display: block;
 }
