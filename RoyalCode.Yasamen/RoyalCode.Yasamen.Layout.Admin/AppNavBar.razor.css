@@ -8,6 +8,7 @@
     background-color: var(--b-theme-nav-bar--background-color, #fff);
     -webkit-backdrop-filter: var(--b-theme-nav-bar--backdrop-filter, blur(.25rem));
     backdrop-filter: var(--b-theme-nav-bar--backdrop-filter, blur(.25rem));
+    transition: box-shadow 400ms linear 0s;
 }
 
     nav > div {

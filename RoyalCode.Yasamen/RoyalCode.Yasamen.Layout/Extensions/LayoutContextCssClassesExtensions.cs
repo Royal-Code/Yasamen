@@ -7,8 +7,8 @@ namespace RoyalCode.Yasamen.Layout;
 /// </summary>
 public static class LayoutContextCssClassesExtensions
 {
-    public const string IsInteractedClass = "b-menu-interacted";
-    public const string IsNotInteractedClass = "b-menu-original";
+    public const string IsInteractedClass = "app-menu-interacted";
+    public const string IsNotInteractedClass = "app-menu-original";
 
     public static string GetInteractedCssClass(this LayoutContext context)
         => context.MenuInteracted ? IsInteractedClass : IsNotInteractedClass;

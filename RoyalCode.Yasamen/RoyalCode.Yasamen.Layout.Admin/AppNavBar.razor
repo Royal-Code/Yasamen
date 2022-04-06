@@ -5,7 +5,6 @@
 @inject ToggleJsModule ToggleJs
 @implements IAsyncDisposable
 
-
 <nav b-app-nav-bar class="@HeaderClass" @ref="navRef">
     @if (UseStart)
     {
@@ -30,7 +29,7 @@
 
 @code {
     private bool scrolled;
-    private ScrollInterop listener;
+    private ScrollInterop? listener;
     private ElementReference navRef;
 
     private CssClassMap HeaderClass => CssClassMap
@@ -74,25 +73,23 @@
         if (firstRender)
         {
             listener = await ScrollJs.Register(ScrolledHandler);
-            LayoutContext.AddMenuInteracted(async (interacted) =>
-            {
-                await ToggleJs.CssClassToggle(navRef,
-                    LayoutContextCssClassesExtensions.IsInteractedClass,
-                    LayoutContextCssClassesExtensions.IsNotInteractedClass,
-                    interacted);
-            });
         }
         await base.OnAfterRenderAsync(firstRender);
     }
 
-    private void ScrolledHandler(bool scrolled)
+    private async ValueTask ScrolledHandler(bool scrolled)
     {
+        if (this.scrolled == scrolled)
+            return;
+                
         this.scrolled = scrolled;
-        StateHasChanged();
+        await ToggleJs.CssClassToggle(navRef, "b-scrolled", scrolled);
     }
 
     public async ValueTask DisposeAsync()
     {
+        if (listener is null)
+            return;
         await listener.DisposeAsync();
     }
 

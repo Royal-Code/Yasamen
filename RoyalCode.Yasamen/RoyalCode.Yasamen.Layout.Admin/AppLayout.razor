@@ -1,7 +1,15 @@
-﻿<CascadingValue Value="context" IsFixed=true>
-    <div b-app-layout @attributes="Attributes">
+﻿@using RoyalCode.Yasamen.Commons.Interops
+@using RoyalCode.Yasamen.Commons.Modules
+@using System.Reflection
+@using System.Diagnostics
+
+@inject ToggleJsModule ToggleJs
+@implements IDisposable
+
+<CascadingValue Value="context" IsFixed="true">
+    <div b-app-layout @attributes="Attributes" class="@InteractedCssClass @AdditionalClasses" @ref="layoutRef">
         <header class="app-top-content">
-            <AppNavBar>
+            <AppNavBar Shadow="NavBarShadow">
                 <Start>
                     @TopStart
                 </Start>
@@ -15,12 +23,11 @@
         </header>
         <div class="app-page-content">
             <div class="app-menu-content">
-                <AppNavMenu>
-                    @Menu
-                </AppNavMenu>
+                <div class="app-menu-backdrop" @onclick="MenuBackdropClickHandle"></div>
+                @Menu
             </div>
             <div class="app-center-content">
-                <main class="app-main-content" @ref="mainRef">
+                <main class="app-main-content">
                     @Main
                 </main>
                 <footer class="app-footer-content">
@@ -36,11 +43,12 @@
 
 @code {
 
-    private static LayoutContext context = new LayoutContext();
+    private static LayoutContext context = new ();
 
-    private ElementReference mainRef;
+    private ElementReference layoutRef;
+    private IDisposable? listener;
 
-    public string InteractedCssClass => context.GetInteractedCssClass();
+    private string InteractedCssClass => context.GetInteractedCssClass();
 
     [Parameter]
     public RenderFragment Main { get; set; }
@@ -59,8 +67,41 @@
     
     [Parameter]
     public RenderFragment Menu { get; set; }
+
+    [Parameter]
+    public bool NavBarShadow { get; set; } = true;
+    
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
     
     [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object> Attributes { get; set; }
 
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+            listener = context.AddMenuInteracted(async interacted =>
+            {
+                await ToggleJs.CssClassToggle(layoutRef,
+                    LayoutContextCssClassesExtensions.IsInteractedClass,
+                    LayoutContextCssClassesExtensions.IsNotInteractedClass,
+                    interacted);
+            });
+        
+        Console.WriteLine(layoutRef.Context?.GetType().FullName);
+        layoutRef.Context?.GetType().GetRuntimeFields().ToList().ForEach(f => Console.WriteLine(f.Name));
+        layoutRef.Context?.GetType().GetRuntimeMethods().ToList().ForEach(m => Console.WriteLine(m.Name));
+        
+        base.OnAfterRenderAsync(firstRender);
+    }
+
+    private void MenuBackdropClickHandle()
+    {
+        context.MenuInteract();
+    }
+    
+    public void Dispose()
+    {
+        listener?.Dispose();
+    }
 }

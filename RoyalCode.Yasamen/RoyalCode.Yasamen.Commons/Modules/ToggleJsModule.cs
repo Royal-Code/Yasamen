@@ -7,6 +7,7 @@ namespace RoyalCode.Yasamen.Commons.Modules
     {
         /* toggle.js */
         public static readonly string CssClassToggleBetween = "between";
+        public static readonly string CssClassToggleToggle = "toggle";
 
         public ToggleJsModule(IJSRuntime js) : base(js, "toggle.js") { }
 
@@ -14,6 +15,12 @@ namespace RoyalCode.Yasamen.Commons.Modules
         {
             var js = await GetModuleAsync();
             await js.InvokeVoidAsync(CssClassToggleBetween, element, cssClassTrue, cssClassFalse, toggle);
+        }
+        
+        public async ValueTask CssClassToggle(ElementReference element, string cssClass, bool toggle)
+        {
+            var js = await GetModuleAsync();
+            await js.InvokeVoidAsync(CssClassToggleToggle, element, cssClass, toggle);
         }
     }
 }

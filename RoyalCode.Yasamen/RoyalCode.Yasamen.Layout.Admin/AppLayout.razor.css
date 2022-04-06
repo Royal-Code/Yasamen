@@ -9,6 +9,7 @@ div[b-app-layout] {
 /* header */
 
 header {
+    background-color: transparent;
     height: var(--b-theme-header--height, 50px);
     border: var(--b-theme-header--border, none);
     position: fixed;
@@ -16,7 +17,6 @@ header {
     left: 0;
     right: 0;
     z-index: var(--b-theme-header--z-index, 1030);
-    transition: box-shadow 400ms linear 0s;
     display: inline-grid;
 }
 
@@ -24,18 +24,43 @@ header {
 
 .app-page-content {
     padding-top: var(--b-theme-header--height, 50px);
+    padding-left: var(--b-theme-nav-menu--width, 240px);
     display: flex;
     height: 100%;
     width: 100%;
+    transition: var(--b-theme-transition);
+}
+
+.app-menu-interacted .app-page-content {
+    padding-left: 0;
 }
 
 /* menu-content */
 
 .app-menu-content {
-    min-width: var(--b-theme-nav-menu--width, 240px);
-    align-self: stretch;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+    padding-top: var(--b-theme-header--height, 50px);
     background-color: var(--b-theme-nav-menu--background-color, #567);
     transition: var(--b-theme-transition);
+}
+
+.app-menu-original .app-menu-content {
+    left: 0;
+    min-width: var(--b-theme-nav-menu--width, 240px);
+    width: var(--b-theme-nav-menu--width, 240px);
+}
+
+.app-menu-interacted .app-menu-content {
+    left: calc(var(--b-theme-nav-menu--width, 240px) * -1);
+}
+
+.app-menu-backdrop {
+    display: none;
+    background-color: black;
+    opacity: 0.2;
 }
 
 /* center-content */
@@ -76,6 +101,40 @@ footer {
     }
     .app-page-content {
         padding-top: var(--b-theme-header--phone--height, 46px);
+    }
+}
+
+/* --- screen -- small  --- */
+
+@media screen and (max-width: 1199px)
+{
+    .app-menu-original .app-page-content {
+        padding-left: 0;
+    }
+
+    .app-menu-interacted .app-menu-content {
+        left: 0;
+        min-width: var(--b-theme-nav-menu--width, 240px);
+        width: var(--b-theme-nav-menu--width, 240px);
+        z-index: 1068;
+    }
+
+    .app-menu-original .app-menu-content {
+        left: calc(var(--b-theme-nav-menu--width, 240px) * -1);
+    }
+
+    .app-menu-interacted .app-menu-backdrop {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1067;
+    }
+
+    .app-menu-interacted header {
+        z-index: 1069;
     }
 }
 

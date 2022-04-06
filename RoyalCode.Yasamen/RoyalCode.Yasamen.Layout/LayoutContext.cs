@@ -1,23 +1,20 @@
 ﻿
+using RoyalCode.Yasamen.Commons;
+
 namespace RoyalCode.Yasamen.Layout;
 
 public class LayoutContext
 {
-    private Action<bool>? menuInteractedListeners;
+    private readonly EventController<bool> menuInteractedListeners = new();
 
-    public bool MenuInteracted { get; set; }
+    public bool MenuInteracted { get; private set; }
 
     public void MenuInteract()
     {
         MenuInteracted = !MenuInteracted;
-        menuInteractedListeners?.Invoke(MenuInteracted);
+        menuInteractedListeners.Fire(MenuInteracted);
     }
 
-    public void AddMenuInteracted(Action<bool> listener)
-    {
-        if (menuInteractedListeners == null)
-            menuInteractedListeners = listener;
-        else
-            menuInteractedListeners += listener;
-    }
+    public IDisposable AddMenuInteracted(Action<bool> listener)
+        => menuInteractedListeners.Listen(listener);
 }

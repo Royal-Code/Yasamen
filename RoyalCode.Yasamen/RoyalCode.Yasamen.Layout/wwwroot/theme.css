@@ -1,8 +1,10 @@
 ﻿:root {
     /* general */
     --b-theme-main: #002A5D;
+    --b-theme-main--opacity1: #002A5D1A;
+    --b-theme-main--opacity2: #002A5D34;
     --b-theme-background: #F2F2F2;
-    --b-theme-transition: all 0,3s;
+    --b-theme-transition: all 0.3s;
     /**/
     --b-theme-content: #FFFFFF;
     --b-theme-content-highlight: #E6E6E6;
@@ -26,6 +28,10 @@
     --b-theme-nav-menu-item--background-color: #54606A;
     --b-theme-nav-menu-item--background-color--hover: rgba(1, 1, 1, 0.1);
     --b-theme-nav-menu-item--background-color--active: rgba(1, 1, 1, 0.2);
+    /* nav-menu-button */
+    --b-theme-nav-menu-button--size: 42px;
+    --b-theme-nav-menu-button--border-radius: 50%;
+    --b-theme-nav-menu-button--color: var(--b-theme-main--opacity1);
     /* main */
     --b-theme-main--margin: 10px 10px 0 10px;
     --b-theme-main--padding: 0;

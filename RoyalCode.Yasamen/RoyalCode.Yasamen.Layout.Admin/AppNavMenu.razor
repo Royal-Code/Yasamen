@@ -1,5 +1,5 @@
 
-<nav class="app-nav-menu">
+<nav class="app-nav-menu" @attributes="Attributes">
     <ul>
         @ChildContent
     </ul>
@@ -8,4 +8,7 @@
 @code {
     [Parameter]
     public RenderFragment ChildContent { get; set; }
+    
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> Attributes { get; set; }
 }

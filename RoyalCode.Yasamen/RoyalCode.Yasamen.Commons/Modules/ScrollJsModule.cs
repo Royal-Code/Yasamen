@@ -18,5 +18,12 @@ namespace RoyalCode.Yasamen.Commons.Modules
             await listener.AddListener(callback);
             return listener;
         }
+        
+        public Task<ScrollInterop> Register(Func<bool, ValueTask> callback)
+        {
+            async void SyncCallback(bool scrolled) => await callback(scrolled);
+            
+            return Register(SyncCallback);
+        }
     }
 }

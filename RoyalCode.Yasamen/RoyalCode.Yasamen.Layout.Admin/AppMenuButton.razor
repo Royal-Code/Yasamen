@@ -1,0 +1,17 @@
+
+<button @onclick="Handler">
+    @ChildContent
+</button>
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+    
+    [CascadingParameter]
+    public LayoutContext LayoutContext { get; set; }
+
+    public void Handler()
+    {
+        LayoutContext.MenuInteract();
+    }
+}

@@ -4,3 +4,12 @@ div {
     width: var(--b-theme-nav-menu--width);
     background-color: var(--b-theme-main);
 }
+
+/* --- screen -- phone  --- */
+
+@media screen and (max-width: 667px) {
+    div {
+        height: var(--b-theme-header--phone--height);
+        width: var(--b-theme-header--phone--height);
+    }
+}

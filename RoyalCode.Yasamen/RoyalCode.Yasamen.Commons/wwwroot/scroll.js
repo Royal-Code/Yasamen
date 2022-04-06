@@ -1,13 +1,13 @@
 ﻿
-var fn = (function () {
+let fn = (function () {
 
-    var _scroll = {};
+    let _scroll = {};
     _scroll._wasScrolled = false;
     _scroll._registry = {};
 
     _scroll.register = function (listener) {
 
-        const eventHandler = function (evt) {
+        const eventHandler = function () {
             const currentScroll = window.scrollY;
 
             if (currentScroll <= 0) {
@@ -41,5 +41,5 @@ var fn = (function () {
     return _scroll;
 })();
 
-export function register(listener) { fn.register(listener); };
-export function unregister(listener) { fn.unregister(listener); };
+export function register(listener) { fn.register(listener); }
+export function unregister(listener) { fn.unregister(listener); }
