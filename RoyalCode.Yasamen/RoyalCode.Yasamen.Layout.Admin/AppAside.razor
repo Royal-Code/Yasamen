@@ -1,0 +1,22 @@
+﻿
+
+@code {
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [CascadingParameter]
+    public LayoutContext LayoutContext { get; set; }
+
+    public bool IsShowing { get; private set; }
+
+    public void Show()
+    {
+        if (IsShowing)
+            return;
+
+        IsShowing = true;
+
+        LayoutContext.AddAsideFragment(ChildContent);
+    }
+}

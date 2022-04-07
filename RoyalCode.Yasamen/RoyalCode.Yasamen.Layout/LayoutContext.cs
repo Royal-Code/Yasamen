@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Components;
 using RoyalCode.Yasamen.Commons;
 
 namespace RoyalCode.Yasamen.Layout;
@@ -17,4 +18,6 @@ public class LayoutContext
 
     public IDisposable AddMenuInteracted(Action<bool> listener)
         => menuInteractedListeners.Listen(listener);
+
+    public void AddAsideFragment(RenderFragment renderFragment) { }
 }
