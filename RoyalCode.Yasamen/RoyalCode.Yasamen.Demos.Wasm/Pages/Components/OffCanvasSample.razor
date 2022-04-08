@@ -1,0 +1,35 @@
+
+@page "/offcanvas"
+
+<div>
+    
+    <h3>Off Canvas Sample</h3>
+
+    <OffCanvas Handler="handler" style="width: 400px;" AdditionalClasses="p-3" 
+               Fitting="(overlaying ? Fitting.Overlaying : Fitting.Incorporated)"
+               Modal="modal">
+        Olá Off Canvas !!!
+    </OffCanvas>
+
+    <div class="my-2">
+        <input type="checkbox" @bind="modal"/> 
+        <span>Modal</span>
+    </div>
+    
+    <div class="my-2">
+        <input type="checkbox" @bind="overlaying"/> 
+        <span>Overlaying</span>
+    </div>
+    
+    <button class="btn btn-primary" @onclick="async () => await handler.Toggle()">
+        Open Off Canvas
+    </button>
+    
+</div>
+
+@code {
+    private readonly OffCanvasHandler handler = new();
+
+    private bool overlaying;
+    private bool modal;
+}

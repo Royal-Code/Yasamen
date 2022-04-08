@@ -1,0 +1,49 @@
+
+aside {
+    visibility: hidden;
+    position: fixed;
+    z-index: 1045;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-clip: padding-box;
+    outline: 0;
+    transform: translateX(100%);
+    top: var(--b-theme-aside-offcanvas--top);
+    right: var(--b-theme-aside-offcanvas--right);
+    bottom: var(--b-theme-aside-offcanvas--bottom);
+    background-color:var(--b-theme-aside-offcanvas--background-color);
+    transition: var(--b-theme-transition);
+}
+
+aside.offcanvas-overlaying {
+    top: 0;
+}
+
+aside.offcanvas-show {
+    transform: none;
+    visibility: visible;
+    box-shadow: -3px 0 3px 0 #00000020;
+}
+
+div {
+    display: none;
+    background-color: black;
+    opacity: 0;
+    transition: var(--b-theme-transition);
+}
+
+div.offcanvas-modal.offcanvas-show {
+    display: block;
+    position: fixed;
+    top: var(--b-theme-aside-offcanvas--top);
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    opacity: .2;
+}
+
+div.offcanvas-modal.offcanvas-show.offcanvas-overlaying {
+    top: 0;
+}

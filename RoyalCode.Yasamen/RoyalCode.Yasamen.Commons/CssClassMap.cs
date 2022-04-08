@@ -5,12 +5,17 @@ namespace RoyalCode.Yasamen.Commons;
 
 public class CssClassMap
 {
-    public static CssClassMap Create(Func<bool> condition, string cssClass)
+    public static CssClassMap Create(Func<bool> condition, string? cssClass)
     {
-        return new CssClassMap(new List<ICssClassBuilder>()).Add(condition, cssClass);
+        var map = new CssClassMap(new List<ICssClassBuilder>());
+        
+        if (cssClass is not  null)
+            map.Add(condition, cssClass);
+        
+        return map;
     }
 
-    public static CssClassMap Create(params string[] cssClasses)
+    public static CssClassMap Create(params string?[]? cssClasses)
     {
         var map = new CssClassMap(new List<ICssClassBuilder>());
 
@@ -27,7 +32,7 @@ public class CssClassMap
         this.conditions = conditions;
     }
 
-    public CssClassMap Add(params string[] cssClasses)
+    public CssClassMap Add(params string?[] cssClasses)
     {
         conditions.Add(new CssClasses(cssClasses));
         return this;
@@ -39,6 +44,13 @@ public class CssClassMap
         return this;
     }
 
+    public CssClassMap Add(Func<bool> condition, string cssClassWhenTrue, string cssClassWhenFalse)
+    {
+        conditions.Add(new CssClassCondition(condition, cssClassWhenTrue));
+        conditions.Add(new CssClassCondition(() => !condition(), cssClassWhenFalse));
+        return this;
+    }
+    
     public override string ToString()
     {
         var classes = new List<string>();

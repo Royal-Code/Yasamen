@@ -1,0 +1,80 @@
+@using RoyalCode.Yasamen.Commons.Modules
+@using RoyalCode.Yasamen.Commons
+
+@inject ToggleJsModule ToggleJs
+
+<aside class="@Classes" @attributes="Attributes" @ref="asideRef">
+    <CascadingValue Value="Handler">
+        @ChildContent
+    </CascadingValue>
+</aside>
+<div class="@BackdropClasses" @onclick="async () => await Hide()" @ref="backdropRef"></div>
+
+@code {
+    private ElementReference? asideRef;
+    private ElementReference? backdropRef;
+
+    private CssClassMap Classes => CssClassMap.Create(AdditionalClasses)
+        .Add(() => IsVisible, "offcanvas-show")
+        .Add(() => Fitting is Fitting.Overlaying, "offcanvas-overlaying");
+
+    private CssClassMap BackdropClasses => CssClassMap.Create("offcanvas-backdrop")
+        .Add(() => IsVisible, "offcanvas-show")
+        .Add(() => Fitting is Fitting.Overlaying, "offcanvas-overlaying")
+        .Add(() => Modal, "offcanvas-modal");
+
+    public bool IsVisible { get; private set; }
+    
+    [Parameter]
+    public Fitting Fitting { get; set; } = Fitting.Incorporated;
+    
+    [Parameter]
+    public bool Modal { get; set; }
+    
+    [Parameter]
+    public OffCanvasHandler? Handler { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = null!;
+    
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
+    
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> Attributes { get; set; } = null!;
+
+    protected override void OnParametersSet()
+    {
+        Handler ??= new();
+        Handler?.Init(this);
+
+        base.OnParametersSet();
+    }
+
+    public async ValueTask Show()
+    {
+        if (IsVisible)
+            return;
+        
+        IsVisible = true;
+        await Toogle();
+    }
+
+    public async ValueTask Hide()
+    {
+        if (!IsVisible)
+            return;
+        
+        IsVisible = false;
+        await Toogle();
+    }
+
+    private async ValueTask Toogle()
+    {
+        if (asideRef is null)
+            return;
+        
+        await ToggleJs.CssClassToggle(asideRef.Value, "offcanvas-show", IsVisible);
+        await ToggleJs.CssClassToggle(backdropRef!.Value, "offcanvas-show", IsVisible);
+    }
+}

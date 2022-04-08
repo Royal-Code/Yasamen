@@ -3,9 +3,9 @@ namespace RoyalCode.Yasamen.Commons.Internal;
 
 internal class CssClasses : ICssClassBuilder
 {
-    private readonly string[] cssClasses;
+    private readonly string?[] cssClasses;
 
-    public CssClasses(string[] cssClasses)
+    public CssClasses(string?[] cssClasses)
     {
         this.cssClasses = cssClasses ?? throw new ArgumentNullException(nameof(cssClasses));
     }
@@ -14,7 +14,11 @@ internal class CssClasses : ICssClassBuilder
     {
         for (int i = 0; i < cssClasses.Length; i++)
         {
-            classes.Add(cssClasses[i]);
+            var cssClass = cssClasses[i];
+            if (cssClass is null)
+                continue;
+            
+            classes.Add(cssClass);
         }
     }
 }
