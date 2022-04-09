@@ -1,0 +1,49 @@
+﻿
+@typeparam TChainModel
+@implements IComponentChainRender
+
+@GetRenderFragment()
+
+@code {
+
+    private ComponentChainModel<TChainModel>? model;
+
+    public bool IsFree { get; private set; } = true;
+
+    [CascadingParameter]
+    public ComponentChainContext<TChainModel> Context { get; set; } = null!;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        model?.Reference.FragmentWasRendered();
+
+        base.OnAfterRender(firstRender);
+    }
+
+    public void Render(ComponentChainModel<TChainModel> model)
+    {
+        this.model = model;
+        IsFree = false;
+        StateHasChanged();
+    }
+
+    public void Release()
+    {
+        model = default;
+        IsFree = true;
+        StateHasChanged();
+    }
+
+    private RenderFragment GetRenderFragment()
+    {
+        if (IsFree)
+            return b => { };
+        else
+            return Context.RenderFragment(model!);
+    }
+}

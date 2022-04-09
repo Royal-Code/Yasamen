@@ -1,0 +1,24 @@
+﻿
+@typeparam TChainModel
+
+<ComponentChainRender TChainModel="TChainModel" @ref="Render" />
+<ComponentChainNext TChainModel="TChainModel" @ref="Next" />
+
+@code {
+    public ComponentChainRender<TChainModel> Render { get; set; } = null!;
+    public ComponentChainNext<TChainModel> Next { get; set; } = null!;
+
+    [CascadingParameter]
+    public ComponentChainContext<TChainModel> Context { get; set; } = null!;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Context.Register(this);
+        base.OnAfterRender(firstRender);
+    }
+}

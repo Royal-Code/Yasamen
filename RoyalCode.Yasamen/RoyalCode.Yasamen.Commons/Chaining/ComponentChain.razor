@@ -1,0 +1,35 @@
+﻿
+@typeparam TChainModel
+
+<CascadingValue Value="context" IsFixed="true">
+    <ComponentChainNode TChainModel="TChainModel" />
+</CascadingValue>
+
+@code {
+
+    private ComponentChainContext<TChainModel> context = null!;
+
+    [Parameter]
+    public RenderFragment<ComponentChainModel<TChainModel>>? ChildContent { get; set; }
+
+    [Parameter]
+    public bool OrdinationIsImportant { get; set; }
+
+    protected override void OnInitialized()
+    {
+        context = new ComponentChainContext<TChainModel>(ChildContent, OrdinationIsImportant);
+
+        StateHasChanged();
+        base.OnInitialized();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+    }
+
+    public void Render(TChainModel model)
+    {
+        context.Render(model);
+    }
+}

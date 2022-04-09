@@ -1,0 +1,38 @@
+﻿
+@typeparam TChainModel
+
+@if (!isLeaf)
+{
+    <ComponentChainNode TChainModel="TChainModel" @ref="node" />
+}
+
+
+@code {
+
+    private bool isLeaf = true;
+    private ComponentChainNode<TChainModel>? node;
+    private Action<ComponentChainNode<TChainModel>>? callback;
+
+    public void CreateChild(Action<ComponentChainNode<TChainModel>> callback)
+    {
+        isLeaf = false;
+        this.callback = callback;
+
+        StateHasChanged();
+    }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+
+        if (callback is not null)
+        {
+            callback(node!);
+        }
+    }
+}
