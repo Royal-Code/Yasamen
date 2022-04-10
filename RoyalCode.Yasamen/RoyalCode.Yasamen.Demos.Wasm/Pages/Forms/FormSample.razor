@@ -1,0 +1,19 @@
+﻿
+@page "/form"
+
+<h3>FormSample</h3>
+
+<EditForm EditContext="context">
+
+</EditForm>
+
+@code {
+    private DistributionCenter model;
+    private EditContext context;
+
+    public FormSample()
+    {
+        model = new();
+        context = new(model);
+    }
+}

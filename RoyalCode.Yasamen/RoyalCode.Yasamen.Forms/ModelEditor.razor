@@ -1,0 +1,52 @@
+﻿@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.Extensions.Options
+@typeparam TModel
+@inject IOptionsMonitor<ModelFieldOptions> FieldsOptions;
+
+<CascadingValue Value="ModelContext" IsFixed="true">
+    <EditForm EditContext="editContext" 
+              @attributes="Attributes" 
+              OnValidSubmit="ModelContext!.Submit">
+
+    </EditForm>
+</CascadingValue>
+
+@code {
+    private EditContext editContext = null!;
+
+    [Parameter]
+    public TModel? Model { get; set; }
+
+    [Parameter]
+    public ModelContext<TModel>? ModelContext { get; set; }
+
+    [Parameter]
+    public string? Alias { get; set; }
+
+    public RenderFragment<TModel> ChildContent { get; set; } = null!;
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> Attributes { get; set; } = null!;
+
+    protected override void OnParametersSet()
+    {
+        if (Model is null)
+        {
+            if (ModelContext is null)
+                throw new ArgumentException("The ModelEditor component requires a Model or ModelContext");
+            Model = ModelContext.Model;
+        }
+
+        if (ModelContext is null)
+        {
+            var name =  $"{typeof(TModel).Name}{(Alias is null ? string.Empty : $".{Alias}")}";
+            var options = FieldsOptions.Get(name);
+            ModelContext = new ModelContext<TModel>(Model, options.Fields);
+        }
+
+        editContext = new EditContext(Model);
+        editContext.Properties[ModelContext.GetType()] = ModelContext;
+
+        base.OnParametersSet();
+    }
+}
