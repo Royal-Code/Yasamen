@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RoyalCode.Yasamen.Components.OffCanvas\RoyalCode.Yasamen.Components.OffCanvas.csproj" />
+    <ProjectReference Include="..\RoyalCode.Yasamen.Forms\RoyalCode.Yasamen.Forms.csproj" />
     <ProjectReference Include="..\RoyalCode.Yasamen.Layout.Admin\RoyalCode.Yasamen.Layout.Admin.csproj" />
     <ProjectReference Include="..\RoyalCode.Yasamen.Layout\RoyalCode.Yasamen.Layout.csproj" />
     <ProjectReference Include="..\RoyalCode.Yasamen.Spinners\RoyalCode.Yasamen.Spinners.csproj" />
