@@ -10,14 +10,17 @@ namespace RoyalCode.Yasamen.Forms;
 /// <typeparam name="TModel">The model type</typeparam>
 public class ModelContext<TModel>
 {
-    public ModelContext(TModel model, IEnumerable<FieldOptions> options)
+    public ModelContext(TModel model, string alias, IEnumerable<FieldOptions> options)
     {
         Model = model ?? throw new ArgumentNullException(nameof(model));
+        Alias = alias;
         Options = options;
     }
 
     public TModel Model { get; }
 
+    public string Alias { get; }
+    
     public IEnumerable<FieldOptions> Options { get; }
 
     internal Task Submit()
@@ -25,6 +28,13 @@ public class ModelContext<TModel>
         return Task.CompletedTask;
     }
 }
+
+
+
+
+
+
+
 
 public class ModelFieldOptions
 {

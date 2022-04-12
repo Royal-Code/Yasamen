@@ -8,6 +8,8 @@
               @attributes="Attributes" 
               OnValidSubmit="ModelContext!.Submit">
 
+        @ChildContent(Model!)
+        
     </EditForm>
 </CascadingValue>
 
@@ -21,8 +23,9 @@
     public ModelContext<TModel>? ModelContext { get; set; }
 
     [Parameter]
-    public string? Alias { get; set; }
+    public string Alias { get; set; } = string.Empty;
 
+    [Parameter]
     public RenderFragment<TModel> ChildContent { get; set; } = null!;
 
     [Parameter(CaptureUnmatchedValues = true)]
@@ -39,13 +42,18 @@
 
         if (ModelContext is null)
         {
-            var name =  $"{typeof(TModel).Name}{(Alias is null ? string.Empty : $".{Alias}")}";
+            var name = Alias == string.Empty ? typeof(TModel).Name : $"{typeof(TModel).Name}.{Alias}";
             var options = FieldsOptions.Get(name);
-            ModelContext = new ModelContext<TModel>(Model, options.Fields);
+            ModelContext = new ModelContext<TModel>(Model, Alias, options.Fields);
         }
 
-        editContext = new EditContext(Model);
-        editContext.Properties[ModelContext.GetType()] = ModelContext;
+        editContext = new(Model)
+        {
+            Properties =
+            {
+                [ModelContext.GetType()] = ModelContext
+            }
+        };
 
         base.OnParametersSet();
     }

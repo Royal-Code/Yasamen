@@ -13,11 +13,6 @@
     [CascadingParameter]
     public ComponentChainContext<TChainModel> Context { get; set; } = null!;
 
-    protected override void OnInitialized()
-    {
-        base.OnInitialized();
-    }
-
     protected override void OnAfterRender(bool firstRender)
     {
         model?.Reference.FragmentWasRendered();
@@ -41,9 +36,6 @@
 
     private RenderFragment GetRenderFragment()
     {
-        if (IsFree)
-            return b => { };
-        else
-            return Context.RenderFragment(model!);
+        return IsFree ? _ => { } : Context.RenderFragment!(model!);
     }
 }

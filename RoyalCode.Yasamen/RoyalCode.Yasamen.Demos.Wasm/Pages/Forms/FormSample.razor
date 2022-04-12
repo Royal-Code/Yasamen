@@ -1,19 +1,59 @@
 ﻿
 @page "/form"
 
-<h3>FormSample</h3>
+<h3>Form Sample</h3>
 
-<ModelEditor Model="model">
+<ModelEditor Model="model" @context="dto" Support="support">
+    
+    <model-support t-model="DistributionCenter" context="dc" filter-support="dc-number">
+        
+        <text-field label="Number" bind-value="dc.Number" change-support="dc-number" />
+        <text-field label="Name" bind-value="dc.Name" />
+        
+    </model-support>
+    
+    <property-support name="wh-numbers" t-value="WarehouseNumbers" change-support="wh-numbers" />
+    
+    <model-support t-model="Warehouse" context="wh" filter-support="wh-numbers">
+        
+        <text-field label="Number" bind-value="wh.Number" change-support="wh-number" />
+        <text-field label="Name" bind-value="wh.Name" />
+        
+    </model-support>
+    
+    <property-support name="area-numbers" t-value="AreaNumbers" change-support="area-numbers" />
+    
+    <model-support t-model="Area" context="area" filter-support="area-numbers">
+        
+        <text-field label="Number" bind-value="area.Number" change-support="area-number"/>
+        <text-field label="Name" bind-value="area.Name"/>
 
+    </model-support>
+    
 </ModelEditor>
 
 @code {
-    private DistributionCenter model;
-    private EditContext context;
+    private WarehouseDto model;
+    private readonly PropertyChangeSupport support;
 
     public FormSample()
     {
         model = new();
-        context = new(model);
+
+        support = new();
+
+        support.Property<WarehouseNumbers>("wh-numbers")
+            .ChangeSupport<string>("dc-number", (_, number) => new WarehouseNumbers(number))
+            .ChangeSupport<string>("wh-number", (property, number) => new WarehouseNumbers(property.WarehouseNumber, number));
+
+        support.Property<AreaNumbers>("area-numbers")
+            .ChangeSupport<WarehouseNumbers>("wh-numbers", (_, wh) => new AreaNumbers(wh))
+            .ChangeSupport<string>("area-number", (an, n) => new AreaNumbers(an, n));
+    }
+    
+    
+    public class WarehouseDto
+    {
+        public Guid WarehouseId { get; set; }
     }
 }

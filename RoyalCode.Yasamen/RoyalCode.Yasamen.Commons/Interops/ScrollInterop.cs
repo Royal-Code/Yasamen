@@ -8,7 +8,7 @@ namespace RoyalCode.Yasamen.Commons.Interops
         private readonly IJSObjectReference js;
         private readonly DotNetObjectReference<ScrollInterop> thisRef;
 
-        private Action<bool> callback;
+        private Action<bool>? callback;
 
         internal ScrollInterop(IJSObjectReference js)
         {
@@ -25,7 +25,7 @@ namespace RoyalCode.Yasamen.Commons.Interops
         [JSInvokable]
         public void Scrolled(bool wasScrolled)
         {
-            callback(wasScrolled);
+            callback?.Invoke(wasScrolled);
         }
 
         public async ValueTask DisposeAsync()
