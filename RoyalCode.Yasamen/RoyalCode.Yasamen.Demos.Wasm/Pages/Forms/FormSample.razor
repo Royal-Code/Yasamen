@@ -8,7 +8,7 @@
     <model-support t-model="DistributionCenter" context="dc" filter-support="dc-number">
         
         <text-field label="Number" bind-value="dc.Number" change-support="dc-number" />
-        <text-field label="Name" bind-value="dc.Name" />
+        <text-field label="Name" bind-value="dc.Name" readonly />
         
     </model-support>
     
@@ -17,24 +17,37 @@
     <model-support t-model="Warehouse" context="wh" filter-support="wh-numbers">
         
         <text-field label="Number" bind-value="wh.Number" change-support="wh-number" />
-        <text-field label="Name" bind-value="wh.Name" />
+        <text-field label="Name" bind-value="wh.Name" readonly />
         
     </model-support>
     
     <property-support name="area-numbers" t-value="AreaNumbers" change-support="area-numbers" />
     
-    <model-support t-model="Area" context="area" filter-support="area-numbers">
+    <model-key-support t-model="Area" context="area" filter-support="area-numbers"
+                       select-key="a => a.Id" bind-value="dto.AreaId">
         
         <text-field label="Number" bind-value="area.Number" change-support="area-number"/>
-        <text-field label="Name" bind-value="area.Name"/>
+        <text-field label="Name" bind-value="area.Name" readonly />
 
-    </model-support>
+    </model-key-support>
     
+    <!-- select like combobox -->
+
+    <select-model t-model="DistributionCenter" description="dc => dc.Name" 
+                  change-support="dc" />
+
+    <select-model t-model="Warehouce" description="wh => wh.Description"
+                  change-support="wh" filter-support="dc-id" />
+
+    <select-key-model t-model="Area" description="dc => dc.Name"
+                      change-support="area" filter-support="wh-id"
+                      select-key="a => a.Id" bind-value="dto.AreaId" />
+
 </ModelEditor>
 
 @code {
     private WarehouseDto model;
-    private readonly PropertyChangeSupport support;
+    private readonly PropertyChangedSupport support;
 
     public FormSample()
     {
@@ -49,11 +62,16 @@
         support.Property<AreaNumbers>("area-numbers")
             .ChangeSupport<WarehouseNumbers>("wh-numbers", (_, wh) => new AreaNumbers(wh))
             .ChangeSupport<string>("area-number", (an, n) => new AreaNumbers(an, n));
+
+        support.Property<DistributionCenter>("dc")
+            .Include<Guid>("dc-id", dc => dc.Id);
+
+        support.Property<Warehouse>("wh")
+            .Include<Guid>("wh-id", wh => wh.Id);
     }
-    
     
     public class WarehouseDto
     {
-        public Guid WarehouseId { get; set; }
+        public Guid AreaId { get; set; }
     }
 }
