@@ -1,12 +1,4 @@
-namespace RoyalCode.Yasamen.Forms;
-
-public class PropertyChangedSupport
-{
-    public PropertySupported<TValue> Property<TValue>(string name)
-    {
-        throw new NotImplementedException();
-    }
-}
+namespace RoyalCode.Yasamen.Forms.Support;
 
 public class PropertySupported<TValue>
 {

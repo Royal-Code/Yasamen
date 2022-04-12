@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Components.Forms;
 using System.Linq.Expressions;
 using System.Reflection;
+using RoyalCode.Yasamen.Commons.Extensions;
+using RoyalCode.Yasamen.Forms.Support;
 
 
 namespace RoyalCode.Yasamen.Forms;
@@ -23,13 +25,14 @@ public abstract class FormFieldBase<TValue> : InputBase<TValue>
             .Compile();
     }
 
-    private EventHandler<ValidationStateChangedEventArgs> validationHandler;
+    private readonly EventHandler<ValidationStateChangedEventArgs> validationHandler;
+    
     private PropertyInfo? propertyInfo;
     private string? defaultDisplayName;
+    private ChangeSupport? changeSupport;
     private bool settingFormattedCurrentValue;
-    private PropertyChangedSupport propertyChangedSupport;
-
-    public FormFieldBase()
+    
+    protected FormFieldBase()
     {
         validationHandler = OnValidationStateChangedHandler;
     }
@@ -38,10 +41,10 @@ public abstract class FormFieldBase<TValue> : InputBase<TValue>
     public string? ChangeSupport { get; set; }
 
     [CascadingParameter]
-    public PropertyChangedSupport? PropertyChangedSupport { get; set; }
+    public PropertyChangeSupport? PropertyChangedSupport { get; set; }
 
-    //[CascadingParameter]
-    //public ISharedFieldState SharedFieldState { get; set; }
+    [CascadingParameter]
+    public IModelLoadingState? ModelLoadingState { get; set; }
 
     public bool IsInvalid { get; private set; }
 
@@ -67,10 +70,10 @@ public abstract class FormFieldBase<TValue> : InputBase<TValue>
                 settingFormattedCurrentValue = false;
             }
 
-            if (propertyChangedSupport is not null && !EqualityComparer<TValue>.Default.Equals(oldValue, Value))
+            if (PropertyChangedSupport is not null && !EqualityComparer<TValue>.Default.Equals(oldValue, Value))
             {
-                Console.WriteLine($"PropertyChanged, Field: {FieldIdentifier}, {oldValue}, {Value}");
-                propertyChangedSupport.PropertyHasChanged(FieldIdentifier, oldValue, Value);
+                //Console.WriteLine($"PropertyChanged, Field: {FieldIdentifier}, {oldValue}, {Value}");
+                PropertyChangedSupport.PropertyHasChanged(FieldIdentifier, oldValue, Value);
             }
         }
     }
@@ -81,11 +84,11 @@ public abstract class FormFieldBase<TValue> : InputBase<TValue>
     {
         get
         {
-            if (propertyInfo is null)
-            {
-                var fieldId = FieldIdentifier;
-                propertyInfo = fieldId.Model.GetType().GetProperty(fieldId.FieldName)!;
-            }
+            if (propertyInfo is not null)
+                return propertyInfo;
+            
+            var fieldId = FieldIdentifier;
+            propertyInfo = fieldId.Model.GetType().GetProperty(fieldId.FieldName)!;
             return propertyInfo;
         }
     }
@@ -98,26 +101,28 @@ public abstract class FormFieldBase<TValue> : InputBase<TValue>
         StateHasChanged();
     }
 
-    protected override void OnParametersSet()
+    protected override void OnInitialized()
     {
-        base.OnParametersSet();
+        base.OnInitialized();
 
         EditContext.OnValidationStateChanged += validationHandler;
 
-        IsInvalid = EditContext.GetValidationMessages(FieldIdentifier).Any();
-
-        propertyChangedSupport = EditContext.TryGetItem<PropertyChangedSupport>();
-
-        if (propertyChangedSupport is not null)
+        if (ChangeSupport is not null && PropertyChangedSupport is not null)
         {
-            propertyChangedHandler = propertyChangedSupport.On<TValue>(FieldIdentifier).Handle(PropertyChangedHandler);
+            changeSupport = PropertyChangedSupport.GetChangeSupport(ChangeSupport);
+            changeSupport.Initialize(FieldIdentifier, Value);
         }
+    }
+    
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        IsInvalid = EditContext.GetValidationMessages(FieldIdentifier).Any();
     }
 
     protected override void Dispose(bool disposing)
     {
         EditContext.OnValidationStateChanged -= validationHandler;
-
         base.Dispose(disposing);
     }
 }

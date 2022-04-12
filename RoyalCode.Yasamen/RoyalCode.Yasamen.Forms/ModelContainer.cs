@@ -11,7 +11,7 @@ public class ModelContainer<TModel> : ComponentBase, IDisposable
     // private readonly FinderContext<TModel> context;
 
     private ValidationMessageStore messageStore;
-    // private PropertyChangedSupport propertyChangedSupport;
+    // private PropertyChangeSupport propertyChangedSupport;
     // private ChangeSupport fieldChangeSupport;
     // private ChangeSupportListener changeSupportListener;
 
@@ -65,7 +65,7 @@ public class ModelContainer<TModel> : ComponentBase, IDisposable
                                                 " inside an EditForm.");
         }
 
-        // propertyChangedSupport = EditContext.TryGetItem<PropertyChangedSupport>();
+        // propertyChangedSupport = EditContext.TryGetItem<PropertyChangeSupport>();
         //
         // if (FindHandler is not null && propertyChangedSupport is not null)
         // {
