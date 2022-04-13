@@ -8,7 +8,7 @@ namespace RoyalCode.Yasamen.Forms;
 /// A context that holds the model to edit and the fields options.
 /// </summary>
 /// <typeparam name="TModel">The model type</typeparam>
-public class ModelContext<TModel>
+public class ModelContext<TModel> : ModelContext
 {
     public ModelContext(TModel model, string alias, IEnumerable<FieldOptions> options)
     {
@@ -18,8 +18,6 @@ public class ModelContext<TModel>
     }
 
     public TModel Model { get; internal set; }
-
-    public string Alias { get; }
     
     public IEnumerable<FieldOptions> Options { get; }
 
@@ -29,6 +27,10 @@ public class ModelContext<TModel>
     }
 }
 
+public abstract class ModelContext
+{
+    public string Alias { get; protected set; }
+}
 
 
 

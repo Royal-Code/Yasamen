@@ -54,14 +54,14 @@ public class ModelEditor<TModel> : ComponentBase
             ModelContext = CreateModelContext(Model);
         }
 
-        if (Support is null)
-            Support = new PropertyChangeSupport();
+        Support ??= new PropertyChangeSupport();
 
         editContext = new(Model)
         {
             Properties =
             {
                 [ModelContext.GetType()] = ModelContext,
+                [typeof(ModelContext)] = ModelContext,
                 [typeof(PropertyChangeSupport)] = Support
             }
         };

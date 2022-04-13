@@ -12,6 +12,7 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.3" />
+        <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="6.0.3" />
     </ItemGroup>
 
     <ItemGroup>
@@ -21,6 +22,23 @@
     <ItemGroup>
       <ProjectReference Include="..\RoyalCode.Yasamen.Commons\RoyalCode.Yasamen.Commons.csproj" />
       <ProjectReference Include="..\RoyalCode.Yasamen.Services\RoyalCode.Yasamen.Services.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Resources\Messages.cs" />
+      <Compile Remove="Resources\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Resources\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Resources\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="Resources\**" />
     </ItemGroup>
 
 </Project>

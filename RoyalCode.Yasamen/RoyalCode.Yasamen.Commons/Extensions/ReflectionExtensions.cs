@@ -9,7 +9,7 @@ namespace RoyalCode.Yasamen.Commons.Extensions;
 /// </summary>
 public static class ReflectionExtensions
 {
-    public static bool TryGetAttribute<TAttribute>(this MemberInfo member, out TAttribute attribute)
+    public static bool TryGetAttribute<TAttribute>(this MemberInfo member, out TAttribute? attribute)
         where TAttribute : Attribute
     {
         var attr = member?.GetCustomAttribute(typeof(TAttribute));
@@ -26,9 +26,9 @@ public static class ReflectionExtensions
 
     public static string GetDefaultDisplayName(this MemberInfo member)
         => member.TryGetAttribute<DisplayNameAttribute>(out var displayName)
-            ? displayName.DisplayName
+            ? displayName!.DisplayName
             : member.TryGetAttribute<DisplayAttribute>(out var display)
-                ? display.Name ?? member.Name
+                ? display!.Name ?? member.Name
                 : member.Name;
 
     public static string GetTypeName(this Type type)
