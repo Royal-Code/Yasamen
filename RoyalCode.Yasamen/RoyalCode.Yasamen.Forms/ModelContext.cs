@@ -17,7 +17,7 @@ public class ModelContext<TModel>
         Options = options;
     }
 
-    public TModel Model { get; }
+    public TModel Model { get; internal set; }
 
     public string Alias { get; }
     

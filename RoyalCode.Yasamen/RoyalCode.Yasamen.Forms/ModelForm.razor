@@ -1,0 +1,24 @@
+﻿
+<EditForm EditContext="EditContext" @attributes="Attributes">
+    @ChildContent
+</EditForm>
+
+@code {
+
+    [Parameter]
+    public EditContext EditContext { get; set; } = null!;
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? Attributes { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        if (EditContext is null)
+            throw new ArgumentNullException(nameof(EditContext));
+
+        base.OnParametersSet();
+    }
+}

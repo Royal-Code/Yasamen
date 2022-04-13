@@ -123,6 +123,7 @@ public abstract class FormFieldBase<TValue> : InputBase<TValue>
     protected override void Dispose(bool disposing)
     {
         EditContext.OnValidationStateChanged -= validationHandler;
+        changeSupport?.Reset();
         base.Dispose(disposing);
     }
 }

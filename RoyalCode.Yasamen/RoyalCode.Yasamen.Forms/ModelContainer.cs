@@ -1,172 +1,47 @@
-using System.Linq.Expressions;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Rendering;
+using RoyalCode.Yasamen.Forms.Support;
 
 namespace RoyalCode.Yasamen.Forms;
 
-public class ModelContainer<TModel> : ComponentBase, IDisposable
+public class ModelContainer<TModel> : ComponentBase
     where TModel : class, new()
 {
-    // private readonly FinderContext<TModel> context;
-
-    private ValidationMessageStore messageStore;
-    // private PropertyChangeSupport propertyChangedSupport;
-    // private ChangeSupport fieldChangeSupport;
-    // private ChangeSupportListener changeSupportListener;
-
-    public ModelContainer()
-    {
-        //context = new FinderContext<TModel>(this);
-    }
-
-    // [Inject] 
-    // public FinderService FinderService { get; set; }
-    //
-    // [Inject] 
-    // public IStringLocalizer Localizer { get; set; }
-
-    [Parameter] 
-    public RenderFragment<TModel> ChildContent { get; set; }
-
-    [Parameter] 
-    public TModel Model { get; set; }
-
-    [Parameter] 
-    public EventCallback<TModel> ModelChanged { get; set; }
-
-    [Parameter] 
-    public Expression<Func<TModel>> ModelExpression { get; set; }
+    [Parameter]
+    public TModel Model { get; set; } = null!;
 
     [Parameter]
-    public string FindHandler { get; set; }
+    public PropertyChangeSupport? Support { get; set; }
 
-    [Parameter] 
-    public string FieldSupport { get; set; }
+    [Parameter]
+    public RenderFragment<TModel>? ChildContent { get; set; }
 
     [CascadingParameter]
-    public EditContext EditContext { get; set; }
-
-    protected override void BuildRenderTree(RenderTreeBuilder builder)
-    {
-        // builder.OpenComponent<CascadingValue<ISharedFieldState>>(0);
-        // builder.AddAttribute(1, "Value", context);
-        // builder.AddAttribute(2, "IsFixed", true);
-        // builder.AddAttribute(3, "ChildContent", ChildContent(context.Model));
-        // builder.CloseComponent();
-    }
-
-    protected override void OnInitialized()
-    {
-        if (EditContext is null)
-        {
-            throw new InvalidOperationException($"{GetType()} requires a cascading parameter " +
-                                                "of type EditContext. For example, you can use " + GetType().FullName +
-                                                " inside an EditForm.");
-        }
-
-        // propertyChangedSupport = EditContext.TryGetItem<PropertyChangeSupport>();
-        //
-        // if (FindHandler is not null && propertyChangedSupport is not null)
-        // {
-        //     changeSupportListener = propertyChangedSupport.GetChangeSupport(FindHandler).OnAnyChanged(FindModelAsync);
-        // }
-        //
-        // if (FieldSupport is not null && propertyChangedSupport is not null)
-        // {
-        //     fieldChangeSupport = propertyChangedSupport.GetChangeSupport(FieldSupport);
-        // }
-
-        base.OnInitialized();
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-        if (Model is null)
-        {
-            Model = new TModel();
-            await FireModelChange(Model);
-        }
-
-        await base.OnInitializedAsync();
-    }
+    public PropertyChangeSupport? ParentPropertyChangeSupport { get; set; }
 
     protected override void OnParametersSet()
     {
+        if (Support is null)
+            Support = new PropertyChangeSupport();
+
+        if (ParentPropertyChangeSupport is not null)
+            Support.SetParent(ParentPropertyChangeSupport);
+
         base.OnParametersSet();
     }
 
-    protected override void OnAfterRender(bool firstRender)
+    protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
-        base.OnAfterRender(firstRender);
-    }
+        builder.OpenRegion(Support!.GetHashCode());
 
-    protected virtual async Task FireModelChange(TModel model)
-    {
-        await ModelChanged.InvokeAsync(model);
-    }
+        builder.OpenComponent<CascadingValue<PropertyChangeSupport>>(0);
+        builder.AddAttribute(1, "IsFixed", true);
+        builder.AddAttribute(2, "Value", Support);
 
-    protected async void FindModelAsync(FieldIdentifier fieldIdentifier, object oldValue, object newValue)
-    {
-        // //Console.WriteLine($"Finder Start {field}, {oldValue}, {newValue}");
-        //
-        // var field = fieldChangeSupport is not null ? fieldChangeSupport.Identifier : fieldIdentifier;
-        //
-        // var temp = new TModel();
-        // context.StartingLoad(temp);
-        // ClearMessage(field);
-        //
-        // await FireModelChange(temp);
-        //
-        // try
-        // {
-        //     temp = await FinderService.FindAsync<TModel>(newValue);
-        //     if (temp is null)
-        //     {
-        //         //Console.WriteLine("Finder ResultNotFound");
-        //
-        //         temp = context.ResultNotFound();
-        //         AddMessage(field, Localizer.GetString("Não encontrado"));
-        //     }
-        //     else
-        //     {
-        //         //Console.WriteLine($"Finder ResultFound");
-        //
-        //         context.ResultFound();
-        //     }
-        // }
-        // catch (Exception ex)
-        // {
-        //     //Console.WriteLine($"Finder Exception '{ex.Message}'.");
-        //
-        //     temp = context.ResultError(ex);
-        //     AddMessage(field, ex.Message);
-        // }
-        //
-        // await FireModelChange(temp);
-        //
-        // //Console.WriteLine("Finder StateHasChanged");
-    }
+        builder.AddAttribute(3, "ChildContent", ChildContent?.Invoke(Model!));
 
-    private void ClearMessage(FieldIdentifier field)
-    {
-        if (messageStore is null) 
-            return;
-        messageStore.Clear();
-        EditContext.NotifyFieldChanged(field);
-    }
+        builder.CloseComponent();
 
-    private void AddMessage(FieldIdentifier field, string message)
-    {
-        messageStore ??= new ValidationMessageStore(EditContext);
-
-        messageStore.Add(field, message);
-        EditContext.NotifyFieldChanged(field);
-    }
-
-    public void Dispose()
-    {
-        //changeSupportListener?.Dispose();
-        //changeSupportListener = null;
+        builder.CloseRegion();
     }
 }
