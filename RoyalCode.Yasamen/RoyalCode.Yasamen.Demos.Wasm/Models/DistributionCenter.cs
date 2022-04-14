@@ -73,3 +73,8 @@ public class StorageUnit
     
     public string Description { get; set; }
 }
+
+public class WarehouseDto
+{
+    public Guid AreaId { get; set; }
+}

@@ -1,0 +1,87 @@
+
+@typeparam TValue
+@implements IDisposable
+
+@if (messages?.Any() ?? false)
+{
+    <div @attributes="@AdditionalAttributes">
+        @foreach (var msg in messages)
+        {
+            <span>@msg</span>
+        }
+    </div>
+}
+
+@code {
+    private readonly EventHandler<ValidationStateChangedEventArgs>? onValidationStateChanged;
+    
+    private EditContext? _previousEditContext;
+    private Expression<Func<TValue>> _previousFieldAccessor = default!;
+    private FieldIdentifier _fieldIdentifier;
+    private IEnumerable<string>? messages;
+
+    public FieldMessages()
+    {
+        onValidationStateChanged = ValidationStateChangedHandler;
+    }
+    
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+
+    [CascadingParameter]
+    EditContext CurrentEditContext { get; set; } = default!;
+
+    [Parameter]
+    public Expression<Func<TValue>>? For { get; set; }
+
+    [Parameter]
+    public FieldIdentifier FieldIdentifier { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        if (CurrentEditContext == null)
+        {
+            throw new InvalidOperationException($"{GetType()} requires a cascading parameter " +
+                $"of type {nameof(EditContext)}. For example, you can use {GetType()} inside " +
+                $"an {nameof(EditForm)}.");
+        }
+
+        if (For is null) // Not possible except if you manually specify T
+        {
+            throw new InvalidOperationException(
+                $"{GetType()} requires a value for the " +
+                $"'{nameof(For)}' parameter.");
+        }
+        
+        if (For != _previousFieldAccessor)
+        {
+            _fieldIdentifier = FieldIdentifier.Create(For);
+            _previousFieldAccessor = For;
+        }
+
+        if (CurrentEditContext != _previousEditContext)
+        {
+            DetachValidationStateChangedListener();
+            CurrentEditContext.OnValidationStateChanged += onValidationStateChanged;
+            _previousEditContext = CurrentEditContext;
+        }
+
+        messages = CurrentEditContext.GetValidationMessages(_fieldIdentifier);
+    }
+
+    void IDisposable.Dispose()
+    {
+        DetachValidationStateChangedListener();
+        Dispose(disposing: true);
+    }
+
+    protected virtual void Dispose(bool disposing) { }
+
+    private void DetachValidationStateChangedListener()
+    {
+        if (_previousEditContext is not null)
+            _previousEditContext.OnValidationStateChanged -= onValidationStateChanged;
+    }
+
+    private void ValidationStateChangedHandler(object? sender, ValidationStateChangedEventArgs eventArgs) => StateHasChanged();
+}

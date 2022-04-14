@@ -5,14 +5,13 @@ using System.Reflection;
 using RoyalCode.Yasamen.Commons.Extensions;
 using RoyalCode.Yasamen.Forms.Support;
 
-
 namespace RoyalCode.Yasamen.Forms;
 
-public abstract class FormFieldBase<TValue> : InputBase<TValue>
+public abstract class FieldBase<TValue> : InputBase<TValue>
 {
     private static readonly Func<InputBase<TValue>, FieldIdentifier> getFieldIdentifier;
     
-    static FormFieldBase()
+    static FieldBase()
     {
         var property = typeof(InputBase<TValue>)
             .GetTypeInfo()
@@ -32,7 +31,7 @@ public abstract class FormFieldBase<TValue> : InputBase<TValue>
     private ChangeSupport? changeSupport;
     private bool settingFormattedCurrentValue;
     
-    protected FormFieldBase()
+    protected FieldBase()
     {
         validationHandler = OnValidationStateChangedHandler;
     }
@@ -80,7 +79,7 @@ public abstract class FormFieldBase<TValue> : InputBase<TValue>
 
     public new FieldIdentifier FieldIdentifier => getFieldIdentifier(this);
 
-    public PropertyInfo FieldPropertyInfo
+    protected PropertyInfo FieldPropertyInfo
     {
         get
         {
@@ -88,8 +87,7 @@ public abstract class FormFieldBase<TValue> : InputBase<TValue>
                 return propertyInfo;
             
             var fieldId = FieldIdentifier;
-            propertyInfo = fieldId.Model.GetType().GetProperty(fieldId.FieldName)!;
-            return propertyInfo;
+            return fieldId.Model.GetType().GetProperty(fieldId.FieldName)!;
         }
     }
 

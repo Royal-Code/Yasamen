@@ -16,10 +16,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="wwwroot" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\RoyalCode.Yasamen.Commons\RoyalCode.Yasamen.Commons.csproj" />
       <ProjectReference Include="..\RoyalCode.Yasamen.Services\RoyalCode.Yasamen.Services.csproj" />
     </ItemGroup>

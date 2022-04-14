@@ -1,9 +1,13 @@
 ﻿:root {
     /* general */
-    --b-theme-main: #002A5D;
-    --b-theme-main--opacity1: #002A5D1A;
-    --b-theme-main--opacity2: #002A5D34;
-    --b-theme-background: #F2F2F2;
+    --b-theme-main: #7851a9; /* https://www.colorhexa.com/7851a9 */
+    --b-theme-main--opacity1: #7851a91A;
+    --b-theme-main--opacity2: #7851a934;
+    --b-theme-main-complementary: #82a951;
+    --b-theme-main-tetradic-red: #a97851;
+    --b-theme-main-tetradic-green: #82a951;
+    --b-theme-main-tetradic-blue: #5182a9;
+    --b-theme-background: #F2F1F3;
     --b-theme-transition: all .3s ease-in-out;
     /* ? del ? */
     --b-theme-content: #FFFFFF;
@@ -20,10 +24,10 @@
     --b-theme-nav-bar--moz--background-color: rgba(255,255,255,0.9);
     /* nav-menu */
     --b-theme-nav-menu--width: 240px;
-    --b-theme-nav-menu--background-color: #54606A;
-    --b-theme-nav-menu-item--color: #D7E0E7;
+    --b-theme-nav-menu--background-color: #605a69; /* #1d1b1f #26242a #302d35 #3a363f #433f4a; #4d4854 #57515f #605a69 #6a6374 #746c7f #7d7589 #878092 #918a9b #9b95a4 #a59fad #afaab6 #b9b5bf #c3bfc8 #cdcad1 #d7d4db #e1dfe4 #ebe9ed #f5f4f6 */ /* #54606A; */
+    --b-theme-nav-menu-item--color: #e1dfe4; /* #D7E0E7 */
     --b-theme-nav-menu-item--font-size: 0.8rem;
-    --b-theme-nav-menu-item--background-color: #54606A;
+    --b-theme-nav-menu-item--background-color: #605a69; /* #54606A; */
     --b-theme-nav-menu-item--background-color--hover: rgba(1, 1, 1, 0.1);
     --b-theme-nav-menu-item--background-color--active: rgba(1, 1, 1, 0.2);
     /* nav-menu-button */
@@ -35,13 +39,15 @@
     --b-theme-main--padding: 0;
     /* footer */
     --b-theme-footer--min-height: 50px;
-    --b-theme-footer--background-color: #C4D0DA;
+    --b-theme-footer--background-color: #d7d4db; /* #C4D0DA; */
     /* aside offcanvas */
     --b-theme-aside-offcanvas--top: calc(var(--b-theme-header--height) + 1px);
     --b-theme-aside-offcanvas--top--modal: 0;
     --b-theme-aside-offcanvas--bottom: 0;
     --b-theme-aside-offcanvas--right: 0;
-    --b-theme-aside-offcanvas--background-color: #E6E7E8;
+    --b-theme-aside-offcanvas--background-color: #e1dfe4; /* #E6E7E8; */
+    /* form and field */
+    --b-field-error-message--background-color: #DC3545CC;
     /**/
     --b-theme-primary-d7: #03204B;
     --b-theme-primary-d6: #052B65;

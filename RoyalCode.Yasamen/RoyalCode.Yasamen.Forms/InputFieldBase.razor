@@ -1,0 +1,71 @@
+@using RoyalCode.Yasamen.Commons
+@using RoyalCode.Yasamen.Forms.Modules
+
+@typeparam TValue
+@inherits FieldBase<TValue>
+
+@inject FormsJsModule Js
+
+@if (Label != null)
+{
+    <label for="@Id" class="@($"form-label {LabelAdditionalClasses}")">@Label</label>
+}
+@if (Prepend.IsNotEmptyFragment() || Append.IsNotEmptyFragment())
+{
+    <div class="input-group">
+        @if (Prepend.IsNotEmptyFragment())
+        {
+            @Prepend
+        }
+        <input type="@Type.ToString().ToLower()" class="@InputCssClasses" id="@Id" name="@InputName" disabled="@(ModelLoadingState?.IsLoading ?? false)" @bind="CurrentValueAsString"  @attributes="AdditionalAttributes" @ref="inputRef" />
+        @if (Append.IsNotEmptyFragment())
+        {
+            @Append
+        }
+    </div>
+}
+else
+{
+    <input type="@Type.ToString().ToLower()" class="@InputCssClasses" id="@Id" name="@InputName" disabled="@(ModelLoadingState?.IsLoading ?? false)" @bind="CurrentValueAsString" @attributes="AdditionalAttributes" @ref="inputRef" />
+}
+<ControlValidation TValue="TValue" FieldIdentifier="FieldIdentifier"></ControlValidation>
+@if (ModelLoadingState?.IsLoading ?? false)
+{
+    <div b-is-loading class="@IsLoadingCssClasses">
+        <div class="spinner-border spinner-border-sm" role="status">
+            <span class="visually-hidden">@Localizer["Loading"]...</span>
+        </div>
+    </div>
+}
+
+@code {
+
+    private CssClassMap InputCssClasses => CssClassMap.Create("form-control")
+        .Add(() => InputAdditionalClasses is not null, InputAdditionalClasses!)
+        .Add(() => IsInvalid, "is-invalid");
+
+    private CssClassMap IsLoadingCssClasses => CssClassMap.Create("d-flex align-items-center")
+        .Add(() => (InputAdditionalClasses?.IndexOf("numeric") ?? -1) == -1, "justify-content-end")
+        .Add(() => (InputAdditionalClasses?.IndexOf("numeric") ?? -1) != -1, "justify-content-start");
+
+    protected ElementReference inputRef;
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+
+        Label ??= DefaultDisplayName;
+        DisplayName ??= Label;
+        Id ??= $"{EditContext.Model.GetType().Name}.{InputName ?? FieldPropertyInfo.Name}";
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Js.BlurOnPressEnterAsync(inputRef);
+        }
+
+        await base.OnAfterRenderAsync(firstRender);
+    }
+}
