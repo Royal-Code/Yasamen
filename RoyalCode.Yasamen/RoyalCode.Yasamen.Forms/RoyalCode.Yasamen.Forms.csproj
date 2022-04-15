@@ -20,21 +20,4 @@
       <ProjectReference Include="..\RoyalCode.Yasamen.Services\RoyalCode.Yasamen.Services.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Compile Remove="Resources\Messages.cs" />
-      <Compile Remove="Resources\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <EmbeddedResource Remove="Resources\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="Resources\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Remove="Resources\**" />
-    </ItemGroup>
-
 </Project>

@@ -11,6 +11,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped(_ => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 // microsoft extensions
+builder.Services.AddOptions();
 builder.Services.AddLocalization();
 
 // yasamen services

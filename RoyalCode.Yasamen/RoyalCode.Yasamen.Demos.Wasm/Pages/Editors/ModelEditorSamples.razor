@@ -1,0 +1,33 @@
+﻿
+@page "/form"
+
+<ModelEditor Model="model" Context="dto" Support="support">
+
+</ModelEditor>
+
+@code {
+
+    private WarehouseDto model;
+    private PropertyChangeSupport support;
+
+    protected override void OnInitialized()
+    {
+        model = new();
+
+        support = new();
+
+        support.Property<WarehouseNumbers>("wh-numbers")
+            .ChangeSupport<string>("dc-number", (_, number) => new WarehouseNumbers(number))
+            .ChangeSupport<string>("wh-number", (property, number) => new WarehouseNumbers(property.WarehouseNumber, number));
+
+        support.Property<AreaNumbers>("area-numbers")
+            .ChangeSupport<WarehouseNumbers>("wh-numbers", (_, wh) => new AreaNumbers(wh))
+            .ChangeSupport<string>("area-number", (an, n) => new AreaNumbers(an, n));
+
+        support.GetChangeSupport("dc")
+            .Include<DistributionCenter, Guid>("dc-id", dc => dc.Id);
+
+        support.GetChangeSupport("wh")
+            .Include<Warehouse, Guid>("wh-id", wh => wh.Id);
+    }
+}

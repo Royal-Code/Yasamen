@@ -49,4 +49,16 @@ public class PropertySupported<TValue>
 
         return this;
     }
+
+    public override bool Equals(object? obj)
+    {
+        return obj is PropertySupported<TValue> supported &&
+               EqualityComparer<PropertySupport<TValue>?>.Default.Equals(component, supported.component) &&
+               EqualityComparer<TValue?>.Default.Equals(Value, supported.Value);
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(component, Value);
+    }
 }

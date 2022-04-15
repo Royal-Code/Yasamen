@@ -6,6 +6,13 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Compile Remove="wwwroot\**" />
+      <Content Remove="wwwroot\**" />
+      <EmbeddedResource Remove="wwwroot\**" />
+      <None Remove="wwwroot\**" />
+    </ItemGroup>
+
 
     <ItemGroup>
         <SupportedPlatform Include="browser" />
@@ -17,10 +24,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\RoyalCode.Yasamen.Layout\RoyalCode.Yasamen.Layout.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="wwwroot" />
     </ItemGroup>
 
 </Project>

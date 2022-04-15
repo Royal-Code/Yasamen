@@ -1,0 +1,12 @@
+﻿
+@typeparam TModel
+
+<CascadingValue Value="Support" IsFixed="true">
+    <ModelForm EditContext="editContext" @attributes="AdditionalAttributes">
+        @ChildContent?.Invoke(Model!)
+    </ModelForm>
+</CascadingValue>
+
+@code {
+
+}

@@ -1,15 +1,14 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
-using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.Extensions.Options;
 using RoyalCode.Yasamen.Forms.Support;
 
 namespace RoyalCode.Yasamen.Forms;
 
-public class ModelEditor<TModel> : ComponentBase
-    where TModel : class
+public partial class ModelEditor<TModel>
 {
-    private EditContext editContext = null!;
+    internal EditContext editContext = null!;
 
     [Parameter]
     public TModel? Model { get; set; }
@@ -21,10 +20,10 @@ public class ModelEditor<TModel> : ComponentBase
     public string Alias { get; set; } = string.Empty;
 
     [Parameter]
-    public RenderFragment<TModel> ChildContent { get; set; } = null!;
+    public RenderFragment<TModel>? ChildContent { get; set; }
 
     [Parameter(CaptureUnmatchedValues = true)]
-    public Dictionary<string, object>? Attributes { get; set; }
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
 
     [Parameter]
     public PropertyChangeSupport Support { get; set; } = null!;
@@ -74,25 +73,5 @@ public class ModelEditor<TModel> : ComponentBase
         var name = Alias == string.Empty ? typeof(TModel).Name : $"{typeof(TModel).Name}.{Alias}";
         var options = FieldsOptions.Get(name);
         return new ModelContext<TModel>(model, Alias, options.Fields);
-    }
-
-    protected override void BuildRenderTree(RenderTreeBuilder builder)
-    {
-        builder.OpenRegion(Support!.GetHashCode());
-
-        builder.OpenComponent<CascadingValue<PropertyChangeSupport>>(0);
-        builder.AddAttribute(1, "IsFixed", true);
-        builder.AddAttribute(2, "Value", Support);
-
-        builder.OpenComponent<ModelForm>(3);
-        builder.AddAttribute(4, "EditContext", editContext);
-        builder.AddMultipleAttributes(5, Attributes);
-
-        builder.AddAttribute(6, "ChildContent", ChildContent?.Invoke(Model!));
-
-        builder.CloseComponent();
-        builder.CloseComponent();
-
-        builder.CloseRegion();
     }
 }

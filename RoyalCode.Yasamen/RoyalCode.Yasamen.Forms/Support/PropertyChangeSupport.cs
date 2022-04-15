@@ -15,6 +15,7 @@ namespace RoyalCode.Yasamen.Forms.Support;
 public class PropertyChangeSupport
 {
     private readonly ChangeSupportCollection changeSupports = new();
+    private Dictionary<string, object>? properties;
     private PropertyChangeSupport? parent;
     
     /// <summary>
@@ -50,12 +51,38 @@ public class PropertyChangeSupport
     
     public PropertySupported<TValue> Property<TValue>(string name)
     {
-        throw new NotImplementedException();
+        properties ??= new();
+        if (properties.TryGetValue(name, out var obj))
+        {
+            if (obj is not PropertySupported<TValue> supported)
+                throw new InvalidOperationException($"The property with name '{name}' has other type them ('{typeof(TValue).Name}')");
+
+            return supported;
+        }
+        else
+        {
+            var supported = new PropertySupported<TValue>(this);
+            properties.Add(name, supported);
+            return supported;
+        }
     }
 
     internal void SetParent(PropertyChangeSupport parent)
     {
         this.parent = parent;
         changeSupports.SetParentPropertyChangeSupport(parent);
+    }
+
+    public override bool Equals(object? obj)
+    {
+        return obj is PropertyChangeSupport support &&
+               EqualityComparer<ChangeSupportCollection>.Default.Equals(changeSupports, support.changeSupports) &&
+               EqualityComparer<Dictionary<string, object>?>.Default.Equals(properties, support.properties) &&
+               EqualityComparer<PropertyChangeSupport?>.Default.Equals(parent, support.parent);
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(changeSupports, properties, parent);
     }
 }
