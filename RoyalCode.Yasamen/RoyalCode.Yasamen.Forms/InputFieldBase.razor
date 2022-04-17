@@ -28,7 +28,7 @@ else
 {
     <input type="@Type.ToString().ToLower()" class="@InputCssClasses" id="@Id" name="@InputName" disabled="@(ModelLoadingState?.IsLoading ?? false)" @bind="CurrentValueAsString" @attributes="AdditionalAttributes" @ref="inputRef" />
 }
-<ControlValidation TValue="TValue" FieldIdentifier="FieldIdentifier"></ControlValidation>
+<FieldMessages TValue="TValue" FieldIdentifier="FieldIdentifier" />
 @if (ModelLoadingState?.IsLoading ?? false)
 {
     <div b-is-loading class="@IsLoadingCssClasses">
