@@ -32,7 +32,7 @@ public class ModelContainer<TModel> : ComponentBase
 
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
-        builder.OpenRegion(Support!.GetHashCode());
+        //builder.OpenRegion(Support!.GetHashCode());
 
         builder.OpenComponent<CascadingValue<PropertyChangeSupport>>(0);
         builder.AddAttribute(1, "IsFixed", true);
@@ -42,6 +42,6 @@ public class ModelContainer<TModel> : ComponentBase
 
         builder.CloseComponent();
 
-        builder.CloseRegion();
+        //builder.CloseRegion();
     }
 }

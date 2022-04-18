@@ -79,6 +79,8 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        Tracer.Write<AppLayout>("OnAfterRenderAsync", $"Begin, {firstRender}");
+        
         if (firstRender)
             listener = context.AddMenuInteracted(async interacted =>
             {
@@ -88,11 +90,9 @@
                     interacted);
             });
         
-        Console.WriteLine(layoutRef.Context?.GetType().FullName);
-        layoutRef.Context?.GetType().GetRuntimeFields().ToList().ForEach(f => Console.WriteLine(f.Name));
-        layoutRef.Context?.GetType().GetRuntimeMethods().ToList().ForEach(m => Console.WriteLine(m.Name));
+        await base.OnAfterRenderAsync(firstRender);
         
-        base.OnAfterRenderAsync(firstRender);
+        Tracer.Write<AppLayout>("OnAfterRenderAsync", "End");
     }
 
     private void MenuBackdropClickHandle()
@@ -102,6 +102,10 @@
     
     public void Dispose()
     {
+        Tracer.Write<AppLayout>("OnAfterRenderAsync", "Begin");
+        
         listener?.Dispose();
+        
+        Tracer.Write<AppLayout>("OnAfterRenderAsync", "End");
     }
 }

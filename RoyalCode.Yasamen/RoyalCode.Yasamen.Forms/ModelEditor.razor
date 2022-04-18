@@ -3,10 +3,17 @@
 
 <CascadingValue Value="Support" IsFixed="true">
     <ModelForm EditContext="editContext" @attributes="AdditionalAttributes">
-        @ChildContent?.Invoke(Model!)
+        @ChildContent
     </ModelForm>
 </CascadingValue>
 
 @code {
+
+    protected override void OnInitialized()
+    {
+        Tracer.Write("ModelEditor", "OnInitialized", Model?.ToString() ?? "null");
+        
+        base.OnInitialized();
+    }
 
 }

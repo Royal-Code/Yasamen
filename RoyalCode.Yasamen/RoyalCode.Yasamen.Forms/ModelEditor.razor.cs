@@ -63,6 +63,7 @@ public partial class ModelEditor<TModel>
             Properties =
             {
                 [ModelContext.GetType()] = ModelContext,
+                ["Alias"] = Alias,
                 [typeof(ModelContext)] = ModelContext,
                 [typeof(PropertyChangeSupport)] = Support
             }

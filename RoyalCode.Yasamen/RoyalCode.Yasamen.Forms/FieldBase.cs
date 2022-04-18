@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components.Forms;
 using System.Linq.Expressions;
 using System.Reflection;
+using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Commons.Extensions;
 using RoyalCode.Yasamen.Forms.Support;
 
@@ -58,7 +59,8 @@ public abstract class FieldBase<TValue> : InputBase<TValue>
             }
 
             TValue? oldValue = Value;
-
+            Tracer.Write("FieldBase", "SetValue", value ?? "null");
+            
             base.CurrentValueAsString = value;
             var formattedValue = FormatValueAsString(CurrentValue);
 
@@ -67,11 +69,13 @@ public abstract class FieldBase<TValue> : InputBase<TValue>
                 settingFormattedCurrentValue = true;
                 base.CurrentValueAsString = formattedValue;
                 settingFormattedCurrentValue = false;
+                
+                Tracer.Write("FieldBase", "SetValue", "Value Formatted");
             }
 
             if (PropertyChangedSupport is not null && !EqualityComparer<TValue>.Default.Equals(oldValue, Value))
             {
-                //Console.WriteLine($"PropertyChanged, Field: {FieldIdentifier}, {oldValue}, {Value}");
+                Tracer.Write("FieldBase", "SetValue", $"PropertyChanged, Field: {FieldIdentifier}, {oldValue}, {Value}");
                 PropertyChangedSupport.PropertyHasChanged(FieldIdentifier, oldValue, Value);
             }
         }
@@ -101,6 +105,8 @@ public abstract class FieldBase<TValue> : InputBase<TValue>
 
     protected override void OnInitialized()
     {
+        Tracer.Write("FieldBase", "OnInitialized", "Begin");
+        
         base.OnInitialized();
 
         EditContext.OnValidationStateChanged += validationHandler;
@@ -110,6 +116,8 @@ public abstract class FieldBase<TValue> : InputBase<TValue>
             changeSupport = PropertyChangedSupport.GetChangeSupport(ChangeSupport);
             changeSupport.Initialize(FieldIdentifier, Value);
         }
+        
+        Tracer.Write("FieldBase", "OnInitialized", "End");
     }
     
     protected override void OnParametersSet()
@@ -120,8 +128,12 @@ public abstract class FieldBase<TValue> : InputBase<TValue>
 
     protected override void Dispose(bool disposing)
     {
+        Tracer.Write("FieldBase", "Dispose", "Begin");
+        
         EditContext.OnValidationStateChanged -= validationHandler;
         changeSupport?.Reset();
         base.Dispose(disposing);
+        
+        Tracer.Write("FieldBase", "Dispose", "End");
     }
 }

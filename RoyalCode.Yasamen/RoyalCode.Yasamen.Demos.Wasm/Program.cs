@@ -25,4 +25,6 @@ builder.Services.AddScoped<ToggleJsModule>();
 builder.Services.AddScoped<CssStyleJsModule>();
 builder.Services.AddScoped<FormsJsModule>();
 
+RoyalCode.Yasamen.Commons.Tracer.IsActive = true;
+
 await builder.Build().RunAsync();

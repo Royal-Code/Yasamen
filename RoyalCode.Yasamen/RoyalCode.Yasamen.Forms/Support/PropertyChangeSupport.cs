@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Components.Forms;
+using RoyalCode.Yasamen.Commons;
 
 namespace RoyalCode.Yasamen.Forms.Support;
 
@@ -41,12 +42,16 @@ public class PropertyChangeSupport
     /// <param name="newValue">New property value.</param>
     public void PropertyHasChanged<TProperty>(FieldIdentifier fieldIdentifier, TProperty oldValue, TProperty newValue)
     {
+        Tracer.Write<PropertyChangeSupport>("PropertyHasChanged", $"Begin Field: {fieldIdentifier.FieldName}");
+        
         foreach (var support in changeSupports.Filter<TProperty>(fieldIdentifier))
         {
             support.PropertyHasChanged(fieldIdentifier, oldValue, newValue);
         }
         
         parent?.PropertyHasChanged(fieldIdentifier, oldValue, newValue);
+        
+        Tracer.Write<PropertyChangeSupport>("PropertyHasChanged", $"End Field: {fieldIdentifier.FieldName}");
     }
     
     public PropertySupported<TValue> Property<TValue>(string name)

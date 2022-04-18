@@ -37,6 +37,8 @@
 
     protected override void OnInitialized()
     {
+        Tracer.Write("ModelEditorSamples", "OnInitialized", "Begin");
+        
         model = new();
 
         support = new();
@@ -54,6 +56,13 @@
 
         support.GetChangeSupport("wh")
             .Include<Warehouse, Guid>("wh-id", wh => wh.Id);
+        
+        Tracer.Write("ModelEditorSamples", "OnInitialized", "End");
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Tracer.Write("ModelEditorSamples", "OnAfterRender", $"Begin, first: {firstRender}");
     }
 
 }

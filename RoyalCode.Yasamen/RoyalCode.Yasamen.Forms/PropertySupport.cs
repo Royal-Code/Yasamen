@@ -1,6 +1,7 @@
 using System.Linq.Expressions;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
+using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Forms.Support;
 
 namespace RoyalCode.Yasamen.Forms;
@@ -40,20 +41,28 @@ public sealed class PropertySupport<TValue> : ComponentBase, IDisposable
     
     internal void SetValue(TValue? value)
     {
+        Tracer.Write("PropertySupport", "SetValue", "Begin");
+        
         var old = _value;
         _value = value;
         if (initialized && !EqualityComparer<TValue>.Default.Equals(old, _value))
         {
+            Tracer.Write("PropertySupport", "SetValue", $"Value has changed, Field: {fieldIdentifier.FieldName}");
+            
             EditContext.NotifyFieldChanged(fieldIdentifier);
             PropertyChangeSupport.PropertyHasChanged(fieldIdentifier, old, _value);
             var task = ValueChanged?.InvokeAsync(_value);
             if (task is not null && !task.IsCompleted)
                 task.GetAwaiter().GetResult();
         }
+        
+        Tracer.Write("PropertySupport", "SetValue", "End");
     }
     
     protected override void OnInitialized()
     {
+        Tracer.Write("PropertySupport", "OnInitialized", "Begin");
+        
         if (EditContext is null)
             throw new InvalidOperationException($"{GetType()} requires a cascading parameter of type EditContext." + 
                 " For example, you can use " + GetType().FullName + " inside a ModelEditor.");
@@ -85,11 +94,17 @@ public sealed class PropertySupport<TValue> : ComponentBase, IDisposable
             
         initialized = true;
         base.OnInitialized();
+        
+        Tracer.Write("PropertySupport", "OnInitialized", "End");
     }
 
     public void Dispose()
     {
+        Tracer.Write("PropertySupport", "Dispose", "Begin");
+        
         propertySupported.Reset();
         changeSupport.Reset();
+        
+        Tracer.Write("PropertySupport", "Dispose", "End");
     }
 }

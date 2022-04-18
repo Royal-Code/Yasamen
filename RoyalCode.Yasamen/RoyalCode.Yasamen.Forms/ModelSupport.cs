@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.Extensions.Localization;
+using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Forms.Support;
 using RoyalCode.Yasamen.Services;
 
@@ -57,18 +58,26 @@ public class ModelSupport<TModel> : ComponentBase, IDisposable
     
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
+        Tracer.Write("ModelSupport", "BuildRenderTree", "Begin");
+        
         builder.OpenComponent<CascadingValue<IModelLoadingState>>(0);
         
         builder.AddAttribute(1, "Value", context);
         builder.AddAttribute(2, "IsFixed", true);
-        if (!ChildContent.IsNotEmptyFragment())
-            builder.AddAttribute(3, "ChildContent", ChildContent!(context.Model));
+        if (ChildContent.IsNotEmptyFragment())
+            builder.AddContent(3, ChildContent!(context.Model));
+        else
+            Tracer.Write("ModelSupport", "BuildRenderTree", "ChildContent is Empty");
         
         builder.CloseComponent();
+        
+        Tracer.Write("ModelSupport", "BuildRenderTree", "End");
     }
 
     protected override void OnInitialized()
     {
+        Tracer.Write("ModelSupport", "OnInitialized", "Begin");
+        
         if (EditContext is null)
         {
             throw new InvalidOperationException(
@@ -96,31 +105,41 @@ public class ModelSupport<TModel> : ComponentBase, IDisposable
             messageFieldChangeSupport = PropertyChangeSupport.GetChangeSupport(MessageFieldSupport);
         }
 
-        var alias = ((ModelContext) EditContext.Properties[typeof(ModelContext)]).Alias;
+        var alias = EditContext.Properties["Alias"] as string ?? string.Empty;
         finder = DataServicesProvider.GetFinder<TModel>(alias);
         
         base.OnInitialized();
+        
+        Tracer.Write("ModelSupport", "OnInitialized", "End");
     }
     
     protected override async Task OnInitializedAsync()
     {
+        Tracer.Write("ModelSupport", "OnInitializedAsync", "Begin");
+        
         if (Model is null)
         {
             Model = new TModel();
-            await FireModelChange(Model);
+            // await FireModelChange(Model);
         }
 
         await base.OnInitializedAsync();
+        
+        Tracer.Write("ModelSupport", "OnInitializedAsync", "End");
     }
 
     protected virtual async Task FireModelChange(TModel model)
     {
+        Tracer.Write("ModelSupport", "FireModelChange", "Begin");
+        
         await ModelChanged.InvokeAsync(model);
+        
+        Tracer.Write("ModelSupport", "FireModelChange", "Begin");
     }
     
     protected async void FindModelAsync(FieldIdentifier fieldIdentifier, object? oldValue, object? newValue)
     {
-        //Console.WriteLine($"Finder Start {field}, {oldValue}, {newValue}");
+        Tracer.Write("ModelSupport", "FindModelAsync", $"Begin, field: {fieldIdentifier.FieldName}, old: {oldValue}, new: {newValue}.");
 
         var field = messageFieldChangeSupport?.Identifier ?? fieldIdentifier;
 
@@ -135,29 +154,29 @@ public class ModelSupport<TModel> : ComponentBase, IDisposable
             temp = await finder.FindAsync(newValue);
             if (temp is null)
             {
-                //Console.WriteLine("Finder ResultNotFound");
+                Tracer.Write("ModelSupport", "FindModelAsync", "Finder ResultNotFound");
 
                 temp = context.ResultNotFound();
                 AddMessage(field, Localizer["Not found"]);
             }
             else
             {
-                //Console.WriteLine($"Finder ResultFound");
+                Tracer.Write("ModelSupport", "FindModelAsync", $"Finder ResultFound");
 
                 context.ResultFound();
             }
         }
         catch (Exception ex)
         {
-            //Console.WriteLine($"Finder Exception '{ex.Message}'.");
+            Tracer.Write("ModelSupport", "FindModelAsync", $"Finder Exception '{ex.Message}'.");
 
             temp = context.ResultError(ex);
             AddMessage(field, ex.Message);
         }
 
         await FireModelChange(temp);
-
-        //Console.WriteLine("Finder StateHasChanged");
+        
+        Tracer.Write("ModelSupport", "FindModelAsync", "End");
     }
     
     private void ClearMessage(FieldIdentifier field)
@@ -180,7 +199,11 @@ public class ModelSupport<TModel> : ComponentBase, IDisposable
     
     public void Dispose()
     {
+        Tracer.Write("ModelSupport", "Dispose", "Begin");
+        
         changeSupportListener?.Dispose();
         changeSupportListener = null;
+        
+        Tracer.Write("ModelSupport", "Dispose", "End");
     }
 }
