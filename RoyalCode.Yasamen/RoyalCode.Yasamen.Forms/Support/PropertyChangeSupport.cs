@@ -73,16 +73,16 @@ public class PropertyChangeSupport
         changeSupports.SetParentPropertyChangeSupport(parent);
     }
 
-    public override bool Equals(object? obj)
-    {
-        return obj is PropertyChangeSupport support &&
-               EqualityComparer<ChangeSupportCollection>.Default.Equals(changeSupports, support.changeSupports) &&
-               EqualityComparer<Dictionary<string, object>?>.Default.Equals(properties, support.properties) &&
-               EqualityComparer<PropertyChangeSupport?>.Default.Equals(parent, support.parent);
-    }
-
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(changeSupports, properties, parent);
-    }
+    // public override bool Equals(object? obj)
+    // {
+    //     return obj is PropertyChangeSupport support &&
+    //            EqualityComparer<ChangeSupportCollection>.Default.Equals(changeSupports, support.changeSupports) &&
+    //            EqualityComparer<Dictionary<string, object>?>.Default.Equals(properties, support.properties) &&
+    //            EqualityComparer<PropertyChangeSupport?>.Default.Equals(parent, support.parent);
+    // }
+    //
+    // public override int GetHashCode()
+    // {
+    //     return HashCode.Combine(changeSupports, properties, parent);
+    // }
 }

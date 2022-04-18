@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.Extensions.Options;
+using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Forms.Support;
 
 namespace RoyalCode.Yasamen.Forms;
@@ -33,6 +34,8 @@ public partial class ModelEditor<TModel>
 
     protected override void OnParametersSet()
     {
+        Tracer.Write("ModelEditor", "OnParametersSet", "Begin");
+        
         bool contextWasCreated = false;
         if (ModelContext is null)
         {
@@ -66,6 +69,8 @@ public partial class ModelEditor<TModel>
         };
 
         base.OnParametersSet();
+        
+        Tracer.Write("ModelEditor", "OnParametersSet", "End");
     }
 
     private ModelContext<TModel> CreateModelContext(TModel model)

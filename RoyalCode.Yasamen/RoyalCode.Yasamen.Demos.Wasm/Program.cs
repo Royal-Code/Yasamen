@@ -13,6 +13,7 @@ builder.Services.AddScoped(_ => new HttpClient { BaseAddress = new Uri(builder.H
 // microsoft extensions
 builder.Services.AddOptions();
 builder.Services.AddLocalization();
+builder.Services.AddYasamenLocalization();
 
 // yasamen services
 builder.Services.AddDataServices();

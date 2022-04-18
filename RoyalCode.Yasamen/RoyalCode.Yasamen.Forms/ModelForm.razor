@@ -16,9 +16,13 @@
 
     protected override void OnParametersSet()
     {
+        Tracer.Write("EditForm", "OnParametersSet", "Begin");
+        
         if (EditContext is null)
             throw new ArgumentNullException(nameof(EditContext));
 
         base.OnParametersSet();
+        
+        Tracer.Write("EditForm", "OnParametersSet", "End");
     }
 }
