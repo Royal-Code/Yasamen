@@ -20,4 +20,8 @@
       <ProjectReference Include="..\RoyalCode.Yasamen.Services\RoyalCode.Yasamen.Services.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Remove="TextField.razor" />
+    </ItemGroup>
+
 </Project>

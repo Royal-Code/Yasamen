@@ -50,6 +50,12 @@ public class CssClassMap
         conditions.Add(new CssClassCondition(() => !condition(), cssClassWhenFalse));
         return this;
     }
+
+    public CssClassMap Add(Maybe cssClass)
+    {
+        conditions.Add(new MaybeCssClassCondition(cssClass));
+        return this;
+    }
     
     public override string ToString()
     {
@@ -60,4 +66,10 @@ public class CssClassMap
         }
         return string.Join(" ", classes);
     }
+
+    /// <summary>
+    /// Function that returns the css class, but maybe null, empty or whitespace,
+    /// and when it is not a valid css class, the class is not added.
+    /// </summary>
+    public delegate string? Maybe();
 }

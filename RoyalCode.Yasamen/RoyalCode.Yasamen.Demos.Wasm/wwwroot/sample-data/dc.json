@@ -1,0 +1,164 @@
+[
+  {
+    "Id": "75c43674-738a-483e-a0f0-0e30fb6f70fd",
+    "Number": "DC1",
+    "Name": "West Distribution Center",
+    "Warehouses" : [
+      {
+        "Id": "f82d9acc-d0f5-483e-b3e1-ae73b18d9a1c",
+        "Number": "101",
+        "Description": "WH 001",
+        "Areas": [
+          {
+            "Id": "4364dcd9-802a-41ad-96b1-93032c4d3777",
+            "Number": "A101",
+            "Name": "Dock 01",
+            "Addresses": [
+              {
+                "Id": "87009515-bc07-48b0-a247-b312f9b22203",
+                "Number": "1A1-001"
+              },
+              {
+                "Id": "8753bd42-2b9e-45ff-a910-a2cd79a365f7",
+                "Number": "1A1-002"
+              }
+            ]
+          },
+          {
+            "Id": "b489b09d-622e-4fca-9263-bd462625f76b",
+            "Number": "A102",
+            "Name": "Dock 02",
+            "Addresses": [
+              {
+                "Id": "b489b09d-622e-4f1a-9263-bd462625f76b",
+                "Number": "1A2-001"
+              },
+              {
+                "Id": "2489b09d-622e-4fca-9263-bd462625f76b",
+                "Number": "1A2-002"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Id": "282d9acc-d0f5-483e-b3e1-ae73b18d9a1c",
+        "Number": "102",
+        "Description": "WH 002",
+        "Areas": [
+          {
+            "Id": "2364dcd9-802a-41ad-96b1-93032c4d3777",
+            "Number": "A201",
+            "Name": "Dock 01",
+            "Addresses": [
+              {
+                "Id": "37009515-bc07-48b0-a247-b312f9b22203",
+                "Number": "2A1-001"
+              },
+              {
+                "Id": "4753bd42-2b9e-45ff-a910-a2cd79a365f7",
+                "Number": "2A1-002"
+              }
+            ]
+          },
+          {
+            "Id": "5489b09d-622e-4fca-9263-bd462625f76b",
+            "Number": "A202",
+            "Name": "Dock 02",
+            "Addresses": [
+              {
+                "Id": "6489b09d-622e-4f1a-9263-bd462625f76b",
+                "Number": "1A2-001"
+              },
+              {
+                "Id": "7489b09d-622e-4fca-9263-bd462625f76b",
+                "Number": "1A2-002"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "e5c43674-738a-483e-a0f0-0e30fb6f7efd",
+    "Number": "DC2",
+    "Name": "East Distribution Center",
+    "Warehouses" : [
+      {
+        "Id": "e82d9acc-d0f5-483e-b3e1-ae73b18dea1c",
+        "Number": "201",
+        "Description": "WH 001",
+        "Areas": [
+          {
+            "Id": "e364dcd9-802a-41ad-96b1-93032c4d377e",
+            "Number": "B101",
+            "Name": "Dock 01",
+            "Addresses": [
+              {
+                "Id": "e7009515-bc07-48b0-a2e7-b312f9b22203",
+                "Number": "1B1-001"
+              },
+              {
+                "Id": "e753bd42-2b9e-45ff-aee0-a2cd79a365f7",
+                "Number": "1B1-002"
+              }
+            ]
+          },
+          {
+            "Id": "e489b09d-622e-4fca-9263-ed462625f76b",
+            "Number": "B102",
+            "Name": "Dock 02",
+            "Addresses": [
+              {
+                "Id": "e489b09d-622e-4f1a-9263-bd462e25f76b",
+                "Number": "1B2-001"
+              },
+              {
+                "Id": "e489b09d-622e-4fca-9263-bd462625e76b",
+                "Number": "1B2-002"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Id": "e82d9acc-d0f5-483e-b3e1-ae73b18d9aec",
+        "Number": "202",
+        "Description": "WH 002",
+        "Areas": [
+          {
+            "Id": "e364dcd9-802a-41ad-96b1-93e32c4d3777",
+            "Number": "B201",
+            "Name": "Dock 01",
+            "Addresses": [
+              {
+                "Id": "e7009515-bce7-48b0-a247-b312f9b22203",
+                "Number": "2B1-001"
+              },
+              {
+                "Id": "e753ed42-2b9e-45ff-a910-a2cd79a365f7",
+                "Number": "2B1-002"
+              }
+            ]
+          },
+          {
+            "Id": "e489b09d-622e-4fca-92e3-bd462625f76b",
+            "Number": "B202",
+            "Name": "Dock 02",
+            "Addresses": [
+              {
+                "Id": "e489b09e-622e-4f1a-9263-bd462625f76b",
+                "Number": "1B2-001"
+              },
+              {
+                "Id": "e489b09d-62ee-4fca-9263-bd462625f76b",
+                "Number": "1B2-002"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -32,9 +32,9 @@ public class ModelSupport<TModel> : ComponentBase, IDisposable
 
     [Parameter]
     public Expression<Func<TModel>>? ModelExpression { get; set; }
-    
-    [Parameter]
-    public RenderFragment<TModel>? ChildContent { get; set; }
+
+    [Parameter] 
+    public RenderFragment<TModel> ChildContent { get; set; } = null!;
 
     [Parameter]
     public string? ChangeSupport { get; set; }
@@ -64,8 +64,9 @@ public class ModelSupport<TModel> : ComponentBase, IDisposable
         
         builder.AddAttribute(1, "Value", context);
         builder.AddAttribute(2, "IsFixed", true);
+        
         if (ChildContent.IsNotEmptyFragment())
-            builder.AddContent(3, ChildContent!(context.Model));
+            builder.AddAttribute(3, "ChildContent",  Fragment);
         else
             Tracer.Write("ModelSupport", "BuildRenderTree", "ChildContent is Empty");
         
@@ -73,6 +74,8 @@ public class ModelSupport<TModel> : ComponentBase, IDisposable
         
         Tracer.Write("ModelSupport", "BuildRenderTree", "End");
     }
+
+    private RenderFragment Fragment => builder => ChildContent(context.Model)(builder);
 
     protected override void OnInitialized()
     {
@@ -190,9 +193,7 @@ public class ModelSupport<TModel> : ComponentBase, IDisposable
 
     private void AddMessage(FieldIdentifier field, string message)
     {
-        if (messageStore is null)
-            messageStore = new ValidationMessageStore(EditContext);
-
+        messageStore ??= new ValidationMessageStore(EditContext);
         messageStore.Add(field, message);
         EditContext.NotifyFieldChanged(field);
     }

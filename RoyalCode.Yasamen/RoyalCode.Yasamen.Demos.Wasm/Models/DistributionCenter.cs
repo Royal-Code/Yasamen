@@ -7,6 +7,8 @@ public class DistributionCenter
     public string Number { get; set; }
     
     public string Name { get; set; }
+
+    public ICollection<Warehouse> Warehouses { get; set; } = new List<Warehouse>();
 }
 
 public class Warehouse
@@ -18,6 +20,8 @@ public class Warehouse
     public string Description { get; set; }
     
     public DistributionCenter DistributionCenter { get; set; }
+
+    public ICollection<Area> Areas { get; set; } = new List<Area>();
 }
 
 public class Area
@@ -29,6 +33,8 @@ public class Area
     public string Name { get; set; }
 
     public Warehouse Warehouse { get; set; }
+
+    public ICollection<Address> Addresses { get; set; } = new List<Address>();
 }
 
 public class Address

@@ -9,7 +9,7 @@ namespace RoyalCode.Yasamen.Forms;
 
 public partial class ModelEditor<TModel>
 {
-    internal EditContext editContext = null!;
+    internal EditContext? editContext;
 
     [Parameter]
     public TModel? Model { get; set; }
@@ -20,17 +20,34 @@ public partial class ModelEditor<TModel>
     [Parameter]
     public string Alias { get; set; } = string.Empty;
 
-    [Parameter]
-    public RenderFragment<TModel>? ChildContent { get; set; }
+    [Parameter] 
+    public RenderFragment<TModel> ChildContent { get; set; } = null!;
 
     [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object>? AdditionalAttributes { get; set; }
 
     [Parameter]
-    public PropertyChangeSupport Support { get; set; } = null!;
+    public PropertyChangeSupport? Support { get; set; }
 
-    [Inject]
-    public IOptionsMonitor<ModelFieldOptions> FieldsOptions { get; set; } = null!;
+    /// <summary>
+    /// A callback that will be invoked when the form is submitted.
+    ///
+    /// If using this parameter, you are responsible for triggering any validation
+    /// manually, e.g., by calling <see cref="EditContext.Validate"/>.
+    /// </summary>
+    [Parameter] public EventCallback<EditContext> OnSubmit { get; set; }
+
+    /// <summary>
+    /// A callback that will be invoked when the form is submitted and the
+    /// <see cref="EditContext"/> is determined to be valid.
+    /// </summary>
+    [Parameter] public EventCallback<EditContext> OnValidSubmit { get; set; }
+
+    /// <summary>
+    /// A callback that will be invoked when the form is submitted and the
+    /// <see cref="EditContext"/> is determined to be invalid.
+    /// </summary>
+    [Parameter] public EventCallback<EditContext> OnInvalidSubmit { get; set; }
 
     protected override void OnParametersSet()
     {
@@ -42,7 +59,7 @@ public partial class ModelEditor<TModel>
             if (Model is null)
                 throw new ArgumentException("The ModelEditor component requires a Model or ModelContext");
 
-            ModelContext = CreateModelContext(Model);
+            ModelContext = new(Model, Alias);
 
             contextWasCreated = true;
         }
@@ -53,12 +70,12 @@ public partial class ModelEditor<TModel>
         }
         else if (!contextWasCreated)
         {
-            ModelContext = CreateModelContext(Model);
+            ModelContext = new(Model, Alias);
         }
 
         Support ??= new PropertyChangeSupport();
 
-        editContext = new(Model)
+        editContext ??= new(Model!)
         {
             Properties =
             {
@@ -72,12 +89,5 @@ public partial class ModelEditor<TModel>
         base.OnParametersSet();
         
         Tracer.Write("ModelEditor", "OnParametersSet", "End");
-    }
-
-    private ModelContext<TModel> CreateModelContext(TModel model)
-    {
-        var name = Alias == string.Empty ? typeof(TModel).Name : $"{typeof(TModel).Name}.{Alias}";
-        var options = FieldsOptions.Get(name);
-        return new ModelContext<TModel>(model, Alias, options.Fields);
     }
 }

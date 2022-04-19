@@ -35,3 +35,19 @@ public class AreaNumbers : WarehouseNumbers
 
     public string AreaNumber { get; set; }
 }
+
+public class AddressNumbers : AreaNumbers
+{
+    public AddressNumbers() { }
+    
+    public AddressNumbers(AreaNumbers areaNumbers) 
+        : base(areaNumbers, areaNumbers.AreaNumber) { }
+
+    public AddressNumbers(AreaNumbers areaNumbers, string addressNumber) 
+        : base(areaNumbers, areaNumbers.AreaNumber)
+    {
+        AddressNumber = addressNumber;
+    }
+    
+    public string AddressNumber { get; set; }
+}
