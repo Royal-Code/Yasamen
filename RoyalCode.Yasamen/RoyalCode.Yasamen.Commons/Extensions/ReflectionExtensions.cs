@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RoyalCode.Yasamen.Commons.Extensions;
 
@@ -38,5 +39,74 @@ public static class ReflectionExtensions
             return type.Name;
 
         return $"{type.Name.Replace($"`{generics.Length}", string.Empty)}<{string.Join(", ", generics.Select(t => t.Name))}>";
+    }
+
+    /// <summary>
+    /// Checks if a data type is a certain generic type and returns the concrete generic type.
+    /// Base copied from Stackoverflow.
+    /// </summary>
+    /// <param name="generic">The known and required generic type.</param>
+    /// <param name="toCheck">The type to be checked that may implement the required generic type.</param>
+    /// <returns>The concrete generic type, or null if it is not a generic subtype.</returns>
+    public static Type? GetSubclassOfRawGeneric(this Type generic, Type toCheck)
+    {
+        // added, if it is an interface, it searches for interfaces of the type.
+        if (generic.IsInterface)
+        {
+            foreach (var interfaceToCheck in toCheck.GetInterfaces())
+            {
+                var cur = interfaceToCheck.IsGenericType
+                    ? interfaceToCheck.GetGenericTypeDefinition()
+                    : interfaceToCheck;
+
+                if (generic == cur)
+                {
+                    return interfaceToCheck;
+                }
+            }
+        }
+
+        while (true)
+        {
+            var cur = toCheck.IsGenericType ? toCheck.GetGenericTypeDefinition() : toCheck;
+            if (generic == cur)
+            {
+                return toCheck;
+            }
+
+            if (toCheck.BaseType is null || toCheck.BaseType == typeof(object))
+                return null;
+
+            toCheck = toCheck.BaseType;
+        }
+    }
+
+    /// <summary>
+    /// <para>
+    ///     Checks if <paramref name="type"/> implements <paramref name="other"/>,
+    ///     the latter being a generic type and with generic parameters (open).
+    /// </para>
+    /// <para>
+    ///     If you implement the type of <paramref name="other"/>, 
+    ///     the generic parameter types are assigned to <paramref name="genericTypes"/>.
+    /// </para>
+    /// </summary>
+    /// <param name="type">Type that should implement the other.</param>
+    /// <param name="other">The type that the first should implement, being that it must be an open generic.</param>
+    /// <param name="genericTypes">The types of the generic parameters, if <paramref name="type"/> implements <paramref name="other"/>, null otherwise.</param>
+    /// <returns>True if <paramref name="type"/> implements <paramref name="other"/>, false otherwise.</returns>
+    /// <summary>
+    public static bool ImplementsGeneric(this Type type, Type other,[NotNullWhen(true)] out Type[]? genericTypes)
+    {
+        var closeGeneric = other.GetSubclassOfRawGeneric(type);
+
+        if (closeGeneric is null)
+        {
+            genericTypes = null;
+            return false;
+        }
+
+        genericTypes = closeGeneric.GetGenericArguments();
+        return true;
     }
 }

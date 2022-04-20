@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using RoyalCode.Yasamen.Commons.Modules;
 using RoyalCode.Yasamen.Demos.Wasm;
+using RoyalCode.Yasamen.Demos.Wasm.Models;
 using RoyalCode.Yasamen.Forms.Modules;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -13,10 +14,10 @@ builder.Services.AddScoped(_ => new HttpClient { BaseAddress = new Uri(builder.H
 // microsoft extensions
 builder.Services.AddOptions();
 builder.Services.AddLocalization();
-builder.Services.AddYasamenLocalization();
 
 // yasamen services
 builder.Services.AddDataServices();
+builder.Services.AddYasamenLocalization();
 
 // yasamen js modules
 builder.Services.AddScoped<CommonsJsModule>();
@@ -24,6 +25,9 @@ builder.Services.AddScoped<ScrollJsModule>();
 builder.Services.AddScoped<ToggleJsModule>();
 builder.Services.AddScoped<CssStyleJsModule>();
 builder.Services.AddScoped<FormsJsModule>();
+
+// App services.
+builder.Services.Subscribes<DCService>();
 
 RoyalCode.Yasamen.Commons.Tracer.IsActive = true;
 
