@@ -54,6 +54,8 @@ public sealed class PropertySupport<TValue> : ComponentBase, IDisposable
             var task = ValueChanged?.InvokeAsync(_value);
             if (task is not null && !task.IsCompleted)
                 task.GetAwaiter().GetResult();
+
+            StateHasChanged();
         }
         
         Tracer.Write("PropertySupport", "SetValue", "End");

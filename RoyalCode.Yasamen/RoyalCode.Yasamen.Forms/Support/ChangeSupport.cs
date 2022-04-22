@@ -23,6 +23,7 @@ public sealed class ChangeSupport
     private List<IPropertyChangeListener>? listeners;
     private bool initialized;
     private object? initialValue;
+    private bool notifying;
 
     internal ChangeSupport(string name,
         ChangeSupportCollection collection,
@@ -117,6 +118,11 @@ public sealed class ChangeSupport
     
     internal void PropertyHasChanged<TProperty>(FieldIdentifier fieldIdentifier, TProperty oldValue, TProperty newValue)
     {
+        if (notifying)
+            return;
+
+        notifying = true;
+
         listeners?.ForEach(l =>
         {
             if (l is IPropertyChangeListener<TProperty> typedListener)
@@ -126,23 +132,8 @@ public sealed class ChangeSupport
         });
         
         includes?.ForEach(i => i.PropertyHasChanged(fieldIdentifier, oldValue, newValue));
-    }
 
-    public override bool Equals(object? obj)
-    {
-        return obj is ChangeSupport support &&
-               EqualityComparer<List<IIncludeChangeSupport>?>.Default.Equals(includes, support.includes) &&
-               EqualityComparer<List<IPropertyChangeListener>?>.Default.Equals(listeners, support.listeners) &&
-               initialized == support.initialized &&
-               EqualityComparer<object?>.Default.Equals(initialValue, support.initialValue) &&
-               Name == support.Name &&
-               EqualityComparer<FieldIdentifier?>.Default.Equals(Identifier, support.Identifier) &&
-               EqualityComparer<Type?>.Default.Equals(FieldType, support.FieldType);
-    }
-
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(includes, listeners, initialized, initialValue, Name, Identifier, FieldType);
+        notifying = false;
     }
 
     private class InternalListener : IPropertyChangeListener

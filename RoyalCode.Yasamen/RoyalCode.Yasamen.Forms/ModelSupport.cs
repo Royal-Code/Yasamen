@@ -123,7 +123,7 @@ public class ModelSupport<TModel> : ComponentBase, IDisposable
         if (Model is null)
         {
             Model = new TModel();
-            // await FireModelChange(Model);
+            await FireModelChange(Model);
         }
 
         await base.OnInitializedAsync();
@@ -136,7 +136,7 @@ public class ModelSupport<TModel> : ComponentBase, IDisposable
         Tracer.Write("ModelSupport", "FireModelChange", "Begin");
         
         await ModelChanged.InvokeAsync(model);
-        
+
         Tracer.Write("ModelSupport", "FireModelChange", "Begin");
     }
     
@@ -177,8 +177,12 @@ public class ModelSupport<TModel> : ComponentBase, IDisposable
             AddMessage(field, ex.Message);
         }
 
+        Model = temp;
+        EditContext.NotifyFieldChanged(field);
+
         await FireModelChange(temp);
-        
+        StateHasChanged();
+
         Tracer.Write("ModelSupport", "FindModelAsync", "End");
     }
     

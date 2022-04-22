@@ -45,15 +45,4 @@ public sealed class ChangeSupportCollection
     }
 
     internal void SetParentPropertyChangeSupport(PropertyChangeSupport parent) => parentPropertyChangeSupport = parent;
-
-    public override bool Equals(object? obj)
-    {
-        return obj is ChangeSupportCollection collection &&
-               EqualityComparer<LinkedList<ChangeSupport>>.Default.Equals(supports, collection.supports);
-    }
-
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(supports);
-    }
 }
