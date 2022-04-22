@@ -15,7 +15,7 @@ public class FinderAttribute : SubscribesAttribute
         if (parameters.Length < 1 || parameters.Length > 2)
             throw new InvalidOperationException(
                 $"The {nameof(FinderAttribute)} requires a method with 1 or 2 parameters," +
-                $" where the first is the filter and the second the CancellationToken, the latter optional.");
+                " where the first is the filter and the second the CancellationToken, the latter optional.");
 
         if (!method.ReturnType.ImplementsGeneric(typeof(Task<>), out var taskGenerics))
             throw new InvalidOperationException($"The {nameof(FinderAttribute)} method must return a Task<TValue>");

@@ -1,7 +1,4 @@
 ﻿
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Forms;
-
 namespace RoyalCode.Yasamen.Forms;
 
 /// <summary>
@@ -18,13 +15,16 @@ public class ModelContext<TModel> : ModelContext
 
     public TModel Model { get; }
 
-    internal Task Submit()
-    {
-        return Task.CompletedTask;
-    }
+    public override Type ModelType => typeof(TModel);
+    
+    public override object ModelInstance => Model!;
 }
 
 public abstract class ModelContext
 {
-    public string Alias { get; protected set; }
+    public string Alias { get; protected internal set; }
+    
+    public abstract Type ModelType { get; }
+    
+    public abstract object ModelInstance { get; }
 }
