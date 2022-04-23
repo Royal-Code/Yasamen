@@ -1,3 +1,5 @@
+using RoyalCode.Yasamen.Commons;
+
 namespace RoyalCode.Yasamen.Forms.Support;
 
 public class PropertySupported<TValue>
@@ -31,6 +33,8 @@ public class PropertySupported<TValue>
         support.GetChangeSupport(changeSupportName)
             .OnChanged<TChanged>((_, _, n) =>
             {
+                Tracer.Write("PropertySupported", "ChangeSupport", "value has changed");
+
                 var v = Value;
                 handler(v, n);
                 Value = v;
@@ -44,6 +48,8 @@ public class PropertySupported<TValue>
         support.GetChangeSupport(changeSupportName)
             .OnChanged<TChanged>((_, _, n) =>
             {
+                Tracer.Write("PropertySupported", "ChangeSupport", "value has changed");
+
                 Value = handler(Value, n);
             });
 

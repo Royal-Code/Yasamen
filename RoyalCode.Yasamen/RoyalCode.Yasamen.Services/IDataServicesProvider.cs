@@ -1,3 +1,5 @@
+using RoyalCode.Yasamen.Commons;
+
 namespace RoyalCode.Yasamen.Services;
 
 public interface IDataServicesProvider
@@ -40,25 +42,30 @@ internal class ModelFinder<TModel> : IModelFinder<TModel>
     {
         if (filter is null)
         {
-            Console.WriteLine("ModelFinder --> FindAsync: ");
+            Tracer.Write("ModelFinder", "FindAsync", "Filter is null, returning default");
             
             return default;
         }
 
         var type = typeof(FinderServiceExecutor<,>).MakeGenericType(typeof(TModel), filter.GetType());
         
-        Console.WriteLine($"ModelFinder --> FindAsync: locate service: {type.FullName}");
+        Tracer.Write("ModelFinder", "FindAsync", $"locate service: {type.FullName}");
+
         var service = provider.GetService(type);
         if (service is null)
         {
-            Console.WriteLine("ModelFinder --> FindAsync: service is null.");
+            Tracer.Write("ModelFinder", "FindAsync", "The service is null, returning default");
+
             return default;
         }
 
-        Console.WriteLine("ModelFinder --> FindAsync: calling ExecuteAsync.");
+        Tracer.Write("ModelFinder", "FindAsync", $"Calling ExecuteAsync: {filter}");
+
         var executor = (IFinderServiceExecutor<TModel>) service;
         var result = await executor.ExecuteAsync(filter, token);
-        Console.WriteLine($"ModelFinder --> FindAsync: executed {result}");
+
+        Tracer.Write("ModelFinder", "FindAsync", $"Executed: {filter}");
+
         return result;
     }
 }

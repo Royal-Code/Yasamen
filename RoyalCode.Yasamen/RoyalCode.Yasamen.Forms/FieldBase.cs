@@ -116,13 +116,19 @@ public abstract class FieldBase<TValue> : InputBase<TValue>
             changeSupport = PropertyChangedSupport.GetChangeSupport(ChangeSupport);
             changeSupport.Initialize(FieldIdentifier, Value);
         }
-        
+
         Tracer.Write("FieldBase", "OnInitialized", "End");
     }
     
     protected override void OnParametersSet()
     {
         base.OnParametersSet();
+
+        if (changeSupport is not null)
+        {
+            changeSupport.SetIdentifier(FieldIdentifier);
+        }
+
         IsInvalid = EditContext.GetValidationMessages(FieldIdentifier).Any();
     }
 

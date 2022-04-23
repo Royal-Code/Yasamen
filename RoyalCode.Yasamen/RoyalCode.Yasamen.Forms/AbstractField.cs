@@ -6,11 +6,12 @@ using System.Linq.Expressions;
 
 namespace RoyalCode.Yasamen.Forms;
 
-public abstract class AbstractField<TValue>
+public abstract class AbstractField<TValue> : ComponentBase
 {
     protected static readonly bool IsnullableUnderlyingType = Nullable.GetUnderlyingType(typeof(TValue)) is not null;
 
     private ValidationMessageStore? messageStore;
+    private ChangeSupport? changeSupport;
 
     /// <summary>
     /// <para>
@@ -48,6 +49,12 @@ public abstract class AbstractField<TValue>
     /// </summary>
     [Parameter]
     public string? Name { get; set; }
+
+    /// <summary>
+    /// An alias or name for the change support of this field.
+    /// </summary>
+    [Parameter]
+    public string? ChangeSupport { get; set; }
 
     /// <summary>
     /// The property change support for notify other components when the <see cref="Value"/> of this field changes.
@@ -104,18 +111,18 @@ public abstract class AbstractField<TValue>
             {
                 hasParseError = true;
 
-                messageStore ??= new ValidationMessageStore(EditContext);
+                //messageStore ??= new ValidationMessageStore(EditContext);
 
-                messageStore.Add(FieldIdentifier, validationErrorMessage);
-                EditContext editContext = EditContext;
-                editContext.NotifyFieldChanged(FieldIdentifier);
+                //messageStore.Add(FieldIdentifier, validationErrorMessage);
+                //EditContext editContext = EditContext;
+                //editContext.NotifyFieldChanged(FieldIdentifier);
             }
 
-            if (hasParseError || _previousParsingAttemptFailed)
-            {
-                EditContext.NotifyValidationStateChanged();
-                _previousParsingAttemptFailed = hasParseError;
-            }
+            //if (hasParseError || _previousParsingAttemptFailed)
+            //{
+            //    EditContext.NotifyValidationStateChanged();
+            //    _previousParsingAttemptFailed = hasParseError;
+            //}
         }
     }
 
@@ -155,4 +162,13 @@ public abstract class AbstractField<TValue>
         string? value,
         [MaybeNullWhen(false)] out TValue result,
         [NotNullWhen(false)] out string? validationErrorMessage);
+
+    protected override void OnInitialized()
+    {
+        if (ChangeSupport is not null && PropertyChangeSupport is not null)
+        {
+            changeSupport = PropertyChangeSupport.GetChangeSupport(ChangeSupport);
+            changeSupport.Initialize(FieldIdentifier, CurrentValue);
+        }
+    }
 }

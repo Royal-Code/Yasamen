@@ -18,6 +18,11 @@ public class WarehouseNumbers
     public string DistributionCenterNumber { get; set; }
 
     public string WarehouseNumber { get; set; }
+
+    public override string ToString()
+    {
+        return $"WarehouseNumbers ({DistributionCenterNumber}, {WarehouseNumber})";
+    }
 }
 
 public class AreaNumbers : WarehouseNumbers
@@ -34,6 +39,11 @@ public class AreaNumbers : WarehouseNumbers
     }
 
     public string AreaNumber { get; set; }
+
+    public override string ToString()
+    {
+        return $"AreaNumbers ({DistributionCenterNumber}, {WarehouseNumber}, {AreaNumber})";
+    }
 }
 
 public class AddressNumbers : AreaNumbers
@@ -50,4 +60,9 @@ public class AddressNumbers : AreaNumbers
     }
     
     public string AddressNumber { get; set; }
+
+    public override string ToString()
+    {
+        return $"AddressNumbers ({DistributionCenterNumber}, {WarehouseNumber}, {AreaNumber}, {AddressNumber})";
+    }
 }

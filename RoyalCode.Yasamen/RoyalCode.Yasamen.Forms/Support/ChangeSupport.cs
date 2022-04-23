@@ -104,6 +104,14 @@ public sealed class ChangeSupport
         parentPropertyChangeSupport?.GetChangeSupport(Name).Initialize(identifier, initialValue);
     }
 
+    internal void SetIdentifier(FieldIdentifier identifier)
+    {
+        if (!initialized)
+            throw new InvalidOperationException($"The {nameof(ChangeSupport)} must be initialized");
+
+        Identifier = identifier;
+    }
+
     internal void Reset()
     {
         initialized = false;

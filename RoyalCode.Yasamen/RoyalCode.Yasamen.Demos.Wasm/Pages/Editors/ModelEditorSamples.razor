@@ -13,7 +13,7 @@
 
     <ModelSupport TModel="Warehouse" Context="wh" FilterSupport="wh-numbers">
 
-        <TextField @bind-Value="wh.Number" Label="Number" ChangeSupport="wc-number"/>
+        <TextField @bind-Value="wh.Number" Label="Number" ChangeSupport="wh-number"/>
         <TextField @bind-Value="wh.Description" Label="Warehouse" readonly/>
 
     </ModelSupport>
@@ -45,7 +45,7 @@
 
         support.Property<WarehouseNumbers>("wh-numbers")
             .ChangeSupport<string>("dc-number", (_, number) => new WarehouseNumbers(number))
-            .ChangeSupport<string>("wh-number", (property, number) => new WarehouseNumbers(property.WarehouseNumber, number));
+            .ChangeSupport<string>("wh-number", (property, number) => new WarehouseNumbers(property.DistributionCenterNumber, number));
 
         support.Property<AreaNumbers>("area-numbers")
             .ChangeSupport<WarehouseNumbers>("wh-numbers", (_, wh) => new AreaNumbers(wh))
