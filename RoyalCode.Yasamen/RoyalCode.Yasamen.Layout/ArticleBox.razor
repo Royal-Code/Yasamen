@@ -1,0 +1,49 @@
+
+<article class="@ArticleClasses" @attributes="@Attributes">
+    <header class="@HeaderClasses">
+        @HeaderContent
+    </header>
+    @MainContent
+    @if (FooterContent.IsNotEmptyFragment())
+    {
+        <footer class="@FooterClasses">
+            @FooterContent
+        </footer>
+    }
+</article>
+
+@code {
+    CssClassMap ArticleClasses => CssClassMap.Create(ArticleBorder.CssClasses, ArticleAdditionalClasses);
+    CssClassMap HeaderClasses => CssClassMap.Create(HeaderBorder.CssClasses, HeaderAdditionalClasses);
+    CssClassMap FooterClasses => CssClassMap.Create(FooterBorder.CssClasses, FooterAdditionalClasses);
+    
+    [Parameter]
+    public Borders ArticleBorder { get; set; } = Borders.Default;
+
+    [Parameter]
+    public Borders HeaderBorder { get; set; } = Borders.DefaultHeader;
+    
+    [Parameter]
+    public Borders FooterBorder { get; set; } = Borders.DefaultFooter;
+    
+    [Parameter]
+    public string? ArticleAdditionalClasses { get; set; }
+    
+    [Parameter]
+    public string? HeaderAdditionalClasses { get; set; }
+    
+    [Parameter]
+    public string? FooterAdditionalClasses { get; set; }
+    
+    [Parameter]
+    public RenderFragment? HeaderContent { get; set; }
+    
+    [Parameter]
+    public RenderFragment? MainContent { get; set; }
+    
+    [Parameter]
+    public RenderFragment? FooterContent { get; set; }
+    
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? Attributes { get; set; }
+}

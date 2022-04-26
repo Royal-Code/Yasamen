@@ -24,6 +24,13 @@ public class CssClassMap
 
         return map;
     }
+    
+    public static CssClassMap Create(Maybe cssClass)
+    {
+        var map = new CssClassMap(new List<ICssClassBuilder>());
+        map.Add(cssClass);
+        return map;
+    }
 
     private readonly ICollection<ICssClassBuilder> conditions;
 

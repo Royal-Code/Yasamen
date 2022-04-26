@@ -1,0 +1,55 @@
+
+<div class="@PanelClasses" @attributes="@Attributes">
+    <header class="@HeaderClasses">
+        @HeaderContent
+    </header>
+    <div class="@MainClasses">
+        @MainContent    
+    </div>
+    @if (FooterContent.IsNotEmptyFragment())
+    {
+        <footer class="@FooterClasses">
+            @FooterContent
+        </footer>
+    }
+</div>
+
+@code {
+    CssClassMap PanelClasses => CssClassMap.Create("panel-box", PanelBorder.CssClasses, PanelAdditionalClasses);
+    CssClassMap MainClasses => CssClassMap.Create("panel-box-main", MainAdditionalClasses);
+    CssClassMap HeaderClasses => CssClassMap.Create("panel-box-header", HeaderBorder.CssClasses, HeaderAdditionalClasses);
+    CssClassMap FooterClasses => CssClassMap.Create("panel-box=footer", FooterBorder.CssClasses, FooterAdditionalClasses);
+    
+    [Parameter]
+    public Borders PanelBorder { get; set; } = Borders.Default;
+
+    [Parameter]
+    public Borders HeaderBorder { get; set; } = Borders.DefaultHeader;
+    
+    [Parameter]
+    public Borders FooterBorder { get; set; } = Borders.DefaultFooter;
+    
+    [Parameter]
+    public string? PanelAdditionalClasses { get; set; }
+    
+    [Parameter]
+    public string? MainAdditionalClasses { get; set; }
+    
+    [Parameter]
+    public string? HeaderAdditionalClasses { get; set; }
+    
+    [Parameter]
+    public string? FooterAdditionalClasses { get; set; }
+    
+    [Parameter]
+    public RenderFragment? HeaderContent { get; set; }
+    
+    [Parameter]
+    public RenderFragment? MainContent { get; set; }
+    
+    [Parameter]
+    public RenderFragment? FooterContent { get; set; }
+    
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? Attributes { get; set; }
+}

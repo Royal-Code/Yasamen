@@ -1,0 +1,21 @@
+
+<div class="@Classes" @attributes="@Attributes">
+    @ChildContent
+</div>
+
+@code {
+
+    CssClassMap Classes => CssClassMap.Create(Border.CssClasses, AdditionalClasses);
+
+    [Parameter]
+    public Borders Border { get; set; } = Borders.Default;
+    
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
+    
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? Attributes { get; set; }
+    
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}
