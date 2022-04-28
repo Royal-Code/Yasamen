@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Forms", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Services", "RoyalCode.Yasamen.Services\RoyalCode.Yasamen.Services.csproj", "{60068234-BAEE-4241-A3AD-ADB7B948E15A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Yasamen.Localization", "RoyalCode.Yasamen.Localization\RoyalCode.Yasamen.Localization.csproj", "{76900310-AA26-4147-A4AF-77E709628268}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Localization", "RoyalCode.Yasamen.Localization\RoyalCode.Yasamen.Localization.csproj", "{76900310-AA26-4147-A4AF-77E709628268}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

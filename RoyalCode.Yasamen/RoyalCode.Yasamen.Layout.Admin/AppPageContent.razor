@@ -1,0 +1,56 @@
+﻿
+<div class="@PanelClasses" @attributes="@Attributes">
+    <header class="@HeaderClasses">
+        <div class="d-flex justify-content-start">
+            @HeaderStartContent
+            <h2>
+                @Title
+            </h2>
+        </div>
+        <div class="d-flex justify-content-end">
+            @HeaderEndContent
+        </div>
+    </header>
+    <div class="@MainClasses">
+        @MainContent    
+    </div>
+</div>
+
+@code {
+    CssClassMap PanelClasses => CssClassMap.Create("app-page-content", PanelBorder.CssClasses, PanelAdditionalClasses);
+    CssClassMap MainClasses => CssClassMap.Create("app-page-content-main m-2", MainAdditionalClasses);
+    CssClassMap HeaderClasses => CssClassMap.Create("app-page-content-header d-flex justify-content-between px-2 m-2", HeaderBorder.CssClasses, HeaderAdditionalClasses);
+    
+    [Parameter]
+    public Borders PanelBorder { get; set; } = Borders.Default;
+
+    [Parameter]
+    public Borders HeaderBorder { get; set; } = Borders.DefaultHeader;
+        
+    [Parameter]
+    public string? PanelAdditionalClasses { get; set; }
+    
+    [Parameter]
+    public string? MainAdditionalClasses { get; set; }
+    
+    [Parameter]
+    public string? HeaderAdditionalClasses { get; set; }
+    
+    [Parameter, EditorRequired]
+    public string Title { get; set; }
+
+    [Parameter]
+    public RenderFragment? HeaderStartContent { get; set; }
+    
+    [Parameter]
+    public RenderFragment? HeaderEndContent { get; set; }
+
+    [Parameter]
+    public RenderFragment? MainContent { get; set; }
+        
+    [Parameter]
+    public RenderFragment? ChildContent { set => MainContent = value; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? Attributes { get; set; }
+}

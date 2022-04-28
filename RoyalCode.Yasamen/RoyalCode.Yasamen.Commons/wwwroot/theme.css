@@ -8,6 +8,7 @@
     --b-theme-main-tetradic-green: #82a951;
     --b-theme-main-tetradic-blue: #5182a9;
     --b-theme-background: #F2F1F3;
+    --b-theme-content-background: #FEFDFF;
     --b-theme-transition: all .3s ease-in-out;
     /* ? del ? */
     --b-theme-content: #FFFFFF;
@@ -48,6 +49,7 @@
     --b-theme-aside-offcanvas--background-color: #e1dfe4; /* #E6E7E8; */
     /* form and field */
     --b-field-error-message--background-color: #DC3545CC;
+    /*  */
     /**/
     --b-theme-primary-d7: #03204B;
     --b-theme-primary-d6: #052B65;
