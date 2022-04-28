@@ -1,19 +1,23 @@
 ﻿
-<footer b-app-footer class="@Classes" @attributes="Attributes" @ref="footerRef">
+<footer class="@Classes" @attributes="AdditionalAttributes" @ref="footerRef">
     @ChildContent
 </footer>
 
 @code {
 
-    private CssClassMap Classes => CssClassMap.Create(LayouContext.GetInteractedCssClass());
+    private CssClassMap Classes => CssClassMap.Create("app-footer", LayouContext.GetInteractedCssClass())
+        .Add(AdditionalClasses);
 
     private ElementReference footerRef;
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }
-
+    
     [Parameter(CaptureUnmatchedValues = true)]
-    public Dictionary<string, object> Attributes { get; set; }
+    public Dictionary<string, object> AdditionalAttributes { get; set; }
+
+    [Parameter]
+    public string AdditionalClasses { get; set; }
 
     [CascadingParameter]
     public LayoutContext LayouContext { get; set; }

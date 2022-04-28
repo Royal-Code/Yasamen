@@ -5,7 +5,7 @@
 @inject ToggleJsModule ToggleJs
 @implements IAsyncDisposable
 
-<nav b-app-nav-bar class="@HeaderClass" @ref="navRef">
+<nav class="@HeaderClass" @ref="navRef" @attribute="@AdditionalAttributes">
     @if (UseStart)
     {
         <div class="start">
@@ -33,7 +33,7 @@
     private ElementReference navRef;
 
     private CssClassMap HeaderClass => CssClassMap
-        .Create("main-as-primary")
+        .Create("main-as-primary app-nav-bar")
         .Add(() => Shadow, "b-shadow")
         .Add(() => scrolled, "b-scrolled")
         .Add(AdditionalClasses);

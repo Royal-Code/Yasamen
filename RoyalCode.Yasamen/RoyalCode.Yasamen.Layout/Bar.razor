@@ -1,0 +1,35 @@
+
+<div class="@Classes" @attributes="@AdditionalAttributes">
+    <div class="d-flex justify-content-start">
+        @Start
+    </div>
+    <div class="d-flex justify-content-center">
+        @Middle
+    </div>
+    <div class="d-flex justify-content-end">
+        @End
+    </div>
+</div>
+
+@code {
+
+    private CssClassMap Classes => CssClassMap
+        .Create("d-flex justify-content-between w-100")
+        .Add(AdditionalClasses);
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> AdditionalAttributes { get; set; }
+
+    [Parameter]
+    public string AdditionalClasses { get; set; }
+
+    [Parameter]
+    public RenderFragment? Start { get; set; }
+
+    [Parameter]
+    public RenderFragment? Middle { get; set; }
+
+    [Parameter]
+    public RenderFragment? End { get; set; }
+
+}
