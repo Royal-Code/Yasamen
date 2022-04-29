@@ -1,27 +1,28 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <Nullable>enable</Nullable>
-        <ImplicitUsings>enable</ImplicitUsings>
-    </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+	</PropertyGroup>
 
-    <ItemGroup>
-        <SupportedPlatform Include="browser" />
-    </ItemGroup>
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.3" />
-        <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="6.0.3" />
-    </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.3" />
+		<PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="6.0.3" />
+	</ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\RoyalCode.Yasamen.Commons\RoyalCode.Yasamen.Commons.csproj" />
-      <ProjectReference Include="..\RoyalCode.Yasamen.Services\RoyalCode.Yasamen.Services.csproj" />
-    </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\RoyalCode.Yasamen.Commons\RoyalCode.Yasamen.Commons.csproj" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.Services\RoyalCode.Yasamen.Services.csproj" />
+	</ItemGroup>
 
-    <ItemGroup>
-      <Content Remove="TextField.razor" />
-    </ItemGroup>
+	<ItemGroup>
+		<None Update="ModelEditor.razor.css" CssScope="b-model-editor" />
+	</ItemGroup>
 
 </Project>

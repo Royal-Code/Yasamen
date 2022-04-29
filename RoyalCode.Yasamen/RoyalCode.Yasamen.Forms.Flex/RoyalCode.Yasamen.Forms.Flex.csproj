@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\RoyalCode.Yasamen.Forms\RoyalCode.Yasamen.Forms.csproj" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.Layout\RoyalCode.Yasamen.Layout.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="FlexModelEditor.razor.css" CssScope="b-model-editor" />
+	</ItemGroup>
+
+</Project>

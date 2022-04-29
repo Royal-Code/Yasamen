@@ -1,0 +1,19 @@
+﻿
+@typeparam TModel
+@inherits ModelEditor<TModel>
+
+@Base()
+
+@code {
+    private RenderFragment Base() => base.BuildRenderTree;
+
+    protected override RenderFragment ContentFragment()
+    {
+        return builder =>
+        {
+            builder.OpenComponent<Container>(0);
+            builder.AddContent(1, base.ContentFragment());
+            builder.CloseComponent();
+        };
+    }
+}

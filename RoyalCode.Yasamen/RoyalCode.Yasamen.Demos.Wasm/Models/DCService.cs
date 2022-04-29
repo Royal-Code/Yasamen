@@ -13,9 +13,15 @@ public class DCService
         this.http = http;
     }
 
+    private async Task<IEnumerable<DistributionCenter>> LoadFromJsonAsync()
+    {
+        await Task.Delay(2000);
+        return (await http.GetFromJsonAsync<DistributionCenter[]>("sample-data/dc.json"))!;
+    }
+
     public async Task<IEnumerable<DistributionCenter>> GetAllDistributionCentersAsync()
     {
-        return distributionCenters ??= (await http.GetFromJsonAsync<DistributionCenter[]>("sample-data/dc.json"))!;
+        return distributionCenters ??= await LoadFromJsonAsync();
     }
 
     [Finder]

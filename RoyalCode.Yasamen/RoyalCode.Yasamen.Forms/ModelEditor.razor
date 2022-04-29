@@ -3,15 +3,13 @@
 <CascadingValue Value="Support" IsFixed="true">
     <form @attributes="AdditionalAttributes" @onsubmit="OnSubmitHandler">
         <CascadingValue Value="editContext" IsFixed="true">
-            @Fragment
+            @ContentFragment()
         </CascadingValue>
     </form>
 </CascadingValue>
 
 @code {
-
-    private RenderFragment Fragment => builder => ChildContent(Model!)(builder);
-    
+   
     protected override void OnInitialized()
     {
         Tracer.Write("ModelEditor", "OnInitialized", Model?.ToString() ?? "null");

@@ -1,13 +1,12 @@
 ﻿
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
-using Microsoft.Extensions.Options;
 using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Forms.Support;
 
 namespace RoyalCode.Yasamen.Forms;
 
-public partial class ModelEditor<TModel>
+public partial class ModelEditor<TModel> : ComponentBase
 {
     internal EditContext? editContext;
 
@@ -28,6 +27,8 @@ public partial class ModelEditor<TModel>
 
     [Parameter]
     public PropertyChangeSupport? Support { get; set; }
+
+    protected virtual RenderFragment ContentFragment() => builder => ChildContent(Model!)(builder);
 
     /// <summary>
     /// A callback that will be invoked when the form is submitted.
