@@ -3,6 +3,9 @@ using System.ComponentModel;
 
 namespace RoyalCode.Yasamen.Icons.Bootstrap;
 
+/// <summary>
+/// Bootstrap icons names.
+/// </summary>
 public enum BsIconNames
 {
     [Description("123")]

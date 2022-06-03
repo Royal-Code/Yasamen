@@ -30,5 +30,6 @@ builder.Services.AddScoped<FormsJsModule>();
 builder.Services.Subscribes<DCService>();
 
 RoyalCode.Yasamen.Commons.Tracer.IsActive = true;
+RoyalCode.Yasamen.Icons.Bootstrap.BootstrapIcons.Include();
 
 await builder.Build().RunAsync();
