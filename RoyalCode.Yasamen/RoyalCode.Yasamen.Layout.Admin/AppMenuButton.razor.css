@@ -1,14 +1,14 @@
 
 
 button {
-    height: var(--b-theme-nav-menu-button--size, 42px);
-    width: var(--b-theme-nav-menu-button--size, 42px);
-    border-radius: var(--b-theme-nav-menu-button--border-radius);
+    height: var(--b-nav-menu-button--size);
+    width: var(--b-nav-menu-button--size);
+    border-radius: var(--b-nav-menu-button--border-radius);
     border: none;
     background-color: transparent;
-    margin: 0 5px 0 5px;
+    margin: 0 var(--b-size-3) 0 var(--b-size-3);
 }
 
 button:hover {
-    background-color: var(--b-theme-nav-menu-button--color);
+    background-color: var(--b-nav-menu-button--color);
 }

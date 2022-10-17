@@ -2,21 +2,20 @@
     position: relative;
     display: block;
     width: 100%;
-    --b-cols-gutter--default: 0.75rem;
 }
 
     div > div {
         display: flex;
         flex: 1 0 100%;
         flex-wrap: wrap;
-        margin-right: calc(var(--b-cols-gutter, var(--b-cols-gutter--default)) / -2);
-        margin-left: calc(var(--b-cols-gutter, var(--b-cols-gutter--default)) / -2);
+        margin-right: calc(var(--b-cols-gutter) / -2);
+        margin-left: calc(var(--b-cols-gutter) / -2);
     }
 
         div > div ::deep > * {
             flex-shrink: 0;
             max-width: 100%;
-            margin-bottom: var(--b-cols-gutter, var(--b-cols-gutter--default));
+            margin-bottom: var(--b-cols-gutter);
         }
 
             div > div ::deep > *[class*="col-"] {
@@ -26,6 +25,6 @@
 
                 div > div ::deep > *[class*="col-"] > * {
                     width: 100%;
-                    padding-right: calc(var(--b-cols-gutter, var(--b-cols-gutter--default)) / 2);
-                    padding-left: calc(var(--b-cols-gutter, var(--b-cols-gutter--default)) / 2);
+                    padding-right: calc(var(--b-cols-gutter) / 2);
+                    padding-left: calc(var(--b-cols-gutter) / 2);
                 }

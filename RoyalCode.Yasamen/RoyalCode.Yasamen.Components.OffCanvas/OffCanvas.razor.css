@@ -9,10 +9,10 @@ aside {
     background-clip: padding-box;
     outline: 0;
     transform: translateX(100%);
-    top: var(--b-theme-aside-offcanvas--top);
-    right: var(--b-theme-aside-offcanvas--right);
-    bottom: var(--b-theme-aside-offcanvas--bottom);
-    background-color:var(--b-theme-aside-offcanvas--background-color);
+    top: var(--b-aside-offcanvas--top);
+    right: var(--b-aside-offcanvas--right);
+    bottom: var(--b-aside-offcanvas--bottom);
+    background-color:var(--b-aside-offcanvas--background-color);
     transition: var(--b-theme-transition);
 }
 
@@ -36,7 +36,7 @@ div {
 div.offcanvas-modal.offcanvas-show {
     display: block;
     position: fixed;
-    top: var(--b-theme-aside-offcanvas--top);
+    top: var(--b-aside-offcanvas--top);
     right: 0;
     bottom: 0;
     left: 0;

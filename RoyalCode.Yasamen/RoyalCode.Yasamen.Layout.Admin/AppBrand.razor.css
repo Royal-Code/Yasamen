@@ -1,15 +1,15 @@
 
 div {
-    height: var(--b-theme-header--height);
-    width: var(--b-theme-nav-menu--width);
+    height: var(--b-header--height);
+    width: var(--b-nav-menu--width);
     background-color: var(--b-theme-main);
 }
 
 /* --- screen -- phone  --- */
 
-@media screen and (max-width: 667px) {
+@media screen and (max-width: var(--b-size-w2)) {
     div {
-        height: var(--b-theme-header--phone--height);
-        width: var(--b-theme-header--phone--height);
+        height: var(--b-header--phone--height);
+        width: var(--b-header--phone--height);
     }
 }

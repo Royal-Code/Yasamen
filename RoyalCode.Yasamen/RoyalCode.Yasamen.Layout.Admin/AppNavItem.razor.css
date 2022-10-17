@@ -1,22 +1,22 @@
 
 .app-nav-item ::deep .app-nav-link {
-    color: var(--b-theme-nav-menu-item--color, #D7E0E7);
-    background-color: var(--b-theme-nav-menu-item--background-color, #54606A);
-    border-radius: 5px;
-    margin: 5px 0 5px 0;
-    padding: 0 0 0 0.8rem;
-    line-height: 2rem;
-    font-size: var(--b-theme-nav-menu-item--font-size, 0.8rem);
+    color: var(--b-nav-menu-item--color);
+    background-color: var(--b-nav-menu-item--background-color);
+    border-radius: var(--b-size-3);
+    margin: var(--b-size-3) 0 var(--b-size-3) 0;
+    padding: 0 0 0 var(--b-size-3);
+    line-height: var(--b-size-8);
+    font-size: var(--b-nav-menu-item--font-size);
     display: flex;
     align-items: center;
     text-decoration: none;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out, border-color .15s ease-in-out;
 }
 
 .app-nav-item ::deep .app-nav-link:hover {
-    background-color: var(--b-theme-nav-menu-item--background-color--hover, rgba(1, 1, 1, 0.1));
+    background-color: var(--b-nav-menu-item--background-color--hover);
 }
 
 .app-nav-item ::deep .app-nav-link.active {
-    background-color: var(--b-theme-nav-menu-item--background-color--active, rgba(1, 1, 1, 0.2));
+    background-color: var(--b-nav-menu-item--background-color--active);
 }

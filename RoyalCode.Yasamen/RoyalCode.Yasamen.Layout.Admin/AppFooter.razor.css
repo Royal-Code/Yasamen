@@ -8,11 +8,11 @@ footer {
     flex-shrink: 0;
     display: block;
     align-items: flex-start;
-    font-size: .75rem;
-    color: var(--b-theme-main, gainsboro);
+    font-size: var(--b-size-3);
+    color: var(--b-theme-main);
 }
 
-@media(max-width: 1300px) {
+@media(max-width: var(--b-size-w4)) {
     footer {
         padding-left: 0;
     }

@@ -5,9 +5,9 @@
     align-items: center;
     justify-content: space-between;
     color: var(--b-theme-primary);
-    background-color: var(--b-theme-nav-bar--background-color, #fff);
-    -webkit-backdrop-filter: var(--b-theme-nav-bar--backdrop-filter, blur(.25rem));
-    backdrop-filter: var(--b-theme-nav-bar--backdrop-filter, blur(.25rem));
+    background-color: var(--b-nav-bar--background-color);
+    -webkit-backdrop-filter: var(--b-nav-bar--backdrop-filter);
+    backdrop-filter: var(--b-nav-bar--backdrop-filter);
     transition: box-shadow 400ms linear 0s;
 }
 
@@ -42,26 +42,27 @@
             box-shadow: var(--b-app-nav-bar--shadow-scrolled, 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12));
         }
 
-@media screen and (max-width: 879px) {
+/* aqui, estes valores precisam ser variáveis 879px 1023px 767px 575px */ 
+@media screen and (max-width: calc(var(--b-size-w3) + var(--b-size-x2))) {
     nav > .middle {
         display: none;
     }
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width:calc(var(--b-size-w4) - 1px)) {
     .b-menu-interacted {
         --b-top-bar--backdrop: none;
         --b-top-bar--background-color: white;
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: calc(var(--b-size-w3) - 1px)) {
     .top-bar-hide-sm {
         display: none !important;
     }
 }
 
-@media screen and (max-width: 575px) {
+@media screen and (max-width: calc(var(--b-size-w2) - 1px)) {
     .top-bar-hide-xs {
         display: none !important;
     }
@@ -69,6 +70,6 @@
 
 @-moz-document url-prefix() {
     nav {
-        background-color: var(--b-theme-nav-bar--moz--background-color, rgba(255,255,255,0.9));
+        background-color: var(--b-nav-bar--moz--background-color);
     }
 }
