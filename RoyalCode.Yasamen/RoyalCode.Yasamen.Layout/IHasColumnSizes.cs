@@ -6,7 +6,7 @@ namespace RoyalCode.Yasamen.Layout;
 /// <summary>
 /// Interface para componentes de colunas de um Grid com possibilidade de definir os tamanhos.
 /// </summary>
-internal interface IHasColumnSizes
+public interface IHasColumnSizes
 {
     int Cols { get; set; }
 

@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RoyalCode.Yasamen.Components.OffCanvas\RoyalCode.Yasamen.Components.OffCanvas.csproj" />
+    <ProjectReference Include="..\RoyalCode.Yasamen.Forms.Flex\RoyalCode.Yasamen.Forms.Flex.csproj" />
     <ProjectReference Include="..\RoyalCode.Yasamen.Forms\RoyalCode.Yasamen.Forms.csproj" />
     <ProjectReference Include="..\RoyalCode.Yasamen.Icons.Bootstrap\RoyalCode.Yasamen.Icons.Bootstrap.csproj" />
     <ProjectReference Include="..\RoyalCode.Yasamen.Layout.Admin\RoyalCode.Yasamen.Layout.Admin.csproj" />

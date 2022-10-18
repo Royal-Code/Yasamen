@@ -17,7 +17,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="FlexModelEditor.razor.css" CssScope="b-model-editor" />
+		<None Update="FlexModelEditor.cs.css" CssScope="b-model-editor" />
 	</ItemGroup>
 
 </Project>

@@ -123,7 +123,7 @@ public class ModelSupport<TModel> : ComponentBase, IDisposable
         if (Model is null)
         {
             Model = new TModel();
-            await FireModelChange(Model);
+            //await FireModelChange(Model);
         }
 
         await base.OnInitializedAsync();

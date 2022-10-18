@@ -1,0 +1,50 @@
+﻿
+@inherits TextField
+@implements IHasColumnSizes
+
+<Column ParentColumn="this">
+    @BaseFragment
+</Column>
+
+@code {
+    private RenderFragment BaseFragment => base.BuildRenderTree;
+
+    [Parameter]
+    public int Cols { get; set; } = 12;
+
+    [Parameter]
+    public int? TabletCols { get; set; }
+
+    [Parameter]
+    public int? PhoneCols { get; set; }
+
+    [Parameter]
+    public int? Quarters { get; set; }
+
+    [Parameter]
+    public int? XsCols { get; set; }
+
+    [Parameter]
+    public int? SmCols { get; set; }
+
+    [Parameter]
+    public int? LgCols { get; set; }
+
+    [Parameter]
+    public int? XlCols { get; set; }
+
+    [Parameter]
+    public bool Fullsize { get; set; }
+
+    [Parameter]
+    public bool XsFullsize { get; set; }
+
+    [Parameter]
+    public bool SmFullsize { get; set; }
+
+    [Parameter]
+    public bool LgFullsize { get; set; }
+
+    [Parameter]
+    public bool XlFullsize { get; set; }
+}

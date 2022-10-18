@@ -1,12 +1,10 @@
-﻿
-@typeparam TModel
-@inherits ModelEditor<TModel>
+﻿using Microsoft.AspNetCore.Components;
+using RoyalCode.Yasamen.Layout;
 
-@Base()
+namespace RoyalCode.Yasamen.Forms.Flex;
 
-@code {
-    private RenderFragment Base() => base.BuildRenderTree;
-
+public class FlexModelEditor<TModel> : ModelEditor<TModel>
+{
     protected override RenderFragment ContentFragment()
     {
         return builder =>

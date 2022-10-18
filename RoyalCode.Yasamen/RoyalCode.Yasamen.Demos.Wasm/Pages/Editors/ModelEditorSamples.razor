@@ -1,41 +1,87 @@
 ﻿@page "/form"
 
 <AppPageContent Title="Text Field Editor Samples">
+
     <ModelEditor Model="model" Context="dto" Support="support">
 
-        <ModelSupport TModel="DistributionCenter" Context="dc" FilterSupport="dc-number">
+        <Container>
+            <ModelSupport TModel="DistributionCenter" Context="dc" FilterSupport="dc-number">
 
-            <TextField @bind-Value="dc.Number" Label="Number" ChangeSupport="dc-number" />
-            <TextField @bind-Value="dc.Name" Label="Disctribution Center" readonly />
+                <Column Cols="3">
+                    <TextField @bind-Value="dc.Number" Label="Number" ChangeSupport="dc-number" />
+                </Column>
+                <Column Cols="9">
+                    <TextField @bind-Value="dc.Name" Label="Disctribution Center" readonly />
+                </Column>
 
-        </ModelSupport>
+            </ModelSupport>
 
-        <PropertySupport TValue="WarehouseNumbers" Name="wh-numbers" ChangeSupport="wh-numbers" />
+            <PropertySupport TValue="WarehouseNumbers" Name="wh-numbers" ChangeSupport="wh-numbers" />
 
-        <ModelSupport TModel="Warehouse" Context="wh" FilterSupport="wh-numbers">
+            <ModelSupport TModel="Warehouse" Context="wh" FilterSupport="wh-numbers">
 
-            <TextField @bind-Value="wh.Number" Label="Number" ChangeSupport="wh-number" />
-            <TextField @bind-Value="wh.Description" Label="Warehouse" readonly />
+                <Column Cols="3">
+                    <TextField @bind-Value="wh.Number" Label="Number" ChangeSupport="wh-number" />
+                </Column>
+                <Column Cols="9">
+                    <TextField @bind-Value="wh.Description" Label="Warehouse" readonly />
+                </Column>
 
-        </ModelSupport>
+            </ModelSupport>
 
-        <PropertySupport TValue="AreaNumbers" Name="area-numbers" ChangeSupport="area-numbers" />
+            <PropertySupport TValue="AreaNumbers" Name="area-numbers" ChangeSupport="area-numbers" />
 
-        <ModelKeySupport TModel="Area" TKey="Guid" KeySelect="m => m.Id" @bind-Key="dto.AreaId"
-                         Context="area" FilterSupport="area-numbers">
+            <ModelKeySupport TModel="Area" TKey="Guid" KeySelect="m => m.Id" @bind-Key="dto.AreaId"
+                             Context="area" FilterSupport="area-numbers">
 
-            <TextField @bind-Value="area.Number" Label="Number" ChangeSupport="area-number" />
-            <TextField @bind-Value="area.Name" Label="Area" readonly />
+                <Column Cols="3">
+                    <TextField @bind-Value="area.Number" Label="Number" ChangeSupport="area-number" />
+                </Column>
+                <Column Cols="9">
+                    <TextField @bind-Value="area.Name" Label="Area" readonly />
+                </Column>
 
-        </ModelKeySupport>
+            </ModelKeySupport>
+        </Container>
 
     </ModelEditor>
+
+    <FlexModelEditor Model="model2" Context="dto" Support="support2">
+        <ModelSupport TModel="DistributionCenter" Context="dc" FilterSupport="dc-number2">
+
+            <FlexTextField Cols="3" @bind-Value="dc.Number" Label="Number" ChangeSupport="dc-number2" />
+            <FlexTextField Cols="9" @bind-Value="dc.Name" Label="Disctribution Center" readonly />
+            
+        </ModelSupport>
+
+        <PropertySupport TValue="WarehouseNumbers" Name="wh-numbers2" ChangeSupport="wh-numbers2" />
+
+        <ModelSupport TModel="Warehouse" Context="wh" FilterSupport="wh-numbers2">
+
+            <FlexTextField Cols="3" @bind-Value="wh.Number" Label="Number" ChangeSupport="wh-number2" />
+            <FlexTextField Cols="9" @bind-Value="wh.Description" Label="Warehouse" readonly />
+
+        </ModelSupport>
+
+        <PropertySupport TValue="AreaNumbers" Name="area-numbers2" ChangeSupport="area-numbers2" />
+
+        <ModelKeySupport TModel="Area" TKey="Guid" KeySelect="m => m.Id" @bind-Key="dto.AreaId"
+                         Context="area" FilterSupport="area-numbers2">
+
+            <FlexTextField Cols="3" @bind-Value="area.Number" Label="Number" ChangeSupport="area-number2" />
+            <FlexTextField Cols="9" @bind-Value="area.Name" Label="Area" readonly />
+
+        </ModelKeySupport>
+    </FlexModelEditor>
+
 </AppPageContent>
 
 @code {
 
     private WarehouseDto model;
+    private WarehouseDto model2;
     private PropertyChangeSupport support;
+    private PropertyChangeSupport support2;
 
     protected override void OnInitialized()
     {
@@ -58,6 +104,26 @@
 
         support.GetChangeSupport("wh")
             .Include<Warehouse, Guid>("wh-id", wh => wh.Id);
+
+        // ----------------------------------
+
+        model2 = new();
+        support2 = new();
+
+        support2.Property<WarehouseNumbers>("wh-numbers2")
+            .ChangeSupport<string>("dc-number2", (_, number) => new WarehouseNumbers(number))
+            .ChangeSupport<string>("wh-number2", (property, number) => new WarehouseNumbers(property.DistributionCenterNumber, number));
+
+        support2.Property<AreaNumbers>("area-numbers2")
+            .ChangeSupport<WarehouseNumbers>("wh-numbers2", (_, wh) => new AreaNumbers(wh))
+            .ChangeSupport<string>("area-number2", (an, n) => new AreaNumbers(an, n));
+
+        support2.GetChangeSupport("dc2")
+            .Include<DistributionCenter, Guid>("dc-id2", dc => dc.Id);
+
+        support2.GetChangeSupport("wh2")
+            .Include<Warehouse, Guid>("wh-id2", wh => wh.Id);
+
 
         Tracer.Write("ModelEditorSamples", "OnInitialized", "End");
     }

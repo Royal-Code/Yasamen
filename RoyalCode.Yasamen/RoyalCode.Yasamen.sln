@@ -27,9 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Localizat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Forms.Flex", "RoyalCode.Yasamen.Forms.Flex\RoyalCode.Yasamen.Forms.Flex.csproj", "{551D1599-C871-4061-B575-407850D32C4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Yasamen.Icons", "RoyalCode.Yasamen.Icons\RoyalCode.Yasamen.Icons.csproj", "{515A76DF-7D91-43FB-AB69-CEAC30B66E9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Icons", "RoyalCode.Yasamen.Icons\RoyalCode.Yasamen.Icons.csproj", "{515A76DF-7D91-43FB-AB69-CEAC30B66E9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Yasamen.Icons.Bootstrap", "RoyalCode.Yasamen.Icons.Bootstrap\RoyalCode.Yasamen.Icons.Bootstrap.csproj", "{D8AFCBC9-CE56-4108-AC8A-4D5C38E28927}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Icons.Bootstrap", "RoyalCode.Yasamen.Icons.Bootstrap\RoyalCode.Yasamen.Icons.Bootstrap.csproj", "{D8AFCBC9-CE56-4108-AC8A-4D5C38E28927}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
