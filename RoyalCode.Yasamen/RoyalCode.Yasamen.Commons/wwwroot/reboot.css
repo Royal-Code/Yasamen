@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    font-family: var(--b-body-font-family);
+    font-size: var(--b-body-font-size);
+    font-weight: var(--b-body-font-weight);
+    line-height: var(--b-body-line-height);
+    color: var(--b-body-color);
+    background-color: var(--b-body-bg);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
