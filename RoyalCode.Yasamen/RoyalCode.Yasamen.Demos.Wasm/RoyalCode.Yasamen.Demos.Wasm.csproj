@@ -30,4 +30,8 @@
     <ProjectReference Include="..\RoyalCode.Yasamen.Spinners\RoyalCode.Yasamen.Spinners.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Shows\" />
+  </ItemGroup>
+
 </Project>
