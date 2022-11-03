@@ -18,6 +18,10 @@ public class IconShow : IShow<Icon>
                     .Name("Icon Kind")
                     .Description("Choose an icon kind, and the component will show the icon for the selected value")
                     .HasEnumValues<BsIconNames>();
+
+                cfg.Property(i => i.AdditionalAttributes).HtmlAttributes();
+
+                cfg.Property(i => i.AdditionalClasses).HtmlClasses();
             })
             .AddScene(sceneBuilder =>
             {
