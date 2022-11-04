@@ -2,12 +2,18 @@
 
 public class CatalogBuilder : ICatalogBuilder
 {
-    private readonly Catalog catalog = new();
+    private readonly Catalog catalog;
 
-    ICatalogBuilder ICatalogBuilder.AddShow<TShow, TComponent>(TShow show)
+    public CatalogBuilder(Catalog catalog)
+    {
+        this.catalog = catalog;
+    }
+
+    ICatalogBuilder ICatalogBuilder.AddShow<TShow, TComponent>()
     {
         var description = new ShowDescription(typeof(TShow));
         var builder = new ShowDescriptionBuilder<TComponent>(description);
+        var show = new TShow();
         show.Create(builder);
 
         catalog.AddShowDescription(description);

@@ -2,7 +2,9 @@
 
 public interface IScene
 {
+    bool IsDefault { get; }
 
+    string? Name { get; }
 }
 
 public interface IScene<TComponent> : IScene

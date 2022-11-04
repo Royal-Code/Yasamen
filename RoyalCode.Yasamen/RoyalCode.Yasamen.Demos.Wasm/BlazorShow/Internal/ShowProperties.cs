@@ -1,56 +1,49 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System.Linq.Expressions;
+using System.Reflection;
 
 namespace RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Internal;
 
 public class ShowProperties<TComponent> : IShowProperties<TComponent>
     where TComponent : class, IComponent
 {
+    private readonly ShowDescription showDescription;
+
+    public ShowProperties(ShowDescription showDescription)
+    {
+        this.showDescription = showDescription;
+    }
+
     public IShowPropertyDescriptionBuilder<TComponent, TProperty> Property<TProperty>(
         Expression<Func<TComponent, TProperty>> value)
     {
-        // get the PropertyInfo from the lambda expression value.
+        var property = GetPropertyInfo(value);
+        var propertyDescription = showDescription.FindPropertyDescription(property);
 
+        if (propertyDescription is null)
+        {
+            throw new ArgumentException(
+                $"The property '{property.Name}' was not found in the component '{showDescription.ComponentType.Name}'.");
+        }
 
-
-
-        throw new NotImplementedException();
+        return new ShowPropertyDescriptionBuilder<TComponent, TProperty>(propertyDescription);
     }
-
-}
-
-public class ShowPropertyDescriptionBuilder<TComponent, TProperty>
-    : IShowPropertyDescriptionBuilder<TComponent, TProperty>
-    where TComponent : class, IComponent
-{
-
-    public IShowPropertyDescriptionBuilder<TComponent, TProperty> Description(string description)
+    
+    private static PropertyInfo GetPropertyInfo<TProperty>(Expression<Func<TComponent, TProperty>> value)
     {
-        throw new NotImplementedException();
-    }
+        if (value.Body is not MemberExpression memberExpression)
+            throw new ArgumentException("The expression is not a member access expression.", nameof(value));
 
-    public IShowPropertyDescriptionBuilder<TComponent, TProperty> Hide()
-    {
-        throw new NotImplementedException();
-    }
+        if (memberExpression.Member is not PropertyInfo propertyInfo)
+            throw new ArgumentException("The member access expression does not access a property.", nameof(value));
 
-    public IShowPropertyDescriptionBuilder<TComponent, TProperty> HtmlAttributes()
-    {
-        throw new NotImplementedException();
-    }
+        var getMethod = propertyInfo.GetMethod;
+        if (getMethod is null)
+            throw new ArgumentException("The referenced property does not have a get method.", nameof(value));
 
-    public IShowPropertyDescriptionBuilder<TComponent, TProperty> HtmlClasses()
-    {
-        throw new NotImplementedException();
-    }
+        if (getMethod.IsStatic)
+            throw new ArgumentException("The referenced property is a static property.", nameof(value));
 
-    public IShowPropertyDescriptionBuilder<TComponent, TProperty> Name(string name)
-    {
-        throw new NotImplementedException();
-    }
-
-    IShowPropertyDescriptionBuilder<TComponent, TProperty> IShowPropertyDescriptionBuilder<TComponent, TProperty>.HasEnumValues<TEnum>()
-    {
-        throw new NotImplementedException();
+        return propertyInfo;
     }
 }

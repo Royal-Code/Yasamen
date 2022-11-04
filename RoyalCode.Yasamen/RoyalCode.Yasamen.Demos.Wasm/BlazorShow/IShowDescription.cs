@@ -4,13 +4,15 @@ public interface IShowDescription
 {
     Type ComponentType { get; }
 
-    IEnumerable<IScene> Scenary { get; }
-
-    string? Description { get; }
-
     string? Group { get; }
-
+    
     string? Name { get; }
-
+    
+    string? Description { get; }
+    
     string? Route { get; }
+
+    IEnumerable<IShowPropertyDescription> Properties { get; }
+
+    IEnumerable<IScene> Scenary { get; }
 }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components;
-using System.Xml.Linq;
 
 namespace RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Internal;
 
@@ -15,7 +14,11 @@ public class ShowDescriptionBuilder<TComponent> : IShowDescriptionBuilder<TCompo
 
     public IShowDescriptionBuilder<TComponent> AddScene(Action<ISceneBuilder> configure)
     {
-        throw new NotImplementedException();
+        var scene = new Scene<TComponent>();
+        var builder = new SceneBuilder<TComponent>(scene);
+        configure(builder);
+        showDescription.AddScene(scene);
+        return this;
     }
 
     public IShowDescriptionBuilder<TComponent> Description(string description)
@@ -44,6 +47,8 @@ public class ShowDescriptionBuilder<TComponent> : IShowDescriptionBuilder<TCompo
 
     public IShowDescriptionBuilder<TComponent> Properties(Action<IShowProperties<TComponent>> configure)
     {
-        throw new NotImplementedException();
+        var showProperties = new ShowProperties<TComponent>(showDescription);
+        configure(showProperties);
+        return this;
     }
 }

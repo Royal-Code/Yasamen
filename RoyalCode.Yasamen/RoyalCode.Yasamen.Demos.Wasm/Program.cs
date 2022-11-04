@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using RoyalCode.Yasamen.Commons.Modules;
 using RoyalCode.Yasamen.Demos.Wasm;
 using RoyalCode.Yasamen.Demos.Wasm.Models;
+using RoyalCode.Yasamen.Demos.Wasm.Shows;
 using RoyalCode.Yasamen.Forms.Modules;
+using RoyalCode.Yasamen.Icons;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -28,6 +30,12 @@ builder.Services.AddScoped<FormsJsModule>();
 
 // App services.
 builder.Services.Subscribes<DCService>();
+
+// Show services
+builder.Services.AddBlazorShow(b =>
+{
+    b.AddShow<IconShow, Icon>();
+});
 
 RoyalCode.Yasamen.Commons.Tracer.IsActive = true;
 RoyalCode.Yasamen.Icons.Bootstrap.BootstrapIcons.Include();
