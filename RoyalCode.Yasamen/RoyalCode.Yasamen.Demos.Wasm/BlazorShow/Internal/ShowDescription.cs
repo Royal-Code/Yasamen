@@ -21,6 +21,7 @@ public class ShowDescription : IShowDescription
     public string? Group { get; internal set; }
     public string? Name { get; internal set; }
     public string? Route { get; internal set; }
+    public bool HasMultipleScenes => scenes.Count > 1;
 
     private void InitializePropertyDescriptions()
     {

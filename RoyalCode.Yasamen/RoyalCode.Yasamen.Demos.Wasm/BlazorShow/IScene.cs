@@ -5,6 +5,8 @@ public interface IScene
     bool IsDefault { get; }
 
     string? Name { get; }
+
+    string? Description { get; }
 }
 
 public interface IScene<TComponent> : IScene

@@ -1,4 +1,5 @@
-﻿using RoyalCode.Yasamen.Demos.Wasm.BlazorShow;
+﻿using Microsoft.Extensions.Options;
+using RoyalCode.Yasamen.Demos.Wasm.BlazorShow;
 using RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Internal;
 using System.Diagnostics.CodeAnalysis;
 
@@ -28,6 +29,8 @@ public static class BlazorShowServiceCollectionExtensions
         {
             catalog = new Catalog();
             services.AddSingleton<ICatalog>(catalog);
+            services.AddSingleton<ShowGroups>();
+            services.AddSingleton(sp => sp.GetRequiredService<IOptions<BlazorShowOptions>>().Value);
         }
 
         var builder = new CatalogBuilder(catalog);

@@ -7,4 +7,5 @@ public class Scene<TComponent> : IScene<TComponent>
 {
     public bool IsDefault { get; set; }
     public string? Name { get; set; }
+    public string? Description { get; set; }
 }

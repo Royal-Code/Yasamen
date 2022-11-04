@@ -15,4 +15,6 @@ public interface IShowDescription
     IEnumerable<IShowPropertyDescription> Properties { get; }
 
     IEnumerable<IScene> Scenary { get; }
+
+    bool HasMultipleScenes { get; }
 }
