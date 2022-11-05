@@ -1,0 +1,16 @@
+﻿@using RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Internal;
+
+@inject ShowGroups ShowGroups;
+@inject BlazorShowOptions Options;
+
+<div class="main-nav">
+    <div class="title">
+        <span>
+            @Options.Title
+        </span>
+    </div>
+    @foreach (var g in ShowGroups.Groups)
+    {
+        <GroupNav Group="@g" @key=g.Name />
+    }
+</div>

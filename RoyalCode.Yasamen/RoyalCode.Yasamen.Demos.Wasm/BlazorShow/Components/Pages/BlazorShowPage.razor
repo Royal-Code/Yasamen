@@ -1,0 +1,49 @@
+﻿@page "/show"
+@page "/show/{component}"
+@page "/show/{component}/{scene}"
+
+@layout BlazorShowLayout;
+
+@inject ICatalog Catalog
+
+<div class="show-page">
+    <MainNav />
+    @if (routedScene is not null)
+    {
+        <SceneShow Scene="routedScene" />
+    }
+    else
+    {
+        <div class="hello-blazor-show">
+            <p>Welcome to the Blazor Show!</p>
+            <p>Select a component to show</p>
+        </div>
+    }
+</div>
+
+@code {
+    private IScene? routedScene;
+
+    [Parameter]
+    public string? Component { get; set; }
+
+    [Parameter]
+    public string? Scene { get; set; }
+    
+    protected override void OnParametersSet()
+    {
+        Console.WriteLine($"Component: {Component}");
+        Console.WriteLine($"Scene: {Scene}");
+
+        if (Component is not null)
+        {
+            var show = Catalog.ShowDescriptions.FirstOrDefault(s => s.Route == Component);
+            if (show is null)
+                return;
+
+            routedScene = Scene is null
+                ? show.Scenary.FirstOrDefault()
+                : show.Scenary.FirstOrDefault(s => s.Name == Scene);
+        }
+    }
+}

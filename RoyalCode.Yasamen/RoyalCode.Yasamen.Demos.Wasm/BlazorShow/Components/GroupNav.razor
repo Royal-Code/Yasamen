@@ -1,0 +1,20 @@
+﻿@using RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Internal;
+
+
+<div class="group">
+    <div class="group-name">
+        @Group.Name
+    </div>
+    <div class="group-components">
+        @foreach (var show in Group.Shows)
+        {
+            <ShowNav Show="@show" @key=show.Name />
+        }
+    </div>
+</div>
+
+@code {
+
+    [Parameter, EditorRequired]
+    public Group Group { get; set; }
+}

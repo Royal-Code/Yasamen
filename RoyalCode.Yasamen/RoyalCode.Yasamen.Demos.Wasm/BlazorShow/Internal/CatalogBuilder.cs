@@ -11,7 +11,7 @@ public class CatalogBuilder : ICatalogBuilder
 
     ICatalogBuilder ICatalogBuilder.AddShow<TShow, TComponent>()
     {
-        var description = new ShowDescription(typeof(TShow));
+        var description = new ShowDescription(typeof(TComponent));
         var builder = new ShowDescriptionBuilder<TComponent>(description);
         var show = new TShow();
         show.Create(builder);

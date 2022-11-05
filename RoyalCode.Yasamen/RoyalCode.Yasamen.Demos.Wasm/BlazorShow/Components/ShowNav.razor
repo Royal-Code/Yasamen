@@ -1,0 +1,28 @@
+
+@inject BlazorShowOptions Options;
+
+<div class="component-show">
+    @if (Show.HasMultipleScenes)
+    {
+        <span class="component-name has-multiple-scenes" title="@Show.Description">
+            @Show.Name
+        </span>
+        <div class="component-scenes">
+            @foreach (var scene in Show.Scenary)
+            {
+                <SceneNav Scene="scene" @key=scene.Name/>
+            }
+        </div>
+    }
+    else
+    {
+        <a class="component-name scene-link" title="@Show.Description" href="@Options.MakeRoute(Show.Route)">
+            @Show.Name
+        </a>
+    }
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public IShowDescription Show { get; set; }
+}

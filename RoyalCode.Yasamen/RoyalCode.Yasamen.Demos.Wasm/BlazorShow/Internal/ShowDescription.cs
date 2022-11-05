@@ -25,7 +25,7 @@ public class ShowDescription : IShowDescription
 
     private void InitializePropertyDescriptions()
     {
-        var properties = ComponentType.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+        var properties = ComponentType.GetRuntimeProperties();
         foreach (var property in properties)
         {
             var propertyDescription = new ShowPropertyDescription(property);

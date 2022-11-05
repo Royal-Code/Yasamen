@@ -1,0 +1,12 @@
+
+<div class="scene">
+    <span class="scene-name scene-link" title="@Scene.Description">
+        @Scene.Name
+    </span>
+</div>
+
+@code {
+
+    [Parameter, EditorRequired]
+    public IScene Scene { get; set; }
+}
