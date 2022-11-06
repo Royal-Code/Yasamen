@@ -1,0 +1,20 @@
+﻿
+.scene-property {
+    display: flex;    
+}
+
+.scene-property-name {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 8px;
+}
+
+.scene-property-value {
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 8px;
+}

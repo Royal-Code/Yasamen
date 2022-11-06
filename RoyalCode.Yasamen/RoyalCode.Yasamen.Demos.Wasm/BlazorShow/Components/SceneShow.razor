@@ -1,5 +1,20 @@
 ﻿
-<h3>@Scene.Name</h3>
+<div class="scene-show">
+    <h3>@Scene.Show.Name - @Scene.Name</h3>
+    <div class="scene-component">
+        Render the scene, the component.
+    </div>
+    <div class="scene-properties">
+        Render a set of properties for the component.
+        
+        @foreach (var property in Scene.Show.Properties)
+        {
+            <SceneProperty Property="property" @key=@property.Name/>
+        }
+        
+    </div>
+</div>
+
 
 @code {
 

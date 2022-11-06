@@ -15,6 +15,8 @@ public class SceneBuilder<TComponent> : ISceneBuilder
     public ISceneBuilder Default()
     {
         scene.IsDefault = true;
+        scene.Name = "Default";
+        scene.Description = "Default scene.";
         return this;
     }
 }

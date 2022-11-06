@@ -14,7 +14,7 @@ public class ShowDescriptionBuilder<TComponent> : IShowDescriptionBuilder<TCompo
 
     public IShowDescriptionBuilder<TComponent> AddScene(Action<ISceneBuilder> configure)
     {
-        var scene = new Scene<TComponent>();
+        var scene = new Scene<TComponent>(showDescription);
         var builder = new SceneBuilder<TComponent>(scene);
         configure(builder);
         showDescription.AddScene(scene);

@@ -2,6 +2,8 @@
 
 public interface IScene
 {
+    IShowDescription Show { get; }
+
     bool IsDefault { get; }
 
     string? Name { get; }

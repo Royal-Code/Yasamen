@@ -1,0 +1,15 @@
+﻿
+<div class="scene-property">
+    <div class="scene-property-name" title="@Property.Description">
+        @Property.Name
+    </div>
+    <div class="scene-property-value">
+        @Property.Property.PropertyType.Name
+    </div>
+</div>
+
+@code {
+
+    [Parameter, EditorRequired]
+    public IShowPropertyDescription Property { get; set; }
+}
