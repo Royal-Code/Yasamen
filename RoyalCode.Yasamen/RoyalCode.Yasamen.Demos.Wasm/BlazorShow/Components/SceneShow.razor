@@ -1,23 +1,31 @@
-﻿
-<div class="scene-show">
-    <h3>@Scene.Show.Name - @Scene.Name</h3>
-    <div class="scene-component">
-        Render the scene, the component.
-    </div>
-    <div class="scene-properties">
-        Render a set of properties for the component.
-        
-        @foreach (var property in Scene.Show.Properties)
-        {
-            <SceneProperty Property="property" @key=@property.Name/>
-        }
-        
-    </div>
-</div>
+﻿@using RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Components.Contexts;
 
+<CascadingValue Value="context">
+    <div class="scene-show">
+        <h3>@Scene.Show.Name - @Scene.Name</h3>
+        <div class="scene-component">
+            Render the scene, the component.
+        </div>
+        <div class="scene-properties">
+            Render a set of properties for the component.
+
+            @foreach (var property in Scene.Show.Properties)
+            {
+                <SceneProperty Property="property" @key=@property.Name />
+            }
+
+        </div>
+    </div>
+</CascadingValue>
 
 @code {
+    private SceneContext context;
 
     [Parameter, EditorRequired]
     public IScene Scene { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        context = new SceneContext(Scene);
+    }
 }

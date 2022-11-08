@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using Microsoft.AspNetCore.Components;
+using System.Reflection;
 
 namespace RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Internal;
 
@@ -25,7 +26,8 @@ public class ShowDescription : IShowDescription
 
     private void InitializePropertyDescriptions()
     {
-        var properties = ComponentType.GetRuntimeProperties();
+        var properties = ComponentType.GetRuntimeProperties()
+            .Where(p => p.GetCustomAttribute<ParameterAttribute>() is not null);
         foreach (var property in properties)
         {
             var propertyDescription = new ShowPropertyDescription(property);
