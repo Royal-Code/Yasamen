@@ -15,6 +15,8 @@ public class PropertyValueRender : ComponentBase
 
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
+        Console.WriteLine("BuildRenderTree PropertyValueRender");
+        
         if (Property.IsHtmlClasses)
             RenderClasses(builder);
 
@@ -39,31 +41,38 @@ public class PropertyValueRender : ComponentBase
 
     private void RenderBool(RenderTreeBuilder builder)
     {
+        return;
         throw new NotImplementedException();
     }
 
     private void RenderText(RenderTreeBuilder builder)
     {
+        return;
         throw new NotImplementedException();
     }
 
     private void RenderNumber(RenderTreeBuilder builder)
     {
+        return;
         throw new NotImplementedException();
     }
 
     private void RenderAttributes(RenderTreeBuilder builder)
     {
+        return;
         throw new NotImplementedException();
     }
 
     private void RenderClasses(RenderTreeBuilder builder)
     {
+        return;
         throw new NotImplementedException();
     }
 
     private void RenderEnum(RenderTreeBuilder builder)
     {
+        Console.WriteLine("RenderEnum PropertyValueRender");
+
         var componentType = typeof(EnumProperty<>)
             .MakeGenericType(Property.EnumType ?? Property.Property.PropertyType);
 

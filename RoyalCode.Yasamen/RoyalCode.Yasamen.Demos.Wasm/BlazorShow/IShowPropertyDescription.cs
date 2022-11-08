@@ -24,7 +24,7 @@ public interface IShowPropertyDescription
 public static class ShowPropertyDescriptionExtensions
 {
     public static bool IsEnum(this IShowPropertyDescription property)
-        => property.Property.PropertyType.IsEnum 
+        => (property.Property.PropertyType.IsEnum || property.Property.PropertyType == typeof(Enum))
             && property.HasEnumValues 
             && property.EnumType is not null;
     

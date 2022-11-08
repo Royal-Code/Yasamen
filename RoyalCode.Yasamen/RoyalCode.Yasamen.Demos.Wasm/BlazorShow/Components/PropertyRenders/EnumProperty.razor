@@ -36,7 +36,7 @@
 
     protected override void OnParametersSet()
     {
-        propertyValue = Context.GetProperty(Property.Name!);
+        propertyValue = Context.GetProperty(Property.Property.Name);
         items = Enum.GetValues(typeof(TEnum)).Cast<TEnum>();
     }
 }
