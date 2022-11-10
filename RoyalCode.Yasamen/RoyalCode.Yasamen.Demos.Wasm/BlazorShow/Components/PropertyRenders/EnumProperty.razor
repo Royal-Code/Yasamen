@@ -1,22 +1,21 @@
 ﻿@using RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Components.Contexts;
 
 <div class="dropdown">
-    <div class="dropdown-selected">
+    <div class="dropdown-toggle" @onclick="HandleToggle">
         <span class="dropdown-value">
             @Value
         </span>
-        <div class="dropdown-toggle">
-        </div>
     </div>
-    <div class="dropdown-menu">
+    <div class="dropdown-menu @show">
         <div class="dropdown-input-filter">
-            
+            <input type="text" placeholder="Type to filter..." @bind=filter />
         </div>
         <div class="dropdown-virtual-scroll">
             <ul class="dropdown-list">
-                @foreach (var item in items)
+                @foreach (var item in GetItems())
                 {
-                    <li class="dropdown-item">
+                    var selected = item.Equals(propertyValue.Value);
+                    <li class="dropdown-item @(selected ? "selected" : "")" @onclick="() => HandleSelect(item)">
                         @item
                     </li>
                 }
@@ -31,7 +30,9 @@
 
     private ScenePropertyValue propertyValue;
     private IEnumerable<TEnum> items;
-    
+    private string? show = null;
+    private string? filter = null;
+
     private string Value => propertyValue?.ValueString ?? string.Empty;
 
     [Parameter, EditorRequired]
@@ -45,4 +46,27 @@
         propertyValue = Context.GetProperty(Property.Property.Name);
         items = Enum.GetValues(typeof(TEnum)).Cast<TEnum>();
     }
+
+    private void HandleToggle(MouseEventArgs args)
+    {
+        if (show is null)
+            show = "show";
+        else
+            show = null;
+    }
+
+    private void HandleSelect(TEnum item)
+    {
+        propertyValue.Value = item;
+        show = null;
+    }
+
+    private IEnumerable<TEnum> GetItems()
+    {
+        if (string.IsNullOrWhiteSpace(filter))
+            return items;
+            
+        return items.Where(item => item.ToString().Contains(filter, StringComparison.OrdinalIgnoreCase));
+    }
 }
+

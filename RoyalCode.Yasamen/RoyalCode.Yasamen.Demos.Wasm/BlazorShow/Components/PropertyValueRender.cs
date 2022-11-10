@@ -37,42 +37,55 @@ public class PropertyValueRender : ComponentBase
 
         else if (Property.IsBoolType())
             RenderBool(builder);
+
+        else
+            RenderCustom(builder);
+    }
+
+    private void RenderCustom(RenderTreeBuilder builder)
+    {
+        builder.OpenRegion(0);
+        builder.AddContent(1, Property.Property.PropertyType.Name);
+        builder.CloseRegion();
     }
 
     private void RenderBool(RenderTreeBuilder builder)
     {
+        RenderCustom(builder);
         return;
         throw new NotImplementedException();
     }
 
     private void RenderText(RenderTreeBuilder builder)
     {
+        RenderCustom(builder);
         return;
         throw new NotImplementedException();
     }
 
     private void RenderNumber(RenderTreeBuilder builder)
     {
+        RenderCustom(builder);
         return;
         throw new NotImplementedException();
     }
 
     private void RenderAttributes(RenderTreeBuilder builder)
     {
+        RenderCustom(builder);
         return;
         throw new NotImplementedException();
     }
 
     private void RenderClasses(RenderTreeBuilder builder)
     {
+        RenderCustom(builder);
         return;
         throw new NotImplementedException();
     }
 
     private void RenderEnum(RenderTreeBuilder builder)
     {
-        Console.WriteLine("RenderEnum PropertyValueRender");
-
         var componentType = typeof(EnumProperty<>)
             .MakeGenericType(Property.EnumType ?? Property.Property.PropertyType);
 
