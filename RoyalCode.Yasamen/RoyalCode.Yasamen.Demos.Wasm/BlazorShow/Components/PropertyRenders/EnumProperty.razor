@@ -1,8 +1,12 @@
 ﻿@using RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Components.Contexts;
 
 <div class="dropdown">
-    <div class="dropdown-toggle">
-        
+    <div class="dropdown-selected">
+        <span class="dropdown-value">
+            @Value
+        </span>
+        <div class="dropdown-toggle">
+        </div>
     </div>
     <div class="dropdown-menu">
         <div class="dropdown-input-filter">
@@ -28,6 +32,8 @@
     private ScenePropertyValue propertyValue;
     private IEnumerable<TEnum> items;
     
+    private string Value => propertyValue?.ValueString ?? string.Empty;
+
     [Parameter, EditorRequired]
     public SceneContext Context { get; set; }
 
