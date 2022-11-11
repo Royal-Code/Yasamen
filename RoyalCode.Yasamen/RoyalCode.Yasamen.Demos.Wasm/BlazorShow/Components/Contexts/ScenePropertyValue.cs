@@ -33,8 +33,22 @@ public class ScenePropertyValue
     
     public bool ValueBool => Value is bool b && b;
     
+    public List<string>? ValueClasses => PropertyDescription.IsHtmlClasses ? (List<string>)Value! : null;
+
     private void InitValue()
     {
+        if (PropertyDescription.IsHtmlAttributes)
+        {
+            Value = new Dictionary<string, object>();
+            return;
+        }
+
+        if (PropertyDescription.IsHtmlClasses)
+        {
+            Value = new List<string>();
+            return;
+        }
+
         if (PropertyDescription.IsEnum())
         {
             if (PropertyDescription.EnumType is not null)
@@ -59,18 +73,6 @@ public class ScenePropertyValue
         if (PropertyDescription.IsNumberType())
         {
             Value = 0;
-            return;
-        }
-
-        if (PropertyDescription.IsHtmlAttributes)
-        {
-            Value = new Dictionary<string, object>();
-            return;
-        }
-
-        if (PropertyDescription.IsHtmlClasses)
-        {
-            Value = new List<string>();
             return;
         }
 

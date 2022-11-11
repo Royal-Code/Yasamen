@@ -1,4 +1,5 @@
 ﻿@using RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Components.Contexts;
+@using System.Diagnostics.CodeAnalysis;
 
 <CascadingValue Value="context">
     <div class="scene-show">
@@ -7,7 +8,7 @@
             Render the scene, the component.
         </div>
         <div class="scene-properties">
-            Render a set of properties for the component.
+            The properties of the component.
 
             @foreach (var property in Scene.Show.Properties)
             {
@@ -19,11 +20,12 @@
 </CascadingValue>
 
 @code {
-    private SceneContext context;
+    private SceneContext? context;
 
     [Parameter, EditorRequired]
     public IScene Scene { get; set; }
 
+    [MemberNotNull(nameof(context), nameof(Scene))]
     protected override void OnParametersSet()
     {
         context = new SceneContext(Scene);

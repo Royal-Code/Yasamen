@@ -18,3 +18,13 @@
     align-items: center;
     padding-left: 8px;
 }
+
+@media (min-width: 1200px) {
+    
+    .scene-property-value {
+        width: 60%;
+    }
+    .scene-property-name {
+        width: 25%;
+    }
+}

@@ -1,0 +1,98 @@
+﻿@using RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Components.Contexts;
+
+<div class="html-classes">
+    <div class="html-classes-content">
+        <div class="html-classes-list">
+            @foreach(var item in Values)
+            {
+                <label class="html-classes-item">
+                    <span>
+                        @item
+                    </span>
+                    <span class="html-classes-item-remove" @onclick="() => Remove(item)">
+                        x
+                    </span>
+                </label>
+            }
+        </div>
+        <button class="html-classes-add" @onclick=HandleToggle>
+            @(show is null ? "+" : "-")
+        </button>
+    </div>
+    <div class="html-classes-dropdown @show">
+        <input type="text" placeholder="Enter the class name..." @bind=newClassValue @ref=inputElement />
+        <button class="html-classes-enter" @onclick=HandleAdd>
+            Add
+        </button>
+        <button class="html-classes-close" @onclick=HandleToggle>
+            x
+        </button>
+    </div>
+</div>
+
+@code {
+
+    private ScenePropertyValue propertyValue;
+    private string? newClassValue;
+    private string? show = null;
+    private bool showing;
+
+    private ElementReference inputElement;
+
+    private List<string> Values => propertyValue.ValueClasses!;
+
+    private void Add(string value)
+    {
+        Values.Add(value);
+    }
+
+    private void Remove(string value)
+    {
+        Values.Remove(value);
+    }
+
+    [Parameter, EditorRequired]
+    public SceneContext Context { get; set; }
+
+    [Parameter, EditorRequired]
+    public IShowPropertyDescription Property { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        propertyValue = Context.GetProperty(Property.Property.Name);
+    }
+
+    private void HandleToggle(MouseEventArgs args)
+    {
+        if (show is null)
+        {
+            show = "show";
+            showing = true;
+        }
+        else
+        {
+            show = null;
+        }
+    }
+
+    private void HandleAdd()
+    {
+        show = null;
+        if (string.IsNullOrEmpty(newClassValue))
+            return;
+        propertyValue.ValueClasses!.Add(newClassValue);
+        newClassValue = null;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+            return;
+
+        if(showing)
+        {
+            await inputElement.FocusAsync();
+            showing = false;
+        }
+    }
+}

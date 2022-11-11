@@ -58,9 +58,11 @@ public class PropertyValueRender : ComponentBase
 
     private void RenderText(RenderTreeBuilder builder)
     {
-        RenderCustom(builder);
-        return;
-        throw new NotImplementedException();
+        builder.OpenComponent(0, typeof(TextProperty));
+        builder.AddAttribute(1, "Context", Context);
+        builder.AddAttribute(2, "Property", Property);
+
+        builder.CloseComponent();
     }
 
     private void RenderNumber(RenderTreeBuilder builder)
@@ -79,9 +81,11 @@ public class PropertyValueRender : ComponentBase
 
     private void RenderClasses(RenderTreeBuilder builder)
     {
-        RenderCustom(builder);
-        return;
-        throw new NotImplementedException();
+        builder.OpenComponent(0, typeof(HtmlClassesProperty));
+        builder.AddAttribute(1, "Context", Context);
+        builder.AddAttribute(2, "Property", Property);
+
+        builder.CloseComponent();
     }
 
     private void RenderEnum(RenderTreeBuilder builder)
