@@ -1,6 +1,7 @@
 ﻿
 .scene-property {
-    display: flex;    
+    display: flex;
+    margin-bottom: .5rem;
 }
 
 .scene-property-name {

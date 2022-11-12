@@ -19,6 +19,8 @@ public interface IShowPropertyDescription
     bool IsHtmlAttributes { get; }
 
     bool IsHtmlClasses { get; }
+
+    bool IsCaptureUnmatchedValues { get; }
 }
 
 public static class ShowPropertyDescriptionExtensions

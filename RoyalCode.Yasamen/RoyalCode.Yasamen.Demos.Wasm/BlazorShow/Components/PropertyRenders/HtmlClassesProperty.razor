@@ -44,11 +44,13 @@
     private void Add(string value)
     {
         Values.Add(value);
+        propertyValue.StateHasChanged();
     }
 
     private void Remove(string value)
     {
         Values.Remove(value);
+        propertyValue.StateHasChanged();
     }
 
     [Parameter, EditorRequired]
@@ -80,7 +82,7 @@
         show = null;
         if (string.IsNullOrEmpty(newClassValue))
             return;
-        propertyValue.ValueClasses!.Add(newClassValue);
+        Add(newClassValue);
         newClassValue = null;
     }
 

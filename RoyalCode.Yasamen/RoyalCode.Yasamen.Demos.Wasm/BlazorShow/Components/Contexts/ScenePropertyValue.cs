@@ -3,10 +3,12 @@
 public class ScenePropertyValue
 {
     private readonly IScene scene;
+    private readonly Action changeStateCallback;
 
-    public ScenePropertyValue(IShowPropertyDescription p, IScene scene)
+    public ScenePropertyValue(IShowPropertyDescription p, IScene scene, Action changeStateCallback)
     {
         this.scene = scene;
+        this.changeStateCallback = changeStateCallback;
         PropertyDescription = p;
 
         InitValue();
@@ -35,11 +37,24 @@ public class ScenePropertyValue
     
     public List<string>? ValueClasses => PropertyDescription.IsHtmlClasses ? (List<string>)Value! : null;
 
+    public Dictionary<string, string>? ValueAttributes => PropertyDescription.IsHtmlAttributes ? (Dictionary<string, string>) Value! : null;
+
+    public IEnumerable<KeyValuePair<string, object>> GetMultipleAttributes()
+        => ValueAttributes?.Select(p => new KeyValuePair<string, object>(p.Key, p.Value)) ?? Enumerable.Empty<KeyValuePair<string, object>>();
+
+    public Dictionary<string, object> GetAttributesDictionary()
+        => ValueAttributes?.ToDictionary(p => p.Key, p => (object)p.Value) ?? new Dictionary<string, object>();
+
+    public string GetClasses()
+        => string.Join(" ", ValueClasses ?? Enumerable.Empty<string>());
+
+    public void StateHasChanged() => changeStateCallback();
+
     private void InitValue()
     {
         if (PropertyDescription.IsHtmlAttributes)
         {
-            Value = new Dictionary<string, object>();
+            Value = new Dictionary<string, string>();
             return;
         }
 

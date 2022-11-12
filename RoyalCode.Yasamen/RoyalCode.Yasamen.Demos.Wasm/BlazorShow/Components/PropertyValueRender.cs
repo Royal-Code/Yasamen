@@ -74,9 +74,11 @@ public class PropertyValueRender : ComponentBase
 
     private void RenderAttributes(RenderTreeBuilder builder)
     {
-        RenderCustom(builder);
-        return;
-        throw new NotImplementedException();
+        builder.OpenComponent(0, typeof(HtmlAttributesProperty));
+        builder.AddAttribute(1, "Context", Context);
+        builder.AddAttribute(2, "Property", Property);
+
+        builder.CloseComponent();
     }
 
     private void RenderClasses(RenderTreeBuilder builder)

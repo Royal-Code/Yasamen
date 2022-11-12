@@ -58,6 +58,7 @@
     private void HandleSelect(TEnum item)
     {
         propertyValue.Value = item;
+        propertyValue.StateHasChanged();
         show = null;
     }
 

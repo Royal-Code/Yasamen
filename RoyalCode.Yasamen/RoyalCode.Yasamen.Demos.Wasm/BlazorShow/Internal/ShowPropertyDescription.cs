@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.AspNetCore.Components;
+using System.ComponentModel;
 using System.Reflection;
 
 namespace RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Internal;
@@ -28,14 +29,21 @@ public class ShowPropertyDescription : IShowPropertyDescription
 
     public bool IsHtmlClasses { get; set; }
 
+    public bool IsCaptureUnmatchedValues { get; private set; }
+
     private void InitValues()
     {
         Name = Property.Name;
 
         var descriptionAttribute = Property.GetCustomAttribute<DescriptionAttribute>();
         Description = descriptionAttribute?.Description ?? Name;
-        
-        if (Name == "AdditionalAttributes")
+
+        if (Property.GetCustomAttribute<ParameterAttribute>()!.CaptureUnmatchedValues)
+        {
+            IsHtmlAttributes = true;
+            IsCaptureUnmatchedValues = true;
+        }
+        else if (Name == "AdditionalAttributes")
         {
             IsHtmlAttributes = true;
         }

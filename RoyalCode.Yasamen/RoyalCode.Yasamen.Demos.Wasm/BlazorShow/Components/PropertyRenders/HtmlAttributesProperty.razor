@@ -1,0 +1,139 @@
+﻿@using RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Components.Contexts;
+
+<div class="html-attributes">
+    <div class="html-attributes-content">
+        <div class="html-attributes-list">
+            @foreach (var item in Values)
+            {
+                <label class="html-attributes-item">
+                    <span>
+                        @item.Key
+                    </span>
+                    <span>
+                        =
+                    </span>
+                    <span>
+                        @item.Value
+                    </span>
+                    <span class="html-attributes-item-edit" @onclick="() => HandleEdit(item)">
+                        edit
+                    </span>
+                    <span class="html-attributes-item-remove" @onclick="() => Remove(item.Key)">
+                        x
+                    </span>
+                </label>
+            }
+        </div>
+        <button class="html-attributes-add" @onclick=HandleToggle>
+            @(show is null ? "+" : "-")
+        </button>
+    </div>
+    <div class="html-attributes-dropdown @show">
+        <input type="text" placeholder="Enter the attribute name..." @bind=attrkey @ref=inputkeyElement />
+        <span class="html-attributes-equals">=</span>
+        <input type="text" placeholder="Enter the attribute value..." @bind=attrValue @ref=inputValueElement />
+        <button class="html-classes-enter" @onclick=HandleSet>
+            Add
+        </button>
+        <button class="html-classes-close" @onclick=HandleClose>
+            x
+        </button>
+    </div>
+</div>
+
+@code {
+    private ScenePropertyValue propertyValue;
+    private string? attrkey;
+    private string? attrValue;
+    private string? show = null;
+    private bool showing;
+
+    private ElementReference inputkeyElement;
+    private ElementReference inputValueElement;
+
+    private Dictionary<string, string> Values => propertyValue.ValueAttributes!;
+
+    private void Set(string key, string value)
+    {
+        Values[key] = value;
+        propertyValue.StateHasChanged();
+    }
+
+    private void Remove(string key)
+    {
+        Values.Remove(key);
+        propertyValue.StateHasChanged();
+    }
+
+    [Parameter, EditorRequired]
+    public SceneContext Context { get; set; }
+
+    [Parameter, EditorRequired]
+    public IShowPropertyDescription Property { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        propertyValue = Context.GetProperty(Property.Property.Name);
+    }
+
+    private void HandleToggle()
+    {
+        if (show is null)
+        {
+            show = "show";
+            showing = true;
+        }
+        else
+        {
+            show = null;
+        }
+    }
+
+    private void HandleClose()
+    {
+        HandleToggle();
+        attrkey = null;
+        attrValue = null;
+    }
+
+    private void HandleEdit(KeyValuePair<string, string> item)
+    {
+        attrkey = item.Key;
+        attrValue = item.Value;
+        
+        if (show is null)
+        {
+            show = "show";
+        }
+        
+        showing = true;
+    }
+
+    private void HandleSet()
+    {
+        show = null;
+
+        if (string.IsNullOrEmpty(attrkey))
+            return;
+
+        Set(attrkey, attrValue);
+
+        attrkey = null;
+        attrValue = null;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+            return;
+
+        if (showing)
+        {
+            if (string.IsNullOrEmpty(attrkey))
+                await inputkeyElement.FocusAsync();
+            else
+                await inputValueElement.FocusAsync();
+            showing = false;
+        }
+    }
+}
