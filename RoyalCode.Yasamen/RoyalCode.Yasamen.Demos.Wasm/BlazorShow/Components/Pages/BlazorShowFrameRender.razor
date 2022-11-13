@@ -1,0 +1,52 @@
+﻿@page "/render/{component}/{scene}/{base64SerializedContext}"
+@using Microsoft.AspNetCore.WebUtilities;
+@using RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Components.Contexts;
+@using System.Text;
+
+@layout BlazorShowLayout;
+
+@inject ICatalog Catalog
+@inject NavigationManager NavigationManager;
+
+<div style="display:flex; justify-content:space-around;">
+    @if (routedScene is null)
+    {
+        <span>
+            Component Not found!
+        </span>
+    }
+    else
+    {
+        <CascadingValue Value="context">
+            <SceneRender />
+        </CascadingValue>
+    }
+</div>
+
+@code {
+    private IScene? routedScene;
+    private SceneContext context;
+
+    [Parameter]
+    public string? Component { get; set; }
+
+    [Parameter]
+    public string? Scene { get; set; }
+
+    [Parameter]
+    public string? Base64SerializedContext { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        var show = Catalog.ShowDescriptions.FirstOrDefault(s => s.Route == Component);
+        routedScene = show?.Scenary.FirstOrDefault(s => s.Name == Scene);
+        if (routedScene is null)
+            return;
+
+        string json = Encoding.UTF8.GetString(Base64UrlTextEncoder.Decode(Base64SerializedContext));
+
+        Console.WriteLine("Frame JSON: " + json);
+
+        context = SceneContext.Deserialize(routedScene, json);
+    }
+}

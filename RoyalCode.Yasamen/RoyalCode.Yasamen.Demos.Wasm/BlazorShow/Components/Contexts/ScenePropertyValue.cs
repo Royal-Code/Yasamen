@@ -1,15 +1,15 @@
-﻿namespace RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Components.Contexts;
+﻿using System.Text.Json;
+
+namespace RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Components.Contexts;
 
 public class ScenePropertyValue
 {
-    private readonly IScene scene;
     private readonly Action changeStateCallback;
 
-    public ScenePropertyValue(IShowPropertyDescription p, IScene scene, Action changeStateCallback)
+    public ScenePropertyValue(IShowPropertyDescription propertyDescription, Action changeStateCallback)
     {
-        this.scene = scene;
         this.changeStateCallback = changeStateCallback;
-        PropertyDescription = p;
+        PropertyDescription = propertyDescription;
 
         InitValue();
     }
@@ -96,5 +96,95 @@ public class ScenePropertyValue
             Value = false;
             return;
         }
+    }
+
+    internal PropertySerialization Serialize()
+    {
+        return new PropertySerialization
+        {
+            PropertyName = PropertyDescription.Property.Name,
+            SerializedValue = SerializeValue()
+        };
+    }
+
+    private string SerializeValue()
+    {
+        if (PropertyDescription.IsHtmlAttributes)
+        {
+            return JsonSerializer.Serialize(ValueAttributes);
+        }
+
+        if (PropertyDescription.IsHtmlClasses)
+        {
+            return JsonSerializer.Serialize(ValueClasses);
+        }
+
+        if (PropertyDescription.IsEnum())
+        {
+            return Value?.ToString() ?? string.Empty;
+        }
+
+        if (PropertyDescription.IsStringType())
+        {
+            return Value?.ToString() ?? string.Empty;
+        }
+
+        if (PropertyDescription.IsNumberType())
+        {
+            return Value?.ToString() ?? string.Empty;
+        }
+
+        if (PropertyDescription.IsBoolType())
+        {
+            return Value?.ToString() ?? string.Empty;
+        }
+
+        return string.Empty;
+    }
+
+    internal void DeserializeValue(PropertySerialization valueSerialization)
+    {
+        if (PropertyDescription.IsHtmlAttributes)
+        {
+            Value = JsonSerializer.Deserialize<Dictionary<string, string>>(valueSerialization.SerializedValue);
+            return;
+        }
+
+        if (PropertyDescription.IsHtmlClasses)
+        {
+            Value = JsonSerializer.Deserialize<List<string>>(valueSerialization.SerializedValue);
+            return;
+        }
+
+        if (PropertyDescription.IsEnum())
+        {
+            Value = Enum.Parse(PropertyDescription.EnumType!, valueSerialization.SerializedValue);
+            return;
+        }
+
+        if (PropertyDescription.IsStringType())
+        {
+            Value = valueSerialization.SerializedValue;
+            return;
+        }
+
+        if (PropertyDescription.IsNumberType())
+        {
+            Value = Convert.ChangeType(valueSerialization.SerializedValue, PropertyDescription.Property.PropertyType);
+            return;
+        }
+
+        if (PropertyDescription.IsBoolType())
+        {
+            Value = Convert.ChangeType(valueSerialization.SerializedValue, PropertyDescription.Property.PropertyType);
+            return;
+        }
+    }
+
+    internal class PropertySerialization
+    {
+        public string PropertyName { get; set; }
+
+        public string? SerializedValue { get; set; }
     }
 }

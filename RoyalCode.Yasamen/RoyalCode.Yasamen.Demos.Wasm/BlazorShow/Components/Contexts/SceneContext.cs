@@ -1,4 +1,6 @@
-﻿namespace RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Components.Contexts;
+﻿using System.Text.Json;
+
+namespace RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Components.Contexts;
 
 public class SceneContext
 {
@@ -14,7 +16,7 @@ public class SceneContext
         callbackDelegate = PropertyStateHasChanged;
 
         Scene = scene;
-        Values = scene.Show.Properties.Select(p => new ScenePropertyValue(p, scene, callbackDelegate)).ToList();
+        Values = scene.Show.Properties.Select(p => new ScenePropertyValue(p, callbackDelegate)).ToList();
     }
 
     public ScenePropertyValue GetProperty(string name)
@@ -30,4 +32,45 @@ public class SceneContext
     public void AddPropertyChangedListener(Action callback) => propertyChangedListeners.AddLast(callback);
 
     public void RemovePropertyChangedListener(Action callback) => propertyChangedListeners.Remove(callback);
+
+    internal string Serialize()
+    {
+        var valuesSerialized = new LinkedList<ScenePropertyValue.PropertySerialization>();
+
+        foreach (var value in Values)
+        {
+            valuesSerialized.AddLast(value.Serialize());
+        }
+
+        var contextSerialization = new ContextSerialization()
+        {
+            Values = valuesSerialized
+        };
+
+        return JsonSerializer.Serialize(contextSerialization);
+    }
+
+    internal static SceneContext Deserialize(IScene scene, string json)
+    {
+        var contextSerialization = JsonSerializer.Deserialize<ContextSerialization>(json)!;
+
+        var context = new SceneContext(scene);
+
+        Console.WriteLine("Deserializing...");
+
+        foreach (var valueSerialization in contextSerialization.Values)
+        {
+            var value = context.GetProperty(valueSerialization.PropertyName);
+            value.DeserializeValue(valueSerialization);
+
+            Console.WriteLine($"Deserialize: {valueSerialization.PropertyName} = {value.Value}");
+        }
+
+        return context;
+    }
+
+    internal class ContextSerialization
+    {
+        public IEnumerable<ScenePropertyValue.PropertySerialization> Values { get; set; }
+    }
 }
