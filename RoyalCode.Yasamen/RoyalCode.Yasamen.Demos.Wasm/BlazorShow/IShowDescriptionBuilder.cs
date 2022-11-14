@@ -9,6 +9,7 @@ public interface IShowDescriptionBuilder<TComponent>
     IShowDescriptionBuilder<TComponent> Group(string groupName);
     IShowDescriptionBuilder<TComponent> Name(string name);
     IShowDescriptionBuilder<TComponent> Route(string route);
-    IShowDescriptionBuilder<TComponent> AddScene(Action<ISceneBuilder> configure);
+    IShowDescriptionBuilder<TComponent> RenderInFrame();
+    IShowDescriptionBuilder<TComponent> AddScene(Action<ISceneBuilder<TComponent>> configure);
     IShowDescriptionBuilder<TComponent> Properties(Action<IShowProperties<TComponent>> configure);
 }

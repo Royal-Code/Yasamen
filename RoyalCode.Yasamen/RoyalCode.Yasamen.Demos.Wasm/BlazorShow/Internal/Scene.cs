@@ -5,13 +5,39 @@ namespace RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Internal;
 public class Scene<TComponent> : IScene<TComponent>
     where TComponent : class, IComponent
 {
+    private ShowRenderKind? renderKind;
+    private readonly List<IScenePropertyDescription> sceneProperties = new();
+
     public Scene(IShowDescription show)
     {
         Show = show;
     }
     
     public bool IsDefault { get; set; }
+    
     public string? Name { get; set; }
+    
     public string? Description { get; set; }
+    
     public IShowDescription Show { get; }
+    
+    public ShowRenderKind? RenderKind 
+    {
+        get => renderKind ?? Show.RenderKind;
+        set => renderKind = value;
+    }
+    
+    public FrameOptions FrameOptions { get; } = new FrameOptions();
+
+    public IEnumerable<IScenePropertyDescription> SceneProperties => sceneProperties;
+
+    public string GetRoute()
+    {
+        var route = Show.Route ?? Show.Name ?? Show.ComponentType.Name;
+        
+        if (IsDefault)
+            return route;
+        
+        return $"{route}/{Name}";
+    }
 }

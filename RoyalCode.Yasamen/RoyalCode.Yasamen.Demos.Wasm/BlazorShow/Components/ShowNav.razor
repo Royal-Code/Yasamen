@@ -8,7 +8,7 @@
             @Show.Name
         </span>
         <div class="component-scenes">
-            @foreach (var scene in Show.Scenary)
+            @foreach (var scene in Show.Scenes)
             {
                 <SceneNav Scene="scene" @key=scene.Name/>
             }
@@ -16,7 +16,7 @@
     }
     else
     {
-        <a class="component-name scene-link" title="@Show.Description" href="@Options.MakeRoute(Show.Route)">
+        <a class="component-name scene-link" title="@Show.Description" href="@Options.MakeRoute(Show.GetDefaultRoute())">
             @Show.Name
         </a>
     }

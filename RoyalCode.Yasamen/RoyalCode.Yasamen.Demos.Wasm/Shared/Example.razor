@@ -5,9 +5,9 @@
 
 @code {
 
-    private string JustifyClass => Justify ? "justify" : null;
+    private string? JustifyClass => Justify ? "justify" : null;
 
-    private string CompactClass => Compact ? "compact" : null;
+    private string? CompactClass => Compact ? "compact" : null;
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }

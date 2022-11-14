@@ -4,8 +4,10 @@ using RoyalCode.Yasamen.Commons.Modules;
 using RoyalCode.Yasamen.Demos.Wasm;
 using RoyalCode.Yasamen.Demos.Wasm.Models;
 using RoyalCode.Yasamen.Demos.Wasm.Shows;
+using RoyalCode.Yasamen.Demos.Wasm.Shows.Layouts;
 using RoyalCode.Yasamen.Forms.Modules;
 using RoyalCode.Yasamen.Icons;
+using RoyalCode.Yasamen.Layout.Admin;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -35,6 +37,7 @@ builder.Services.Subscribes<DCService>();
 builder.Services.AddBlazorShow(b =>
 {
     b.AddShow<IconShow, Icon>();
+    b.AddShow<AppLayoutShow, AppLayout>();
 });
 
 RoyalCode.Yasamen.Commons.Tracer.IsActive = true;

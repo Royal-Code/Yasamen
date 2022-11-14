@@ -8,7 +8,7 @@
 @inject ICatalog Catalog
 @inject NavigationManager NavigationManager;
 
-<div style="display:flex; justify-content:space-around;">
+<div style="@Styles">
     @if (routedScene is null)
     {
         <span>
@@ -27,6 +27,10 @@
     private IScene? routedScene;
     private SceneContext context;
 
+    private string Styles => routedScene?.FrameOptions.CentralizeContent ?? false
+        ? "display: flex; justify-content: center; align-items: center;" 
+        : "display: block;";
+
     [Parameter]
     public string? Component { get; set; }
 
@@ -38,8 +42,8 @@
 
     protected override void OnParametersSet()
     {
-        var show = Catalog.ShowDescriptions.FirstOrDefault(s => s.Route == Component);
-        routedScene = show?.Scenary.FirstOrDefault(s => s.Name == Scene);
+        var show = Catalog.ShowDescriptions.FirstOrDefault(s => (s.Route ?? s.Name) == Component);
+        routedScene = show?.Scenes.FirstOrDefault(s => s.Name == Scene);
         if (routedScene is null)
             return;
 

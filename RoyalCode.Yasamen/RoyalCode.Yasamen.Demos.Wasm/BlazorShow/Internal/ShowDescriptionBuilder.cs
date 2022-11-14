@@ -12,7 +12,7 @@ public class ShowDescriptionBuilder<TComponent> : IShowDescriptionBuilder<TCompo
         this.showDescription = showDescription;
     }
 
-    public IShowDescriptionBuilder<TComponent> AddScene(Action<ISceneBuilder> configure)
+    public IShowDescriptionBuilder<TComponent> AddScene(Action<ISceneBuilder<TComponent>> configure)
     {
         var scene = new Scene<TComponent>(showDescription);
         var builder = new SceneBuilder<TComponent>(scene);
@@ -49,6 +49,12 @@ public class ShowDescriptionBuilder<TComponent> : IShowDescriptionBuilder<TCompo
     {
         var showProperties = new ShowProperties<TComponent>(showDescription);
         configure(showProperties);
+        return this;
+    }
+
+    public IShowDescriptionBuilder<TComponent> RenderInFrame()
+    {
+        showDescription.RenderKind = ShowRenderKind.Frame;
         return this;
     }
 }

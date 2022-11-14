@@ -5,13 +5,19 @@
     <div class="scene-show">
         <h3>@Scene.Show.Name - @Scene.Name</h3>
         <div class="scene-component">
-            <SceneRender />
-            <SceneFrame />
+            @if (Scene.RenderKind == ShowRenderKind.Direct)
+            {
+                <SceneRender />
+            }
+            else
+            {
+                <SceneFrame />
+            }
         </div>
         <div class="scene-properties">
             The properties of the component.
 
-            @foreach (var property in Scene.Show.Properties)
+            @foreach (var property in Scene.Show.Properties.Where(p => !p.IsHidden))
             {
                 <SceneProperty Property="property" @key=@property.Name />
             }

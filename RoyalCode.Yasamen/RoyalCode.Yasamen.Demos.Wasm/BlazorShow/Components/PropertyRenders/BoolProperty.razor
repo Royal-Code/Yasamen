@@ -1,0 +1,29 @@
+﻿@using RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Components.Contexts;
+
+<input type="checkbox" @bind="@Value" />
+
+@code {
+
+    private ScenePropertyValue propertyValue;
+
+    private bool Value
+    {
+        get => propertyValue.ValueBool;
+        set
+        {
+            propertyValue.Value = value;
+            propertyValue.StateHasChanged();
+        }
+    }
+
+    [Parameter, EditorRequired]
+    public SceneContext Context { get; set; }
+
+    [Parameter, EditorRequired]
+    public IShowPropertyDescription Property { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        propertyValue = Context.GetProperty(Property.Property.Name);
+    }
+}

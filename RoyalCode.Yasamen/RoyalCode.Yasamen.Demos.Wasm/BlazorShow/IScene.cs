@@ -9,14 +9,17 @@ public interface IScene
     string? Name { get; }
 
     string? Description { get; }
+
+    ShowRenderKind? RenderKind { get; set; }
+
+    FrameOptions FrameOptions { get; }
+
+    IEnumerable<IScenePropertyDescription> SceneProperties { get; }
+
+    string GetRoute();
 }
 
 public interface IScene<TComponent> : IScene
 {
 
-}
-
-public interface ISceneBuilder
-{
-    ISceneBuilder Default();
 }

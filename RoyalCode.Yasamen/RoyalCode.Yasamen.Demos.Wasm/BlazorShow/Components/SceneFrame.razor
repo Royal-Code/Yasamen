@@ -6,12 +6,13 @@
 
 @inject NavigationManager NavigationManager;
 
-<iframe src="@Url" style="height: 45vh; width: 100%; border: none;"></iframe>
-
+<iframe src="@Url" style="@Styles"></iframe>
 
 @code {
     private string Url;
     private readonly Action changeListenerDelegate;
+
+    private string Styles => $"height: {Context.Scene.FrameOptions.Height}; width: {Context.Scene.FrameOptions.Width}; border: none; overflow: scroll;";
 
     public SceneFrame()
     {
@@ -28,7 +29,7 @@
 
     protected override void OnParametersSet()
     {
-        var route = Context.Scene.Show.Route;
+        var route = Context.Scene.Show.GetDefaultRoute();
         var scene = Context.Scene.Name;
         var base64ContextSerialized = Base64UrlTextEncoder.Encode(Encoding.UTF8.GetBytes(Context.Serialize()));
         Url = $"/render/{route}/{scene}/{base64ContextSerialized}";

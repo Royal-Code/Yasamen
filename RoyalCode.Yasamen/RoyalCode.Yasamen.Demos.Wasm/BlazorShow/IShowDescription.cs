@@ -12,9 +12,13 @@ public interface IShowDescription
     
     string? Route { get; }
 
+    public ShowRenderKind RenderKind { get; set; }
+
     IEnumerable<IShowPropertyDescription> Properties { get; }
 
-    IEnumerable<IScene> Scenary { get; }
+    IEnumerable<IScene> Scenes { get; }
 
     bool HasMultipleScenes { get; }
+
+    string GetDefaultRoute();
 }

@@ -37,13 +37,13 @@
 
         if (Component is not null)
         {
-            var show = Catalog.ShowDescriptions.FirstOrDefault(s => s.Route == Component);
+            var show = Catalog.ShowDescriptions.FirstOrDefault(s => (s.Route ?? s.Name) == Component);
             if (show is null)
                 return;
 
             routedScene = Scene is null
-                ? show.Scenary.FirstOrDefault()
-                : show.Scenary.FirstOrDefault(s => s.Name == Scene);
+                ? show.Scenes.FirstOrDefault()
+                : show.Scenes.FirstOrDefault(s => s.Name == Scene);
         }
     }
 }

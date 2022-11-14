@@ -51,9 +51,11 @@ public class PropertyValueRender : ComponentBase
 
     private void RenderBool(RenderTreeBuilder builder)
     {
-        RenderCustom(builder);
-        return;
-        throw new NotImplementedException();
+        builder.OpenComponent(0, typeof(BoolProperty));
+        builder.AddAttribute(1, "Context", Context);
+        builder.AddAttribute(2, "Property", Property);
+
+        builder.CloseComponent();
     }
 
     private void RenderText(RenderTreeBuilder builder)

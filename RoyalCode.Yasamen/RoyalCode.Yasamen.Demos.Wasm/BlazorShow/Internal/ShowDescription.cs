@@ -16,13 +16,18 @@ public class ShowDescription : IShowDescription
     }
     
     public Type ComponentType { get; }
-    public IEnumerable<IScene> Scenary => scenes;
+    public IEnumerable<IScene> Scenes => scenes;
     public IEnumerable<IShowPropertyDescription> Properties => propertyDescriptions;
     public string? Description { get; internal set; }
     public string? Group { get; internal set; }
     public string? Name { get; internal set; }
     public string? Route { get; internal set; }
     public bool HasMultipleScenes => scenes.Count > 1;
+
+    public ShowRenderKind RenderKind { get; set; }
+
+    public string GetDefaultRoute() => Scenes.First().GetRoute();
+
 
     private void InitializePropertyDescriptions()
     {

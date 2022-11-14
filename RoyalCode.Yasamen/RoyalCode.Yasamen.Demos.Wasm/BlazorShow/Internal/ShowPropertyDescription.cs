@@ -57,5 +57,9 @@ public class ShowPropertyDescription : IShowPropertyDescription
             HasEnumValues = true;
             EnumType = Property.PropertyType;
         }
+        else if (Property.PropertyType == typeof(RenderFragment))
+        {
+            IsHidden = true;
+        }
     }
 }
