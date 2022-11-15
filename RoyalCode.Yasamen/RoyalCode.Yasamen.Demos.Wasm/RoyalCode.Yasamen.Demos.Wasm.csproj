@@ -1,34 +1,34 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-  <ItemGroup>
-	<Content Remove="wwwroot\sample-code\*.razor" />
-    <None Include="wwwroot\sample-code\*.razor">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<Content Remove="wwwroot\sample-code\*.razor" />
+		<None Include="wwwroot\sample-code\*.razor">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.1" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.0" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.Extensions.Localization" Version="7.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\RoyalCode.Yasamen.Components.OffCanvas\RoyalCode.Yasamen.Components.OffCanvas.csproj" />
-    <ProjectReference Include="..\RoyalCode.Yasamen.Forms.Flex\RoyalCode.Yasamen.Forms.Flex.csproj" />
-    <ProjectReference Include="..\RoyalCode.Yasamen.Forms\RoyalCode.Yasamen.Forms.csproj" />
-    <ProjectReference Include="..\RoyalCode.Yasamen.Icons.Bootstrap\RoyalCode.Yasamen.Icons.Bootstrap.csproj" />
-    <ProjectReference Include="..\RoyalCode.Yasamen.Layout.Admin\RoyalCode.Yasamen.Layout.Admin.csproj" />
-    <ProjectReference Include="..\RoyalCode.Yasamen.Layout\RoyalCode.Yasamen.Layout.csproj" />
-    <ProjectReference Include="..\RoyalCode.Yasamen.Localization\RoyalCode.Yasamen.Localization.csproj" />
-    <ProjectReference Include="..\RoyalCode.Yasamen.Spinners\RoyalCode.Yasamen.Spinners.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\RoyalCode.Yasamen.Components.OffCanvas\RoyalCode.Yasamen.Components.OffCanvas.csproj" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.Forms.Flex\RoyalCode.Yasamen.Forms.Flex.csproj" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.Forms\RoyalCode.Yasamen.Forms.csproj" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.Icons.Bootstrap\RoyalCode.Yasamen.Icons.Bootstrap.csproj" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.Layout.Admin\RoyalCode.Yasamen.Layout.Admin.csproj" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.Layout\RoyalCode.Yasamen.Layout.csproj" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.Localization\RoyalCode.Yasamen.Localization.csproj" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.Spinners\RoyalCode.Yasamen.Spinners.csproj" />
+	</ItemGroup>
 
 </Project>

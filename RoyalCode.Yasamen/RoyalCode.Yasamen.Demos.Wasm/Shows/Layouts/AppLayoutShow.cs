@@ -1,4 +1,6 @@
 ﻿using RoyalCode.Yasamen.Demos.Wasm.BlazorShow;
+using RoyalCode.Yasamen.Icons;
+using RoyalCode.Yasamen.Icons.Bootstrap;
 using RoyalCode.Yasamen.Layout.Admin;
 
 namespace RoyalCode.Yasamen.Demos.Wasm.Shows.Layouts;
@@ -12,10 +14,18 @@ public class AppLayoutShow : IShow<AppLayout>
             .Name("App Layout")
             .Description("This is a layout for the application.")
             .RenderInFrame()
-            .Properties(p =>
-            {
-                
-            })
-            .AddScene(s => s.Default().RenderInFrame(o => o.CentralizeContent = false));
+            .AddScene(s => s.Default()
+                .RenderInFrame(o => o.CentralizeContent = false)
+                .Properties(ps =>
+                {
+                    ps.Property(l => l.NavBarShadow).DefaultValue(true);
+                    ps.Property(l => l.TopStart)
+                        .RenderComponent<AppBrand>()
+                        .RenderComponent<AppMenuButton>(b =>
+                        {
+                            b.Property(m => m.ChildContent)
+                                .RenderComponent<Icon>(i => i.Property(ic => ic.Kind).SetValue(BsIconNames.List));
+                        });
+                }));
     }
 }

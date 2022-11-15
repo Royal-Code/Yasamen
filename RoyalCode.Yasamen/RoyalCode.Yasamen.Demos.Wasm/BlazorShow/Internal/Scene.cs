@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using System.Reflection;
 
 namespace RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Internal;
 
@@ -6,11 +7,12 @@ public class Scene<TComponent> : IScene<TComponent>
     where TComponent : class, IComponent
 {
     private ShowRenderKind? renderKind;
-    private readonly List<IScenePropertyDescription> sceneProperties = new();
+    private readonly List<ScenePropertyDescription> sceneProperties;
 
     public Scene(IShowDescription show)
     {
         Show = show;
+        sceneProperties = show.Properties.Select(p => new ScenePropertyDescription(p)).ToList();
     }
     
     public bool IsDefault { get; set; }
@@ -39,5 +41,10 @@ public class Scene<TComponent> : IScene<TComponent>
             return route;
         
         return $"{route}/{Name}";
+    }
+
+    public ScenePropertyDescription? FindPropertyDescription(PropertyInfo propertyInfo)
+    {
+        return sceneProperties.FirstOrDefault(p => p.Property == propertyInfo);
     }
 }

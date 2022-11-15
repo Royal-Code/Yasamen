@@ -11,7 +11,7 @@ public class PropertyValueRender : ComponentBase
     public SceneContext Context { get; set; }
 
     [Parameter, EditorRequired]
-    public IShowPropertyDescription Property { get; set; }
+    public IScenePropertyDescription Property { get; set; }
 
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {

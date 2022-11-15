@@ -2,5 +2,7 @@
 
 public interface IScenePropertyDescription : IShowPropertyDescription
 {
-    object? DefaultValue { get; set; }
+    object? DefaultValue { get; }
+
+    bool HasComponents { get; }
 }

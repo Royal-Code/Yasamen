@@ -32,6 +32,13 @@ public class SceneBuilder<TComponent> : ISceneBuilder<TComponent>
         return this;
     }
 
+    public ISceneBuilder<TComponent> Properties(Action<ISceneProperties<TComponent>> configure)
+    {
+        var properties = new SceneProperties<TComponent>(scene);
+        configure(properties);
+        return this;
+    }
+
     public ISceneBuilder<TComponent> RenderInFrame(Action<FrameOptions>? configure = null)
     {
         scene.RenderKind = ShowRenderKind.Frame;

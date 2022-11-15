@@ -16,7 +16,7 @@ public class SceneContext
         callbackDelegate = PropertyStateHasChanged;
 
         Scene = scene;
-        Values = scene.Show.Properties.Select(p => new ScenePropertyValue(p, callbackDelegate)).ToList();
+        Values = scene.SceneProperties.Select(p => new ScenePropertyValue(p, callbackDelegate)).ToList();
     }
 
     public ScenePropertyValue GetProperty(string name)

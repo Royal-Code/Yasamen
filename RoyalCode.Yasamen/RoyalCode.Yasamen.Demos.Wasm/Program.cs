@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using RoyalCode.Yasamen.Commons.Modules;
 using RoyalCode.Yasamen.Demos.Wasm;
 using RoyalCode.Yasamen.Demos.Wasm.Models;
-using RoyalCode.Yasamen.Demos.Wasm.Shows;
+using RoyalCode.Yasamen.Demos.Wasm.Shows.Graphics;
 using RoyalCode.Yasamen.Demos.Wasm.Shows.Layouts;
 using RoyalCode.Yasamen.Forms.Modules;
 using RoyalCode.Yasamen.Icons;

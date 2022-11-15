@@ -45,12 +45,12 @@ header {
     padding-top: var(--b-header--height);
     background-color: var(--b-nav-menu--background-color);
     transition: var(--b-theme-transition);
+    min-width: var(--b-nav-menu--width);
+    width: var(--b-nav-menu--width);
 }
 
 .app-menu-original .app-menu-content {
     left: 0;
-    min-width: var(--b-nav-menu--width);
-    width: var(--b-nav-menu--width);
 }
 
 .app-menu-interacted .app-menu-content {

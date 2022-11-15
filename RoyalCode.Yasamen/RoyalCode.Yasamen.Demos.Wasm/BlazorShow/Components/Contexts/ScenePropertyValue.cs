@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Internal;
+using System.Text.Json;
 
 namespace RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Components.Contexts;
 
@@ -6,7 +7,7 @@ public class ScenePropertyValue
 {
     private readonly Action changeStateCallback;
 
-    public ScenePropertyValue(IShowPropertyDescription propertyDescription, Action changeStateCallback)
+    public ScenePropertyValue(IScenePropertyDescription propertyDescription, Action changeStateCallback)
     {
         this.changeStateCallback = changeStateCallback;
         PropertyDescription = propertyDescription;
@@ -14,7 +15,7 @@ public class ScenePropertyValue
         InitValue();
     }
 
-    public IShowPropertyDescription PropertyDescription { get; }
+    public IScenePropertyDescription PropertyDescription { get; }
 
     public object? Value { get; set; }
 
@@ -37,13 +38,19 @@ public class ScenePropertyValue
     
     public List<string>? ValueClasses => PropertyDescription.IsHtmlClasses ? (List<string>)Value! : null;
 
-    public Dictionary<string, string>? ValueAttributes => PropertyDescription.IsHtmlAttributes ? (Dictionary<string, string>) Value! : null;
+    public List<FragmentComponentDescription>? ValueFragmentComponents => PropertyDescription.HasComponents
+        ? (List<FragmentComponentDescription>)Value! : null;
+
+    public Dictionary<string, string>? ValueAttributes 
+        => PropertyDescription.IsHtmlAttributes ? (Dictionary<string, string>) Value! : null;
 
     public IEnumerable<KeyValuePair<string, object>> GetMultipleAttributes()
-        => ValueAttributes?.Select(p => new KeyValuePair<string, object>(p.Key, p.Value)) ?? Enumerable.Empty<KeyValuePair<string, object>>();
+        => ValueAttributes?.Select(p => new KeyValuePair<string, object>(p.Key, p.Value)) 
+            ?? Enumerable.Empty<KeyValuePair<string, object>>();
 
     public Dictionary<string, object> GetAttributesDictionary()
-        => ValueAttributes?.ToDictionary(p => p.Key, p => (object)p.Value) ?? new Dictionary<string, object>();
+        => ValueAttributes?.ToDictionary(p => p.Key, p => (object)p.Value) 
+            ?? new Dictionary<string, object>();
 
     public string GetClasses()
         => string.Join(" ", ValueClasses ?? Enumerable.Empty<string>());
@@ -54,13 +61,30 @@ public class ScenePropertyValue
     {
         if (PropertyDescription.IsHtmlAttributes)
         {
-            Value = new Dictionary<string, string>();
+            if (PropertyDescription.DefaultValue is not null
+                && PropertyDescription.DefaultValue is Dictionary<string, string> attributes)
+            {
+                Value = new Dictionary<string, string>(attributes);
+            }
+            else
+            {
+                Value = new Dictionary<string, string>();
+            }
             return;
         }
 
         if (PropertyDescription.IsHtmlClasses)
         {
-            Value = new List<string>();
+            if (PropertyDescription.DefaultValue is not null
+                && PropertyDescription.DefaultValue is List<string> classes)
+            {
+                Value = new List<string>(classes);
+            }
+            else
+            {
+                Value = new List<string>();
+            }
+            
             return;
         }
 
@@ -68,12 +92,35 @@ public class ScenePropertyValue
         {
             if (PropertyDescription.EnumType is not null)
             {
-                var values = Enum.GetValues(PropertyDescription.EnumType);
-                Value = values.GetValue(0);
+                if (PropertyDescription.DefaultValue is not null
+                    && PropertyDescription.DefaultValue.GetType() == PropertyDescription.EnumType)
+                {
+                    Value = PropertyDescription.DefaultValue;
+                }
+                else
+                {
+                    var values = Enum.GetValues(PropertyDescription.EnumType);
+
+                    if (values.Length > 0)
+                    {
+                        Value = values.GetValue(0);
+                    }
+                    else
+                    {
+                        Value = null;
+                    }
+                }
             }
             else
             {
-                Value = PropertyDescription.EnumType?.GetEnumValues().GetValue(0);
+                if (PropertyDescription.DefaultValue is not null && PropertyDescription.DefaultValue is Enum)
+                {
+                    Value = PropertyDescription.DefaultValue;
+                }
+                else
+                {
+                    Value = PropertyDescription.EnumType?.GetEnumValues().GetValue(0);
+                }
             }
 
             return;
@@ -81,19 +128,62 @@ public class ScenePropertyValue
 
         if (PropertyDescription.IsStringType())
         {
-            Value = PropertyDescription.Name;
+            if (PropertyDescription.DefaultValue is not null && PropertyDescription.DefaultValue is string)
+            {
+                Value = PropertyDescription.DefaultValue;
+            }
+            else
+            {
+                Value = PropertyDescription.Name;
+            }
+            
             return;
         }
 
         if (PropertyDescription.IsNumberType())
         {
-            Value = 0;
+            if (PropertyDescription.DefaultValue is not null && PropertyDescription.DefaultValue is int)
+            {
+                Value = PropertyDescription.DefaultValue;
+            }
+            else if (PropertyDescription.DefaultValue is not null && PropertyDescription.DefaultValue is double)
+            {
+                Value = PropertyDescription.DefaultValue;
+            }
+            else
+            {
+                Value = 0;
+            }
+            
             return;
         }
 
         if (PropertyDescription.IsBoolType())
         {
-            Value = false;
+            if (PropertyDescription.DefaultValue is not null && PropertyDescription.DefaultValue is bool)
+            {
+                Value = PropertyDescription.DefaultValue;
+            }
+            else
+            {
+                Value = false;
+            }
+            
+            return;
+        }
+
+        if (PropertyDescription.HasComponents)
+        {
+            if (PropertyDescription.DefaultValue is not null
+                && PropertyDescription.DefaultValue is List<FragmentComponentDescription> components)
+            {
+                Value = new List<FragmentComponentDescription>(components);
+            }
+            else
+            {
+                Value = new List<FragmentComponentDescription>();
+            }
+
             return;
         }
     }

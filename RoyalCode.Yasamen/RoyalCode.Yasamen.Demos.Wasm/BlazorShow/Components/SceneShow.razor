@@ -17,7 +17,7 @@
         <div class="scene-properties">
             The properties of the component.
 
-            @foreach (var property in Scene.Show.Properties.Where(p => !p.IsHidden))
+            @foreach (var property in Scene.SceneProperties.Where(p => !p.IsHidden))
             {
                 <SceneProperty Property="property" @key=@property.Name />
             }

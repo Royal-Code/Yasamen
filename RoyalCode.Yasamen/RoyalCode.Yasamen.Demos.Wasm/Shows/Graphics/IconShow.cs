@@ -2,7 +2,7 @@
 using RoyalCode.Yasamen.Icons;
 using RoyalCode.Yasamen.Icons.Bootstrap;
 
-namespace RoyalCode.Yasamen.Demos.Wasm.Shows;
+namespace RoyalCode.Yasamen.Demos.Wasm.Shows.Graphics;
 
 public class IconShow : IShow<Icon>
 {

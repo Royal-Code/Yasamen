@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components;
-using System.Linq.Expressions;
 
 namespace RoyalCode.Yasamen.Demos.Wasm.BlazorShow;
 
@@ -13,4 +12,6 @@ public interface ISceneBuilder<TComponent>
     ISceneBuilder<TComponent> Description(string description);
 
     ISceneBuilder<TComponent> RenderInFrame(Action<FrameOptions>? configure = null);
+
+    ISceneBuilder<TComponent> Properties(Action<ISceneProperties<TComponent>> configure);
 }
