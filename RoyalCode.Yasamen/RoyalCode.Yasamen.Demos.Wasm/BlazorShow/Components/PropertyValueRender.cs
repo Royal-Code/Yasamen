@@ -17,11 +17,14 @@ public class PropertyValueRender : ComponentBase
     {
         Console.WriteLine("BuildRenderTree PropertyValueRender");
 
-        if (Property.IsHtmlClasses)
-            RenderClasses(builder);
-
-        else if (Property.IsHtmlAttributes)
+        if (Property.IsHtmlAttributes)
             RenderAttributes(builder);
+
+        else if (Property.HasValueSet)
+            RenderValueSet(builder);
+
+        else if (Property.IsHtmlClasses)
+            RenderClasses(builder);
 
         else if (Property.IsFragment)
             RenderFragmentProperty(builder);
@@ -115,5 +118,15 @@ public class PropertyValueRender : ComponentBase
 
         builder.CloseComponent();
     }
+
+    private void RenderValueSet(RenderTreeBuilder builder)
+    {
+        builder.OpenComponent(0, typeof(ValueSetProperty));
+        builder.AddAttribute(1, "Context", Context);
+        builder.AddAttribute(2, "Property", Property);
+
+        builder.CloseComponent();
+    }
+}
 }
 

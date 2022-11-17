@@ -23,6 +23,10 @@ public interface IShowPropertyDescription
     bool IsHtmlClasses { get; }
 
     bool IsCaptureUnmatchedValues { get; }
+
+    bool HasValueSet { get; }
+
+    object? ValueSet { get; }
 }
 
 public static class ShowPropertyDescriptionExtensions

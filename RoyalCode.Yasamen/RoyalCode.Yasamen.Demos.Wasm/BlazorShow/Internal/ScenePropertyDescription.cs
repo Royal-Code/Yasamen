@@ -11,6 +11,7 @@ public class ScenePropertyDescription : IScenePropertyDescription
     private bool? isHidden;
     private bool? hasEnumValues;
     private Type? enumType;
+    private object? valueSet;
 
     public ScenePropertyDescription(IShowPropertyDescription showPropertyDescription)
     {
@@ -60,7 +61,15 @@ public class ScenePropertyDescription : IScenePropertyDescription
     public bool IsCaptureUnmatchedValues => showPropertyDescription.IsCaptureUnmatchedValues;
 
     public bool HasComponents { get; private set; }
-    
+
+    public bool HasValueSet => ValueSet is not null;
+
+    public object? ValueSet
+    {
+        get => valueSet ?? showPropertyDescription.ValueSet;
+        set => valueSet = value;
+    }
+
     public void AddFragmentComponent(FragmentComponentDescription description)
     {
         HasComponents = true;

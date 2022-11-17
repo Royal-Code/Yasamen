@@ -43,10 +43,18 @@ public class ShowPropertyDescriptionBuilder<TComponent, TProperty>
         return this;
     }
 
-    IShowPropertyDescriptionBuilder<TComponent, TProperty> IShowPropertyDescriptionBuilder<TComponent, TProperty>.HasEnumValues<TEnum>()
+    public IShowPropertyDescriptionBuilder<TComponent, TProperty> HasEnumValues<TEnum>()
+        where TEnum : Enum
     {
         propertyDescription.HasEnumValues = true;
         propertyDescription.EnumType = typeof(TEnum);
+        return this;
+    }
+
+    public IShowPropertyDescriptionBuilder<TComponent, TProperty> HasValueSet<TValueSet>()
+        where TValueSet : ValueSet<TProperty>, new()
+    {
+        propertyDescription.ValueSet = new TValueSet();
         return this;
     }
 }

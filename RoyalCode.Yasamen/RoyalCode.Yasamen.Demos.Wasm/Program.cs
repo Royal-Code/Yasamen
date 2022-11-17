@@ -7,6 +7,7 @@ using RoyalCode.Yasamen.Demos.Wasm.Shows.Graphics;
 using RoyalCode.Yasamen.Demos.Wasm.Shows.Layouts;
 using RoyalCode.Yasamen.Forms.Modules;
 using RoyalCode.Yasamen.Icons;
+using RoyalCode.Yasamen.Layout;
 using RoyalCode.Yasamen.Layout.Admin;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -38,6 +39,7 @@ builder.Services.AddBlazorShow(b =>
 {
     b.AddShow<IconShow, Icon>();
     b.AddShow<AppLayoutShow, AppLayout>();
+    b.AddShow<BoxShow, Box>();
 });
 
 RoyalCode.Yasamen.Commons.Tracer.IsActive = true;

@@ -12,4 +12,8 @@ public interface IShowPropertyDescriptionBuilder<TComponent, TProperty>
         where TEnum : Enum;
     IShowPropertyDescriptionBuilder<TComponent, TProperty> HtmlAttributes();
     IShowPropertyDescriptionBuilder<TComponent, TProperty> HtmlClasses();
+
+    IShowPropertyDescriptionBuilder<TComponent, TProperty> HasValueSet<TValueSet>()
+        where TValueSet : ValueSet<TProperty>, new();
+
 }

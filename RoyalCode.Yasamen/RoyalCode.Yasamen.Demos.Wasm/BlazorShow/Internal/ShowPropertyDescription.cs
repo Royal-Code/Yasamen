@@ -32,7 +32,11 @@ public class ShowPropertyDescription : IShowPropertyDescription
     public bool IsHtmlClasses { get; set; }
 
     public bool IsCaptureUnmatchedValues { get; private set; }
+
+    public bool HasValueSet => ValueSet is not null;
     
+    public object? ValueSet { get; set; }
+
     private void InitValues()
     {
         Name = Property.Name;
