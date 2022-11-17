@@ -9,7 +9,6 @@ public class AppLayoutShow : IShow<AppLayout>
 {
     public void Create(IShowDescriptionBuilder<AppLayout> builder)
     {
-
         builder.Group("Layout")
             .Name("App Layout")
             .Description("This is a layout for the application.")

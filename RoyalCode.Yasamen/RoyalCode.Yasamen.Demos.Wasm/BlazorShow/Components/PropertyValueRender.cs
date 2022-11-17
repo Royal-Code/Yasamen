@@ -16,12 +16,15 @@ public class PropertyValueRender : ComponentBase
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
         Console.WriteLine("BuildRenderTree PropertyValueRender");
-        
+
         if (Property.IsHtmlClasses)
             RenderClasses(builder);
 
         else if (Property.IsHtmlAttributes)
             RenderAttributes(builder);
+
+        else if (Property.IsFragment)
+            RenderFragmentProperty(builder);
 
         else if (Property.IsHidden)
             return;
@@ -103,4 +106,14 @@ public class PropertyValueRender : ComponentBase
 
         builder.CloseComponent();
     }
+
+    private void RenderFragmentProperty(RenderTreeBuilder builder)
+    {
+        builder.OpenComponent(0, typeof(FragmentProperty));
+        builder.AddAttribute(1, "Context", Context);
+        builder.AddAttribute(2, "Property", Property);
+
+        builder.CloseComponent();
+    }
 }
+

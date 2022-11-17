@@ -1,0 +1,20 @@
+﻿
+<div class="scene-fragment-properties">
+    <div class="fragments-label">
+        Fragments
+    </div>
+    <div class="fragments-values">
+        @foreach (var property in Properties)
+        {
+            <div class="fragments-value">
+                <PropertyValueRender Property="property" @key=property.Name />
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+
+    [Parameter, EditorRequired]
+    public IEnumerable<IScenePropertyDescription> Properties { get; set; }
+}

@@ -1,0 +1,38 @@
+﻿
+.scene-fragment-properties {
+    display: flex;
+    margin-bottom: .5rem;
+}
+
+.fragments-label {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 8px;
+    align-self: flex-start;
+}
+
+.fragments-values {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 8px;
+}
+
+.fragments-value {
+    display: block;
+    padding: .25rem 0;
+    white-space: nowrap;
+}
+
+@media (min-width: 1200px) {
+    .fragments-values {
+        width: 60%;
+    }
+
+    .fragments-label {
+        width: 25%;
+    }
+}

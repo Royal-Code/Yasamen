@@ -1,7 +1,7 @@
 ﻿
 <div class="scene-property">
     <div class="scene-property-name" title="@Property.Description">
-        @Property.Name
+        @Name
     </div>
     <div class="scene-property-value">
         <PropertyValueRender Property="Property" />
@@ -10,6 +10,8 @@
 
 @code {
 
+    private string? Name => Property.IsFragment ? "Fragment" : Property.Name;
+    
     [Parameter, EditorRequired]
     public IScenePropertyDescription Property { get; set; }
 }

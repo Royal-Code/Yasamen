@@ -20,6 +20,8 @@ public class ShowPropertyDescription : IShowPropertyDescription
     public string? Description { get; set; }
     
     public bool IsHidden { get; set; }
+
+    public bool IsFragment { get; set; }
     
     public bool HasEnumValues { get; set; }
     
@@ -30,7 +32,7 @@ public class ShowPropertyDescription : IShowPropertyDescription
     public bool IsHtmlClasses { get; set; }
 
     public bool IsCaptureUnmatchedValues { get; private set; }
-
+    
     private void InitValues()
     {
         Name = Property.Name;
@@ -59,7 +61,7 @@ public class ShowPropertyDescription : IShowPropertyDescription
         }
         else if (Property.PropertyType == typeof(RenderFragment))
         {
-            IsHidden = true;
+            IsFragment = true;
         }
     }
 }

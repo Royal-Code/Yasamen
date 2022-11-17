@@ -51,6 +51,8 @@ public class ScenePropertyDescription : IScenePropertyDescription
         set => enumType = value;
     }
 
+    public bool IsFragment => showPropertyDescription.IsFragment;
+
     public bool IsHtmlAttributes => showPropertyDescription.IsHtmlAttributes;
 
     public bool IsHtmlClasses => showPropertyDescription.IsHtmlClasses;
@@ -58,7 +60,7 @@ public class ScenePropertyDescription : IScenePropertyDescription
     public bool IsCaptureUnmatchedValues => showPropertyDescription.IsCaptureUnmatchedValues;
 
     public bool HasComponents { get; private set; }
-
+    
     public void AddFragmentComponent(FragmentComponentDescription description)
     {
         HasComponents = true;

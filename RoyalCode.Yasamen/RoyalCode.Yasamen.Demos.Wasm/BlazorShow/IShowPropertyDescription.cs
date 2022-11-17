@@ -12,6 +12,8 @@ public interface IShowPropertyDescription
 
     bool IsHidden { get; }
 
+    bool IsFragment { get; }
+
     bool HasEnumValues { get; }
 
     Type? EnumType { get; }
@@ -29,7 +31,7 @@ public static class ShowPropertyDescriptionExtensions
         => (property.Property.PropertyType.IsEnum || property.Property.PropertyType == typeof(Enum))
             && property.HasEnumValues 
             && property.EnumType is not null;
-    
+
     public static bool IsStringType(this IShowPropertyDescription property)
         => property.Property.PropertyType == typeof(string);
 
