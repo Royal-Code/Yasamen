@@ -121,7 +121,7 @@ public class PropertyValueRender : ComponentBase
 
     private void RenderValueSet(RenderTreeBuilder builder)
     {
-        builder.OpenComponent(0, typeof(ValueSetProperty));
+        builder.OpenComponent(0, typeof(ValueSetProperty<>).MakeArrayType(Property.Property.PropertyType));
         builder.AddAttribute(1, "Context", Context);
         builder.AddAttribute(2, "Property", Property);
 

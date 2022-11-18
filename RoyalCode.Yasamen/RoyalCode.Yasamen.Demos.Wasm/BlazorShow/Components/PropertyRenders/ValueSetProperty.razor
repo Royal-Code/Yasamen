@@ -1,5 +1,42 @@
-﻿<h3>ValueSetProperty</h3>
+﻿@using RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Components.Contexts;
+
+@typeparam TValue
+
+<select @bind="Value">
+    
+    @foreach (var item in GetItems())
+    {
+        <option value="@item.Name">@(item.Description ?? item.Name)</option>
+    }
+</select>
 
 @code {
 
+    private ScenePropertyValue propertyValue;
+
+    private string? Value 
+    { 
+        get
+        {
+            return propertyValue.TryGetValue<ValueDescription<TValue>>()?.Name ?? null;
+        }
+        set
+        {
+            propertyValue.Value = GetItems().FirstOrDefault(i => i.Name == value);
+            propertyValue.StateHasChanged();
+        }
+    }
+
+    [Parameter, EditorRequired]
+    public SceneContext Context { get; set; }
+
+    [Parameter, EditorRequired]
+    public IShowPropertyDescription Property { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        propertyValue = Context.GetProperty(Property.Property.Name);
+    }
+
+    private IEnumerable<ValueDescription<TValue>> GetItems() => (IEnumerable<ValueDescription<TValue>>)Property.ValueSet!;
 }
