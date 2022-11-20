@@ -18,7 +18,7 @@
     { 
         get
         {
-            return propertyValue.TryGetValue<ValueDescription<TValue>>()?.Name ?? null;
+            return propertyValue.TryGetValue<ValueDescription<TValue>>()?.Name ?? string.Empty;
         }
         set
         {

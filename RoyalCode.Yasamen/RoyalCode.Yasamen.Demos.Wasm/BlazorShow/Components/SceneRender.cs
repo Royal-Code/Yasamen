@@ -53,6 +53,9 @@ public sealed class SceneRender : ComponentBase, IDisposable
             else if (property.PropertyDescription.HasComponents)
                 builder.AddAttribute(seq++, property.PropertyDescription.Property.Name, RenderFragment(property.ValueFragmentComponents!));
             
+            else if (property.PropertyDescription.HasValueSet)
+                builder.AddAttribute(seq++, property.PropertyDescription.Property.Name, property.TryGetValue<IValueDescription>()?.GetValue());
+
             else
                 builder.AddAttribute(seq++, property.PropertyDescription.Property.Name, property.Value);
         }

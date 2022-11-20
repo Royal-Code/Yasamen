@@ -186,6 +186,18 @@ public class ScenePropertyValue
 
             return;
         }
+
+        if (PropertyDescription.HasValueSet)
+        {
+            if (PropertyDescription.DefaultValue is not null)
+            {
+                Value = PropertyDescription.DefaultValue;
+            }
+            else
+            {
+                Value = ((IValueSet)PropertyDescription.ValueSet!).GetFirst();
+            }
+        }
     }
 
     internal PropertySerialization Serialize()
