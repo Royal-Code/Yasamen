@@ -13,10 +13,10 @@ public record Borders
         public static Shadows DefaultShadow = Shadows.Default;
 
         public static BorderRadius DefaultRoundedBorderRadius = BorderRadius.Default;
-        public static Shadows DefaultWithShadowBorderShadow = Shadows.Small;
+        public static Shadows DefaultWithShadow = Shadows.Small;
         
-        public static BorderStyle DefaultHeaderStyle = BorderStyle.Bottom;
-        public static BorderStyle DefaultFooterStyle = BorderStyle.Top;
+        public static BorderStyle DefaultHeaderStyle = BorderStyle.Top;
+        public static BorderStyle DefaultFooterStyle = BorderStyle.Bottom;
     }
 
     private static Borders? _default;
@@ -43,12 +43,13 @@ public record Borders
     
     public static Borders DefaultWithShadow => _defaultWithShadow ??= Default with
     {
-        Shadow = Standards.DefaultWithShadowBorderShadow
+        Shadow = Standards.DefaultWithShadow
     };
     
     public static Borders DefaultRoundedWithShadow => _defaultRoundedWithShadow ??= DefaultRounded with
     {
-        Radius = Standards.DefaultRoundedBorderRadius
+        Radius = Standards.DefaultRoundedBorderRadius,
+        Shadow = Standards.DefaultWithShadow
     };
 
     public static Borders DefaultHeader => _defaultHeader ??= Default with

@@ -3,4 +3,6 @@
 public interface IValueSet
 {
     object? GetFirst();
+
+    Type GetValueType();
 }

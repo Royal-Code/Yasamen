@@ -241,6 +241,11 @@ public class ScenePropertyValue
             return Value?.ToString() ?? string.Empty;
         }
 
+        if (PropertyDescription.HasValueSet)
+        {
+            return JsonSerializer.Serialize(Value);
+        }
+
         return string.Empty;
     }
 
@@ -281,6 +286,12 @@ public class ScenePropertyValue
             Value = Convert.ChangeType(valueSerialization.SerializedValue, PropertyDescription.Property.PropertyType);
             return;
         }
+
+        if (PropertyDescription.HasValueSet)
+        {
+            Value = JsonSerializer.Deserialize(valueSerialization.SerializedValue, ((IValueSet)PropertyDescription.ValueSet).GetValueType());
+            return;
+        }    
     }
 
     internal class PropertySerialization

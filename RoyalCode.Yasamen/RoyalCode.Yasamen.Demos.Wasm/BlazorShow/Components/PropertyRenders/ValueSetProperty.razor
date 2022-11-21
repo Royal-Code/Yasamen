@@ -22,6 +22,7 @@
         }
         set
         {
+            Console.WriteLine("Value set: " + value);
             propertyValue.Value = GetItems().FirstOrDefault(i => i.Name == value);
             propertyValue.StateHasChanged();
         }

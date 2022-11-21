@@ -263,7 +263,7 @@
     --b-theme-transition: all .3s ease-in-out;
 
     /** Border **/
-    --b-border--width: 1;
+    --b-border--width: 1px;
     --b-border--style: solid;
     --b-border--color: var(--b-color-dark);
     --b-border--radius-1: 0.125rem;

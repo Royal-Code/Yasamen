@@ -6,4 +6,6 @@ public class ValueSet<TValue> : List<ValueDescription<TValue>>, IValueSet
     {
         return this.FirstOrDefault();
     }
+
+    public Type GetValueType() => typeof(ValueDescription<TValue>);
 }
