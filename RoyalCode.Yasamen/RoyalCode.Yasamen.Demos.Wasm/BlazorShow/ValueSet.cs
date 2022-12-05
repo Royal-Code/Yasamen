@@ -7,5 +7,10 @@ public class ValueSet<TValue> : List<ValueDescription<TValue>>, IValueSet
         return this.FirstOrDefault();
     }
 
+    public object? GetValueSetByValue(object value)
+    {
+        return this.FirstOrDefault(p => p.Value.Equals(value));
+    }
+
     public Type GetValueType() => typeof(ValueDescription<TValue>);
 }

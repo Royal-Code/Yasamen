@@ -15,17 +15,18 @@ public record Borders
         public static BorderRadius DefaultRoundedBorderRadius = BorderRadius.Default;
         public static Shadows DefaultWithShadow = Shadows.Small;
         
-        public static BorderStyle DefaultHeaderStyle = BorderStyle.Top;
-        public static BorderStyle DefaultFooterStyle = BorderStyle.Bottom;
+        public static BorderStyle DefaultHeaderStyle = BorderStyle.Bottom;
+        public static BorderStyle DefaultFooterStyle = BorderStyle.Top;
     }
 
     private static Borders? _default;
     private static Borders? _defaultWithShadow;
     private static Borders? _defaultRounded;
     private static Borders? _defaultRoundedWithShadow;
-    private static Borders? _defaultHeader;
-    private static Borders? _defaultFooter;
-    
+    private static Borders? _defaultForHeaders;
+    private static Borders? _defaultForFooters;
+    private static Borders? _none;
+
     public static Borders Default => _default ??= new Borders
         {
             Style = Standards.DefaultStyle,
@@ -52,16 +53,21 @@ public record Borders
         Shadow = Standards.DefaultWithShadow
     };
 
-    public static Borders DefaultHeader => _defaultHeader ??= Default with
+    public static Borders DefaultForHeaders => _defaultForHeaders ??= Default with
     {
         Style = Standards.DefaultHeaderStyle
     };
     
-    public static Borders DefaultFooter => _defaultFooter ??= Default with
+    public static Borders DefaultForFooters => _defaultForFooters ??= Default with
     {
         Style = Standards.DefaultFooterStyle
     };
-    
+
+    public static Borders DefaultNone => _none ??= Default with
+    {
+        Style = BorderStyle.None
+    };
+
     private string? cssClasses;
     
     public BorderStyle Style { get; init; }

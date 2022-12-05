@@ -40,6 +40,7 @@ builder.Services.AddBlazorShow(b =>
     b.AddShow<IconShow, Icon>();
     b.AddShow<AppLayoutShow, AppLayout>();
     b.AddShow<BoxShow, Box>();
+    b.AddShow<ArticleBoxShow, ArticleBox>();
 });
 
 RoyalCode.Yasamen.Commons.Tracer.IsActive = true;

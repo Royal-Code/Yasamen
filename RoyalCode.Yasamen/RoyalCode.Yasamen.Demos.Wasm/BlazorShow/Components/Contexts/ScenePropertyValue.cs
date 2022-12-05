@@ -191,7 +191,7 @@ public class ScenePropertyValue
         {
             if (PropertyDescription.DefaultValue is not null)
             {
-                Value = PropertyDescription.DefaultValue;
+                Value = ((IValueSet)PropertyDescription.ValueSet!).GetValueSetByValue(PropertyDescription.DefaultValue);
             }
             else
             {
@@ -291,7 +291,7 @@ public class ScenePropertyValue
         {
             Value = JsonSerializer.Deserialize(valueSerialization.SerializedValue, ((IValueSet)PropertyDescription.ValueSet).GetValueType());
             return;
-        }    
+        }
     }
 
     internal class PropertySerialization

@@ -13,18 +13,21 @@
 </article>
 
 @code {
-    CssClassMap ArticleClasses => CssClassMap.Create(ArticleBorder.CssClasses, ArticleAdditionalClasses);
-    CssClassMap HeaderClasses => CssClassMap.Create(HeaderBorder.CssClasses, HeaderAdditionalClasses);
-    CssClassMap FooterClasses => CssClassMap.Create(FooterBorder.CssClasses, FooterAdditionalClasses);
-    
-    [Parameter]
-    public Borders ArticleBorder { get; set; } = Borders.Default;
+    CssClassMap ArticleClasses => CssClassMap.Create(ArticleBorder?.CssClasses, ArticleAdditionalClasses);
+    CssClassMap HeaderClasses => CssClassMap.Create(HeaderBorder?.CssClasses, HeaderAdditionalClasses);
+    CssClassMap FooterClasses => CssClassMap.Create(FooterBorder?.CssClasses, FooterAdditionalClasses);
 
     [Parameter]
-    public Borders HeaderBorder { get; set; } = Borders.DefaultHeader;
+    public Borders ArticleBorder { get; set; } = Borders.DefaultNone;
+
+    [Parameter]
+    public Borders HeaderBorder { get; set; } = Borders.DefaultForHeaders with
+    {
+        Shadow = Shadows.Small
+    };
     
     [Parameter]
-    public Borders FooterBorder { get; set; } = Borders.DefaultFooter;
+    public Borders FooterBorder { get; set; } = Borders.DefaultForFooters;
     
     [Parameter]
     public string? ArticleAdditionalClasses { get; set; }
