@@ -22,7 +22,7 @@ jobs:
           include-prerelease: true
 
       - name: Build and pack
-        run: sudo dotnet build ./**/*.csproj -c Release
+        run: sudo dotnet build ./RoyalCode.Yasamen/RoyalCode.Yasamen.sln -c Release
 
       - name: Publish
         run: sudo dotnet nuget push ./**/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
