@@ -1,0 +1,19 @@
+<Project>
+	<PropertyGroup>
+		<LangVersion>latest</LangVersion>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<!--<DocumentationFile>$(BaseOutputPath)\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>-->
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Authors>Royal Code</Authors>
+		<Copyright>Royal Code Copyright ©  2023</Copyright>
+		<RepositoryUrl>https://github.com/Royal-Code/Yasamen</RepositoryUrl>
+		<RepositoryType>Git</RepositoryType>
+		<Configurations>Debug;Release</Configurations>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageLicenseExpression>AGPL-3.0-only</PackageLicenseExpression>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Include="../icon.png" Pack="true" PackagePath="/"/>
+	</ItemGroup>
+</Project>

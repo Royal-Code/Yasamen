@@ -1,21 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
-    <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
-        <Nullable>enable</Nullable>
-        <ImplicitUsings>enable</ImplicitUsings>
-    </PropertyGroup>
+	<Import Project="..\version.targets" />
 
-    <ItemGroup>
-        <SupportedPlatform Include="browser" />
-    </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(AspNetVer)" />
+	</ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\RoyalCode.Yasamen.Commons\RoyalCode.Yasamen.Commons.csproj" />
-    </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\RoyalCode.Yasamen.Commons\RoyalCode.Yasamen.Commons.csproj" />
+	</ItemGroup>
 
 </Project>

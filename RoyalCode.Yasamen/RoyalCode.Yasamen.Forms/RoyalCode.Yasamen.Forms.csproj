@@ -1,19 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
-	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
-		<Nullable>enable</Nullable>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
-	</PropertyGroup>
+	<Import Project="..\version.targets" />
 
 	<ItemGroup>
-		<SupportedPlatform Include="browser" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="7.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(AspNetVer)" />
+		<PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="$(AspNetVer)" />
 	</ItemGroup>
 
 	<ItemGroup>

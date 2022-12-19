@@ -31,6 +31,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Icons", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Icons.Bootstrap", "RoyalCode.Yasamen.Icons.Bootstrap\RoyalCode.Yasamen.Icons.Bootstrap.csproj", "{D8AFCBC9-CE56-4108-AC8A-4D5C38E28927}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".items", ".items", "{246EC85B-93EF-435A-8290-054311804EA9}"
+	ProjectSection(SolutionItems) = preProject
+		base.targets = base.targets
+		icon.png = icon.png
+		version.targets = version.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
