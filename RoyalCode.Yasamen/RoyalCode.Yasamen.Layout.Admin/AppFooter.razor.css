@@ -12,7 +12,7 @@ footer {
     color: var(--b-theme-main);
 }
 
-@media(max-width: var(--b-size-w4)) {
+@media(max-width: 68rem) {
     footer {
         padding-left: 0;
     }

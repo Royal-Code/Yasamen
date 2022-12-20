@@ -7,7 +7,7 @@ div {
 
 /* --- screen -- phone  --- */
 
-@media screen and (max-width: var(--b-size-w2)) {
+@media screen and (max-width: 36rem) {
     div {
         height: var(--b-header--phone--height);
         width: var(--b-header--phone--height);

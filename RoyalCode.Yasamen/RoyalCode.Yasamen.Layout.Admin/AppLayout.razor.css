@@ -95,10 +95,11 @@ footer {
 
 /* --- screen -- phone  --- */
 
-@media screen and (max-width: var(--b-size-w2)) {
+@media screen and (max-width: 36rem) {
     header {
         height: var(--b-header--phone--height);
     }
+
     .app-page-content {
         padding-top: var(--b-header--phone--height);
     }
@@ -106,8 +107,7 @@ footer {
 
 /* --- screen -- small  --- */
 
-@media screen and (max-width: var(--b-size-w4))
-{
+@media screen and (max-width: 68rem) {
     .app-menu-original .app-page-content {
         padding-left: 0;
     }

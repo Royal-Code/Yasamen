@@ -42,27 +42,27 @@
             box-shadow: var(--b-app-nav-bar--shadow-scrolled, 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12));
         }
 
-/* aqui, estes valores precisam ser variáveis 879px 1023px 767px 575px */ 
-@media screen and (max-width: calc(var(--b-size-w3) + var(--b-size-x2))) {
+/* aqui, estes valores precisam ser variáveis 879px 1023px 767px 575px */
+@media screen and (max-width: 54rem) {
     nav > .middle {
         display: none;
     }
 }
 
-@media screen and (max-width:calc(var(--b-size-w4) - 1px)) {
+@media screen and (max-width:67.9rem) {
     .b-menu-interacted {
         --b-top-bar--backdrop: none;
         --b-top-bar--background-color: white;
     }
 }
 
-@media screen and (max-width: calc(var(--b-size-w3) - 1px)) {
+@media screen and (max-width: 47.9rem) {
     .top-bar-hide-sm {
         display: none !important;
     }
 }
 
-@media screen and (max-width: calc(var(--b-size-w2) - 1px)) {
+@media screen and (max-width: 35.9rem) {
     .top-bar-hide-xs {
         display: none !important;
     }
