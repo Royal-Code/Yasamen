@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using RoyalCode.Yasamen.Animations;
 using RoyalCode.Yasamen.Commons.Modules;
 using RoyalCode.Yasamen.Demos.Wasm;
 using RoyalCode.Yasamen.Demos.Wasm.Models;
@@ -38,6 +39,7 @@ builder.Services.Subscribes<DCService>();
 builder.Services.AddBlazorShow(b =>
 {
     b.AddShow<IconShow, Icon>();
+    b.AddShow<RotateShow, RotateAnimation>();
     b.AddShow<AppLayoutShow, AppLayout>();
     b.AddShow<BoxShow, Box>();
     b.AddShow<ArticleBoxShow, ArticleBox>();
