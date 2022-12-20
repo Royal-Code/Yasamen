@@ -1,37 +1,36 @@
 ﻿using Microsoft.JSInterop;
 using RoyalCode.Yasamen.Commons.Modules;
 
-namespace RoyalCode.Yasamen.Commons.Interops
+namespace RoyalCode.Yasamen.Commons.Interops;
+
+public class ScrollInterop : IAsyncDisposable
 {
-    public class ScrollInterop : IAsyncDisposable
+    private readonly IJSObjectReference js;
+    private readonly DotNetObjectReference<ScrollInterop> thisRef;
+
+    private Action<bool>? callback;
+
+    internal ScrollInterop(IJSObjectReference js)
     {
-        private readonly IJSObjectReference js;
-        private readonly DotNetObjectReference<ScrollInterop> thisRef;
+        this.js = js;
+        thisRef = DotNetObjectReference.Create(this);
+    }
 
-        private Action<bool>? callback;
+    public ValueTask AddListener(Action<bool> callback)
+    {
+        this.callback = callback;
+        return js.InvokeVoidAsync(ScrollJsModule.TopBarRegisterListener, thisRef);
+    }
 
-        internal ScrollInterop(IJSObjectReference js)
-        {
-            this.js = js;
-            thisRef = DotNetObjectReference.Create(this);
-        }
+    [JSInvokable]
+    public void Scrolled(bool wasScrolled)
+    {
+        callback?.Invoke(wasScrolled);
+    }
 
-        public ValueTask AddListener(Action<bool> callback)
-        {
-            this.callback = callback;
-            return js.InvokeVoidAsync(ScrollJsModule.TopBarRegisterListener, thisRef);
-        }
-
-        [JSInvokable]
-        public void Scrolled(bool wasScrolled)
-        {
-            callback?.Invoke(wasScrolled);
-        }
-
-        public async ValueTask DisposeAsync()
-        {
-            await js.InvokeVoidAsync(ScrollJsModule.TopBarUnregisterListener, thisRef);
-            thisRef.Dispose();
-        }
+    public async ValueTask DisposeAsync()
+    {
+        await js.InvokeVoidAsync(ScrollJsModule.TopBarUnregisterListener, thisRef);
+        thisRef.Dispose();
     }
 }
