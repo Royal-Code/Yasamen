@@ -37,4 +37,16 @@ public static class AlignExtensions
             _ => throw new NotSupportedException()
         };
     }
+
+    public static string ToTextCssClass(this Align align)
+    {
+        return align switch
+        {
+            Align.Default => string.Empty,
+            Align.Start => "text-start",
+            Align.Center => "text-center",
+            Align.End => "text-end",
+            _ => throw new NotSupportedException()
+        };
+    }
 }

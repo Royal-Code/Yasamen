@@ -1,4 +1,6 @@
-﻿namespace RoyalCode.Yasamen.Demos.Wasm.BlazorShow;
+﻿using RoyalCode.Yasamen.Commons;
+
+namespace RoyalCode.Yasamen.Demos.Wasm.BlazorShow;
 
 public interface IScene
 {
@@ -9,6 +11,8 @@ public interface IScene
     string? Name { get; }
 
     string? Description { get; }
+
+    Align Align { get; }
 
     ShowRenderKind? RenderKind { get; set; }
 

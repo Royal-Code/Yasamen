@@ -1,7 +1,7 @@
 ﻿:root {
     /*****  Colors  *****/
     /* https://www.colorhexa.com/7851a9 */
-
+    
     /* main */
     --b-color-main-d7: #36254c;
     --b-color-main-d6: #402b59;
@@ -18,7 +18,7 @@
     --b-color-main-l5: #ab92cb;
     --b-color-main-l6: #b59fd1;
     --b-color-main-l7: #bfacd7;
-
+    
     --b-color-main--opacity1: #7851a91A; /* 10% */
     --b-color-main--opacity2: #7851a934; /* 20% */
     --b-color-main-complementary: #82a951;
@@ -31,7 +31,7 @@
     --b-color-main-tetradic-blue: #5182a9;
     --b-color-main-analogous-darken: #5156a9;
     --b-color-main-analogous-lighten: #a451a9;
-
+    
     --b-color-main-gray-1: #795b9f;
     --b-color-main-gray-2: #7a6496;
     --b-color-main-gray-3: #7b6e8c;
@@ -171,7 +171,7 @@
     /* link */
     --bs-color-link: #0d6efd;
     --bs-color-link--hover: #0a58ca;
-
+    
     /* darken (with opacity) */
     --b-color-darken-7: rgba(0, 0, 0, 0.9);
     --b-color-darken-6: rgba(0, 0, 0, 0.8);
@@ -188,7 +188,7 @@
     --b-color-lighten-3: rgba(1, 1, 1, 0.3);
     --b-color-lighten-2: rgba(1, 1, 1, 0.2);
     --b-color-lighten-1: rgba(1, 1, 1, 0.1);
-
+    
     /*****  Size and Space  *****/
 
     --b-size-0: 0;
@@ -196,7 +196,7 @@
     --b-size-p2: 2px;
     --b-size-p4: 4px;
     --b-size-p8: 8px;
-
+    
     --b-size-1: .125rem;
     --b-size-2: .25rem;
     --b-size-3: .375rem;
@@ -206,13 +206,13 @@
     --b-size-7: 1.5rem;
     --b-size-8: 2rem;
     --b-size-9: 2.5rem;
-
+    
     --b-size-h1: 3rem;
     --b-size-h2: 3.25rem;
     --b-size-h3: 3.5rem;
     --b-size-h4: 3.75rem;
     --b-size-h5: 4rem;
-
+    
     --b-size-x1: 4rem;
     --b-size-x2: 6rem;
     --b-size-x3: 8rem;
@@ -222,7 +222,7 @@
     --b-size-x7: 32rem;
     --b-size-x8: 48rem;
     --b-size-x9: 64rem;
-
+    
     --b-size-w1: 24rem; /* >= phone */ /* < xxs */
     --b-size-w2: 36rem; /* >= tablet */
     --b-size-w3: 48rem; /* >= md */
@@ -234,7 +234,7 @@
     --b-size-g3: 1rem;
     --b-size-g4: 1.5rem;
     --b-size-g5: 3rem;
-
+    
     /** Shadowns **/
 
     --b-shadow-0: none;
@@ -243,11 +243,17 @@
     --b-shadow-3: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.125);
     --b-shadow-4: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     --b-shadow-5: 0 1rem 2rem rgba(0, 0, 0, 0.175);
-
+    
     /*****  Theme Default  *****/
 
     --b-theme-current: var(--b-color-main);
     --b-theme-main: var(--b-color-main);
+    --b-theme-complementary: var(--b-color-main-complementary);
+    --b-theme-main-red: var(--b-color-main-triadic-red);
+    --b-theme-main-green: var(--b-color-main-triadic-green);
+    --b-theme-main-blue: var(--b-color-main-tetradic-blue);
+    --b-theme-main-dark: var(--b-color-main-analogous-darken);
+    --b-theme-main-light: var(--b-color-main-analogous-lighten);
     --b-theme-primary: var(--b-color-primary);
     --b-theme-secondary: var(--b-color-secondary);
     --b-theme-success: var(--b-color-success);
@@ -256,12 +262,12 @@
     --b-theme-danger: var(--b-color-danger);
     --b-theme-dark: var(--b-color-dark);
     --b-theme-light: var(--b-color-light);
-
+    
     --b-theme-text: var(--b-color-dark-d3);
     --b-theme-background: var(--b-color-light);
     --b-theme-content-background: var(--b-color-light-l5);
     --b-theme-transition: all .3s ease-in-out;
-
+    
     /** Border **/
     --b-border--width: 1px;
     --b-border--style: solid;
@@ -277,9 +283,9 @@
     --b-border--radius-9: 4rem;
     --b-border--radius-pill: 50rem;
     --b-border--radius: var(--b-border--radius-3);
-
+    
     /*****  Components  *****/
-
+    
     /* layout */
     --b-cols-columns: 12;
     --b-cols-gutter: var(--b-size-5);
@@ -332,6 +338,17 @@
     
     /* outros, rever uso */
     --b-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+
+    /* alert */
+    --b-alert-bg: transparent;
+    --b-alert-px: 1rem;
+    --b-alert-py: 1rem;
+    --b-alert-mb: 1rem;
+    --b-alert-color: inherit;
+    --b-alert-border-width: 1px;
+    --b-alert-border-style: solid;
+    --b-alert-border-color: transparent;
+    --b-alert-border-radius: 0.375rem;
 }
 
 /***** Theme Colors *****/

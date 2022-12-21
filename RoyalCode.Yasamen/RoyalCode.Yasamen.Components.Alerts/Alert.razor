@@ -15,6 +15,10 @@
                 else
                 {
                     @Title
+                    if (HorizontalRule)
+                    {
+                        <hr />
+                    }
                 }
             </h4>
         }
@@ -65,6 +69,9 @@
     public string Title { get; set; }
 
     [Parameter]
+    public bool HorizontalRule { get; set; }
+
+    [Parameter]
     public bool Dismissable { get; set; }
 
     [Parameter]
@@ -91,20 +98,34 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender && Dismissable)
+        if (firstRender)
         {
-            eventInterop = await Js.On<object>(alertRef, "transitionend", dismissEffectEndded);
+            await TryInitInterop();
         }
     }
 
-    protected override void OnParametersSet()
+    protected override async Task OnParametersSetAsync()
     {
+        Tracer.Begin<Alert>("OnParametersSet");
+
         if (Header.IsNotEmptyFragment())
             hasHeader = true;
         else if (!string.IsNullOrWhiteSpace(Title))
             hasTitle = true;
 
         withHeader = hasHeader || hasTitle;
+
+        await TryInitInterop();
+        
+        Tracer.End<Alert>("OnParametersSet");
+    }
+
+    private async ValueTask TryInitInterop()
+    {
+        if (alertRef.Id is not null && eventInterop is null)
+        {
+            eventInterop = await Js.On<object>(alertRef, "transitionend", dismissEffectEndded);
+        }
     }
 
     public ValueTask DisposeAsync()
