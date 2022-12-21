@@ -10,7 +10,7 @@ public sealed class SceneRender : ComponentBase, IDisposable
     private readonly Action changeListenerDelegate;
 
     private SceneContext? previousContext;
-    
+
     public SceneRender()
     {
         changeListenerDelegate = ChangeListener;
@@ -32,7 +32,7 @@ public sealed class SceneRender : ComponentBase, IDisposable
     }
 
     private void ChangeListener()
-    {
+    {       
         InvokeAsync(StateHasChanged);
     }
 

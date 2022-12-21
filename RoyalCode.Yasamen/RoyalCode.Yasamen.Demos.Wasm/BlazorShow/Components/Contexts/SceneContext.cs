@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using RoyalCode.Yasamen.Commons;
+using System.Text.Json;
 
 namespace RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Components.Contexts;
 
@@ -56,15 +57,17 @@ public class SceneContext
 
         var context = new SceneContext(scene);
 
-        Console.WriteLine("Deserializing...");
+        Tracer.Begin<SceneContext>("Deserialize");
 
         foreach (var valueSerialization in contextSerialization.Values)
         {
             var value = context.GetProperty(valueSerialization.PropertyName);
             value.DeserializeValue(valueSerialization);
 
-            Console.WriteLine($"Deserialize: {valueSerialization.PropertyName} = {value.Value}");
+            Tracer.Write<SceneContext>("Deserialize", "Deserialized: {0} = {1}", valueSerialization.PropertyName, value.Value!);
         }
+
+        Tracer.End<SceneContext>("Deserialize");
 
         return context;
     }

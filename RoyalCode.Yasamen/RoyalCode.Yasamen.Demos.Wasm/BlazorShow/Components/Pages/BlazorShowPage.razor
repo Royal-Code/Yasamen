@@ -41,10 +41,10 @@
         locationChangedDelegate = LocationChanged;
     }
 
-    //protected override void OnInitialized()
-    //{
-    //    NavigationManager.LocationChanged += locationChangedDelegate;
-    //}
+    protected override void OnInitialized()
+    {
+        NavigationManager.LocationChanged += locationChangedDelegate;
+    }
 
     private void LocationChanged(object? sender, LocationChangedEventArgs e)
     {
@@ -77,10 +77,10 @@
         Tracer.End<BlazorShowPage>($"OnParametersSet, changingScene: {changingScene}");
     }
 
-    //protected override bool ShouldRender()
-    //{
-    //    return !changingScene;
-    //}
+    protected override bool ShouldRender()
+    {
+        return !changingScene;
+    }
 
     protected override void OnAfterRender(bool firstRender)
     {

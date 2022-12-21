@@ -34,6 +34,9 @@ public class ArticleBoxShow : IShow<ArticleBox>
                     ps.Property(b => b.ArticleBorder).DefaultValue(Borders.DefaultNone);
                     ps.Property(b => b.HeaderBorder).DefaultValue(Borders.DefaultForHeaders with { Shadow = Shadows.Small });
                     ps.Property(b => b.FooterBorder).DefaultValue(Borders.DefaultForFooters);
+
+                    ps.Property(b => b.HeaderAdditionalClasses).DefaultValue(new List<string>() { "p-3", "mb-4" });
+                    ps.Property(b => b.FooterAdditionalClasses).DefaultValue(new List<string>() { "p-3", "mt-4" });
                 });
             });
     }
