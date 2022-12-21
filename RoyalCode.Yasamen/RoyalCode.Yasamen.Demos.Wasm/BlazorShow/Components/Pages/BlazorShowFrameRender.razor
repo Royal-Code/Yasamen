@@ -53,4 +53,9 @@
 
         context = SceneContext.Deserialize(routedScene, json);
     }
+
+    protected override bool ShouldRender()
+    {
+        return routedScene is not null;
+    }
 }

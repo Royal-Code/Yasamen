@@ -8,13 +8,15 @@
 
 @code {
 
-    private ScenePropertyValue propertyValue;
+    private ScenePropertyValue? propertyValue;
 
     private string Value
     {
-        get => propertyValue.ValueString;
+        get => propertyValue?.ValueString ?? string.Empty;
         set
         {
+            if (propertyValue is null)
+                return;
             propertyValue.Value = value;
             propertyValue.StateHasChanged();
         }
@@ -28,6 +30,6 @@
 
     protected override void OnParametersSet()
     {
-        propertyValue = Context.GetProperty(Property.Property.Name);
+        propertyValue = Context?.GetProperty(Property.Property.Name);
     }
 }

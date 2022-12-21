@@ -20,7 +20,7 @@
 
             @foreach (var property in Scene.SceneProperties.Where(p => !p.IsHidden && !p.IsFragment))
             {
-                <SceneProperty Property="property" @key=@property.Name />
+                <SceneProperty Property="property" Context="context" @key=@property.Name />
             }
             
             <SceneFragmentProperties Properties="Scene.SceneProperties.Where(p => p.IsFragment)" />
@@ -39,5 +39,6 @@
     protected override void OnParametersSet()
     {
         context = new SceneContext(Scene);
+        Tracer.Write("SceneShow", "OnParametersSet", $"Scene: {Scene.Show.Name} - {Scene.Name}");
     }
 }

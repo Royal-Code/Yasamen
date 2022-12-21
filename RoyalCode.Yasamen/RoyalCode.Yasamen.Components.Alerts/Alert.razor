@@ -80,10 +80,11 @@
     {
         dismissEffectEndded = DismissEffectEndded;
     }
-    
+
     private async void DismissEffectEndded(object? data)
     {
         dismissed = true;
+        dismissing = false;
         StateHasChanged();
         await OnDismissed.InvokeAsync();
     }
