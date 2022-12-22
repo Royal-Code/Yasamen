@@ -104,20 +104,29 @@
         }
     }
 
-    protected override async Task OnParametersSetAsync()
+    public override async Task SetParametersAsync(ParameterView parameters)
     {
-        Tracer.Begin<Alert>("OnParametersSet");
+        foreach (var prm in parameters)
+        {
+            if (prm.Name == "Header")
+            {
+                RenderFragment frag = prm.Value as RenderFragment;
+                hasHeader = frag.IsNotEmptyFragment();
+            }
+            else if (prm.Name == "Title")
+            {
+                hasTitle = !string.IsNullOrWhiteSpace(prm.Value as string);
+            }
+        }
 
-        if (Header.IsNotEmptyFragment())
-            hasHeader = true;
-        else if (!string.IsNullOrWhiteSpace(Title))
-            hasTitle = true;
+        await base.SetParametersAsync(parameters);
 
         withHeader = hasHeader || hasTitle;
+    }
 
+    protected override async Task OnParametersSetAsync()
+    {
         await TryInitInterop();
-        
-        Tracer.End<Alert>("OnParametersSet");
     }
 
     private async ValueTask TryInitInterop()

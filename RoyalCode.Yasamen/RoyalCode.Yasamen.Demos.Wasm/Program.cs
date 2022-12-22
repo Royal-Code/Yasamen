@@ -50,6 +50,7 @@ builder.Services.AddBlazorShow(b =>
     b.AddShow<ArticleBoxShow, ArticleBox>();
     // components
     b.AddShow<AlertShow, Alert>();
+    b.AddShow<WorkingAlertShow, WorkingAlert>();
 });
 
 RoyalCode.Yasamen.Commons.Tracer.IsActive = true;

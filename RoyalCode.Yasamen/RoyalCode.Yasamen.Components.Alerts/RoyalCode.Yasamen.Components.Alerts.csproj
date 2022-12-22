@@ -7,11 +7,21 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="WorkingAlert.razor.css" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="WorkingAlert.razor.css" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(AspNetVer)" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\RoyalCode.Yasamen.Animations\RoyalCode.Yasamen.Animations.csproj" />
 	  <ProjectReference Include="..\RoyalCode.Yasamen.Commons\RoyalCode.Yasamen.Commons.csproj" />
+	  <ProjectReference Include="..\RoyalCode.Yasamen.Icons\RoyalCode.Yasamen.Icons.csproj" />
 	</ItemGroup>
 
 </Project>

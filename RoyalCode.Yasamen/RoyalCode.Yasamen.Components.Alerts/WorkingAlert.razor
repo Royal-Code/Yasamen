@@ -1,0 +1,54 @@
+﻿
+<Alert AlertStyle="InternalStyle"
+       AdditionalClasses="@AdditionalClasses"
+       @attributes="AdditionalAttributes">
+
+    <div class="working-alert">
+        @if (workingItemKind is not null)
+        {
+            <div class="working-icon">
+                <RotateAnimation>
+                    <Icon Kind="workingItemKind" />
+                </RotateAnimation>
+            </div>
+        }
+
+        <div class="working-text">
+            @if (ChildContent.IsNotEmptyFragment())
+            {
+                @ChildContent
+            }
+            else
+            {
+                @Text
+            }
+        </div>
+
+    </div>
+</Alert>
+
+@code {
+
+    private AlertStyles InternalStyle => AlertStyle ?? AlertStyles.Secondary;
+    private Enum? workingItemKind;
+
+    public WorkingAlert()
+    {
+        CommonsOptions.Get<Icon>().TryGet<Enum>(WellKnownIcons.Working, out workingItemKind);
+    }
+
+    [Parameter]
+    public AlertStyles? AlertStyle { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public string Text { get; set; }
+
+    [Parameter]
+    public string AdditionalClasses { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> AdditionalAttributes { get; set; }
+}
