@@ -1,0 +1,15 @@
+﻿
+<a class="@classes" @attributes="AdditionalAttributes">@ChildContent</a>
+
+@code {
+    private CssClassMap classes => CssClassMap.Create("alert-link").Add(AdditionalClasses);
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public string AdditionalClasses { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> AdditionalAttributes { get; set; }
+}

@@ -4,7 +4,7 @@
 <CascadingValue Value="context">
     <div class="scene-show">
         <h3>@Scene.Show.Name - @Scene.Name</h3>
-        <div class="scene-component">
+        <div class="scene-component @AlignClass">
             @if (Scene.RenderKind == ShowRenderKind.Direct)
             {
                 <SceneRender />
@@ -20,7 +20,7 @@
 
             @foreach (var property in Scene.SceneProperties.Where(p => !p.IsHidden && !p.IsFragment))
             {
-                <SceneProperty Property="property" @key=@property.Name />
+                <SceneProperty Property="property" Context="context" @key=@property.Name />
             }
             
             <SceneFragmentProperties Properties="Scene.SceneProperties.Where(p => p.IsFragment)" />
@@ -32,6 +32,8 @@
 @code {
     private SceneContext? context;
 
+    private string AlignClass => (Scene?.Align ?? Align.Center).ToTextCssClass();
+
     [Parameter, EditorRequired]
     public IScene Scene { get; set; }
 
@@ -39,5 +41,6 @@
     protected override void OnParametersSet()
     {
         context = new SceneContext(Scene);
+        Tracer.Write("SceneShow", "OnParametersSet", $"Scene: {Scene.Show.Name} - {Scene.Name}");
     }
 }

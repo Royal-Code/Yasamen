@@ -9,8 +9,11 @@
 <iframe src="@Url" style="@Styles"></iframe>
 
 @code {
-    private string Url;
+
     private readonly Action changeListenerDelegate;
+
+    private string Url;
+    private SceneContext? previousContext;
 
     private string Styles => $"height: {Context.Scene.FrameOptions.Height}; width: {Context.Scene.FrameOptions.Width}; border: none; overflow: scroll;";
 
@@ -22,12 +25,16 @@
     [CascadingParameter]
     public SceneContext Context { get; set; }
 
-    protected override void OnInitialized()
+    protected override void OnParametersSet()
     {
+        previousContext?.RemovePropertyChangedListener(changeListenerDelegate);
         Context.AddPropertyChangedListener(changeListenerDelegate);
+        previousContext = Context;
+
+        MakeUrl();
     }
 
-    protected override void OnParametersSet()
+    private void MakeUrl()
     {
         var route = Context.Scene.Show.GetDefaultRoute();
         var scene = Context.Scene.Name;
@@ -37,7 +44,7 @@
 
     private void ChangeListener()
     {
-        OnParametersSet();
+        MakeUrl();
         InvokeAsync(StateHasChanged);
     }
 

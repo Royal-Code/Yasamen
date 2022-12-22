@@ -1,0 +1,8 @@
+﻿.working-alert {
+    display: flex;
+    flex-direction: row;
+}
+
+.working-text {
+    margin-left: 0.5rem;
+}

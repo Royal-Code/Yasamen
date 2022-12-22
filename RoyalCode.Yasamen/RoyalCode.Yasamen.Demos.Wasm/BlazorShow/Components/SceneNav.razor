@@ -1,8 +1,9 @@
+@inject BlazorShowOptions Options;
 
 <div class="scene">
-    <span class="scene-name scene-link" title="@Scene.Description">
+    <a class="scene-name scene-link" title="@Scene.Description" href="@Options.MakeRoute(Scene.GetRoute())">
         @Scene.Name
-    </span>
+    </a>
 </div>
 
 @code {

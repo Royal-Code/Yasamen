@@ -4,10 +4,10 @@
 <div class="component-show">
     @if (Show.HasMultipleScenes)
     {
-        <span class="component-name has-multiple-scenes" title="@Show.Description">
+        <span class="component-name has-multiple-scenes" title="@Show.Description" @onclick=ShowHandler>
             @Show.Name
         </span>
-        <div class="component-scenes">
+        <div class="component-scenes @show">
             @foreach (var scene in Show.Scenes)
             {
                 <SceneNav Scene="scene" @key=scene.Name/>
@@ -23,6 +23,13 @@
 </div>
 
 @code {
+    private string show = string.Empty;
+
     [Parameter, EditorRequired]
     public IShowDescription Show { get; set; }
+
+    public void ShowHandler()
+    {
+        show = show == string.Empty ? "show" : string.Empty;
+    }
 }

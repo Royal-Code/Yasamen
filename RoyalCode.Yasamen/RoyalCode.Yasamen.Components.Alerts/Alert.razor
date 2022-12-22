@@ -1,5 +1,144 @@
-﻿<h3>Alert</h3>
+﻿@implements IAsyncDisposable
+
+@inject EventsJsModule Js;
+
+@if (!dismissed)
+{
+    <div class="@classes" @attributes="AdditionalAttributes" @ref="alertRef">
+        @if (withHeader)
+        {
+            <h4 class="alert-heading">
+                @if (hasHeader)
+                {
+                    @Header
+                }
+                else
+                {
+                    @Title
+                    if (HorizontalRule)
+                    {
+                        <hr />
+                    }
+                }
+            </h4>
+        }
+        @if (ChildContent.IsNotEmptyFragment())
+        {
+            @ChildContent
+        }
+        else
+        {
+            @Text
+        }
+        @if (Dismissable)
+        {
+            <button type="button" class="btn-close" aria-label="Close" @onclick="() => dismissing = true"></button>
+        }
+    </div>
+}
 
 @code {
+    private ElementReference alertRef;
+    private bool dismissed = false;
+    private bool dismissing = false;
 
+    private bool withHeader, hasHeader, hasTitle;
+    private readonly Action<object?> dismissEffectEndded;
+
+    private CssClassMap classes => CssClassMap.Create("alert")
+        .Add(AlertStyle.GetCssClass())
+        .Add(AdditionalClasses)
+        .Add(() => Dismissable, "alert-dismissible fade")
+        .Add(() => Dismissable && !dismissing, "show");
+
+    private JsEventInterop<object>? eventInterop;
+
+    [Parameter]
+    public AlertStyles AlertStyle { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public RenderFragment Header { get; set; }
+
+    [Parameter]
+    public string Text { get; set; }
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public bool HorizontalRule { get; set; }
+
+    [Parameter]
+    public bool Dismissable { get; set; }
+
+    [Parameter]
+    public EventCallback OnDismissed { get; set; }
+
+    [Parameter]
+    public string AdditionalClasses { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> AdditionalAttributes { get; set; }
+
+    public Alert()
+    {
+        dismissEffectEndded = DismissEffectEndded;
+    }
+
+    private async void DismissEffectEndded(object? data)
+    {
+        dismissed = true;
+        dismissing = false;
+        StateHasChanged();
+        await OnDismissed.InvokeAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await TryInitInterop();
+        }
+    }
+
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        foreach (var prm in parameters)
+        {
+            if (prm.Name == "Header")
+            {
+                RenderFragment frag = prm.Value as RenderFragment;
+                hasHeader = frag.IsNotEmptyFragment();
+            }
+            else if (prm.Name == "Title")
+            {
+                hasTitle = !string.IsNullOrWhiteSpace(prm.Value as string);
+            }
+        }
+
+        await base.SetParametersAsync(parameters);
+
+        withHeader = hasHeader || hasTitle;
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await TryInitInterop();
+    }
+
+    private async ValueTask TryInitInterop()
+    {
+        if (alertRef.Id is not null && eventInterop is null)
+        {
+            eventInterop = await Js.On<object>(alertRef, "transitionend", dismissEffectEndded);
+        }
+    }
+
+    public ValueTask DisposeAsync()
+    {
+        return eventInterop?.DisposeAsync() ?? default;
+    }
 }

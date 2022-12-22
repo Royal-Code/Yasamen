@@ -9,6 +9,8 @@ public sealed class SceneRender : ComponentBase, IDisposable
 {
     private readonly Action changeListenerDelegate;
 
+    private SceneContext? previousContext;
+
     public SceneRender()
     {
         changeListenerDelegate = ChangeListener;
@@ -17,9 +19,11 @@ public sealed class SceneRender : ComponentBase, IDisposable
     [CascadingParameter]
     public SceneContext Context { get; set; }
 
-    protected override void OnInitialized()
+    protected override void OnParametersSet()
     {
+        previousContext?.RemovePropertyChangedListener(changeListenerDelegate);
         Context.AddPropertyChangedListener(changeListenerDelegate);
+        previousContext = Context;
     }
 
     public void Dispose()
@@ -28,17 +32,18 @@ public sealed class SceneRender : ComponentBase, IDisposable
     }
 
     private void ChangeListener()
-    {
+    {       
         InvokeAsync(StateHasChanged);
     }
 
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
         Console.WriteLine("BuildRenderTree SceneRender");
-        
-        builder.OpenComponent(0, Context.Scene.Show.ComponentType);
 
-        int seq = 1;
+        builder.OpenRegion(0);
+        builder.OpenComponent(1, Context.Scene.Show.ComponentType);
+
+        int seq = 2;
         foreach (var property in Context.Values)
         {
             if (property.PropertyDescription.IsCaptureUnmatchedValues)
@@ -61,6 +66,7 @@ public sealed class SceneRender : ComponentBase, IDisposable
         }
 
         builder.CloseComponent();
+        builder.CloseRegion();
     }
 
     private RenderFragment RenderFragment(List<FragmentComponentDescription> fragmentComponents)
@@ -70,6 +76,7 @@ public sealed class SceneRender : ComponentBase, IDisposable
             int seq = 0;
             foreach (var description in fragmentComponents)
             {
+                builder.OpenRegion(seq++);
                 builder.OpenComponent(seq++, description.ComponentType);
                 
                 foreach (var property in description.PropertyValues)
@@ -88,8 +95,10 @@ public sealed class SceneRender : ComponentBase, IDisposable
                     else
                         builder.AddAttribute(seq++, property.PropertyInfo.Name, property.Value);
                 }
-                
+
+                builder.SetKey(description.ComponentType.Name);
                 builder.CloseComponent();
+                builder.CloseRegion();
             }
         };
     }

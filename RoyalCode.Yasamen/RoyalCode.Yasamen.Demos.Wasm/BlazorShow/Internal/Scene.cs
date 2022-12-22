@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using RoyalCode.Yasamen.Commons;
 using System.Reflection;
 
 namespace RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Internal;
@@ -21,6 +22,8 @@ public class Scene<TComponent> : IScene<TComponent>
     
     public string? Description { get; set; }
     
+    public Align Align { get; set; } = Align.Center;
+
     public IShowDescription Show { get; }
     
     public ShowRenderKind? RenderKind 

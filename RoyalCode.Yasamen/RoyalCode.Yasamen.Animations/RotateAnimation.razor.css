@@ -1,13 +1,18 @@
 ﻿
-[b-rotate] {
-    animation: infinite-rotate 2s linear infinite;
-    display: inline-flex;
+[b-rotate], [b-rotate-clockwise] {
+    display: flex;
+    padding-top: .25rem;
 }
 
-[b-rotate-clockwise] {
-    animation: infinite-rotate-counter-clockwise 2s linear infinite;
-    display: inline-flex;
-}
+    [b-rotate] ::deep > * {
+        animation: infinite-rotate 2s linear infinite;
+        display: inline-flex;
+    }
+
+    [b-rotate-clockwise] ::deep > * {
+        animation: infinite-rotate-counter-clockwise 2s linear infinite;
+        display: inline-flex;
+    }
 
 @keyframes infinite-rotate {
     0% { transform: rotate(0deg); }

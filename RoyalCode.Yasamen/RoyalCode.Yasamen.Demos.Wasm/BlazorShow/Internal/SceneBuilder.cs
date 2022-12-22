@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using RoyalCode.Yasamen.Commons;
 
 namespace RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Internal;
 
@@ -29,6 +30,12 @@ public class SceneBuilder<TComponent> : ISceneBuilder<TComponent>
     public ISceneBuilder<TComponent> Name(string name)
     {
         scene.Name = name;
+        return this;
+    }
+
+    public ISceneBuilder<TComponent> Align(Align align)
+    {
+        scene.Align = align;
         return this;
     }
 

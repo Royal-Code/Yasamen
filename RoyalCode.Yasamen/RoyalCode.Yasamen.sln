@@ -50,7 +50,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{3C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Components.Alerts", "RoyalCode.Yasamen.Components.Alerts\RoyalCode.Yasamen.Components.Alerts.csproj", "{958A44BA-D631-4644-B9C4-7DC90ABC712E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Yasamen.Animations", "RoyalCode.Yasamen.Animations\RoyalCode.Yasamen.Animations.csproj", "{1A69CAEF-5B3F-4516-8209-4AEFEFACF4E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Animations", "RoyalCode.Yasamen.Animations\RoyalCode.Yasamen.Animations.csproj", "{1A69CAEF-5B3F-4516-8209-4AEFEFACF4E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
