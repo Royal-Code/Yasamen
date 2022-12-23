@@ -5,17 +5,31 @@
 
 @code {
 
-    CssClassMap Classes => CssClassMap.Create(Border.CssClasses, AdditionalClasses);
+    CssClassMap Classes => CssClassMap.Create("d-flex",
+        Border.CssClasses, 
+        MinHeight.ToAbbrCssClass(),
+        Align.ToItemsCssClass(),
+        Justify.ToContentCssClass(),
+        AdditionalClasses);
 
     [Parameter]
     public Borders Border { get; set; } = Borders.Default;
-    
+
     [Parameter]
     public string? AdditionalClasses { get; set; }
-    
+
     [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object>? Attributes { get; set; }
-    
+
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public Sizes MinHeight { get; set; }
+
+    [Parameter]
+    public Align Align { get; set; }
+
+    [Parameter]
+    public Justify Justify { get; set; }
 }
