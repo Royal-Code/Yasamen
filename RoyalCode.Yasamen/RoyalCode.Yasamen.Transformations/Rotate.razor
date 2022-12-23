@@ -1,0 +1,18 @@
+﻿
+<div @attributes=AdditionalAttributes style="--rotate-effect-deg: @Deg">
+    @ChildContent
+</div>
+
+@code {
+
+    private string Deg => $"{Angle}deg";
+
+    [Parameter]
+    public int Angle { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> AdditionalAttributes { get; set; }
+}

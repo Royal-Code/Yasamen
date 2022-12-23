@@ -89,15 +89,15 @@ public record Borders
     
     private IEnumerable<string> AllCssClasses()
     {
-        yield return GetStyleCssClasses();
-        yield return GetColorCssClasses();
-        yield return GetWidthCssClasses();
-        yield return GetRadiusCssClasses();
-        yield return GetRoundedSizeCssClasses();
-        yield return Shadow.GetCssClass();
+        yield return ToStyleCssClasses();
+        yield return ToColorCssClasses();
+        yield return ToWidthCssClasses();
+        yield return ToRadiusCssClasses();
+        yield return ToRoundedSizeCssClasses();
+        yield return Shadow.ToCssClass();
     }
 
-    private string GetStyleCssClasses()
+    private string ToStyleCssClasses()
     {
         return Style switch
         {
@@ -114,7 +114,7 @@ public record Borders
         };
     }
 
-    private string GetColorCssClasses()
+    private string ToColorCssClasses()
     {
         return Color switch
         {
@@ -133,7 +133,7 @@ public record Borders
         };
     }
 
-    private string GetWidthCssClasses()
+    private string ToWidthCssClasses()
     {
         return Width switch
         {
@@ -146,7 +146,7 @@ public record Borders
         };
     }
 
-    private string GetRadiusCssClasses()
+    private string ToRadiusCssClasses()
     {
         return Radius switch
         {
@@ -162,7 +162,7 @@ public record Borders
         };
     }
 
-    private string GetRoundedSizeCssClasses()
+    private string ToRoundedSizeCssClasses()
     {
         return RoundedSize switch
         {

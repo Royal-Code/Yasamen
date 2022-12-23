@@ -169,8 +169,8 @@
     --b-color-light-l6: #FDFCFE;
     --b-color-light-l7: #FEFDFF;
     /* link */
-    --bs-color-link: #0d6efd;
-    --bs-color-link--hover: #0a58ca;
+    --b-color-link: #0d6efd;
+    --b-color-link--hover: #0a58ca;
     
     /* darken (with opacity) */
     --b-color-darken-7: rgba(0, 0, 0, 0.9);
@@ -356,6 +356,29 @@
     --b-alert-border-style: solid;
     --b-alert-border-color: transparent;
     --b-alert-border-radius: 0.375rem;
+
+    /* button */
+    --b-button--font-weight: 400;
+    --b-button--line-height: 1.5;
+    --b-button--color: var(--b-color-dark-d3);
+    --b-button--padding: .375rem .75rem;
+    --b-button--font-size: 1rem;
+    --b-button--border-radius: .25rem;
+    --b-button--transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    --b-button-icon--margin: var(--b-size-g2);
+    --b-button--disabled--opacity: .65;
+    --b-button-sm--padding: .25rem .5rem;
+    --b-button-sm--font-size: .875rem;
+    --b-button-sm--border-radius: .2rem;
+    --b-button-xs--padding: .175rem .375rem;
+    --b-button-xs--font-size: .75rem;
+    --b-button-xs--border-radius: .125rem;
+    --b-button-lg--padding: .5rem 1rem;
+    --b-button-lg--font-size: 1.25rem;
+    --b-button-lg--border-radius: .3rem;
+    --b-button-xl--padding: .875rem 1.75rem;
+    --b-button-xl--font-size: 1.675rem;
+    --b-button-xl--border-radius: .5rem;
 }
 
 /***** Theme Colors *****/

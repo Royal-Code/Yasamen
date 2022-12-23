@@ -31,7 +31,7 @@ public static class AlertStylesExtensions
     /// <exception cref="NotSupportedException">
     ///     The style is not supported.
     /// </exception>
-    public static string GetCssClass(this AlertStyles style)
+    public static string ToCssClass(this AlertStyles style)
     {
         return style switch
         {

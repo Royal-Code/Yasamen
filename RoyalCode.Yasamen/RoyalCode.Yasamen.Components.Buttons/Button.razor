@@ -1,0 +1,91 @@
+﻿@inject NavigationManager Navigator
+
+<button type="@Type.ToHtmlAttr()" 
+        class="@Classes" 
+        @onclick="ClickHandler" 
+        @attributes="AdditionalAttributes" 
+        @ref="Reference">
+    
+    @if (Icon is not null && !UseIconAtEnd)
+    {
+        <Icon Kind="@Icon" />
+    }
+    
+    @Label
+    
+    @if (Icon is not null && UseIconAtEnd)
+    {
+        <Icon Kind="@Icon" />
+    }
+    
+    @ChildContent
+        
+</button>
+
+@code {
+
+    private CssClassMap Classes =>
+    CssClassMap.Create("btn")
+        .Add(Style.ToCssClass(Outline))
+        .Add(Size.ToButtonCssClass())
+        .Add(() => Block, "btn-block")
+        .Add(() => Active, "active")
+        .Add(() => UseIconAtEnd, "icon-at-end")
+        .Add(AdditionalClasses);
+    
+    public ElementReference Reference { get; private set; }
+    
+    [Parameter, EditorRequired]
+    public string Label { get; set; } = null!;
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = null!;
+
+    [Parameter]
+    public ButtonType Type { get; set; }
+
+    [Parameter]
+    public ButtonStyles Style { get; set; }
+
+    [Parameter]
+    public Sizes Size { get; set; }
+    
+    [Parameter]
+    public Enum? Icon { get; set; }
+
+    [Parameter]
+    public int? IconRotateAngle { get; set; }
+    
+    [Parameter]
+    public bool Outline { get; set; }
+
+    [Parameter]
+    public bool Block { get; set; }
+
+    [Parameter]
+    public bool Active { get; set; }
+    
+    [Parameter]
+    public bool UseIconAtEnd { get; set; }
+    
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    [Parameter]
+    public string? NavigateTo { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick { get; set; }
+
+    private async Task ClickHandler(MouseEventArgs args)
+    {
+        if (OnClick.HasDelegate)
+            await OnClick.InvokeAsync(args);
+
+        if (!string.IsNullOrEmpty(NavigateTo))
+            Navigator.NavigateTo(NavigateTo);
+    }
+}

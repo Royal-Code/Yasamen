@@ -46,7 +46,7 @@
     private readonly Action<object?> dismissEffectEndded;
 
     private CssClassMap classes => CssClassMap.Create("alert")
-        .Add(AlertStyle.GetCssClass())
+        .Add(AlertStyle.ToCssClass())
         .Add(AdditionalClasses)
         .Add(() => Dismissable, "alert-dismissible fade")
         .Add(() => Dismissable && !dismissing, "show");

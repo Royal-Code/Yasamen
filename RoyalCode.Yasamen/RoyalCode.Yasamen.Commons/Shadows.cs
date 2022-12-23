@@ -14,7 +14,7 @@ public enum Shadows
 
 public static class ShadowsExtensions
 {
-    public static string GetCssClass(this Shadows shadow)
+    public static string ToCssClass(this Shadows shadow)
     {
         return shadow switch
         {

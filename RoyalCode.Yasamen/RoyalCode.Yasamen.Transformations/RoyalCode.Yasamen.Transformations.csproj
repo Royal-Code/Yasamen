@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<Import Project="..\version.targets" />
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(AspNetVer)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="./Rotate.razor.css" CssScope="b-transform" />
+	</ItemGroup>
+
+</Project>
