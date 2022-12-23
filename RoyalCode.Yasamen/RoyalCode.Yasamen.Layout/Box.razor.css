@@ -1,0 +1,20 @@
+﻿div {
+    min-height: var(--b-box--min-height);
+    padding: var(--b-box--padding);
+}
+
+    div.sm {
+        min-height: var(--b-box-sm--min-height);
+    }
+
+    div.xs {
+        min-height: var(--b-box-xs--min-height);
+    }
+
+    div.lg {
+        min-height: var(--b-box-lg--min-height);
+    }
+
+    div.xl {
+        min-height: var(--b-box-xl--min-height);
+    }

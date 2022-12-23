@@ -289,6 +289,13 @@
     /* layout */
     --b-cols-columns: 12;
     --b-cols-gutter: var(--b-size-5);
+    /* box */
+    --b-box-xs--min-height: var(--b-size-6);
+    --b-box-sm--min-height: var(--b-size-8);
+    --b-box--min-height: var(--b-size-h2);
+    --b-box-lg--min-height: var(--b-size-h5);
+    --b-box-xl--min-height: var(--b-size-x2);
+    --b-box--padding: var(--b-size-0) var(--b-size-g2) var(--b-size-0) var(--b-size-g2);
     /* header */
     --b-header--height: var(--b-size-h2);
     --b-header--border: none;
