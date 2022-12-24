@@ -18,13 +18,15 @@
             
             The properties of the component.
 
-            @foreach (var property in Scene.SceneProperties.Where(p => !p.IsHidden && !p.IsFragment))
+            @foreach (var property in Scene.SceneProperties.Where(p => !p.IsHidden && !p.IsFragment && !p.IsEvent))
             {
                 <SceneProperty Property="property" Context="context" @key=@property.Name />
             }
             
             <SceneFragmentProperties Properties="Scene.SceneProperties.Where(p => p.IsFragment)" />
 
+            <SceneEventsProperties Properties="Scene.SceneProperties.Where(p => p.IsEvent)" />
+                
         </div>
     </div>
 </CascadingValue>

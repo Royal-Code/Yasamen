@@ -32,6 +32,9 @@ public class PropertyValueRender : ComponentBase
         else if (Property.IsFragment)
             RenderFragmentProperty(builder);
 
+        else if (Property.IsEvent)
+            RenderEventProperty(builder);
+
         else if (Property.IsHidden)
             return;
 
@@ -128,6 +131,15 @@ public class PropertyValueRender : ComponentBase
         builder.OpenComponent(20, typeof(ValueSetProperty<>).MakeGenericType(Property.Property.PropertyType));
         builder.AddAttribute(21, "Context", Context);
         builder.AddAttribute(22, "Property", Property);
+
+        builder.CloseComponent();
+    }
+
+    private void RenderEventProperty(RenderTreeBuilder builder)
+    {
+        builder.OpenComponent(22, typeof(FragmentProperty));
+        builder.AddAttribute(23, "Context", Context);
+        builder.AddAttribute(24, "Property", Property);
 
         builder.CloseComponent();
     }

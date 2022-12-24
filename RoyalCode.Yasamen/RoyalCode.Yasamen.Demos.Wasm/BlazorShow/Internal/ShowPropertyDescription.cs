@@ -22,7 +22,10 @@ public class ShowPropertyDescription : IShowPropertyDescription
     public bool IsHidden { get; set; }
 
     public bool IsFragment { get; set; }
-    
+
+    public bool IsEvent { get; set; }
+
+
     public bool HasEnumValues { get; set; }
     
     public Type? EnumType { get; set; }
@@ -67,5 +70,23 @@ public class ShowPropertyDescription : IShowPropertyDescription
         {
             IsFragment = true;
         }
+        else if (IsEventCallback(Property.PropertyType))
+        {
+            IsEvent = true;
+        }
+    }
+
+    private bool IsEventCallback(Type type)
+    {
+        if (type.IsGenericType)
+        {
+            var genericType = type.GetGenericTypeDefinition();
+            if (genericType == typeof(EventCallback<>))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

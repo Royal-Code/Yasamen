@@ -1,0 +1,20 @@
+﻿
+<div class="scene-events-properties">
+    <div class="events-label">
+        Events Callbacks
+    </div>
+    <div class="events-values">
+        @foreach (var property in Properties)
+        {
+            <div class="events-value">
+                <PropertyValueRender Property="property" @key=property.Name />
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+
+    [Parameter, EditorRequired]
+    public IEnumerable<IScenePropertyDescription> Properties { get; set; }
+}

@@ -15,22 +15,15 @@ public static class SizesExtensions
 {
     public static string ToAbbrCssClass(this Sizes size)
     {
-        switch (size)
+        return size switch
         {
-            case Sizes.Default:
-                return string.Empty;
-            case Sizes.Smallest:
-                return "xs";
-            case Sizes.Small:
-                return "sm";
-            case Sizes.Medium:
-                return "md";
-            case Sizes.Large:
-                return "lg";
-            case Sizes.Largest:
-                return "xl";
-            default:
-                throw new ArgumentOutOfRangeException(nameof(size), size, null);
-        }
+            Sizes.Default => string.Empty,
+            Sizes.Smallest => "xs",
+            Sizes.Small => "sm",
+            Sizes.Medium => "md",
+            Sizes.Large => "lg",
+            Sizes.Largest => "xl",
+            _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
+        };
     }
 }

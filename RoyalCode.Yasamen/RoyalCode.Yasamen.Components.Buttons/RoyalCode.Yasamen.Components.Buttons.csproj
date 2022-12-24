@@ -11,9 +11,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\RoyalCode.Yasamen.Animations\RoyalCode.Yasamen.Animations.csproj" />
-	  <ProjectReference Include="..\RoyalCode.Yasamen.Commons\RoyalCode.Yasamen.Commons.csproj" />
-	  <ProjectReference Include="..\RoyalCode.Yasamen.Icons\RoyalCode.Yasamen.Icons.csproj" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.Animations\RoyalCode.Yasamen.Animations.csproj" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.Commons\RoyalCode.Yasamen.Commons.csproj" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.Icons\RoyalCode.Yasamen.Icons.csproj" />
 	</ItemGroup>
 
 </Project>

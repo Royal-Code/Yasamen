@@ -14,6 +14,8 @@ public interface IShowPropertyDescription
 
     bool IsFragment { get; }
 
+    bool IsEvent { get; }
+
     bool HasEnumValues { get; }
 
     Type? EnumType { get; }

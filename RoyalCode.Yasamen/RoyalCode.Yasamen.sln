@@ -52,6 +52,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Component
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Animations", "RoyalCode.Yasamen.Animations\RoyalCode.Yasamen.Animations.csproj", "{1A69CAEF-5B3F-4516-8209-4AEFEFACF4E6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Components.Buttons", "RoyalCode.Yasamen.Components.Buttons\RoyalCode.Yasamen.Components.Buttons.csproj", "{DCD495DB-E3D0-4069-B402-BEFBFB3B04CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Yasamen.Transformations", "RoyalCode.Yasamen.Transformations\RoyalCode.Yasamen.Transformations.csproj", "{D8C4ADD2-73EC-40E4-9FD2-24EC01362033}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,6 +118,14 @@ Global
 		{1A69CAEF-5B3F-4516-8209-4AEFEFACF4E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A69CAEF-5B3F-4516-8209-4AEFEFACF4E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A69CAEF-5B3F-4516-8209-4AEFEFACF4E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCD495DB-E3D0-4069-B402-BEFBFB3B04CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCD495DB-E3D0-4069-B402-BEFBFB3B04CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCD495DB-E3D0-4069-B402-BEFBFB3B04CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCD495DB-E3D0-4069-B402-BEFBFB3B04CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8C4ADD2-73EC-40E4-9FD2-24EC01362033}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8C4ADD2-73EC-40E4-9FD2-24EC01362033}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8C4ADD2-73EC-40E4-9FD2-24EC01362033}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8C4ADD2-73EC-40E4-9FD2-24EC01362033}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -138,6 +150,8 @@ Global
 		{3C3259FC-1FFC-491C-8051-3F4569AE3D88} = {E2305804-FC03-4917-81A2-DAA052064C88}
 		{958A44BA-D631-4644-B9C4-7DC90ABC712E} = {9A2739B3-0033-4046-81CD-53BEC5E3360F}
 		{1A69CAEF-5B3F-4516-8209-4AEFEFACF4E6} = {CA365A09-213D-4036-AD32-BF574EBB2015}
+		{DCD495DB-E3D0-4069-B402-BEFBFB3B04CC} = {9A2739B3-0033-4046-81CD-53BEC5E3360F}
+		{D8C4ADD2-73EC-40E4-9FD2-24EC01362033} = {CA365A09-213D-4036-AD32-BF574EBB2015}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {274B8D8D-7446-4563-A4F0-0000A0C7209B}

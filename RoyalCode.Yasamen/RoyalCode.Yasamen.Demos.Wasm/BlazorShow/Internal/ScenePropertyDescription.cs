@@ -54,6 +54,8 @@ public class ScenePropertyDescription : IScenePropertyDescription
 
     public bool IsFragment => showPropertyDescription.IsFragment;
 
+    public bool IsEvent => showPropertyDescription.IsEvent;
+
     public bool IsHtmlAttributes => showPropertyDescription.IsHtmlAttributes;
 
     public bool IsHtmlClasses => showPropertyDescription.IsHtmlClasses;
@@ -69,7 +71,7 @@ public class ScenePropertyDescription : IScenePropertyDescription
         get => valueSet ?? showPropertyDescription.ValueSet;
         set => valueSet = value;
     }
-
+    
     public void AddFragmentComponent(FragmentComponentDescription description)
     {
         HasComponents = true;
