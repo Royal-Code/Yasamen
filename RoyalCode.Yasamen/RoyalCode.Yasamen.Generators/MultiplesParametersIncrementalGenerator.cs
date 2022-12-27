@@ -28,7 +28,7 @@ public class MultiplesParametersIncrementalGenerator : IIncrementalGenerator
     private PropertyDeclarationSyntax GetPropertyDeclarationSyntax(GeneratorSyntaxContext context, CancellationToken _)
     {
         var propertyDeclaration = (PropertyDeclarationSyntax)context.Node;
-        if (propertyDeclaration.TryGetAttribute("MultiplesParameters") is not null)
+        if (propertyDeclaration.TryGetAttribute(MultiplesParametersConstants.AttributeName) is not null)
             return propertyDeclaration;
         return null;
     }
@@ -62,14 +62,14 @@ public class MultiplesParametersIncrementalGenerator : IIncrementalGenerator
             var className = classModel.Name;
             // get class namespace
             var classNamespace = classModel.ContainingNamespace.ToDisplayString();
-
+            
             var generator = new MultiplesParametersGenerator(compilation, context, className, classNamespace);
 
             for (int i = 0; i < classMethods.Count; i++)
             {
                 generator.AddProperty(properties[i]);
             }
-
+            
             generator.Generate();
         }
     }

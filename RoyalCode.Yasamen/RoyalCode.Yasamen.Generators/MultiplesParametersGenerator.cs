@@ -1,18 +1,16 @@
-﻿
-using Microsoft.CodeAnalysis;
+﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using RoyalCode.DomainEvents.SourceGenerator;
 
 namespace RoyalCode.Yasamen.Generators;
 
 internal class MultiplesParametersGenerator : GeneratorBase
 {
     private const string spaces = "        ";
-    
+
     private readonly Compilation compilation;
 
     public MultiplesParametersGenerator(
-        Compilation compilation, 
+        Compilation compilation,
         SourceProductionContext context,
         string className,
         string classNamespace)
@@ -20,8 +18,8 @@ internal class MultiplesParametersGenerator : GeneratorBase
     {
         this.compilation = compilation;
 
-        UsingsGenerator.AddUsing("Microsoft.AspNetCore.Components");
-        ExtensionFileName = "_MultiplesParameters";
+        UsingsGenerator.AddUsing(MultiplesParametersConstants.AttributeNamespace);
+        ExtensionFileName = $"_{MultiplesParametersConstants.AttributeName}";
     }
 
     internal void AddProperty(PropertyDeclarationSyntax propertyDeclarationSyntax)
@@ -37,8 +35,8 @@ internal class MultiplesParametersGenerator : GeneratorBase
         var innerProperties = propertyType.GetMembers()
             .OfType<IPropertySymbol>()
             .Where(p => p.DeclaredAccessibility == Accessibility.Public && p.SetMethod != null && p.GetMethod != null);
-        
-        foreach(var innerProp in innerProperties)
+
+        foreach (var innerProp in innerProperties)
         {
             AddBodyGenerator(sb =>
             {
@@ -51,8 +49,27 @@ internal class MultiplesParametersGenerator : GeneratorBase
                 sb.Append(spaces).AppendLine($"    get => {propertyName}.{innerProp.Name};");
                 sb.Append(spaces).AppendLine($"    set => {propertyName}.{innerProp.Name} = value;");
                 sb.Append(spaces).AppendLine(@"}");
-                
+
             });
+        }
+
+        // get interfaces implemented by the class that is annotated by MultiplesParametersAttribute
+        var interfaces = propertyType.AllInterfaces
+            .Where(i => i.GetAttributes().Any(a =>
+            {
+                var name = a.AttributeClass?.Name;
+                return name is not null && 
+                    (a.AttributeClass?.Name.FastStartWith(MultiplesParametersConstants.AttributeName)
+                        ?? a.AttributeClass?.Name.FastEndWith($"{MultiplesParametersConstants.AttributeName}Attribute")
+                        ?? false);
+            }));
+
+        foreach (var @interface in interfaces)
+        {
+            // obtém o namespace da interface
+            var interfaceNamespace = @interface.ContainingNamespace.ToDisplayString();
+            UsingsGenerator.AddUsing(interfaceNamespace);
+            HierarchyGenerator.AddImplements(@interface.Name);
         }
     }
 }

@@ -8,9 +8,15 @@ namespace RoyalCode.Yasamen.Generators.Tests;
 public class MultiplesParametersTests
 {
     [Fact]
-    public async Task Test()
+    public async Task SingleMultiplesParametersProperty()
     {
-        await MultiplesParametersTestHelper.Verify(CodeForTest.Code);       
+        await MultiplesParametersTestHelper.Verify(CodeForTest.CodeSingle);       
+    }
+
+    [Fact]
+    public async Task WithInterfaceMultiplesParametersProperty()
+    {
+        await MultiplesParametersTestHelper.Verify(CodeForTest.CodeInterface);
     }
 }
 
@@ -42,7 +48,7 @@ public static class MultiplesParametersTestHelper
 
 file class CodeForTest
 {
-    public const string Code =
+    public const string CodeSingle =
 """
 using Microsoft.AspNetCore.Components;
 
@@ -69,6 +75,33 @@ public class TestParametersType
     public int? LgCols { get; set; }
 
     public int? XlCols { get; set; }
+}
+
+""";
+
+
+    public const string CodeInterface =
+"""
+using Microsoft.AspNetCore.Components;
+
+namespace RoyalCode.Yasamen.Generators.Tests;
+
+[MultiplesParameters]
+public interface IHasColumns
+{
+    int Cols { get; set; }
+}
+
+public partial class TextComponent
+{
+    [MultiplesParameters]
+    public TestParametersType Parameters { get; set; } = new();
+}
+
+public class TestParametersType : IHasColumns
+{
+
+    public int Cols { get; set; }
 }
 
 """;

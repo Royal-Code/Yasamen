@@ -1,14 +1,23 @@
 ﻿using Microsoft.CodeAnalysis;
 using System.Text;
 
-namespace RoyalCode.DomainEvents.SourceGenerator;
+namespace RoyalCode.Yasamen.Generators;
 
 internal class UsingsGenerator
 {
+    private readonly string typeNameSpace;
     private readonly List<string> usings = new();
-
+    
+    public UsingsGenerator(string typeNameSpace)
+    {
+        this.typeNameSpace = typeNameSpace;
+    }
+    
     public void AddUsing(string @namespace)
     {
+        if (typeNameSpace == @namespace)
+            return;
+        
         if (!usings.Contains(@namespace))
             usings.Add(@namespace);
     }

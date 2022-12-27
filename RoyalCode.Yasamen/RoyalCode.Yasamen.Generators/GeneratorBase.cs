@@ -1,11 +1,12 @@
 ﻿using Microsoft.CodeAnalysis;
 using System.Text;
 
-namespace RoyalCode.DomainEvents.SourceGenerator;
+namespace RoyalCode.Yasamen.Generators;
 
 internal abstract class GeneratorBase
 {
     private UsingsGenerator usingsGenerator;
+    private HierarchyGenerator hierarchyGenerator;
     private List<Action<StringBuilder>> bodyGenerators;
 
     public GeneratorBase(SourceProductionContext context, string @namespace, string className)
@@ -15,10 +16,11 @@ internal abstract class GeneratorBase
         ClassName = className;
     }
 
-    public UsingsGenerator UsingsGenerator => usingsGenerator ??= new();
+    public UsingsGenerator UsingsGenerator => usingsGenerator ??= new(Namespace);
 
     public SourceProductionContext Context { get; }
 
+    public HierarchyGenerator HierarchyGenerator => hierarchyGenerator ??= new();
 
     public string Namespace { get; }
 
@@ -48,7 +50,9 @@ internal abstract class GeneratorBase
 
         sb.AppendLine($"namespace {Namespace}");
         sb.AppendLine("{");
-        sb.AppendLine($"    public partial class {ClassName}");
+        sb.Append($"    public partial class {ClassName}");
+        hierarchyGenerator?.Write(sb);
+        sb.AppendLine();
         sb.AppendLine("    {");
 
         if (bodyGenerators is not null)
