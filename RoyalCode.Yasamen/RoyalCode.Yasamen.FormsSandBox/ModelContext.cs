@@ -1,36 +1,60 @@
-﻿namespace RoyalCode.Yasamen.Forms;
+﻿using System.ComponentModel.DataAnnotations;
+using RoyalCode.Yasamen.Forms.Validation;
 
-public class ModelContext
-{
+namespace RoyalCode.Yasamen.Forms;
 
-}
-
-public class ModelContext<TModel> : ModelContext
+public sealed class ModelContext<TModel> : IModelContext
 {
     public ModelContext(TModel model)
     {
         Model = model;
     }
 
+    public ModelContext(TModel model, IModelContext parent) : this(model)
+    {
+        Parent = parent;
+    }
+
     public ModelContext() { }
 
+    internal bool IsInitialized { get; private set; }
+    
     public TModel? Model { get; }
-}
 
-public class ValidationContext<TModel>
-{
+    public IModelContext? Parent { get; }
+    
+    public ValidationContext<TModel> ValidationContext { get; } = new ValidationContext<TModel>();
+
+    public EditorMessages EditorMessages { get; private set; } = null!;
+
+    public bool Validate()
+    {
+        if (Model is null)
+            return false;
+        
+        ValidationContext.Validate(Model);
+        return !ValidationContext.HasErros;
+    }
+    
     public void Clear()
     {
-        
+        ValidationContext.Clear();
     }
 
-    public void Validate(TModel model)
+    internal void Initialize(IValidatorProvider validatorProvider, EditorMessages editorMessages)
     {
-        
+        EditorMessages = editorMessages;
+        ValidationContext.Provider = validatorProvider;
+        ValidationContext.EditorMessages = editorMessages;
+
+        IsInitialized = true;
     }
-}
 
-public interface IValidator<TModel>
-{
+    public object? GetModel() => Model;
 
+    public IValidationContext GetValidationContext() => ValidationContext;
+
+    public EditorMessages GetEditorMessages() => EditorMessages;
+
+    public IModelContext? GetParent() => Parent;
 }
