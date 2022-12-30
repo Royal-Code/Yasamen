@@ -1,4 +1,4 @@
-﻿using RoyalCode.Yasamen.Forms.Validation;
+﻿using RoyalCode.Yasamen.Forms.Support;
 
 namespace RoyalCode.Yasamen.Forms;
 
@@ -20,15 +20,15 @@ public interface IModelContext
 {
     object? GetModel();
 
-    IValidationContext GetValidationContext();
+    IModelContext? Parent { get; }
 
-    EditorMessages GetEditorMessages();
+    EditorMessages EditorMessages { get; }
 
-    IModelContext? GetParent();
+    PropertyChangeSupport PropertyChangeSupport { get; }
 
     string GetModelNameIdentifier()
     {
-        var parentName = GetParent()?.GetModelNameIdentifier();
+        var parentName = Parent?.GetModelNameIdentifier();
         if (parentName is not null)
             return $"{parentName}.{GetModelName()}";
         else

@@ -10,7 +10,6 @@ public class ModelEditor<TModel> : ComponentBase
 {
     private ModelContext<TModel> modelContext = default!;
     private readonly Func<Task> handleSubmitDelegate;
-    private readonly EditorMessages editorMessages = new();
     
     public ModelEditor()
     {
@@ -165,8 +164,7 @@ public class ModelEditor<TModel> : ComponentBase
 
         if (!modelContext.IsInitialized)
         {
-            editorMessages.ClearAll();
-            modelContext.Initialize(ValidatorProvider, editorMessages);
+            modelContext.Initialize(ValidatorProvider);
         }
     }
 }

@@ -1,22 +1,30 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
+using RoyalCode.Yasamen.Forms.Support;
 using RoyalCode.Yasamen.Forms.Validation;
 
 namespace RoyalCode.Yasamen.Forms;
 
 public sealed class ModelContext<TModel> : IModelContext
 {
-    public ModelContext(TModel model)
+    public ModelContext(TModel model) : this()
     {
         Model = model;
     }
-
-    public ModelContext(TModel model, IModelContext parent) : this(model)
+    
+    internal ModelContext()
     {
-        Parent = parent;
+        PropertyChangeSupport = new();
+        EditorMessages = new();
     }
-
-    public ModelContext() { }
+    
+    // Futuramente poderá ser private e ter um método para criar um Nested.
+    internal ModelContext(TModel model, IModelContext parent)
+    {
+        Model = model;
+        Parent = parent;
+        EditorMessages = parent.EditorMessages;
+        PropertyChangeSupport = new(parent.PropertyChangeSupport);
+    }
     
     internal bool IsInitialized { get; private set; }
     
@@ -26,8 +34,10 @@ public sealed class ModelContext<TModel> : IModelContext
     
     public ValidationContext<TModel> ValidationContext { get; } = new ValidationContext<TModel>();
 
-    public EditorMessages EditorMessages { get; private set; } = null!;
+    public EditorMessages EditorMessages { get; private set; }
 
+    public PropertyChangeSupport PropertyChangeSupport { get; private set; }
+    
     public bool Validate()
     {
         if (Model is null)
@@ -47,20 +57,13 @@ public sealed class ModelContext<TModel> : IModelContext
         ValidationContext.Clear(Model);
     }
 
-    internal void Initialize(IValidatorProvider validatorProvider, EditorMessages editorMessages)
+    internal void Initialize(IValidatorProvider validatorProvider)
     {
-        EditorMessages = editorMessages;
         ValidationContext.Provider = validatorProvider;
-        ValidationContext.EditorMessages = editorMessages;
+        ValidationContext.EditorMessages = EditorMessages;
 
         IsInitialized = true;
     }
 
     public object? GetModel() => Model;
-
-    public IValidationContext GetValidationContext() => ValidationContext;
-
-    public EditorMessages GetEditorMessages() => EditorMessages;
-
-    public IModelContext? GetParent() => Parent;
 }
