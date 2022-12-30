@@ -1,4 +1,5 @@
 ﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace RoyalCode.Yasamen.Generators;
@@ -52,6 +53,21 @@ internal class MultiplesParametersGenerator : GeneratorBase
 
             });
         }
+
+        // get generics arguments of the class that is annotated by MultiplesParametersAttribute
+        var classGenerics = propertyDeclarationSyntax.Parent
+            .DescendantNodes()
+            .OfType<TypeParameterListSyntax>()
+            .FirstOrDefault();
+        // for each generics add to GenericGenerator
+        if (classGenerics is not null)
+        {
+            foreach (var generic in classGenerics.Parameters)
+            {
+                GenericsGenerator.AddGeneric(generic.Identifier.Text);
+            }
+        }
+
 
         // get interfaces implemented by the class that is annotated by MultiplesParametersAttribute
         var interfaces = propertyType.AllInterfaces
