@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using RoyalCode.Yasamen.Forms.Validation;
 
 namespace RoyalCode.Yasamen.Forms;
@@ -16,7 +17,7 @@ public sealed class ModelContext<TModel> : IModelContext
     }
 
     public ModelContext() { }
-
+    
     internal bool IsInitialized { get; private set; }
     
     public TModel? Model { get; }
@@ -31,14 +32,19 @@ public sealed class ModelContext<TModel> : IModelContext
     {
         if (Model is null)
             return false;
-        
+
+        // TODO: pode haver model context aninhados, a validação deverá ser para todos os níveis.
+
         ValidationContext.Validate(Model);
         return !ValidationContext.HasErros;
     }
     
     public void Clear()
     {
-        ValidationContext.Clear();
+        if (Model is null)
+            return;
+        
+        ValidationContext.Clear(Model);
     }
 
     internal void Initialize(IValidatorProvider validatorProvider, EditorMessages editorMessages)

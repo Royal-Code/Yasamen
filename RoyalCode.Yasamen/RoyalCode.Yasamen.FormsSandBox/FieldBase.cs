@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
+using RoyalCode.OperationResult;
 using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Commons.Extensions;
 using System.Diagnostics.CodeAnalysis;
@@ -12,15 +13,23 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
 {
     //private readonly EventHandler<ValidationStateChangedEventArgs> _validationStateChangedHandler;
     //private bool _previousParsingAttemptFailed;
-    
+
+    private Action messagesChanged;
+    private IMessageListener? messageListener;
     private bool initialized;
     private Type? nullableUnderlyingType;
     private bool settingFormattedCurrentValue;
+    private bool settingNewValue;
     private PropertyInfo? propertyInfo;
     private string? fieldLabel;
     private string? fieldName;
     private string? fieldId;
 
+    public FieldBase()
+    {
+        messagesChanged = StateHasChanged;
+    }
+    
     /// <summary>
     /// Gets the associated <see cref="ModelContext{TModel}"/>.
     /// This property is uninitialized if the input does not have a parent <see cref="ModelEditor{TModel}"/>.
@@ -81,6 +90,14 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
     /// </para>
     /// </summary>
     protected string FieldId => fieldId ??= $"{ModelContext.GetModelNameIdentifier()}.{FieldName}";
+    
+    /// <summary>
+    /// <para>
+    ///     Messages for the field.
+    /// </para>
+    /// </summary>
+    protected IEnumerable<IResultMessage> FieldMessages => messageListener?.Messages 
+        ?? ModelContext.GetEditorMessages().GetMessages(FieldIdentifier);
 
     /// <summary>
     /// Context received by the <see cref="ModelEditor{TModel}"/>.
@@ -197,24 +214,27 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
             //}
         }
     }
-
+    
     protected bool ParseAndSetValue(string? newValue)
     {
-        // remover mensagens para a propriedade.
-        
+        settingNewValue = true;
+
+        var editorMessages = ModelContext.GetEditorMessages();
+        editorMessages.Clear(FieldIdentifier);
+
         if (TryParseValue(newValue, out var result, out var error))
         {
             Value = result;
             IsInvalid = false;
-            
-            return true;
         }
         else
         {
             IsInvalid = true;
-            // TODO: atribuir mensagem de erro
-            return false;
+            editorMessages.Add(FieldIdentifier.Model, ResultMessage.Error(error!, FieldIdentifier.FieldName));
         }
+
+        settingNewValue = false;
+        return !IsInvalid;
     }
 
     protected virtual string? FormatValue(TValue? value) => value?.ToString();
@@ -230,6 +250,15 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
             : null;
 
         return parsed;
+    }
+
+    protected virtual void OnMessagesChanged()
+    {
+        if (settingNewValue)
+            return;
+
+        IsInvalid = FieldMessages.Any(m => m.Type == ResultMessageType.Error);
+        StateHasChanged();
     }
 
     /// <inheritdoc />
@@ -250,6 +279,9 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
             if (CascadedContext is not null)
             {
                 ModelContext = CascadedContext;
+
+                messageListener = ModelContext.GetEditorMessages().CreateListener(FieldIdentifier, Name);
+                messageListener.ListenChanges(messagesChanged);
 
                 // add property listener no lugar de state change listener
                 //EditContext.OnValidationStateChanged += _validationStateChangedHandler;

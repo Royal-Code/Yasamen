@@ -1,10 +1,8 @@
-﻿using RoyalCode.Yasamen.Forms.Validation;
-
-namespace RoyalCode.Yasamen.Forms;
+﻿namespace RoyalCode.Yasamen.Forms.Validation;
 
 public interface IValidationContext
 {
-    
+    bool HasErros { get; }
 }
 
 public sealed class ValidationContext<TModel> : IValidationContext
@@ -15,15 +13,22 @@ public sealed class ValidationContext<TModel> : IValidationContext
 
     internal EditorMessages EditorMessages { get; set; } = null!;
 
-    public void Clear()
+    public void Clear(TModel model)
     {
         HasErros = false;
-        EditorMessages?.Clear();
+
+        if (model is null)
+            return;
+        
+        EditorMessages?.Clear(model);
     }
 
     public void Validate(TModel model)
     {
-        Clear();
+        Clear(model);
+
+        if (model is null)
+            return;
 
         var validator = Provider?.GetValidator<TModel>();
         if (validator is not null)

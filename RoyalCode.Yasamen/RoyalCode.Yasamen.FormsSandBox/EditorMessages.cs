@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
 using RoyalCode.OperationResult;
-using System.Reflection;
 using System.Runtime.CompilerServices;
 
 namespace RoyalCode.Yasamen.Forms;
@@ -15,9 +14,10 @@ namespace RoyalCode.Yasamen.Forms;
 /// </summary>
 public sealed class EditorMessages
 {
-    private static ConditionalWeakTable<object, LinkedList<IResultMessage>> messageLists = new();
+    private ConditionalWeakTable<object, LinkedList<IResultMessage>> messageLists = new();
 
     private readonly LinkedList<MessageListener> listeners = new();
+    private readonly LinkedList<FallbackMessageListener> fallbackListeners = new();
 
     public IEnumerable<IResultMessage> GetMessages(object model)
     {
@@ -33,13 +33,20 @@ public sealed class EditorMessages
         return Enumerable.Empty<IResultMessage>();
     }
 
-    public IMessageListener CreateListener(FieldIdentifier fieldIdentifier, string fieldName)
+    public IMessageListener CreateListener(FieldIdentifier fieldIdentifier, string? fieldName)
     {
-        if (fieldName is null)
-            throw new ArgumentNullException(nameof(fieldName));
-
         var listener = new MessageListener(this, fieldIdentifier, fieldName);
         listeners.AddLast(listener);
+        return listener;
+    }
+
+    public IMessageListener CreateFallbackListner(object model)
+    {
+        if (model is null)
+            throw new ArgumentNullException(nameof(model));
+
+        var listener = new FallbackMessageListener(this, model);
+        fallbackListeners.AddLast(listener);
         return listener;
     }
 
@@ -70,88 +77,50 @@ public sealed class EditorMessages
             }
         }
         if (dispatchCount == 0)
-            messages.AddLast(message);
+            foreach (var l in fallbackListeners)
+                if (l.Match(model))
+                    l.MessageAdded(message);
     }
 
-    internal void Clear()
+    internal void Clear(FieldIdentifier fieldIdentifier)
     {
-        messages.Clear();
-        foreach (var l in listeners)
-            l.Clear();
+        if (messageLists.TryGetValue(fieldIdentifier.Model, out var list))
+        {
+            foreach (var l in listeners)
+            {
+                if (l.Match(fieldIdentifier))
+                {
+                    foreach (var m in l.Messages)
+                        list.Remove(m);
+                    l.Clear();
+                }   
+            };
+        }
+    }
+    
+    internal void Clear(object model)
+    {
+        if (messageLists.TryGetValue(model, out var messages))
+        {
+            messages.Clear();
+            foreach (var l in listeners)
+                if (l.Match(model))
+                    l.Clear();
+        }
+    }
+
+    internal void ClearAll()
+    {
+        messageLists.Clear();
     }
 
     internal void Remove(MessageListener messageListener)
     {
         listeners.Remove(messageListener);
     }
-}
 
-internal sealed class MessageListener : IMessageListener
-{
-    private readonly LinkedList<IResultMessage> messages = new();
-    private readonly LinkedList<Action> actions = new();
-    private readonly EditorMessages editorMessages;
-    private readonly FieldIdentifier fieldIdentifier;
-    private readonly string fieldName;
-
-    public MessageListener(EditorMessages editorMessages, FieldIdentifier fieldIdentifier, string fieldName)
+    internal void Remove(FallbackMessageListener messageListener)
     {
-        this.editorMessages = editorMessages;
-        this.fieldIdentifier = fieldIdentifier;
-        this.fieldName = fieldName;
-    }
-
-    public IEnumerable<IResultMessage> Messages => messages;
-
-    public void Dispose()
-    {
-        messages.Clear();
-        actions.Clear();
-        editorMessages.Remove(this);
-    }
-
-    public void ListenChanges(Action listener)
-    {
-        actions.AddLast(listener);
-    }
-
-    internal void Clear()
-    {
-        messages.Clear();
-        Fire();
-    }
-
-    internal void MessageAdded(IResultMessage message)
-    {
-        messages.AddLast(message);
-        Fire();
-    }
-
-    internal bool Match(object model, string property)
-    {
-        if (!ReferenceEquals(model, fieldIdentifier.Model))
-            return false;
-
-        return fieldName == property || fieldIdentifier.FieldName == property;
-    }
-
-    private void Fire()
-    {
-        foreach (var a in actions)
-            a();
-    }
-}
-
-public interface IMessageListener : IDisposable
-{
-    void ListenChanges(Action listener);
-
-    IEnumerable<IResultMessage> Messages { get; }
-
-    public bool HasError => DefaultHasError(this);
-
-    protected static bool DefaultHasError(IMessageListener messageListener)
-    {
-        return messageListener.Messages.Any(m => m.Type == ResultMessageType.Error);
+        fallbackListeners.Remove(messageListener);
     }
 }

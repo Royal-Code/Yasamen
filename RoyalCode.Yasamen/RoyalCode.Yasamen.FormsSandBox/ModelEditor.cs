@@ -8,7 +8,7 @@ namespace RoyalCode.Yasamen.Forms;
 
 public class ModelEditor<TModel> : ComponentBase
 {
-    private ModelContext<TModel>? modelContext;
+    private ModelContext<TModel> modelContext = default!;
     private readonly Func<Task> handleSubmitDelegate;
     private readonly EditorMessages editorMessages = new();
     
@@ -23,14 +23,14 @@ public class ModelEditor<TModel> : ComponentBase
     [Parameter]
     public ModelContext<TModel>? ModelContext 
     {
-        get => modelContext ??= new ModelContext<TModel>();
-        set => modelContext = value;
+        get => modelContext;
+        set => modelContext = value ?? throw new ArgumentNullException(nameof(ModelContext));
     }
 
     [Parameter]
     public TModel? Model
     {
-        get => modelContext is null ? default : modelContext.Model;
+        get => modelContext.Model;
         set => modelContext = new ModelContext<TModel>(value ?? throw new ArgumentNullException(nameof(Model)));
     }
 
@@ -144,8 +144,7 @@ public class ModelEditor<TModel> : ComponentBase
         }
         else
         {
-            // Otherwise, the system implicitly runs validation on form submission
-            var isValid = modelContext.Validate(); // This will likely become ValidateAsync later
+            var isValid = modelContext.Validate();
 
             if (isValid && OnValidSubmit.HasDelegate)
             {
@@ -166,7 +165,7 @@ public class ModelEditor<TModel> : ComponentBase
 
         if (!modelContext.IsInitialized)
         {
-            editorMessages.Clear();
+            editorMessages.ClearAll();
             modelContext.Initialize(ValidatorProvider, editorMessages);
         }
     }

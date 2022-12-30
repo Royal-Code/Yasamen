@@ -1,4 +1,6 @@
-﻿namespace RoyalCode.Yasamen.Forms;
+﻿using RoyalCode.Yasamen.Forms.Validation;
+
+namespace RoyalCode.Yasamen.Forms;
 
 /// <summary>
 /// <para>
