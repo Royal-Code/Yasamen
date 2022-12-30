@@ -22,10 +22,28 @@ namespace RoyalCode.Yasamen.Forms.Support;
 /// </summary>
 public sealed class PropertyChangeSupport
 {
-    private readonly ChangeSupportCollection changeSupports = new();
+    private readonly ChangeSupportCollection changeSupports;
     private Dictionary<string, object>? properties;
     private PropertyChangeSupport? parent;
-    
+
+    /// <summary>
+    /// Creates new <see cref="PropertyChangeSupport"/> without parent.
+    /// </summary>
+    public PropertyChangeSupport() 
+    {
+        changeSupports = new();
+    }
+
+    /// <summary>
+    /// Creates new <see cref="PropertyChangeSupport"/> with the parent.
+    /// </summary>
+    /// <param name="parent">The <see cref="PropertyChangeSupport"/> parent of this.</param>
+    public PropertyChangeSupport(PropertyChangeSupport parent)
+    {
+        this.parent = parent;
+        changeSupports = new(parent);
+    }
+
     /// <summary>
     /// <para>
     ///     Gets a <see cref="ChangeSupport"/> for a given name.
@@ -77,13 +95,5 @@ public sealed class PropertyChangeSupport
             properties.Add(name, supported);
             return supported;
         }
-    }
-
-    // TODO: mais para frente, este método será removido.
-    // Deve ser criado um construtor para definir o PropertyChangeSupport pai. (internal)
-    internal void SetParent(PropertyChangeSupport parent)
-    {
-        this.parent = parent;
-        changeSupports.ParentPropertyChangeSupport = parent;
     }
 }

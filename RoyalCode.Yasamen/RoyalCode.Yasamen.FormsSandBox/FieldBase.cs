@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.Forms;
 using RoyalCode.OperationResult;
 using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Commons.Extensions;
+using RoyalCode.Yasamen.Forms.Support;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -11,9 +12,6 @@ namespace RoyalCode.Yasamen.Forms;
 
 public partial class FieldBase<TValue> : ComponentBase, IDisposable
 {
-    //private readonly EventHandler<ValidationStateChangedEventArgs> _validationStateChangedHandler;
-    //private bool _previousParsingAttemptFailed;
-
     private Action messagesChanged;
     private IMessageListener? messageListener;
     private bool initialized;
@@ -24,6 +22,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
     private string? fieldLabel;
     private string? fieldName;
     private string? fieldId;
+    private ChangeSupport? changeSupport;
 
     public FieldBase()
     {
@@ -97,7 +96,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
     /// </para>
     /// </summary>
     protected IEnumerable<IResultMessage> FieldMessages => messageListener?.Messages 
-        ?? ModelContext.GetEditorMessages().GetMessages(FieldIdentifier);
+        ?? ModelContext.EditorMessages.GetMessages(FieldIdentifier);
 
     /// <summary>
     /// Context received by the <see cref="ModelEditor{TModel}"/>.
@@ -149,6 +148,12 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
     [Parameter] public Expression<Func<TValue>>? ValueExpression { get; set; }
 
     /// <summary>
+    /// The change support name. If not informed the <see cref="FieldIdentifier.FieldName"/> will be used.
+    /// </summary>
+    [Parameter]
+    public string? ChangeSupport { get; set; }
+
+    /// <summary>
     /// Gets or sets a collection of additional attributes that will be applied to the created element.
     /// </summary>
     [Parameter(CaptureUnmatchedValues = true)]
@@ -197,21 +202,16 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
 
                 Tracer.Write("FieldBase", "SetValue", "Value Formatted");
             }
-
             
             var hasChanged = !EqualityComparer<TValue>.Default.Equals(oldValue, Value);
             if (hasChanged)
             {
                 _ = ValueChanged.InvokeAsync(Value);
 
-                // Disparar evento de alteração
+                // fire property changed event
+                Tracer.Write("FieldBase", "SetValue", $"PropertyChanged, Field: {FieldIdentifier}, {oldValue}, {Value}");
+                ModelContext.PropertyChangeSupport.PropertyHasChanged(FieldIdentifier, oldValue, Value);
             }
-
-            //if (PropertyChangedSupport is not null && !EqualityComparer<TValue>.Default.Equals(oldValue, Value))
-            //{
-            //    Tracer.Write("FieldBase", "SetValue", $"PropertyChanged, Field: {FieldIdentifier}, {oldValue}, {Value}");
-            //    PropertyChangedSupport.PropertyHasChanged(FieldIdentifier, oldValue, Value);
-            //}
         }
     }
     
@@ -219,7 +219,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
     {
         settingNewValue = true;
 
-        var editorMessages = ModelContext.GetEditorMessages();
+        var editorMessages = ModelContext.EditorMessages;
         editorMessages.Clear(FieldIdentifier);
 
         if (TryParseValue(newValue, out var result, out var error))
@@ -280,11 +280,11 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
             {
                 ModelContext = CascadedContext;
 
-                messageListener = ModelContext.GetEditorMessages().CreateListener(FieldIdentifier, Name);
+                messageListener = ModelContext.EditorMessages.CreateListener(FieldIdentifier, Name);
                 messageListener.ListenChanges(messagesChanged);
 
-                // add property listener no lugar de state change listener
-                //EditContext.OnValidationStateChanged += _validationStateChangedHandler;
+                changeSupport = ModelContext.PropertyChangeSupport.GetChangeSupport(ChangeSupport ?? FieldIdentifier.FieldName);
+                changeSupport.Initialize(FieldIdentifier, Value);
             }
 
             nullableUnderlyingType = Nullable.GetUnderlyingType(typeof(TValue));
@@ -313,6 +313,11 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
 
     public void Dispose()
     {
-        throw new NotImplementedException();
+        messageListener?.Dispose();
+        changeSupport?.Reset();
+
+        Dispose(true);
     }
+
+    protected virtual void Dispose(bool disposing) { }
 }
