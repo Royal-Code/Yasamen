@@ -6,8 +6,10 @@ namespace RoyalCode.Yasamen.Generators;
 internal abstract class GeneratorBase
 {
     private UsingsGenerator usingsGenerator;
+    private GenericsGenerator genericsGenerator;
     private HierarchyGenerator hierarchyGenerator;
     private List<Action<StringBuilder>> bodyGenerators;
+    
 
     public GeneratorBase(SourceProductionContext context, string @namespace, string className)
     {
@@ -19,6 +21,8 @@ internal abstract class GeneratorBase
     public UsingsGenerator UsingsGenerator => usingsGenerator ??= new(Namespace);
 
     public SourceProductionContext Context { get; }
+
+    public GenericsGenerator GenericsGenerator => genericsGenerator ??= new();
 
     public HierarchyGenerator HierarchyGenerator => hierarchyGenerator ??= new();
 
@@ -51,6 +55,7 @@ internal abstract class GeneratorBase
         sb.AppendLine($"namespace {Namespace}");
         sb.AppendLine("{");
         sb.Append($"    public partial class {ClassName}");
+        genericsGenerator?.Write(sb);
         hierarchyGenerator?.Write(sb);
         sb.AppendLine();
         sb.AppendLine("    {");

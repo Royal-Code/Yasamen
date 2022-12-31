@@ -22,6 +22,8 @@ public interface IModelContext
 
     IModelContext? Parent { get; }
 
+    IModelContainerState ContainerState {get;}
+
     EditorMessages EditorMessages { get; }
 
     PropertyChangeSupport PropertyChangeSupport { get; }

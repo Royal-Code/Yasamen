@@ -18,6 +18,12 @@ public class MultiplesParametersTests
     {
         await MultiplesParametersTestHelper.Verify(CodeForTest.CodeInterface);
     }
+
+    [Fact]
+    public async Task WithGenericParametersAndAbstraction()
+    {
+        await MultiplesParametersTestHelper.Verify(CodeForTest.CodeGeneric);
+    }
 }
 
 public static class MultiplesParametersTestHelper
@@ -100,11 +106,42 @@ public partial class TextComponent
 
 public class TestParametersType : IHasColumns
 {
-
     public int Cols { get; set; }
 }
 
 """;
+
+    public const string CodeGeneric =
+"""
+using Microsoft.AspNetCore.Components;
+
+namespace RoyalCode.Yasamen.Generators.Tests;
+
+[MultiplesParameters]
+public interface IHasColumns
+{
+    int Cols { get; set; }
+}
+
+public class TestParametersType : IHasColumns
+{
+    public int Cols { get; set; }
+}
+
+public class PreviousComponent<T> : ComponentBase
+{
+    [Parameter]
+    public T Parameters { get; set; }
+}
+
+public abstract partial class AbstractComponent<T> : PreviousComponent<T>
+{
+    [MultiplesParameters]
+    public TestParametersType Parameters { get; set; } = new();
+}
+
+""";
+    
 }
 
 public partial class MyTextComponent

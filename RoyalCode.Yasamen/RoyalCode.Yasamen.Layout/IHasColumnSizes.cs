@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Components;
 using System.Text;
 
 namespace RoyalCode.Yasamen.Layout;
@@ -6,6 +7,7 @@ namespace RoyalCode.Yasamen.Layout;
 /// <summary>
 /// Interface para componentes de colunas de um Grid com possibilidade de definir os tamanhos.
 /// </summary>
+[MultiplesParameters]
 public interface IHasColumnSizes
 {
     int Cols { get; set; }

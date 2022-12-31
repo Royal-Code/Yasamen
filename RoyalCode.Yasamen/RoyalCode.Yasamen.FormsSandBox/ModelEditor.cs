@@ -166,5 +166,7 @@ public class ModelEditor<TModel> : ComponentBase
         {
             modelContext.Initialize(ValidatorProvider);
         }
+
+        modelContext.InternalConteinerState.UsingContainer = UseContainer;
     }
 }

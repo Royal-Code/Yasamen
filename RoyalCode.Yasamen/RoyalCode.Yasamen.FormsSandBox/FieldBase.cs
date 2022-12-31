@@ -105,12 +105,6 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
     private IModelContext? CascadedContext { get; set; }
 
     /// <summary>
-    /// Status of parent components that can load models.
-    /// </summary>
-    [CascadingParameter]
-    public IModelLoadingState? ModelLoadingState { get; set; }
-
-    /// <summary>
     /// Label that will be displayed for the field.
     /// </summary>
     [Parameter]

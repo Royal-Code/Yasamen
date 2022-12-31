@@ -9,10 +9,14 @@ namespace RoyalCode.Yasamen.Forms;
 ///     Used as a cascading parameter.
 /// </para>
 /// </summary>
-public interface IModelLoadingState
+public interface IModelContainerState
 {
     /// <summary>
     /// If the model is being loaded.
     /// </summary>
     bool IsLoading { get; }
+
+    /// <summary>
+    /// If the <see cref="ModelEditor{TModel}"/> uses container.
+    bool UsingContainer { get; }
 }
