@@ -24,14 +24,20 @@ public sealed class ModelContext<TModel> : IModelContext
         Parent = parent;
         EditorMessages = parent.EditorMessages;
         PropertyChangeSupport = new(parent.PropertyChangeSupport);
+
+        InternalConteinerState.UsingContainer = parent.ContainerState.UsingContainer;
     }
     
     internal bool IsInitialized { get; private set; }
-    
+
+    internal ModelContainerState InternalConteinerState { get; } = new();
+
     public TModel? Model { get; }
 
     public IModelContext? Parent { get; }
-    
+
+    public IModelContainerState ContainerState => InternalConteinerState;
+
     public ValidationContext<TModel> ValidationContext { get; } = new ValidationContext<TModel>();
 
     public EditorMessages EditorMessages { get; private set; }
