@@ -7,19 +7,25 @@ using RoyalCode.Yasamen.Layout;
 
 namespace RoyalCode.Yasamen.Forms.Components;
 
-public abstract partial class AbstractInput<TValue> : FieldBase<TValue>
+public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
 {
+    private readonly RenderFragment contentFragment;
+    protected ElementReference InputReference;
+
+    public InputFieldBase()
+    {
+        contentFragment = BuildContent;
+    }
+
     private CssClassMap InputCssClasses => CssClassMap.Create("form-control")
         .Add(() => InputAdditionalClasses)
         .Add(() => IsInvalid, "is-invalid");
-
-    protected ElementReference InputReference;
 
     [MultiplesParameters]
     public ColumnSizes ColumnSizes { set; get; } = new();
 
     [Inject]
-    public FormsJsModule Js { get; set; }
+    public FormsJsModule Js { get; set; } = null!;
 
     [Parameter]
     public InputType Type { get; set; }
@@ -38,6 +44,21 @@ public abstract partial class AbstractInput<TValue> : FieldBase<TValue>
 
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
+        if (ModelContext.ContainerState.UsingContainer)
+        {
+            builder.OpenComponent<Column>(0);
+            builder.AddAttribute(1, "ParentColumn", this);
+            builder.AddContent(2, contentFragment);
+            builder.CloseComponent();
+        }
+        else
+        {
+            BuildContent(builder);
+        }
+    }
+
+    private void BuildContent(RenderTreeBuilder builder)
+    {
         var index = RenderBegin(builder);
         index = RenderLabel(builder, index);
 
@@ -54,7 +75,7 @@ public abstract partial class AbstractInput<TValue> : FieldBase<TValue>
         index = RenderInput(builder, index);
         index = RenderAppend(builder, index);
 
-        if(hasInputGroup)
+        if (hasInputGroup)
         {
             builder.CloseElement();
         }
@@ -101,14 +122,14 @@ public abstract partial class AbstractInput<TValue> : FieldBase<TValue>
         builder.AddAttribute(5 + index, "value", CurrentValueAsString);
         builder.AddAttribute(6 + index, "onchange", EventCallback.Factory.CreateBinder<string>(this, __value => CurrentValueAsString = __value, CurrentValueAsString ?? string.Empty));
         if (ModelContext?.ContainerState.IsLoading ?? false)
-        {
             builder.AddAttribute(7 + index, "disabled", true);
-        }
-        builder.AddElementReferenceCapture(8 + index, __inputReference => InputReference = __inputReference);
-        builder.AddMultipleAttributes(9 + index, AdditionalAttributes);
+        if (IsInvalid)
+            builder.AddAttribute(8 + index, "aria-invalid", true);
+        builder.AddElementReferenceCapture(9 + index, __inputReference => InputReference = __inputReference);
+        builder.AddMultipleAttributes(10 + index, AdditionalAttributes);
         builder.CloseElement();
 
-        return index + 10;
+        return index + 11;
     }
 
     protected virtual int RenderAppend(RenderTreeBuilder builder, int index)
@@ -143,34 +164,4 @@ public abstract partial class AbstractInput<TValue> : FieldBase<TValue>
     }
 
     protected virtual void RenderEnd(RenderTreeBuilder builder, int index) { }
-}
-
-// TODO: Mover para layout
-public class ColumnSizes : IHasColumnSizes
-{
-    public int Cols { get; set; }
-
-    public int? TabletCols { get; set; }
-
-    public int? PhoneCols { get; set; }
-
-    public int? Quarters { get; set; }
-
-    public int? XsCols { get; set; }
-
-    public int? SmCols { get; set; }
-
-    public int? LgCols { get; set; }
-
-    public int? XlCols { get; set; }
-
-    public bool Fullsize { get; set; }
-
-    public bool XsFullsize { get; set; }
-
-    public bool SmFullsize { get; set; }
-
-    public bool LgFullsize { get; set; }
-
-    public bool XlFullsize { get; set; }
 }
