@@ -1,0 +1,33 @@
+﻿@using System.Text.Json;
+@page "/"
+
+<AppPageContent Title="Model Editor Testes" >
+
+    <ModelEditor Model="friend" Context="f" OnValidSubmit="SubmitHandler">
+        <TextField Label="Friend name" @bind-Value="f.Name" />
+        <input type="submit" value="Submit" />
+    </ModelEditor>
+
+    <Container AdditionalClasses="mt-5">
+        <Column>
+            <h5>Friend Json</h5>
+        </Column>
+        <Column>
+            @friendJson
+        </Column>
+    </Container>
+    
+</AppPageContent>
+
+
+@code{
+
+    private Friend friend = new();
+
+    private string friendJson = "";
+
+    private void SubmitHandler()
+    {
+        friendJson = JsonSerializer.Serialize(friend);
+    }
+}

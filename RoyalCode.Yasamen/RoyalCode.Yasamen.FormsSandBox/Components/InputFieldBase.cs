@@ -48,7 +48,7 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
         {
             builder.OpenComponent<Column>(0);
             builder.AddAttribute(1, "ParentColumn", this);
-            builder.AddContent(2, contentFragment);
+            builder.AddAttribute(2, "ChildContent", contentFragment);
             builder.CloseComponent();
         }
         else
@@ -115,18 +115,19 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
     protected virtual int RenderInput(RenderTreeBuilder builder, int index)
     {
         builder.OpenElement(index, "input");
-        builder.AddAttribute(1 + index, "id", FieldId);
-        builder.AddAttribute(2 + index, "name", FieldName);
-        builder.AddAttribute(3 + index, "type", Type.ToString().ToLower());
-        builder.AddAttribute(4 + index, "class", InputCssClasses);
-        builder.AddAttribute(5 + index, "value", CurrentValueAsString);
-        builder.AddAttribute(6 + index, "onchange", EventCallback.Factory.CreateBinder<string>(this, __value => CurrentValueAsString = __value, CurrentValueAsString ?? string.Empty));
+        builder.AddMultipleAttributes(1 + index, AdditionalAttributes);
+        builder.AddAttribute(2 + index, "id", FieldId);
+        builder.AddAttribute(3 + index, "name", FieldName);
+        builder.AddAttribute(4 + index, "type", Type.ToString().ToLower());
+        builder.AddAttribute(5 + index, "class", InputCssClasses);
+        builder.AddAttribute(6 + index, "value", CurrentValueAsString);
+        builder.AddAttribute(7 + index, "onchange", EventCallback.Factory.CreateBinder<string>(this, __value => CurrentValueAsString = __value, CurrentValueAsString ?? string.Empty));
         if (ModelContext?.ContainerState.IsLoading ?? false)
-            builder.AddAttribute(7 + index, "disabled", true);
+            builder.AddAttribute(8 + index, "disabled", true);
         if (IsInvalid)
-            builder.AddAttribute(8 + index, "aria-invalid", true);
-        builder.AddElementReferenceCapture(9 + index, __inputReference => InputReference = __inputReference);
-        builder.AddMultipleAttributes(10 + index, AdditionalAttributes);
+            builder.AddAttribute(9 + index, "aria-invalid", true);
+        builder.AddElementReferenceCapture(10 + index, __inputReference => InputReference = __inputReference);
+        
         builder.CloseElement();
 
         return index + 11;

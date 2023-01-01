@@ -8,12 +8,17 @@ namespace RoyalCode.Yasamen.Forms;
 
 public class ModelEditor<TModel> : ComponentBase
 {
+    private readonly RenderFragment containerFragment;
+    private readonly RenderFragment contentFragment;
+
     private ModelContext<TModel> modelContext = default!;
     private readonly Func<Task> handleSubmitDelegate;
     
     public ModelEditor()
     {
         handleSubmitDelegate = HandleSubmitAsync;
+        contentFragment = ContentFragment;
+        containerFragment = ContainerFragment;
     }
 
     [Inject]
@@ -55,24 +60,24 @@ public class ModelEditor<TModel> : ComponentBase
     /// A callback that will be invoked when the form is submitted.
     ///
     /// If using this parameter, you are responsible for triggering any validation
-    /// manually, e.g., by calling <see cref="ModelEditor{TModel}.Validate"/>.
+    /// manually, e.g., by calling <see cref="ModelContext{TModel}.Validate"/>.
     /// </summary>
     [Parameter]
-    public EventCallback<ModelContext<TModel>> OnSubmit { get; set; }
+    public EventCallback OnSubmit { get; set; }
 
     /// <summary>
     /// A callback that will be invoked when the form is submitted and the
     /// <see cref="ModelEditor{TModel}"/> is determined to be valid.
     /// </summary>
     [Parameter] 
-    public EventCallback<ModelContext<TModel>> OnValidSubmit { get; set; }
+    public EventCallback OnValidSubmit { get; set; }
 
     /// <summary>
     /// A callback that will be invoked when the form is submitted and the
     /// <see cref="ModelEditor{TModel}"/> is determined to be invalid.
     /// </summary>
     [Parameter]
-    public EventCallback<ModelContext<TModel>> OnInvalidSubmit { get; set; }
+    public EventCallback OnInvalidSubmit { get; set; }
 
     /// <summary>
     /// Gets or sets a collection of additional attributes that will be applied to the created <c>form</c> element.
@@ -96,13 +101,11 @@ public class ModelEditor<TModel> : ComponentBase
         
         if (UseContainer)
         {
-            builder.OpenComponent<Container>(6);
-            builder.AddAttribute(7, "ChildContent", FormContent());
-            builder.CloseComponent();
+            builder.AddAttribute(6, "ChildContent", containerFragment);
         }
         else
         {
-            builder.AddAttribute(8, "ChildContent", FormContent());
+            builder.AddAttribute(7, "ChildContent", contentFragment);
         }
         
         builder.CloseComponent();
@@ -110,8 +113,16 @@ public class ModelEditor<TModel> : ComponentBase
 
         builder.CloseRegion();
     }
-    
-    private RenderFragment FormContent() => builder =>
+
+    private void ContainerFragment(RenderTreeBuilder builder)
+    {
+        builder.OpenComponent<Container>(0);
+        builder.AddAttribute(1, "ChildContent", contentFragment);
+        builder.CloseComponent();
+    }
+
+
+    private void ContentFragment(RenderTreeBuilder builder)
     {
         // TODO:    criar o componente para exibir mensagens aqui.
 
@@ -122,14 +133,14 @@ public class ModelEditor<TModel> : ComponentBase
             builder.AddContent(2, Title);
             builder.CloseElement();
         }
-        
-        builder.AddAttribute(3, "ChildContent", ChildContent?.Invoke(modelContext!.Model));
+
+        builder.AddContent(3, ChildContent?.Invoke(modelContext!.Model));
 
         if (Title is not null)
         {
             builder.CloseElement();
         }
-    };
+    }
 
     private async Task HandleSubmitAsync()
     {
@@ -139,7 +150,7 @@ public class ModelEditor<TModel> : ComponentBase
         if (OnSubmit.HasDelegate)
         {
             // When using OnSubmit, the developer takes control of the validation lifecycle
-            await OnSubmit.InvokeAsync(modelContext);
+            await OnSubmit.InvokeAsync();
         }
         else
         {
@@ -147,12 +158,12 @@ public class ModelEditor<TModel> : ComponentBase
 
             if (isValid && OnValidSubmit.HasDelegate)
             {
-                await OnValidSubmit.InvokeAsync(modelContext);
+                await OnValidSubmit.InvokeAsync();
             }
 
             if (!isValid && OnInvalidSubmit.HasDelegate)
             {
-                await OnInvalidSubmit.InvokeAsync(modelContext);
+                await OnInvalidSubmit.InvokeAsync();
             }
         }
     }
