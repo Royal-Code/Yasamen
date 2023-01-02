@@ -5,7 +5,9 @@
 
     <ModelEditor Model="friend" Context="f" OnValidSubmit="SubmitHandler">
         <TextField Label="Friend name" @bind-Value="f.Name" />
-        <input type="submit" value="Submit" />
+        <Column>
+            <input type="submit" value="Submit" />
+        </Column>
     </ModelEditor>
 
     <Container AdditionalClasses="mt-5">

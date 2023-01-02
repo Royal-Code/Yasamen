@@ -11,6 +11,7 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
 {
     private readonly RenderFragment contentFragment;
     protected ElementReference InputReference;
+    protected string cssScopeAttribute = "b-input-field";
 
     public InputFieldBase()
     {
@@ -67,8 +68,9 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
         {
             builder.OpenElement(index, "div");
             builder.AddAttribute(1 + index, "class", "input-group");
+            builder.AddAttribute(2 + index, cssScopeAttribute);
 
-            index += 2;
+            index += 3;
         }
 
         index = RenderPrepend(builder, index);
@@ -97,10 +99,11 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
             builder.OpenElement(index, "label");
             builder.AddAttribute(1 + index, "for", FieldId);
             builder.AddAttribute(2 + index, "class", $"form-label {LabelAdditionalClasses}");
-            builder.AddContent(3 + index, FieldLabel);
+            builder.AddAttribute(3 + index, cssScopeAttribute);
+            builder.AddContent(4 + index, FieldLabel);
             builder.CloseElement();
         }
-        return index + 4;
+        return index + 5;
     }
 
     protected virtual int RenderPrepend(RenderTreeBuilder builder, int index)
@@ -120,17 +123,19 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
         builder.AddAttribute(3 + index, "name", FieldName);
         builder.AddAttribute(4 + index, "type", Type.ToString().ToLower());
         builder.AddAttribute(5 + index, "class", InputCssClasses);
-        builder.AddAttribute(6 + index, "value", CurrentValueAsString);
-        builder.AddAttribute(7 + index, "onchange", EventCallback.Factory.CreateBinder<string>(this, __value => CurrentValueAsString = __value, CurrentValueAsString ?? string.Empty));
+        builder.AddAttribute(6 + index, cssScopeAttribute);
+        builder.AddAttribute(7 + index, "value", CurrentValueAsString);
+        builder.AddAttribute(8 + index, "onchange", EventCallback.Factory.CreateBinder<string>(this, __value => CurrentValueAsString = __value, CurrentValueAsString ?? string.Empty));
         if (ModelContext?.ContainerState.IsLoading ?? false)
-            builder.AddAttribute(8 + index, "disabled", true);
+            builder.AddAttribute(9 + index, "disabled", true);
         if (IsInvalid)
-            builder.AddAttribute(9 + index, "aria-invalid", true);
-        builder.AddElementReferenceCapture(10 + index, __inputReference => InputReference = __inputReference);
+            builder.AddAttribute(10 + index, "aria-invalid", true);
+        builder.AddElementReferenceCapture(11 + index, __inputReference => InputReference = __inputReference);
+
         
         builder.CloseElement();
 
-        return index + 11;
+        return index + 12;
     }
 
     protected virtual int RenderAppend(RenderTreeBuilder builder, int index)
@@ -159,9 +164,10 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
             builder.AddAttribute(1 + index, "class", "spinner-border spinner-border-sm");
             builder.AddAttribute(2 + index, "role", "status");
             builder.AddAttribute(3 + index, "aria-hidden", "true");
+            builder.AddAttribute(4 + index, cssScopeAttribute);
             builder.CloseElement();
         }
-        return index + 4;
+        return index + 5;
     }
 
     protected virtual void RenderEnd(RenderTreeBuilder builder, int index) { }

@@ -64,7 +64,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Generator
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.FormsSandBox", "RoyalCode.Yasamen.FormsSandBox\RoyalCode.Yasamen.FormsSandBox.csproj", "{54F1DC43-2D9E-4730-AE0C-08966D635D39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Yasamen.FormsSandBox.Wasm", "RoyalCode.Yasamen.FormsSandBox.Wasm\RoyalCode.Yasamen.FormsSandBox.Wasm.csproj", "{77ADE103-8F82-4C96-9B55-FA368A488166}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.FormsSandBox.Wasm", "RoyalCode.Yasamen.FormsSandBox.Wasm\RoyalCode.Yasamen.FormsSandBox.Wasm.csproj", "{77ADE103-8F82-4C96-9B55-FA368A488166}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

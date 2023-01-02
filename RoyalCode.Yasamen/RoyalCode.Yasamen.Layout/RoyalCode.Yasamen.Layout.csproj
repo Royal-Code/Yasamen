@@ -10,4 +10,9 @@
 		<ProjectReference Include="..\RoyalCode.Yasamen.Commons\RoyalCode.Yasamen.Commons.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<None Update="./Column.razor.css" CssScope="b-layout-column" />
+		<None Update="./Container.razor.css" CssScope="b-layout-container" />
+	</ItemGroup>
+
 </Project>

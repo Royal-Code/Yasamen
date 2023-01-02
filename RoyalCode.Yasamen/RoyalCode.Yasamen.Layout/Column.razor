@@ -1,7 +1,7 @@
 ﻿
 @implements IHasColumnSizes
 
-<div b-flex-col class="@Classes" @attributes="Attributes" style="@ColumnStyle"
+<div class="@Classes" @attributes="AdditionalAttributes" style="@ColumnStyle"
      col="@Cols" tcol="@TabletCols" pcol="@PhoneCols" qcol="@Quarters"
      xs="@XsCols" sm="@SmCols" lg="@LgCols" xl="@XlCols"
      fullsize="@Fullsize" fullsize-xs="@XsFullsize" fullsize-sm="@SmFullsize" fullsize-lg="@LgFullsize" fullsize-xl="@XlFullsize">
@@ -15,7 +15,7 @@
     public ContainerContext? ContainerContext { get; set; }
 
     [Parameter(CaptureUnmatchedValues = true)]
-    public Dictionary<string, object>? Attributes { get; set; }
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
 
     [Parameter]
     public string? AdditionalClasses { get; set; }

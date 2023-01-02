@@ -1,6 +1,6 @@
 ﻿
 <div style="@FlexRowStyle">
-    <div @attributes="Attributes" class="@Classes">
+    <div class="@Classes" @attributes="AdditionalAttributes">
         @if (Columns.HasValue)
         {
             <CascadingValue Value="context" IsFixed="true" >
@@ -23,7 +23,7 @@
         AdditionalClasses!);
 
     [Parameter(CaptureUnmatchedValues = true)]
-    public Dictionary<string, object>? Attributes { get; set; }
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
 
     [Parameter]
     public string? AdditionalClasses { get; set; }
