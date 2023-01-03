@@ -1,0 +1,17 @@
+﻿
+div {
+    position: absolute;
+    top: 100%;
+    z-index: 5;
+    max-width: 100%;
+    padding: .25rem .5rem;
+    margin-top: .1rem;
+    font-size: .875rem;
+    color: #fff;
+    background-color: var(--b-field-error-message--background-color);
+    border-radius: .25rem;
+}
+
+    div > span {
+        display: block;
+    }

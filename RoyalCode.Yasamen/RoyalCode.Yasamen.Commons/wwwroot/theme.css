@@ -332,6 +332,14 @@
     /* form and field */
     --b-field-error-message--background-color: var(--b-theme-danger);
     --b-field-error-message--background-opacity: 0.8;
+    --b-field--color: var(--b-color-dark-d3);
+    --b-field--bg: var(--b-color-light-l7);
+    --b-field--border-width: 1px;
+    --b-field--border: var(--b-field--border-width) solid var(--b-color-light-d7);
+    --b-field--border-color--focus: var(--b-color-primary-l5);
+    --b-field--box-shadow--focus: 0 0 0 0.25rem rgba(134, 182, 254, 0.375);
+    --b-field-label--margin-bottom: var(--b-size-2);
+    --b-field-addon--bg: var(--b-color-light);
     
     /* reboot based on bootstrap */
     --b-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";

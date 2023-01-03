@@ -59,7 +59,7 @@ public interface IHasColumnSizes
 
     void CopyFrom(IHasColumnSizes other)
     {
-        Cols = other.Cols;
+        Cols = other.Cols > 0 ? other.Cols : 12;
         TabletCols = other.TabletCols;
         PhoneCols = other.PhoneCols;
         Quarters = other.Quarters;

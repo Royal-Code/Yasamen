@@ -1,0 +1,9 @@
+﻿
+button:not(.icon-at-end)[b-button] ::deep > i {
+    margin: 0;
+}
+
+button.btn {
+    position: relative;
+    z-index: 2;
+}

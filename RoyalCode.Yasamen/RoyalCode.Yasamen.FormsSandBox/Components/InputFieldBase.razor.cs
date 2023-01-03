@@ -7,19 +7,33 @@ using RoyalCode.Yasamen.Layout;
 
 namespace RoyalCode.Yasamen.Forms.Components;
 
-public abstract partial class AbstractInput<TValue> : FieldBase<TValue>
+public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
 {
+    protected const string CssScopeAttribute = "b-input-field";
+
+    protected static readonly Dictionary<string, object> AdditionalContainerAttributes = new()
+    {
+        {CssScopeAttribute, true}
+    };
+
+    private readonly RenderFragment contentFragment;
+    protected ElementReference InputReference;
+
+
+    public InputFieldBase()
+    {
+        contentFragment = BuildContent;
+    }
+
     private CssClassMap InputCssClasses => CssClassMap.Create("form-control")
         .Add(() => InputAdditionalClasses)
         .Add(() => IsInvalid, "is-invalid");
-
-    protected ElementReference InputReference;
 
     [MultiplesParameters]
     public ColumnSizes ColumnSizes { set; get; } = new();
 
     [Inject]
-    public FormsJsModule Js { get; set; }
+    public FormsJsModule Js { get; set; } = null!;
 
     [Parameter]
     public InputType Type { get; set; }
@@ -38,6 +52,23 @@ public abstract partial class AbstractInput<TValue> : FieldBase<TValue>
 
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
+        if (ModelContext.ContainerState.UsingContainer)
+        {
+            builder.OpenComponent<Column>(0);
+            builder.AddAttribute(1, "ParentColumn", this);
+            builder.AddAttribute(2, "AdditionalClasses", "field");
+            builder.AddMultipleAttributes(3, AdditionalContainerAttributes);
+            builder.AddAttribute(4, "ChildContent", contentFragment);
+            builder.CloseComponent();
+        }
+        else
+        {
+            BuildContent(builder);
+        }
+    }
+
+    private void BuildContent(RenderTreeBuilder builder)
+    {
         var index = RenderBegin(builder);
         index = RenderLabel(builder, index);
 
@@ -46,15 +77,16 @@ public abstract partial class AbstractInput<TValue> : FieldBase<TValue>
         {
             builder.OpenElement(index, "div");
             builder.AddAttribute(1 + index, "class", "input-group");
+            builder.AddAttribute(2 + index, CssScopeAttribute);
 
-            index += 2;
+            index += 3;
         }
 
         index = RenderPrepend(builder, index);
         index = RenderInput(builder, index);
         index = RenderAppend(builder, index);
 
-        if(hasInputGroup)
+        if (hasInputGroup)
         {
             builder.CloseElement();
         }
@@ -76,10 +108,11 @@ public abstract partial class AbstractInput<TValue> : FieldBase<TValue>
             builder.OpenElement(index, "label");
             builder.AddAttribute(1 + index, "for", FieldId);
             builder.AddAttribute(2 + index, "class", $"form-label {LabelAdditionalClasses}");
-            builder.AddContent(3 + index, FieldLabel);
+            builder.AddAttribute(3 + index, CssScopeAttribute);
+            builder.AddContent(4 + index, FieldLabel);
             builder.CloseElement();
         }
-        return index + 4;
+        return index + 5;
     }
 
     protected virtual int RenderPrepend(RenderTreeBuilder builder, int index)
@@ -94,21 +127,23 @@ public abstract partial class AbstractInput<TValue> : FieldBase<TValue>
     protected virtual int RenderInput(RenderTreeBuilder builder, int index)
     {
         builder.OpenElement(index, "input");
-        builder.AddAttribute(1 + index, "id", FieldId);
-        builder.AddAttribute(2 + index, "name", FieldName);
-        builder.AddAttribute(3 + index, "type", Type.ToString().ToLower());
-        builder.AddAttribute(4 + index, "class", InputCssClasses);
-        builder.AddAttribute(5 + index, "value", CurrentValueAsString);
-        builder.AddAttribute(6 + index, "onchange", EventCallback.Factory.CreateBinder<string>(this, __value => CurrentValueAsString = __value, CurrentValueAsString ?? string.Empty));
+        builder.AddMultipleAttributes(1 + index, AdditionalAttributes);
+        builder.AddAttribute(2 + index, "id", FieldId);
+        builder.AddAttribute(3 + index, "name", FieldName);
+        builder.AddAttribute(4 + index, "type", Type.ToString().ToLower());
+        builder.AddAttribute(5 + index, "class", InputCssClasses);
+        builder.AddAttribute(6 + index, CssScopeAttribute);
+        builder.AddAttribute(7 + index, "value", CurrentValueAsString);
+        builder.AddAttribute(8 + index, "onchange", EventCallback.Factory.CreateBinder<string>(this, __value => CurrentValueAsString = __value, CurrentValueAsString ?? string.Empty));
         if (ModelContext?.ContainerState.IsLoading ?? false)
-        {
-            builder.AddAttribute(7 + index, "disabled", true);
-        }
-        builder.AddElementReferenceCapture(8 + index, __inputReference => InputReference = __inputReference);
-        builder.AddMultipleAttributes(9 + index, AdditionalAttributes);
+            builder.AddAttribute(9 + index, "disabled", true);
+        if (IsInvalid)
+            builder.AddAttribute(10 + index, "aria-invalid", true);
+        builder.AddElementReferenceCapture(11 + index, __inputReference => InputReference = __inputReference);
+
         builder.CloseElement();
 
-        return index + 10;
+        return index + 12;
     }
 
     protected virtual int RenderAppend(RenderTreeBuilder builder, int index)
@@ -130,47 +165,26 @@ public abstract partial class AbstractInput<TValue> : FieldBase<TValue>
     protected virtual int RenderLoadingState(RenderTreeBuilder builder, int index)
     {
         // TODO: requer adição correta das classes, segundo alinhamento, esquerda, direita...
-        
+
         if (ModelContext?.ContainerState.IsLoading ?? false)
         {
             builder.OpenElement(index, "div");
             builder.AddAttribute(1 + index, "class", "spinner-border spinner-border-sm");
             builder.AddAttribute(2 + index, "role", "status");
             builder.AddAttribute(3 + index, "aria-hidden", "true");
+            builder.AddAttribute(4 + index, CssScopeAttribute);
             builder.CloseElement();
         }
-        return index + 4;
+        return index + 5;
     }
 
     protected virtual void RenderEnd(RenderTreeBuilder builder, int index) { }
-}
 
-// TODO: Mover para layout
-public class ColumnSizes : IHasColumnSizes
-{
-    public int Cols { get; set; }
-
-    public int? TabletCols { get; set; }
-
-    public int? PhoneCols { get; set; }
-
-    public int? Quarters { get; set; }
-
-    public int? XsCols { get; set; }
-
-    public int? SmCols { get; set; }
-
-    public int? LgCols { get; set; }
-
-    public int? XlCols { get; set; }
-
-    public bool Fullsize { get; set; }
-
-    public bool XsFullsize { get; set; }
-
-    public bool SmFullsize { get; set; }
-
-    public bool LgFullsize { get; set; }
-
-    public bool XlFullsize { get; set; }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Js.BlurOnPressEnterAsync(InputReference);
+        }
+    }
 }

@@ -162,9 +162,11 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
         }
     }
 
+    private string? enteredValue;
+        
     protected virtual string? CurrentValueAsString
     {
-        get => FormatValue(Value);
+        get => IsInvalid ? enteredValue : FormatValue(Value);
         set
         {
             if (settingFormattedCurrentValue)
@@ -176,59 +178,58 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
             string? originalInput = value;
             Tracer.Write("FieldBase", "SetValue", value ?? "null");
 
-            var parsed = ParseAndSetValue(value);
-            if (!parsed)
-                return;
+            settingNewValue = true;
 
-            var formattedValue = FormatValue(Value);
-
-            if (formattedValue != originalInput)
+            var editorMessages = ModelContext.EditorMessages;
+            editorMessages.Clear(FieldIdentifier);
+            
+            if (TryParseValue(value, out var newValue, out var error))
             {
-                settingFormattedCurrentValue = true;
-                try
-                {
-                    ParseAndSetValue(formattedValue);
-                }
-                finally
-                {
-                    settingFormattedCurrentValue = false;
-                }
-
-                Tracer.Write("FieldBase", "SetValue", "Value Formatted");
+                enteredValue = null;
+                IsInvalid = false;
+            }
+            else
+            {
+                IsInvalid = true;
+                enteredValue = originalInput;
+                editorMessages.Add(FieldIdentifier.Model, ResultMessage.Error(error!, FieldIdentifier.FieldName));
+                
+                settingNewValue = false;
+                return;
             }
             
-            var hasChanged = !EqualityComparer<TValue>.Default.Equals(oldValue, Value);
+            var formattedValue = FormatValue(newValue);
+            if (formattedValue != originalInput)
+            {
+                Tracer.Write("FieldBase", "SetValue", "Formatting value, entered {0}, formatted {1}", originalInput!, formattedValue!);
+
+                if (!TryParseValue(formattedValue, out newValue, out error))
+                {
+                    IsInvalid = true;
+                    enteredValue = originalInput;
+                    editorMessages.Add(FieldIdentifier.Model, ResultMessage.Error(error!, FieldIdentifier.FieldName));
+
+                    Tracer.Write("FieldBase", "SetValue", "Cannot parse formatted value");
+                    settingNewValue = false;
+                    return;
+                }
+            }
+            
+            var hasChanged = !EqualityComparer<TValue>.Default.Equals(oldValue, newValue);
             if (hasChanged)
             {
-                _ = ValueChanged.InvokeAsync(Value);
-
-                // fire property changed event
-                Tracer.Write("FieldBase", "SetValue", $"PropertyChanged, Field: {FieldIdentifier}, {oldValue}, {Value}");
-                ModelContext.PropertyChangeSupport.PropertyHasChanged(FieldIdentifier, oldValue, Value);
+                Tracer.Write("FieldBase", "SetValue", $"PropertyChanged, Field: {FieldIdentifier}, {oldValue}, {newValue}");
+                
+                _ = ValueChanged.InvokeAsync(newValue);
+                ModelContext.PropertyChangeSupport.PropertyHasChanged(FieldIdentifier, oldValue, newValue);
             }
-        }
-    }
-    
-    protected bool ParseAndSetValue(string? newValue)
-    {
-        settingNewValue = true;
+            else
+            {
+                Tracer.Write("FieldBase", "SetValue", $"Not Changed, Field: {FieldIdentifier}, {oldValue}, {newValue}");
+            }
 
-        var editorMessages = ModelContext.EditorMessages;
-        editorMessages.Clear(FieldIdentifier);
-
-        if (TryParseValue(newValue, out var result, out var error))
-        {
-            Value = result;
-            IsInvalid = false;
+            settingNewValue = false;
         }
-        else
-        {
-            IsInvalid = true;
-            editorMessages.Add(FieldIdentifier.Model, ResultMessage.Error(error!, FieldIdentifier.FieldName));
-        }
-
-        settingNewValue = false;
-        return !IsInvalid;
     }
 
     protected virtual string? FormatValue(TValue? value) => value?.ToString();
