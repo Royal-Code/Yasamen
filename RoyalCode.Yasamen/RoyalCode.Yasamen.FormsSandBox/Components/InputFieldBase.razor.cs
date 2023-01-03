@@ -9,9 +9,16 @@ namespace RoyalCode.Yasamen.Forms.Components;
 
 public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
 {
+    protected const string CssScopeAttribute = "b-input-field";
+
+    protected static Dictionary<string, object> AdditionalContainerAttributes = new()
+    {
+        {CssScopeAttribute, true}
+    };
+
     private readonly RenderFragment contentFragment;
     protected ElementReference InputReference;
-    protected string cssScopeAttribute = "b-input-field";
+
 
     public InputFieldBase()
     {
@@ -49,7 +56,9 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
         {
             builder.OpenComponent<Column>(0);
             builder.AddAttribute(1, "ParentColumn", this);
-            builder.AddAttribute(2, "ChildContent", contentFragment);
+            builder.AddAttribute(2, "AdditionalClasses", "field");
+            builder.AddMultipleAttributes(3, AdditionalContainerAttributes);
+            builder.AddAttribute(4, "ChildContent", contentFragment);
             builder.CloseComponent();
         }
         else
@@ -68,7 +77,7 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
         {
             builder.OpenElement(index, "div");
             builder.AddAttribute(1 + index, "class", "input-group");
-            builder.AddAttribute(2 + index, cssScopeAttribute);
+            builder.AddAttribute(2 + index, CssScopeAttribute);
 
             index += 3;
         }
@@ -99,7 +108,7 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
             builder.OpenElement(index, "label");
             builder.AddAttribute(1 + index, "for", FieldId);
             builder.AddAttribute(2 + index, "class", $"form-label {LabelAdditionalClasses}");
-            builder.AddAttribute(3 + index, cssScopeAttribute);
+            builder.AddAttribute(3 + index, CssScopeAttribute);
             builder.AddContent(4 + index, FieldLabel);
             builder.CloseElement();
         }
@@ -123,7 +132,7 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
         builder.AddAttribute(3 + index, "name", FieldName);
         builder.AddAttribute(4 + index, "type", Type.ToString().ToLower());
         builder.AddAttribute(5 + index, "class", InputCssClasses);
-        builder.AddAttribute(6 + index, cssScopeAttribute);
+        builder.AddAttribute(6 + index, CssScopeAttribute);
         builder.AddAttribute(7 + index, "value", CurrentValueAsString);
         builder.AddAttribute(8 + index, "onchange", EventCallback.Factory.CreateBinder<string>(this, __value => CurrentValueAsString = __value, CurrentValueAsString ?? string.Empty));
         if (ModelContext?.ContainerState.IsLoading ?? false)
@@ -132,7 +141,7 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
             builder.AddAttribute(10 + index, "aria-invalid", true);
         builder.AddElementReferenceCapture(11 + index, __inputReference => InputReference = __inputReference);
 
-        
+
         builder.CloseElement();
 
         return index + 12;
@@ -157,14 +166,14 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
     protected virtual int RenderLoadingState(RenderTreeBuilder builder, int index)
     {
         // TODO: requer adição correta das classes, segundo alinhamento, esquerda, direita...
-        
+
         if (ModelContext?.ContainerState.IsLoading ?? false)
         {
             builder.OpenElement(index, "div");
             builder.AddAttribute(1 + index, "class", "spinner-border spinner-border-sm");
             builder.AddAttribute(2 + index, "role", "status");
             builder.AddAttribute(3 + index, "aria-hidden", "true");
-            builder.AddAttribute(4 + index, cssScopeAttribute);
+            builder.AddAttribute(4 + index, CssScopeAttribute);
             builder.CloseElement();
         }
         return index + 5;
