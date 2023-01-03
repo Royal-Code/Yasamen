@@ -7,6 +7,7 @@ body {
     color: var(--b-body-color);
     background-color: var(--b-body-bg);
     -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
 }
 

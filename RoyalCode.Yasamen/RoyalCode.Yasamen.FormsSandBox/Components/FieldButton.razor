@@ -1,0 +1,44 @@
+﻿@using RoyalCode.Yasamen.Commons;
+@using RoyalCode.Yasamen.Components;
+@using RoyalCode.Yasamen.Icons
+
+<button b-input-field b-button type="button"
+        class="@Classes" 
+        @onclick="ClickHandler" 
+        @attributes="AdditionalAttributes" 
+        @ref="Reference">
+    <Icon Kind="@Icon" />     
+</button>
+
+@code {
+    private CssClassMap Classes =>
+        CssClassMap.Create("btn")
+            .Add(Style.ToCssClass(true))
+            .Add(AdditionalClasses);
+
+    public ElementReference Reference { get; private set; }
+
+    [Parameter]
+    public ButtonStyles Style { get; set; } = ButtonStyles.Secondary;
+
+    [Parameter, EditorRequired]
+    public Enum Icon { get; set; } = null!;
+
+    [Parameter]
+    public int? IconRotateAngle { get; set; }
+
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick { get; set; }
+
+    private async Task ClickHandler(MouseEventArgs args)
+    {
+        if (OnClick.HasDelegate)
+            await OnClick.InvokeAsync(args);
+    }
+}

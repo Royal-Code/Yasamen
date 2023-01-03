@@ -11,7 +11,7 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
 {
     protected const string CssScopeAttribute = "b-input-field";
 
-    protected static Dictionary<string, object> AdditionalContainerAttributes = new()
+    protected static readonly Dictionary<string, object> AdditionalContainerAttributes = new()
     {
         {CssScopeAttribute, true}
     };
@@ -141,7 +141,6 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
             builder.AddAttribute(10 + index, "aria-invalid", true);
         builder.AddElementReferenceCapture(11 + index, __inputReference => InputReference = __inputReference);
 
-
         builder.CloseElement();
 
         return index + 12;
@@ -180,4 +179,12 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
     }
 
     protected virtual void RenderEnd(RenderTreeBuilder builder, int index) { }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Js.BlurOnPressEnterAsync(InputReference);
+        }
+    }
 }

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Commons.Modules;
 using RoyalCode.Yasamen.Forms.Modules;
 using RoyalCode.Yasamen.Forms.Validation;
@@ -24,5 +25,9 @@ builder.Services.AddScoped<IValidatorProvider, ValidatorProvider>();
 
 RoyalCode.Yasamen.Icons.Bootstrap.BootstrapIcons.Include();
 
+Tracer.IsActive = true;
+Tracer.UseAllowedList = true;
+Tracer.AllowedComponents.Add("ModelEditor");
+Tracer.AllowedComponents.Add("FieldBase");
 
 await builder.Build().RunAsync();

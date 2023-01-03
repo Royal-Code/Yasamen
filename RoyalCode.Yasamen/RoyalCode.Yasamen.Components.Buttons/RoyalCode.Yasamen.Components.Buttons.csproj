@@ -16,4 +16,8 @@
 		<ProjectReference Include="..\RoyalCode.Yasamen.Icons\RoyalCode.Yasamen.Icons.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<None Update=".\Button.razor.css" CssScope="b-button" />
+	</ItemGroup>
+	
 </Project>

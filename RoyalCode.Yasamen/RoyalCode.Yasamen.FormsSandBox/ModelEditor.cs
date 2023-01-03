@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
+using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Forms.Validation;
 using RoyalCode.Yasamen.Layout;
-using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics;
 
 namespace RoyalCode.Yasamen.Forms;
 
@@ -10,9 +11,11 @@ public class ModelEditor<TModel> : ComponentBase
 {
     private readonly RenderFragment containerFragment;
     private readonly RenderFragment contentFragment;
-
-    private ModelContext<TModel> modelContext = default!;
     private readonly Func<Task> handleSubmitDelegate;
+    
+    private ModelContext<TModel> modelContext = default!;
+    private bool initialized;
+    
     
     public ModelEditor()
     {
@@ -25,18 +28,10 @@ public class ModelEditor<TModel> : ComponentBase
     private IValidatorProvider ValidatorProvider { get; set; } = null!;
 
     [Parameter]
-    public ModelContext<TModel>? ModelContext 
-    {
-        get => modelContext;
-        set => modelContext = value ?? throw new ArgumentNullException(nameof(ModelContext));
-    }
+    public ModelContext<TModel>? ModelContext { get; set; }
 
     [Parameter]
-    public TModel? Model
-    {
-        get => modelContext.Model;
-        set => modelContext = new ModelContext<TModel>(value ?? throw new ArgumentNullException(nameof(Model)));
-    }
+    public TModel? Model { get; set; }
 
     /// <summary>
     /// If will render a container componente around the children.
@@ -85,7 +80,60 @@ public class ModelEditor<TModel> : ComponentBase
     [Parameter(CaptureUnmatchedValues = true)] 
     public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
 
-    [MemberNotNull(nameof(modelContext))]
+    public override Task SetParametersAsync(ParameterView parameters)
+    {
+        parameters.SetParameterProperties(this);
+
+        Tracer.Write("ModelEditor", "SetParametersAsync", "parameters setted");
+        
+        if (!initialized)
+        {
+            Tracer.Write("ModelEditor", "SetParametersAsync", "Initializing ModelContext");
+
+            if (Model is not null)
+            {
+                modelContext = new ModelContext<TModel>(Model);
+            }
+            else if (ModelContext is not null)
+            {
+                modelContext = ModelContext;
+            }
+            else
+            {
+                throw new InvalidOperationException("The ModelEditor must have a Model or ModelContext.");
+            }
+            
+            initialized = true;
+        }
+        else
+        {
+            if (ModelContext is not null && !ReferenceEquals(ModelContext, modelContext))
+            {
+                Tracer.Write("ModelEditor", "SetParametersAsync", "Context has changed");
+                
+                modelContext = ModelContext;
+            }
+            else if (Model is not null && !ReferenceEquals(Model, modelContext.Model))
+            {
+                Tracer.Write("ModelEditor", "SetParametersAsync", "Model has changed");
+
+                modelContext = new ModelContext<TModel>(Model);
+            }
+            else
+            {
+                Tracer.Write("ModelEditor", "SetParametersAsync", "Nothing changed");
+            }
+        }
+
+        if (!modelContext.IsInitialized)
+        {
+            modelContext.Initialize(ValidatorProvider);
+        }
+        modelContext.InternalConteinerState.UsingContainer = UseContainer;
+        
+        return base.SetParametersAsync(ParameterView.Empty);
+    }
+
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
         modelContext ??= new ModelContext<TModel>();
@@ -166,18 +214,5 @@ public class ModelEditor<TModel> : ComponentBase
                 await OnInvalidSubmit.InvokeAsync();
             }
         }
-    }
-
-    protected override void OnParametersSet()
-    {
-        if (modelContext is null)
-            throw new InvalidOperationException("The ModelContext or the Model property must be set.");
-
-        if (!modelContext.IsInitialized)
-        {
-            modelContext.Initialize(ValidatorProvider);
-        }
-
-        modelContext.InternalConteinerState.UsingContainer = UseContainer;
     }
 }

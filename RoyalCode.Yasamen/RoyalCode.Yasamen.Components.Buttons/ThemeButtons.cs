@@ -1,7 +1,7 @@
 ﻿
 namespace RoyalCode.Yasamen.Components;
 
-public class PrimaryButton : Button
+public sealed class PrimaryButton : Button
 {
 	public PrimaryButton()
 	{
@@ -9,7 +9,7 @@ public class PrimaryButton : Button
 	}
 }
 
-public class SecondaryButton : Button
+public sealed class SecondaryButton : Button
 {
     public SecondaryButton()
     {
@@ -17,7 +17,7 @@ public class SecondaryButton : Button
     }
 }
 
-public class SuccessButton : Button
+public sealed class SuccessButton : Button
 {
     public SuccessButton()
     {
@@ -25,7 +25,7 @@ public class SuccessButton : Button
     }
 }
 
-public class DangerButton : Button
+public sealed class DangerButton : Button
 {
     public DangerButton()
     {
@@ -33,7 +33,7 @@ public class DangerButton : Button
     }
 }
 
-public class WarningButton : Button
+public sealed class WarningButton : Button
 {
     public WarningButton()
     {
@@ -41,7 +41,7 @@ public class WarningButton : Button
     }
 }
 
-public class InfoButton : Button
+public sealed class InfoButton : Button
 {
     public InfoButton()
     {
@@ -49,7 +49,7 @@ public class InfoButton : Button
     }
 }
 
-public class LightButton : Button
+public sealed class LightButton : Button
 {
     public LightButton()
     {
@@ -57,7 +57,7 @@ public class LightButton : Button
     }
 }
 
-public class DarkButton : Button
+public sealed class DarkButton : Button
 {
     public DarkButton()
     {
@@ -65,7 +65,7 @@ public class DarkButton : Button
     }
 }
 
-public class LinkButton : Button
+public sealed class LinkButton : Button
 {
     public LinkButton()
     {

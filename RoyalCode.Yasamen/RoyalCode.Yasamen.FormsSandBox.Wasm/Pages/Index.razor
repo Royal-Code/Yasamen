@@ -1,10 +1,28 @@
 ﻿@using System.Text.Json;
 @page "/"
 
-<AppPageContent Title="Model Editor Testes" >
+<AppPageContent Title="Model Editor Testes">
 
     <ModelEditor Model="friend" Context="f" OnValidSubmit="SubmitHandler">
+
         <TextField Label="Friend name" @bind-Value="f.Name" />
+
+        <TextField Label="E-Mail" @bind-Value="f.EMail" Cols="6">
+            <Prepend>
+                <FieldButton Icon="BsIconNames.Valentine" />
+                <FieldAddon>$</FieldAddon>
+            </Prepend>
+        </TextField>
+
+        <TextField Label="Phone" @bind-Value="f.Phone" Cols="6">
+            <Append>
+                <FieldAddon>$</FieldAddon>
+                <FieldAddon>
+                    <Icon Kind="BsIconNames.Phone" />
+                </FieldAddon>
+            </Append>
+        </TextField>
+
         <Column>
             <input type="submit" value="Submit" />
         </Column>
@@ -18,11 +36,11 @@
             @friendJson
         </Column>
     </Container>
-    
+
 </AppPageContent>
 
 
-@code{
+@code {
 
     private Friend friend = new();
 
