@@ -9,7 +9,7 @@ namespace RoyalCode.Yasamen.Forms;
 ///     Component to store the messages of the model editor.
 /// </para>
 /// <para>
-///     The messagens will be showed in the MessagesSummary Component.
+///     The messagens will be showed in the MessagesSummary and FieldMessages Components.
 /// </para>
 /// </summary>
 public sealed class EditorMessages
@@ -64,6 +64,12 @@ public sealed class EditorMessages
         Add(list, model, message);
     }
 
+    internal void Add(FieldIdentifier fieldIdentifier, IResultMessage message)
+    {
+        var list = messageLists.GetOrCreateValue(fieldIdentifier.Model);
+        Add(list, fieldIdentifier, message);
+    }
+
     private void Add(LinkedList<IResultMessage> list, object model, IResultMessage message)
     {
         list.AddLast(message);
@@ -82,6 +88,46 @@ public sealed class EditorMessages
                     l.MessageAdded(message);
     }
 
+    private void Add(LinkedList<IResultMessage> list, FieldIdentifier fieldIdentifier, IResultMessage message)
+    {
+        list.AddLast(message);
+        int dispatchCount = 0;
+        foreach (var l in listeners)
+        {
+            if (l.Match(fieldIdentifier))
+            {
+                l.MessageAdded(message);
+                dispatchCount++;
+            }
+        }
+        if (dispatchCount == 0)
+            foreach (var l in fallbackListeners)
+                if (l.Match(fieldIdentifier.Model))
+                    l.MessageAdded(message);
+    }
+
+    internal void Hide(FieldIdentifier fieldIdentifier)
+    {
+        foreach (var l in listeners)
+        {
+            if (l.Match(fieldIdentifier))
+            {
+                l.Hide();
+            }
+        }
+    }
+
+    internal void Show(FieldIdentifier fieldIdentifier)
+    {
+        foreach (var l in listeners)
+        {
+            if (l.Match(fieldIdentifier))
+            {
+                l.Show();
+            }
+        }
+    }
+
     internal void Clear(FieldIdentifier fieldIdentifier)
     {
         if (messageLists.TryGetValue(fieldIdentifier.Model, out var list))
@@ -93,11 +139,11 @@ public sealed class EditorMessages
                     foreach (var m in l.Messages)
                         list.Remove(m);
                     l.Clear();
-                }   
-            };
+                }
+            }
         }
     }
-    
+
     internal void Clear(object model)
     {
         if (messageLists.TryGetValue(model, out var messages))

@@ -330,8 +330,6 @@
     --b-aside-offcanvas--right: var(--b-size-0);
     --b-aside-offcanvas--background-color: var(--b-color-light-d2);
     /* form and field */
-    --b-field-error-message--background-color: var(--b-theme-danger);
-    --b-field-error-message--background-opacity: 0.8;
     --b-field--color: var(--b-color-dark-d3);
     --b-field--bg: var(--b-color-light-l7);
     --b-field--border-width: 1px;
@@ -340,6 +338,15 @@
     --b-field--box-shadow--focus: 0 0 0 0.25rem rgba(134, 182, 254, 0.375);
     --b-field-label--margin-bottom: var(--b-size-2);
     --b-field-addon--bg: var(--b-color-light);
+    --b-field-invalid--border-color: var(--b-color-danger-l5);
+    --b-field-invalid--box-shadow--focus: 0 0 0 0.25rem rgba(237, 154, 162, 0.375);
+    --b-field-message--border-radius: var(--b-border--radius-2);
+    --b-field-message--padding: var(--b-size-2) var(--b-size-4);
+    --b-field-message--margin-top: var(--b-size-1);
+    --b-field-message--font-size: .875rem;
+    --b-field-error-message--color: var(--b-color-light-l7);
+    --b-field-error-message--bg: var(--b-theme-danger);
+    --b-field-error-message--bg-opacity: 0.85;
     
     /* reboot based on bootstrap */
     --b-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
