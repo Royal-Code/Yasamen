@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
 using RoyalCode.OperationResult;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 namespace RoyalCode.Yasamen.Forms;
@@ -82,7 +83,7 @@ public sealed class EditorMessages
                 dispatchCount++;
             }
         }
-        if (dispatchCount == 0)
+        if (dispatchCount is 0)
             foreach (var l in fallbackListeners)
                 if (l.Match(model))
                     l.MessageAdded(message);
@@ -131,17 +132,13 @@ public sealed class EditorMessages
     internal void Clear(FieldIdentifier fieldIdentifier)
     {
         if (messageLists.TryGetValue(fieldIdentifier.Model, out var list))
-        {
             foreach (var l in listeners)
-            {
                 if (l.Match(fieldIdentifier))
                 {
                     foreach (var m in l.Messages)
                         list.Remove(m);
                     l.Clear();
                 }
-            }
-        }
     }
 
     internal void Clear(object model)
@@ -152,12 +149,19 @@ public sealed class EditorMessages
             foreach (var l in listeners)
                 if (l.Match(model))
                     l.Clear();
+            foreach (var l in fallbackListeners)
+                if (l.Match(model))
+                    l.Clear();
         }
     }
 
     internal void ClearAll()
     {
         messageLists.Clear();
+        foreach (var l in listeners)
+            l.Clear();
+        foreach (var l in fallbackListeners)
+            l.Clear();
     }
 
     internal void Remove(MessageListener messageListener)

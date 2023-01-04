@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<Import Project="..\version.targets" />
 
@@ -10,4 +10,15 @@
 		<ProjectReference Include="..\RoyalCode.Yasamen.Layout\RoyalCode.Yasamen.Layout.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<None Update=".\AppBrand.razor.css" CssScope="b-app-brand" />
+		<None Update=".\AppFooter.razor.css" CssScope="b-app-footer" />
+		<None Update=".\AppLayout.razor.css" CssScope="b-app-layout" />
+		<None Update=".\AppMenuButton.razor.css" CssScope="b-app-menubutton" />
+		<None Update=".\AppNavBar.razor.css" CssScope="b-app-navbar" />
+		<None Update=".\AppNavItem.razor.css" CssScope="b-app-navitem" />
+		<None Update=".\AppNavMenu.razor.css" CssScope="b-app-navmenu" />
+		<None Update=".\AppPageContent.razor.css" CssScope="b-app-page" />
+	</ItemGroup>
+	
 </Project>

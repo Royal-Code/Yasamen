@@ -1,16 +1,37 @@
 ﻿@using RoyalCode.Yasamen.Commons;
+@using RoyalCode.OperationResult;
+@using RoyalCode.Yasamen.Components;
 
 @implements IDisposable
 
-@if (messageListener is not null 
-    && messageListener.Messages.Any())
+@if (messageListener is not null
+   && messageListener.Messages.Any())
 {
-    <div class="@Classes" role="alert" @attributes="@AdditionalAttributes">
-        @foreach (var msg in messageListener.Messages)
+    var groups = messageListener.Messages
+        .GroupBy(m => m.Type)
+        .Select(g => new { Type = g.Key, Messages = g.ToList() })
+        .OrderBy(g => g.Type);
+    
+    foreach(var group in groups)
+    {
+        var alertStyle = group.Type switch
         {
-            <span>@msg</span>
-        }
-    </div>
+            ResultMessageType.Error => AlertStyles.Danger,
+            ResultMessageType.Warning => AlertStyles.Warning,
+            ResultMessageType.Info => AlertStyles.Info,
+            ResultMessageType.Success => AlertStyles.Success,
+            _ => AlertStyles.Danger
+        };
+
+        <Alert AlertStyle="alertStyle" AdditionalClasses="py-1">
+            @foreach(var message in group.Messages)
+            {
+                <p>
+                    @message.Text
+                </p>
+            }
+        </Alert>
+    }
 }
 
 @code {
@@ -19,27 +40,20 @@
     private IModelContext modelContext = null!;
     private IMessageListener? messageListener;
 
-    private CssClassMap Classes =>
-        CssClassMap.Create("field-messages")
-            .Add(() => messageListener?.HideMessages ?? false, "hidden");
-    
-    public FieldMessages()
+    public MessagesSummary()
     {
         stateHasChangedDelegate = StateHasChanged;
     }
+
+    [Parameter]
+    public object? Model { get; set; }
 
     [Parameter(CaptureUnmatchedValues = true)]
     public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
 
     [CascadingParameter]
     IModelContext CascadeModelContext { get; set; } = default!;
-
-    [Parameter, EditorRequired]
-    public FieldIdentifier? FieldIdentifier { get; set; }
-
-    [Parameter]
-    public string? FieldName { get; set; }
-
+    
     public override Task SetParametersAsync(ParameterView parameters)
     {
         parameters.SetParameterProperties(this);
@@ -50,24 +64,17 @@
                 $"of type {nameof(IModelContext)}. For example, you can use {GetType()} inside " +
                 $"an {nameof(ModelEditor<object>)}.");
 
-        if (!FieldIdentifier.HasValue)
-        {
-            throw new InvalidOperationException(
-                $"{GetType()} requires a value for the " +
-                $"'{nameof(FieldIdentifier)}' parameter.");
-        }
-
         if (!ReferenceEquals(modelContext, CascadeModelContext))
         {
             Detach();
             modelContext = CascadeModelContext;
-            messageListener = modelContext.EditorMessages.CreateListener(FieldIdentifier.Value, FieldName);
+            messageListener = modelContext.EditorMessages.CreateFallbackListner(Model);
             messageListener.ListenChanges(stateHasChangedDelegate);
         }
 
         return base.SetParametersAsync(ParameterView.Empty);
     }
-
+    
     private void Detach()
     {
         messageListener?.Dispose();

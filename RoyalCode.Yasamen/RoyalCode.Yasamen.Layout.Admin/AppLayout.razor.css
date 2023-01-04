@@ -1,5 +1,5 @@
 ﻿
-div[b-app-layout] {
+div.layout {
     min-height: 100vh;
     width: 100%;
     display: grid;
