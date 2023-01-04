@@ -363,8 +363,8 @@
 
     /* alert */
     --b-alert-bg: transparent;
-    --b-alert-px: 1rem;
-    --b-alert-py: 1rem;
+    --b-alert-px: .75rem;
+    --b-alert-py: .75rem;
     --b-alert-mb: 1rem;
     --b-alert-color: inherit;
     --b-alert-border-width: 1px;

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<Import Project="..\version.targets" />
 
@@ -11,9 +11,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\RoyalCode.Yasamen.Animations\RoyalCode.Yasamen.Animations.csproj" />
-	  <ProjectReference Include="..\RoyalCode.Yasamen.Commons\RoyalCode.Yasamen.Commons.csproj" />
-	  <ProjectReference Include="..\RoyalCode.Yasamen.Icons\RoyalCode.Yasamen.Icons.csproj" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.Animations\RoyalCode.Yasamen.Animations.csproj" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.Commons\RoyalCode.Yasamen.Commons.csproj" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.Icons\RoyalCode.Yasamen.Icons.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update=".\Alert.razor.css" CssScope="b-alert" />
+		<None Update=".\WorkingAlert.razor.css" CssScope="b-working-alert" />
 	</ItemGroup>
 
 </Project>

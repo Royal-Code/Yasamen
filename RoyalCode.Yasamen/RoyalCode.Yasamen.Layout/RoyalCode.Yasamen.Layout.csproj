@@ -13,6 +13,8 @@
 	<ItemGroup>
 		<None Update="./Column.razor.css" CssScope="b-layout-column" />
 		<None Update="./Container.razor.css" CssScope="b-layout-container" />
+		<None Update="./Box.razor.css" CssScope="b-box" />
+		<None Update="./PanelBox.razor.css" CssScope="b-panel-box" />
 	</ItemGroup>
 
 </Project>

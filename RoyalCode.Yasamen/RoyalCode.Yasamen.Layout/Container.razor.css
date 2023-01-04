@@ -1,6 +1,6 @@
 ﻿div {
     position: relative;
-    display: block;
+    display: flex;
     width: 100%;
 }
 

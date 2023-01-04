@@ -7,7 +7,7 @@
 @implements IDisposable
 
 <CascadingValue Value="context" IsFixed="true">
-    <div b-app-layout @attributes="Attributes" class="@InteractedCssClass @AdditionalClasses" @ref="layoutRef">
+    <div class="@InteractedCssClass @AdditionalClasses layout" @attributes="Attributes" @ref="layoutRef">
         <header class="app-top-content">
             <AppNavBar Shadow="NavBarShadow">
                 <Start>

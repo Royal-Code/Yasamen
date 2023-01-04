@@ -3,14 +3,13 @@ using Microsoft.AspNetCore.Components.Rendering;
 using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Forms.Validation;
 using RoyalCode.Yasamen.Layout;
-using System.Diagnostics;
 
 namespace RoyalCode.Yasamen.Forms;
 
 public class ModelEditor<TModel> : ComponentBase
 {
-    private readonly RenderFragment containerFragment;
     private readonly RenderFragment contentFragment;
+    private readonly RenderFragment childFragment;
     private readonly Func<Task> handleSubmitDelegate;
     
     private ModelContext<TModel> modelContext = default!;
@@ -21,7 +20,7 @@ public class ModelEditor<TModel> : ComponentBase
     {
         handleSubmitDelegate = HandleSubmitAsync;
         contentFragment = ContentFragment;
-        containerFragment = ContainerFragment;
+        childFragment = ChildFragment;
     }
 
     [Inject]
@@ -140,49 +139,57 @@ public class ModelEditor<TModel> : ComponentBase
         
         builder.OpenRegion(modelContext.GetHashCode());
 
+        // begin form
         builder.OpenElement(0, "form");
-        builder.AddMultipleAttributes(1, AdditionalAttributes);
-        builder.AddAttribute(2, "onsubmit", handleSubmitDelegate);
-        builder.OpenComponent<CascadingValue<ModelContext<TModel>>>(3);
-        builder.AddAttribute(4, "IsFixed", true);
-        builder.AddAttribute(5, "Value", modelContext);
+        builder.AddAttribute(1, "b-model-editor");
+        builder.AddMultipleAttributes(2, AdditionalAttributes);
+        builder.AddAttribute(3, "onsubmit", handleSubmitDelegate);
+
+        // begin cascade value of model context, the form element content will be rendered inside
+        builder.OpenComponent<CascadingValue<ModelContext<TModel>>>(4);
+        builder.AddAttribute(5, "IsFixed", true);
+        builder.AddAttribute(6, "Value", modelContext);
+        builder.AddAttribute(7, "ChildContent", contentFragment);
         
-        if (UseContainer)
-        {
-            builder.AddAttribute(6, "ChildContent", containerFragment);
-        }
-        else
-        {
-            builder.AddAttribute(7, "ChildContent", contentFragment);
-        }
-        
+        // end cascade value
         builder.CloseComponent();
+        // end form
         builder.CloseElement();
 
         builder.CloseRegion();
     }
 
-    private void ContainerFragment(RenderTreeBuilder builder)
-    {
-        builder.OpenComponent<Container>(0);
-        builder.AddAttribute(1, "ChildContent", contentFragment);
-        builder.CloseComponent();
-    }
-
-
     private void ContentFragment(RenderTreeBuilder builder)
     {
-        // TODO:    criar o componente para exibir mensagens aqui.
+        builder.OpenComponent<MessagesSummary>(0);
+        builder.AddAttribute(1, "Model", modelContext.Model);
+        builder.CloseComponent();
 
+        if (UseContainer)
+            ContainerFragment(builder, 2);
+        else
+            ChildFragment(builder, 2);
+    }
+
+    private void ContainerFragment(RenderTreeBuilder builder, int index)
+    {
+        builder.OpenComponent<Container>(index);
+        builder.AddAttribute(1 + index, "ChildContent", childFragment);
+        builder.CloseComponent();
+    }
+    private void ChildFragment(RenderTreeBuilder builder) => ChildFragment(builder, 0);
+    
+    private void ChildFragment(RenderTreeBuilder builder, int index)
+    {
         if (Title is not null)
         {
-            builder.OpenElement(0, "fieldset");
-            builder.OpenElement(1, "legend");
-            builder.AddContent(2, Title);
+            builder.OpenElement(index, "fieldset");
+            builder.OpenElement(1 + index, "legend");
+            builder.AddContent(2 + index, Title);
             builder.CloseElement();
         }
 
-        builder.AddContent(3, ChildContent?.Invoke(modelContext!.Model));
+        builder.AddContent(3 + index, ChildContent?.Invoke(modelContext!.Model));
 
         if (Title is not null)
         {

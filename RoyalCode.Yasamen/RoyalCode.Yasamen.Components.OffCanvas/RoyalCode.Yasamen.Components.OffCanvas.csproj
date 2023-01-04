@@ -14,5 +14,8 @@
 		<ProjectReference Include="..\RoyalCode.Yasamen.Commons\RoyalCode.Yasamen.Commons.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<None Update=".\OffCanvas.razor.css" CssScope="b-offcanvas" />
+	</ItemGroup>
 
 </Project>
