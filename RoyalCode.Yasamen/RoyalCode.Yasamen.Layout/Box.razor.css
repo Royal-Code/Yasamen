@@ -18,3 +18,51 @@
     div.xl {
         min-height: var(--b-box-xl--min-height);
     }
+
+.box-primary {
+    color: var(--b-color-primary-d5);
+    background-color: var(--b-color-primary-l7);
+    border-color: var(--b-color-primary-l4);
+}
+
+.box-secondary {
+    color: var(--b-color-secondary-d5);
+    background-color: var(--b-color-secondary-l7);
+    border-color: var(--b-color-secondary-l4);
+}
+
+.box-success {
+    color: var(--b-color-success-d5);
+    background-color: var(--b-color-success-l7);
+    border-color: var(--b-color-success-l4);
+}
+
+.box-info {
+    color: var(--b-color-info-d5);
+    background-color: var(--b-color-info-l7);
+    border-color: var(--b-color-info-l4);
+}
+
+.box-warning {
+    color: var(--b-color-warning-d5);
+    background-color: var(--b-color-warning-l7);
+    border-color: var(--b-color-warning-l4);
+}
+
+.box-danger {
+    color: var(--b-color-danger-d5);
+    background-color: var(--b-color-danger-l7);
+    border-color: var(--b-color-danger-l4);
+}
+
+.box-light {
+    color: var(--b-color-light-d5);
+    background-color: var(--b-color-light-l7);
+    border-color: var(--b-color-light-l4);
+}
+
+.box-dark {
+    color: var(--b-color-dark-d5);
+    background-color: var(--b-color-dark-l7);
+    border-color: var(--b-color-dark-l4);
+}

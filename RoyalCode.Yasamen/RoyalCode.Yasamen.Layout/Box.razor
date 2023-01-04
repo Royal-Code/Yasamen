@@ -10,6 +10,7 @@
         MinHeight.ToAbbrCssClass(),
         Align.ToItemsCssClass(),
         Justify.ToContentCssClass(),
+        Style.ToCssClass(),
         AdditionalClasses);
 
     [Parameter]
@@ -28,8 +29,11 @@
     public Sizes MinHeight { get; set; }
 
     [Parameter]
-    public Align Align { get; set; }
+    public Align Align { get; set; } = Align.Center;
 
     [Parameter]
-    public Justify Justify { get; set; }
+    public Justify Justify { get; set; } = Justify.Start;
+
+    [Parameter]
+    public BoxStyles Style { get; set; }
 }
