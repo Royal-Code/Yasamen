@@ -1,6 +1,8 @@
 ﻿@using System.Text.Json;
 @page "/"
 
+@inject ValidadorFriend Validador
+
 <AppPageContent Title="Model Editor Testes">
 
     <ModelEditor Model="friend" Context="f" OnValidSubmit="SubmitHandler">
@@ -25,6 +27,7 @@
 
         <Column>
             <input type="submit" value="Submit" />
+            <button type="button" @onclick="ToggleFailure">@FailureOrNot</button>
         </Column>
     </ModelEditor>
 
@@ -46,8 +49,15 @@
 
     private string friendJson = "";
 
+    private string FailureOrNot => Validador.Failure ? "Stop Fail" : "Start Fail";
+
     private void SubmitHandler()
     {
         friendJson = JsonSerializer.Serialize(friend);
+    }
+
+    private void ToggleFailure()
+    {
+        Validador.Failure = !Validador.Failure;
     }
 }

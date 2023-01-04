@@ -12,11 +12,10 @@ namespace RoyalCode.Yasamen.Forms;
 
 public partial class FieldBase<TValue> : ComponentBase, IDisposable
 {
-    private Action messagesChanged;
+    private Action messagesChangedDelegate;
     private IMessageListener? messageListener;
     private bool initialized;
     private Type? nullableUnderlyingType;
-    private bool settingFormattedCurrentValue;
     private bool settingNewValue;
     private PropertyInfo? propertyInfo;
     private string? fieldLabel;
@@ -26,7 +25,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
 
     public FieldBase()
     {
-        messagesChanged = StateHasChanged;
+        messagesChangedDelegate = OnMessagesChanged;
     }
     
     /// <summary>
@@ -166,14 +165,9 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
         
     protected virtual string? CurrentValueAsString
     {
-        get => IsInvalid ? enteredValue : FormatValue(Value);
+        get => IsInvalid && enteredValue is not null ? enteredValue : FormatValue(Value);
         set
         {
-            if (settingFormattedCurrentValue)
-            {
-                return;
-            }
-
             TValue? oldValue = Value;
             string? originalInput = value;
             Tracer.Write("FieldBase", "SetValue", value ?? "null");
@@ -192,7 +186,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
             {
                 IsInvalid = true;
                 enteredValue = originalInput;
-                editorMessages.Add(FieldIdentifier.Model, ResultMessage.Error(error!, FieldIdentifier.FieldName));
+                editorMessages.Add(FieldIdentifier, ResultMessage.Error(error!, FieldIdentifier.FieldName));
                 
                 settingNewValue = false;
                 return;
@@ -252,8 +246,10 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
         if (settingNewValue)
             return;
 
+        var oldIsInvalid = IsInvalid;
         IsInvalid = FieldMessages.Any(m => m.Type == ResultMessageType.Error);
-        StateHasChanged();
+        if (oldIsInvalid != IsInvalid)
+            StateHasChanged();
     }
 
     /// <inheritdoc />
@@ -276,7 +272,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
                 ModelContext = CascadedContext;
 
                 messageListener = ModelContext.EditorMessages.CreateListener(FieldIdentifier, Name);
-                messageListener.ListenChanges(messagesChanged);
+                messageListener.ListenChanges(messagesChangedDelegate);
 
                 changeSupport = ModelContext.PropertyChangeSupport.GetChangeSupport(ChangeSupport ?? FieldIdentifier.FieldName);
                 changeSupport.Initialize(FieldIdentifier, Value);

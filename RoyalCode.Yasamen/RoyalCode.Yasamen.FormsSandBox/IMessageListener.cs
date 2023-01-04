@@ -8,6 +8,8 @@ public interface IMessageListener : IDisposable
 
     IEnumerable<IResultMessage> Messages { get; }
 
+    bool HideMessages { get; }
+
     public bool HasError => DefaultHasError(this);
 
     protected static bool DefaultHasError(IMessageListener messageListener)

@@ -20,6 +20,8 @@ internal sealed class MessageListener : IMessageListener
 
     public IEnumerable<IResultMessage> Messages => messages;
 
+    public bool HideMessages { get; private set; }
+    
     public void Dispose()
     {
         messages.Clear();
@@ -35,12 +37,14 @@ internal sealed class MessageListener : IMessageListener
     internal void Clear()
     {
         messages.Clear();
+        HideMessages = false;
         Fire();
     }
 
     internal void MessageAdded(IResultMessage message)
     {
         messages.AddLast(message);
+        HideMessages = false;
         Fire();
     }
 
@@ -60,6 +64,18 @@ internal sealed class MessageListener : IMessageListener
     internal bool Match(object model)
     {
         return ReferenceEquals(model, fieldIdentifier.Model);
+    }
+
+    internal void Hide()
+    {
+        HideMessages = true;
+        Fire();
+    }
+
+    internal void Show()
+    {
+        HideMessages = false;
+        Fire();
     }
 
     private void Fire()

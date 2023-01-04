@@ -18,7 +18,7 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
 
     private readonly RenderFragment contentFragment;
     protected ElementReference InputReference;
-
+    private bool isFocused;
 
     public InputFieldBase()
     {
@@ -135,15 +135,19 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
         builder.AddAttribute(6 + index, CssScopeAttribute);
         builder.AddAttribute(7 + index, "value", CurrentValueAsString);
         builder.AddAttribute(8 + index, "onchange", EventCallback.Factory.CreateBinder<string>(this, __value => CurrentValueAsString = __value, CurrentValueAsString ?? string.Empty));
+        builder.AddAttribute(9 + index, "onfocus", EventCallback.Factory.Create(this, OnFocus));
+        builder.AddAttribute(10 + index, "onblur", EventCallback.Factory.Create(this, OnBlur));
+        builder.AddAttribute(11 + index, "onmouseout", EventCallback.Factory.Create(this, OnMouseOut));
+        builder.AddAttribute(12 + index, "onmouseenter", EventCallback.Factory.Create(this, OnMouseEnter));
         if (ModelContext?.ContainerState.IsLoading ?? false)
-            builder.AddAttribute(9 + index, "disabled", true);
+            builder.AddAttribute(13 + index, "disabled", true);
         if (IsInvalid)
-            builder.AddAttribute(10 + index, "aria-invalid", true);
-        builder.AddElementReferenceCapture(11 + index, __inputReference => InputReference = __inputReference);
+            builder.AddAttribute(14 + index, "aria-invalid", true);
+        builder.AddElementReferenceCapture(15 + index, __inputReference => InputReference = __inputReference);
 
         builder.CloseElement();
 
-        return index + 12;
+        return index + 16;
     }
 
     protected virtual int RenderAppend(RenderTreeBuilder builder, int index)
@@ -157,9 +161,12 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
 
     protected virtual int RenderFieldMessages(RenderTreeBuilder builder, int index)
     {
-        // TODO: requer FieldMessages...
-
-        return index;
+        builder.OpenComponent<FieldMessages>(index);
+        builder.AddAttribute(1 + index, "FieldIdentifier", FieldIdentifier);
+        builder.AddAttribute(2 + index, "FieldName", FieldName);
+        builder.CloseComponent();
+        
+        return index + 3;
     }
 
     protected virtual int RenderLoadingState(RenderTreeBuilder builder, int index)
@@ -186,5 +193,31 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
         {
             await Js.BlurOnPressEnterAsync(InputReference);
         }
+    }
+
+    private void OnFocus()
+    {
+        isFocused = true;
+        if (IsInvalid)
+            ModelContext.EditorMessages.Show(FieldIdentifier);
+    }
+
+    private void OnBlur()
+    {
+        isFocused = false;
+        if (IsInvalid)
+            ModelContext.EditorMessages.Hide(FieldIdentifier);
+    }
+
+    private void OnMouseOut()
+    {
+        if (IsInvalid && isFocused is false)
+            ModelContext.EditorMessages.Hide(FieldIdentifier);
+    }
+
+    private void OnMouseEnter()
+    {
+        if (IsInvalid && isFocused is false)
+            ModelContext.EditorMessages.Show(FieldIdentifier);
     }
 }

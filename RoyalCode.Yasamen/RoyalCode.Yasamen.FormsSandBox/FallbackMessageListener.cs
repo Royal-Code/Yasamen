@@ -17,6 +17,8 @@ public sealed class FallbackMessageListener : IMessageListener
 
     public IEnumerable<IResultMessage> Messages => messages;
 
+    public bool HideMessages => false;
+
     public void Dispose()
     {
         messages.Clear();
