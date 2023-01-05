@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
 using RoyalCode.OperationResult;
-using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace RoyalCode.Yasamen.Forms;
+namespace RoyalCode.Yasamen.Forms.Messages;
 
 /// <summary>
 /// <para>
@@ -15,25 +14,12 @@ namespace RoyalCode.Yasamen.Forms;
 /// </summary>
 public sealed class EditorMessages
 {
+    // TODO: Este campo (messageLists) me parece inutil, poderia ser removido.
     private ConditionalWeakTable<object, LinkedList<IResultMessage>> messageLists = new();
 
     private readonly LinkedList<MessageListener> listeners = new();
     private readonly LinkedList<FallbackMessageListener> fallbackListeners = new();
-
-    public IEnumerable<IResultMessage> GetMessages(object model)
-    {
-        if (messageLists.TryGetValue(model, out var messages))
-            return messages;
-        return Enumerable.Empty<IResultMessage>();
-    }
-
-    public IEnumerable<IResultMessage> GetMessages(FieldIdentifier fieldIdentifier)
-    {
-        if (messageLists.TryGetValue(fieldIdentifier.Model, out var messages))
-            return messages.Where(m => m.Property == fieldIdentifier.FieldName);
-        return Enumerable.Empty<IResultMessage>();
-    }
-
+    
     public IMessageListener CreateListener(FieldIdentifier fieldIdentifier, string? fieldName)
     {
         var listener = new MessageListener(this, fieldIdentifier, fieldName);
@@ -76,13 +62,11 @@ public sealed class EditorMessages
         list.AddLast(message);
         int dispatchCount = 0;
         foreach (var l in listeners)
-        {
             if (message.Property is not null && l.Match(model, message.Property))
             {
                 l.MessageAdded(message);
                 dispatchCount++;
             }
-        }
         if (dispatchCount is 0)
             foreach (var l in fallbackListeners)
                 if (l.Match(model))
@@ -94,13 +78,11 @@ public sealed class EditorMessages
         list.AddLast(message);
         int dispatchCount = 0;
         foreach (var l in listeners)
-        {
             if (l.Match(fieldIdentifier))
             {
                 l.MessageAdded(message);
                 dispatchCount++;
             }
-        }
         if (dispatchCount == 0)
             foreach (var l in fallbackListeners)
                 if (l.Match(fieldIdentifier.Model))
@@ -135,7 +117,7 @@ public sealed class EditorMessages
             foreach (var l in listeners)
                 if (l.Match(fieldIdentifier))
                 {
-                    foreach (var m in l.Messages)
+                    foreach (var m in l.Messages.All)
                         list.Remove(m);
                     l.Clear();
                 }

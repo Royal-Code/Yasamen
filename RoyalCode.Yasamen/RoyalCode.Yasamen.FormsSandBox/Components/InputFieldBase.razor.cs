@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Forms.Modules;

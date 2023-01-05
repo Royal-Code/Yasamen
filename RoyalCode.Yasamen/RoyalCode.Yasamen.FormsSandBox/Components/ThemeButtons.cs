@@ -1,5 +1,4 @@
-﻿
-using RoyalCode.Yasamen.Components;
+﻿using RoyalCode.Yasamen.Components;
 
 namespace RoyalCode.Yasamen.Forms.Components;
 

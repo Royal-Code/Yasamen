@@ -1,5 +1,4 @@
-﻿
-using RoyalCode.Yasamen.Commons.Options;
+﻿using RoyalCode.Yasamen.Commons.Options;
 using RoyalCode.Yasamen.Icons;
 
 namespace RoyalCode.Yasamen.Forms.Components;

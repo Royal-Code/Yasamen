@@ -16,8 +16,7 @@
 		<ProjectReference Include="..\RoyalCode.Yasamen.Components.Alerts\RoyalCode.Yasamen.Components.Alerts.csproj" />
 		<ProjectReference Include="..\RoyalCode.Yasamen.Components.Buttons\RoyalCode.Yasamen.Components.Buttons.csproj" />
 		<ProjectReference Include="..\RoyalCode.Yasamen.Layout\RoyalCode.Yasamen.Layout.csproj" />
-		<ProjectReference Include="..\RoyalCode.Yasamen.Generators\RoyalCode.Yasamen.Generators.csproj" 
-						  OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.Generators\RoyalCode.Yasamen.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -25,7 +24,6 @@
 		<None Update="Components\InputFieldBase.razor.css" CssScope="b-input-field" />
 		<None Update="Components\SubmitButton.razor.css" CssScope="b-button" />
 		<None Update="FieldMessages.razor.css" CssScope="b-field-message" />
-		<None Update="MessagesSummary.razor.css" CssScope="b-message-summary" />
 	</ItemGroup>
 
 </Project>

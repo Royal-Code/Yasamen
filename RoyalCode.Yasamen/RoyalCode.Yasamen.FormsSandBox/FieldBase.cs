@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.Forms;
 using RoyalCode.OperationResult;
 using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Commons.Extensions;
+using RoyalCode.Yasamen.Forms.Messages;
 using RoyalCode.Yasamen.Forms.Support;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
@@ -88,14 +89,6 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
     /// </para>
     /// </summary>
     protected string FieldId => fieldId ??= $"{ModelContext.GetModelNameIdentifier()}.{FieldName}";
-    
-    /// <summary>
-    /// <para>
-    ///     Messages for the field.
-    /// </para>
-    /// </summary>
-    protected IEnumerable<IResultMessage> FieldMessages => messageListener?.Messages 
-        ?? ModelContext.EditorMessages.GetMessages(FieldIdentifier);
 
     /// <summary>
     /// Context received by the <see cref="ModelEditor{TModel}"/>.
@@ -247,7 +240,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
             return;
 
         var oldIsInvalid = IsInvalid;
-        IsInvalid = FieldMessages.Any(m => m.Type == ResultMessageType.Error);
+        IsInvalid = messageListener?.Messages.HasErrors ?? false;
         if (oldIsInvalid != IsInvalid)
             StateHasChanged();
     }
