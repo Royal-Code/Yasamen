@@ -1,6 +1,79 @@
-﻿<h3>SubmitButton</h3>
+﻿@using Microsoft.AspNetCore.Components.Rendering;
+@using RoyalCode.Yasamen.Commons.Options;
+@using RoyalCode.Yasamen.Components
+@using RoyalCode.Yasamen.Icons;
+@using RoyalCode.Yasamen.Layout;
+@inherits Button
+
+@if (ModelContext.ContainerState.UsingContainer)
+{
+    <Column ParentColumn="@this">
+        @fragment
+    </Column>
+}
+else
+{
+    @fragment
+}
 
 @code {
+    private readonly RenderFragment fragment;
+    private readonly RenderFragment baseFragment;
+    private readonly Enum? saveItemKind;
+    private bool IsLoading => ModelContext?.ContainerState.IsLoading ?? false;
 
+    public SubmitButton()
+    {
+        fragment = Fragment;
+        baseFragment = base.BuildRenderTree;
+        CommonsOptions.Get<Icon>().TryGet<Enum>(WellKnownIcons.Save, out saveItemKind);
+    }
+
+    private void Fragment(RenderTreeBuilder builder)
+    {
+        if (IsInline)
+        {
+            builder.OpenElement(0, "div");
+            builder.AddAttribute(1, "class", "btn-inline");
+            builder.AddAttribute(2, "b-button");
+            builder.AddContent(3, baseFragment);
+            builder.CloseElement();
+        }
+        else
+        {
+            baseFragment(builder);
+        }
+    }
+
+    [Parameter]
     public bool IsInline { get; set; }
+
+    /// <summary>
+    /// Context received by the <see cref="ModelEditor{TModel}"/>.
+    /// </summary>
+    [CascadingParameter]
+    private IModelContext ModelContext { get; set; } = null!;
+
+    /// <inheritdoc />
+    public override Task SetParametersAsync(ParameterView parameters)
+    {
+        Style = ButtonStyles.Primary;
+
+        parameters.SetParameterProperties(this);
+
+        if (ModelContext is null)
+            throw new InvalidOperationException(
+                $"The Button of type {GetType()} requires a cascading parameter of type {nameof(ModelContext<object>)},"
+                + $" for example you can use {GetType()} inside an {nameof(ModelEditor<object>)}.");
+
+        Icon ??= saveItemKind;
+
+        Disabled = Disabled || IsLoading;
+
+        Type = ButtonType.Submit;
+        if (IsInline)
+            Block = true;
+
+        return base.SetParametersAsync(ParameterView.Empty);
+    }
 }
