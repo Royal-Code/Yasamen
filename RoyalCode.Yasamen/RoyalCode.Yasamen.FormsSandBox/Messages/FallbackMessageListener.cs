@@ -6,12 +6,14 @@ public sealed class FallbackMessageListener : IMessageListener
 {
     private readonly LinkedList<Action> actions = new();
     private readonly EditorMessages editorMessages;
-    private readonly object model;
+    private readonly object? model;
+    private readonly bool modelless;
 
-    public FallbackMessageListener(EditorMessages editorMessages, object model)
+    public FallbackMessageListener(EditorMessages editorMessages, object? model)
     {
         this.editorMessages = editorMessages ?? throw new ArgumentNullException(nameof(editorMessages));
-        this.model = model ?? throw new ArgumentNullException(nameof(model));
+        this.model = model;
+        modelless = model is null;
     }
 
     public MessagesList Messages { get; } = new();
@@ -42,10 +44,14 @@ public sealed class FallbackMessageListener : IMessageListener
         Fire();
     }
 
-    internal bool Match(object model)
+    internal bool Match(object? model)
     {
+        if (modelless)
+            return false;
         return ReferenceEquals(model, this.model);
     }
+
+    internal bool IsModelless => modelless;
 
     private void Fire()
     {
