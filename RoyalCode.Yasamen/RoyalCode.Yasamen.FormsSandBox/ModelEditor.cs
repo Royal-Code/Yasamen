@@ -162,13 +162,12 @@ public class ModelEditor<TModel> : ComponentBase
     private void ContentFragment(RenderTreeBuilder builder)
     {
         builder.OpenComponent<MessagesSummary>(0);
-        //builder.AddAttribute(1, "Model", modelContext.Model);
         builder.CloseComponent();
 
         if (UseContainer)
-            ContainerFragment(builder, 2);
+            ContainerFragment(builder, 1);
         else
-            ChildFragment(builder, 2);
+            ChildFragment(builder, 1);
     }
 
     private void ContainerFragment(RenderTreeBuilder builder, int index)
