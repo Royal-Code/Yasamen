@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
 using RoyalCode.OperationResult;
 
-namespace RoyalCode.Yasamen.Forms;
+namespace RoyalCode.Yasamen.Forms.Messages;
 
 internal sealed class MessageListener : IMessageListener
 {
-    private readonly LinkedList<IResultMessage> messages = new();
     private readonly LinkedList<Action> actions = new();
     private readonly EditorMessages editorMessages;
     private readonly FieldIdentifier fieldIdentifier;
@@ -18,13 +17,13 @@ internal sealed class MessageListener : IMessageListener
         this.fieldName = fieldName;
     }
 
-    public IEnumerable<IResultMessage> Messages => messages;
+    public MessagesList Messages { get; } = new();
 
     public bool HideMessages { get; private set; }
-    
+
     public void Dispose()
     {
-        messages.Clear();
+        Messages.Clear();
         actions.Clear();
         editorMessages.Remove(this);
     }
@@ -36,14 +35,14 @@ internal sealed class MessageListener : IMessageListener
 
     internal void Clear()
     {
-        messages.Clear();
+        Messages.Clear();
         HideMessages = false;
         Fire();
     }
 
     internal void MessageAdded(IResultMessage message)
     {
-        messages.AddLast(message);
+        Messages.Add(message);
         HideMessages = false;
         Fire();
     }
@@ -53,14 +52,14 @@ internal sealed class MessageListener : IMessageListener
         if (!ReferenceEquals(model, fieldIdentifier.Model))
             return false;
 
-        return (fieldName is not null && fieldName == property) || fieldIdentifier.FieldName == property;
+        return fieldName is not null && fieldName == property || fieldIdentifier.FieldName == property;
     }
 
     internal bool Match(FieldIdentifier fieldIdentifier)
     {
         return this.fieldIdentifier.Equals(fieldIdentifier);
     }
-    
+
     internal bool Match(object model)
     {
         return ReferenceEquals(model, fieldIdentifier.Model);

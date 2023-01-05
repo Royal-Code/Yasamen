@@ -1,4 +1,6 @@
-﻿namespace RoyalCode.Yasamen.Forms.Validation;
+﻿using RoyalCode.Yasamen.Forms.Messages;
+
+namespace RoyalCode.Yasamen.Forms.Validation;
 
 public interface IValidationContext
 {

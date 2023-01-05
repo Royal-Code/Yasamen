@@ -1,8 +1,4 @@
 ﻿
-.field {
-    /*min-height: 5.5rem;*/
-}
-
 .form-label {
     margin-bottom: var(--b-field-label--margin-bottom);
 }

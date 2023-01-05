@@ -1,10 +1,9 @@
 ﻿using RoyalCode.OperationResult;
 
-namespace RoyalCode.Yasamen.Forms;
+namespace RoyalCode.Yasamen.Forms.Messages;
 
 public sealed class FallbackMessageListener : IMessageListener
 {
-    private readonly LinkedList<IResultMessage> messages = new();
     private readonly LinkedList<Action> actions = new();
     private readonly EditorMessages editorMessages;
     private readonly object model;
@@ -15,13 +14,13 @@ public sealed class FallbackMessageListener : IMessageListener
         this.model = model ?? throw new ArgumentNullException(nameof(model));
     }
 
-    public IEnumerable<IResultMessage> Messages => messages;
+    public MessagesList Messages { get; } = new();
 
     public bool HideMessages => false;
 
     public void Dispose()
     {
-        messages.Clear();
+        Messages.Clear();
         actions.Clear();
         editorMessages.Remove(this);
     }
@@ -33,13 +32,13 @@ public sealed class FallbackMessageListener : IMessageListener
 
     internal void Clear()
     {
-        messages.Clear();
+        Messages.Clear();
         Fire();
     }
 
     internal void MessageAdded(IResultMessage message)
     {
-        messages.AddLast(message);
+        Messages.Add(message);
         Fire();
     }
 

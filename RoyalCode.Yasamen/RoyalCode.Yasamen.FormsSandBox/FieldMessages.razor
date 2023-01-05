@@ -2,11 +2,10 @@
 
 @implements IDisposable
 
-@if (messageListener is not null 
-    && messageListener.Messages.Any())
+@if (messageListener?.Messages.Any is true)
 {
     <div class="@Classes" role="alert" @attributes="@AdditionalAttributes">
-        @foreach (var msg in messageListener.Messages)
+        @foreach (var msg in messageListener.Messages.All)
         {
             <span>@msg</span>
         }
@@ -21,7 +20,7 @@
 
     private CssClassMap Classes =>
         CssClassMap.Create("field-messages")
-            .Add(() => messageListener?.HideMessages ?? false, "hidden");
+            .Add(() => messageListener?.HideMessages is true, "hidden");
     
     public FieldMessages()
     {
