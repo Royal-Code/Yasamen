@@ -85,7 +85,9 @@ public sealed class MessagesSummary : ComponentBase, IDisposable
         {
             Detach();
             modelContext = CascadeModelContext;
-            messageListener = modelContext.EditorMessages.CreateFallbackListner(Model);
+            messageListener = Model is null 
+                ? modelContext.EditorMessages.CreateModellessFallbackListner()
+                : modelContext.EditorMessages.CreateFallbackListner(Model);
             messageListener.ListenChanges(stateHasChangedDelegate);
             messagesList = messageListener.Messages;
         }

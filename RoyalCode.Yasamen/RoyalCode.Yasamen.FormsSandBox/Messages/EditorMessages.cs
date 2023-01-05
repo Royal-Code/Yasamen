@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
 using RoyalCode.OperationResult;
-using System.Runtime.CompilerServices;
 
 namespace RoyalCode.Yasamen.Forms.Messages;
 
@@ -14,12 +13,9 @@ namespace RoyalCode.Yasamen.Forms.Messages;
 /// </summary>
 public sealed class EditorMessages
 {
-    // TODO: Este campo (messageLists) me parece inutil, poderia ser removido.
-    private ConditionalWeakTable<object, LinkedList<IResultMessage>> messageLists = new();
-
     private readonly LinkedList<MessageListener> listeners = new();
     private readonly LinkedList<FallbackMessageListener> fallbackListeners = new();
-    
+
     public IMessageListener CreateListener(FieldIdentifier fieldIdentifier, string? fieldName)
     {
         var listener = new MessageListener(this, fieldIdentifier, fieldName);
@@ -37,29 +33,21 @@ public sealed class EditorMessages
         return listener;
     }
 
+    public IMessageListener CreateModellessFallbackListner()
+    {
+        var listener = new FallbackMessageListener(this, null);
+        fallbackListeners.AddLast(listener);
+        return listener;
+    }
 
     internal void Add(object model, IEnumerable<IResultMessage> messages)
     {
-        var list = messageLists.GetOrCreateValue(model);
         foreach (var m in messages)
-            Add(list, model, m);
+            Add(model, m);
     }
 
     internal void Add(object model, IResultMessage message)
     {
-        var list = messageLists.GetOrCreateValue(model);
-        Add(list, model, message);
-    }
-
-    internal void Add(FieldIdentifier fieldIdentifier, IResultMessage message)
-    {
-        var list = messageLists.GetOrCreateValue(fieldIdentifier.Model);
-        Add(list, fieldIdentifier, message);
-    }
-
-    private void Add(LinkedList<IResultMessage> list, object model, IResultMessage message)
-    {
-        list.AddLast(message);
         int dispatchCount = 0;
         foreach (var l in listeners)
             if (message.Property is not null && l.Match(model, message.Property))
@@ -67,15 +55,27 @@ public sealed class EditorMessages
                 l.MessageAdded(message);
                 dispatchCount++;
             }
-        if (dispatchCount is 0)
-            foreach (var l in fallbackListeners)
-                if (l.Match(model))
-                    l.MessageAdded(message);
+
+        if (dispatchCount is not 0)
+            return;
+
+        foreach (var l in fallbackListeners)
+            if (l.Match(model))
+            {
+                l.MessageAdded(message);
+                dispatchCount++;
+            }
+
+        if (dispatchCount is not 0)
+            return;
+
+        foreach (var l in fallbackListeners)
+            if (l.IsModelless)
+                l.MessageAdded(message);
     }
 
-    private void Add(LinkedList<IResultMessage> list, FieldIdentifier fieldIdentifier, IResultMessage message)
+    internal void Add(FieldIdentifier fieldIdentifier, IResultMessage message)
     {
-        list.AddLast(message);
         int dispatchCount = 0;
         foreach (var l in listeners)
             if (l.Match(fieldIdentifier))
@@ -83,63 +83,70 @@ public sealed class EditorMessages
                 l.MessageAdded(message);
                 dispatchCount++;
             }
-        if (dispatchCount == 0)
-            foreach (var l in fallbackListeners)
-                if (l.Match(fieldIdentifier.Model))
-                    l.MessageAdded(message);
+
+        if (dispatchCount is not 0)
+            return;
+
+        foreach (var l in fallbackListeners)
+            if (l.Match(fieldIdentifier.Model))
+            {
+                l.MessageAdded(message);
+                dispatchCount++;
+            }
+
+        if (dispatchCount is not 0)
+            return;
+
+        foreach (var l in fallbackListeners)
+            if (l.IsModelless)
+                l.MessageAdded(message);
     }
 
     internal void Hide(FieldIdentifier fieldIdentifier)
     {
         foreach (var l in listeners)
-        {
             if (l.Match(fieldIdentifier))
-            {
                 l.Hide();
-            }
-        }
     }
 
     internal void Show(FieldIdentifier fieldIdentifier)
     {
         foreach (var l in listeners)
-        {
             if (l.Match(fieldIdentifier))
-            {
                 l.Show();
-            }
-        }
     }
 
     internal void Clear(FieldIdentifier fieldIdentifier)
     {
-        if (messageLists.TryGetValue(fieldIdentifier.Model, out var list))
-            foreach (var l in listeners)
-                if (l.Match(fieldIdentifier))
-                {
-                    foreach (var m in l.Messages.All)
-                        list.Remove(m);
-                    l.Clear();
-                }
+        foreach (var l in listeners)
+            if (l.Match(fieldIdentifier))
+                l.Clear();
     }
 
     internal void Clear(object model)
     {
-        if (messageLists.TryGetValue(model, out var messages))
-        {
-            messages.Clear();
-            foreach (var l in listeners)
-                if (l.Match(model))
-                    l.Clear();
-            foreach (var l in fallbackListeners)
-                if (l.Match(model))
-                    l.Clear();
-        }
+        int matchModel = 0;
+        foreach (var l in listeners)
+            if (l.Match(model))
+                l.Clear();
+
+        foreach (var l in fallbackListeners)
+            if (l.Match(model))
+            {
+                l.Clear();
+                matchModel++;
+            }
+
+        if (matchModel is not 0)
+            return;
+
+        foreach (var l in fallbackListeners)
+            if (l.IsModelless)
+                l.Clear();
     }
 
     internal void ClearAll()
     {
-        messageLists.Clear();
         foreach (var l in listeners)
             l.Clear();
         foreach (var l in fallbackListeners)
