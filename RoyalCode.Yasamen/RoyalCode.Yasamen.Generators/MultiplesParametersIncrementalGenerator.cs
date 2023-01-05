@@ -50,9 +50,9 @@ public class MultiplesParametersIncrementalGenerator : IIncrementalGenerator
         foreach (var group in groups)
         {
             var classDeclarationSyntax = (group.Key as ClassDeclarationSyntax)!;
-            var classMethods = group.ToList();
+            var classProperties = group.ToList();
 
-            if (!GuardParentIsAPartialClass(context, classDeclarationSyntax, classMethods[0].GetLocation()))
+            if (!GuardParentIsAPartialClass(context, classDeclarationSyntax, classProperties[0].GetLocation()))
                 continue;
 
             // get the class model
@@ -65,9 +65,9 @@ public class MultiplesParametersIncrementalGenerator : IIncrementalGenerator
             
             var generator = new MultiplesParametersGenerator(compilation, context, className, classNamespace);
 
-            for (int i = 0; i < classMethods.Count; i++)
+            for (int i = 0; i < classProperties.Count; i++)
             {
-                generator.AddProperty(properties[i]);
+                generator.AddProperty(classProperties[i]);
             }
             
             generator.Generate();

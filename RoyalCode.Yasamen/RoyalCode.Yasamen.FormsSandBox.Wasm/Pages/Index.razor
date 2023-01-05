@@ -25,7 +25,13 @@
             </Append>
         </TextField>
 
-        <Column>
+        <TextField Label="Other Value" @bind-Value="otherValue" Cols="2" />
+        
+        <SubmitButton Label="Submit" IsInline="true" Cols="2" LgCols="1" />
+        
+        <SearchButton Label="Search" Cols="2" />
+
+        <Column>    
             <input type="submit" value="Submit" />
             <button type="button" @onclick="ToggleFailure">@FailureOrNot</button>
         </Column>
@@ -50,6 +56,8 @@
     private string friendJson = "";
 
     private string FailureOrNot => Validador.Failure ? "Stop Fail" : "Start Fail";
+
+    private string? otherValue;
 
     private void SubmitHandler()
     {
