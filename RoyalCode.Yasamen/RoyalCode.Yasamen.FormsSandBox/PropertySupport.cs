@@ -14,6 +14,9 @@ public sealed class PropertySupport<TValue> : ComponentBase, IDisposable
     private PropertySupported<TValue> propertySupported = null!;
     private ChangeSupport changeSupport = null!;
 
+    // TODO: Futuramente é necessário estudar o uso desse componente.
+    // TODO: Se for mantido a existência, será necessário ver os usos,
+    // TODO: pois o value deve ser um auto-property.
     [Parameter]
     public TValue? Value 
     { 
@@ -35,10 +38,6 @@ public sealed class PropertySupport<TValue> : ComponentBase, IDisposable
 
     [CascadingParameter] 
     public IModelContext ModelContext { get; set; } = null!;
-
-
-    // TODO: PropertyChangeSupport não virá via [CascadingParameter] 
-    public PropertyChangeSupport PropertyChangeSupport { get; set; } = null!;
     
     internal void SetValue(TValue? value)
     {
@@ -50,7 +49,7 @@ public sealed class PropertySupport<TValue> : ComponentBase, IDisposable
         {
             Tracer.Write("PropertySupport", "SetValue", $"Value has changed, Field: {fieldIdentifier.FieldName}");
 
-            PropertyChangeSupport.PropertyHasChanged<TValue>(fieldIdentifier, old, this.value);
+            ModelContext.PropertyChangeSupport.PropertyHasChanged<TValue>(fieldIdentifier, old, this.value);
             var task = ValueChanged?.InvokeAsync((TValue?)this.value);
             if (task is not null && !task.IsCompleted)
                 task.GetAwaiter().GetResult();
@@ -69,10 +68,6 @@ public sealed class PropertySupport<TValue> : ComponentBase, IDisposable
             throw new InvalidOperationException($"{GetType()} requires a cascading parameter of type IModelContext." + 
                 " For example, you can use " + GetType().FullName + " inside a ModelEditor.");
         
-        //if (PropertyChangeSupport is null)
-        //    throw new InvalidOperationException($"{GetType()} requires a cascading parameter of type PropertyChangeSupport." + 
-        //        " For example, you can use " + GetType().FullName + " inside a ModelEditor.");
-        
         if (string.IsNullOrWhiteSpace(ChangeSupport))
             throw new ArgumentNullException(nameof(ChangeSupport));
 
@@ -83,17 +78,17 @@ public sealed class PropertySupport<TValue> : ComponentBase, IDisposable
                     "For example, you can bind the property 'Value' or set the property 'Name'.");
             
             fieldIdentifier = FieldIdentifier.Create(ValueExpression);
-            propertySupported = PropertyChangeSupport.Property<TValue>(fieldIdentifier.FieldName);
+            propertySupported = ModelContext.PropertyChangeSupport.Property<TValue>(fieldIdentifier.FieldName);
             Name = fieldIdentifier.FieldName;
         }
         else
         {
-            propertySupported = PropertyChangeSupport.Property<TValue>(Name);
+            propertySupported = ModelContext.PropertyChangeSupport.Property<TValue>(Name);
             fieldIdentifier = new FieldIdentifier(propertySupported, "Value");
         }
 
         propertySupported.Initialize(this);
-        changeSupport = PropertyChangeSupport.GetChangeSupport(ChangeSupport);
+        changeSupport = ModelContext.PropertyChangeSupport.GetChangeSupport(ChangeSupport);
         changeSupport.Initialize(fieldIdentifier, value);
             
         initialized = true;
