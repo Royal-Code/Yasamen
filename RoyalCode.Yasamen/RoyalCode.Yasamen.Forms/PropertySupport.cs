@@ -8,16 +8,19 @@ namespace RoyalCode.Yasamen.Forms;
 
 public sealed class PropertySupport<TValue> : ComponentBase, IDisposable
 {
-    private TValue? _value;
+    private TValue? value;
     private bool initialized;
     private FieldIdentifier fieldIdentifier;
     private PropertySupported<TValue> propertySupported = null!;
     private ChangeSupport changeSupport = null!;
 
+    // TODO: Futuramente é necessário estudar o uso desse componente.
+    // TODO: Se for mantido a existência, será necessário ver os usos,
+    // TODO: pois o value deve ser um auto-property.
     [Parameter]
     public TValue? Value 
     { 
-        get => _value;
+        get => value;
         set => SetValue(value);
     }
 
@@ -30,28 +33,24 @@ public sealed class PropertySupport<TValue> : ComponentBase, IDisposable
     [Parameter]
     public string Name { get; set; } = null!;
     
-    [Parameter]
+    [Parameter, EditorRequired]
     public string ChangeSupport { get; set; } = null!;
 
     [CascadingParameter] 
-    public EditContext EditContext { get; set; } = null!;
-
-    [CascadingParameter] 
-    public PropertyChangeSupport PropertyChangeSupport { get; set; } = null!;
+    public IModelContext ModelContext { get; set; } = null!;
     
     internal void SetValue(TValue? value)
     {
         Tracer.Write("PropertySupport", "SetValue", "Begin");
         
-        var old = _value;
-        _value = value;
-        if (initialized && !EqualityComparer<TValue>.Default.Equals(old, _value))
+        var old = this.value;
+        this.value = value;
+        if (initialized && !EqualityComparer<TValue>.Default.Equals(old, this.value))
         {
             Tracer.Write("PropertySupport", "SetValue", $"Value has changed, Field: {fieldIdentifier.FieldName}");
-            
-            EditContext.NotifyFieldChanged(fieldIdentifier);
-            PropertyChangeSupport.PropertyHasChanged(fieldIdentifier, old, _value);
-            var task = ValueChanged?.InvokeAsync(_value);
+
+            ModelContext.PropertyChangeSupport.PropertyHasChanged<TValue>(fieldIdentifier, old, this.value);
+            var task = ValueChanged?.InvokeAsync((TValue?)this.value);
             if (task is not null && !task.IsCompleted)
                 task.GetAwaiter().GetResult();
 
@@ -65,12 +64,10 @@ public sealed class PropertySupport<TValue> : ComponentBase, IDisposable
     {
         Tracer.Write("PropertySupport", "OnInitialized", "Begin");
         
-        if (EditContext is null)
-            throw new InvalidOperationException($"{GetType()} requires a cascading parameter of type EditContext." + 
+        if (ModelContext is null)
+            throw new InvalidOperationException($"{GetType()} requires a cascading parameter of type IModelContext." + 
                 " For example, you can use " + GetType().FullName + " inside a ModelEditor.");
-        if (PropertyChangeSupport is null)
-            throw new InvalidOperationException($"{GetType()} requires a cascading parameter of type PropertyChangeSupport." + 
-                " For example, you can use " + GetType().FullName + " inside a ModelEditor.");
+        
         if (string.IsNullOrWhiteSpace(ChangeSupport))
             throw new ArgumentNullException(nameof(ChangeSupport));
 
@@ -81,18 +78,18 @@ public sealed class PropertySupport<TValue> : ComponentBase, IDisposable
                     "For example, you can bind the property 'Value' or set the property 'Name'.");
             
             fieldIdentifier = FieldIdentifier.Create(ValueExpression);
-            propertySupported = PropertyChangeSupport.Property<TValue>(fieldIdentifier.FieldName);
+            propertySupported = ModelContext.PropertyChangeSupport.Property<TValue>(fieldIdentifier.FieldName);
             Name = fieldIdentifier.FieldName;
         }
         else
         {
-            propertySupported = PropertyChangeSupport.Property<TValue>(Name);
+            propertySupported = ModelContext.PropertyChangeSupport.Property<TValue>(Name);
             fieldIdentifier = new FieldIdentifier(propertySupported, "Value");
         }
 
         propertySupported.Initialize(this);
-        changeSupport = PropertyChangeSupport.GetChangeSupport(ChangeSupport);
-        changeSupport.Initialize(fieldIdentifier, _value);
+        changeSupport = ModelContext.PropertyChangeSupport.GetChangeSupport(ChangeSupport);
+        changeSupport.Initialize(fieldIdentifier, value);
             
         initialized = true;
         base.OnInitialized();

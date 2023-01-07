@@ -1,29 +1,33 @@
-using System.Linq.Expressions;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.Extensions.Localization;
+using RoyalCode.OperationResult;
 using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Forms.Support;
 using RoyalCode.Yasamen.Services;
+using System.Linq.Expressions;
 
 namespace RoyalCode.Yasamen.Forms;
 
 public class ModelSupport<TModel> : ComponentBase, IDisposable
     where TModel : class, new()
 {
-    private readonly ModelSupportContext<TModel> context;
-    private ValidationMessageStore? messageStore;
+    private bool initialized;
+    private bool hasBinding;
+    private TModel model = null!;
+    private ModelContext<TModel> context = null!;
     private ChangeSupportListener? changeSupportListener;
     private ChangeSupport? messageFieldChangeSupport;
+
     private IModelFinder<TModel> finder = null!;
 
     [Inject]
     public IDataServicesProvider DataServicesProvider { get; set; } = null!;
-    
+
     [Inject]
     public IStringLocalizer Localizer { get; set; } = null!;
-   
+
     [Parameter]
     public TModel? Model { get; set; }
 
@@ -33,124 +37,150 @@ public class ModelSupport<TModel> : ComponentBase, IDisposable
     [Parameter]
     public Expression<Func<TModel>>? ModelExpression { get; set; }
 
-    [Parameter] 
+    [Parameter]
     public RenderFragment<TModel> ChildContent { get; set; } = null!;
 
     [Parameter]
     public string? ChangeSupport { get; set; }
-    
+
     [Parameter]
     public string? FilterSupport { get; set; }
-    
+
     [Parameter]
     public string? MessageFieldSupport { get; set; }
-    
-    [CascadingParameter]
-    public PropertyChangeSupport PropertyChangeSupport { get; set; } = null!;
-    
-    [CascadingParameter]
-    public EditContext EditContext { get; set; } = null!;
 
-    public ModelSupport()
-    {
-        context = new(this);
-    }
-    
+    [CascadingParameter]
+    public IModelContext CascadeModelContext { get; set; } = null!;
+
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
         Tracer.Write("ModelSupport", "BuildRenderTree", "Begin");
-        
-        builder.OpenComponent<CascadingValue<IModelLoadingState>>(0);
-        
+
+        builder.OpenComponent<CascadingValue<ModelContext<TModel>>>(0);
+
         builder.AddAttribute(1, "Value", context);
         builder.AddAttribute(2, "IsFixed", true);
-        
+
         if (ChildContent.IsNotEmptyFragment())
-            builder.AddAttribute(3, "ChildContent",  Fragment);
+            builder.AddAttribute(3, "ChildContent", Fragment);
         else
             Tracer.Write("ModelSupport", "BuildRenderTree", "ChildContent is Empty");
-        
+
         builder.CloseComponent();
-        
+
         Tracer.Write("ModelSupport", "BuildRenderTree", "End");
     }
 
     private RenderFragment Fragment => builder => ChildContent(context.Model)(builder);
 
-    protected override void OnInitialized()
+    public override Task SetParametersAsync(ParameterView parameters)
     {
-        Tracer.Write("ModelSupport", "OnInitialized", "Begin");
-        
-        if (EditContext is null)
+        parameters.SetParameterProperties(this);
+
+        if (CascadeModelContext is null)
         {
             throw new InvalidOperationException(
                 $"{GetType()} requires a cascading parameter "
-                + "of type EditContext. For example, you can use " 
+                + "of type ModelContext. For example, you can use "
                 + GetType().FullName + " inside a ModelEditor.");
         }
 
-        if (PropertyChangeSupport is null)
+        hasBinding = ModelExpression is not null;
+
+        if (hasBinding && Model is null)
         {
             throw new InvalidOperationException(
-                $"{GetType()} requires a cascading parameter " 
-                + "of type PropertyChangeSupport. For example, you can use " 
-                + GetType().FullName + " inside a ModelEditor.");
+                $"{GetType()} does not support null value for the 'Model' parameter when have two-way binding.");
         }
 
-        if (FilterSupport is not null)
+        if (initialized)
         {
-            changeSupportListener = PropertyChangeSupport.GetChangeSupport(FilterSupport)
+            if (!ReferenceEquals(context.Parent, CascadeModelContext))
+            {
+                throw new InvalidOperationException(
+                $"{GetType()} does not support changing the {nameof(ModelContext<object>)} dynamically.");
+            }
+
+            if (hasBinding && !ReferenceEquals(Model, context.Model))
+            {
+                Tracer.Write("ModelEditor", "SetParametersAsync", "Model has changed");
+
+                model = Model!;
+                context = new ModelContext<TModel>(model, CascadeModelContext);
+
+                changeSupportListener?.Dispose();
+                changeSupportListener = null;
+                messageFieldChangeSupport?.Reset();
+                messageFieldChangeSupport = null;
+            }
+        }
+        else
+        {
+            model = Model ?? new();
+            context = new ModelContext<TModel>(model, CascadeModelContext);
+
+            //var alias = EditContext.Properties["Alias"] as string ?? string.Empty;
+            finder = DataServicesProvider.GetFinder<TModel>();
+
+            initialized = true;
+        }
+
+        if (FilterSupport is not null && changeSupportListener is null)
+        {
+            changeSupportListener = context.PropertyChangeSupport
+                .GetChangeSupport(FilterSupport)
                 .OnAnyChanged(FindModelAsync);
         }
 
-        if (MessageFieldSupport is not null)
+        if (MessageFieldSupport is not null && messageFieldChangeSupport is null)
         {
-            messageFieldChangeSupport = PropertyChangeSupport.GetChangeSupport(MessageFieldSupport);
+            messageFieldChangeSupport = context.PropertyChangeSupport.GetChangeSupport(MessageFieldSupport);
         }
 
-        var alias = EditContext.Properties["Alias"] as string ?? string.Empty;
-        finder = DataServicesProvider.GetFinder<TModel>(alias);
-        
-        base.OnInitialized();
-        
-        Tracer.Write("ModelSupport", "OnInitialized", "End");
+        return base.SetParametersAsync(ParameterView.Empty);
     }
     
-    protected override async Task OnInitializedAsync()
-    {
-        Tracer.Write("ModelSupport", "OnInitializedAsync", "Begin");
-        
-        if (Model is null)
-        {
-            Model = new TModel();
-            //await FireModelChange(Model);
-        }
-
-        await base.OnInitializedAsync();
-        
-        Tracer.Write("ModelSupport", "OnInitializedAsync", "End");
-    }
-
     protected virtual async Task FireModelChange(TModel model)
     {
         Tracer.Write("ModelSupport", "FireModelChange", "Begin");
-        
-        await ModelChanged.InvokeAsync(model);
+
+        if (hasBinding)
+        {
+            await ModelChanged.InvokeAsync(model);
+        }
+        else
+        {
+            this.model = model;
+            StateHasChanged();
+        }
 
         Tracer.Write("ModelSupport", "FireModelChange", "Begin");
     }
-    
+
     protected async void FindModelAsync(FieldIdentifier fieldIdentifier, object? oldValue, object? newValue)
     {
         Tracer.Write("ModelSupport", "FindModelAsync", $"Begin, field: {fieldIdentifier.FieldName}, old: {oldValue}, new: {newValue}.");
 
         var field = messageFieldChangeSupport?.Identifier ?? fieldIdentifier;
 
-        var temp = new TModel();
-        context.StartingLoad(temp);
+        // Em vez de iniciar tempo com um modelo em branco, é simplesmente declado
+        //var temp = new TModel();
+        TModel? temp = null;
+
+        // a comando abaixo é comentada pois o método não existe,
+        // alem disso, um modelo em branco não é pretendido usar.
+        // no comando seguinte, é atribuído que o container está sendo carregado.
+        // o que substitui o comando comentado.
+        //context.StartingLoad(temp);
+        context.InternalConteinerState.IsLoading = true;
+
         ClearMessage(field);
 
-        await FireModelChange(temp);
+        // aqui, não disparamos esse vento pq irá fazer o redraw de tudo,
+        // e também pq não usamos esse temp, por hora....
+        // pode ser alterado os fields, que exibirão uma animação de load,
+        // para exibir um valor em branco enquanto o load não terminar.
+        //await FireModelChange(temp);
 
         try
         {
@@ -159,56 +189,60 @@ public class ModelSupport<TModel> : ComponentBase, IDisposable
             {
                 Tracer.Write("ModelSupport", "FindModelAsync", "Finder ResultNotFound");
 
-                temp = context.ResultNotFound();
+                // em vez executar um ResultNotFound em context, mais abaixo é terminado o loading
+                //temp = context.ResultNotFound();
+
+                // TODO: usar WellKnownLabels
                 AddMessage(field, Localizer["Not found"]);
             }
             else
             {
                 Tracer.Write("ModelSupport", "FindModelAsync", $"Finder ResultFound");
 
-                context.ResultFound();
+                // em vez executar um ResultFound em context, mais abaixo é terminado o loading
+                //context.ResultFound();
             }
+
+            context.InternalConteinerState.IsLoading = false;
         }
         catch (Exception ex)
         {
             Tracer.Write("ModelSupport", "FindModelAsync", $"Finder Exception '{ex.Message}'.");
 
-            temp = context.ResultError(ex);
+            // em vez executar um ResultError em context, mais abaixo é terminado o loading
+            //temp = context.ResultError(ex);
+
             AddMessage(field, ex.Message);
+
+            context.InternalConteinerState.IsLoading = false;
         }
 
-        Model = temp;
-        EditContext.NotifyFieldChanged(field);
-
-        await FireModelChange(temp);
-        StateHasChanged();
-
+        if (temp is not null)
+            await FireModelChange(temp);
+        
         Tracer.Write("ModelSupport", "FindModelAsync", "End");
     }
-    
+
     private void ClearMessage(FieldIdentifier field)
     {
-        if (messageStore is null)
-            return;
-
-        messageStore.Clear();
-        EditContext.NotifyFieldChanged(field);
+        context.EditorMessages.Clear(field);
     }
 
     private void AddMessage(FieldIdentifier field, string message)
     {
-        messageStore ??= new ValidationMessageStore(EditContext);
-        messageStore.Add(field, message);
-        EditContext.NotifyFieldChanged(field);
+        context.EditorMessages.Add(field, ResultMessage.Error(message));
     }
-    
+
     public void Dispose()
     {
         Tracer.Write("ModelSupport", "Dispose", "Begin");
-        
+
+        context.EditorMessages.Clear(model);
         changeSupportListener?.Dispose();
         changeSupportListener = null;
-        
+        messageFieldChangeSupport?.Reset();
+        messageFieldChangeSupport = null;
+
         Tracer.Write("ModelSupport", "Dispose", "End");
     }
 }

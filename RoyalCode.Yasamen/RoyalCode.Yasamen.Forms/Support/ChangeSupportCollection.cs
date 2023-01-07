@@ -13,8 +13,13 @@ namespace RoyalCode.Yasamen.Forms.Support;
 public sealed class ChangeSupportCollection
 {
     private readonly LinkedList<ChangeSupport> supports = new();
-    private PropertyChangeSupport? parentPropertyChangeSupport;
-    
+    private readonly PropertyChangeSupport? parentPropertyChangeSupport;
+
+    public ChangeSupportCollection(PropertyChangeSupport? parentPropertyChangeSupport = null)
+    {
+        this.parentPropertyChangeSupport = parentPropertyChangeSupport;
+    }
+
     /// <summary>
     /// <para>
     ///     Gets a <see cref="ChangeSupport"/> for a given name.
@@ -43,6 +48,4 @@ public sealed class ChangeSupportCollection
         return supports.Where(s => (fieldIdentifier.Equals(s.Identifier) && s.FieldType == typeof(TProperty))
                                    || s.Name == string.Empty);
     }
-
-    internal void SetParentPropertyChangeSupport(PropertyChangeSupport parent) => parentPropertyChangeSupport = parent;
 }
