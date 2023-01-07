@@ -15,7 +15,6 @@ public class ModelEditor<TModel> : ComponentBase
     private ModelContext<TModel> modelContext = default!;
     private bool initialized;
     
-    
     public ModelEditor()
     {
         handleSubmitDelegate = HandleSubmitAsync;
@@ -48,7 +47,7 @@ public class ModelEditor<TModel> : ComponentBase
     /// Specifies the content to be rendered inside this <see cref="ModelEditor{TModel}"/>.
     /// </summary>
     [Parameter]
-    public RenderFragment<TModel?>? ChildContent { get; set; }
+    public RenderFragment<TModel> ChildContent { get; set; } = null!;
 
     /// <summary>
     /// A callback that will be invoked when the form is submitted.
@@ -188,7 +187,7 @@ public class ModelEditor<TModel> : ComponentBase
             builder.CloseElement();
         }
 
-        builder.AddContent(3 + index, ChildContent?.Invoke(modelContext!.Model));
+        builder.AddContent(3 + index, ChildContent?.Invoke(modelContext!.Model!));
 
         if (Title is not null)
         {

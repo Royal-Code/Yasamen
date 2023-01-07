@@ -38,11 +38,28 @@ public sealed class ChangeSupport
     /// Name of the <see cref="ChangeSupport"/>, used to identify the state being shared.
     /// </summary>
     public string Name { get; }
-    
+
+    /// <summary>
+    /// <para>
+    ///     The <see cref="FieldBase{TValue}" /> that owns the state being shared.
+    /// </para>
+    /// </summary>
     public FieldIdentifier? Identifier { get; private set; }
 
+    /// <summary>
+    /// <para>
+    ///     The field value type.
+    /// </para>
+    /// </summary>
     public Type? FieldType { get; private set; }
-    
+
+    /// <summary>
+    /// Creates a listener for value changes of a specific type.
+    /// </summary>
+    /// <typeparam name="TProperty">The type of the property.</typeparam>
+    /// <param name="handler">The property changed listener handler, that will be called when the property changes.</param>
+    /// <returns>A new instance of <see cref="ChangeSupportListener{TValue}"/>.</returns>
+    /// <exception cref="ArgumentNullException">if <paramref name="handler"/> is null.</exception>
     public ChangeSupportListener<TProperty> OnChanged<TProperty>(PropertyChangedHandler<TProperty> handler)
     {
         if (handler is null)
@@ -62,7 +79,13 @@ public sealed class ChangeSupport
 
         return supportListener;
     }
-    
+
+    /// <summary>
+    /// Creates a listener for value changes of any type.
+    /// </summary>
+    /// <param name="handler">The property changed listener handler, that will be called when the property changes.</param>
+    /// <returns>A new instance of <see cref="ChangeSupportListener"/>.</returns>
+    /// <exception cref="ArgumentNullException">if <paramref name="handler"/> is null.</exception>
     public ChangeSupportListener OnAnyChanged(AnyPropertyChangedHandler handler)
     {
         if (handler is null)
@@ -78,6 +101,7 @@ public sealed class ChangeSupport
         });
     }
     
+    // TODO: tentar explicar o que isso faz.
     public void Include<TValue, TIncludedProperty>(
         string changeSupportName,
         Func<TValue, TIncludedProperty> includedHandler)
@@ -88,7 +112,16 @@ public sealed class ChangeSupport
         includes ??= new();
         includes.Add(include);
     }
-    
+
+    /// <summary>
+    /// <para>
+    ///     Initializes the <see cref="ChangeSupport"/> with the <see cref="FieldBase{TValue}"/> that owns the state.
+    /// </para>
+    /// </summary>
+    /// <typeparam name="TValue">The type of the value.</typeparam>
+    /// <param name="identifier">The <see cref="FieldIdentifier"/> of the <see cref="FieldBase{TValue}"/> that owns the state.</param>
+    /// <param name="initialValue">The initial value of the state.</param>
+    /// <exception cref="InvalidOperationException">if the <see cref="ChangeSupport"/> is already initialized.</exception>
     internal void Initialize<TValue>(FieldIdentifier identifier, TValue initialValue)
     {
         if (initialized)
@@ -104,6 +137,7 @@ public sealed class ChangeSupport
         parentPropertyChangeSupport?.GetChangeSupport(Name).Initialize(identifier, initialValue);
     }
 
+    //TODO: ver se isso é necessário.
     internal void SetIdentifier(FieldIdentifier identifier)
     {
         if (!initialized)
@@ -144,7 +178,7 @@ public sealed class ChangeSupport
         notifying = false;
     }
 
-    private class InternalListener : IPropertyChangeListener
+    private sealed class InternalListener : IPropertyChangeListener
     {
         public InternalListener(AnyPropertyChangedHandler handlerAny)
         {
@@ -159,7 +193,7 @@ public sealed class ChangeSupport
         }
     }
 
-    private class InternalListener<TProperty> : IPropertyChangeListener<TProperty>
+    private sealed class InternalListener<TProperty> : IPropertyChangeListener<TProperty>
     {
         public InternalListener(PropertyChangedHandler<TProperty> handler)
         {
@@ -175,9 +209,4 @@ public sealed class ChangeSupport
             Handler.Invoke(fieldIdentifier, oldValue, newValue);
         }
     }
-}
-
-public static class PropertyChangeSupportExtensions
-{
-    
 }

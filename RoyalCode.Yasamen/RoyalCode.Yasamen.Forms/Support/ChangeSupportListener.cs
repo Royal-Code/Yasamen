@@ -36,7 +36,7 @@ public class ChangeSupportListener : IDisposable
 /// </para>
 /// <typeparam name="TValue">The type of the value.</typeparam>
 /// </summary>
-public class ChangeSupportListener<TValue> : ChangeSupportListener
+public sealed class ChangeSupportListener<TValue> : ChangeSupportListener
 {
     internal ChangeSupportListener(Action onDisposing) : base(onDisposing) { }
 

@@ -4,7 +4,7 @@ using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Commons.Modules;
 using RoyalCode.Yasamen.Forms.Modules;
 using RoyalCode.Yasamen.Forms.Validation;
-using RoyalCode.Yasamen.FormsSandBox.Wasm;
+using RoyalCode.Yasamen.Demos.Forms;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");

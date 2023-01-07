@@ -1,7 +1,7 @@
 ﻿using RoyalCode.OperationResult;
 using RoyalCode.Yasamen.Forms.Validation;
 
-namespace RoyalCode.Yasamen.FormsSandBox.Wasm;
+namespace RoyalCode.Yasamen.Demos.Forms;
 
 public class Friend
 {

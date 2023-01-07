@@ -2,7 +2,7 @@ using RoyalCode.Yasamen.Commons;
 
 namespace RoyalCode.Yasamen.Forms.Support;
 
-public class PropertySupported<TValue>
+public sealed class PropertySupported<TValue>
 {
     private readonly PropertyChangeSupport support;
     private PropertySupport<TValue>? component;

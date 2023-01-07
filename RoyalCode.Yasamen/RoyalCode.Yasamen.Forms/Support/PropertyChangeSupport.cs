@@ -12,13 +12,38 @@ namespace RoyalCode.Yasamen.Forms.Support;
 ///     This class stores and manages several <see cref="ChangeSupport"/>,
 ///     through which the state change events of a component are sent to others who want to observe them.
 /// </para>
+/// <para>
+///     Each model that will be edited has a <see cref="ModelContext{TModel}"/> and, for each context,
+///     there will be a <see cref="PropertyChangeSupport"/>.
+///     If there are nested contexts, 
+///     each nested context will have a model for editing and its <see cref="PropertyChangeSupport"/>.
+///     Just as the hierarchy of contexts is controlled, so will the hierarchy of <see cref="PropertyChangeSupport"/>.
+/// </para>
 /// </summary>
-public class PropertyChangeSupport
+public sealed class PropertyChangeSupport
 {
-    private readonly ChangeSupportCollection changeSupports = new();
+    private readonly ChangeSupportCollection changeSupports;
     private Dictionary<string, object>? properties;
     private PropertyChangeSupport? parent;
-    
+
+    /// <summary>
+    /// Creates new <see cref="PropertyChangeSupport"/> without parent.
+    /// </summary>
+    public PropertyChangeSupport() 
+    {
+        changeSupports = new();
+    }
+
+    /// <summary>
+    /// Creates new <see cref="PropertyChangeSupport"/> with the parent.
+    /// </summary>
+    /// <param name="parent">The <see cref="PropertyChangeSupport"/> parent of this.</param>
+    public PropertyChangeSupport(PropertyChangeSupport parent)
+    {
+        this.parent = parent;
+        changeSupports = new(parent);
+    }
+
     /// <summary>
     /// <para>
     ///     Gets a <see cref="ChangeSupport"/> for a given name.
@@ -70,11 +95,5 @@ public class PropertyChangeSupport
             properties.Add(name, supported);
             return supported;
         }
-    }
-
-    internal void SetParent(PropertyChangeSupport parent)
-    {
-        this.parent = parent;
-        changeSupports.SetParentPropertyChangeSupport(parent);
     }
 }

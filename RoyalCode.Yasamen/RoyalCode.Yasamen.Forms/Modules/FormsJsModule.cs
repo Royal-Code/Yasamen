@@ -4,7 +4,7 @@ using RoyalCode.Yasamen.Commons.Modules;
 
 namespace RoyalCode.Yasamen.Forms.Modules;
 
-public class FormsJsModule : JsModuleBase
+public sealed class FormsJsModule : JsModuleBase
 {
     private const string BlurOnPressEnterFn = "blurOnPressEnter";
     
