@@ -5,16 +5,17 @@ using Microsoft.Extensions.Localization;
 using RoyalCode.OperationResult;
 using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Forms.Support;
+using RoyalCode.Yasamen.Services;
 using System.Linq.Expressions;
 
 namespace RoyalCode.Yasamen.Forms;
 
-public sealed class ModelSupport<TModel> : ComponentBase, IDisposable
+public class ModelSupport<TModel> : ComponentBase, IDisposable
     where TModel : class, new()
 {
     private bool initialized;
     private bool hasBinding;
-    private TModel model;
+    private TModel model = null!;
     private ModelContext<TModel> context = null!;
     private ChangeSupportListener? changeSupportListener;
     private ChangeSupport? messageFieldChangeSupport;
@@ -50,12 +51,6 @@ public sealed class ModelSupport<TModel> : ComponentBase, IDisposable
 
     [CascadingParameter]
     public IModelContext CascadeModelContext { get; set; } = null!;
-
-    public ModelSupport()
-    {
-        // todo: atribuir no parameter set
-        //context = new(this);
-    }
 
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
@@ -125,7 +120,7 @@ public sealed class ModelSupport<TModel> : ComponentBase, IDisposable
             context = new ModelContext<TModel>(model, CascadeModelContext);
 
             //var alias = EditContext.Properties["Alias"] as string ?? string.Empty;
-            //finder = DataServicesProvider.GetFinder<TModel>(alias);
+            finder = DataServicesProvider.GetFinder<TModel>();
 
             initialized = true;
         }
@@ -144,8 +139,8 @@ public sealed class ModelSupport<TModel> : ComponentBase, IDisposable
 
         return base.SetParametersAsync(ParameterView.Empty);
     }
-
-    private async Task FireModelChange(TModel model)
+    
+    protected virtual async Task FireModelChange(TModel model)
     {
         Tracer.Write("ModelSupport", "FireModelChange", "Begin");
 
