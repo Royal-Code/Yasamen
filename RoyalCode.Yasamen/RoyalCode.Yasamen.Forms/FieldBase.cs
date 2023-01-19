@@ -154,6 +154,27 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
         }
     }
 
+    protected TValue? CurrentValue
+    {
+        get => Value;
+        set
+        {
+            var hasChanged = !EqualityComparer<TValue>.Default.Equals(Value, value);
+            if (hasChanged)
+            {
+                Tracer.Write("FieldBase", "SetCurrentValue", $"PropertyChanged, Field: {FieldIdentifier}, {Value}, {value}");
+
+                var oldValue = Value;
+                _ = ValueChanged.InvokeAsync(value);
+                ModelContext.PropertyChangeSupport.PropertyHasChanged(FieldIdentifier, oldValue, value);
+            }
+            else
+            {
+                Tracer.Write("FieldBase", "SetCurrentValue", $"Not Changed, Field: {FieldIdentifier}, {Value}, {value}");
+            }
+        }
+    }
+
     private string? enteredValue;
         
     protected virtual string? CurrentValueAsString

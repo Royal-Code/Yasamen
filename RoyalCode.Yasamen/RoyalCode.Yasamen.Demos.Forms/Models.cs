@@ -10,6 +10,8 @@ public class Friend
     public string? EMail { get; set; }
 
     public string? Phone { get; set; }
+
+    public bool IsActive { get; set; } = true;
 }
 
 

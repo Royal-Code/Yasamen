@@ -34,8 +34,7 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
     [Inject]
     public FormsJsModule Js { get; set; } = null!;
 
-    [Parameter]
-    public InputType Type { get; set; }
+    public InputType Type { get; protected set; }
 
     [Parameter]
     public string? LabelAdditionalClasses { get; set; }
@@ -66,7 +65,7 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
         }
     }
 
-    private void BuildContent(RenderTreeBuilder builder)
+    protected virtual void BuildContent(RenderTreeBuilder builder)
     {
         var index = RenderBegin(builder);
         index = RenderLabel(builder, index);
@@ -132,21 +131,29 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
         builder.AddAttribute(4 + index, "type", Type.ToString().ToLower());
         builder.AddAttribute(5 + index, "class", InputCssClasses);
         builder.AddAttribute(6 + index, CssScopeAttribute);
-        builder.AddAttribute(7 + index, "value", CurrentValueAsString);
-        builder.AddAttribute(8 + index, "onchange", EventCallback.Factory.CreateBinder<string>(this, __value => CurrentValueAsString = __value, CurrentValueAsString ?? string.Empty));
-        builder.AddAttribute(9 + index, "onfocus", EventCallback.Factory.Create(this, OnFocus));
-        builder.AddAttribute(10 + index, "onblur", EventCallback.Factory.Create(this, OnBlur));
-        builder.AddAttribute(11 + index, "onmouseout", EventCallback.Factory.Create(this, OnMouseOut));
-        builder.AddAttribute(12 + index, "onmouseenter", EventCallback.Factory.Create(this, OnMouseEnter));
+
+        index = RenderInputValueAndBinder(builder, index + 7);
+
+        builder.AddAttribute(index, "onfocus", EventCallback.Factory.Create(this, OnFocus));
+        builder.AddAttribute(1 + index, "onblur", EventCallback.Factory.Create(this, OnBlur));
+        builder.AddAttribute(2 + index, "onmouseout", EventCallback.Factory.Create(this, OnMouseOut));
+        builder.AddAttribute(3 + index, "onmouseenter", EventCallback.Factory.Create(this, OnMouseEnter));
         if (ModelContext?.ContainerState.IsLoading ?? false)
-            builder.AddAttribute(13 + index, "disabled", true);
+            builder.AddAttribute(4 + index, "disabled", true);
         if (IsInvalid)
-            builder.AddAttribute(14 + index, "aria-invalid", true);
-        builder.AddElementReferenceCapture(15 + index, __inputReference => InputReference = __inputReference);
+            builder.AddAttribute(5 + index, "aria-invalid", true);
+        builder.AddElementReferenceCapture(6 + index, __inputReference => InputReference = __inputReference);
 
         builder.CloseElement();
 
-        return index + 16;
+        return index + 7;
+    }
+
+    protected virtual int RenderInputValueAndBinder(RenderTreeBuilder builder, int index)
+    {
+        builder.AddAttribute(index, "value", CurrentValueAsString);
+        builder.AddAttribute(1 + index, "onchange", EventCallback.Factory.CreateBinder<string>(this, __value => CurrentValueAsString = __value, CurrentValueAsString ?? string.Empty));
+        return index + 2;
     }
 
     protected virtual int RenderAppend(RenderTreeBuilder builder, int index)
