@@ -3,12 +3,10 @@ using Microsoft.AspNetCore.Components.Rendering;
 using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Forms.Modules;
 using RoyalCode.Yasamen.Layout;
-using System;
-using System.Reflection;
 
 namespace RoyalCode.Yasamen.Forms.Components;
 
-public sealed partial class CheckField : FieldBase<bool>
+public sealed partial class CheckField : CheckFieldBase
 {
     private const string CssScopeAttribute = "b-checkbox-field";
 
@@ -27,8 +25,16 @@ public sealed partial class CheckField : FieldBase<bool>
         contentFragment = BuildContent;
     }
 
+    private CssClassMap FormCssClasses => CssClassMap.Create("form-check")
+        .Add(() => ModelContext.ContainerState.UsingContainer, "within-container");
+
+
     private CssClassMap InputCssClasses => CssClassMap.Create("form-check-input")
         .Add(() => InputAdditionalClasses)
+        .Add(() => IsInvalid, "is-invalid");
+
+    private CssClassMap LabelCssClasses => CssClassMap.Create("form-check-label")
+        .Add(() => LabelAdditionalClasses)
         .Add(() => IsInvalid, "is-invalid");
 
     [MultiplesParameters]
@@ -63,7 +69,7 @@ public sealed partial class CheckField : FieldBase<bool>
     private void BuildContent(RenderTreeBuilder builder)
     {
         builder.OpenElement(0, "div");
-        builder.AddAttribute(1, "class", "form-check");
+        builder.AddAttribute(1, "class", FormCssClasses);
         builder.AddAttribute(2, CssScopeAttribute);
 
         int index = RenderInput(builder, 3);
@@ -111,7 +117,7 @@ public sealed partial class CheckField : FieldBase<bool>
     private int RenderLabel(RenderTreeBuilder builder, int index)
     {
         builder.OpenElement(index, "label");
-        builder.AddAttribute(1 + index, "class", $"form-check-label {LabelAdditionalClasses}");
+        builder.AddAttribute(1 + index, "class", LabelCssClasses);
         builder.AddAttribute(2 + index, "for", FieldId);
         builder.AddAttribute(3 + index, CssScopeAttribute);
         builder.AddContent(4 + index, FieldLabel);
