@@ -1,36 +1,100 @@
 ﻿
 .form-check {
     display: block;
-    min-height: 1.5rem;
     padding-left: 1.5em;
-    margin-bottom: .125rem;
 }
 
-    .form-check.within-container {
-        padding-top: 2.25rem;
+    .form-check .form-check-input {
+        float: left;
+        margin-left: -1.5rem;
     }
+
+.form-check-reverse {
+    padding-right: 1.5rem;
+    padding-left: 0;
+    text-align: right;
+}
+
+    .form-check-reverse .form-check-input {
+        float: right;
+        margin-right: -1.5rem;
+        margin-left: 0;
+    }
+
+.form-check.within-container {
+    padding-top: 2.125rem;
+}
 
 .form-check-input {
-    position: absolute;
-    margin-top: 0.3rem;
-    margin-left: -1.25rem;
-    border-radius: 0.375rem;
+    border: var(--b-field--border);
+    border-radius: var(--b-field--border-radius);
     height: 1.25rem;
     width: 1.25rem;
+    vertical-align: top;
 }
 
-    .form-check-input:focus {
+    .form-check-input:focus, .form-check-input:active, .form-check-input:focus-visible {
         box-shadow: var(--b-field--box-shadow--focus);
     }
+
+    .form-check-input:checked {
+        background-color: var(--b-field--bg--checked);
+        border-color: var(--b-field--border-color--checked);
+    }
+
+    .form-check-input:active, .form-check-input:hover {
+        filter: brightness(90%);
+    }
+
+    .form-check-input:disabled {
+        pointer-events: none;
+        filter: none;
+        opacity: 0.5;
+    }
+
+        .form-check-input[disabled] ~ .form-check-label, .form-check-input:disabled ~ .form-check-label {
+            cursor: default;
+            opacity: 0.5;
+        }
 
 .form-check-label {
     margin-bottom: 0;
 }
 
-.form-check-input.is-invalid {
-    color: var(--b-field-invalid--border-color);
+.form-check-input.is-invalid:focus, .form-check-input.is-invalid:active, .form-check-input.is-invalid:focus-visible {
+    box-shadow: var(--b-field-invalid--box-shadow--focus);
 }
 
-.form-check-label.is-invalid {
-    color: var(--b-field-invalid--border-color);
+.form-check-input.is-invalid ~ .form-check-label {
+    color: var(--b-color-danger);
 }
+
+:not(.user-appearance) .form-check-input {
+    background-color: var(--b-field--bg);
+    background-image: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: var(--b-field--border);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+    :not(.user-appearance) .form-check-input:checked {
+        background-color: var(--b-field--bg--checked);
+        border-color: var(--b-field--border-color--checked);
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+    }
+
+    :not(.user-appearance) .form-check-input.is-invalid {
+        border-color: var(--b-field-invalid--border-color);
+    }
+
+        :not(.user-appearance) .form-check-input.is-invalid:checked {
+            background-color: var(--b-field-invalid--bg--checked);
+            border-color: var(--b-field-invalid--border-color--checked);
+        }

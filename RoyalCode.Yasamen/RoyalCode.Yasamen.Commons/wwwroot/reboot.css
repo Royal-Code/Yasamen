@@ -247,19 +247,11 @@ button {
     border-radius: 0;
 }
 
-    button:focus:not(:focus-visible) {
-        outline: 0;
-    }
-
-input,
-button,
-select,
-optgroup,
-textarea {
-    margin: 0;
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
+input:focus, input:active, input:focus-visible, input:focus-within,
+button:focus, button:active, button:focus-visible, button:focus-within,
+select:focus, select:active, select:focus-visible, select:focus-within,
+textarea:focus, textarea:active, textarea:focus-visible, textarea:focus-within {
+    outline: 0;
 }
 
 button,

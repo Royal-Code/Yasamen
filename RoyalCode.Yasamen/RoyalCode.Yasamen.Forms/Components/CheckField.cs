@@ -26,16 +26,15 @@ public sealed partial class CheckField : CheckFieldBase
     }
 
     private CssClassMap FormCssClasses => CssClassMap.Create("form-check")
-        .Add(() => ModelContext.ContainerState.UsingContainer, "within-container");
-
-
+        .Add(() => ModelContext.ContainerState.UsingContainer, "within-container")
+        .Add(() => Reverse, "form-check-reverse");
+    
     private CssClassMap InputCssClasses => CssClassMap.Create("form-check-input")
         .Add(() => InputAdditionalClasses)
         .Add(() => IsInvalid, "is-invalid");
 
     private CssClassMap LabelCssClasses => CssClassMap.Create("form-check-label")
-        .Add(() => LabelAdditionalClasses)
-        .Add(() => IsInvalid, "is-invalid");
+        .Add(() => LabelAdditionalClasses);
 
     [MultiplesParameters]
     public ColumnSizes ColumnSizes { set; get; } = new();
@@ -48,6 +47,9 @@ public sealed partial class CheckField : CheckFieldBase
 
     [Parameter]
     public string? InputAdditionalClasses { get; set; }
+
+    [Parameter]
+    public bool Reverse { get; set; }
 
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
@@ -95,14 +97,14 @@ public sealed partial class CheckField : CheckFieldBase
             builder.AddAttribute(7 + index, "checked", BindConverter.FormatValue(CurrentValue));
             builder.AddAttribute(8 + index, "onchange", EventCallback.Factory.CreateBinder<bool>(this, __value => CurrentValue = __value, CurrentValue));
             builder.AddAttribute(9 + index, "onfocus", EventCallback.Factory.Create(this, OnFocus));
-            builder.AddAttribute(1 + index, "onblur", EventCallback.Factory.Create(this, OnBlur));
-            builder.AddAttribute(2 + index, "onmouseout", EventCallback.Factory.Create(this, OnMouseOut));
-            builder.AddAttribute(3 + index, "onmouseenter", EventCallback.Factory.Create(this, OnMouseEnter));
+            builder.AddAttribute(10 + index, "onblur", EventCallback.Factory.Create(this, OnBlur));
+            builder.AddAttribute(11 + index, "onmouseout", EventCallback.Factory.Create(this, OnMouseOut));
+            builder.AddAttribute(12 + index, "onmouseenter", EventCallback.Factory.Create(this, OnMouseEnter));
             if (ModelContext?.ContainerState.IsLoading ?? false)
-                builder.AddAttribute(4 + index, "disabled", true);
+                builder.AddAttribute(13 + index, "disabled", true);
             if (IsInvalid)
-                builder.AddAttribute(5 + index, "aria-invalid", true);
-            builder.AddElementReferenceCapture(6 + index, __inputReference => InputReference = __inputReference);
+                builder.AddAttribute(14 + index, "aria-invalid", true);
+            builder.AddElementReferenceCapture(15 + index, __inputReference => InputReference = __inputReference);
 
             builder.CloseElement();
         }
@@ -110,20 +112,28 @@ public sealed partial class CheckField : CheckFieldBase
         {
             InputReference = default;
         }
-        
-        return index + 7;
+
+        return index + 16;
     }
 
     private int RenderLabel(RenderTreeBuilder builder, int index)
     {
-        builder.OpenElement(index, "label");
-        builder.AddAttribute(1 + index, "class", LabelCssClasses);
-        builder.AddAttribute(2 + index, "for", FieldId);
-        builder.AddAttribute(3 + index, CssScopeAttribute);
-        builder.AddContent(4 + index, FieldLabel);
-        builder.CloseElement();
-
-        return index + 5;
+        if (Label is not null)
+        {
+            builder.OpenElement(index, "label");
+            builder.AddAttribute(1 + index, "class", LabelCssClasses);
+            builder.AddAttribute(2 + index, "for", FieldId);
+            builder.AddAttribute(3 + index, CssScopeAttribute);
+            builder.AddAttribute(4 + index, "onfocus", EventCallback.Factory.Create(this, OnFocus));
+            builder.AddAttribute(5 + index, "onblur", EventCallback.Factory.Create(this, OnBlur));
+            builder.AddAttribute(6 + index, "onmouseout", EventCallback.Factory.Create(this, OnMouseOut));
+            builder.AddAttribute(7 + index, "onmouseenter", EventCallback.Factory.Create(this, OnMouseEnter));
+            builder.AddContent(8 + index, Label == string.Empty ? FieldLabel : Label);
+            
+            builder.CloseElement();
+        }
+        
+        return index + 9;
     }
 
     private int RenderFieldMessages(RenderTreeBuilder builder, int index)
