@@ -189,6 +189,17 @@
     --b-color-lighten-2: rgba(1, 1, 1, 0.2);
     --b-color-lighten-1: rgba(1, 1, 1, 0.1);
     
+    /* shadow colors */
+    --b-shadow-color-primary: rgba(134, 182, 254, 0.375);
+    --b-shadow-color-secondary: rgba(181, 186, 190, 0.375);
+    --b-shadow-color-success: rgba(147, 211, 162, 0.375);
+    --b-shadow-color-info: rgba(139, 209, 219, 0.375);
+    --b-shadow-color-warning: rgba(255, 224, 131, 0.375);
+    --b-shadow-color-danger: rgba(237, 154, 162, 0.375);
+    --b-shadow-color-light: rgba(193, 188, 198, 0.375);
+    --b-shadow-color-dark: rgba(105, 96, 113, 0.375);
+    --b-shadow-color-link: rgba(13, 110, 253, 0.075);
+        
     /*****  Size and Space  *****/
 
     --b-size-0: 0;
@@ -335,11 +346,12 @@
     --b-field--border-width: 1px;
     --b-field--border: var(--b-field--border-width) solid var(--b-color-light-d7);
     --b-field--border-color--focus: var(--b-color-primary-l5);
-    --b-field--box-shadow--focus: 0 0 0 0.25rem rgba(134, 182, 254, 0.375);
+    --b-field--box-shadow--focus: 0 0 0 0.25rem var(--b-shadow-color-primary);
+    --b-field--border-radius: 0.375rem;
     --b-field-label--margin-bottom: var(--b-size-2);
     --b-field-addon--bg: var(--b-color-light);
     --b-field-invalid--border-color: var(--b-color-danger-l5);
-    --b-field-invalid--box-shadow--focus: 0 0 0 0.25rem rgba(237, 154, 162, 0.375);
+    --b-field-invalid--box-shadow--focus: 0 0 0 0.25rem var(--b-shadow-color-danger);
     --b-field-message--border-radius: var(--b-border--radius-2);
     --b-field-message--padding: var(--b-size-2) var(--b-size-4);
     --b-field-message--margin-top: var(--b-size-1);
@@ -347,6 +359,10 @@
     --b-field-error-message--color: var(--b-color-light-l7);
     --b-field-error-message--bg: var(--b-theme-danger);
     --b-field-error-message--bg-opacity: 0.85;
+    --b-field--bg--checked: var(--b-color-primary);
+    --b-field--border-color--checked: var(--b-color-primary);
+    --b-field-invalid--bg--checked: var(--b-color-danger);
+    --b-field-invalid--border-color--checked: var(--b-color-danger);
     
     /* reboot based on bootstrap */
     --b-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -376,6 +392,8 @@
     --b-button--font-weight: 400;
     --b-button--line-height: 1.5;
     --b-button--color: var(--b-color-dark-d3);
+    --b-button--box-shadow-color: var(--b-shadow-color-primary);
+    --b-button--box-shadow--focus: 0 0 0 0.25rem var(--b-button--box-shadow-color);
     --b-button--padding: .375rem .75rem;
     --b-button--font-size: 1rem;
     --b-button--border-radius: .25rem;

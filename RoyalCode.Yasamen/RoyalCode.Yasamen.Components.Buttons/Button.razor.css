@@ -346,6 +346,82 @@ button {
     text-decoration: underline;
 }
 
+button:focus, input[type="button"]:focus, input[type="reset"]:focus, input[type="submit"]:focus {
+    box-shadow:var(--b-button--box-shadow--focus);
+}
+
+.btn-primary:focus, .btn-primary:focus-visible {
+    --b-button--box-shadow-color: var(--b-shadow-color-primary);
+}
+
+.btn-secondary:focus, .btn-secondary:focus-visible {
+    --b-button--box-shadow-color: var(--b-shadow-color-secondary);
+}
+
+.btn-success:focus, .btn-success:focus-visible {
+    --b-button--box-shadow-color: var(--b-shadow-color-success);
+}
+
+.btn-info:focus, .btn-info:focus-visible {
+    --b-button--box-shadow-color: var(--b-shadow-color-info);
+}
+
+.btn-warning:focus, .btn-warning:focus-visible {
+    --b-button--box-shadow-color: var(--b-shadow-color-warning);
+}
+
+.btn-danger:focus, .btn-danger:focus-visible {
+    --b-button--box-shadow-color: var(--b-shadow-color-danger);
+}
+
+.btn-light:focus, .btn-light:focus-visible {
+    --b-button--box-shadow-color: var(--b-shadow-color-light);
+}
+
+.btn-dark:focus, .btn-dark:focus-visible {
+    --b-button--box-shadow-color: var(--b-shadow-color-dark);
+}
+
+.btn-link:focus, .btn-link:focus-visible {
+    --b-button--box-shadow-color: var(--b-shadow-color-primary);
+}
+
+.btn-outline-primary:focus, .btn-outline-primary:focus-visible {
+    --b-button--box-shadow-color: var(--b-shadow-color-primary);
+}
+
+.btn-outline-secondary:focus, .btn-outline-secondary:focus-visible {
+    --b-button--box-shadow-color: var(--b-shadow-color-secondary);
+}
+
+.btn-outline-success:focus, .btn-outline-success:focus-visible {
+    --b-button--box-shadow-color: var(--b-shadow-color-success);
+}
+
+.btn-outline-info:focus, .btn-outline-info:focus-visible {
+    --b-button--box-shadow-color: var(--b-shadow-color-info);
+}
+
+.btn-outline-warning:focus, .btn-outline-warning:focus-visible {
+    --b-button--box-shadow-color: var(--b-shadow-color-warning);
+}
+
+.btn-outline-danger:focus, .btn-outline-danger:focus-visible {
+    --b-button--box-shadow-color: var(--b-shadow-color-danger);
+}
+
+.btn-outline-light:focus, .btn-outline-light:focus-visible {
+    --b-button--box-shadow-color: var(--b-shadow-color-light);
+}
+
+.btn-outline-dark:focus, .btn-outline-dark:focus-visible {
+    --b-button--box-shadow-color: var(--b-shadow-color-dark);
+}
+
+.btn-outline-link:focus, .btn-outline-link:focus-visible {
+    --b-button--box-shadow-color: var(--b-shadow-color-primary);
+}
+
 button.disabled, button:disabled {
     pointer-events: none;
     opacity: var(--b-button--disabled--opacity);
