@@ -27,14 +27,18 @@
 
         <TextField Label="Other Value" @bind-Value="otherValue" Cols="2" />
 
-        <CheckField Label="Is Active" @bind-Value="f.IsActive" Cols="2" TabletCols="3" />
+        <CheckField Label="Is Active" @bind-Value="f.IsActive" Cols="2" TabletCols="3" InlineSize="true" disabled />
+
+        <CheckField Label="Is Active" @bind-Value="f.IsActive" Cols="2" TabletCols="3" ChangeSupport="IsActive1" />
         
-        <CheckField Label="Is Active" @bind-Value="f.IsActive" Reverse="true" Cols="2" TabletCols="3" ChangeSupport="IsActive2" />
-        
-        <SubmitButton Label="Submit" IsInline="true" Cols="2" LgCols="1" />
+        <CheckField Label="Is Active" @bind-Value="f.IsActive" Reverse="true" Cols="2" TabletCols="3" ChangeSupport="IsActive2" disabled />
+
+        <CheckField Label="Is Active" @bind-Value="f.IsActive" Reverse="true" Cols="2" TabletCols="3" InlineSize="true" ChangeSupport="IsActive3" />
         
         <SearchButton Label="Search" Cols="2" />
 
+        <SubmitButton Label="Submit" Cols="2" LgCols="1" />
+        
         <Column>    
             <input type="submit" value="Submit" />
             <button type="button" @onclick="ToggleFailure">@FailureOrNot</button>

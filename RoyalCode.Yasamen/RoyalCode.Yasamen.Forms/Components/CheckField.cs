@@ -27,8 +27,10 @@ public sealed partial class CheckField : CheckFieldBase
 
     private CssClassMap FormCssClasses => CssClassMap.Create("form-check")
         .Add(() => ModelContext.ContainerState.UsingContainer, "within-container")
-        .Add(() => Reverse, "form-check-reverse");
-    
+        .Add(() => Reverse, "form-check-reverse")
+        .Add(() => InlineSize, "form-check-large");
+
+
     private CssClassMap InputCssClasses => CssClassMap.Create("form-check-input")
         .Add(() => InputAdditionalClasses)
         .Add(() => IsInvalid, "is-invalid");
@@ -50,6 +52,9 @@ public sealed partial class CheckField : CheckFieldBase
 
     [Parameter]
     public bool Reverse { get; set; }
+
+    [Parameter]
+    public bool InlineSize { get; set; }
 
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
