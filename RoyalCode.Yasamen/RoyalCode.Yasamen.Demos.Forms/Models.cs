@@ -11,6 +11,10 @@ public class Friend
 
     public string? Phone { get; set; }
 
+    public int Age { get; set; } = 18;
+
+    public decimal Weight { get; set; }
+
     public bool IsActive { get; set; } = true;
 }
 

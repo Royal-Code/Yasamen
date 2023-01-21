@@ -31,7 +31,9 @@ public static class BootstrapIcons
                 .Set(WellKnownIcons.SortAsc, BsIconNames.SortAlphaDown)
                 .Set(WellKnownIcons.SortDesc, BsIconNames.SortAlphaUp)
                 .Set(WellKnownIcons.Working, BsIconNames.Gear)
-                .Set(WellKnownIcons.Progress, BsIconNames.GearWideConnected);
+                .Set(WellKnownIcons.Progress, BsIconNames.GearWideConnected)
+                .Set(WellKnownIcons.Minus, BsIconNames.Dash)
+                .Set(WellKnownIcons.Plus, BsIconNames.Plus);
         }
     }
 }

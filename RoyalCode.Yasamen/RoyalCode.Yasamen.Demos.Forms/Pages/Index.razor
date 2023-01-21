@@ -30,16 +30,25 @@
         <CheckField Label="Is Active" @bind-Value="f.IsActive" Cols="2" TabletCols="3" InlineSize="true" disabled />
 
         <CheckField Label="Is Active" @bind-Value="f.IsActive" Cols="2" TabletCols="3" ChangeSupport="IsActive1" />
-        
+
         <CheckField Label="Is Active" @bind-Value="f.IsActive" Reverse="true" Cols="2" TabletCols="3" ChangeSupport="IsActive2" disabled />
 
         <CheckField Label="Is Active" @bind-Value="f.IsActive" Reverse="true" Cols="2" TabletCols="3" InlineSize="true" ChangeSupport="IsActive3" />
-        
+
         <SearchButton Label="Search" Cols="2" />
 
-        <SubmitButton Label="Submit" Cols="2" LgCols="1" />
-        
-        <Column>    
+        <IntField Label="Age" @bind-Value="f.Age" Step="1" Cols="3" />
+
+        <DecimalField Label="Weight" @bind-Value="f.Weight" Decimals="2" Step="0.1M" Cols="3">
+            <Append>
+                <FieldAddon>Kg</FieldAddon>
+            </Append>
+        </DecimalField>
+
+        <Column>
+            <SubmitButton Label="Submit" Cols="2" LgCols="1" />
+        </Column>
+        <Column>
             <input type="submit" value="Submit" />
             <button type="button" @onclick="ToggleFailure">@FailureOrNot</button>
         </Column>
@@ -66,6 +75,8 @@
     private string FailureOrNot => Validador.Failure ? "Stop Fail" : "Start Fail";
 
     private string? otherValue;
+
+    private double? otherValue2;
 
     private void SubmitHandler()
     {

@@ -18,6 +18,9 @@ public static class WellKnownIcons
     public const string SortAsc = nameof(SortAsc);
     public const string SortDesc = nameof(SortDesc);
 
+    public const string Minus = nameof(Minus);
+    public const string Plus = nameof(Plus);
+
     public const string Working = nameof(Working);
     public const string Progress = nameof(Progress);
 

@@ -12,7 +12,7 @@ internal class MaybeCssClassCondition : ICssClassBuilder
     public void Build(ICollection<string> classes)
     {
         var value = maybe();
-        if (string.IsNullOrWhiteSpace(value))
+        if (!string.IsNullOrWhiteSpace(value))
             classes.Add(value);
     }
 }

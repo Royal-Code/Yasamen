@@ -29,6 +29,10 @@
         box-shadow: var(--b-field--box-shadow--focus);
     }
 
+    .form-control.numeric {
+        text-align: right;
+    }
+
 .input-group {
     position: relative;
     display: flex;

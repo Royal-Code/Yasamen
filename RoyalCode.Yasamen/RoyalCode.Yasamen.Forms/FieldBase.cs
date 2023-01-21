@@ -13,6 +13,8 @@ namespace RoyalCode.Yasamen.Forms;
 
 public partial class FieldBase<TValue> : ComponentBase, IDisposable
 {
+    protected const string InvalidInputErrorMessage = "Invalid input";
+
     private Action messagesChangedDelegate;
     private IMessageListener? messageListener;
     private bool initialized;
@@ -252,7 +254,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
         var parsed = BindConverter.TryConvertTo(value, null, out result);
 
         errorMessage = parsed is false
-            ? "Invalid input" 
+            ? InvalidInputErrorMessage
             : null;
 
         return parsed;
