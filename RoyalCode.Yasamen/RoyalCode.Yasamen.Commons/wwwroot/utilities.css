@@ -1102,6 +1102,10 @@
     color: inherit;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 .bg-main {
     background-color: var(--b-theme-main);
 }

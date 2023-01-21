@@ -26,11 +26,14 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
 
     private CssClassMap InputCssClasses => CssClassMap.Create("form-control")
         .Add(() => InputAdditionalClasses)
+        .Add(() => InternalInputClasses)
         .Add(() => IsInvalid, "is-invalid");
 
-    protected virtual bool HasInputGroup => Prepend.IsNotEmptyFragment() || Append.IsNotEmptyFragment();;
+    protected virtual bool HasInputGroup => Prepend.IsNotEmptyFragment() || Append.IsNotEmptyFragment();
 
     public InputType Type { get; protected set; }
+
+    protected string? InternalInputClasses { get; set; }
     
     [MultiplesParameters]
     public ColumnSizes ColumnSizes { set; get; } = new();

@@ -53,6 +53,10 @@ public static class FormatAndConvertExtensions
                 ? @double.ToString(CultureInfo.CurrentCulture)
                 : string.Format(CultureInfo.CurrentCulture, format, @double),
 
+            byte @byte => format is null
+                ? @byte.ToString(CultureInfo.CurrentCulture)
+                : string.Format(CultureInfo.CurrentCulture, format, @byte),
+
             _ => throw new InvalidOperationException($"Unsupported type {value.GetType()}"),
         };
     }

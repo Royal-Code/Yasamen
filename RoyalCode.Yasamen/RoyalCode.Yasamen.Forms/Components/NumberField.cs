@@ -10,6 +10,15 @@ using System.Runtime.CompilerServices;
 
 namespace RoyalCode.Yasamen.Forms.Components;
 
+public sealed class IntField : NumberField<int> { }
+public sealed class DecimalField : NumberField<decimal> { }
+public sealed class LongField : NumberField<long> { }
+public sealed class ShortField : NumberField<short> { }
+public sealed class FloatField : NumberField<float> { }
+public sealed class DoubleField : NumberField<double> { }
+public sealed class ByteField : NumberField<byte> { }
+
+
 public class NumberField<TValue> : InputFieldBase<TValue>
     where TValue : INumber<TValue>
 {
@@ -29,19 +38,6 @@ public class NumberField<TValue> : InputFieldBase<TValue>
 
     protected override void OnParametersSet()
     {
-        //if (HasStep())
-        //{
-        //    if (Prepend is null)
-        //        Prepend = PrependStepFragment;
-        //    else if (Prepend != PrependStepFragment)
-        //        Prepend += PrependStepFragment;
-
-        //    if (Append is null)
-        //        Append = AppendStepFragment;
-        //    else if (Append != AppendStepFragment)
-        //        Append = AppendStepFragment + Append;
-        //}
-
         if (Format == null)
         {
             if (typeof(TValue) == typeof(short) || typeof(TValue) == typeof(int) || typeof(TValue) == typeof(long))
@@ -55,9 +51,9 @@ public class NumberField<TValue> : InputFieldBase<TValue>
         }
 
         if (string.IsNullOrEmpty(InputAdditionalClasses))
-            InputAdditionalClasses = "numeric";
+            InternalInputClasses = "numeric";
         else if (InputAdditionalClasses.IndexOf("numeric") == -1)
-            InputAdditionalClasses += " numeric";
+            InternalInputClasses += " numeric";
     }
 
     protected override bool TryParseValue(
@@ -98,13 +94,44 @@ public class NumberField<TValue> : InputFieldBase<TValue>
             else
             {
                 builder.OpenComponent<FieldAddon>(3 + index);
-                builder.AddContent(4 + index, "-");
-                builder.AddAttribute(5 + index, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, StepDown));
+                builder.AddAttribute(4 + index, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, StepDown));
+                builder.AddAttribute(5 + index, "AdditionalClasses", "pointer");
+                builder.AddAttribute(6 + index, "ChildContent", (RenderFragment)(b =>
+                {
+                    b.AddContent(7, "-");
+                }));
                 builder.CloseComponent();
             }
         }
 
-        return base.RenderPrepend(builder, index + 6);
+        return base.RenderPrepend(builder, index + 8);
+    }
+
+    protected override int RenderAppend(RenderTreeBuilder builder, int index)
+    {
+        if (HasStep())
+        {
+            if (CommonsOptions.Get<Icon>().TryGet<Enum>(WellKnownIcons.Plus, out var icon))
+            {
+                builder.OpenComponent<FieldButton>(index);
+                builder.AddAttribute(1 + index, "Icon", icon);
+                builder.AddAttribute(2 + index, "OnClick", EventCallback.Factory.Create<MouseEventArgs>(this, StepUp));
+                builder.CloseComponent();
+            }
+            else
+            {
+                builder.OpenComponent<FieldAddon>(3 + index);
+                builder.AddAttribute(4 + index, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, StepUp));
+                builder.AddAttribute(5 + index, "AdditionalClasses", "pointer");
+                builder.AddAttribute(6 + index, "ChildContent", (RenderFragment)(b =>
+                {
+                    b.AddContent(7, "+");
+                }));
+                builder.CloseComponent();
+            }
+        }
+
+        return base.RenderAppend(builder, index + 8);
     }
 
     protected virtual bool HasStep()
