@@ -45,6 +45,16 @@
             </Append>
         </DecimalField>
 
+        <SelectField @bind-Value="f.IsActive" Cols="3" ChangeSupport="4">
+            <ChildContent>
+                <option value="True">Sim</option>
+                <option value="False">Não</option>
+            </ChildContent>
+            <Prepend>
+                <FieldAddon>Options</FieldAddon>
+            </Prepend>
+        </SelectField>
+        
         <Column>
             <SubmitButton Label="Submit" Cols="2" LgCols="1" />
         </Column>

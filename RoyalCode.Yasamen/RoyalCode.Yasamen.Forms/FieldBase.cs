@@ -30,7 +30,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
     {
         messagesChangedDelegate = OnMessagesChanged;
     }
-    
+
     /// <summary>
     /// Gets the associated <see cref="ModelContext{TModel}"/>.
     /// This property is uninitialized if the input does not have a parent <see cref="ModelEditor{TModel}"/>.
@@ -166,7 +166,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
             {
                 var editorMessages = ModelContext.EditorMessages;
                 editorMessages.Clear(FieldIdentifier);
-                
+
                 Tracer.Write("FieldBase", "SetCurrentValue", $"PropertyChanged, Field: {FieldIdentifier}, {Value}, {value}");
 
                 var oldValue = Value;
@@ -181,7 +181,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
     }
 
     private string? enteredValue;
-        
+
     protected virtual string? CurrentValueAsString
     {
         get => IsInvalid && enteredValue is not null ? enteredValue : FormatValue(Value);
@@ -195,7 +195,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
 
             var editorMessages = ModelContext.EditorMessages;
             editorMessages.Clear(FieldIdentifier);
-            
+
             if (TryParseValue(value, out var newValue, out var error))
             {
                 enteredValue = null;
@@ -206,11 +206,11 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
                 IsInvalid = true;
                 enteredValue = originalInput;
                 editorMessages.Add(FieldIdentifier, ResultMessage.Error(error!, FieldIdentifier.FieldName));
-                
+
                 settingNewValue = false;
                 return;
             }
-            
+
             var formattedValue = FormatValue(newValue);
             if (formattedValue != originalInput)
             {
@@ -227,12 +227,12 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
                     return;
                 }
             }
-            
+
             var hasChanged = !EqualityComparer<TValue>.Default.Equals(oldValue, newValue);
             if (hasChanged)
             {
                 Tracer.Write("FieldBase", "SetValue", $"PropertyChanged, Field: {FieldIdentifier}, {oldValue}, {newValue}");
-                
+
                 _ = ValueChanged.InvokeAsync(newValue);
                 ModelContext.PropertyChangeSupport.PropertyHasChanged(FieldIdentifier, oldValue, newValue);
             }
@@ -251,7 +251,16 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
         [NotNullWhen(true), MaybeNullWhen(false)] out TValue result,
         [NotNullWhen(false)] out string? errorMessage)
     {
-        var parsed = BindConverter.TryConvertTo(value, null, out result);
+        bool parsed;
+        if (typeof(TValue) == typeof(bool))
+        {
+            parsed = bool.TryParse(value, out var boolResult);
+            result = parsed ? (TValue)(object)boolResult : default!;
+        }
+        else
+        {
+            parsed = BindConverter.TryConvertTo(value, null, out result);
+        }
 
         errorMessage = parsed is false
             ? InvalidInputErrorMessage
@@ -317,7 +326,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
             fieldName = Name;
         if (Id is not null)
             fieldId = Id;
-        
+
         return base.SetParametersAsync(ParameterView.Empty);
     }
 
