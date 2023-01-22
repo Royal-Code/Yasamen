@@ -21,6 +21,7 @@
 		<None Update="Components\FieldButton.razor.css" CssScope="b-field-button" />
 		<None Update="Components\InputFieldBase.razor.css" CssScope="b-input-field" />
 		<None Update="Components\CheckFieldBase.razor.css" CssScope="b-checkbox-field" />
+		<None Update="Components\SelectFieldBase.razor.css" CssScope="b-select-field" />
 		<None Update="Components\SubmitButton.razor.css" CssScope="b-button" />
 		<None Update="FieldMessages.razor.css" CssScope="b-field-message" />
 	</ItemGroup>
