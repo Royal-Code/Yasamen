@@ -55,6 +55,10 @@
             </Prepend>
         </SelectField>
         
+        <SelectEnumField @bind-Value="f.Type" Label="Tipo de Amigo" Cols="3" />
+
+        <SelectEnumField @bind-Value="f.Vip" Label="Vip" Cols="3" />
+        
         <Column>
             <SubmitButton Label="Submit" Cols="2" LgCols="1" />
         </Column>
