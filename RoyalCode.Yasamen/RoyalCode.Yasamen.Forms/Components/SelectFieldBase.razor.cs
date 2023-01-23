@@ -7,7 +7,7 @@ using System.Globalization;
 
 namespace RoyalCode.Yasamen.Forms.Components;
 
-public partial class SelectFieldBase<TValue> : FieldBase<TValue>
+public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
 {
     protected const string CssScopeAttribute = "b-select-field";
 
@@ -56,6 +56,9 @@ public partial class SelectFieldBase<TValue> : FieldBase<TValue>
     [Parameter]
     public RenderFragment? Append { get; set; }
 
+    [Parameter]
+    public string NoItemsPlaceholder { get; set; }
+    
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
         if (ModelContext.ContainerState.UsingContainer)
@@ -168,9 +171,21 @@ public partial class SelectFieldBase<TValue> : FieldBase<TValue>
         return index;
     }
 
-    protected virtual int RenderOptions(RenderTreeBuilder builder, int index)
+    protected abstract int RenderOptions(RenderTreeBuilder builder, int index);
+    
+    protected virtual int RenderNoItemsPlaceholder(RenderTreeBuilder builder, int index)
     {
-        return index;
+        if (NoItemsPlaceholder is not null)
+        {
+            builder.OpenElement(index, "option");
+            builder.AddAttribute(1 + index, "value", string.Empty);
+            builder.AddAttribute(2 + index, "disabled", true);
+            builder.AddAttribute(3 + index, "selected", true);
+            builder.AddAttribute(4 + index, "hidden", true);
+            builder.AddContent(5 + index, NoItemsPlaceholder);
+            builder.CloseElement();
+        }
+        return index + 6;
     }
 
     protected virtual int RenderAppend(RenderTreeBuilder builder, int index)

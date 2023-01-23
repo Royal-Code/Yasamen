@@ -1,5 +1,6 @@
 ﻿using RoyalCode.OperationResult;
 using RoyalCode.Yasamen.Forms.Validation;
+using System.ComponentModel;
 
 namespace RoyalCode.Yasamen.Demos.Forms;
 
@@ -16,8 +17,31 @@ public class Friend
     public decimal Weight { get; set; }
 
     public bool IsActive { get; set; } = true;
+
+    public FriendType Type { get; set; }
+
+    public Vip? Vip { get; set; }
 }
 
+
+public enum FriendType
+{
+    [Description("Amigo")]
+    Friend,
+
+    [Description("Inimigo")]
+    Enemy,
+
+    [Description("Desconhecido")]
+    Stranger
+}
+
+public enum Vip
+{
+    Silver,
+    Gold,
+    Platinum
+}
 
 public class ValidadorFriend : IValidator<Friend>
 {
