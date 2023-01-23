@@ -7,19 +7,6 @@ using System.Globalization;
 
 namespace RoyalCode.Yasamen.Forms.Components;
 
-
-public sealed class SelectField<TValue> : SelectFieldBase<TValue>
-{
-    [Parameter]
-    public RenderFragment ChildContent { get; set; }
-
-    protected override int RenderOptions(RenderTreeBuilder builder, int index)
-    {
-        builder.AddContent(index, ChildContent);
-        return index + 1;
-    }
-}
-
 public partial class SelectFieldBase<TValue> : FieldBase<TValue>
 {
     protected const string CssScopeAttribute = "b-select-field";
