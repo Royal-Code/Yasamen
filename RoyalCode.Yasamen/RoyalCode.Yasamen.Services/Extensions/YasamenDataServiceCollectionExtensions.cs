@@ -1,4 +1,5 @@
 using RoyalCode.Yasamen.Services;
+using RoyalCode.Yasamen.Services.Internal;
 
 namespace Microsoft.Extensions.DependencyInjection;
 

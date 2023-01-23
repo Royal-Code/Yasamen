@@ -1,4 +1,4 @@
-using RoyalCode.Yasamen.Commons;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RoyalCode.Yasamen.Services;
 
@@ -8,90 +8,122 @@ public interface IDataServicesProvider
         where TModel: class;
 }
 
-internal class DataServicesProvider : IDataServicesProvider
+
+public interface IModelSearch<TModel>
 {
-    private readonly IServiceProvider provider;
-
-    public DataServicesProvider(IServiceProvider provider)
-    {
-        this.provider = provider;
-    }
-
-    public IModelFinder<TModel> GetFinder<TModel>(string? alias = null)
-        where TModel: class
-        => new ModelFinder<TModel>(provider);
+    Task<IEnumerable<TModel>> FilterByAsync(object? filter, CancellationToken token = default);
 }
 
-public interface IModelFinder<TModel>
-    where TModel: class 
+
+/// <summary>
+/// Data service used to load a collection of models.
+/// </summary>
+/// <typeparam name="TModel"></typeparam>
+public interface IModelLoader<TModel>
 {
-    Task<TModel?> FindAsync(object? filter, CancellationToken token = default);
+    /// <summary>
+    /// Determines whether the data models then being loaded.
+    /// </summary>
+    bool IsLoading { get; }
+
+    /// <summary>
+    /// If an error occurred when loading the data.
+    /// </summary>
+    [MemberNotNullWhen(true, nameof(LoadException))]
+    bool HasError { get; }
+
+    /// <summary>
+    /// Determines whether there are any records, considering the loading to be finalised.
+    /// </summary>
+    bool Any { get; }
+
+    /// <summary>
+    /// If <see cref="LoadAsync"/> never was executed.
+    /// </summary>
+    bool NotLoaded { get; }
+
+    /// <summary>
+    /// If <see cref="LoadAsync"/> never was executed, or the first load not finalised.
+    /// </summary>
+    bool IsFirstLoad { get; }
+
+    /// <summary>
+    /// Loaded values.
+    /// </summary>
+    IEnumerable<TModel> Values { get; }
+
+    /// <summary>
+    /// Exception occurred when loading the data.,
+    /// This property will not be null when <see cref="HasError"/> is true.
+    /// </summary>
+    Exception? LoadException { get; }
+
+    /// <summary>
+    /// Performs the loading of data models.
+    /// </summary>
+    Task LoadAsync();
+
+    /// <summary>
+    /// Adds an action to be notified (listen) when the state of the component is changed.
+    /// </summary>
+    /// <param name="callback">Callback action.</param>
+    void AddListener(Func<Task> callback);
+
+    /// <summary>
+    /// Removes a listener from the change of state of the component.
+    /// </summary>
+    /// <param name="callback">The Callback action.</param>
+    void RemoveListener(Func<Task> callback);
 }
 
-internal class ModelFinder<TModel> : IModelFinder<TModel>
-    where TModel: class
+/// <summary>
+/// Data service used to load a collection of models.
+/// </summary>
+/// <typeparam name="TModel"></typeparam>
+public interface IModelLoader<TModel, TFilter> : IModelLoader<TModel>, IFilterableLoader<TFilter>
 {
-    private readonly IServiceProvider provider;
-
-    public ModelFinder(IServiceProvider provider)
-    {
-        this.provider = provider;
-    }
-    
-    public async Task<TModel?> FindAsync(object? filter, CancellationToken token = default)
-    {
-        if (filter is null)
-        {
-            Tracer.Write("ModelFinder", "FindAsync", "Filter is null, returning default");
-            
-            return default;
-        }
-
-        var type = typeof(FinderServiceExecutor<,>).MakeGenericType(typeof(TModel), filter.GetType());
-        
-        Tracer.Write("ModelFinder", "FindAsync", $"locate service: {type.FullName}");
-
-        var service = provider.GetService(type);
-        if (service is null)
-        {
-            Tracer.Write("ModelFinder", "FindAsync", "The service is null, returning default");
-
-            return default;
-        }
-
-        Tracer.Write("ModelFinder", "FindAsync", $"Calling ExecuteAsync: {filter}");
-
-        var executor = (IFinderServiceExecutor<TModel>) service;
-        var result = await executor.ExecuteAsync(filter, token);
-
-        Tracer.Write("ModelFinder", "FindAsync", $"Executed: {filter}");
-
-        return result;
-    }
+    /// <summary>
+    /// Executa o carregamento dos modelos de dados utilizando o filtro.
+    /// </summary>
+    /// <param name="filter">Filtro.</param>
+    /// <returns>Task para processamento assíncrono.</returns>
+    Task LoadAsync(TFilter filter);
 }
 
-internal interface IFinderServiceExecutor<TModel>
-    where TModel: class
+/// <summary>
+/// Interface auxiliar para componentes/serviços de carregamento de modelos de dados que possuem um filtro
+/// para o carregamento.
+/// </summary>
+public interface IFilterableLoader
 {
-    Task<TModel?> ExecuteAsync(object filter, CancellationToken cancellationToken);
+    /// <summary>
+    /// Adiciona um componente de suporte para escutar alterações no valor do filtro.
+    /// </summary>
+    /// <param name="support">Componente de suporte para escutar alterações em valores e propriedades.</param>
+    ChangeSupportListener AddFilterSupport(ChangeSupport support);
 }
 
-internal class FinderServiceExecutor<TModel, TFilter> : IFinderServiceExecutor<TModel>
-    where TModel: class
+/// <summary>
+/// Interface auxiliar para componentes/serviços de carregamento de modelos de dados que possuem um filtro
+/// para o carregamento.
+/// </summary>
+/// <typeparam name="TFilter"></typeparam>
+public interface IFilterableLoader<TFilter> : IFilterableLoader
 {
-    private readonly IFinder<TModel, TFilter> finder;
-
-    public FinderServiceExecutor(IFinder<TModel, TFilter> finder)
-    {
-        this.finder = finder ?? throw new ArgumentNullException(nameof(finder));
-    }
-
-    public async Task<TModel?> ExecuteAsync(object filter, CancellationToken cancellationToken)
-    {
-        return await finder.FindAsync((TFilter)filter, cancellationToken);
-    }
+    /// <summary>
+    /// Filtro atual.
+    /// </summary>
+    TFilter CurrentFilter { get; set; }
 }
 
+
+
+
+
+
+
+
+[Obsolete("Está sendo usado o IDataServicesProvider e ModelFinder")]
 public interface IFinder<TModel, in TFilter>
     where TModel: class
 {

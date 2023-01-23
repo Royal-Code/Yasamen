@@ -1,5 +1,6 @@
 namespace RoyalCode.Yasamen.Services.Internal;
 
+[Obsolete("Está sendo usado o IDataServicesProvider e ModelFinder")
 internal class InternalFinder<TModel, TFilter, TService> : IFinder<TModel, TFilter>
     where TModel: class
 {
