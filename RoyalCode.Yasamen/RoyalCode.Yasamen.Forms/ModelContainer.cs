@@ -39,7 +39,6 @@ public class ModelContainer<TModel> : ComponentBase, IDisposable
         Tracer.Write("ModelSupport", "BuildRenderTree", "Begin");
 
         builder.OpenComponent<CascadingValue<ModelContext<TModel>>>(0);
-
         builder.AddAttribute(1, "Value", context);
         builder.AddAttribute(2, "IsFixed", true);
 

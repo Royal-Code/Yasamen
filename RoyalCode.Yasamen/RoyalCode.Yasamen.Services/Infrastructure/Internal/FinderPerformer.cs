@@ -1,9 +1,9 @@
-using RoyalCode.Yasamen.Services.Performers;
+using RoyalCode.Yasamen.Services.Infrastructure.Performers;
 
-namespace RoyalCode.Yasamen.Services.Internal;
+namespace RoyalCode.Yasamen.Services.Infrastructure.Internal;
 
 internal class FinderPerformer<TModel, TFilter, TService> : IFinderPerformer<TModel, TFilter>
-    where TModel: class
+    where TModel : class
 {
     private readonly TService service;
     private readonly FinderDelegate<TService, TFilter, TModel> finderDelegate;
@@ -16,7 +16,7 @@ internal class FinderPerformer<TModel, TFilter, TService> : IFinderPerformer<TMo
 
     public Task<TModel?> FindAsync(TFilter filter, CancellationToken token = default) =>
         finderDelegate(service, filter, token);
-    
+
 }
 
 internal delegate Task<TModel?> FinderDelegate<TService, TFilter, TModel>(TService model, TFilter filter, CancellationToken token);

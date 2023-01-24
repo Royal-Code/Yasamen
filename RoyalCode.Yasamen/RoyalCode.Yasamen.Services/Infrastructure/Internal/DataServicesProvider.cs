@@ -1,4 +1,5 @@
-﻿namespace RoyalCode.Yasamen.Services.Internal;
+﻿
+namespace RoyalCode.Yasamen.Services.Infrastructure.Internal;
 
 internal class DataServicesProvider : IDataServicesProvider
 {
@@ -13,7 +14,8 @@ internal class DataServicesProvider : IDataServicesProvider
         where TModel : class
         => new ModelFinder<TModel>(provider);
 
-    public IModelLoader<TModel> GetLoader<TModel>(string? alias = null) where TModel : class
+    public IModelLoader<TModel> GetLoader<TModel>(string? alias = null) 
+        where TModel : class
     {
         return new ModelLoader<TModel>(provider);
     }

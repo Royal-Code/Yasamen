@@ -1,0 +1,69 @@
+﻿
+.progress,
+.progress-stacked {
+  --b-progress-height: 1rem;
+  --b-progress-font-size: 0.75rem;
+  --b-progress-bg: var(--b-theme-secondary);
+  --b-progress-border-radius: var(--b-border--radius-3);
+  --b-progress-box-shadow: inset var(--b-shadow-1);
+  --b-progress-bar-color: var(--b-color-light-l7);
+  --b-progress-bar-bg: var(--b-theme-primary);
+  --b-progress-bar-transition: width 0.6s ease;
+  display: flex;
+  height: var(--b-progress-height);
+  overflow: hidden;
+  font-size: var(--b-progress-font-size);
+  background-color: var(--b-progress-bg);
+  border-radius: var(--b-progress-border-radius);
+}
+
+.progress-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    color: var(--b-progress-bar-color);
+    text-align: center;
+    white-space: nowrap;
+    background-color: var(--b-progress-bar-bg);
+    transition: var(--b-progress-bar-transition);
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    background-size: var(--b-progress-height) var(--b-progress-height);
+}
+
+    .progress-bar-striped.animated {
+        animation: 1s linear infinite progress-bar-stripes;
+    }
+
+.progress-stacked > .progress {
+    overflow: visible;
+}
+
+    .progress-stacked > .progress > .progress-bar {
+        width: 100%;
+    }
+
+@keyframes progress-bar-stripes {
+    0% {
+        background-position-x: 1rem;
+    }
+}
+
+.bg-success {
+    --b-progress-bar-bg: var(--b-theme-success);
+}
+
+.bg-info {
+    --b-progress-bar-bg: var(--b-theme-info);
+}
+
+.bg-warning {
+    --b-progress-bar-bg: var(--b-theme-warning);
+}
+
+.bg-danger {
+    --b-progress-bar-bg: var(--b-theme-danger);
+}

@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using RoyalCode.Yasamen.Commons;
-using RoyalCode.Yasamen.Services.Performers;
+using RoyalCode.Yasamen.Services.Infrastructure.Performers;
 
-namespace RoyalCode.Yasamen.Services.Internal;
+namespace RoyalCode.Yasamen.Services.Infrastructure.Internal;
 
 internal class ModelLoader<TModel> : IModelLoader<TModel>
-    //where TModel : class
+//where TModel : class
 {
     private readonly IServiceProvider? provider;
     private LinkedList<Func<IModelLoader<TModel>, ValueTask>>? callbacks;
@@ -26,7 +26,7 @@ internal class ModelLoader<TModel> : IModelLoader<TModel>
     }
 
     public bool NotLoaded { get; private set; }
-    
+
     public bool IsLoading { get; private set; }
 
     public bool IsFirstLoad { get; private set; }
@@ -34,9 +34,9 @@ internal class ModelLoader<TModel> : IModelLoader<TModel>
     public bool HasError => LoadException is not null;
 
     public Exception? LoadException { get; private set; }
-    
+
     public IEnumerable<TModel> Values { get; private set; }
-    
+
     public bool Any
     {
         get
@@ -57,7 +57,7 @@ internal class ModelLoader<TModel> : IModelLoader<TModel>
             return any.Value;
         }
     }
-    
+
     public void AddListener(Func<IModelLoader<TModel>, ValueTask> callback)
     {
         callbacks ??= new LinkedList<Func<IModelLoader<TModel>, ValueTask>>();
@@ -86,7 +86,7 @@ internal class ModelLoader<TModel> : IModelLoader<TModel>
         Tracer.Write("ModelLoader", "ExecuteAsync", "locate service: {0}<{1}>",
             nameof(ILoaderPerformer<object>),
             typeof(TModel).FullName!);
-        
+
         var performer = provider!.GetService<ILoaderPerformer<TModel>>();
         if (performer is null)
         {
@@ -110,7 +110,7 @@ internal class ModelLoader<TModel> : IModelLoader<TModel>
             OnError(ex);
         }
     }
-    
+
     private ValueTask BeginLoadAsync()
     {
         any = null;
@@ -143,7 +143,7 @@ internal class ModelLoader<TModel> : IModelLoader<TModel>
         foreach (var callback in callbacks)
         {
             try
-            { 
+            {
                 await callback(this);
             }
             catch (Exception ex)

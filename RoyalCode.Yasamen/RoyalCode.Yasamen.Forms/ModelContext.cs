@@ -73,4 +73,5 @@ public sealed class ModelContext<TModel> : IModelContext
     }
 
     public object? GetModel() => Model;
+
 }

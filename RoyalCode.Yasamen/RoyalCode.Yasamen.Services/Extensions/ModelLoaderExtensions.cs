@@ -1,4 +1,4 @@
-﻿using RoyalCode.Yasamen.Services.Internal;
+﻿using RoyalCode.Yasamen.Services.Infrastructure.Internal;
 
 namespace RoyalCode.Yasamen.Services;
 

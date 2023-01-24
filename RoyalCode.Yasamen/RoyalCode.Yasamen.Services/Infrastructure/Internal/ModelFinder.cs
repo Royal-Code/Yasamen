@@ -1,6 +1,6 @@
 ﻿using RoyalCode.Yasamen.Commons;
 
-namespace RoyalCode.Yasamen.Services.Internal;
+namespace RoyalCode.Yasamen.Services.Infrastructure.Internal;
 
 internal class ModelFinder<TModel> : IModelFinder<TModel>
     where TModel : class
