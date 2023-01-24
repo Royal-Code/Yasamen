@@ -21,7 +21,7 @@ internal class ModelFinder<TModel> : IModelFinder<TModel>
             return default;
         }
 
-        var type = typeof(FinderServiceExecutor<,>).MakeGenericType(typeof(TModel), filter.GetType());
+        var type = typeof(FinderPerformerService<,>).MakeGenericType(typeof(TModel), filter.GetType());
 
         Tracer.Write("ModelFinder", "FindAsync", $"locate service: {type.FullName}");
 
@@ -33,10 +33,10 @@ internal class ModelFinder<TModel> : IModelFinder<TModel>
             return default;
         }
 
-        Tracer.Write("ModelFinder", "FindAsync", $"Calling ExecuteAsync: {filter}");
+        Tracer.Write("ModelFinder", "FindAsync", $"Calling PerformAsync: {filter}");
 
-        var executor = (IFinderServiceExecutor<TModel>)service;
-        var result = await executor.ExecuteAsync(filter, token);
+        var executor = (IFinderPerformerService<TModel>)service;
+        var result = await executor.PerformAsync(filter, token);
 
         Tracer.Write("ModelFinder", "FindAsync", $"Executed: {filter}");
 

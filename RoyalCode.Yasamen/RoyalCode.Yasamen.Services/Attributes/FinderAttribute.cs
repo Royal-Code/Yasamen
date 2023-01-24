@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using RoyalCode.Yasamen.Commons.DependencyInjection;
 using RoyalCode.Yasamen.Commons.Extensions;
 using RoyalCode.Yasamen.Services.Internal;
+using RoyalCode.Yasamen.Services.Performers;
 
 namespace RoyalCode.Yasamen.Services.Attributes;
 
@@ -33,8 +34,8 @@ public class FinderAttribute : SubscribesAttribute
         var @delegate = CreateDelegate(tservice, tfilter, tmodel, method, hasCancellationToken);
         services.AddSingleton(@delegate.GetType(), @delegate);
 
-        var serviceType = typeof(InternalFinder<,,>).MakeGenericType(tmodel, tfilter, tservice);
-        services.AddTransient(typeof(IFinder<,>).MakeGenericType(tmodel, tfilter), serviceType);
+        var serviceType = typeof(FinderPerformer<,,>).MakeGenericType(tmodel, tfilter, tservice);
+        services.AddTransient(typeof(IFinderPerformer<,>).MakeGenericType(tmodel, tfilter), serviceType);
     }
 
     private Delegate CreateDelegate(Type tservice, Type tfilter, Type tmodel, MethodInfo method, bool hasCancellationToken)

@@ -12,7 +12,7 @@ public static class YasamenDataServiceCollectionExtensions
     public static void AddDataServices(this IServiceCollection services)
     {
         services.AddScoped<IDataServicesProvider, DataServicesProvider>();
-        services.AddScoped(typeof(FinderServiceExecutor<,>));
+        services.AddScoped(typeof(FinderPerformerService<,>));
 
     }
 }

@@ -1,13 +1,14 @@
+using RoyalCode.Yasamen.Services.Performers;
+
 namespace RoyalCode.Yasamen.Services.Internal;
 
-[Obsolete("Está sendo usado o IDataServicesProvider e ModelFinder")
-internal class InternalFinder<TModel, TFilter, TService> : IFinder<TModel, TFilter>
+internal class FinderPerformer<TModel, TFilter, TService> : IFinderPerformer<TModel, TFilter>
     where TModel: class
 {
     private readonly TService service;
     private readonly FinderDelegate<TService, TFilter, TModel> finderDelegate;
 
-    public InternalFinder(TService service, FinderDelegate<TService, TFilter, TModel> finderDelegate)
+    public FinderPerformer(TService service, FinderDelegate<TService, TFilter, TModel> finderDelegate)
     {
         this.service = service;
         this.finderDelegate = finderDelegate;
