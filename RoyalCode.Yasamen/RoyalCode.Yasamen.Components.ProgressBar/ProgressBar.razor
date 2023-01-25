@@ -2,7 +2,7 @@
     <div class="@classes"
          role="progressbar"
          aria-valuenow="@CurrentValue" aria-valuemin="@MinValue" aria-valuemax="@MaxValue"
-         style="width: @Percent" @attributes="Attributes">
+         style="width: @Percent" @attributes="AdditionalAttributes">
         @ShowPercent
     </div>
 </div>
@@ -44,5 +44,5 @@
     public string? AdditionalClasses { get; set; }
 
     [Parameter(CaptureUnmatchedValues = true)]
-    public Dictionary<string, object>? Attributes { get; set; }
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
 }

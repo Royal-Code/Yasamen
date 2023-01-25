@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using RoyalCode.Yasamen.Commons;
+using RoyalCode.Yasamen.Components;
 using RoyalCode.Yasamen.Forms.Modules;
 using RoyalCode.Yasamen.Layout;
 using System.Globalization;
@@ -184,7 +185,18 @@ public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
     
     protected virtual int RenderLoading(RenderTreeBuilder builder, int index)
     {
-        return 0;
+        if (!IsLoading)
+            return index + 5;
+
+        builder.OpenElement(index, "div");
+        builder.AddAttribute(1 + index, "class", "form-loading");
+        builder.AddAttribute(2 + index, CssScopeAttribute);
+        builder.OpenComponent<ProgressBar>(3 + index);
+        builder.AddAttribute(4 + index, "CurrentValue", 100);
+        builder.CloseComponent();
+        builder.CloseElement();
+
+        return index + 5;
     }
     
     protected virtual int RenderNoItemsPlaceholder(RenderTreeBuilder builder, int index)
