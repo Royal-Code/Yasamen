@@ -6,7 +6,7 @@ using RoyalCode.Yasamen.Commons.Extensions;
 using RoyalCode.Yasamen.Services.Infrastructure.Internal;
 using RoyalCode.Yasamen.Services.Infrastructure.Performers;
 
-namespace RoyalCode.Yasamen.Services.Attributes;
+namespace RoyalCode.Yasamen.Services;
 
 [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
 public class FinderAttribute : SubscribesAttribute
@@ -23,7 +23,7 @@ public class FinderAttribute : SubscribesAttribute
             throw new InvalidOperationException($"The {nameof(FinderAttribute)} method must return a Task<TValue>");
 
         bool hasCancellationToken = parameters.Length == 2;
-        
+
         if (hasCancellationToken && parameters[1].ParameterType != typeof(CancellationToken))
             throw new InvalidOperationException(
                 $"The second parameter of {nameof(FinderAttribute)} method must be a cancellation token");
