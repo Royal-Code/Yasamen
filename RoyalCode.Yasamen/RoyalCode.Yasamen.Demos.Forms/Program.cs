@@ -22,7 +22,11 @@ builder.Services.AddScoped<CssStyleJsModule>();
 builder.Services.AddScoped<FormsJsModule>();
 builder.Services.AddScoped<EventsJsModule>();
 
+// yasamen data services
+builder.Services.AddDataServices();
+
 builder.Services.AddScoped<IValidatorProvider, ValidatorProvider>();
+builder.Services.Subscribes<CityServices>();
 
 RoyalCode.Yasamen.Icons.Bootstrap.BootstrapIcons.Include();
 

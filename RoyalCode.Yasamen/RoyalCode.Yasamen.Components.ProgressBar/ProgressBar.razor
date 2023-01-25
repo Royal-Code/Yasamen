@@ -1,0 +1,48 @@
+﻿<div class="progress">
+    <div class="@classes"
+         role="progressbar"
+         aria-valuenow="@CurrentValue" aria-valuemin="@MinValue" aria-valuemax="@MaxValue"
+         style="width: @Percent" @attributes="AdditionalAttributes">
+        @ShowPercent
+    </div>
+</div>
+
+@code {
+
+    CssClassMap classes => CssClassMap.Create("progress-bar")
+        .Add(() => Animated, "animated")
+        .Add(() => Striped, "progress-bar-striped")
+        .Add(ProgressBarStyle.ToCssClass())
+        .Add(AdditionalClasses);
+
+    private string Percent => $"{string.Format("{0:#}", (CurrentValue * (MaxValue - MinValue) / 100))}%";
+
+    private string? ShowPercent => ShowValue ? Percent : null;
+
+    [Parameter]
+    public bool Animated { get; set; } = true;
+
+    [Parameter]
+    public bool Striped { get; set; } = true;
+
+    [Parameter]
+    public bool ShowValue { get; set; }
+
+    [Parameter]
+    public ProgressBarStyles ProgressBarStyle { get; set; }
+
+    [Parameter]
+    public int CurrentValue { get; set; }
+
+    [Parameter]
+    public int MinValue { get; set; } = 0;
+
+    [Parameter]
+    public int MaxValue { get; set; } = 100;
+
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
+}

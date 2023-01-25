@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using RoyalCode.Yasamen.Commons;
+using RoyalCode.Yasamen.Components;
 using RoyalCode.Yasamen.Forms.Modules;
 using RoyalCode.Yasamen.Layout;
 using System.Globalization;
@@ -20,7 +21,7 @@ public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
     private readonly bool isMultipleSelect;
     private readonly bool isArray;
     private bool isFocused;
-    protected ElementReference SelectReference;
+    protected ElementReference selectReference;
 
     public SelectFieldBase()
     {
@@ -28,16 +29,25 @@ public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
         isArray = typeof(TValue).IsArray;
         isMultipleSelect = isArray || typeof(TValue) == typeof(IEnumerable<string>);
     }
+
+    private CssClassMap LabelCssClasses => CssClassMap.Create("form-label")
+        .Add(() => LabelAdditionalClasses);
     
     private CssClassMap SelectCssClasses => CssClassMap.Create("form-select")
         .Add(() => SelectAdditionalClasses)
         .Add(() => InternalSelectClasses)
-        .Add(() => IsInvalid, "is-invalid");
+        .Add(() => IsInvalid, "is-invalid")
+        .Add(() => IsLoading, "is-loading");
 
-    protected virtual bool HasInputGroup => Prepend.IsNotEmptyFragment() || Append.IsNotEmptyFragment();
+    private CssClassMap InputGroupCssClasses => CssClassMap.Create("input-group")
+        .Add(() => IsLoading, "is-loading");
     
-    protected string? InternalSelectClasses { get; set; }
+    protected virtual bool HasInputGroup => Prepend.IsNotEmptyFragment() || Append.IsNotEmptyFragment();
 
+    protected virtual bool IsLoading => ModelContext.ContainerState.IsLoading;
+        
+    protected string? InternalSelectClasses { get; set; }
+    
     [MultiplesParameters]
     public ColumnSizes ColumnSizes { set; get; } = new();
 
@@ -57,7 +67,7 @@ public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
     public RenderFragment? Append { get; set; }
 
     [Parameter]
-    public string NoItemsPlaceholder { get; set; }
+    public string? NoItemsPlaceholder { get; set; }
     
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
@@ -85,7 +95,7 @@ public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
         if (hasInputGroup)
         {
             builder.OpenElement(index, "div");
-            builder.AddAttribute(1 + index, "class", "input-group");
+            builder.AddAttribute(1 + index, "class", InputGroupCssClasses);
             builder.AddAttribute(2 + index, CssScopeAttribute);
 
             index += 3;
@@ -99,6 +109,8 @@ public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
         {
             builder.CloseElement();
         }
+
+        index = RenderLoading(builder, index);
 
         index = RenderFieldMessages(builder, index);
         RenderEnd(builder, index);
@@ -115,7 +127,7 @@ public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
         {
             builder.OpenElement(index, "label");
             builder.AddAttribute(1 + index, "for", FieldId);
-            builder.AddAttribute(2 + index, "class", $"form-label {LabelAdditionalClasses}");
+            builder.AddAttribute(2 + index, "class", LabelCssClasses);
             builder.AddAttribute(3 + index, CssScopeAttribute);
             builder.AddContent(4 + index, FieldLabel);
             builder.CloseElement();
@@ -158,13 +170,11 @@ public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
         builder.AddAttribute(12 + index, "onblur", EventCallback.Factory.Create(this, OnBlur));
         builder.AddAttribute(13 + index, "onmouseout", EventCallback.Factory.Create(this, OnMouseOut));
         builder.AddAttribute(14 + index, "onmouseenter", EventCallback.Factory.Create(this, OnMouseEnter));
-        if (ModelContext?.ContainerState.IsLoading ?? false)
-            builder.AddAttribute(15 + index, "disabled", true);
         if (IsInvalid)
             builder.AddAttribute(16 + index, "aria-invalid", true);
-        builder.AddElementReferenceCapture(17 + index, __ref => SelectReference = __ref);
+        builder.AddElementReferenceCapture(17 + index, __ref => selectReference = __ref);
 
-        RenderOptions(builder, 18 + index);
+        index = RenderOptions(builder, 18 + index);
         
         builder.CloseElement();
         
@@ -172,6 +182,22 @@ public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
     }
 
     protected abstract int RenderOptions(RenderTreeBuilder builder, int index);
+    
+    protected virtual int RenderLoading(RenderTreeBuilder builder, int index)
+    {
+        if (!IsLoading)
+            return index + 5;
+
+        builder.OpenElement(index, "div");
+        builder.AddAttribute(1 + index, "class", "form-loading");
+        builder.AddAttribute(2 + index, CssScopeAttribute);
+        builder.OpenComponent<ProgressBar>(3 + index);
+        builder.AddAttribute(4 + index, "CurrentValue", 100);
+        builder.CloseComponent();
+        builder.CloseElement();
+
+        return index + 5;
+    }
     
     protected virtual int RenderNoItemsPlaceholder(RenderTreeBuilder builder, int index)
     {
@@ -213,7 +239,7 @@ public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
     {
         if (firstRender)
         {
-            await Js.BlurOnPressEnterAsync(SelectReference);
+            await Js.BlurOnPressEnterAsync(selectReference);
         }
     }
 

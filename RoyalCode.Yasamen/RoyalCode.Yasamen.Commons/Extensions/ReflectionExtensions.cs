@@ -109,4 +109,24 @@ public static class ReflectionExtensions
         genericTypes = closeGeneric.GetGenericArguments();
         return true;
     }
+
+    /// <summary>
+    /// Gets a listing of properties with a given attribute.
+    /// </summary>
+    /// <typeparam name="TAttribute">The type of the Attribute.</typeparam>
+    /// <param name="type">The type (class) that you want to search for properties with attributes.</param>
+    /// <returns>Listing of properties with attributes.</returns>
+    public static IEnumerable<PropertyAttributeList<TAttribute>> GetPropertyAttributeList<TAttribute>(this Type type)
+        where TAttribute : Attribute
+    {
+        var query = type.GetRuntimeProperties()
+            .Select(p =>
+            {
+                var attrs = p.GetCustomAttributes<TAttribute>().ToList();
+                return new PropertyAttributeList<TAttribute>(p, attrs, attrs.FirstOrDefault()!); // !: filter below
+            })
+            .Where(p => p.FirstAttribute is not null);
+
+        return query;
+    }
 }

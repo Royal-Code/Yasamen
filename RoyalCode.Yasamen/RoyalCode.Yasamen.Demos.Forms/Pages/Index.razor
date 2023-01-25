@@ -59,6 +59,10 @@
 
         <SelectEnumField @bind-Value="f.Vip" Label="Vip" Cols="3" />
         
+        <SelectModelField TModel="City" TValue="int" @bind-Value="f.CityId" Label="City" Cols="3" />
+
+        <SelectModelField TModel="City" TValue="int?" @bind-Value="f.AlterCityId" Label="City" Cols="3" />
+
         <Column>
             <SubmitButton Label="Submit" Cols="2" LgCols="1" />
         </Column>
