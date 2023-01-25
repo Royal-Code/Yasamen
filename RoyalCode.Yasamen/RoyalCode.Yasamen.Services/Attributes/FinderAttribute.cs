@@ -8,6 +8,7 @@ using RoyalCode.Yasamen.Services.Infrastructure.Performers;
 
 namespace RoyalCode.Yasamen.Services.Attributes;
 
+[AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
 public class FinderAttribute : SubscribesAttribute
 {
     public override void AddServices(IServiceCollection services, MethodInfo method)

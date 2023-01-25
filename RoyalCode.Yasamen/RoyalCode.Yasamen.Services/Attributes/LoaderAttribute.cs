@@ -4,10 +4,12 @@ using RoyalCode.Yasamen.Commons.Extensions;
 using RoyalCode.Yasamen.Services.Infrastructure.Internal;
 using RoyalCode.Yasamen.Services.Infrastructure.Performers;
 using System.Linq.Expressions;
+using System.Numerics;
 using System.Reflection;
 
 namespace RoyalCode.Yasamen.Services.Attributes;
 
+[AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
 public class LoaderAttribute : SubscribesAttribute
 {
     public override void AddServices(IServiceCollection services, MethodInfo method)
@@ -19,9 +21,10 @@ public class LoaderAttribute : SubscribesAttribute
                 " when there are no filters, only one parameter is accepted, optional, which is the cancellation token," +
                 " when there are filters, the first is the filter and the second the cancellation token, the latter optional.");
 
-        if (!method.ReturnType.ImplementsGeneric(typeof(Task<>), out var taskGenerics))
-            throw new InvalidOperationException($"The {nameof(FinderAttribute)} method must return a Task<TValue>");
-
+        if (!method.ReturnType.ImplementsGeneric(typeof(Task<>), out var taskGenerics)
+            || !taskGenerics[0].ImplementsGeneric(typeof(IEnumerable<>), out var resultGenerics))
+            throw new InvalidOperationException($"The {nameof(FinderAttribute)} method must return a Task<IEnumerable<TValue>>");
+                
         var hasFilter = parameters.Length > 0 && parameters[0].ParameterType != typeof(CancellationToken);
         var hasCancellationToken = (parameters.Length == 1 && parameters[0].ParameterType == typeof(CancellationToken))
             || (parameters.Length == 2);
@@ -31,8 +34,8 @@ public class LoaderAttribute : SubscribesAttribute
             throw new InvalidOperationException(
                 $"The second parameter of {nameof(LoaderAttribute)} method must be a cancellation token");
         }
-
-        var tmodel = taskGenerics[0];
+        
+        var tmodel = resultGenerics[0];
         var tservice = method.DeclaringType!;
 
         if (hasFilter)

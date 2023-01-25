@@ -10,7 +10,7 @@ public static class KeyAndDescriptionFunctionDelegates
 {
     private static readonly ConcurrentDictionary<Type, object> KeyFunctions = new();
     private static readonly ConcurrentDictionary<Tuple<Type, Type>, object> TypedKeyFunctions = new();
-    private static readonly ConcurrentDictionary<Type, object> DescriptionsFunctions = new();
+    private static readonly ConcurrentDictionary<Type, object> DescriptorFunctions = new();
 
     private static readonly MethodInfo StringFormatMethod = typeof(string).GetMethod(nameof(string.Format), new Type[] { typeof(string), typeof(object) })!;
     private static readonly MethodInfo StringBuilderAppendString = typeof(StringBuilder).GetMethod(nameof(StringBuilder.Append), new Type[] { typeof(string) })!;
@@ -104,10 +104,11 @@ public static class KeyAndDescriptionFunctionDelegates
         {
             var mType = k.Item1;
             var vType = k.Item2;
+            var uType = Nullable.GetUnderlyingType(vType);
             foreach (var discoverer in KeyDiscoverers)
             {
                 var property = discoverer(mType);
-                if (property is null || property.PropertyType != vType)
+                if (property is null || (property.PropertyType != vType && property.PropertyType != uType))
                     continue;
 
                 var getProperty = property.GetMethod;
@@ -119,21 +120,23 @@ public static class KeyAndDescriptionFunctionDelegates
             foreach (var name in CommonKeyNames)
             {
                 var property = properties
-                    .Where(p => p.PropertyType == vType)
+                    .Where(p => p.PropertyType == vType || p.PropertyType == uType)
                     .FirstOrDefault(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
 
                 var getProperty = property?.GetMethod;
                 if (getProperty is not null)
-                    return getProperty.CreateDelegate<Func<TModel, TValue>>();
+                    return property!.PropertyType == uType              // !: checked by 'getProperty'
+                        ? CreateDelegate<TModel, TValue>(property)
+                        : getProperty.CreateDelegate<Func<TModel, TValue>>();
             }
 
             return null!; // !: the method can return null
         });
     }
 
-    public static Func<TModel, object> GetModelDescription<TModel>()
+    public static Func<TModel, object> GetModelDescriptor<TModel>()
     {
-        return (Func<TModel, object>)DescriptionsFunctions.GetOrAdd(typeof(TModel), type =>
+        return (Func<TModel, object>)DescriptorFunctions.GetOrAdd(typeof(TModel), type =>
         {
             foreach (var discoverer in DescriptionDiscoverers)
             {
@@ -206,6 +209,18 @@ public static class KeyAndDescriptionFunctionDelegates
             Expression.Convert(
                 Expression.MakeMemberAccess(param, property),
                 typeof(object)),
+            param);
+
+        return lambda.Compile();
+    }
+
+    private static Delegate CreateDelegate<TModel, TValue>(PropertyInfo property)
+    {
+        var param = Expression.Parameter(typeof(TModel), "model");
+        var lambda = Expression.Lambda<Func<TModel, TValue>>(
+            Expression.Convert(
+                Expression.MakeMemberAccess(param, property),
+                typeof(TValue)),
             param);
 
         return lambda.Compile();

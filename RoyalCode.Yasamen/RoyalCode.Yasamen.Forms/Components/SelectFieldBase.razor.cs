@@ -67,7 +67,7 @@ public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
     public RenderFragment? Append { get; set; }
 
     [Parameter]
-    public string NoItemsPlaceholder { get; set; }
+    public string? NoItemsPlaceholder { get; set; }
     
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {

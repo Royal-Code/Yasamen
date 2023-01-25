@@ -43,6 +43,10 @@
 
 .form-loading {
     background-image: none;
+    background-position: unset;
+    background-clip: unset;
+    background-repeat: initial;
+    padding: 0.625rem;
 }
 
 .input-group {

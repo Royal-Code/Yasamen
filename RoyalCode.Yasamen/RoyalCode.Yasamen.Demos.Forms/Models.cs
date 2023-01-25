@@ -1,5 +1,6 @@
 ﻿using RoyalCode.OperationResult;
 using RoyalCode.Yasamen.Forms.Validation;
+using RoyalCode.Yasamen.Services.Attributes;
 using System.ComponentModel;
 
 namespace RoyalCode.Yasamen.Demos.Forms;
@@ -21,6 +22,10 @@ public class Friend
     public FriendType Type { get; set; }
 
     public Vip? Vip { get; set; }
+
+    public int CityId { get; set; }
+
+    public int? AlterCityId { get; set; }
 }
 
 
@@ -43,6 +48,13 @@ public enum Vip
     Platinum
 }
 
+public class City
+{
+    public int Id { get; set; }
+
+    public string Name { get; set; } = null!;
+}
+
 public class ValidadorFriend : IValidator<Friend>
 {
     public bool Failure { get; set; }
@@ -59,5 +71,69 @@ public class ValidadorFriend : IValidator<Friend>
             .WithError("This is a dangerous email", nameof(Friend.EMail))
             .WithError("This not a fine phone number", nameof(Friend.Phone))
             .WithError("Check or not, you got a problem", nameof(Friend.IsActive));
+    }
+}
+
+public class CityServices
+{
+    private static readonly List<City> cities = new List<City>
+    {
+        new City()
+        {
+            Id = 1,
+            Name = "São Paulo"
+        },
+        new City()
+        {
+            Id = 2,
+            Name = "Rio de Janeiro"
+        },
+        new City()
+        {
+            Id = 3,
+            Name = "Belo Horizonte"
+        },
+        new City()
+        {
+            Id = 4,
+            Name = "Salvador"
+        },
+        new City()
+        {
+            Id = 5,
+            Name = "Fortaleza"
+        },
+        new City()
+        {
+            Id = 6,
+            Name = "Brasília"
+        },
+        new City()
+        {
+            Id = 7,
+            Name = "Curitiba"
+        },
+        new City()
+        {
+            Id = 8,
+            Name = "Recife"
+        },
+        new City()
+        {
+            Id = 9,
+            Name = "Manaus"
+        },
+        new City()
+        {
+            Id = 10,
+            Name = "Belém"
+        }
+    };
+
+    [Loader]
+    public async Task<IEnumerable<City>> GetCities()
+    {
+        await Task.Delay(3_000);
+        return cities;
     }
 }
