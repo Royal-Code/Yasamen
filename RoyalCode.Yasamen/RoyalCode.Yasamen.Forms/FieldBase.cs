@@ -15,7 +15,8 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
 {
     protected const string InvalidInputErrorMessage = "Invalid input";
 
-    private Action messagesChangedDelegate;
+    private readonly Action messagesChangedDelegate;
+    
     private IMessageListener? messageListener;
     private bool initialized;
     private Type? nullableUnderlyingType;

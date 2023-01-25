@@ -1,4 +1,4 @@
-using RoyalCode.Yasamen.Services.Attributes;
+using RoyalCode.Yasamen.Services;
 using System.Net.Http.Json;
 
 namespace RoyalCode.Yasamen.Demos.Wasm.Models;

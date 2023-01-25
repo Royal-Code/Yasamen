@@ -1,6 +1,6 @@
 ﻿using RoyalCode.OperationResult;
 using RoyalCode.Yasamen.Forms.Validation;
-using RoyalCode.Yasamen.Services.Attributes;
+using RoyalCode.Yasamen.Services;
 using System.ComponentModel;
 
 namespace RoyalCode.Yasamen.Demos.Forms;

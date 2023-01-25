@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 using System.Numerics;
 using System.Reflection;
 
-namespace RoyalCode.Yasamen.Services.Attributes;
+namespace RoyalCode.Yasamen.Services;
 
 [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
 public class LoaderAttribute : SubscribesAttribute
@@ -24,17 +24,17 @@ public class LoaderAttribute : SubscribesAttribute
         if (!method.ReturnType.ImplementsGeneric(typeof(Task<>), out var taskGenerics)
             || !taskGenerics[0].ImplementsGeneric(typeof(IEnumerable<>), out var resultGenerics))
             throw new InvalidOperationException($"The {nameof(FinderAttribute)} method must return a Task<IEnumerable<TValue>>");
-                
+
         var hasFilter = parameters.Length > 0 && parameters[0].ParameterType != typeof(CancellationToken);
-        var hasCancellationToken = (parameters.Length == 1 && parameters[0].ParameterType == typeof(CancellationToken))
-            || (parameters.Length == 2);
-        
+        var hasCancellationToken = parameters.Length == 1 && parameters[0].ParameterType == typeof(CancellationToken)
+            || parameters.Length == 2;
+
         if (hasCancellationToken && parameters[1].ParameterType != typeof(CancellationToken))
         {
             throw new InvalidOperationException(
                 $"The second parameter of {nameof(LoaderAttribute)} method must be a cancellation token");
         }
-        
+
         var tmodel = resultGenerics[0];
         var tservice = method.DeclaringType!;
 
@@ -56,7 +56,7 @@ public class LoaderAttribute : SubscribesAttribute
             var serviceType = typeof(LoaderPerformer<,>).MakeGenericType(tmodel, tservice);
             services.AddTransient(typeof(ILoaderPerformer<>).MakeGenericType(tmodel), serviceType);
         }
-        
+
     }
 
     private object CreateDelegate(Type tservice, Type tmodel, Type tfilter, MethodInfo method, bool hasCancellationToken)
