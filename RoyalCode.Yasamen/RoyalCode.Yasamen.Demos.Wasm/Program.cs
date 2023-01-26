@@ -53,6 +53,7 @@ builder.Services.AddBlazorShow(b =>
     b.AddShow<WorkingAlertShow, WorkingAlert>();
     b.AddShow<ButtonShow, Button>();
     b.AddShow<ProgressBarShow, ProgressBar>();
+    b.AddShow<ProgressStackedShow, ProgressStacked>();
 });
 
 RoyalCode.Yasamen.Commons.Tracer.IsActive = true;
