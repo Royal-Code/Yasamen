@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using RoyalCode.OperationResult;
 using RoyalCode.Yasamen.Forms.Messages;
 using RoyalCode.Yasamen.Forms.Support;
 using RoyalCode.Yasamen.Forms.Validation;
@@ -74,4 +75,19 @@ public sealed class ModelContext<TModel> : IModelContext
 
     public object? GetModel() => Model;
 
+    public void AddResult(IOperationResult result) => AddMessages(result.Messages);
+
+    public void AddMessages(IEnumerable<IResultMessage> messages)
+    {
+        foreach (var message in messages)
+        {
+            AddMessage(message);
+        }
+    }
+
+    public void AddMessage(IResultMessage message)
+    {
+        if (Model is not null)
+            EditorMessages.Add(Model, message);
+    }
 }
