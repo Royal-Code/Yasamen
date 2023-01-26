@@ -1,10 +1,10 @@
-﻿<div class="progress">
-    <div class="@classes"
-         role="progressbar"
-         aria-valuenow="@CurrentValue" aria-valuemin="@MinValue" aria-valuemax="@MaxValue"
-         style="width: @Percent" @attributes="AdditionalAttributes">
+﻿<div class="progress" 
+     role="progressbar" aria-valuenow="@CurrentValue" aria-valuemin="@MinValue" aria-valuemax="@MaxValue" 
+     style="@ProgressStyle">
+    <div class="@classes" style="@BarStyle" @attributes="AdditionalAttributes">
         @ShowPercent
     </div>
+    
 </div>
 
 @code {
@@ -12,12 +12,33 @@
     CssClassMap classes => CssClassMap.Create("progress-bar")
         .Add(() => Animated, "animated")
         .Add(() => Striped, "progress-bar-striped")
-        .Add(ProgressBarStyle.ToCssClass())
+        .Add(Style.ToCssClass())
         .Add(AdditionalClasses);
 
-    private string Percent => $"{string.Format("{0:#}", (CurrentValue * (MaxValue - MinValue) / 100))}%";
+    private string ProgressStyle => $"{(Height > 0 ? $"height: {Height}px;" : "")}{(Stacked ? $"width: {Percent}" : "")}";
+    private string BarStyle => Stacked ? "" : $"width: {Percent}";
+
+    private string Percent => $"{string.Format("{0:#}", PercentCalc)}%";
 
     private string? ShowPercent => ShowValue ? Percent : null;
+
+    private double PercentCalc
+    {
+        get
+        {
+            var value = ((CurrentValue - MinValue) * (MaxValue - MinValue)) / DivValue;
+            return value;
+        }
+    }
+
+    private double DivValue => StackedContext is null 
+        ? MaxValue 
+        : StackedContext.StackedMaxValue == 0
+            ? MaxValue
+            : MaxValue * (1 + (MaxValue / (double)StackedContext.StackedMaxValue));
+    
+    [CascadingParameter]
+    public StackedContext? StackedContext { get; set; }
 
     [Parameter]
     public bool Animated { get; set; } = true;
@@ -29,7 +50,7 @@
     public bool ShowValue { get; set; }
 
     [Parameter]
-    public ProgressBarStyles ProgressBarStyle { get; set; }
+    public ProgressBarStyles Style { get; set; }
 
     [Parameter]
     public int CurrentValue { get; set; }
@@ -41,7 +62,13 @@
     public int MaxValue { get; set; } = 100;
 
     [Parameter]
+    public int Height { get; set; }
+
+    [Parameter]
     public string? AdditionalClasses { get; set; }
+    
+    [Parameter]
+    public bool Stacked { get; set; }
 
     [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object>? AdditionalAttributes { get; set; }

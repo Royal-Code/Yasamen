@@ -16,6 +16,7 @@
 
 	<ItemGroup>
 		<None Update=".\ProgressBar.razor.css" CssScope="b-progress-bar" />
+		<None Update=".\ProgressStacked.razor.css" CssScope="b-progress-bar" />
 	</ItemGroup>
 	
 </Project>

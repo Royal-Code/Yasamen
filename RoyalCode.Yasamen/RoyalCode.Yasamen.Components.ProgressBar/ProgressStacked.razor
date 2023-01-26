@@ -1,0 +1,32 @@
+﻿<div class="@classes" style="@ProgressStyle" @attributes="AdditionalAttributes">
+    <CascadingValue Value="context" IsFixed="true">
+        @ChildContent
+    </CascadingValue>
+</div>
+
+@code {
+    private CssClassMap classes => CssClassMap.Create("progress-stacked").Add(AdditionalClasses);
+    private string ProgressStyle => Height > 0 ? $"height: {Height}px" : "";
+    private readonly StackedContext context = new();
+
+    [Parameter]
+    public int Height { get; set; }
+
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public int MaxValue { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        context.StackedMaxValue = MaxValue;
+        base.OnParametersSet();
+    }
+}
