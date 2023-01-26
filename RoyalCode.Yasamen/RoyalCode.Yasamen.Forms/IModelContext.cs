@@ -1,4 +1,5 @@
-﻿using RoyalCode.Yasamen.Forms.Messages;
+﻿using RoyalCode.OperationResult;
+using RoyalCode.Yasamen.Forms.Messages;
 using RoyalCode.Yasamen.Forms.Support;
 
 namespace RoyalCode.Yasamen.Forms;
@@ -28,6 +29,12 @@ public interface IModelContext
     EditorMessages EditorMessages { get; }
 
     PropertyChangeSupport PropertyChangeSupport { get; }
+
+    public void AddResult(IOperationResult result);
+
+    public void AddMessages(IEnumerable<IResultMessage> messages);
+
+    public void AddMessage(IResultMessage message);
 
     string GetModelNameIdentifier()
     {
