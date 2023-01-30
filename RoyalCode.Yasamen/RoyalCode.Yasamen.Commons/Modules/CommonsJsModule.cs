@@ -12,6 +12,7 @@ public class CommonsJsModule : JsModuleBase
     private const string callMethodFn = "callMethod";
     private const string setLocalStorageItem = "setLocalStorageItem";
     private const string getLocalStorageItem = "getLocalStorageItem";
+    private const string removeLocalStorageItem = "removeLocalStorageItem";
 
     private JsonSerializerOptions __jsonSerializerOptions;
 
@@ -83,6 +84,12 @@ public class CommonsJsModule : JsModuleBase
         return await js.InvokeAsync<string>(getLocalStorageItem, key);
     }
 
+    public async ValueTask RemoveLocalStorageItem(string key)
+    {
+        var js = await GetModuleAsync();
+        await js.InvokeVoidAsync(removeLocalStorageItem, key);
+    }
+
     public ValueTask SetLocalStorageItem<T>(T value, string? key = null)
     {
         // serialize value to json
@@ -103,6 +110,11 @@ public class CommonsJsModule : JsModuleBase
 
         // deserialize from json
         return JsonSerializer.Deserialize<T>(jsonValue, Options)!;
+    }
+
+    public ValueTask RemoveLocalStorageItem<T>()
+    {
+        return RemoveLocalStorageItem(typeof(T).Name);
     }
 
     private object[] ReOrgArgs(ElementReference element, string method, int timeout, params object[] arguments)

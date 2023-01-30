@@ -41,3 +41,7 @@ export function setLocalStorageItem(key, value) {
 export function getLocalStorageItem(key) {
     return localStorage.getItem(key);
 }
+
+export function removeLocalStorageItem(key) {
+    localStorage.removeItem(key);
+}
