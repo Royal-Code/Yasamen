@@ -4,6 +4,7 @@ using RoyalCode.OperationResult;
 using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Commons.Extensions;
 using RoyalCode.Yasamen.Forms.Messages;
+using RoyalCode.Yasamen.Forms.Modules;
 using RoyalCode.Yasamen.Forms.Support;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
@@ -94,6 +95,22 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
     protected string FieldId => fieldId ??= $"{ModelContext.GetModelNameIdentifier()}.{FieldName}";
 
     /// <summary>
+    /// The field element that has the value (input, select, textarea).
+    /// </summary>
+    public ElementReference Element { get; protected set; }
+
+    /// <summary>
+    /// JS interop utilities for work with the field element.
+    /// </summary>
+    public FieldJs Js { get; } = new();
+
+    /// <summary>
+    /// Module for Js interop.
+    /// </summary>
+    [Inject]
+    public FormsJsModule JsModule { get; set; }
+
+    /// <summary>
     /// Context received by the <see cref="ModelEditor{TModel}"/>.
     /// </summary>
     [CascadingParameter]
@@ -129,12 +146,14 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
     /// <summary>
     /// Gets or sets a callback that updates the bound value.
     /// </summary>
-    [Parameter] public EventCallback<TValue> ValueChanged { get; set; }
+    [Parameter] 
+    public EventCallback<TValue> ValueChanged { get; set; }
 
     /// <summary>
     /// Gets or sets an expression that identifies the bound value.
     /// </summary>
-    [Parameter] public Expression<Func<TValue>>? ValueExpression { get; set; }
+    [Parameter] 
+    public Expression<Func<TValue>>? ValueExpression { get; set; }
 
     /// <summary>
     /// The change support name. If not informed the <see cref="FieldIdentifier.FieldName"/> will be used.
@@ -308,6 +327,9 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
             }
 
             nullableUnderlyingType = Nullable.GetUnderlyingType(typeof(TValue));
+
+            Js.Module = JsModule;
+
             initialized = true;
         }
         else if (CascadedContext != ModelContext)
@@ -329,6 +351,11 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
             fieldId = Id;
 
         return base.SetParametersAsync(ParameterView.Empty);
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Js.Element = Element;
     }
 
     public void Dispose()

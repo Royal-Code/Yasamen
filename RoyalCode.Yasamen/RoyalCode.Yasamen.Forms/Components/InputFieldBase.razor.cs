@@ -18,7 +18,6 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
 
     private readonly RenderFragment contentFragment;
     private bool isFocused;
-    protected ElementReference InputReference;
 
     public InputFieldBase()
     {
@@ -148,7 +147,7 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
             builder.AddAttribute(4 + index, "disabled", true);
         if (IsInvalid)
             builder.AddAttribute(5 + index, "aria-invalid", true);
-        builder.AddElementReferenceCapture(6 + index, __inputReference => InputReference = __inputReference);
+        builder.AddElementReferenceCapture(6 + index, __inputReference => Element = __inputReference);
 
         builder.CloseElement();
 
@@ -203,8 +202,10 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
     {
         if (firstRender)
         {
-            await Js.BlurOnPressEnterAsync(InputReference);
+            await Js.BlurOnPressEnterAsync(Element);
         }
+
+        await base.OnAfterRenderAsync(firstRender);
     }
     
     private void OnFocus()

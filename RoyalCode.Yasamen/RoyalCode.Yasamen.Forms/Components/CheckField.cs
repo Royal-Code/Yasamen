@@ -16,7 +16,6 @@ public sealed partial class CheckField : CheckFieldBase
     };
 
     private readonly RenderFragment contentFragment;
-    private ElementReference InputReference;
     private bool isFocused;
     private bool blurListenerAdded;
 
@@ -109,13 +108,13 @@ public sealed partial class CheckField : CheckFieldBase
                 builder.AddAttribute(13 + index, "disabled", true);
             if (IsInvalid)
                 builder.AddAttribute(14 + index, "aria-invalid", true);
-            builder.AddElementReferenceCapture(15 + index, __inputReference => InputReference = __inputReference);
+            builder.AddElementReferenceCapture(15 + index, __inputReference => Element = __inputReference);
 
             builder.CloseElement();
         }
         else
         {
-            InputReference = default;
+            Element = default;
         }
 
         return index + 16;
@@ -169,16 +168,18 @@ public sealed partial class CheckField : CheckFieldBase
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (string.IsNullOrEmpty(InputReference.Id))
+        if (string.IsNullOrEmpty(Element.Id))
         {
             if (blurListenerAdded)
                 blurListenerAdded = false;
         }
         else if (!blurListenerAdded)
         {
-            await Js.BlurOnPressEnterAsync(InputReference);
+            await Js.BlurOnPressEnterAsync(Element);
             blurListenerAdded = true;
         }
+
+        await base.OnAfterRenderAsync(firstRender);
     }
 
     private void OnFocus()

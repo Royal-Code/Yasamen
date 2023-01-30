@@ -21,7 +21,6 @@ public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
     private readonly bool isMultipleSelect;
     private readonly bool isArray;
     private bool isFocused;
-    protected ElementReference selectReference;
 
     public SelectFieldBase()
     {
@@ -172,7 +171,7 @@ public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
         builder.AddAttribute(14 + index, "onmouseenter", EventCallback.Factory.Create(this, OnMouseEnter));
         if (IsInvalid)
             builder.AddAttribute(16 + index, "aria-invalid", true);
-        builder.AddElementReferenceCapture(17 + index, __ref => selectReference = __ref);
+        builder.AddElementReferenceCapture(17 + index, __ref => Element = __ref);
 
         index = RenderOptions(builder, 18 + index);
         
@@ -239,8 +238,10 @@ public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
     {
         if (firstRender)
         {
-            await Js.BlurOnPressEnterAsync(selectReference);
+            await Js.BlurOnPressEnterAsync(Element);
         }
+
+        await base.OnAfterRenderAsync(firstRender);
     }
 
     private void SetCurrentValueAsStringArray(string?[]? value)
