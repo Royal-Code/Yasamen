@@ -5,25 +5,29 @@ namespace RoyalCode.Yasamen.Commons.Modules;
 public abstract class JsModuleBase
 {
     private readonly string pathFromWwwRoot;
-
+    private readonly bool isLibrary;
+    
     private IJSObjectReference? module;
 
-    protected JsModuleBase(IJSRuntime js, string pathFromWwwRoot)
+    protected JsModuleBase(IJSRuntime js, string pathFromWwwRoot, bool isLibrary = true)
     {
         JSRuntime = js;
         this.pathFromWwwRoot = pathFromWwwRoot;
+        this.isLibrary = isLibrary;
     }
 
     public IJSRuntime JSRuntime { get; }
 
-    protected async Task<IJSObjectReference> GetModuleAsync()
+    protected async ValueTask<IJSObjectReference> GetModuleAsync()
     {
         if (module is not null)
             return module;
 
-        var libraryName = GetType().Assembly.GetName().Name;
-        module = await JSRuntime.InvokeAsync<IJSObjectReference>("import",
-            Path.Combine($"./_content/{libraryName}/", pathFromWwwRoot));
+        string modulePath = isLibrary 
+            ? Path.Combine($"./_content/{GetType().Assembly.GetName().Name}/", pathFromWwwRoot) 
+            : pathFromWwwRoot;
+        
+        module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", modulePath);
         return module;
     }
 }
