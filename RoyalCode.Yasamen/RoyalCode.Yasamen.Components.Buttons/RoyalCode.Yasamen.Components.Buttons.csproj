@@ -18,6 +18,7 @@
 
 	<ItemGroup>
 		<None Update=".\Button.razor.css" CssScope="b-button" />
+		<None Update=".\IconButton.razor.css" CssScope="b-icon-button" />
 	</ItemGroup>
 	
 </Project>

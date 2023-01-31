@@ -64,7 +64,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Demos.For
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Components.ProgressBar", "RoyalCode.Yasamen.Components.ProgressBar\RoyalCode.Yasamen.Components.ProgressBar.csproj", "{C2015A26-892A-4150-A439-7447C16B566A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Yasamen.Services.Tests", "RoyalCode.Yasamen.Services.Tests\RoyalCode.Yasamen.Services.Tests.csproj", "{505911CD-AA2E-4076-A5EF-F38FCA1FA179}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Services.Tests", "RoyalCode.Yasamen.Services.Tests\RoyalCode.Yasamen.Services.Tests.csproj", "{505911CD-AA2E-4076-A5EF-F38FCA1FA179}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

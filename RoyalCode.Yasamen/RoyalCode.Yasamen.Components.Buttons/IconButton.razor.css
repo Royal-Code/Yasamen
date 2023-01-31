@@ -1,0 +1,54 @@
+﻿
+button {
+    display: inline-flex;
+    position: relative;
+    overflow: hidden;
+    color: inherit;
+    border-radius: 50%;
+    min-height: var(--b-icon-button--height);
+    min-width: var(--b-icon-button--width);
+    width: auto;
+    height: auto;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    outline: none;
+    border: none;
+    margin: var(--b-icon-button--margin);
+}
+
+button:focus, button:hover {
+    background: none;
+    border: none;
+    outline: none;
+}
+
+    button:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+
+.btn-xs {
+    min-height: var(--b-icon-button-xs--height);
+    min-width: var(--b-icon-button-xs--width);
+    font-size: var(--b-icon-button-xs--font-size);
+}
+
+.btn-sm {
+    min-height: var(--b-icon-button-sm--height);
+    min-width: var(--b-icon-button-sm--width);
+    font-size: var(--b-icon-button-sm--font-size);
+}
+
+.btn-lg {
+    min-height: var(--b-icon-button-lg--height);
+    min-width: var(--b-icon-button-lg--width);
+    font-size: var(--b-icon-button-lg--font-size);
+}
+
+.btn-xl {
+    min-height: var(--b-icon-button-xl--height);
+    min-width: var(--b-icon-button-xl--width);
+    font-size: var(--b-icon-button-xl--font-size);
+}
