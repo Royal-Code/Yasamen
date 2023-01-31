@@ -1,6 +1,6 @@
 
 <li>
-    <NavLink class="app-nav-link" href="@(HRef ?? string.Empty)" Match="@InternalMatch">
+    <NavLink class="app-nav-link" href="@(HRef ?? string.Empty)" Match="@InternalMatch" @onclick="OnClick">
         @Label
     </NavLink>
 </li>
@@ -15,7 +15,18 @@
 
     [Parameter]
     public NavLinkMatch? Match { get; set; }
-    
+
     [Parameter]
     public string? Label { get; set; }
+
+    [CascadingParameter]
+    public LayoutContext? LayoutContext { get; set; }
+
+    private void OnClick()
+    {
+        if (LayoutContext?.MenuInteracted ?? false)
+        {
+            LayoutContext.MenuInteract();
+        }
+    }
 }
