@@ -49,7 +49,7 @@
         if (element === null || element === undefined)
             return;
 
-        const eventHandler = function (evt) {
+        const eventHandler = async (evt) => {
 
             if (onlyTarget && evt.target !== element) {
                 return;
@@ -62,7 +62,8 @@
                 evt.stopPropagation();
 
             var json = getProperties(evt, requiredProperties);
-            var result = listener.invokeMethod('OnEventFired', json);
+            //var result = listener.invokeMethod('OnEventFired', json);
+            var result = await listener.invokeMethodAsync('OnEventFiredAsync', json);
             if (result !== undefined && result !== null && result.length > 0) {
                 console.error(result);
             }

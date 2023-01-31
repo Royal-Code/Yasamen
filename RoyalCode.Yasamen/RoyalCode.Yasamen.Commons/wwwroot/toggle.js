@@ -13,10 +13,12 @@ let fn = (function () {
         }
     };
 
-    _toggle.toggle = function (element, cssClas, toggle) {
-        if (toggle) {
+    _toggle.toggle = function (element, cssClas, add) {
+        if (add) {
+            console.log('toggle add ' + cssClas + ' to ' + element );
             element.classList.add(cssClas);
         } else {
+            console.log('toggle remove ' + cssClas + ' to ' + element);
             element.classList.remove(cssClas);
         }
     };
@@ -27,6 +29,6 @@ let fn = (function () {
 export function between(element, cssClassTrue, cssClassFalse, toggle) {
     fn.between(element, cssClassTrue, cssClassFalse, toggle);
 }
-export function toggle(element, cssClas, toggle) {
-    fn.toggle(element, cssClas, toggle);
+export function toggle(element, cssClas, add) {
+    fn.toggle(element, cssClas, add);
 }

@@ -9,7 +9,10 @@ public static class LayoutContextCssClassesExtensions
 {
     public const string IsInteractedClass = "app-menu-interacted";
     public const string IsNotInteractedClass = "app-menu-original";
+    public const string IsTransitioningClass = "transitioning";
 
     public static string GetInteractedCssClass(this LayoutContext context)
         => context.MenuInteracted ? IsInteractedClass : IsNotInteractedClass;
+    
+    
 }

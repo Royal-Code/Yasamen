@@ -6,8 +6,8 @@ namespace RoyalCode.Yasamen.Commons.Modules;
 public class ToggleJsModule : JsModuleBase
 {
     /* toggle.js */
-    public static readonly string CssClassToggleBetween = "between";
-    public static readonly string CssClassToggleToggle = "toggle";
+    public const string CssClassToggleBetween = "between";
+    public const string CssClassToggleToggle = "toggle";
 
     public ToggleJsModule(IJSRuntime js) : base(js, "toggle.js") { }
 
