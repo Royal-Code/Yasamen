@@ -19,4 +19,16 @@ public class EventsJsModule : JsModuleBase
         await handler.AddListener(element, eventName, options ?? JsEventListenerOptions.Default, callback);
         return handler;
     }
+
+    public async ValueTask<JsEventInterop<TData>> On<TData>(
+        ElementReference element,
+        string eventName,
+        Func<TData?, ValueTask> callback,
+        JsEventListenerOptions? options = null)
+    {
+        var js = await GetModuleAsync();
+        var handler = new JsEventInterop<TData>(js);
+        await handler.AddListener(element, eventName, options ?? JsEventListenerOptions.Default, callback);
+        return handler;
+    }
 }

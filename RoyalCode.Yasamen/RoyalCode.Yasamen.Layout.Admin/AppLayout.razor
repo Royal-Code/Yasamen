@@ -4,11 +4,12 @@
 @using System.Diagnostics
 
 @inject ToggleJsModule ToggleJs
-@implements IDisposable
+@inject EventsJsModule EventsJs;
+@implements IAsyncDisposable
 
 <CascadingValue Value="context" IsFixed="true">
-    <div class="@InteractedCssClass @AdditionalClasses layout" @attributes="Attributes" @ref="layoutRef">
-        <header class="app-top-content">
+    <div class="@InteractedCssClass @AdditionalClasses layout" @attributes="Attributes" @ref="LayoutReference">
+        <header class="app-top-content @TransitionClass" @ref="HeaderReference">
             <AppNavBar Shadow="NavBarShadow">
                 <Start>
                     @TopStart
@@ -22,7 +23,7 @@
             </AppNavBar>
         </header>
         <div class="app-page-content">
-            <div class="app-menu-content">
+            <div class="app-menu-content" @ref="MenuReference">
                 @Menu
             </div>
             <div class="app-center-content">
@@ -36,19 +37,34 @@
             <div class="app-menu-backdrop" @onclick="MenuBackdropClickHandle"></div>
         </div>
         <div class="app-aside-content">
-            
         </div>
     </div>
 </CascadingValue>
 
 @code {
 
-    private static LayoutContext context = new ();
+    private static LayoutContext context = new();
+    private readonly Func<object?, ValueTask> menuTransitionEnd;
+    private bool transitioningInteraction;
+    private IDisposable? interactedListener;
+    private JsEventInterop<object>? transitionEndInterop;
 
-    private ElementReference layoutRef;
-    private IDisposable? listener;
+
+    public AppLayout()
+    {
+        menuTransitionEnd = MenuTransitionEnd;
+    }
 
     private string InteractedCssClass => context.GetInteractedCssClass();
+    private string TransitionClass => transitioningInteraction 
+        ? LayoutContextCssClassesExtensions.IsTransitioningClass 
+        : "";
+
+    public ElementReference LayoutReference { get; private set; }
+
+    public ElementReference MenuReference { get; private set; }
+
+    public ElementReference HeaderReference { get; private set; }
 
     [Parameter]
     public RenderFragment Main { get; set; }
@@ -58,54 +74,89 @@
 
     [Parameter]
     public RenderFragment TopStart { get; set; }
-    
+
     [Parameter]
     public RenderFragment TopCenter { get; set; }
-    
+
     [Parameter]
     public RenderFragment TopEnd { get; set; }
-    
+
     [Parameter]
     public RenderFragment Menu { get; set; }
 
     [Parameter]
     public bool NavBarShadow { get; set; } = true;
-    
+
     [Parameter]
     public string? AdditionalClasses { get; set; }
-    
+
     [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object> Attributes { get; set; }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        Tracer.Write<AppLayout>("OnAfterRenderAsync", $"Begin, {firstRender}");
-        
+        Tracer.Write<AppLayout>("OnAfterRenderAsync", "Begin, first render: {0}", firstRender);
+
         if (firstRender)
-            listener = context.AddMenuInteracted(async interacted =>
+        {
+            interactedListener = context.AddMenuInteracted(async interacted =>
             {
-                await ToggleJs.CssClassToggle(layoutRef,
+                await ToggleJs.CssClassToggle(LayoutReference,
                     LayoutContextCssClassesExtensions.IsInteractedClass,
                     LayoutContextCssClassesExtensions.IsNotInteractedClass,
                     interacted);
+                await MenuTransitionStart(null);
             });
-        
+
+            await TryInitTransitionsInterop();
+        }
         await base.OnAfterRenderAsync(firstRender);
-        
+
         Tracer.Write<AppLayout>("OnAfterRenderAsync", "End");
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await TryInitTransitionsInterop();
     }
 
     private void MenuBackdropClickHandle()
     {
         context.MenuInteract();
     }
-    
-    public void Dispose()
+
+    private async ValueTask TryInitTransitionsInterop()
     {
-        Tracer.Write<AppLayout>("OnAfterRenderAsync", "Begin");
-        
-        listener?.Dispose();
-        
-        Tracer.Write<AppLayout>("OnAfterRenderAsync", "End");
+        if (transitionEndInterop?.ElementHasChanged(MenuReference) ?? false)
+            await transitionEndInterop.UpdateElement(MenuReference);
+
+        if (transitionEndInterop is null && MenuReference.Id is not null)
+            transitionEndInterop = await EventsJs.On(MenuReference, "transitionend", menuTransitionEnd);
+    }
+
+    private async ValueTask MenuTransitionStart(object? value)
+    {
+        transitioningInteraction = true;
+        await ToggleTransitioning();
+    }
+
+    private async ValueTask MenuTransitionEnd(object? value)
+    {
+        transitioningInteraction = false;
+        await ToggleTransitioning();
+    }
+
+    private async ValueTask ToggleTransitioning()
+    {
+        await ToggleJs.CssClassToggle(HeaderReference,
+            LayoutContextCssClassesExtensions.IsTransitioningClass,
+            transitioningInteraction);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        interactedListener?.Dispose();
+        if (transitionEndInterop is not null)
+            await transitionEndInterop.DisposeAsync();
     }
 }
