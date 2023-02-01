@@ -3,7 +3,7 @@
 	<Import Project="..\version.targets" />
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(AspNetVer)" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(WasmVer)" />
 	</ItemGroup>
 
 	<ItemGroup>

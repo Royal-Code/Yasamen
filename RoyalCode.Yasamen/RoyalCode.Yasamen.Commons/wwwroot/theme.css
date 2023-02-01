@@ -309,7 +309,7 @@
     --b-nav-menu-item--background-color--hover: var(--b-color-darken-1);
     --b-nav-menu-item--background-color--active: var(--b-color-darken-2);
     /* nav-menu-button */
-    --b-nav-menu-button--size: var(--b-size-9);
+    --b-nav-menu-button--size: var(--b-icon-button--size);
     --b-nav-menu-button--border-radius: 50%;
     --b-nav-menu-button--color: var(--b-color-main--opacity1);
     /* main */
@@ -393,20 +393,15 @@
     --b-button-xl--font-size: 1.675rem;
     --b-button-xl--border-radius: .5rem;
     /* icon button */
-    --b-icon-button--height: 2.375rem;
-    --b-icon-button--width: 2.375rem;
-    --b-icon-button--margin: 0 .25rem;
-    --b-icon-button-xs--height: 2rem;
-    --b-icon-button-xs--width: 2rem;
+    --b-icon-button--size: 2.375rem;
+    --b-icon-button--margin: 0 .375rem;
+    --b-icon-button-xs--size: 2rem;
     --b-icon-button-xs--font-size: .75rem;
-    --b-icon-button-sm--height: 2.125rem;
-    --b-icon-button-sm--width: 2.125rem;
+    --b-icon-button-sm--size: 2.125rem;
     --b-icon-button-sm--font-size: .875rem;
-    --b-icon-button-lg--height: 2.625rem;
-    --b-icon-button-lg--width: 2.625rem;
+    --b-icon-button-lg--size: 2.625rem;
     --b-icon-button-lg--font-size: 1.25rem;
-    --b-icon-button-xl--height: 3rem;
-    --b-icon-button-xl--width: 3rem;
+    --b-icon-button-xl--size: 3rem;
     --b-icon-button-xl--font-size: 1.5rem;
 }
 

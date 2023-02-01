@@ -61,7 +61,8 @@
     {
         if (OnClick.HasDelegate)
             await OnClick.InvokeAsync(args);
-        else if (!string.IsNullOrEmpty(NavigateTo))
+
+        if (!string.IsNullOrEmpty(NavigateTo))
             Navigator.NavigateTo(NavigateTo);
     }
 }

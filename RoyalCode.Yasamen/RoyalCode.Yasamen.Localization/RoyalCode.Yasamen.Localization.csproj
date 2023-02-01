@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<Import Project="..\version.targets" />
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(AspNetVer)" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(WasmVer)" />
 		<PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="$(AspNetVer)" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(AspNetVer)" />
 	</ItemGroup>
