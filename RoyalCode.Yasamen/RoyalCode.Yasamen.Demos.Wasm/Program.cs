@@ -52,6 +52,7 @@ builder.Services.AddBlazorShow(b =>
     b.AddShow<AlertShow, Alert>();
     b.AddShow<WorkingAlertShow, WorkingAlert>();
     b.AddShow<ButtonShow, Button>();
+    b.AddShow<IconButtonShow, IconButton>();
     b.AddShow<ProgressBarShow, ProgressBar>();
     b.AddShow<ProgressStackedShow, ProgressStacked>();
 });

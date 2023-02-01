@@ -1,21 +1,23 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<Import Project="..\depends.targets" />
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.1" PrivateAssets="all" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\RoyalCode.Yasamen.Forms\RoyalCode.Yasamen.Forms.csproj" />
-    <ProjectReference Include="..\RoyalCode.Yasamen.Icons.Bootstrap\RoyalCode.Yasamen.Icons.Bootstrap.csproj" />
-    <ProjectReference Include="..\RoyalCode.Yasamen.Layout.Admin\RoyalCode.Yasamen.Layout.Admin.csproj" />
-    <ProjectReference Include="..\RoyalCode.Yasamen.Spinners\RoyalCode.Yasamen.Spinners.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="$(WasmVer)" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="$(WasmVer)" PrivateAssets="all" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\RoyalCode.Yasamen.Forms\RoyalCode.Yasamen.Forms.csproj" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.Icons.Bootstrap\RoyalCode.Yasamen.Icons.Bootstrap.csproj" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.Layout.Admin\RoyalCode.Yasamen.Layout.Admin.csproj" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.Spinners\RoyalCode.Yasamen.Spinners.csproj" />
+	</ItemGroup>
 
 </Project>

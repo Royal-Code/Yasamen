@@ -1,77 +1,50 @@
 ﻿@inject NavigationManager Navigator
 
-<button type="@Type.ToHtmlAttr()" 
-        class="@Classes" 
+<button @attributes="AdditionalAttributes"
+        type="@Type.ToHtmlAttr()"
+        class="@Classes"
         disabled="@Disabled"
-        @onclick="ClickHandler" 
-        @attributes="AdditionalAttributes" 
-        @ref="Reference">
-    
-    @if (Icon is not null && !UseIconAtEnd)
-    {
-        <Icon Kind="@Icon" />
-    }
-    
-    @Label
-    
-    @if (Icon is not null && UseIconAtEnd)
-    {
-        <Icon Kind="@Icon" />
-    }
-    
-    @ChildContent
+        @onclick="Clicked"
+        @ref="ButonReference">
         
+    <Icon Kind="Kind" @ref="IconReference" />
+    
 </button>
 
 @code {
 
     private CssClassMap Classes =>
-        CssClassMap.Create("btn")
+        CssClassMap.Create("btn-icon")
             .Add(Style.ToCssClass(Outline))
             .Add(Size.ToButtonCssClass())
-            .Add(() => Block, "btn-block")
             .Add(() => Active, "active")
-            .Add(() => UseIconAtEnd, "icon-at-end")
             .Add(AdditionalClasses);
-    
-    public ElementReference Reference { get; private set; }
-    
+
+    public ElementReference ButonReference { get; private set; } = default!;
+
+    public Icon IconReference { get; private set; } = default!;
+
     [Parameter, EditorRequired]
-    public string Label { get; set; } = null!;
-
-    [Parameter]
-    public RenderFragment ChildContent { get; set; } = null!;
-
+    public Enum Kind { get; set; } = default!;
+    
     [Parameter]
     public ButtonType Type { get; set; }
-
+    
     [Parameter]
     public ButtonStyles Style { get; set; }
 
     [Parameter]
     public Sizes Size { get; set; }
-    
-    [Parameter]
-    public Enum? Icon { get; set; }
 
-    [Parameter]
-    public int? IconRotateAngle { get; set; }
-    
     [Parameter]
     public bool Outline { get; set; }
-
-    [Parameter]
-    public bool Block { get; set; }
 
     [Parameter]
     public bool Active { get; set; }
 
     [Parameter]
     public bool Disabled { get; set; }
-    
-    [Parameter]
-    public bool UseIconAtEnd { get; set; }
-    
+
     [Parameter]
     public string? AdditionalClasses { get; set; }
 
@@ -84,7 +57,7 @@
     [Parameter]
     public EventCallback<MouseEventArgs> OnClick { get; set; }
 
-    private async Task ClickHandler(MouseEventArgs args)
+    public async Task Clicked(MouseEventArgs args)
     {
         if (OnClick.HasDelegate)
             await OnClick.InvokeAsync(args);
