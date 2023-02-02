@@ -31,15 +31,18 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
 
     protected virtual bool HasInputGroup => Prepend.IsNotEmptyFragment() || Append.IsNotEmptyFragment();
 
-    public InputType Type { get; protected set; }
-
     protected string? InternalInputClasses { get; set; }
-    
+
+    protected virtual string FieldType => Type.ToString().ToLower();
+
     [MultiplesParameters]
     public ColumnSizes ColumnSizes { set; get; } = new();
 
     [Inject]
     public FormsJsModule Js { get; set; } = null!;
+
+    [Parameter]
+    public InputType Type { get; set; }
     
     [Parameter]
     public string? LabelAdditionalClasses { get; set; }
@@ -133,7 +136,7 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
         builder.AddMultipleAttributes(1 + index, AdditionalAttributes);
         builder.AddAttribute(2 + index, "id", FieldId);
         builder.AddAttribute(3 + index, "name", FieldName);
-        builder.AddAttribute(4 + index, "type", Type.ToString().ToLower());
+        builder.AddAttribute(4 + index, "type", FieldType);
         builder.AddAttribute(5 + index, "class", InputCssClasses);
         builder.AddAttribute(6 + index, CssScopeAttribute);
 

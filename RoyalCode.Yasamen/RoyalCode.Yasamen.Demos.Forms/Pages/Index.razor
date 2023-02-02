@@ -65,6 +65,10 @@
 
         <SelectModelField @bind-Value="f.Car" Label="Car" Cols="3" />
         
+        <TextField @bind-Value="MyPassword" Label="Senha" Type="InputType.Password" />
+
+        <PasswordField @bind-Value="MyPassword" Label="Senha" ChangeSupport="MyPass" />
+        
         <Column>
             <SubmitButton Label="Submit" Cols="2" LgCols="1" />
         </Column>
@@ -98,9 +102,12 @@
 
     private double? otherValue2;
 
+    public string MyPassword { get; set; }
+
     private void SubmitHandler()
     {
-        friendJson = JsonSerializer.Serialize(friend);
+        friendJson = JsonSerializer.Serialize(friend)
+            + $", OtherValue: {otherValue}, OtherValue2: {otherValue2}, Password: {MyPassword}";
     }
 
     private void ToggleFailure()
