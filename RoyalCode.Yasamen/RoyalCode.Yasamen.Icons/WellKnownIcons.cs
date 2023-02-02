@@ -33,6 +33,8 @@ public static class WellKnownIcons
     public const string UserSettings = nameof(UserSettings);
     public const string UserLogout = nameof(UserLogout);
     public const string UserLogin = nameof(UserLogin);
+    public const string ShowPassord = nameof(ShowPassord);
+    public const string HidePassord = nameof(HidePassord);
 
     public const string Menu = nameof(Menu);
     public const string MenuOpen = nameof(MenuOpen);
