@@ -289,6 +289,8 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
         return parsed;
     }
 
+    protected virtual string GetInvalidInputErrorMessage() => InvalidInputErrorMessage;
+
     protected virtual void OnMessagesChanged()
     {
         if (settingNewValue)

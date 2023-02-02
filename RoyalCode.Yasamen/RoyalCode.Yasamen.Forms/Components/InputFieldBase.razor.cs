@@ -56,6 +56,12 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
     [Parameter]
     public RenderFragment? Append { get; set; }
 
+    /// <summary>
+    /// Gets or sets the error message used when displaying an a parsing error.
+    /// </summary>
+    [Parameter] 
+    public string? ParsingErrorMessage { get; set; } = string.Empty;
+
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
         if (ModelContext.ContainerState.UsingContainer)
@@ -200,6 +206,11 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
     }
 
     protected virtual void RenderEnd(RenderTreeBuilder builder, int index) { }
+
+    protected override string GetInvalidInputErrorMessage()
+    {
+        return ParsingErrorMessage ?? base.GetInvalidInputErrorMessage();
+    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

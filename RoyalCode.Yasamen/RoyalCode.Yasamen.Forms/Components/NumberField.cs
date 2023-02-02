@@ -10,6 +10,7 @@ using System.Runtime.CompilerServices;
 
 namespace RoyalCode.Yasamen.Forms.Components;
 
+public sealed class IntNullField : NumberField<int> { }
 public sealed class IntField : NumberField<int> { }
 public sealed class DecimalField : NumberField<decimal> { }
 public sealed class LongField : NumberField<long> { }
@@ -23,9 +24,6 @@ public class NumberField<TValue> : InputFieldBase<TValue>
     where TValue : INumber<TValue>
 {
     protected override bool HasInputGroup => HasStep() || base.HasInputGroup;
-
-    [Parameter]
-    public string? ParsingErrorMessage { get; set; }
 
     [Parameter]
     public TValue Step { get; set; } = default!;

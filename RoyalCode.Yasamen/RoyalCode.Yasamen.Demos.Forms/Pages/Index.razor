@@ -65,9 +65,11 @@
 
         <SelectModelField @bind-Value="f.Car" Label="Car" Cols="3" />
         
-        <TextField @bind-Value="MyPassword" Label="Senha" Type="InputType.Password" />
+        <TextField @bind-Value="MyPassword" Label="Senha" Type="InputType.Password" Cols="6" />
 
-        <PasswordField @bind-Value="MyPassword" Label="Senha" ChangeSupport="MyPass" />
+        <PasswordField @bind-Value="MyPassword" Label="Senha" ChangeSupport="MyPass" Cols="6" />
+        
+        <DateOnlyField @bind-Value="f.LastMeeting" Label="Last Meeting" Cols="3" />
         
         <Column>
             <SubmitButton Label="Submit" Cols="2" LgCols="1" />
