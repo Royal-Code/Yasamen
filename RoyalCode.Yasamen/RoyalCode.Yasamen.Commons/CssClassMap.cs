@@ -3,15 +3,16 @@ using RoyalCode.Yasamen.Commons.Internal;
 
 namespace RoyalCode.Yasamen.Commons;
 
+[Obsolete("Use Css.Builder<TComponent>()", DiagnosticId = "YAS-001")]
 public class CssClassMap
 {
     public static CssClassMap Create(Func<bool> condition, string? cssClass)
     {
         var map = new CssClassMap(new List<ICssClassBuilder>());
-        
-        if (cssClass is not  null)
+
+        if (cssClass is not null)
             map.Add(condition, cssClass);
-        
+
         return map;
     }
 
@@ -24,7 +25,7 @@ public class CssClassMap
 
         return map;
     }
-    
+
     public static CssClassMap Create(Maybe cssClass)
     {
         var map = new CssClassMap(new List<ICssClassBuilder>());
@@ -63,7 +64,7 @@ public class CssClassMap
         conditions.Add(new MaybeCssClassCondition(cssClass));
         return this;
     }
-    
+
     public override string ToString()
     {
         var classes = new List<string>();

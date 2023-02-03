@@ -50,7 +50,7 @@ public static class KeyAndDescriptionFunctionDelegates
             type =>
             {
                 var properties = type.GetRuntimeProperties()
-                    .Where(p => CommonDescriptionNames.Contains(p.Name, StringComparer.OrdinalIgnoreCase))
+                    .Where(p => CommonDescriptionNames!.Contains(p.Name, StringComparer.OrdinalIgnoreCase))
                     .Select(p => new TypeDescriptor() { Property = p })
                     .ToArray();
                 

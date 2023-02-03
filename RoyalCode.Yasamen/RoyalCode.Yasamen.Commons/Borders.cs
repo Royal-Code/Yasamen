@@ -210,3 +210,372 @@ public enum BorderRoundedSize
     Medium,
     Large
 }
+
+public interface IBorderBuilder
+{
+    IBorderStyleBuilder Style { get; }
+
+    IBorderColorBuilder Color { get; }
+
+    IBorderWidthBuilder Width { get; }
+
+    IBorderRadiusBuilder Radius { get; }
+
+    IBorderShadowBuilder Shadow { get; }
+
+    Borders Build();
+}
+
+public interface IBorderStyleBuilder
+{
+    IBorderBuilder Style(BorderStyle style);
+
+    IBorderBuilder Default();
+
+    IBorderBuilder Top();
+
+    IBorderBuilder End();
+
+    IBorderBuilder Bottom();
+
+    IBorderBuilder Start();
+
+    IBorderBuilder NotAtTop();
+
+    IBorderBuilder NotAtEnd();
+
+    IBorderBuilder NotAtBottom();
+
+    IBorderBuilder NotAtStart();
+
+    IBorderBuilder None();
+}
+
+public interface IBorderColorBuilder
+{
+    IBorderBuilder Color(Themes color);
+
+    IBorderBuilder Default();
+
+    IBorderBuilder Primary();
+
+    IBorderBuilder Secondary();
+
+    IBorderBuilder Success();
+
+    IBorderBuilder Danger();
+
+    IBorderBuilder Warning();
+
+    IBorderBuilder Info();
+
+    IBorderBuilder Light();
+
+    IBorderBuilder Dark();
+
+    IBorderBuilder White();
+
+    IBorderBuilder Main();
+}
+
+public interface IBorderWidthBuilder
+{
+    IBorderBuilder Size(Sizes size);
+
+    IBorderBuilder Smallest();
+
+    IBorderBuilder Small();
+
+    IBorderBuilder Medium();
+
+    IBorderBuilder Large();
+
+    IBorderBuilder Largest();
+}
+
+public interface IBorderRadiusBuilder
+{
+    IBorderRoundedSizeBuilder Radius(BorderRadius radius);
+
+    IBorderRoundedSizeBuilder Default();
+
+    IBorderRoundedSizeBuilder Top();
+
+    IBorderRoundedSizeBuilder End();
+
+    IBorderRoundedSizeBuilder Bottom();
+
+    IBorderRoundedSizeBuilder Start();
+
+    IBorderRoundedSizeBuilder Circle();
+
+    IBorderRoundedSizeBuilder Pill();
+
+    IBorderRoundedSizeBuilder None();
+}
+
+public interface IBorderRoundedSizeBuilder
+{
+    IBorderBuilder RoundedSize(BorderRoundedSize roundedSize);
+
+    IBorderBuilder Default();
+
+    IBorderBuilder None();
+
+    IBorderBuilder Small();
+
+    IBorderBuilder Medium();
+
+    IBorderBuilder Large();
+}
+
+public interface IBorderShadowBuilder
+{
+    IBorderBuilder Shadow(Shadows shadow);
+
+    IBorderBuilder None();
+
+    IBorderBuilder Smallest();
+
+    IBorderBuilder Small();
+
+    IBorderBuilder Medium();
+
+    IBorderBuilder Large();
+
+    IBorderBuilder Largest();
+}
+
+internal class BorderBuilder : IBorderBuilder
+{
+    private Borders borders;
+
+    public BorderBuilder() : this(Borders.Default) { }
+    
+    public BorderBuilder(Borders borders)
+    {
+        this.borders = borders;
+    }
+
+    public IBorderStyleBuilder Style => new BorderStyleBuilder(borders);
+
+    public IBorderColorBuilder Color => new BorderColorBuilder(borders);
+
+    public IBorderWidthBuilder Width => new BorderWidthBuilder(borders);
+
+    public IBorderRadiusBuilder Radius => new BorderRadiusBuilder(borders);
+
+    public IBorderShadowBuilder Shadow => new BorderShadowBuilder(borders);
+
+    public Borders Build() => borders;
+}
+
+internal class BorderShadowBuilder : IBorderShadowBuilder
+{
+    private Borders borders;
+
+    public BorderShadowBuilder(Borders borders)
+    {
+        this.borders = borders;
+    }
+
+    public IBorderBuilder Shadow(Shadows shadow)
+    {
+        borders = borders with
+        {
+            Shadow = shadow
+        };
+
+        return new BorderBuilder(borders);
+    }
+
+    public IBorderBuilder None() => Shadow(Shadows.None);
+
+    public IBorderBuilder Smallest() => Shadow(Shadows.Smallest);
+
+    public IBorderBuilder Small() => Shadow(Shadows.Small);
+
+    public IBorderBuilder Medium() => Shadow(Shadows.Medium);
+
+    public IBorderBuilder Large() => Shadow(Shadows.Large);
+
+    public IBorderBuilder Largest() => Shadow(Shadows.Largest);
+}
+
+internal class BorderRoundedSizeBuilder : IBorderRoundedSizeBuilder
+{
+    private Borders borders;
+
+    public BorderRoundedSizeBuilder(Borders borders)
+    {
+        this.borders = borders;
+    }
+
+    public IBorderBuilder RoundedSize(BorderRoundedSize roundedSize)
+    {
+        borders = borders with
+        {
+            RoundedSize = roundedSize
+        };
+
+        return new BorderBuilder(borders);
+    }
+
+    public IBorderBuilder Default() => RoundedSize(BorderRoundedSize.Default);
+
+    public IBorderBuilder None() => RoundedSize(BorderRoundedSize.None);
+
+    public IBorderBuilder Small() => RoundedSize(BorderRoundedSize.Small);
+
+    public IBorderBuilder Medium() => RoundedSize(BorderRoundedSize.Medium);
+
+    public IBorderBuilder Large() => RoundedSize(BorderRoundedSize.Large);
+}
+
+internal class BorderRadiusBuilder : IBorderRadiusBuilder
+{
+    private Borders borders;
+
+    public BorderRadiusBuilder(Borders borders)
+    {
+        this.borders = borders;
+    }
+
+    public IBorderRoundedSizeBuilder Radius(BorderRadius radius)
+    {
+        borders = borders with
+        {
+            Radius = radius
+        };
+
+        return new BorderRoundedSizeBuilder(borders);
+    }
+
+    public IBorderRoundedSizeBuilder Default() => Radius(BorderRadius.Default);
+
+    public IBorderRoundedSizeBuilder Top() => Radius(BorderRadius.Top);
+
+    public IBorderRoundedSizeBuilder End() => Radius(BorderRadius.End);
+
+    public IBorderRoundedSizeBuilder Bottom() => Radius(BorderRadius.Bottom);
+
+    public IBorderRoundedSizeBuilder Start() => Radius(BorderRadius.Start);
+
+    public IBorderRoundedSizeBuilder Circle() => Radius(BorderRadius.Circle);
+
+    public IBorderRoundedSizeBuilder Pill() => Radius(BorderRadius.Pill);
+
+    public IBorderRoundedSizeBuilder None() => Radius(BorderRadius.None);
+}
+
+internal class BorderWidthBuilder : IBorderWidthBuilder
+{
+    private Borders borders;
+
+    public BorderWidthBuilder(Borders borders)
+    {
+        this.borders = borders;
+    }
+
+    public IBorderBuilder Size(Sizes size)
+    {
+        borders = borders with
+        {
+            Width = size
+        };
+
+        return new BorderBuilder(borders);
+    }
+
+    public IBorderBuilder Smallest() => Size(Sizes.Smallest);
+
+    public IBorderBuilder Small() => Size(Sizes.Small);
+
+    public IBorderBuilder Medium() => Size(Sizes.Medium);
+
+    public IBorderBuilder Large() => Size(Sizes.Large);
+
+    public IBorderBuilder Largest() => Size(Sizes.Largest);
+}
+
+internal class BorderColorBuilder : IBorderColorBuilder
+{
+    private Borders borders;
+
+    public BorderColorBuilder(Borders borders)
+    {
+        this.borders = borders;
+    }
+
+    public IBorderBuilder Color(Themes color)
+    {
+        borders = borders with
+        {
+            Color = color
+        };
+
+        return new BorderBuilder(borders);
+    }
+
+    public IBorderBuilder Default() => Color(Themes.Default);
+
+    public IBorderBuilder Primary() => Color(Themes.Primary);
+
+    public IBorderBuilder Secondary() => Color(Themes.Secondary);
+
+    public IBorderBuilder Success() => Color(Themes.Success);
+
+    public IBorderBuilder Danger() => Color(Themes.Danger);
+
+    public IBorderBuilder Warning() => Color(Themes.Warning);
+
+    public IBorderBuilder Info() => Color(Themes.Info);
+
+    public IBorderBuilder Light() => Color(Themes.Light);
+
+    public IBorderBuilder Dark() => Color(Themes.Dark);
+
+    public IBorderBuilder White() => Color(Themes.White);
+
+    public IBorderBuilder Main() => Color(Themes.Main);
+}
+
+internal class BorderStyleBuilder : IBorderStyleBuilder
+{
+    private Borders borders;
+
+    public BorderStyleBuilder(Borders borders)
+    {
+        this.borders = borders;
+    }
+
+    public IBorderBuilder Style(BorderStyle style)
+    {
+        borders = borders with
+        {
+            Style = style
+        };
+        
+        return new BorderBuilder(borders);
+    }
+
+    public IBorderBuilder Default() => Style(BorderStyle.Default);
+
+    public IBorderBuilder Top() => Style(BorderStyle.Top);
+
+    public IBorderBuilder End() => Style(BorderStyle.End);
+
+    public IBorderBuilder Bottom() => Style(BorderStyle.Bottom);
+
+    public IBorderBuilder Start() => Style(BorderStyle.Start);
+
+    public IBorderBuilder NotAtTop() => Style(BorderStyle.NotAtTop);
+
+    public IBorderBuilder NotAtEnd() => Style(BorderStyle.NotAtEnd);
+
+    public IBorderBuilder NotAtBottom() => Style(BorderStyle.NotAtBottom);
+
+    public IBorderBuilder NotAtStart() => Style(BorderStyle.NotAtStart);
+
+    public IBorderBuilder None() => Style(BorderStyle.None);
+}

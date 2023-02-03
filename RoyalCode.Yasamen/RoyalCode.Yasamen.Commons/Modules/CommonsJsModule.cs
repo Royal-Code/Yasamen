@@ -14,7 +14,8 @@ public class CommonsJsModule : JsModuleBase
     private const string getLocalStorageItem = "getLocalStorageItem";
     private const string removeLocalStorageItem = "removeLocalStorageItem";
 
-    private JsonSerializerOptions __jsonSerializerOptions;
+    // do not use this field, use the property Options
+    private JsonSerializerOptions __jsonSerializerOptions = null!;
 
     public CommonsJsModule(IJSRuntime js) : base(js, "commons.js") { }
 
@@ -117,7 +118,7 @@ public class CommonsJsModule : JsModuleBase
         return RemoveLocalStorageItem(typeof(T).Name);
     }
 
-    private object[] ReOrgArgs(ElementReference element, string method, int timeout, params object[] arguments)
+    private static object[] ReOrgArgs(ElementReference element, string method, int timeout, params object[] arguments)
     {
         var args = new object[arguments.Length + 3];
 

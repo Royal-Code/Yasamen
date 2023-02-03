@@ -258,16 +258,24 @@
     position: sticky;
 }
 
-.translate-middle {
-    transform: translate(-50%, -50%);
-}
-
+.translate-middle,
 .translate-middle-x {
     transform: translateX(-50%);
 }
 
+.translate-middle,
 .translate-middle-y {
     transform: translateY(-50%);
+}
+
+.translate-full,
+.translate-full-x {
+    transform: translateX(-100%);
+}
+
+.translate-full,
+.translate-full-y {
+    transform: translateY(-100%);
 }
 
 .border {
@@ -960,6 +968,10 @@
     padding-left: 3rem;
 }
 
+.gap {
+    gap: var(--b-gap-x) var(--b-gap-y);
+}
+
 .gap-0 {
     gap: 0;
 }
@@ -983,7 +995,6 @@
 .gap-5 {
     gap: 3rem;
 }
-
 
 .text-start {
     text-align: left;
@@ -1009,6 +1020,26 @@
     text-decoration: line-through;
 }
 
+.text-decoration-overline {
+    text-decoration: overline;
+}
+
+.text-decoration-underline-line-through {
+    text-decoration: underline line-through;
+}
+
+.text-decoration-overline-line-through {
+    text-decoration: overline line-through;
+}
+
+.text-decoration-overline-underline {
+    text-decoration: overline underline;
+}
+
+.text-decoration-overline-underline-line-through {
+    text-decoration: overline underline line-through;
+}
+
 .text-lowercase {
     text-transform: lowercase;
 }
@@ -1026,6 +1057,24 @@
 }
 
 .text-nowrap {
+    white-space: nowrap;
+}
+
+.text-pre {
+    white-space: pre;
+}
+
+.text-pre-line {
+    white-space: pre-line;
+}
+
+.text-pre-wrap {
+    white-space: pre-wrap;
+}
+
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
 }
 
