@@ -1,10 +1,37 @@
 
-<div>
+<div @attributes="AdditionalAttributes" class="@classes">
     @ChildContent
+    @if (WhenLarge.IsNotEmptyFragment())
+    {
+        <div class="large-brand">
+            @WhenLarge
+        </div>
+    }
+    @if (WhenLarge.IsNotEmptyFragment())
+    {
+        <div class="short-brand">
+            @WhenShort
+        </div>
+    }
 </div>
 
 @code {
-    
+
+    private CssClassMap classes => CssClassMap.Create("app-brand")
+        .Add(AdditionalClasses);
+
     [Parameter]
     public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public RenderFragment WhenLarge { get; set; }
+
+    [Parameter]
+    public RenderFragment WhenShort { get; set; }
+
+    [Parameter]
+    public string AdditionalClasses { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> AdditionalAttributes { get; set; }
 }

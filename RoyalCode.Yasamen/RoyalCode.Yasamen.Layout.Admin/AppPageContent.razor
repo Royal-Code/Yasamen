@@ -17,16 +17,19 @@
 </div>
 
 @code {
-    CssClassMap PanelClasses => CssClassMap.Create("app-page-content", PanelBorder.CssClasses, PanelAdditionalClasses);
-    CssClassMap MainClasses => CssClassMap.Create("app-page-content-main m-2", MainAdditionalClasses);
-    CssClassMap HeaderClasses => CssClassMap.Create("app-page-content-header d-flex justify-content-between px-2 m-2", HeaderBorder.CssClasses, HeaderAdditionalClasses);
-    
-    [Parameter]
-    public Borders PanelBorder { get; set; } = Borders.Default;
+    CssClassMap PanelClasses => CssClassMap.Create(
+        "app-page-content", PanelBorder.CssClasses, PanelAdditionalClasses);
+    CssClassMap MainClasses => CssClassMap.Create(
+        "app-page-content-main m-2", MainAdditionalClasses);
+    CssClassMap HeaderClasses => CssClassMap.Create(
+        "app-page-content-header d-flex justify-content-between px-2 m-2", HeaderBorder.CssClasses, HeaderAdditionalClasses);
 
     [Parameter]
-    public Borders HeaderBorder { get; set; } = Borders.DefaultForHeaders;
-        
+    public Borders PanelBorder { get; set; } = AppDefaults.PageContentPanelBorder;
+
+    [Parameter]
+    public Borders HeaderBorder { get; set; } = AppDefaults.PageContentHeaderBorder;
+
     [Parameter]
     public string? PanelAdditionalClasses { get; set; }
     
