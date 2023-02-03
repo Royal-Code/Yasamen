@@ -166,7 +166,7 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
     protected virtual int RenderInputValueAndBinder(RenderTreeBuilder builder, int index)
     {
         builder.AddAttribute(index, "value", CurrentValueAsString);
-        builder.AddAttribute(1 + index, "onchange", EventCallback.Factory.CreateBinder<string>(this, __value => CurrentValueAsString = __value, CurrentValueAsString ?? string.Empty));
+        builder.AddAttribute(1 + index, "onchange", EventCallback.Factory.CreateBinder<string>(this, __value => CurrentValueAsString = __value, CurrentValueAsString));
         return index + 2;
     }
 
@@ -222,27 +222,27 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
         await base.OnAfterRenderAsync(firstRender);
     }
     
-    private void OnFocus()
+    protected virtual void OnFocus()
     {
         isFocused = true;
         if (IsInvalid)
             ModelContext.EditorMessages.Show(FieldIdentifier);
     }
 
-    private void OnBlur()
+    protected virtual void OnBlur()
     {
         isFocused = false;
         if (IsInvalid)
             ModelContext.EditorMessages.Hide(FieldIdentifier);
     }
 
-    private void OnMouseOut()
+    protected virtual void OnMouseOut()
     {
         if (IsInvalid && isFocused is false)
             ModelContext.EditorMessages.Hide(FieldIdentifier);
     }
 
-    private void OnMouseEnter()
+    protected virtual void OnMouseEnter()
     {
         if (IsInvalid && isFocused is false)
             ModelContext.EditorMessages.Show(FieldIdentifier);

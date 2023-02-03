@@ -108,8 +108,8 @@
 
     private void SubmitHandler()
     {
-        friendJson = JsonSerializer.Serialize(friend)
-            + $", OtherValue: {otherValue}, OtherValue2: {otherValue2}, Password: {MyPassword}";
+        friendJson = JsonSerializer.Serialize(friend, new JsonSerializerOptions { WriteIndented = true })
+            + $"\nOtherValue: {otherValue}, OtherValue2: {otherValue2}, Password: {MyPassword}";
     }
 
     private void ToggleFailure()
