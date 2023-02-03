@@ -61,7 +61,7 @@
         
         <SelectKeyField TModel="City" TValue="int" @bind-Value="f.CityId" Label="City" Cols="3" />
 
-        <SelectKeyField TModel="City" TValue="int?" @bind-Value="f.AlterCityId" Label="City" Cols="3" />
+        <SelectKeyField TModel="City" TValue="int?" @bind-Value="f.AlterCityId" Label="Alter City" Cols="3" />
 
         <SelectModelField @bind-Value="f.Car" Label="Car" Cols="3" />
         
@@ -70,6 +70,10 @@
         <PasswordField @bind-Value="MyPassword" Label="Senha" ChangeSupport="MyPass" Cols="6" />
         
         <DateOnlyField @bind-Value="f.LastMeeting" Label="Last Meeting" Cols="3" />
+        
+        <NDateOnlyField @bind-Value="f.NextMetting" Label="Next Meeting" Cols="3" />
+
+        <DateTimeField @bind-Value="f.LastCall" Label="Last Call" Cols="3" />
         
         <Column>
             <SubmitButton Label="Submit" Cols="2" LgCols="1" />

@@ -30,6 +30,10 @@ public class Friend
     public Car Car { get; set; }
 
     public DateOnly LastMeeting { get; set; }
+
+    public DateOnly? NextMetting { get; set; }
+
+    public DateTime LastCall { get; set; }
 }
 
 
