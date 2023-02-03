@@ -2,21 +2,28 @@
 
 <AppLayout>
     <TopStart>
-        <AppBrand></AppBrand>
+        <AppBrand>
+            <WhenLarge>
+                <h5 class="m-0">Blazor Show</h5>
+            </WhenLarge>
+            <WhenShort>
+                <h5 class="m-0">BS</h5>
+            </WhenShort>
+        </AppBrand>
         <AppMenuButton>
             <Icon Kind="BsIconNames.List" />
         </AppMenuButton>
     </TopStart>
     <Menu>
         <AppNavMenu>
-            <AppNavItem Label="Home"/>
-            <AppNavItem Label="Counter" HRef="counter"/>
-            <AppNavItem Label="Fetch Data" HRef="fetchdata"/>
+            <AppNavItem Label="Home" />
+            <AppNavItem Label="Counter" HRef="counter" />
+            <AppNavItem Label="Fetch Data" HRef="fetchdata" />
             <AppNavItem Label="Blazor Show" HRef="show" />
-            <AppNavItem Label="Containers" HRef="containers"/>
-            <AppNavItem Label="Spinners" HRef="spinners"/>
-            <AppNavItem Label="App Layout" HRef="applayout"/>
-            <AppNavItem Label="Off Cavas" HRef="offcanvas"/>
+            <AppNavItem Label="Containers" HRef="containers" />
+            <AppNavItem Label="Spinners" HRef="spinners" />
+            <AppNavItem Label="App Layout" HRef="applayout" />
+            <AppNavItem Label="Off Cavas" HRef="offcanvas" />
             <AppNavItem Label="Form" HRef="form" />
         </AppNavMenu>
     </Menu>

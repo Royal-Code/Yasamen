@@ -1,14 +1,36 @@
 
-div {
+.app-brand {
     height: var(--b-header--height);
     width: var(--b-nav-menu--width);
     background-color: var(--b-theme-main);
 }
 
-/* --- screen -- phone  --- */
+.large-brand {
+    display: flex;
+}
 
+.large-brand, .short-brand {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    align-items: center;
+    justify-content: center;
+    color: var(--b-color-main-complementary-light);
+}
+
+.short-brand {
+    display: none;
+}
+
+/* --- screen -- phone  --- */
 @media screen and (max-width: 36rem) {
-    div {
+    .large-brand {
+        display: none;
+    }
+    .short-brand {
+        display: flex;
+    }
+    .app-brand {
         height: var(--b-header--phone--height);
         width: var(--b-header--phone--height);
     }

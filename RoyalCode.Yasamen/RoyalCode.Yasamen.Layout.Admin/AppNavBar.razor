@@ -57,7 +57,7 @@
     public bool UseEnd { get; set; } = true;
 
     [Parameter]
-    public bool Shadow { get; set; }
+    public bool Shadow { get; set; } = AppDefaults.NavBarShadow;
 
     [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object> AdditionalAttributes { get; set; }
