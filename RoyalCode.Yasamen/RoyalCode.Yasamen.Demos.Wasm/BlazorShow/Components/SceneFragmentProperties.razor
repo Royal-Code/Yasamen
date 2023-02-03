@@ -1,4 +1,5 @@
-﻿
+﻿@using RoyalCode.Yasamen.Demos.Wasm.BlazorShow.Components.Contexts;
+
 <div class="scene-fragment-properties">
     <div class="fragments-label">
         Fragments
@@ -7,14 +8,16 @@
         @foreach (var property in Properties)
         {
             <div class="fragments-value">
-                <PropertyValueRender Property="property" @key=property.Name />
+                <PropertyValueRender Property="property" Context="Context" @key=property.Name />
             </div>
         }
     </div>
 </div>
 
 @code {
-
+    [Parameter, EditorRequired]
+    public SceneContext? Context { get; set; }
+    
     [Parameter, EditorRequired]
     public IEnumerable<IScenePropertyDescription> Properties { get; set; }
 }

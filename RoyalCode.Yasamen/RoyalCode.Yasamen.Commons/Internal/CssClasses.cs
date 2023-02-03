@@ -22,3 +22,10 @@ internal class CssClasses : ICssClassBuilder
         }
     }
 }
+
+internal class CssClasses<T> : CssClasses, ICssClassBuilder<T>
+{
+    public CssClasses(string?[] cssClasses) : base(cssClasses) { }
+
+    public void Build(T value, ICollection<string> classes) => Build(classes);
+}

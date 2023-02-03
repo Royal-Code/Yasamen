@@ -1,11 +1,15 @@
-﻿<div class="@classes" style="@ProgressStyle" @attributes="AdditionalAttributes">
+﻿<div class="@Classes(this)" style="@ProgressStyle" @attributes="AdditionalAttributes">
     <CascadingValue Value="context" IsFixed="true">
         @ChildContent
     </CascadingValue>
 </div>
 
 @code {
-    private CssClassMap classes => CssClassMap.Create("progress-stacked").Add(AdditionalClasses);
+    private static CssMap<ProgressStacked> Classes = Css.Map<ProgressStacked>()
+        .Add("progress-stacked")
+        .Add(p => p.AdditionalClasses)
+        .Build();
+    
     private string ProgressStyle => Height > 0 ? $"height: {Height}px" : "";
     private readonly StackedContext context = new();
 

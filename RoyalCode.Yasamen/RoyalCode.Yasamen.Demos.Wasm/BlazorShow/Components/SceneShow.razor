@@ -23,9 +23,9 @@
                 <SceneProperty Property="property" Context="context" @key=@property.Name />
             }
             
-            <SceneFragmentProperties Properties="Scene.SceneProperties.Where(p => p.IsFragment)" />
+            <SceneFragmentProperties Properties="Scene.SceneProperties.Where(p => p.IsFragment)" Context="context" />
 
-            <SceneEventsProperties Properties="Scene.SceneProperties.Where(p => p.IsEvent)" />
+            <SceneEventsProperties Properties="Scene.SceneProperties.Where(p => p.IsEvent)" Context="context" />
                 
         </div>
     </div>

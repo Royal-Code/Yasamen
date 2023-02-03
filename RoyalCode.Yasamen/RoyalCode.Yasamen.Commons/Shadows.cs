@@ -5,11 +5,11 @@ public enum Shadows
     Default,
     
     None,
-    ExtraSmall,
+    Smallest,
     Small,
     Medium,
     Large,
-    ExtraLarge
+    Largest
 }
 
 public static class ShadowsExtensions
@@ -20,11 +20,11 @@ public static class ShadowsExtensions
         {
             Shadows.Default => string.Empty,
             Shadows.None => "shadow-0",
-            Shadows.ExtraSmall => "shadow-1",
+            Shadows.Smallest => "shadow-1",
             Shadows.Small => "shadow-2",
             Shadows.Medium => "shadow-3",
             Shadows.Large => "shadow-4",
-            Shadows.ExtraLarge => "shadow-5",
+            Shadows.Largest => "shadow-5",
             _ => throw new ArgumentOutOfRangeException(nameof(shadow), shadow, null)
         };
     }

@@ -18,3 +18,24 @@ internal class CssClassCondition : ICssClassBuilder
             classes.Add(cssClass);
     }
 }
+
+internal class CssClassCondition<T> : ICssClassBuilder<T>
+{
+    private readonly Func<T, bool> condition;
+    private readonly string cssClass;
+
+    public CssClassCondition(Func<T, bool> condition, string cssClass)
+    {
+        this.condition = condition ?? throw new ArgumentNullException(nameof(condition));
+        this.cssClass = cssClass ?? throw new ArgumentNullException(nameof(cssClass));
+    }
+
+    public void Build(T value, ICollection<string> classes)
+    {
+        if (string.IsNullOrWhiteSpace(cssClass))
+            return;
+        
+        if (condition(value))
+            classes.Add(cssClass);
+    }
+}

@@ -3,25 +3,28 @@
 
 @inject ToggleJsModule ToggleJs
 
-<aside class="@Classes" @attributes="Attributes" @ref="asideRef">
+<aside class="@Classes(this)" @attributes="Attributes" @ref="asideRef">
     <CascadingValue Value="Handler">
         @ChildContent
     </CascadingValue>
 </aside>
-<div class="@BackdropClasses" @onclick="async () => await Hide()" @ref="backdropRef"></div>
+<div class="@BackdropClasses(this)" @onclick="async () => await Hide()" @ref="backdropRef"></div>
 
 @code {
     private ElementReference? asideRef;
     private ElementReference? backdropRef;
 
-    private CssClassMap Classes => CssClassMap.Create(AdditionalClasses)
-        .Add(() => IsVisible, "offcanvas-show")
-        .Add(() => Fitting is Fitting.Overlaying, "offcanvas-overlaying");
+    private static CssMap<OffCanvas> Classes = Css.Map<OffCanvas>()
+        .Add(c => c.AdditionalClasses)
+        .Add(c => c.IsVisible, "offcanvas-show")
+        .Add(c => c.Fitting is Fitting.Overlaying, "offcanvas-overlaying")
+        .Build();
 
-    private CssClassMap BackdropClasses => CssClassMap.Create("offcanvas-backdrop")
-        .Add(() => IsVisible, "offcanvas-show")
-        .Add(() => Fitting is Fitting.Overlaying, "offcanvas-overlaying")
-        .Add(() => Modal, "offcanvas-modal");
+    private static CssMap<OffCanvas> BackdropClasses = Css.Map<OffCanvas>()
+        .Add(c => c.IsVisible, "offcanvas-show")
+        .Add(c => c.Fitting is Fitting.Overlaying, "offcanvas-overlaying")
+        .Add(c => c.Modal, "offcanvas-modal")
+        .Build();
 
     public bool IsVisible { get; private set; }
     
