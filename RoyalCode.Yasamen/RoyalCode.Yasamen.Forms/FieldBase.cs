@@ -47,7 +47,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
     /// <summary>
     /// It informs you if the value is invalid and the <c>aria-invalid</c> html attribute should be shown.
     /// </summary>
-    protected bool IsInvalid { get; private set; } = false;
+    protected bool IsInvalid { get; set; } = false;
 
     /// <summary>
     /// <para>
@@ -288,6 +288,8 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
 
         return parsed;
     }
+
+    protected virtual string GetInvalidInputErrorMessage() => InvalidInputErrorMessage;
 
     protected virtual void OnMessagesChanged()
     {
