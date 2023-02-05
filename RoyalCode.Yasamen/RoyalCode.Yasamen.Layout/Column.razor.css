@@ -2,6 +2,7 @@
 @media screen and (max-width: 48rem) {
     div {
         --b-cols-resize: 0.666667;
+        max-width: 100%;
     }
 }
 
@@ -10,6 +11,7 @@
     div {
         --b-cols-resize: 0.333333;
         --b-cols-resize-tablet: 0.5;
+        max-width: 100%;
     }
 }
 
@@ -17,6 +19,7 @@
 @media screen and (max-width: 24rem) {
     div {
         --b-cols-resize: 0.01;
+        max-width: 100%;
     }
 }
 
