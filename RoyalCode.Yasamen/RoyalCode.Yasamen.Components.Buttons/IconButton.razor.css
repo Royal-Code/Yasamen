@@ -38,26 +38,26 @@ button {
     }
 
 .btn-xs {
-    min-height: var(--b-icon-button-xs--height);
-    min-width: var(--b-icon-button-xs--width);
+    min-height: var(--b-icon-button-xs--size);
+    min-width: var(--b-icon-button-xs--size);
     font-size: var(--b-icon-button-xs--font-size);
 }
 
 .btn-sm {
-    min-height: var(--b-icon-button-sm--height);
-    min-width: var(--b-icon-button-sm--width);
+    min-height: var(--b-icon-button-sm--size);
+    min-width: var(--b-icon-button-sm--size);
     font-size: var(--b-icon-button-sm--font-size);
 }
 
 .btn-lg {
-    min-height: var(--b-icon-button-lg--height);
-    min-width: var(--b-icon-button-lg--width);
+    min-height: var(--b-icon-button-lg--size);
+    min-width: var(--b-icon-button-lg--size);
     font-size: var(--b-icon-button-lg--font-size);
 }
 
 .btn-xl {
-    min-height: var(--b-icon-button-xl--height);
-    min-width: var(--b-icon-button-xl--width);
+    min-height: var(--b-icon-button-xl--size);
+    min-width: var(--b-icon-button-xl--size);
     font-size: var(--b-icon-button-xl--font-size);
 }
 
