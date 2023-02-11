@@ -67,6 +67,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Component
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Services.Tests", "RoyalCode.Yasamen.Services.Tests\RoyalCode.Yasamen.Services.Tests.csproj", "{505911CD-AA2E-4076-A5EF-F38FCA1FA179}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Yasamen.Components.Dropdowns", "RoyalCode.Yasamen.Components.Dropdowns\RoyalCode.Yasamen.Components.Dropdowns.csproj", "{10F347E0-CE4A-433D-BC16-BB0AACCFAB7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +155,10 @@ Global
 		{505911CD-AA2E-4076-A5EF-F38FCA1FA179}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{505911CD-AA2E-4076-A5EF-F38FCA1FA179}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{505911CD-AA2E-4076-A5EF-F38FCA1FA179}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10F347E0-CE4A-433D-BC16-BB0AACCFAB7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10F347E0-CE4A-433D-BC16-BB0AACCFAB7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10F347E0-CE4A-433D-BC16-BB0AACCFAB7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10F347E0-CE4A-433D-BC16-BB0AACCFAB7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -183,6 +189,7 @@ Global
 		{7112DCB4-C4BF-4D9A-BE59-D4456A8D68D0} = {C1EE0F8C-7FA0-47AC-82C9-A634489C6206}
 		{C2015A26-892A-4150-A439-7447C16B566A} = {9A2739B3-0033-4046-81CD-53BEC5E3360F}
 		{505911CD-AA2E-4076-A5EF-F38FCA1FA179} = {6EF06E41-C0C1-4795-87F6-4211E108BD26}
+		{10F347E0-CE4A-433D-BC16-BB0AACCFAB7B} = {9A2739B3-0033-4046-81CD-53BEC5E3360F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {274B8D8D-7446-4563-A4F0-0000A0C7209B}

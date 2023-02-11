@@ -1,0 +1,116 @@
+﻿@using RoyalCode.Yasamen.Commons.Interops;
+@using RoyalCode.Yasamen.Commons.Modules;
+@using RoyalCode.Yasamen.Commons;
+
+@implements IAsyncDisposable
+
+@inject ClickJsModule ClickJsModule;
+
+<div class="@classes(this)" @attributes="AdditionalAttributes">
+    @Action
+    <ul class="drop-menu" @ref="DropMenuReference">
+        @Menu
+    </ul>
+</div>
+
+@code {
+    private static CssMap<DropBase> classes = Css.Map<DropBase>()
+        .Add("drop")
+        .Add(c => c.IsOpen, "show")
+        .Add(c => c.Direction == DropDirection.Down, "down")
+        .Add(c => c.Direction == DropDirection.Up, "up")
+        .Add(c => c.Direction == DropDirection.Left, "left")
+        .Add(c => c.Direction == DropDirection.Right, "right")
+        .Add(c => c.AdditionalClasses)
+        .Build();
+
+    private readonly Func<bool, ValueTask> onBodyClickHandler;
+    private JsBodyClickListener? listener;
+    private ElementReference? listenerRef;
+    private DropHandler? handler;
+
+    public DropBase()
+    {
+        onBodyClickHandler = OnBodyClickHandler;
+    }
+
+    public ElementReference DropMenuReference { get; private set; }
+
+    public bool IsOpen { get; private set; }
+
+    [Parameter]
+    public RenderFragment Action { get; set; } = default!;
+
+    [Parameter]
+    public RenderFragment Menu { get; set; } = default!;
+
+    [Parameter]
+    public DropHandler? Handler { get; set; }
+
+    [Parameter]
+    public DropDirection Direction { get; set; }
+
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    public void Open()
+    {
+        IsOpen = true;
+        StateHasChanged();
+    }
+
+    public void Close()
+    {
+        IsOpen = false;
+        StateHasChanged();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        listener = await ClickJsModule.CreateListenerAsync(onBodyClickHandler);
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (Handler != handler)
+        {
+            handler?.Unlisten();
+            handler = Handler;
+            handler?.Listen(this);
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (listener is null)
+            return;
+
+        if (IsOpen)
+            if (listenerRef is null || listenerRef.Value.Id != DropMenuReference.Id)
+            {
+                await listener.ListenAsync(DropMenuReference);
+                listenerRef = DropMenuReference;
+            }
+        else
+            if (listenerRef is not null)
+            {
+                await listener.UnlistenAsync();
+                listenerRef = null;
+            }
+    }
+
+    private ValueTask OnBodyClickHandler(bool isInside)
+    {
+        return ValueTask.CompletedTask;
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (listener is not null)
+            await listener.DisposeAsync();
+        listener = null;
+    }
+}

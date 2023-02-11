@@ -1,0 +1,33 @@
+﻿
+.drop {
+    position: relative;
+    display: inline-block;
+}
+
+.drop.down > .drop-menu {
+    top: 100%;
+    left: 0;
+}
+
+.down.up > .drop-menu {
+    top: auto;
+    bottom: 100%;
+}
+
+.down.right > .drop-menu {
+    left: auto;
+    right: 0;
+}
+
+.down.left > .drop-menu {
+    left: auto;
+    right: 0;
+}
+
+.drop-menu {
+    display: none;
+}
+
+drop.show > .drop-menu {
+    display: block;
+}
