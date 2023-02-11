@@ -34,6 +34,8 @@ export function callMethod(reference, method, timeout) {
     }
 }
 
+// functions to manage local storage
+
 export function setLocalStorageItem(key, value) {
     localStorage.setItem(key, value);
 }
@@ -44,4 +46,18 @@ export function getLocalStorageItem(key) {
 
 export function removeLocalStorageItem(key) {
     localStorage.removeItem(key);
+}
+
+// functions to manage session storage
+
+export function setSessionStorageItem(key, value) {
+    sessionStorage.setItem(key, value);
+}
+
+export function getSessionStorageItem(key) {
+    return sessionStorage.getItem(key);
+}
+
+export function removeSessionStorageItem(key) {
+    sessionStorage.removeItem(key);
 }
