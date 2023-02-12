@@ -409,6 +409,15 @@
     --b-icon-button-lg--font-size: 1.25rem;
     --b-icon-button-xl--size: 3rem;
     --b-icon-button-xl--font-size: 1.5rem;
+    /* drop */
+    --b-drop--bg: var(--b-color-light-d1);
+    --b-drop--border: 1px solid var(--b-color-light-d7);
+    --b-drop--border-radius: var(--b-border--radius-2);
+    --b-drop--box-shadow: var(--b-shadow-2);
+    --b-drop--z-index: 1;
+    --b-drop--transition: all .30s linear;
+    --b-drop--opacity: 0;
+    --b-drop--opacity--active: 1;
 }
 
 /***** Theme Colors *****/

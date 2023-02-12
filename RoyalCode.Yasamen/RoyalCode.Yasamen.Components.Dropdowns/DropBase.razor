@@ -16,12 +16,16 @@
 @code {
     private static CssMap<DropBase> classes = Css.Map<DropBase>()
         .Add("drop")
-        .Add(c => c.IsOpen, "show")
-        .Add(c => c.Direction == DropDirection.Down, "down")
-        .Add(c => c.Direction == DropDirection.Up, "up")
-        .Add(c => c.Direction == DropDirection.Left, "left")
-        .Add(c => c.Direction == DropDirection.Right, "right")
-        .Add(c => c.AdditionalClasses)
+        .Add(static c => c.IsOpen, "show")
+        .Add(static c => c.Direction == DropDirection.Down, "down")
+        .Add(static c => c.Direction == DropDirection.Up, "up")
+        .Add(static c => c.Direction == DropDirection.Left, "left")
+        .Add(static c => c.Direction == DropDirection.Right, "right")
+        .Add(static c => c.Align == DropAlign.Start, "align-start")
+        .Add(static c => c.Align == DropAlign.Center, "align-center")
+        .Add(static c => c.Align == DropAlign.End, "align-end")
+        .Add(static c => c.MinWidth.ToAbbrCssClass())
+        .Add(static c => c.AdditionalClasses)
         .Build();
 
     private readonly Func<bool, ValueTask> onBodyClickHandler;
@@ -49,6 +53,12 @@
 
     [Parameter]
     public DropDirection Direction { get; set; }
+
+    [Parameter]
+    public DropAlign Align { get; set; }
+
+    [Parameter]
+    public Sizes MinWidth { get; set; }
 
     [Parameter]
     public string? AdditionalClasses { get; set; }

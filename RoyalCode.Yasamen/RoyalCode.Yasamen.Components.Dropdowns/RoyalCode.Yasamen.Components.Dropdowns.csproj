@@ -12,6 +12,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\RoyalCode.Yasamen.Commons\RoyalCode.Yasamen.Commons.csproj" />
+	  <ProjectReference Include="..\RoyalCode.Yasamen.Components.Buttons\RoyalCode.Yasamen.Components.Buttons.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

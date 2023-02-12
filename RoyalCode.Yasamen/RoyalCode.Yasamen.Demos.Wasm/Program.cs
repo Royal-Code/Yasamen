@@ -34,6 +34,7 @@ builder.Services.AddScoped<ToggleJsModule>();
 builder.Services.AddScoped<CssStyleJsModule>();
 builder.Services.AddScoped<FormsJsModule>();
 builder.Services.AddScoped<EventsJsModule>();
+builder.Services.AddScoped<ClickJsModule>();
 
 // App services.
 builder.Services.Subscribes<DCService>();
