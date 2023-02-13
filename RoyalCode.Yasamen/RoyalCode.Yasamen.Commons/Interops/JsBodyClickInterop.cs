@@ -28,13 +28,13 @@ internal sealed class JsBodyClickInterop : IAsyncDisposable
         return module.InvokeVoidAsync(register, element, handleReference);
     }
 
-    public ValueTask UnlistenAsync()
+    public async ValueTask UnlistenAsync()
     {
         if (element is null)
-            return ValueTask.CompletedTask;
-
+            return;
+        
+        await module.InvokeVoidAsync(unregister, handleReference);
         element = null;
-        return module.InvokeVoidAsync(unregister, element, handleReference);
     }
 
     [JSInvokable]

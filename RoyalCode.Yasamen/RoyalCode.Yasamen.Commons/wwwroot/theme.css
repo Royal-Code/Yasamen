@@ -410,8 +410,8 @@
     --b-icon-button-xl--size: 3rem;
     --b-icon-button-xl--font-size: 1.5rem;
     /* drop */
-    --b-drop--bg: var(--b-color-light-d1);
-    --b-drop--border: 1px solid var(--b-color-light-d7);
+    --b-drop--bg: var(--b-color-light-l4);
+    --b-drop--border: 1px solid var(--b-color-light);
     --b-drop--border-radius: var(--b-border--radius-2);
     --b-drop--box-shadow: var(--b-shadow-2);
     --b-drop--z-index: 1;

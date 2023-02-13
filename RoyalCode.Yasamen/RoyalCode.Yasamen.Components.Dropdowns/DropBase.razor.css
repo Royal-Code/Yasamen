@@ -16,7 +16,7 @@
     opacity: var(--b-drop--opacity);
 }
 
-drop.show > .drop-menu {
+.drop.show > .drop-menu {
     display: block;
     opacity: var(--b-drop--opacity--active);
 }

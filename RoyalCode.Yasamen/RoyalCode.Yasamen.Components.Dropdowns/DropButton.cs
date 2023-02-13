@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
+using Microsoft.AspNetCore.Components.Web;
 using RoyalCode.Yasamen.Commons;
 
 namespace RoyalCode.Yasamen.Components;
@@ -103,10 +104,12 @@ public class DropButton : DropBase
         builder.CloseComponent();
     }
 
-    private void OnClick()
+    private void OnClick(MouseEventArgs args)
     {
         if (IsOpen)
             return;
+
+        Tracer.Write<DropButton>("OnClick", "Open the drop.");
         Open();
     }
 }
