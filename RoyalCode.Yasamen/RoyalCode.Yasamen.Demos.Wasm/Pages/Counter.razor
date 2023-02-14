@@ -10,8 +10,8 @@
 
 <br/>
 
-<DropButton Label="Dropdown" MinWidth="Sizes.Large" Style="ButtonStyles.Primary">
-    <li>Hello</li>
+<DropButton Label="Dropdown" MinWidth="Sizes.Large" Style="ButtonStyles.Primary" AdditionalClasses="mt-2">
+    <li @onclick="@(e => { Console.WriteLine("Hello drop item"); })">Hello</li>
 </DropButton>
 
 @code {
