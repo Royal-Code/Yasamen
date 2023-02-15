@@ -119,7 +119,6 @@
 
     private ValueTask OnBodyClickHandler(bool isInside)
     {
-        
         Tracer.Write<DropBase>("OnBodyClickHandler", "Close drop because body click");
         Close();
         return ValueTask.CompletedTask;
