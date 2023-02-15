@@ -9,10 +9,12 @@ namespace RoyalCode.Yasamen.Components;
 public class DropButton : DropBase
 {
     private readonly RenderFragment renderButton;
+    private readonly EventCallback<MouseEventArgs> onClickHandler;
 
     public DropButton()
     {
         renderButton = RenderButton;
+        onClickHandler = EventCallback.Factory.Create<MouseEventArgs>(this, OnClickHandler);
     }
 
     #region Button Parameters
@@ -66,7 +68,7 @@ public class DropButton : DropBase
         // check if the child content is set
         if (parameters.TryGetValue(nameof(ChildContent), out RenderFragment? cc))
         {
-            // if Menu is set then throw
+            // if DropContent is set then throw
             if (parameters.TryGetValue(nameof(DropContent), out RenderFragment? _))
                 throw new InvalidOperationException(
                     $"The parameter '{nameof(ChildContent)}' and '{nameof(DropContent)}' can not be used together in DropButton.");
@@ -85,11 +87,6 @@ public class DropButton : DropBase
         Action = renderButton;
 
         return base.SetParametersAsync(parameters);
-    }
-
-    protected override void BuildRenderTree(RenderTreeBuilder builder)
-    {
-        base.BuildRenderTree(builder);
     }
 
     private void RenderButton(RenderTreeBuilder builder)
@@ -116,16 +113,13 @@ public class DropButton : DropBase
         builder.AddAttribute(21, nameof(Button.UseIconAtEnd), UseIconAtEnd);
         if (!Split)
         {
-            Console.WriteLine("Add additional classes drop-button");
-
             // add arrow
             builder.AddAttribute(22, nameof(Button.AdditionalClasses), "drop-button");
             // add the button events
-            builder.AddAttribute(23, nameof(Button.OnClick), EventCallback.Factory.Create<MouseEventArgs>(this, OnClickHandler));
+            builder.AddAttribute(23, nameof(Button.OnClick), onClickHandler);
         }
         else
         {
-            Console.WriteLine("Add additional classes drop-button-split");
             builder.AddAttribute(22, nameof(Button.AdditionalClasses), "drop-button-split");
             builder.AddAttribute(23, nameof(Button.OnClick), OnClick);
         }
@@ -149,7 +143,7 @@ public class DropButton : DropBase
         builder.AddAttribute(4 + start, nameof(Button.Active), Active);
         builder.AddAttribute(5 + start, nameof(Button.Disabled), Disabled);
         builder.AddAttribute(6 + start, nameof(Button.AdditionalClasses), "drop-button");
-        builder.AddAttribute(7 + start, nameof(Button.OnClick), EventCallback.Factory.Create<MouseEventArgs>(this, OnClickHandler));
+        builder.AddAttribute(7 + start, nameof(Button.OnClick), onClickHandler);
         builder.AddAttribute(8 + start, nameof(Button.ChildContent), RenderToggleDropdownSpan);
         builder.CloseComponent();
     }

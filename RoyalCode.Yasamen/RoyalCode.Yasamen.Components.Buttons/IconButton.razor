@@ -2,10 +2,10 @@
 
 <button @attributes="AdditionalAttributes"
         type="@Type.ToHtmlAttr()"
-        class="@Classes"
+        class="@classes(this)"
         disabled="@Disabled"
         @onclick="Clicked"
-        @ref="ButonReference">
+        @ref="ButtonReference">
         
     <Icon Kind="Kind" @ref="IconReference" />
     
@@ -13,14 +13,15 @@
 
 @code {
 
-    private CssClassMap Classes =>
-        CssClassMap.Create("btn-icon")
-            .Add(Style.ToCssClass(Outline))
-            .Add(Size.ToButtonCssClass())
-            .Add(() => Active, "active")
-            .Add(AdditionalClasses);
+    private static CssMap<IconButton> classes = Css.Map<IconButton>()
+        .Add("btn-icon")
+        .Add(static c => c.Style.ToCssClass(c.Outline))
+        .Add(static c => c.Size.ToButtonCssClass())
+        .Add(static c => c.Active, "active")
+        .Add(static c => c.AdditionalClasses)
+        .Build();
 
-    public ElementReference ButonReference { get; private set; } = default!;
+    public ElementReference ButtonReference { get; private set; } = default!;
 
     public Icon IconReference { get; private set; } = default!;
 

@@ -55,6 +55,7 @@ builder.Services.AddBlazorShow(b =>
     b.AddShow<ButtonShow, Button>();
     b.AddShow<IconButtonShow, IconButton>();
     b.AddShow<DropButtonShow, DropButton>();
+    b.AddShow<DropIconShow, DropIcon>();
     b.AddShow<ProgressBarShow, ProgressBar>();
     b.AddShow<ProgressStackedShow, ProgressStacked>();
 });

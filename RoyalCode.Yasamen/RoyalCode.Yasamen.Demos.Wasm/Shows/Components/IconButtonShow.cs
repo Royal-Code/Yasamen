@@ -11,7 +11,7 @@ namespace RoyalCode.Yasamen.Demos.Wasm.Shows.Components
             builder.Group("Components")
                 .Name("Icon Button")
                 .Route("icon-button")
-                .Description("The Icon Button component is a icon inside a button that can be clicked.")
+                .Description("The Icon Button component is an icon inside a button that can be clicked.")
                 .Properties(cfg =>
                 {
                     
