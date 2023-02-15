@@ -1,7 +1,9 @@
 ﻿
-<li onclick="@(() => { Console.WriteLine("Action 1 clicked"); })">Action 1</li>
-<li onclick="@(() => { Console.WriteLine("Action 2 clicked"); })">Action 2</li>
-<li onclick="@(() => { Console.WriteLine("Action 3 clicked"); })">Action 3</li>
+
+
+<DropItem OnClick="@(() => { Console.WriteLine("Action 1 clicked"); })">Action 1</DropItem>
+<DropItem OnClick="@(() => { Console.WriteLine("Action 2 clicked"); })">Action 2</DropItem>
+<DropItem OnClick="@(() => { Console.WriteLine("Action 3 clicked"); })">Action 3</DropItem>
 
 @code {
 
