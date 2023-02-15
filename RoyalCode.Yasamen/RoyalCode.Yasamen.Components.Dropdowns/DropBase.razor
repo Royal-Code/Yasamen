@@ -7,8 +7,10 @@
 @inject ClickJsModule ClickJsModule;
 
 <div class="@classes(this)" @attributes="AdditionalAttributes">
-    @Action
-    <ul class="drop-menu" @ref="DropMenuReference">
+    <div @ref="DropReference">
+        @Action
+    </div>
+    <ul class="drop-menu">
         @Menu
     </ul>
 </div>
@@ -31,6 +33,7 @@
     private readonly Func<bool, ValueTask> onBodyClickHandler;
     private JsBodyClickListener? listener;
     private ElementReference? listenerRef;
+    private bool clickedInside;
     private DropHandler? handler;
 
     public DropBase()
@@ -38,7 +41,7 @@
         onBodyClickHandler = OnBodyClickHandler;
     }
 
-    public ElementReference DropMenuReference { get; private set; }
+    public ElementReference DropReference { get; private set; }
 
     public bool IsOpen { get; private set; }
 
@@ -68,6 +71,12 @@
 
     public void Open()
     {
+        if (clickedInside)
+        {
+            clickedInside = false;
+            return;
+        }
+
         Tracer.Write<DropBase>("Open", "Opening the drop");
         IsOpen = true;
         StateHasChanged();
@@ -102,11 +111,11 @@
 
         if (IsOpen)
         {
-            if (listenerRef is null || listenerRef.Value.Id != DropMenuReference.Id)
+            if (listenerRef is null || listenerRef.Value.Id != DropReference.Id)
             {
                 Tracer.Write<DropBase>("OnAfterRenderAsync", "Listening the body click");
-                await listener.ListenAsync(DropMenuReference);
-                listenerRef = DropMenuReference;
+                await listener.ListenAsync(DropReference);
+                listenerRef = DropReference;
             }
         }
         else if (listenerRef is not null)
@@ -119,8 +128,16 @@
 
     private ValueTask OnBodyClickHandler(bool isInside)
     {
+        if (isInside)
+        {
+            clickedInside = true;
+            Tracer.Write<DropBase>("OnBodyClickHandler", "Clicked Inside");
+        }
+
         Tracer.Write<DropBase>("OnBodyClickHandler", "Close drop because body click");
         Close();
+
+
         return ValueTask.CompletedTask;
     }
 

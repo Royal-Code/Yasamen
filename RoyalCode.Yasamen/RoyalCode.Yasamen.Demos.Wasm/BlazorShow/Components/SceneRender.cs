@@ -15,7 +15,7 @@ public sealed class SceneRender : ComponentBase, IDisposable
     {
         changeListenerDelegate = ChangeListener;
     }
-    
+
     [CascadingParameter]
     public SceneContext Context { get; set; }
 
@@ -32,7 +32,7 @@ public sealed class SceneRender : ComponentBase, IDisposable
     }
 
     private void ChangeListener()
-    {       
+    {
         InvokeAsync(StateHasChanged);
     }
 
@@ -51,15 +51,18 @@ public sealed class SceneRender : ComponentBase, IDisposable
 
             else if (property.PropertyDescription.IsHtmlAttributes)
                 builder.AddAttribute(seq++, property.PropertyDescription.Property.Name, property.GetAttributesDictionary());
-            
+
             else if (property.PropertyDescription.IsHtmlClasses)
                 builder.AddAttribute(seq++, property.PropertyDescription.Property.Name, property.GetClasses());
-            
+
             else if (property.PropertyDescription.HasComponents)
                 builder.AddAttribute(seq++, property.PropertyDescription.Property.Name, RenderFragment(property.ValueFragmentComponents!));
-            
+
             else if (property.PropertyDescription.HasValueSet)
                 builder.AddAttribute(seq++, property.PropertyDescription.Property.Name, property.TryGetValue<IValueDescription>()?.GetValue());
+
+            else if (property.PropertyDescription.IsFragment && property.Value is null)
+                seq++;
 
             else
                 builder.AddAttribute(seq++, property.PropertyDescription.Property.Name, property.Value);
@@ -78,7 +81,7 @@ public sealed class SceneRender : ComponentBase, IDisposable
             {
                 builder.OpenRegion(seq++);
                 builder.OpenComponent(seq++, description.ComponentType);
-                
+
                 foreach (var property in description.PropertyValues)
                 {
                     if (property.Value is null)
@@ -86,10 +89,10 @@ public sealed class SceneRender : ComponentBase, IDisposable
 
                     if (property.IsCaptureUnmatchedValues)
                         builder.AddMultipleAttributes(seq++, (IEnumerable<KeyValuePair<string, object>>)property.Value);
-                                        
+
                     else if (property.HasComponents)
-                        builder.AddAttribute(seq++, 
-                            property.PropertyInfo.Name, 
+                        builder.AddAttribute(seq++,
+                            property.PropertyInfo.Name,
                             RenderFragment((List<FragmentComponentDescription>)property.Value));
 
                     else
