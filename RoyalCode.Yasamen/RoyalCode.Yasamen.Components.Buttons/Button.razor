@@ -1,41 +1,41 @@
 ﻿@inject NavigationManager Navigator
 
-<button type="@Type.ToHtmlAttr()" 
-        class="@Classes" 
+<button type="@Type.ToHtmlAttr()"
+        class="@classes(this)"
         disabled="@Disabled"
-        @onclick="ClickHandler" 
-        @attributes="AdditionalAttributes" 
+        @onclick="ClickHandler"
+        @attributes="AdditionalAttributes"
         @ref="Reference">
-    
+
     @if (Icon is not null && !UseIconAtEnd)
     {
         <Icon Kind="@Icon" />
     }
-    
+
     @Label
-    
+
     @if (Icon is not null && UseIconAtEnd)
     {
         <Icon Kind="@Icon" />
     }
-    
+
     @ChildContent
-        
+
 </button>
 
 @code {
+    private static CssMap<Button> classes = Css.Map<Button>()
+            .Add("btn")
+            .Add(static c => c.Style.ToCssClass(c.Outline))
+            .Add(static c => c.Size.ToButtonCssClass())
+            .Add(static c => c.Block, "btn-block")
+            .Add(static c => c.Active, "active")
+            .Add(static c => c.UseIconAtEnd, "icon-at-end")
+            .Add(static c => c.AdditionalClasses)
+            .Build();
 
-    private CssClassMap Classes =>
-        CssClassMap.Create("btn")
-            .Add(Style.ToCssClass(Outline))
-            .Add(Size.ToButtonCssClass())
-            .Add(() => Block, "btn-block")
-            .Add(() => Active, "active")
-            .Add(() => UseIconAtEnd, "icon-at-end")
-            .Add(AdditionalClasses);
-    
     public ElementReference Reference { get; private set; }
-    
+
     [Parameter, EditorRequired]
     public string Label { get; set; } = null!;
 
@@ -50,13 +50,13 @@
 
     [Parameter]
     public Sizes Size { get; set; }
-    
+
     [Parameter]
     public Enum? Icon { get; set; }
 
     [Parameter]
     public int? IconRotateAngle { get; set; }
-    
+
     [Parameter]
     public bool Outline { get; set; }
 
@@ -68,10 +68,10 @@
 
     [Parameter]
     public bool Disabled { get; set; }
-    
+
     [Parameter]
     public bool UseIconAtEnd { get; set; }
-    
+
     [Parameter]
     public string? AdditionalClasses { get; set; }
 

@@ -10,9 +10,18 @@
     <div @ref="DropReference">
         @Action
     </div>
-    <ul class="drop-menu">
-        @Menu
-    </ul>
+    @if (ContentType == DropContentType.List)
+    {
+        <ul class="drop-content">
+            @DropContent
+        </ul>
+    }
+    else
+    {
+        <div class="drop-content">
+            @DropContent
+        </div>
+    }
 </div>
 
 @code {
@@ -51,7 +60,7 @@
     public RenderFragment Action { get; set; } = default!;
 
     [Parameter]
-    public RenderFragment Menu { get; set; } = default!;
+    public RenderFragment DropContent { get; set; } = default!;
 
     [Parameter]
     public DropHandler? Handler { get; set; }
@@ -64,6 +73,9 @@
 
     [Parameter]
     public Sizes MinWidth { get; set; }
+
+    [Parameter]
+    public DropContentType ContentType { get; set; }
 
     [Parameter]
     public string? AdditionalClasses { get; set; }
