@@ -29,6 +29,7 @@ public class DropButtonShow : IShow<DropButton>
                     {
                         sp.Property(p => p.Label).DefaultValue("Click to open the menu");
                         sp.Property(p => p.Icon).DefaultValue(null);
+                        sp.Property(p => p.Style).DefaultValue(ButtonStyles.Primary);
                         sp.Property(p => p.ChildContent).RenderComponent<DropMenuSample>();
                     });
             });

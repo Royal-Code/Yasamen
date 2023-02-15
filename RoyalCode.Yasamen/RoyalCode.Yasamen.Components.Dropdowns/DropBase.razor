@@ -6,7 +6,7 @@
 
 @inject ClickJsModule ClickJsModule;
 
-<div class="@classes(this)" @attributes="AdditionalAttributes">
+<div class="@classes(this)" aria-expanded="@AriaExpanded" @attributes="AdditionalAttributes">
     <div @ref="DropReference">
         @Action
     </div>
@@ -40,6 +40,8 @@
     {
         onBodyClickHandler = OnBodyClickHandler;
     }
+
+    public string AriaExpanded => IsOpen.ToString().ToLowerInvariant();
 
     public ElementReference DropReference { get; private set; }
 
