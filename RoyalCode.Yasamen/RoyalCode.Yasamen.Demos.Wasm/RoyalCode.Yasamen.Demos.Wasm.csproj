@@ -26,6 +26,7 @@
 		<ProjectReference Include="..\RoyalCode.Yasamen.Animations\RoyalCode.Yasamen.Animations.csproj" />
 		<ProjectReference Include="..\RoyalCode.Yasamen.Components.Alerts\RoyalCode.Yasamen.Components.Alerts.csproj" />
 		<ProjectReference Include="..\RoyalCode.Yasamen.Components.Buttons\RoyalCode.Yasamen.Components.Buttons.csproj" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.Components.Dropdowns\RoyalCode.Yasamen.Components.Dropdowns.csproj" />
 		<ProjectReference Include="..\RoyalCode.Yasamen.Components.OffCanvas\RoyalCode.Yasamen.Components.OffCanvas.csproj" />
 		<ProjectReference Include="..\RoyalCode.Yasamen.Components.ProgressBar\RoyalCode.Yasamen.Components.ProgressBar.csproj" />
 		<ProjectReference Include="..\RoyalCode.Yasamen.Forms\RoyalCode.Yasamen.Forms.csproj" />

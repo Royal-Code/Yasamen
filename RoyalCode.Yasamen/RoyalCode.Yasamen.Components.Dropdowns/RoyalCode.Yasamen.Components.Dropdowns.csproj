@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<Import Project="..\version.targets" />
+
+	<PropertyGroup>
+		<RootNamespace>RoyalCode.Yasamen.Components</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(WasmVer)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\RoyalCode.Yasamen.Commons\RoyalCode.Yasamen.Commons.csproj" />
+	  <ProjectReference Include="..\RoyalCode.Yasamen.Components.Buttons\RoyalCode.Yasamen.Components.Buttons.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update=".\DropBase.razor.css" CssScope="b-drop" />
+		<None Update=".\DropItem.razor.css" CssScope="b-drop-item" />
+	</ItemGroup>
+	
+</Project>

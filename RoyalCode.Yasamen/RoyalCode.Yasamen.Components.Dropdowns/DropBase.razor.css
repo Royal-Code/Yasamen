@@ -1,0 +1,174 @@
+﻿
+.drop {
+    position: relative;
+    display: inline-block;
+}
+
+.drop-content {
+    display: none;
+    position: absolute;
+    background-color: var(--b-drop--bg);
+    border: var(--b-drop--border);
+    border-radius: var(--b-drop--border-radius);
+    box-shadow: var(--b-drop--box-shadow);
+    z-index: var(--b-drop--z-index);
+    transition: var(--b-drop--transition);
+    opacity: var(--b-drop--opacity);
+    padding: var(--b-drop--padding);
+    margin: 0;
+    text-align: left;
+}
+
+.drop.show > .drop-content {
+    display: block;
+    opacity: var(--b-drop--opacity--active);
+}
+
+.drop.down > .drop-content {
+    top: 100%;
+}
+
+.drop.up > .drop-content {
+    top: auto;
+    bottom: 100%;
+}
+
+.drop.right > .drop-content {
+    left: auto;
+    right: 0;
+    transform: translateX(100%);
+}
+
+.drop.left > .drop-content {
+    left: 0;
+    right: auto;
+    transform: translateX(-100%);
+}
+
+.drop.down.align-start > .drop-content, .drop.up.align-start > .drop-content {
+    left: 0;
+}
+
+.drop.down.align-end > .drop-content, .drop.up.align-end > .drop-content {
+    right: 0;
+}
+
+.drop.down.align-center > .drop-content, .drop.up.align-center > .drop-content {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.drop.right.align-start > .drop-content, .drop.left.align-start > .drop-content {
+    top: 0;
+}
+
+.drop.right.align-end > .drop-content, .drop.left.align-end > .drop-content {
+    bottom: 0;
+}
+
+.drop.right.align-center > .drop-content {
+    top: 50%;
+    transform: translateX(100%) translateY(-50%);
+}
+
+.drop.left.align-center > .drop-content {
+    top: 50%;
+    transform: translateX(-100%) translateY(-50%);
+}
+
+.drop.xs > .drop-content {
+    min-width: var(--b-size-x2);
+}
+
+.drop.sm > .drop-content {
+    min-width: var(--b-size-x3);
+}
+
+.drop.md > .drop-content {
+    min-width: var(--b-size-x4);
+}
+
+.drop.lg > .drop-content {
+    min-width: var(--b-size-x5);
+}
+
+.drop.xl > .drop-content {
+    min-width: var(--b-size-x6);
+}
+
+ul.drop-content ::deep > li {
+    /* no bullet */
+    list-style-type: none;
+}
+
+.drop:not(.left) ::deep .drop-button::after {
+    display: inline-block;
+    margin-left: .275rem;
+    vertical-align: .25rem;
+    content: "";
+}
+
+.drop.down ::deep .drop-button::after {
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-bottom: 0;
+    border-left: .3em solid transparent;
+}
+
+.drop.up ::deep .drop-button::after {
+    border-top: 0;
+    border-right: .3em solid transparent;
+    border-bottom: .3em solid;
+    border-left: .3em solid transparent;
+}
+
+.drop.right ::deep .drop-button::after {
+    border-top: .3em solid transparent;
+    border-right: 0;
+    border-bottom: .3em solid transparent;
+    border-left: .3em solid;
+}
+
+.drop.left ::deep .drop-button::before {
+    display: inline-block;
+    margin-right: .275rem;
+    vertical-align: .25rem;
+    content: "";
+    border-top: .3em solid transparent;
+    border-right: .3em solid;
+    border-bottom: .3em solid transparent;
+}
+
+.drop > div:nth-child(1) {
+    display: flex;
+}
+
+.drop:not(.left) ::deep .drop-button-split {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.drop:not(.left) ::deep .drop-button:nth-child(2) {
+    margin-left: -1px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    flex: 1 1 auto;
+    padding-left: 0.25rem;
+    padding-right: 0.5rem;
+    position: relative;
+}
+
+.drop.left ::deep .drop-button-split {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.drop.left ::deep .drop-button:nth-child(1):not(:last-child) {
+    margin-right: -1px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    flex: 1 1 auto;
+    padding-left: 0.5rem;
+    padding-right: 0.25rem;
+    position: relative;
+}

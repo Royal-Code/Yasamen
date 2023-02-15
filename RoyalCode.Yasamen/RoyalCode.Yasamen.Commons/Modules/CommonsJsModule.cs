@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace RoyalCode.Yasamen.Commons.Modules;
 
-public class CommonsJsModule : JsModuleBase
+public sealed class CommonsJsModule : JsModuleBase
 {
     private const string getPropertyFn = "getProperty";
     private const string setPropertyFn = "setProperty";
@@ -13,6 +13,9 @@ public class CommonsJsModule : JsModuleBase
     private const string setLocalStorageItem = "setLocalStorageItem";
     private const string getLocalStorageItem = "getLocalStorageItem";
     private const string removeLocalStorageItem = "removeLocalStorageItem";
+    private const string setSessionStorageItem = "setSessionStorageItem";
+    private const string getSessionStorageItem = "getSessionStorageItem";
+    private const string removeSessionStorageItem = "removeSessionStorageItem";
 
     // do not use this field, use the property Options
     private JsonSerializerOptions __jsonSerializerOptions = null!;
@@ -30,17 +33,38 @@ public class CommonsJsModule : JsModuleBase
         }
     }
 
+    #region Element properties ( get and set )
+
+    /// <summary>
+    /// Get the value of a property of an element.
+    /// </summary>
+    /// <typeparam name="T">The type of the property.</typeparam>
+    /// <param name="element">The element reference.</param>
+    /// <param name="property">The name of the property.</param>
+    /// <returns>The value of the property.</returns>
     public async ValueTask<T> GetPropertyAsync<T>(ElementReference element, string property)
     {
         var js = await GetModuleAsync();
         return await js.InvokeAsync<T>(getPropertyFn, element, property);
     }
 
+    /// <summary>
+    /// Set the value of a property of an element.
+    /// </summary>
+    /// <typeparam name="T">The type of the property.</typeparam>
+    /// <param name="element">The element reference.</param>
+    /// <param name="property">The name of the property.</param>
+    /// <param name="value">The value of the property.</param>
+    /// <returns>A task that represents the asynchronous operation.</returns>
     public async ValueTask SetPropertyAsync<T>(ElementReference element, string property, object value)
     {
         var js = await GetModuleAsync();
         await js.InvokeVoidAsync(setPropertyFn, element, property, value);
     }
+
+    #endregion
+
+    #region js properties and functions
 
     public async ValueTask<T> ReadPropertyAsync<T>(string path)
     {
@@ -72,6 +96,10 @@ public class CommonsJsModule : JsModuleBase
         else
             await js.InvokeVoidAsync(callMethodFn, args: ReOrgArgs(element, method, timeout, arguments));
     }
+
+    #endregion
+
+    #region local storage
 
     public async ValueTask SetLocalStorageItem(string key, string value)
     {
@@ -117,6 +145,57 @@ public class CommonsJsModule : JsModuleBase
     {
         return RemoveLocalStorageItem(typeof(T).Name);
     }
+
+    #endregion
+
+    #region session storage
+
+    public async ValueTask SetSessionStorageItem(string key, string value)
+    {
+        var js = await GetModuleAsync();
+        await js.InvokeVoidAsync(setSessionStorageItem, key, value);
+    }
+
+    public async ValueTask<string> GetSessionStorageItem(string key)
+    {
+        var js = await GetModuleAsync();
+        return await js.InvokeAsync<string>(getSessionStorageItem, key);
+    }
+
+    public async ValueTask RemoveSessionStorageItem(string key)
+    {
+        var js = await GetModuleAsync();
+        await js.InvokeVoidAsync(removeSessionStorageItem, key);
+    }
+
+    public ValueTask SetSessionStorageItem<T>(T value, string? key = null)
+    {
+        // serialize value to json
+        var jsonValue = JsonSerializer.Serialize<T>(value, Options);
+
+        // check key name
+        key ??= typeof(T).Name;
+
+        return SetSessionStorageItem(key, jsonValue);
+    }
+
+    public async ValueTask<T> GetSessionStorageItem<T>(string? key = null)
+    {
+        // check key name
+        key ??= typeof(T).Name;
+
+        var jsonValue = await GetSessionStorageItem(key);
+
+        // deserialize from json
+        return JsonSerializer.Deserialize<T>(jsonValue, Options)!;
+    }
+
+    public ValueTask RemoveSessionStorageItem<T>()
+    {
+        return RemoveSessionStorageItem(typeof(T).Name);
+    }
+
+    #endregion
 
     private static object[] ReOrgArgs(ElementReference element, string method, int timeout, params object[] arguments)
     {

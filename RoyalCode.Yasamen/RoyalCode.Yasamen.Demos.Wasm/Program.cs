@@ -34,12 +34,13 @@ builder.Services.AddScoped<ToggleJsModule>();
 builder.Services.AddScoped<CssStyleJsModule>();
 builder.Services.AddScoped<FormsJsModule>();
 builder.Services.AddScoped<EventsJsModule>();
+builder.Services.AddScoped<ClickJsModule>();
 
 // App services.
 builder.Services.Subscribes<DCService>();
 
 // Show services
-builder.Services.AddBlazorShow(b =>
+builder.Services.AddBlazorShow((Action<RoyalCode.Yasamen.Demos.Wasm.BlazorShow.ICatalogBuilder>)(b =>
 {
     // graphics
     b.AddShow<IconShow, Icon>();
@@ -53,9 +54,11 @@ builder.Services.AddBlazorShow(b =>
     b.AddShow<WorkingAlertShow, WorkingAlert>();
     b.AddShow<ButtonShow, Button>();
     b.AddShow<IconButtonShow, IconButton>();
+    b.AddShow<DropButtonShow, DropButton>();
+    b.AddShow<DropIconShow, DropIcon>();
     b.AddShow<ProgressBarShow, ProgressBar>();
     b.AddShow<ProgressStackedShow, ProgressStacked>();
-});
+}));
 
 RoyalCode.Yasamen.Commons.Tracer.IsActive = true;
 RoyalCode.Yasamen.Icons.Bootstrap.BootstrapIcons.Include();
