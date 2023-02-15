@@ -11,6 +11,15 @@
 <br/>
 
 <DropButton Label="Dropdown" MinWidth="Sizes.Large" Style="ButtonStyles.Primary" AdditionalClasses="mt-2">
+    <DropItem>
+        Action 1
+    </DropItem>
+    <DropItem OnClick="@(e => { Console.WriteLine("Hello drop item"); })">
+        Action 2
+    </DropItem>
+    <DropItem>
+        Action 3
+    </DropItem>
     <li @onclick="@(e => { Console.WriteLine("Hello drop item"); })">Hello</li>
 </DropButton>
 

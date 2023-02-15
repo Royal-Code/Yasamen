@@ -17,6 +17,7 @@
 
 	<ItemGroup>
 		<None Update=".\DropBase.razor.css" CssScope="b-drop" />
+		<None Update=".\DropItem.razor.css" CssScope="b-drop-item" />
 	</ItemGroup>
 	
 </Project>
