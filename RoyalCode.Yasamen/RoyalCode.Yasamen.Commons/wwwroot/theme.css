@@ -324,7 +324,18 @@
     --b-aside-offcanvas--top--modal: var(--b-size-0);
     --b-aside-offcanvas--bottom: var(--b-size-0);
     --b-aside-offcanvas--right: var(--b-size-0);
-    --b-aside-offcanvas--background-color: var(--b-color-light-d2);
+    --b-aside-offcanvas--bg-color: var(--b-color-light-d2);
+    --b-aside-offcanvas--z-index: 1045;
+    --b-aside-offcanvas--float-gap: var(--b-size-6);
+    /* aside box */
+    --b-asidebox--max-width: 32rem;
+    --b-asidebox--max-width-xs: 12rem;
+    --b-asidebox--max-width-sm: 16rem;
+    --b-asidebox--max-width-md: 24rem;
+    --b-asidebox--max-width-lg: 48rem;
+    --b-asidebox--max-width-xl: 64rem;
+    --b-asidebox--bg-color: var(--b-color-light-l7);
+    --b-asidebox--padding: 2rem 1rem;
     /* form and field */
     --b-field--color: var(--b-color-dark-d3);
     --b-field--bg: var(--b-color-light-l7);

@@ -4,61 +4,94 @@
 @inject ToggleJsModule ToggleJs
 
 <aside class="@Classes(this)" @attributes="Attributes" @ref="asideRef">
-    <CascadingValue Value="Handler">
-        @ChildContent
+    <CascadingValue Value="handler">
+        @if(UseBox)
+        {
+            <AsideBox Title="@Title" Size="@BoxSize" Close="@(Closeable ?? true)">
+                @ChildContent
+            </AsideBox>
+        }
+        else
+        {
+            @ChildContent
+        }
     </CascadingValue>
 </aside>
-<div class="@BackdropClasses(this)" @onclick="async () => await Hide()" @ref="backdropRef"></div>
+<div class="@BackdropClasses(this)" @onclick="BackdropClickHandler" @ref="backdropRef"></div>
 
 @code {
     private ElementReference? asideRef;
     private ElementReference? backdropRef;
 
-    private static CssMap<OffCanvas> Classes = Css.Map<OffCanvas>()
-        .Add(c => c.AdditionalClasses)
-        .Add(c => c.IsVisible, "offcanvas-show")
-        .Add(c => c.Fitting is Fitting.Overlaying, "offcanvas-overlaying")
+    private static readonly CssMap<OffCanvas> Classes = Css.Map<OffCanvas>()
+        .Add(static c => c.AdditionalClasses)
+        .Add(static c => c.IsVisible, "offcanvas-show")
+        .Add(static c => c.Fitting is Fitting.Overlaying, "offcanvas-overlaying")
+        .Add(static c => c.Fitting is Fitting.Float, "offcanvas-float")
         .Build();
 
-    private static CssMap<OffCanvas> BackdropClasses = Css.Map<OffCanvas>()
-        .Add(c => c.IsVisible, "offcanvas-show")
-        .Add(c => c.Fitting is Fitting.Overlaying, "offcanvas-overlaying")
-        .Add(c => c.Modal, "offcanvas-modal")
+    private static readonly CssMap<OffCanvas> BackdropClasses = Css.Map<OffCanvas>()
+        .Add(static c => c.IsVisible, "offcanvas-show")
+        .Add(static c => c.Fitting is Fitting.Overlaying, "offcanvas-overlaying")
+        .Add(static c => c.Modal, "offcanvas-modal")
         .Build();
+
+    private OffCanvasHandler handler = null!;
 
     public bool IsVisible { get; private set; }
-    
+
     [Parameter]
     public Fitting Fitting { get; set; } = Fitting.Incorporated;
-    
+
     [Parameter]
     public bool Modal { get; set; }
-    
+
+    [Parameter]
+    public bool? Closeable { get; set; }
+
     [Parameter]
     public OffCanvasHandler? Handler { get; set; }
 
     [Parameter]
     public RenderFragment ChildContent { get; set; } = null!;
-    
+
+    [Parameter]
+    public EventCallback<bool> OnVisibilityChanged { get; set; }
+
+    [Parameter]
+    public bool UseBox { get; set; }
+
+    [Parameter]
+    public Sizes BoxSize { get; set; }
+
+    [Parameter]
+    public string? Title { get; set; }
+
     [Parameter]
     public string? AdditionalClasses { get; set; }
-    
+
     [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object> Attributes { get; set; } = null!;
 
-    protected override void OnParametersSet()
+    public override Task SetParametersAsync(ParameterView parameters)
     {
-        Handler ??= new();
-        Handler?.Init(this);
+        parameters.SetParameterProperties(this);
 
-        base.OnParametersSet();
+        if (Handler is not null)
+            handler = Handler;
+        else
+            handler ??= new();
+
+        handler?.Init(this);
+
+        return base.SetParametersAsync(ParameterView.Empty);
     }
 
     public async ValueTask Show()
     {
         if (IsVisible)
             return;
-        
+
         IsVisible = true;
         await Toogle();
     }
@@ -67,7 +100,7 @@
     {
         if (!IsVisible)
             return;
-        
+
         IsVisible = false;
         await Toogle();
     }
@@ -76,8 +109,17 @@
     {
         if (asideRef is null)
             return;
-        
+
         await ToggleJs.CssClassToggle(asideRef.Value, "offcanvas-show", IsVisible);
         await ToggleJs.CssClassToggle(backdropRef!.Value, "offcanvas-show", IsVisible);
+
+        if (OnVisibilityChanged.HasDelegate)
+            await OnVisibilityChanged.InvokeAsync(IsVisible);
+    }
+
+    private async Task BackdropClickHandler()
+    {
+        if (Closeable is null || Closeable.Value)
+            await Hide();
     }
 }
