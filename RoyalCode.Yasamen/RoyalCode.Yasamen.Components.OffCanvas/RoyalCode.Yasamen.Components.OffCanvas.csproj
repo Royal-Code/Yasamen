@@ -16,6 +16,7 @@
 
 	<ItemGroup>
 		<None Update=".\OffCanvas.razor.css" CssScope="b-offcanvas" />
+		<None Update=".\AsideBox.razor.css" CssScope="b-asidebox" />
 	</ItemGroup>
 
 </Project>

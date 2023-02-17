@@ -1,0 +1,38 @@
+﻿div {
+    max-width: var(--b-asidebox--max-width);
+    padding: var(--b-asidebox--padding);
+    height: auto;
+    flex: 1 1 auto;
+    background-color: var(--b-asidebox--bg-color);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+h5 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 0;
+    color: var(--b-color-dark);
+}
+
+div.xs {
+    max-width: var(--b-asidebox--max-width-xs)
+}
+div.sm {
+    max-width: var(--b-asidebox--max-width-sm)
+}
+div.md {
+    max-width: var(--b-asidebox--max-width-md)
+}
+div.lg {
+    max-width: var(--b-asidebox--max-width-lg)
+}
+div.xl {
+    max-width: var(--b-asidebox--max-width-xl)
+}

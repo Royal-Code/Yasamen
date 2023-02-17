@@ -15,4 +15,9 @@ public enum Fitting
     /// The component will incorporate itself into the content by being below the top menu.
     /// </summary>
     Incorporated,
+
+    /// <summary>
+    /// The component will be floating in the page, below the top menu and above the footer.
+    /// </summary>
+    Float,
 }

@@ -1,0 +1,54 @@
+﻿@using RoyalCode.Yasamen.Commons;
+
+<div class="@classes(this)">
+    @if (Title is not null || Close)
+    {
+        <header>
+            @if (Title is not null)
+            {
+                <h5>@Title</h5>
+            }
+            @if (Handler != null && Close)
+            {
+                <button type="button" class="btn-close" aria-label="Close" @onclick="CloseHandler"></button>
+            }
+        </header>
+    }
+    @ChildContent
+</div>
+
+@code {
+
+    private static readonly CssMap<AsideBox> classes = Css.Map<AsideBox>()
+        .Add("aside-box")
+        .Add(static c => c.Size.ToAbbrCssClass())
+        .Add(static c => c.AdditionalClasses)
+        .Build();
+
+    [CascadingParameter]
+    public OffCanvasHandler? Handler { get; set; }
+
+    [Parameter]
+    public string? Title { get; set; }
+
+    [Parameter]
+    public bool Close { get; set; }
+
+    [Parameter]
+    public Sizes Size { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = null!;
+
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    public async Task CloseHandler()
+    {
+        if (Handler is not null)
+            await Handler.Hide();
+    }
+}
