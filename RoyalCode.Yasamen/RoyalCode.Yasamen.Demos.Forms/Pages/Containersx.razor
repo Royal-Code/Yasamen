@@ -4,7 +4,7 @@
 
 <AppPageContent Title="Containers">
 
-
+    <SecondaryButton Label="Resizeable" OnClick="ResizeToggle" AdditionalClasses="mb-3"/>
 
     @if (cars is null)
     {
@@ -17,8 +17,8 @@
             @foreach (var car in context)
             {
                 <ModelContainer Model="car" Context="c" @key="car.Id"
-                        UseContainer="true"
-                        AdditionalClasses="@($"mb-2 {@borders.CssClasses}")" >
+                        UseContainer="true" Resize="resize"
+                        AdditionalClasses="@($"mb-3 {@borders.CssClasses}")" >
 
                     <IntField @bind-Value="c.Id" Label="Id" Cols="2" />
 
@@ -33,13 +33,22 @@
 </AppPageContent>
 
 @code {
-    private static readonly Borders borders = Borders.DefaultRoundedWithShadow;
+    private static readonly Borders borders = Borders.DefaultRoundedWithShadow with
+    {
+        Color = Themes.Light
+    };
 
+    private bool resize = false;
 
     private IEnumerable<Car>? cars;
 
     protected override async Task OnInitializedAsync()
     {
         cars = await CarService.GetCars();
+    }
+
+    private void ResizeToggle()
+    {
+        resize = !resize;
     }
 }

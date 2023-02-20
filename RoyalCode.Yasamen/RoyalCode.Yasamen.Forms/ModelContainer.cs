@@ -38,6 +38,9 @@ public class ModelContainer<TModel> : ComponentBase, IDisposable
     public bool UseContainer { get; set; }
 
     [Parameter]
+    public bool Resize { get; set; } = true;
+
+    [Parameter]
     public string? AdditionalClasses { get; set; }
 
     [Parameter(CaptureUnmatchedValues = true)]
@@ -75,9 +78,10 @@ public class ModelContainer<TModel> : ComponentBase, IDisposable
         builder.OpenComponent<Container>(0);
         builder.AddMultipleAttributes(1, AdditionalAttributes);
         builder.AddAttribute(2, "AdditionalClasses", AdditionalClasses);
+        builder.AddAttribute(3, "Resize", Resize);
         
         if (ChildContent.IsNotEmptyFragment())
-            builder.AddAttribute(3, "ChildContent", Fragment);
+            builder.AddAttribute(4, "ChildContent", Fragment);
         else
             Tracer.Write("ModelSupport", "BuildRenderTree", "ChildContent is Empty");
 
