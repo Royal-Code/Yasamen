@@ -269,7 +269,7 @@
     /** Border **/
     --b-border--width: 1px;
     --b-border--style: solid;
-    --b-border--color: var(--b-color-dark);
+    --b-border--color: var(--b-color-light-d3);
     --b-border--radius-1: 0.125rem;
     --b-border--radius-2: 0.25rem;
     --b-border--radius-3: 0.375rem;

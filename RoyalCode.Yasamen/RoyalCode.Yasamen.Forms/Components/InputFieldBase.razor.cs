@@ -38,9 +38,6 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
     [MultiplesParameters]
     public ColumnSizes ColumnSizes { set; get; } = new();
 
-    [Inject]
-    public FormsJsModule Js { get; set; } = null!;
-
     [Parameter]
     public InputType Type { get; set; }
     
@@ -216,17 +213,20 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
     {
         if (firstRender)
         {
-            await Js.BlurOnPressEnterAsync(Element);
+            await Js.BlurOnPressEnterAsync();
         }
 
         await base.OnAfterRenderAsync(firstRender);
     }
     
-    protected virtual void OnFocus()
+    protected virtual async void OnFocus()
     {
         isFocused = true;
         if (IsInvalid)
             ModelContext.EditorMessages.Show(FieldIdentifier);
+
+        if (Element.Id is not null)
+            await Js.SelectTextAsync();
     }
 
     protected virtual void OnBlur()

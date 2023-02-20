@@ -50,9 +50,6 @@ public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
     [MultiplesParameters]
     public ColumnSizes ColumnSizes { set; get; } = new();
 
-    [Inject]
-    public FormsJsModule Js { get; set; } = null!;
-
     [Parameter]
     public string? LabelAdditionalClasses { get; set; }
     
@@ -238,7 +235,7 @@ public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
     {
         if (firstRender)
         {
-            await Js.BlurOnPressEnterAsync(Element);
+            await Js.BlurOnPressEnterAsync();
         }
 
         await base.OnAfterRenderAsync(firstRender);

@@ -97,7 +97,11 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
     /// <summary>
     /// The field element that has the value (input, select, textarea).
     /// </summary>
-    public ElementReference Element { get; protected set; }
+    public ElementReference Element 
+    { 
+        get => Js.Element;
+        protected set => Js.Element = value;
+    }
 
     /// <summary>
     /// JS interop utilities for work with the field element.
@@ -108,7 +112,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
     /// Module for Js interop.
     /// </summary>
     [Inject]
-    public FormsJsModule JsModule { get; set; }
+    public FormsJsModule JsModule { get; set; } = null!;
 
     /// <summary>
     /// Context received by the <see cref="ModelEditor{TModel}"/>.
@@ -353,11 +357,6 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
             fieldId = Id;
 
         return base.SetParametersAsync(ParameterView.Empty);
-    }
-
-    protected override void OnAfterRender(bool firstRender)
-    {
-        Js.Element = Element;
     }
 
     public void Dispose()

@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Components;
 using RoyalCode.Yasamen.Forms.Modules;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RoyalCode.Yasamen.Forms;
 
@@ -15,6 +16,7 @@ public class FieldJs
 
     public ElementReference Element { get; internal set; }
 
+    [MemberNotNullWhen(true, nameof(Element), nameof(Module))]
     private bool IsInitialized()
     {
         return !string.IsNullOrEmpty(Element.Id) && Module is not null;
@@ -26,5 +28,21 @@ public class FieldJs
             return default;
 
         return Element.FocusAsync();
+    }
+
+    public ValueTask BlurOnPressEnterAsync()
+    {
+        if(!IsInitialized())
+            return default;
+
+        return Module.BlurOnPressEnterAsync(Element);
+    }
+
+    public ValueTask SelectTextAsync()
+    {
+        if(!IsInitialized())
+            return default;
+
+        return Module.SelectTextAsync(Element);
     }
 }

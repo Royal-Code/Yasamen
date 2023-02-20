@@ -38,37 +38,41 @@ public record Borders
             Shadow = Standards.DefaultShadow
         };
 
-    public static Borders DefaultRounded => _defaultRounded ??= Default with
+    public static Borders DefaultRounded => _defaultRounded ??= (Default with
     {
         Radius = Standards.DefaultRoundedBorderRadius,
         RoundedSize = Standards.DefaultRoundedBorderRoundedSize
-    };
+    });
     
-    public static Borders DefaultWithShadow => _defaultWithShadow ??= Default with
+    public static Borders DefaultWithShadow => _defaultWithShadow ??= (Default with
     {
         Shadow = Standards.DefaultWithShadow
-    };
+    });
     
-    public static Borders DefaultRoundedWithShadow => _defaultRoundedWithShadow ??= DefaultRounded with
+    public static Borders DefaultRoundedWithShadow => _defaultRoundedWithShadow ??= (DefaultRounded with
     {
-        Radius = Standards.DefaultRoundedBorderRadius,
         Shadow = Standards.DefaultWithShadow
-    };
+    });
 
-    public static Borders DefaultForHeaders => _defaultForHeaders ??= Default with
+    public static Borders DefaultRoundedLightWithShadow => _defaultRoundedWithShadow ??= (DefaultRoundedWithShadow with
+    {
+        Color = Themes.Light
+    });
+
+    public static Borders DefaultForHeaders => _defaultForHeaders ??= (Default with
     {
         Style = Standards.DefaultHeaderStyle
-    };
+    });
     
-    public static Borders DefaultForFooters => _defaultForFooters ??= Default with
+    public static Borders DefaultForFooters => _defaultForFooters ??= (Default with
     {
         Style = Standards.DefaultFooterStyle
-    };
+    });
 
-    public static Borders DefaultNone => _none ??= Default with
+    public static Borders DefaultNone => _none ??= (Default with
     {
         Style = BorderStyle.None
-    };
+    });
 
     private string? cssClasses;
     

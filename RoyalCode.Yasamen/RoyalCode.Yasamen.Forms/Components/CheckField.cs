@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using RoyalCode.Yasamen.Commons;
-using RoyalCode.Yasamen.Forms.Modules;
 using RoyalCode.Yasamen.Layout;
 
 namespace RoyalCode.Yasamen.Forms.Components;
@@ -39,9 +38,6 @@ public sealed partial class CheckField : CheckFieldBase
 
     [MultiplesParameters]
     public ColumnSizes ColumnSizes { set; get; } = new();
-
-    [Inject]
-    public FormsJsModule Js { get; set; } = null!;
 
     [Parameter]
     public string? LabelAdditionalClasses { get; set; }
@@ -175,7 +171,7 @@ public sealed partial class CheckField : CheckFieldBase
         }
         else if (!blurListenerAdded)
         {
-            await Js.BlurOnPressEnterAsync(Element);
+            await Js.BlurOnPressEnterAsync();
             blurListenerAdded = true;
         }
 

@@ -53,30 +53,32 @@ public sealed class PasswordField : InputFieldBase<string>
             builder.OpenComponent<FieldButton>(index);
             builder.AddAttribute(1 + index, "Icon", icon);
             builder.AddAttribute(2 + index, "OnClick", EventCallback.Factory.Create<MouseEventArgs>(this, ToggleShowPassword));
+            builder.AddAttribute(3 + index, "tabindex", "-1");
             builder.CloseComponent();
         }
         else
         {
-            builder.OpenComponent<FieldAddon>(3 + index);
-            builder.AddAttribute(4 + index, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, ToggleShowPassword));
-            builder.AddAttribute(5 + index, "AdditionalClasses", "pointer");
-            builder.AddAttribute(6 + index, "ChildContent", (RenderFragment)(b =>
+            builder.OpenComponent<FieldAddon>(4 + index);
+            builder.AddAttribute(5 + index, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, ToggleShowPassword));
+            builder.AddAttribute(6 + index, "AdditionalClasses", "pointer");
+            builder.AddAttribute(7 + index, "tabindex", "-1");
+            builder.AddAttribute(8 + index, "ChildContent", (RenderFragment)(b =>
             {
                 string caption = ShowPassword ? "Hide Password" : "Show Password";
 
-                b.OpenElement(7 + index, "span");
-                b.AddAttribute(8 + index, "title", caption);
+                b.OpenElement(9 + index, "span");
+                b.AddAttribute(10 + index, "title", caption);
                 
                 if (ShowPassword)
-                    b.AddContent(9 + index, "*");
+                    b.AddContent(11 + index, "*");
                 else
-                    b.AddContent(10 + index, "a");
+                    b.AddContent(12 + index, "a");
                 b.CloseElement();
             }));
             builder.CloseComponent();
         }
 
-        return index + 11;
+        return index + 13;
     }
 
     private async Task ToggleShowPassword()
