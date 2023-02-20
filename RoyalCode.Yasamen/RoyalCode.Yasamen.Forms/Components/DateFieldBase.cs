@@ -15,6 +15,14 @@ public abstract class DateFieldBase<TDate> : InputFieldBase<TDate>
         set => currentInputValue = value;
     }
 
+    protected override void OnParametersSet()
+    {
+        var formatted = FormatValue(CurrentValue);
+        currentInputValue = formatted;
+
+        base.OnParametersSet();
+    }
+
     protected override void OnBlur()
     {
         if (previousInputValue != currentInputValue)

@@ -33,7 +33,7 @@ public class Friend
 
     public DateOnly? NextMetting { get; set; }
 
-    public DateTime LastCall { get; set; }
+    public DateTime LastCall { get; set; } = DateTime.Now.AddYears(-1);
 }
 
 
