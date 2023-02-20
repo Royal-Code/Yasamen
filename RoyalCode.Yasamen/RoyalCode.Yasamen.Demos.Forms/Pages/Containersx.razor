@@ -1,0 +1,45 @@
+﻿@page "/containers"
+
+@inject CarService CarService;
+
+<AppPageContent Title="Containers">
+
+
+
+    @if (cars is null)
+    {
+        <WorkingAlert Text="Carregando carros" />
+    }
+    else
+    {
+        <ModelEditor Model="cars">
+
+            @foreach (var car in context)
+            {
+                <ModelContainer Model="car" Context="c" @key="car.Id"
+                        UseContainer="true"
+                        AdditionalClasses="@($"mb-2 {@borders.CssClasses}")" >
+
+                    <IntField @bind-Value="c.Id" Label="Id" Cols="2" />
+
+                    <TextField @bind-Value="c.Name" Label="Name" Cols="4" />
+
+                </ModelContainer>
+            }
+
+        </ModelEditor>
+    }
+
+</AppPageContent>
+
+@code {
+    private static readonly Borders borders = Borders.DefaultRoundedWithShadow;
+
+
+    private IEnumerable<Car>? cars;
+
+    protected override async Task OnInitializedAsync()
+    {
+        cars = await CarService.GetCars();
+    }
+}

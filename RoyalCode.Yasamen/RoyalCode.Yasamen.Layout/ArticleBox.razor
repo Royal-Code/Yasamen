@@ -1,52 +1,63 @@
 
-<article class="@ArticleClasses" @attributes="@Attributes">
-    <header class="@HeaderClasses">
+<article @attributes="@AdditionalAttributes" class="@articleClasses(this)">
+    <header class="@headerClasses(this)">
         @HeaderContent
     </header>
     @MainContent
     @if (FooterContent.IsNotEmptyFragment())
     {
-        <footer class="@FooterClasses">
+        <footer class="@footerClasses(this)">
             @FooterContent
         </footer>
     }
 </article>
 
 @code {
-    CssClassMap ArticleClasses => CssClassMap.Create(ArticleBorder?.CssClasses, ArticleAdditionalClasses);
-    CssClassMap HeaderClasses => CssClassMap.Create(HeaderBorder?.CssClasses, HeaderAdditionalClasses);
-    CssClassMap FooterClasses => CssClassMap.Create(FooterBorder?.CssClasses, FooterAdditionalClasses);
+    private static readonly CssMap<ArticleBox> articleClasses = Css.Map<ArticleBox>()
+        .Add(static c => c.ArticleBorder?.CssClasses)
+        .Add(static c => c.ArticleAdditionalClasses)
+        .Build();
+
+    private static readonly CssMap<ArticleBox> headerClasses = Css.Map<ArticleBox>()
+        .Add(static c => c.HeaderBorder?.CssClasses)
+        .Add(static c => c.HeaderAdditionalClasses)
+        .Build();
+
+    private static readonly CssMap<ArticleBox> footerClasses = Css.Map<ArticleBox>()
+        .Add(static c => c.FooterBorder?.CssClasses)
+        .Add(static c => c.FooterAdditionalClasses)
+        .Build();
 
     [Parameter]
     public Borders ArticleBorder { get; set; } = Borders.DefaultNone;
 
     [Parameter]
     public Borders HeaderBorder { get; set; } = Borders.DefaultForHeaders with
-    {
-        Shadow = Shadows.Small
-    };
-    
+        {
+            Shadow = Shadows.Small
+        };
+
     [Parameter]
     public Borders FooterBorder { get; set; } = Borders.DefaultForFooters;
-    
+
     [Parameter]
     public string? ArticleAdditionalClasses { get; set; }
-    
+
     [Parameter]
     public string? HeaderAdditionalClasses { get; set; }
-    
+
     [Parameter]
     public string? FooterAdditionalClasses { get; set; }
-    
+
     [Parameter]
     public RenderFragment? HeaderContent { get; set; }
-    
+
     [Parameter]
     public RenderFragment? MainContent { get; set; }
-    
+
     [Parameter]
     public RenderFragment? FooterContent { get; set; }
-    
+
     [Parameter(CaptureUnmatchedValues = true)]
-    public Dictionary<string, object>? Attributes { get; set; }
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
 }

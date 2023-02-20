@@ -1,26 +1,21 @@
 
-<div class="@Classes" @attributes="@Attributes">
+<div @attributes="@AdditionalAttributes" class="@classes(this)">
     @ChildContent
 </div>
 
 @code {
-
-    CssClassMap Classes => CssClassMap.Create("d-flex",
-        Border.CssClasses, 
-        MinHeight.ToAbbrCssClass(),
-        Align.ToItemsCssClass(),
-        Justify.ToContentCssClass(),
-        Style.ToCssClass(),
-        AdditionalClasses);
+    private static readonly CssMap<Box> classes = Css.Map<Box>()
+        .Add("d-flex")
+        .Add(static c => c.Border.CssClasses)
+        .Add(static c => c.MinHeight.ToAbbrCssClass())
+        .Add(static c => c.Align.ToItemsCssClass())
+        .Add(static c => c.Justify.ToContentCssClass())
+        .Add(static c => c.Style.ToCssClass())
+        .Add(static c => c.AdditionalClasses)
+        .Build();
 
     [Parameter]
     public Borders Border { get; set; } = Borders.Default;
-
-    [Parameter]
-    public string? AdditionalClasses { get; set; }
-
-    [Parameter(CaptureUnmatchedValues = true)]
-    public Dictionary<string, object>? Attributes { get; set; }
 
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
@@ -36,4 +31,10 @@
 
     [Parameter]
     public BoxStyles Style { get; set; }
+
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
 }

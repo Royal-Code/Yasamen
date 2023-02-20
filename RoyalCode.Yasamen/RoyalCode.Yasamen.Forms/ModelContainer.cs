@@ -1,8 +1,8 @@
-﻿
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Forms.Support;
+using RoyalCode.Yasamen.Layout;
 using System.Linq.Expressions;
 
 namespace RoyalCode.Yasamen.Forms;
@@ -15,7 +15,10 @@ public class ModelContainer<TModel> : ComponentBase, IDisposable
     private TModel model = null!;
     private ModelContext<TModel> context = null!;
     private ChangeSupportListener? changeSupportListener;
-    
+
+    [CascadingParameter]
+    public IModelContext CascadeModelContext { get; set; } = null!;
+
     [Parameter]
     public TModel Model { get; set; } = null!;
 
@@ -31,8 +34,14 @@ public class ModelContainer<TModel> : ComponentBase, IDisposable
     [Parameter]
     public string? ChangeSupport { get; set; }
 
-    [CascadingParameter]
-    public IModelContext CascadeModelContext { get; set; } = null!;
+    [Parameter]
+    public bool UseContainer { get; set; }
+
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
 
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
@@ -42,10 +51,17 @@ public class ModelContainer<TModel> : ComponentBase, IDisposable
         builder.AddAttribute(1, "Value", context);
         builder.AddAttribute(2, "IsFixed", true);
 
-        if (ChildContent.IsNotEmptyFragment())
-            builder.AddAttribute(3, "ChildContent", Fragment);
+        if (UseContainer)
+        {
+            builder.AddAttribute(3, "ChildContent", ContainerFragment);
+        }
         else
-            Tracer.Write("ModelSupport", "BuildRenderTree", "ChildContent is Empty");
+        {
+            if (ChildContent.IsNotEmptyFragment())
+                builder.AddAttribute(4, "ChildContent", Fragment);
+            else
+                Tracer.Write("ModelSupport", "BuildRenderTree", "ChildContent is Empty");
+        }
 
         builder.CloseComponent();
 
@@ -53,6 +69,20 @@ public class ModelContainer<TModel> : ComponentBase, IDisposable
     }
 
     private RenderFragment Fragment => builder => ChildContent(context.Model)(builder);
+
+    private RenderFragment ContainerFragment => builder =>
+    {
+        builder.OpenComponent<Container>(0);
+        builder.AddMultipleAttributes(1, AdditionalAttributes);
+        builder.AddAttribute(2, "AdditionalClasses", AdditionalClasses);
+        
+        if (ChildContent.IsNotEmptyFragment())
+            builder.AddAttribute(3, "ChildContent", Fragment);
+        else
+            Tracer.Write("ModelSupport", "BuildRenderTree", "ChildContent is Empty");
+
+        builder.CloseComponent();
+    };
 
     public override Task SetParametersAsync(ParameterView parameters)
     {
@@ -79,7 +109,7 @@ public class ModelContainer<TModel> : ComponentBase, IDisposable
             if (!ReferenceEquals(context.Parent, CascadeModelContext))
             {
                 throw new InvalidOperationException(
-                $"{GetType()} does not support changing the {nameof(ModelContext<object>)} dynamically.");
+                    $"{GetType()} does not support changing the {nameof(ModelContext<object>)} dynamically.");
             }
 
             if (hasBinding && !ReferenceEquals(Model, context.Model))

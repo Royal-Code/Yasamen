@@ -1,5 +1,5 @@
 
-<div class="@Classes" @attributes="@AdditionalAttributes">
+<div @attributes="@AdditionalAttributes" class="@classes(this)">
     <div class="d-flex justify-content-start">
         @Start
     </div>
@@ -12,16 +12,10 @@
 </div>
 
 @code {
-
-    private CssClassMap Classes => CssClassMap
-        .Create("d-flex justify-content-between w-100")
-        .Add(AdditionalClasses);
-
-    [Parameter(CaptureUnmatchedValues = true)]
-    public Dictionary<string, object> AdditionalAttributes { get; set; }
-
-    [Parameter]
-    public string AdditionalClasses { get; set; }
+    private readonly static CssMap<Bar> classes = Css.Map<Bar>()
+        .Add("d-flex justify-content-between w-100")
+        .Add(static c => c.AdditionalClasses)
+        .Build();
 
     [Parameter]
     public RenderFragment? Start { get; set; }
@@ -31,5 +25,11 @@
 
     [Parameter]
     public RenderFragment? End { get; set; }
+
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
 
 }

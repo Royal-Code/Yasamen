@@ -1,25 +1,47 @@
 
-<div class="@PanelClasses" @attributes="@Attributes">
-    <header class="@HeaderClasses">
+<div @attributes="@AdditionalAttributes" class="@panelClasses(this)">
+    <header class="@headerClasses(this)">
         @HeaderContent
     </header>
-    <div class="@MainClasses">
+    <div class="@mainClasses(this)">
         @MainContent    
     </div>
     @if (FooterContent.IsNotEmptyFragment())
     {
-        <footer class="@FooterClasses">
+        <footer class="@footerClasses(this)">
             @FooterContent
         </footer>
     }
 </div>
 
 @code {
-    CssClassMap PanelClasses => CssClassMap.Create("panel-box", PanelBorder.CssClasses, PanelAdditionalClasses);
-    CssClassMap MainClasses => CssClassMap.Create("panel-box-main", MainAdditionalClasses);
-    CssClassMap HeaderClasses => CssClassMap.Create("panel-box-header", HeaderBorder.CssClasses, HeaderAdditionalClasses);
-    CssClassMap FooterClasses => CssClassMap.Create("panel-box-footer", FooterBorder.CssClasses, FooterAdditionalClasses);
-    
+    // static CssMap<PanelBox> for panel-box
+    private static readonly CssMap<PanelBox> panelClasses = Css.Map<PanelBox>()
+        .Add("panel-box")
+        .Add(static c => c.PanelBorder.CssClasses)
+        .Add(static c => c.PanelAdditionalClasses)
+        .Build();
+
+    // static CssMap<PanelBox> for panel-box-main
+    private static readonly CssMap<PanelBox> mainClasses = Css.Map<PanelBox>()
+        .Add("panel-box-main")
+        .Add(static c => c.MainAdditionalClasses)
+        .Build();
+
+    // static CssMap<PanelBox> for panel-box-header
+    private static readonly CssMap<PanelBox> headerClasses = Css.Map<PanelBox>()
+        .Add("panel-box-header")
+        .Add(static c => c.HeaderBorder.CssClasses)
+        .Add(static c => c.HeaderAdditionalClasses)
+        .Build();
+
+    // static CssMap<PanelBox> for panel-box-footer
+    private static readonly CssMap<PanelBox> footerClasses = Css.Map<PanelBox>()
+        .Add("panel-box-footer")
+        .Add(static c => c.FooterBorder.CssClasses)
+        .Add(static c => c.FooterAdditionalClasses)
+        .Build();
+
     [Parameter]
     public Borders PanelBorder { get; set; } = Borders.Default;
 
@@ -51,5 +73,5 @@
     public RenderFragment? FooterContent { get; set; }
     
     [Parameter(CaptureUnmatchedValues = true)]
-    public Dictionary<string, object>? Attributes { get; set; }
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
 }

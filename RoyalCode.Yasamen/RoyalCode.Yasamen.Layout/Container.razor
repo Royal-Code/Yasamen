@@ -1,32 +1,25 @@
 ﻿
-<div style="@FlexRowStyle">
-    <div class="@Classes" @attributes="AdditionalAttributes">
-        @if (Columns.HasValue)
-        {
-            <CascadingValue Value="context" IsFixed="true" >
-                @ChildContent
-            </CascadingValue>
-        }
-        else
-        {
+<div class="layout-slot" style="@FlexRowStyle">
+    <div @attributes="AdditionalAttributes" class="@classes(this)">
+        <CascadingValue Value="context" IsFixed="true">
             @ChildContent
-        }
+        </CascadingValue>
     </div>
 </div>
 
 @code {
+    private static readonly CssMap<Container> classes = Css.Map<Container>()
+        .Add("layout-container")
+        .Add(static c => c.Align.ToItemsCssClass())
+        .Add(static c => c.Justify.ToContentCssClass())
+        .Add(static c => c.AdditionalClasses)
+        .Build();
+
     private ContainerContext? context;
 
-    private CssClassMap Classes => CssClassMap.Create(
-        Align.ToItemsCssClass(), 
-        Justify.ToContentCssClass(),
-        AdditionalClasses!);
-
-    [Parameter(CaptureUnmatchedValues = true)]
-    public Dictionary<string, object>? AdditionalAttributes { get; set; }
-
-    [Parameter]
-    public string? AdditionalClasses { get; set; }
+    private string? FlexRowStyle => Columns.HasValue
+        ? $"--b-cols-columns: {Columns.Value};"
+        : null;
 
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
@@ -35,18 +28,26 @@
     public int? Columns { get; set; }
 
     [Parameter]
+    public bool Resize { get; set; } = true;
+
+    [Parameter]
     public Align Align { get; set; }
 
     [Parameter]
     public Justify Justify { get; set; }
 
-    private string? FlexRowStyle => Columns.HasValue
-        ? $"--b-cols-columns: {Columns.Value};"
-        : null;
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
 
     protected override void OnParametersSet()
     {
+        if (context is null)
+            context = new ContainerContext();
         if (Columns.HasValue)
-            context = new ContainerContext(Columns.Value);
+            context.Columns = Columns.Value;
+        context.Resize = Resize;
     }
 }

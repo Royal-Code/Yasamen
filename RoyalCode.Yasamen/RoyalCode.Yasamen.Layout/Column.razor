@@ -1,7 +1,7 @@
 ﻿
 @implements IHasColumnSizes
 
-<div class="@Classes" @attributes="AdditionalAttributes" style="@ColumnStyle"
+<div @attributes="AdditionalAttributes" class="@classes(this)" style="@ColumnStyle"
      col="@Cols" tcol="@TabletCols" pcol="@PhoneCols" qcol="@Quarters"
      xs="@XsCols" sm="@SmCols" lg="@LgCols" xl="@XlCols"
      fullsize="@Fullsize" fullsize-xs="@XsFullsize" fullsize-sm="@SmFullsize" fullsize-lg="@LgFullsize" fullsize-xl="@XlFullsize">
@@ -9,7 +9,11 @@
 </div>
 
 @code {
-    private CssClassMap Classes => CssClassMap.Create(Align.ToSelfCssClass(), AdditionalClasses!);
+    private static readonly CssMap<Column> classes = Css.Map<Column>()
+        .Add(static c => c.Align.ToSelfCssClass())
+        .Add(static c => c.AdditionalClasses)
+        .Add(static c => c.ContainerContext?.Resize is false, "defined-size")
+        .Build();
 
     [CascadingParameter]
     public ContainerContext? ContainerContext { get; set; }
@@ -68,7 +72,7 @@
     [Parameter]
     public object? ParentColumn { get; set; }
 
-    private string? ColumnStyle => ContainerContext is not null
+    private string? ColumnStyle => (ContainerContext?.HasCustomColumns ?? false)
         ? ((IHasColumnSizes)this).GetVariableValues()
         : null;
 

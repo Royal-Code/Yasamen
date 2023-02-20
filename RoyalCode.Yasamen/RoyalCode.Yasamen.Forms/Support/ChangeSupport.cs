@@ -132,9 +132,13 @@ public sealed class ChangeSupport
         FieldType = typeof(TValue);
         this.initialValue = initialValue;
 
+        InitializeIncludes(identifier, initialValue);
+    }
+
+    internal void InitializeIncludes<TValue>(FieldIdentifier identifier, TValue initialValue)
+    {
         includes?.ForEach(i => i.Initialize(identifier, initialValue));
-        
-        parentPropertyChangeSupport?.GetChangeSupport(Name).Initialize(identifier, initialValue);
+        parentPropertyChangeSupport?.GetChangeSupport(Name).InitializeIncludes(identifier, initialValue);
     }
 
     //TODO: ver se isso é necessário.
