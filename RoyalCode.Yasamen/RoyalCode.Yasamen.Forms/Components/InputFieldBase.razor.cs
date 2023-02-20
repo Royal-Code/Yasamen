@@ -33,7 +33,7 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
 
     protected virtual string FieldType => Type.ToString().ToLower();
 
-    protected virtual bool Disabled => AdditionalAttributes?.ContainsKey("disabled");
+    protected virtual bool Disabled => AdditionalAttributes?.ContainsKey("disabled") ?? false;
 
     [MultiplesParameters]
     public ColumnSizes ColumnSizes { set; get; } = new();
