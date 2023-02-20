@@ -87,22 +87,24 @@ public class NumberField<TValue> : InputFieldBase<TValue>
                 builder.OpenComponent<FieldButton>(index);
                 builder.AddAttribute(1 + index, "Icon", icon);
                 builder.AddAttribute(2 + index, "OnClick", EventCallback.Factory.Create<MouseEventArgs>(this, StepDown));
+                builder.AddAttribute(3 + index, "disabled", Disabled);
                 builder.CloseComponent();
             }
             else
             {
-                builder.OpenComponent<FieldAddon>(3 + index);
-                builder.AddAttribute(4 + index, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, StepDown));
-                builder.AddAttribute(5 + index, "AdditionalClasses", "pointer");
-                builder.AddAttribute(6 + index, "ChildContent", (RenderFragment)(b =>
+                builder.OpenComponent<FieldAddon>(4 + index);
+                builder.AddAttribute(5 + index, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, StepDown));
+                builder.AddAttribute(6 + index, "AdditionalClasses", "pointer");
+                builder.AddAttribute(7 + index, "disabled", Disabled);
+                builder.AddAttribute(8 + index, "ChildContent", (RenderFragment)(b =>
                 {
-                    b.AddContent(7, "-");
+                    b.AddContent(9, "-");
                 }));
                 builder.CloseComponent();
             }
         }
 
-        return base.RenderPrepend(builder, index + 8);
+        return base.RenderPrepend(builder, index + 10);
     }
 
     protected override int RenderAppend(RenderTreeBuilder builder, int index)
@@ -114,22 +116,24 @@ public class NumberField<TValue> : InputFieldBase<TValue>
                 builder.OpenComponent<FieldButton>(index);
                 builder.AddAttribute(1 + index, "Icon", icon);
                 builder.AddAttribute(2 + index, "OnClick", EventCallback.Factory.Create<MouseEventArgs>(this, StepUp));
+                builder.AddAttribute(3 + index, "disabled", Disabled);
                 builder.CloseComponent();
             }
             else
             {
-                builder.OpenComponent<FieldAddon>(3 + index);
-                builder.AddAttribute(4 + index, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, StepUp));
-                builder.AddAttribute(5 + index, "AdditionalClasses", "pointer");
-                builder.AddAttribute(6 + index, "ChildContent", (RenderFragment)(b =>
+                builder.OpenComponent<FieldAddon>(4 + index);
+                builder.AddAttribute(5 + index, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, StepUp));
+                builder.AddAttribute(6 + index, "AdditionalClasses", "pointer");
+                builder.AddAttribute(7 + index, "disabled", Disabled);
+                builder.AddAttribute(8 + index, "ChildContent", (RenderFragment)(b =>
                 {
-                    b.AddContent(7, "+");
+                    b.AddContent(9, "+");
                 }));
                 builder.CloseComponent();
             }
         }
 
-        return base.RenderAppend(builder, index + 8);
+        return base.RenderAppend(builder, index + 10);
     }
 
     protected virtual bool HasStep()

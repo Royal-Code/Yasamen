@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using RoyalCode.Yasamen.Commons;
-using RoyalCode.Yasamen.Forms.Modules;
 using RoyalCode.Yasamen.Layout;
-using System.Globalization;
 
 namespace RoyalCode.Yasamen.Forms.Components;
 
@@ -34,6 +32,8 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
     protected string? InternalInputClasses { get; set; }
 
     protected virtual string FieldType => Type.ToString().ToLower();
+
+    protected virtual bool Disabled => AdditionalAttributes?.ContainsKey("disabled");
 
     [MultiplesParameters]
     public ColumnSizes ColumnSizes { set; get; } = new();
