@@ -22,7 +22,7 @@ aside {
 
     aside.offcanvas-float {
         top: calc(var(--b-aside-offcanvas--top) + var(--b-aside-offcanvas--float-gap));
-        bottom: calc(var(--b-footer--min-height) + var(--b-aside-offcanvas--float-gap));
+        bottom: var(--b-aside-offcanvas--float-gap);
         right: var(--b-aside-offcanvas--float-gap);
         border-radius: var(--b-border--radius-3);
     }

@@ -6,9 +6,9 @@ namespace RoyalCode.Yasamen.Commons.Modules;
 public class ScrollJsModule : JsModuleBase
 {
     /* scroll.js */
-    public static readonly string TopBarRegisterListener = "register";
-    public static readonly string TopBarUnregisterListener = "unregister";
-
+    public const string TopBarRegisterListener = "register";
+    public const string TopBarUnregisterListener = "unregister";
+    
     public ScrollJsModule(IJSRuntime js) : base(js, "scroll.js") { }
 
     public async Task<ScrollInterop> Register(Action<bool> callback)

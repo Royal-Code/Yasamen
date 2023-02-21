@@ -113,6 +113,8 @@
         await ToggleJs.CssClassToggle(asideRef.Value, "offcanvas-show", IsVisible);
         await ToggleJs.CssClassToggle(backdropRef!.Value, "offcanvas-show", IsVisible);
 
+        await ToggleJs.BodyCssClassToggle("overflow-hidden", IsVisible && Modal);
+
         if (OnVisibilityChanged.HasDelegate)
             await OnVisibilityChanged.InvokeAsync(IsVisible);
     }

@@ -16,7 +16,14 @@
                Modal="modal"
                UseBox="true"
                Title="Off Canvas Aside Box">
-        Olá Off Canvas and Aside Box !!!
+
+        <span>
+            Olá Off Canvas and Aside Box !!!
+        </span>
+        
+        <div class="m-2">
+            <div style="height: @Value; width: 100px; border: 1px solid blue;"></div>
+        </div>
     </OffCanvas>
 
     <div class="my-2">
@@ -40,8 +47,17 @@
 
     <button class="btn btn-primary" @onclick="async () => await handler2.Toggle()">
         Open Off Canvas 2
+
+        
+
     </button>
     
+    <div class="m-2">
+        <input name="height" @bind="Value" />
+    </div>
+
+    <div style="height: @Value; width: 100px; border: 1px solid red;"></div>
+
 </div>
 
 @code {
@@ -51,4 +67,6 @@
     private bool overlaying;
     private bool modal;
     private bool closeable;
+
+    public string Value { get; set; } = "100px";
 }
