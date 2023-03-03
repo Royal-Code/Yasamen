@@ -79,9 +79,9 @@ public class ValidadorFriend : IValidator<Friend>
         if (!Failure)
             return BaseResult.ImmutableSuccess;
 
-        return BaseResult.CreateSuccess()
+        return BaseResult.Create()
             .WithError("Your friend will always have failures.")
-            .WithInfo("But you can still be happy.")
+            .WithError("But you can still be happy.")
             .WithError("This is a bad name", nameof(Friend.Name))
             .WithError("This is a dangerous email", nameof(Friend.EMail))
             .WithError("This not a fine phone number", nameof(Friend.Phone))

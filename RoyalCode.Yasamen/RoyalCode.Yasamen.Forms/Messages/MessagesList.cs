@@ -3,7 +3,7 @@ using RoyalCode.OperationResult;
 
 namespace RoyalCode.Yasamen.Forms.Messages;
 
-public class MessagesList
+public sealed class MessagesList
 {
     private Node? allHead;
     private Node? allTail;
@@ -67,7 +67,7 @@ public class MessagesList
             allTail = node;
         }
 
-        switch (node.message.Type)
+        switch (node.message.GetMessageType())
         {
             case ResultMessageType.Error:
                 if (errorHead is null)
@@ -120,8 +120,8 @@ public class MessagesList
         }
         Count++;
     }
-    
-    private IEnumerable<IResultMessage> Enumerate(Node? node, bool all)
+
+    private static IEnumerable<IResultMessage> Enumerate(Node? node, bool all)
     {
         var current = node;
         while (current is not null)
