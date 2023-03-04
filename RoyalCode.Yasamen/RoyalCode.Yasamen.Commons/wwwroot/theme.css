@@ -283,7 +283,6 @@
     --b-border--radius: var(--b-border--radius-3);
     /*****  Components  *****/
     /* layout */
-    --b-cols-columns: 12;
     --b-cols-gutter: var(--b-size-5);
     /* box */
     --b-box-xs--min-height: var(--b-size-6);

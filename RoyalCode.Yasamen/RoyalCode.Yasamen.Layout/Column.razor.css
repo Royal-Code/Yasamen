@@ -24,62 +24,62 @@
 }
 
 div[col="1"] {
-    width: calc(100% / var(--b-cols-columns) / var(--b-cols-resize, 1));
+    width: calc(100% / var(--b-cols-columns, 12) / var(--b-cols-resize, 1));
     /* width: 8.333333%; */
 }
 
 div[col="2"] {
-    width: calc(100% / var(--b-cols-columns) * 2 / var(--b-cols-resize, 1));
+    width: calc(100% / var(--b-cols-columns, 12) * 2 / var(--b-cols-resize, 1));
     /* width: 16.666667%; */
 }
 
 div[col="3"] {
-    width: calc(100% / var(--b-cols-columns) * 3 / var(--b-cols-resize, 1));
+    width: calc(100% / var(--b-cols-columns, 12) * 3 / var(--b-cols-resize, 1));
     /* width: 25%; */
 }
 
 div[col="4"] {
-    width: calc(100% / var(--b-cols-columns) * 4 / var(--b-cols-resize, 1));
+    width: calc(100% / var(--b-cols-columns, 12) * 4 / var(--b-cols-resize, 1));
     /* width: 33.333333%; */
 }
 
 div[col="5"] {
-    width: calc(100% / var(--b-cols-columns) * 5 / var(--b-cols-resize, 1));
+    width: calc(100% / var(--b-cols-columns, 12) * 5 / var(--b-cols-resize, 1));
     /* width: 41.666667%; */
 }
 
 div[col="6"] {
-    width: calc(100% / var(--b-cols-columns) * 6 / var(--b-cols-resize, 1));
+    width: calc(100% / var(--b-cols-columns, 12) * 6 / var(--b-cols-resize, 1));
     /* width: 50%; */
 }
 
 div[col="7"] {
-    width: calc(100% / var(--b-cols-columns) * 7 / var(--b-cols-resize, 1));
+    width: calc(100% / var(--b-cols-columns, 12) * 7 / var(--b-cols-resize, 1));
     /* width: 58.333333%; */
 }
 
 div[col="8"] {
-    width: calc(100% / var(--b-cols-columns) * 8 / var(--b-cols-resize, 1));
+    width: calc(100% / var(--b-cols-columns, 12) * 8 / var(--b-cols-resize, 1));
     /* width: 66.666667%; */
 }
 
 div[col="9"] {
-    width: calc(100% / var(--b-cols-columns) * 9 / var(--b-cols-resize, 1));
+    width: calc(100% / var(--b-cols-columns, 12) * 9 / var(--b-cols-resize, 1));
     /* width: 75%; */
 }
 
 div[col="10"] {
-    width: calc(100% / var(--b-cols-columns) * 10 / var(--b-cols-resize, 1));
+    width: calc(100% / var(--b-cols-columns, 12) * 10 / var(--b-cols-resize, 1));
     /* width: 83.333333%; */
 }
 
 div[col="11"] {
-    width: calc(100% / var(--b-cols-columns) * 11 / var(--b-cols-resize, 1));
+    width: calc(100% / var(--b-cols-columns, 12) * 11 / var(--b-cols-resize, 1));
     /* width: 91.666667%; */
 }
 
 div[col="12"] {
-    width: calc(100% / var(--b-cols-columns) * 12 / var(--b-cols-resize, 1));
+    width: calc(100% / var(--b-cols-columns, 12) * 12 / var(--b-cols-resize, 1));
     /* width: 100%; */
 }
 

@@ -259,6 +259,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
 
                 _ = ValueChanged.InvokeAsync(newValue);
                 ModelContext.PropertyChangeSupport.PropertyHasChanged(FieldIdentifier, oldValue, newValue);
+                OnAfterValueChanged(newValue);
             }
             else
             {
@@ -305,6 +306,8 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
         if (oldIsInvalid != IsInvalid)
             StateHasChanged();
     }
+
+    protected virtual void OnAfterValueChanged(TValue? newValue) { }
 
     /// <inheritdoc />
     public override Task SetParametersAsync(ParameterView parameters)

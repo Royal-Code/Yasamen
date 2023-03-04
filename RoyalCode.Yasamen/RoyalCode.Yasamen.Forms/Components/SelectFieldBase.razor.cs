@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Components.Rendering;
 using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Components;
-using RoyalCode.Yasamen.Forms.Modules;
 using RoyalCode.Yasamen.Layout;
 using System.Globalization;
 
