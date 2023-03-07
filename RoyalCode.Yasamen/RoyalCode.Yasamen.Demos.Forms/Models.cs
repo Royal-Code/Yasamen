@@ -2,6 +2,7 @@
 using RoyalCode.Yasamen.Forms.Validation;
 using RoyalCode.Yasamen.Services;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RoyalCode.Yasamen.Demos.Forms;
 
@@ -91,7 +92,7 @@ public class ValidadorFriend : IValidator<Friend>
 
 public class CityService
 {
-    private static readonly List<City> cities = new List<City>
+    private static readonly List<City> cities = new()
     {
         new City()
         {
@@ -155,7 +156,7 @@ public class CityService
 
 public class CarService
 {
-    private static readonly List<Car> cars = new List<Car>
+    private static readonly List<Car> cars = new()
     {
         new Car()
         {
@@ -210,6 +211,7 @@ public class CarService
     };
 
     [Loader]
+    [SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Loader can't be static")]
     public async Task<IEnumerable<Car>> GetCars()
     {
         await Task.Delay(3_000);

@@ -3,7 +3,7 @@ using RoyalCode.Yasamen.Commons.Internal;
 
 namespace RoyalCode.Yasamen.Commons;
 
-[Obsolete("Use Css.Builder<TComponent>()", DiagnosticId = "YAS-001")]
+[Obsolete("Use Css.Map<TComponent>()", DiagnosticId = "YAS-001")]
 public class CssClassMap
 {
     public static CssClassMap Create(Func<bool> condition, string? cssClass)

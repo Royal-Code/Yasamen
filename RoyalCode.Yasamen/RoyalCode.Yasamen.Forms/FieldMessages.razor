@@ -4,7 +4,7 @@
 
 @if (messageListener?.Messages.Any is true)
 {
-    <div class="@Classes" role="alert" @attributes="@AdditionalAttributes">
+    <div class="@classes(this)" role="alert" @attributes="@AdditionalAttributes">
         @foreach (var msg in messageListener.Messages.All)
         {
             <span>@msg</span>
@@ -18,9 +18,10 @@
     private IModelContext modelContext = null!;
     private IMessageListener? messageListener;
 
-    private CssClassMap Classes =>
-        CssClassMap.Create("field-messages")
-            .Add(() => messageListener?.HideMessages is true, "hidden");
+    private static CssMap<FieldMessages> classes = Css.Map<FieldMessages>()
+        .Add("field-messages")
+        .Add(c => c.messageListener?.HideMessages is true, "hidden")
+        .Build();
     
     public FieldMessages()
     {
