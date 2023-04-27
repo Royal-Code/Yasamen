@@ -5,9 +5,9 @@ using RoyalCode.Yasamen.Services.Infrastructure.Performers;
 namespace RoyalCode.Yasamen.Services.Infrastructure.Internal;
 
 internal class ModelLoader<TModel> : IModelLoader<TModel>
-//where TModel : class
 {
     private readonly IServiceProvider? provider;
+    private readonly string? loaderName;
     private LinkedList<Func<IModelLoader<TModel>, ValueTask>>? callbacks;
     private bool? any;
 
@@ -17,12 +17,13 @@ internal class ModelLoader<TModel> : IModelLoader<TModel>
         NotLoaded = false;
     }
 
-    public ModelLoader(IServiceProvider provider)
+    public ModelLoader(IServiceProvider provider, string? loaderName)
     {
         Values = Enumerable.Empty<TModel>();
         NotLoaded = true;
         IsFirstLoad = true;
         this.provider = provider;
+        this.loaderName = loaderName;
     }
 
     public bool NotLoaded { get; private set; }
@@ -77,7 +78,11 @@ internal class ModelLoader<TModel> : IModelLoader<TModel>
             return;
 
         await BeginLoadAsync();
-        await ExecuteAsync(token);
+        if (loaderName is null)
+            await ExecuteAsync(token);
+        else
+            await ExecuteNamedAsync(token);
+
         await EndLoadAsync();
     }
 
@@ -107,6 +112,48 @@ internal class ModelLoader<TModel> : IModelLoader<TModel>
         catch (Exception ex)
         {
             Tracer.Write("ModelLoader", "ExecuteAsync", "Exception: {0}", ex);
+            OnError(ex);
+        }
+    }
+    
+    private async Task ExecuteNamedAsync(CancellationToken token)
+    {
+        var loaderType = NamedLoaders.GetServiceType(loaderName!, typeof(TModel));
+
+        if (loaderType is null)
+        {
+            Tracer.Write("ModelLoader", "ExecuteNamedAsync", "The name loader performer service type was not found for the type {0} and name {1}",
+                typeof(TModel).FullName!,
+                loaderName);
+
+            return;
+        }
+
+        Tracer.Write("ModelLoader", "ExecuteNamedAsync", "locate service: {0}<{1}>",
+            loaderType.Name,
+            typeof(TModel).FullName!);
+
+        var performer = provider!.GetService(loaderType);
+        if (performer is not INamedLoaderPerformer<TModel> namedPerformer)
+        {
+            Tracer.Write("ModelLoader", "ExecuteNamedAsync", "The service '{0}<{1}>' is null or not is a INamedLoaderPerformer<{2}>, returning.",
+                loaderType.Name,
+                typeof(TModel).FullName!,
+                typeof(TModel).Name!);
+
+            return;
+        }
+
+        Tracer.Write("ModelLoader", "ExecuteNamedAsync", "Calling LoadAsync");
+
+        try
+        {
+            Values = await namedPerformer.LoadAsync(loaderName, token);
+            Tracer.Write("ModelLoader", "ExecuteNamedAsync", "load performed");
+        }
+        catch (Exception ex)
+        {
+            Tracer.Write("ModelLoader", "ExecuteNamedAsync", "Exception: {0}", ex);
             OnError(ex);
         }
     }

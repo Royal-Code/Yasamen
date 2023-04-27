@@ -40,6 +40,9 @@ public abstract class SelectModelFieldBase<TModel, TValue> : SelectFieldBase<TVa
     [Parameter]
     public TValue? EmptyValue { get; set; }
 
+    [Parameter]
+    public string? LoaderName { get; set; }
+
     protected abstract TValue GetKeyFromModel(TModel model);
 
     protected virtual object? GetModelDescriptor(TModel model) => descriptor(model);
@@ -111,7 +114,7 @@ public abstract class SelectModelFieldBase<TModel, TValue> : SelectFieldBase<TVa
         }
         else if (loader is null)
         {
-            var newLoader = DataServicesProvider.GetLoader<TModel>();
+            var newLoader = DataServicesProvider.GetLoader<TModel>(LoaderName);
             newLoader.LoadAsync();
             Listen(newLoader);
             loader = newLoader;

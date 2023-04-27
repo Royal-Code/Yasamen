@@ -12,6 +12,20 @@ namespace RoyalCode.Yasamen.Services;
 [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
 public class LoaderAttribute : SubscribesAttribute
 {
+    /// <summary>
+    /// The name of the loader. Optional.
+    /// </summary>
+    public string? Name { get; set; }
+
+    /// <summary>
+    /// Creates a new instance of <see cref="LoaderAttribute"/>.
+    /// </summary>
+    /// <param name="name">The name of the loader. Optional.</param>
+    public LoaderAttribute(string? name = null)
+    {
+        Name = name;
+    }
+
     public override void AddServices(IServiceCollection services, MethodInfo method)
     {
         var parameters = method.GetParameters();
@@ -43,23 +57,45 @@ public class LoaderAttribute : SubscribesAttribute
             var tfilter = parameters[0].ParameterType!;
 
             var @delegate = CreateDelegate(tservice, tmodel, tfilter, method, hasCancellationToken);
-            services.AddSingleton(@delegate.GetType(), @delegate);
+            if (Name is not null)
+            {
+                NamedLoaders.AddDelegate(Name, tmodel, tfilter, @delegate);
 
-            var serviceType = typeof(LoaderPerformer<,,>).MakeGenericType(tmodel, tfilter, tservice);
-            services.AddTransient(typeof(ILoaderPerformer<,>).MakeGenericType(tmodel, tfilter), serviceType);
+                var serviceType = typeof(NamedLoaderPerformer<,,>).MakeGenericType(tmodel, tfilter, tservice);
+                services.AddTransient(serviceType);
+                NamedLoaders.AddServiceType(Name, tmodel, serviceType);
+            }
+            else
+            {
+                services.AddSingleton(@delegate.GetType(), @delegate);
+
+                var serviceType = typeof(LoaderPerformer<,,>).MakeGenericType(tmodel, tfilter, tservice);
+                services.AddTransient(typeof(ILoaderPerformer<,>).MakeGenericType(tmodel, tfilter), serviceType);
+            }
         }
         else
         {
             var @delegate = CreateDelegate(tservice, tmodel, method, hasCancellationToken);
-            services.AddSingleton(@delegate.GetType(), @delegate);
+            if (Name is not null)
+            {
+                NamedLoaders.AddDelegate(Name, tmodel, @delegate);
 
-            var serviceType = typeof(LoaderPerformer<,>).MakeGenericType(tmodel, tservice);
-            services.AddTransient(typeof(ILoaderPerformer<>).MakeGenericType(tmodel), serviceType);
+                var serviceType = typeof(NamedLoaderPerformer<,>).MakeGenericType(tmodel, tservice);
+                services.AddTransient(serviceType);
+                NamedLoaders.AddServiceType(Name, tmodel, serviceType);
+            }
+            else
+            {
+                services.AddSingleton(@delegate.GetType(), @delegate);
+
+                var serviceType = typeof(LoaderPerformer<,>).MakeGenericType(tmodel, tservice);
+                services.AddTransient(typeof(ILoaderPerformer<>).MakeGenericType(tmodel), serviceType);
+            }
         }
 
     }
 
-    private object CreateDelegate(Type tservice, Type tmodel, Type tfilter, MethodInfo method, bool hasCancellationToken)
+    private static Delegate CreateDelegate(Type tservice, Type tmodel, Type tfilter, MethodInfo method, bool hasCancellationToken)
     {
         var serviceParam = Expression.Parameter(tservice, "service");
         var filterParam = Expression.Parameter(tfilter, "filter");
