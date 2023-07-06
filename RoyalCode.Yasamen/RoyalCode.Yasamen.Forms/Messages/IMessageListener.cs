@@ -1,4 +1,4 @@
-﻿using RoyalCode.OperationResult;
+﻿using RoyalCode.OperationResults;
 
 namespace RoyalCode.Yasamen.Forms.Messages;
 

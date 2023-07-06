@@ -1,4 +1,4 @@
-﻿using RoyalCode.OperationResult;
+﻿using RoyalCode.OperationResults;
 using RoyalCode.Yasamen.Forms.Validation;
 using RoyalCode.Yasamen.Services;
 using System.ComponentModel;
@@ -75,18 +75,21 @@ public class ValidadorFriend : IValidator<Friend>
 {
     public bool Failure { get; set; }
 
-    public IOperationResult Validate(Friend model)
+    public OperationResult Validate(Friend model)
     {
         if (!Failure)
-            return BaseResult.ImmutableSuccess;
+            return new();
 
-        return BaseResult.Create()
-            .WithError("Your friend will always have failures.")
-            .WithError("But you can still be happy.")
-            .WithError("This is a bad name", nameof(Friend.Name))
-            .WithError("This is a dangerous email", nameof(Friend.EMail))
-            .WithError("This not a fine phone number", nameof(Friend.Phone))
-            .WithError("Check or not, you got a problem", nameof(Friend.IsActive));
+        var errors = new ResultErrors();
+
+        errors += ResultMessage.Error("Your friend will always have failures.");
+        errors += ResultMessage.Error("But you can still be happy.");
+        errors += ResultMessage.ValidationError("This is a bad name", nameof(Friend.Name));
+        errors += ResultMessage.ValidationError("This is a dangerous email", nameof(Friend.EMail));
+        errors += ResultMessage.ValidationError("This not a fine phone number", nameof(Friend.Phone));
+        errors += ResultMessage.ValidationError("Check or not, you got a problem", nameof(Friend.IsActive));
+
+        return errors;
     }
 }
 
