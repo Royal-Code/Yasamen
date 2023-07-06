@@ -17,7 +17,7 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
     private readonly RenderFragment contentFragment;
     private bool isFocused;
 
-    public InputFieldBase()
+    protected InputFieldBase()
     {
         contentFragment = BuildContent;
     }

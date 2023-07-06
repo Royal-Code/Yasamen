@@ -1,4 +1,4 @@
-﻿using RoyalCode.OperationResult;
+﻿using RoyalCode.OperationResults;
 using RoyalCode.Yasamen.Forms.Messages;
 using RoyalCode.Yasamen.Forms.Support;
 
@@ -30,7 +30,7 @@ public interface IModelContext
 
     PropertyChangeSupport PropertyChangeSupport { get; }
 
-    public void AddResult(IOperationResult result);
+    public void AddResult(OperationResult result);
 
     public void AddMessages(IEnumerable<IResultMessage> messages);
 

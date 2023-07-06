@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.Extensions.Localization;
-using RoyalCode.OperationResult;
+using RoyalCode.OperationResults;
 using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Forms.Messages;
 using RoyalCode.Yasamen.Forms.Support;
@@ -231,7 +231,7 @@ public class ModelSupport<TModel> : ComponentBase, IDisposable
 
     private void AddMessage(FieldIdentifier field, string message)
     {
-        context.EditorMessages.Add(field, ResultMessage.Error(message));
+        context.EditorMessages.Add(field, ResultMessage.ValidationError(message, field.FieldName));
     }
 
     public void Dispose()
