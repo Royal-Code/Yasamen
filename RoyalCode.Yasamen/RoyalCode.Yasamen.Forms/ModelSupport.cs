@@ -230,7 +230,7 @@ public class ModelSupport<TModel> : ComponentBase, IDisposable
 
     private void AddMessage(FieldIdentifier field, string message)
     {
-        context.EditorMessages.Add(field, ResultMessage.Error(message));
+        context.EditorMessages.Add(field, ResultMessage.ValidationError(message, field.FieldName));
     }
 
     public void Dispose()

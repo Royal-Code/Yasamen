@@ -5,10 +5,10 @@ namespace RoyalCode.Yasamen.Forms.Components;
 
 public abstract class DateFieldBase<TDate> : InputFieldBase<TDate>
 {
+    private readonly bool isNullable = Nullable.GetUnderlyingType(typeof(TDate)) is not null;
+
     private string? currentInputValue;
     private string? previousInputValue;
-    
-    private bool isNullable = Nullable.GetUnderlyingType(typeof(TDate)) is not null;
 
     protected override string? CurrentValueAsString
     {

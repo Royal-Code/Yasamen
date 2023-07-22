@@ -20,7 +20,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
     
     private IMessageListener? messageListener;
     private bool initialized;
-    private Type? nullableUnderlyingType;
+    private Type? nullableUnderlyingType; // is not used, but can be used in the future, so it is kept until the final version
     private bool settingNewValue;
     private PropertyInfo? propertyInfo;
     private string? fieldLabel;

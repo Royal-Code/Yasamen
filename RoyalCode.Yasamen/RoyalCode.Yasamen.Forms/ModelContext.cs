@@ -77,8 +77,8 @@ public sealed class ModelContext<TModel> : IModelContext
 
     public void AddResult(OperationResult result)
     {
-        if (result.TryGetError(out var error))
-            AddMessages(error);
+        if (result.TryGetError(out var errors))
+            AddMessages(errors);
     }
 
     public void AddMessages(IEnumerable<IResultMessage> messages)
