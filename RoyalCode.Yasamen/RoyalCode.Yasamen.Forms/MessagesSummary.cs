@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
-using RoyalCode.OperationResult;
+using RoyalCode.OperationResults;
 using RoyalCode.Yasamen.Components;
 using RoyalCode.Yasamen.Forms.Messages;
 

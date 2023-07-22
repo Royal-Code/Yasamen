@@ -36,8 +36,9 @@ public sealed class ValidationContext<TModel> : IValidationContext
         if (validator is not null)
         {
             var result = validator.Validate(model);
-            HasErros = !result.Success;
-            EditorMessages?.Add(model, result.Messages);
+            HasErros = result.TryGetError(out var errors);
+            if (HasErros)
+                EditorMessages?.Add(model, errors!);
         }
     }
 }

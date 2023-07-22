@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
+using RoyalCode.OperationResults;
 using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Commons.Extensions;
 using RoyalCode.Yasamen.Forms.Messages;
@@ -228,7 +229,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
             {
                 IsInvalid = true;
                 enteredValue = originalInput;
-                editorMessages.Add(FieldIdentifier, ResultMessage.Error(error!, FieldIdentifier.FieldName));
+                editorMessages.Add(FieldIdentifier, ResultMessage.ValidationError(error!, FieldIdentifier.FieldName));
 
                 settingNewValue = false;
                 return;
@@ -243,7 +244,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
                 {
                     IsInvalid = true;
                     enteredValue = originalInput;
-                    editorMessages.Add(FieldIdentifier.Model, ResultMessage.Error(error!, FieldIdentifier.FieldName));
+                    editorMessages.Add(FieldIdentifier.Model, ResultMessage.ValidationError(error!, FieldIdentifier.FieldName));
 
                     Tracer.Write("FieldBase", "SetValue", "Cannot parse formatted value");
                     settingNewValue = false;

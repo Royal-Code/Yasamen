@@ -1,4 +1,5 @@
-﻿using RoyalCode.Yasamen.Forms.Messages;
+﻿using RoyalCode.OperationResults;
+using RoyalCode.Yasamen.Forms.Messages;
 
 namespace RoyalCode.Yasamen.Forms.Components;
 
@@ -51,7 +52,7 @@ public abstract class DateFieldBase<TDate> : InputFieldBase<TDate>
         else
         {
             IsInvalid = true;
-            editorMessages.Add(FieldIdentifier, ResultMessage.Error(error!, FieldIdentifier.FieldName));
+            editorMessages.Add(FieldIdentifier, ResultMessage.ValidationError(error!, FieldIdentifier.FieldName));
             return;
         }
 

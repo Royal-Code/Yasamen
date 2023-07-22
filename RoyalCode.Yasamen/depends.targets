@@ -1,6 +1,6 @@
 <Project>
 	<PropertyGroup>
 		<AspNetVer>7.0.0</AspNetVer>
-		<WasmVer>7.0.2</WasmVer>
+		<WasmVer>7.0.9</WasmVer>
 	</PropertyGroup>
 </Project>

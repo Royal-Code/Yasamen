@@ -1,4 +1,4 @@
-﻿using RoyalCode.OperationResult;
+﻿using RoyalCode.OperationResults;
 
 namespace RoyalCode.Yasamen.Forms.Validation;
 
@@ -8,7 +8,7 @@ namespace RoyalCode.Yasamen.Forms.Validation;
 /// </para>
 /// </summary>
 /// <typeparam name="TModel">The type of the model.</typeparam>
-public interface IValidator<TModel>
+public interface IValidator<in TModel>
 {
     /// <summary>
     /// <para>
@@ -17,5 +17,5 @@ public interface IValidator<TModel>
     /// </summary>
     /// <param name="model">The model to be validated.</param>
     /// <returns>The result of the validation.</returns>
-    IOperationResult Validate(TModel model);
+    ValidableResult Validate(TModel model);
 }
