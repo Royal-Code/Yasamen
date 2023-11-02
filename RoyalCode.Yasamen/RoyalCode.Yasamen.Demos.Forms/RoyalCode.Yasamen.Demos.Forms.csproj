@@ -11,7 +11,7 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="$(WasmVer)" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="$(WasmVer)" PrivateAssets="all" />
-		<PackageReference Include="RoyalCode.OperationResult" Version="2.0.0-rc7" />
+		<PackageReference Include="RoyalCode.OperationResult" Version="$(OperationResult)" />
 	</ItemGroup>
 
 	<ItemGroup>
