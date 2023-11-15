@@ -3,7 +3,7 @@
 	<Import Project="..\depends.targets" />
 
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
@@ -19,7 +19,7 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="$(WasmVer)" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="$(WasmVer)" PrivateAssets="all" />
 		<PackageReference Include="Microsoft.Extensions.Localization" Version="$(AspNetVer)" />
-		<PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
+		<PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="8.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>

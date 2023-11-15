@@ -1,7 +1,7 @@
 <Project>
 	<PropertyGroup>
-		<AspNetVer>7.0.0</AspNetVer>
-		<WasmVer>7.0.13</WasmVer>
+		<AspNetVer>8.0.0</AspNetVer>
+		<WasmVer>8.0.0</WasmVer>
 		<OperationResult>2.0.0-rc9.11</OperationResult>
 	</PropertyGroup>
 </Project>
