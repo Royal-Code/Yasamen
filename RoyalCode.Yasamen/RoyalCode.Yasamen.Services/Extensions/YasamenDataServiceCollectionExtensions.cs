@@ -13,6 +13,5 @@ public static class YasamenDataServiceCollectionExtensions
     {
         services.AddScoped<IDataServicesProvider, DataServicesProvider>();
         services.AddScoped(typeof(FinderPerformerService<,>));
-
     }
 }

@@ -23,6 +23,7 @@ public sealed class ChangeSupport
     private List<IPropertyChangeListener>? listeners;
     private bool initialized;
     private object? initialValue;
+    private object? currentValue;
     private bool notifying;
 
     internal ChangeSupport(string name,
@@ -66,7 +67,7 @@ public sealed class ChangeSupport
             throw new ArgumentNullException(nameof(handler));
 
         var listener = new InternalListener<TProperty>(handler);
-        listeners ??= new();
+        listeners ??= [];
         listeners.Add(listener);
 
         var supportListener = new ChangeSupportListener<TProperty>(() =>
@@ -92,7 +93,7 @@ public sealed class ChangeSupport
             throw new ArgumentNullException(nameof(handler));
 
         var listener = new InternalListener(handler);
-        listeners ??= new();
+        listeners ??= [];
         listeners.Add(listener);
 
         return new ChangeSupportListener(() =>
@@ -109,7 +110,7 @@ public sealed class ChangeSupport
         var includedChangeSupport = collection.GetChangeSupport(changeSupportName);
         var include = new IncludeChangeSupport<TValue, TIncludedProperty>(includedChangeSupport, includedHandler);
 
-        includes ??= new();
+        includes ??= [];
         includes.Add(include);
     }
 
@@ -131,8 +132,15 @@ public sealed class ChangeSupport
         Identifier = identifier;
         FieldType = typeof(TValue);
         this.initialValue = initialValue;
+        currentValue = initialValue;
 
         InitializeIncludes(identifier, initialValue);
+    }
+
+    internal void HasCurrentValue<TValue>(TValue value)
+    {
+        if (Identifier is not null && currentValue is TValue previousValue && !Equals(previousValue, value))
+            PropertyHasChanged(Identifier.Value, previousValue, value);
     }
 
     internal void InitializeIncludes<TValue>(FieldIdentifier identifier, TValue initialValue)
@@ -141,21 +149,13 @@ public sealed class ChangeSupport
         parentPropertyChangeSupport?.GetChangeSupport(Name).InitializeIncludes(identifier, initialValue);
     }
 
-    //TODO: ver se isso é necessário.
-    internal void SetIdentifier(FieldIdentifier identifier)
-    {
-        if (!initialized)
-            throw new InvalidOperationException($"The {nameof(ChangeSupport)} must be initialized");
-
-        Identifier = identifier;
-    }
-
     internal void Reset()
     {
         initialized = false;
         Identifier = default;
         FieldType = null;
         initialValue = default;
+        currentValue = default;
 
         includes?.ForEach(i => i.Reset());
         
@@ -168,6 +168,8 @@ public sealed class ChangeSupport
             return;
 
         notifying = true;
+
+        currentValue = newValue;
 
         listeners?.ForEach(l =>
         {

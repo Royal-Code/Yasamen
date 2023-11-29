@@ -346,6 +346,10 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
             throw new InvalidOperationException(
                 $"{GetType()} does not support changing the {nameof(ModelContext<object>)} dynamically.");
         }
+        else
+        {
+            changeSupport!.HasCurrentValue(Value);
+        }
 
         if (ModelContext is null)
             throw new InvalidOperationException(

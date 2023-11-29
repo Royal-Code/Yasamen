@@ -23,8 +23,8 @@ namespace RoyalCode.Yasamen.Forms.Support;
 public sealed class PropertyChangeSupport
 {
     private readonly ChangeSupportCollection changeSupports;
+    private readonly PropertyChangeSupport? parent;
     private Dictionary<string, object>? properties;
-    private PropertyChangeSupport? parent;
 
     /// <summary>
     /// Creates new <see cref="PropertyChangeSupport"/> without parent.
@@ -81,11 +81,12 @@ public sealed class PropertyChangeSupport
     
     public PropertySupported<TValue> Property<TValue>(string name)
     {
-        properties ??= new();
+        properties ??= [];
         if (properties.TryGetValue(name, out var obj))
         {
             if (obj is not PropertySupported<TValue> supported)
-                throw new InvalidOperationException($"The property with name '{name}' has other type them ('{typeof(TValue).Name}')");
+                throw new InvalidOperationException(
+                    $"The property with name '{name}' has other type them ('{typeof(TValue).Name}')");
 
             return supported;
         }

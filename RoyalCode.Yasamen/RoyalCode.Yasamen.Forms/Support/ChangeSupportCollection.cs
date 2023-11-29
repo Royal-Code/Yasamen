@@ -7,7 +7,7 @@ namespace RoyalCode.Yasamen.Forms.Support;
 ///     A collection of <see cref="ChangeSupport"/>.
 /// </para>
 /// <para>
-///     This class manages the <see cref="ChangeSupport"/> and its lifecycle.
+///     This class manages the <see cref="ChangeSupport"/> and its life-cycle.
 /// </para>
 /// </summary>
 public sealed class ChangeSupportCollection
