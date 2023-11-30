@@ -26,7 +26,17 @@ public sealed class SelectKeyField<TModel, TValue> : SelectModelFieldBase<TModel
         key = Key ?? key ?? CreateKey() ?? throw new InvalidOperationException(
             $"Could not get the Key of the model '{typeof(TModel).Name}' with the type '{typeof(TValue).Name}'.");
 
-        if (ModelSupport is not null && modelChangeSupport is null)
+        if (modelChangeSupport is not null)
+        {
+            // get the current model
+            var currentModel = GetSelectedModel(Value);
+            if (currentModel != lastSelectedModel)
+            {
+                lastSelectedModel = currentModel;
+                modelChangeSupport.HasCurrentValue(lastSelectedModel);
+            }
+        }
+        else if (ModelSupport is not null)
         {
             lastSelectedModel = GetSelectedModel(Value);
 
