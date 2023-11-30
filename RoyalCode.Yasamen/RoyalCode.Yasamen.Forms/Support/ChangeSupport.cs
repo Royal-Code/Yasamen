@@ -22,7 +22,6 @@ public sealed class ChangeSupport
     private List<IIncludeChangeSupport>? includes;
     private List<IPropertyChangeListener>? listeners;
     private bool initialized;
-    private object? initialValue;
     private object? currentValue;
     private bool notifying;
 
@@ -55,6 +54,15 @@ public sealed class ChangeSupport
     public Type? FieldType { get; private set; }
 
     /// <summary>
+    /// Get the current value of the state, if it is of the specified type.
+    /// </summary>
+    /// <typeparam name="TValue">The value type.</typeparam>
+    /// <returns>
+    ///     The current value of the state, if it is of the specified type, otherwise null (<c>default</c>).
+    /// </returns>
+    public TValue? GetValue<TValue>() => currentValue is TValue value ? value : default;
+
+    /// <summary>
     /// Creates a listener for value changes of a specific type.
     /// </summary>
     /// <typeparam name="TProperty">The type of the property.</typeparam>
@@ -63,8 +71,7 @@ public sealed class ChangeSupport
     /// <exception cref="ArgumentNullException">if <paramref name="handler"/> is null.</exception>
     public ChangeSupportListener<TProperty> OnChanged<TProperty>(PropertyChangedHandler<TProperty> handler)
     {
-        if (handler is null)
-            throw new ArgumentNullException(nameof(handler));
+        ArgumentNullException.ThrowIfNull(handler);
 
         var listener = new InternalListener<TProperty>(handler);
         listeners ??= [];
@@ -75,7 +82,7 @@ public sealed class ChangeSupport
             listeners.Remove(listener);
         });
 
-        if (initialValue is TProperty value)
+        if (currentValue is TProperty value)
             supportListener.InitialValue = value;
 
         return supportListener;
@@ -89,8 +96,7 @@ public sealed class ChangeSupport
     /// <exception cref="ArgumentNullException">if <paramref name="handler"/> is null.</exception>
     public ChangeSupportListener OnAnyChanged(AnyPropertyChangedHandler handler)
     {
-        if (handler is null)
-            throw new ArgumentNullException(nameof(handler));
+        ArgumentNullException.ThrowIfNull(handler);
 
         var listener = new InternalListener(handler);
         listeners ??= [];
@@ -101,8 +107,21 @@ public sealed class ChangeSupport
             listeners.Remove(listener);
         });
     }
-    
-    // TODO: tentar explicar o que isso faz.
+
+    /// <summary>
+    /// <para>
+    ///     Includes a property of <typeparamref name="TValue"/> type in the state change sharing.
+    /// </para>
+    /// <para>
+    ///     This means that when the state of the property is changed (of the type <typeparamref name="TValue"/>),
+    ///     the listeners of <typeparamref name="TValue"/> will be triggered 
+    ///     and then the listeners of <typeparamref name="TIncludedProperty"/>.
+    /// </para>
+    /// </summary>
+    /// <typeparam name="TValue"></typeparam>
+    /// <typeparam name="TIncludedProperty"></typeparam>
+    /// <param name="changeSupportName"></param>
+    /// <param name="includedHandler"></param>
     public void Include<TValue, TIncludedProperty>(
         string changeSupportName,
         Func<TValue, TIncludedProperty> includedHandler)
@@ -131,7 +150,6 @@ public sealed class ChangeSupport
         initialized = true;
         Identifier = identifier;
         FieldType = typeof(TValue);
-        this.initialValue = initialValue;
         currentValue = initialValue;
 
         InitializeIncludes(identifier, initialValue);
@@ -154,7 +172,6 @@ public sealed class ChangeSupport
         initialized = false;
         Identifier = default;
         FieldType = null;
-        initialValue = default;
         currentValue = default;
 
         includes?.ForEach(i => i.Reset());
@@ -184,35 +201,24 @@ public sealed class ChangeSupport
         notifying = false;
     }
 
-    private sealed class InternalListener : IPropertyChangeListener
+    private sealed class InternalListener(AnyPropertyChangedHandler handlerAny) 
+        : IPropertyChangeListener
     {
-        public InternalListener(AnyPropertyChangedHandler handlerAny)
+        public void PropertyHasChanged<TProperty>(FieldIdentifier fieldIdentifier, 
+            TProperty oldValue, TProperty newValue)
         {
-            HandlerAny = handlerAny ?? throw new ArgumentNullException(nameof(handlerAny));
-        }
-
-        private AnyPropertyChangedHandler HandlerAny { get; }
-
-        public void PropertyHasChanged<TProperty>(FieldIdentifier fieldIdentifier, TProperty oldValue, TProperty newValue)
-        {
-            HandlerAny.Invoke(fieldIdentifier, oldValue, newValue);
+            handlerAny.Invoke(fieldIdentifier, oldValue, newValue);
         }
     }
 
-    private sealed class InternalListener<TProperty> : IPropertyChangeListener<TProperty>
+    private sealed class InternalListener<TProperty>(PropertyChangedHandler<TProperty> handler) 
+        : IPropertyChangeListener<TProperty>
     {
-        public InternalListener(PropertyChangedHandler<TProperty> handler)
-        {
-            Handler = handler ?? throw new ArgumentNullException(nameof(handler));
-        }
-
-        private PropertyChangedHandler<TProperty> Handler { get; }
-
         public void PropertyHasChanged<T>(FieldIdentifier fieldIdentifier, T oldValue, T newValue) { }
 
         public void PropertyHasChanged(FieldIdentifier fieldIdentifier, TProperty oldValue, TProperty newValue)
         {
-            Handler.Invoke(fieldIdentifier, oldValue, newValue);
+            handler.Invoke(fieldIdentifier, oldValue, newValue);
         }
     }
 }
