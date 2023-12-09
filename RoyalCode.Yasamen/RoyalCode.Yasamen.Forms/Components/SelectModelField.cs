@@ -18,11 +18,11 @@ public sealed class SelectModelField<TModel> : SelectModelFieldBase<TModel, TMod
     {
         base.OnParametersSet();
 
-        key = Key ?? key ?? CreateKey() ?? throw new InvalidOperationException(
+        key = Key ?? key ?? SelectModelField<TModel>.CreateKey() ?? throw new InvalidOperationException(
             $"Could not get the Key of the model '{typeof(TModel).Name}'.");
     }
 
-    private Func<TModel, object>? CreateKey() => KeyAndDescriptionFunctionDelegates.GetKeyFunction<TModel>();
+    private static Func<TModel, object>? CreateKey() => KeyAndDescriptionFunctionDelegates.GetKeyFunction<TModel>();
 
     protected override string? FormatValue(TModel? value) => value is null ? null : key(value)?.ToString();
 
@@ -43,7 +43,7 @@ public sealed class SelectModelField<TModel> : SelectModelFieldBase<TModel, TMod
         var matched = OptionsValues.Where(model => FormatValue(model) == value).ToList();
         if (matched.Count == 1)
         {
-            result = matched.First();
+            result = matched[0];
             errorMessage = null;
             return true;
         }

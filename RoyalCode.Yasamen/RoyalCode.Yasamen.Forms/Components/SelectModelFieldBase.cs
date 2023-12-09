@@ -14,7 +14,7 @@ public abstract class SelectModelFieldBase<TModel, TValue> : SelectFieldBase<TVa
     private bool hasChildContent;
     private IModelLoader<TModel> loader = null!;
 
-    public SelectModelFieldBase()
+    protected SelectModelFieldBase()
     {
         listener = CheckSelectedValue;
     }
@@ -51,7 +51,7 @@ public abstract class SelectModelFieldBase<TModel, TValue> : SelectFieldBase<TVa
 
     protected virtual IEnumerable<TModel> OptionsValues => loader.Values;
 
-    protected virtual string DefaultOptionValue { get; private set; }
+    protected virtual string? DefaultOptionValue { get; private set; }
     
     protected override int RenderOptions(RenderTreeBuilder builder, int index)
     {

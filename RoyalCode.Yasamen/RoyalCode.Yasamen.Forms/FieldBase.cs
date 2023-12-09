@@ -95,6 +95,13 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
     protected string FieldId => fieldId ??= $"{ModelContext.GetModelNameIdentifier()}.{FieldName}";
 
     /// <summary>
+    /// <para>
+    ///     A description of the field that can be used for debugging.
+    /// </para>
+    /// </summary>
+    protected string FieldDescription => $"{FieldName} (Label: {FieldLabel}, Id: {FieldId}, Property: {FieldPropertyInfo?.Name}, ModelType: {FieldPropertyInfo?.DeclaringType?.Name})";
+
+    /// <summary>
     /// The field element that has the value (input, select, textarea).
     /// </summary>
     public ElementReference Element 
@@ -191,7 +198,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
                 var editorMessages = ModelContext.EditorMessages;
                 editorMessages.Clear(FieldIdentifier);
 
-                Tracer.Write("FieldBase", "SetCurrentValue", $"PropertyChanged, Field: {FieldIdentifier}, {Value}, {value}");
+                Tracer.Write("FieldBase", "SetCurrentValue", $"PropertyChanged, Field: {FieldDescription}, {Value}, {value}");
 
                 var oldValue = Value;
                 _ = ValueChanged.InvokeAsync(value);
@@ -199,7 +206,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
             }
             else
             {
-                Tracer.Write("FieldBase", "SetCurrentValue", $"Not Changed, Field: {FieldIdentifier}, {Value}, {value}");
+                Tracer.Write("FieldBase", "SetCurrentValue", $"Not Changed, Field: {FieldDescription}, {Value}, {value}");
             }
         }
     }
@@ -255,7 +262,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
             var hasChanged = !EqualityComparer<TValue>.Default.Equals(oldValue, newValue);
             if (hasChanged)
             {
-                Tracer.Write("FieldBase", "SetValue", $"PropertyChanged, Field: {FieldIdentifier}, {oldValue}, {newValue}");
+                Tracer.Write("FieldBase", "SetValue", $"PropertyChanged, Field: {FieldDescription}, {oldValue}, {newValue}");
 
                 _ = ValueChanged.InvokeAsync(newValue);
                 ModelContext.PropertyChangeSupport.PropertyHasChanged(FieldIdentifier, oldValue, newValue);
@@ -263,7 +270,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
             }
             else
             {
-                Tracer.Write("FieldBase", "SetValue", $"Not Changed, Field: {FieldIdentifier}, {oldValue}, {newValue}");
+                Tracer.Write("FieldBase", "SetValue", $"Not Changed, Field: {FieldDescription}, {oldValue}, {newValue}");
             }
 
             settingNewValue = false;

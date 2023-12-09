@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Commons.Extensions;
 using RoyalCode.Yasamen.Forms.Support;
 
@@ -22,7 +23,9 @@ public sealed class SelectKeyField<TModel, TValue> : SelectModelFieldBase<TModel
     protected override void OnParametersSet()
     {
         base.OnParametersSet();
-        
+
+        Tracer.Begin<SelectKeyField<TModel, TValue>>(nameof(OnParametersSet));
+
         key = Key ?? key ?? CreateKey() ?? throw new InvalidOperationException(
             $"Could not get the Key of the model '{typeof(TModel).Name}' with the type '{typeof(TValue).Name}'.");
 
@@ -32,17 +35,22 @@ public sealed class SelectKeyField<TModel, TValue> : SelectModelFieldBase<TModel
             var currentModel = GetSelectedModel(Value);
             if (currentModel != lastSelectedModel)
             {
+                Tracer.Write<SelectKeyField<TModel, TValue>>("Model has changed.", FieldDescription);
                 lastSelectedModel = currentModel;
                 modelChangeSupport.HasCurrentValue(lastSelectedModel);
             }
         }
         else if (ModelSupport is not null)
         {
+            Tracer.Write<SelectKeyField<TModel, TValue>>("Inicialize model change support.", FieldDescription);
+
             lastSelectedModel = GetSelectedModel(Value);
 
             modelChangeSupport = ModelContext.PropertyChangeSupport.GetChangeSupport(ModelSupport);
             modelChangeSupport.Initialize(FieldIdentifier, lastSelectedModel);
         }
+
+        Tracer.End<SelectKeyField<TModel, TValue>>(nameof(OnParametersSet));
     }
 
     private Func<TModel, TValue>? CreateKey()
