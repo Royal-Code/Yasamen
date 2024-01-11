@@ -167,6 +167,12 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
     public Expression<Func<TValue>>? ValueExpression { get; set; }
 
     /// <summary>
+    /// Gets or sets a callback for listening to changes on the input element.
+    /// </summary>
+    [Parameter]
+    public EventCallback<TValue> OnChange { get; set; }
+
+    /// <summary>
     /// The change support name. If not informed the <see cref="FieldIdentifier.FieldName"/> will be used.
     /// </summary>
     [Parameter]
@@ -267,6 +273,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
                 _ = ValueChanged.InvokeAsync(newValue);
                 ModelContext.PropertyChangeSupport.PropertyHasChanged(FieldIdentifier, oldValue, newValue);
                 OnAfterValueChanged(newValue);
+                OnChange.InvokeAsync(newValue);
             }
             else
             {

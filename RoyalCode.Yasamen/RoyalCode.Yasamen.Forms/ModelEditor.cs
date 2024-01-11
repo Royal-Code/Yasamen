@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using RoyalCode.Yasamen.Commons;
+using RoyalCode.Yasamen.Forms.Support;
 using RoyalCode.Yasamen.Forms.Validation;
 using RoyalCode.Yasamen.Layout;
 
@@ -73,6 +74,13 @@ public class ModelEditor<TModel> : ComponentBase
     public EventCallback OnInvalidSubmit { get; set; }
 
     /// <summary>
+    /// A callback that will be invoked when the <see cref="ModelEditor{TModel}"/> is initialized
+    /// and can be used to configure the <see cref="PropertyChangeSupport"/> instance.
+    /// </summary>
+    [Parameter]
+    public Action<PropertyChangeSupport>? ConfigureChanges { get; set; }
+
+    /// <summary>
     /// Gets or sets a collection of additional attributes that will be applied to the created <c>form</c> element.
     /// </summary>
     [Parameter(CaptureUnmatchedValues = true)] 
@@ -125,7 +133,7 @@ public class ModelEditor<TModel> : ComponentBase
 
         if (!modelContext.IsInitialized)
         {
-            modelContext.Initialize(ValidatorProvider);
+            modelContext.Initialize(ValidatorProvider, ConfigureChanges);
         }
         modelContext.InternalConteinerState.UsingContainer = UseContainer;
         

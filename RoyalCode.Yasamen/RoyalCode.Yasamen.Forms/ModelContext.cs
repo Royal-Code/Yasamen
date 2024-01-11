@@ -65,10 +65,12 @@ public sealed class ModelContext<TModel> : IModelContext
         ValidationContext.Clear(Model);
     }
 
-    internal void Initialize(IValidatorProvider validatorProvider)
+    internal void Initialize(IValidatorProvider validatorProvider, Action<PropertyChangeSupport>? configureChanges)
     {
         ValidationContext.Provider = validatorProvider;
         ValidationContext.EditorMessages = EditorMessages;
+
+        configureChanges?.Invoke(PropertyChangeSupport);
 
         IsInitialized = true;
     }
