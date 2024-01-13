@@ -1,7 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
-	<Import Project=".\base.targets" />
-	<Import Project=".\depends.targets" />
+	<Import Project="..\base.targets" />
+	<Import Project="..\depends.targets" />
 	
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
