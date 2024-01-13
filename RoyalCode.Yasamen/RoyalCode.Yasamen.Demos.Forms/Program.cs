@@ -24,8 +24,8 @@ builder.Services.AddScoped<EventsJsModule>();
 
 // yasamen data services
 builder.Services.AddDataServices();
-
 builder.Services.AddScoped<IValidatorProvider, ValidatorProvider>();
+
 builder.Services.Subscribes<CityService>();
 builder.Services.Subscribes<CarService>();
 

@@ -71,7 +71,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.Component
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlazorShow", "BlazorShow", "{4D16DB12-0FAE-47D5-A050-970140C8A8A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Yasamen.BlazorShow", "RoyalCode.Yasamen.BlazorShow\RoyalCode.Yasamen.BlazorShow.csproj", "{7F853913-29E9-4BF6-AAB8-FABC70A7043A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.BlazorShow", "RoyalCode.Yasamen.BlazorShow\RoyalCode.Yasamen.BlazorShow.csproj", "{7F853913-29E9-4BF6-AAB8-FABC70A7043A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

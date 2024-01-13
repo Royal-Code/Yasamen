@@ -81,7 +81,7 @@ public class DropButton : DropBase
             throw new InvalidOperationException($"The parameter '{nameof(OnClick)}' only can be used when Split is true");
 
         // check if the action parameter is set
-        if (parameters.TryGetValue(nameof(Action), out RenderFragment _))
+        if (parameters.TryGetValue(nameof(Action), out RenderFragment? _))
             throw new InvalidOperationException($"The parameter '{nameof(Action)}' can not be used in DropButton.");
 
         Action = renderButton;
@@ -157,12 +157,12 @@ public class DropButton : DropBase
         builder.CloseElement();
     };
 
-    private void OnClickHandler(MouseEventArgs args)
+    private async Task OnClickHandler(MouseEventArgs args)
     {
         if (IsOpen)
             return;
 
         Tracer.Write<DropButton>("OnClick", "Open the drop.");
-        Open();
+        await Open();
     }
 }

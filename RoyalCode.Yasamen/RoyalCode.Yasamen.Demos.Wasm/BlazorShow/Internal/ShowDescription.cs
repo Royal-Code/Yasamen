@@ -31,7 +31,7 @@ public class ShowDescription : IShowDescription
 
     private void InitializePropertyDescriptions()
     {
-        var properties = ComponentType.GetRuntimeProperties()
+        var properties = ComponentType.GetTypeInfo().GetRuntimeProperties()
             .Where(p => p.GetCustomAttribute<ParameterAttribute>() is not null);
         foreach (var property in properties)
         {

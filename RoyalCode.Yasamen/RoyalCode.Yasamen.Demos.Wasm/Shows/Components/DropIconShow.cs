@@ -1,4 +1,5 @@
-﻿using RoyalCode.Yasamen.Components;
+﻿using RoyalCode.Yasamen.Commons;
+using RoyalCode.Yasamen.Components;
 using RoyalCode.Yasamen.Demos.Wasm.BlazorShow;
 using RoyalCode.Yasamen.Demos.Wasm.Shows.Contents;
 using RoyalCode.Yasamen.Icons.Bootstrap;
@@ -23,10 +24,24 @@ public class DropIconShow : IShow<DropIcon>
             .AddScene(s =>
             {
                 s.Default()
+                    .Description("The default scene.")
                     .Properties(sp =>
                     {
                         sp.Property(p => p.Kind).DefaultValue(BsIconNames.MenuAppFill);
                         sp.Property(p => p.ChildContent).RenderComponent<DropMenuSample>();
+                    });
+            })
+            .AddScene(s =>
+            {
+                s.Name("Custom content type")
+                    .Description("Drop icon with custom content type.")
+                    .Properties(sp =>
+                    {
+                        sp.Property(p => p.Kind).DefaultValue(BsIconNames.MenuAppFill);
+                        sp.Property(p => p.ChildContent).RenderComponent<DropContentSample>();
+                        sp.Property(p => p.ContentType).DefaultValue(DropContentType.NotDefined);
+                        sp.Property(p => p.MinWidth).DefaultValue(Sizes.Medium);
+                        sp.Property(p => p.CloseBehavior).DefaultValue(DropCloseBehavior.CloseOnClickOutside);
                     });
             });
     }

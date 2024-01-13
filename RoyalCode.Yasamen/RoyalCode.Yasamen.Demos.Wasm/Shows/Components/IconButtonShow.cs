@@ -14,7 +14,6 @@ namespace RoyalCode.Yasamen.Demos.Wasm.Shows.Components
                 .Description("The Icon Button component is an icon inside a button that can be clicked.")
                 .Properties(cfg =>
                 {
-                    
                     cfg.Property(p => p.OnClick)
                         .Description("The event that is triggered when the button is clicked.");
                     cfg.Property(p => p.Kind).HasEnumValues<BsIconNames>()

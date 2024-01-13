@@ -14,15 +14,15 @@ public sealed class DropHandler
 
     internal void Unlisten() => drop = null;
 
-    public void Open()
+    public async Task Open()
     {
         if (drop is not null)
-            drop.Open();
+            await drop.Open();
     }
 
-    public void Close()
+    public async Task Close()
     {
         if (drop is not null)
-            drop.Close();
+            await drop.Close();
     }
 }

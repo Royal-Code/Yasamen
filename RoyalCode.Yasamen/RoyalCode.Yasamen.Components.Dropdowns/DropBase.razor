@@ -6,19 +6,19 @@
 
 @inject ClickJsModule ClickJsModule;
 
-<div class="@classes(this)" aria-expanded="@AriaExpanded" @attributes="AdditionalAttributes">
-    <div @ref="DropReference">
+<div class="@classes(this)" aria-expanded="@AriaExpanded" @attributes="AdditionalAttributes" @ref="DropReference">
+    <div @ref="ActionReference">
         @Action
     </div>
     @if (ContentType == DropContentType.List)
     {
-        <ul class="drop-content">
+        <ul class="drop-content" @ref="ContentReference">
             @DropContent
         </ul>
     }
     else
     {
-        <div class="drop-content">
+        <div class="drop-content" @ref="ContentReference">
             @DropContent
         </div>
     }
@@ -39,10 +39,10 @@
         .Add(static c => c.AdditionalClasses)
         .Build();
 
-    private readonly Func<bool, ValueTask> onBodyClickHandler;
+    private readonly Func<bool, ICollection<ElementReference>, ValueTask> onBodyClickHandler;
     private JsBodyClickListener? listener;
     private ElementReference? listenerRef;
-    private bool clickedInside;
+    private bool clickedOnAction;
     private DropHandler? handler;
 
     public DropBase()
@@ -53,6 +53,10 @@
     public string AriaExpanded => IsOpen.ToString().ToLowerInvariant();
 
     public ElementReference DropReference { get; private set; }
+
+    public ElementReference ActionReference { get; private set; }
+
+    public ElementReference ContentReference { get; private set; }
 
     public bool IsOpen { get; private set; }
 
@@ -78,28 +82,43 @@
     public DropContentType ContentType { get; set; }
 
     [Parameter]
+    public DropCloseBehavior CloseBehavior { get; set; }
+
+    [Parameter]
     public string? AdditionalClasses { get; set; }
 
     [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object>? AdditionalAttributes { get; set; }
 
-    public void Open()
+    [Parameter]
+    public EventCallback<DropOpenedEventArgs> OnOpened { get; set; }
+
+    [Parameter]
+    public EventCallback<DropClosedEventArgs> OnClosed { get; set; }
+
+    public async Task Open()
     {
-        if (clickedInside)
+        if (clickedOnAction)
         {
-            clickedInside = false;
+            clickedOnAction = false;
             return;
         }
 
         Tracer.Write<DropBase>("Open", "Opening the drop");
         IsOpen = true;
+
+        await OnOpened.InvokeAsync(new DropOpenedEventArgs(this));
+
         StateHasChanged();
     }
 
-    public void Close()
+    public async Task Close()
     {
         Tracer.Write<DropBase>("Close", "Closing the drop");
         IsOpen = false;
+
+        await OnClosed.InvokeAsync(new DropClosedEventArgs(this));
+
         StateHasChanged();
     }
 
@@ -128,7 +147,7 @@
             if (listenerRef is null || listenerRef.Value.Id != DropReference.Id)
             {
                 Tracer.Write<DropBase>("OnAfterRenderAsync", "Listening the body click");
-                await listener.ListenAsync(DropReference);
+                await listener.ListenAsync(DropReference, ActionReference, ContentReference);
                 listenerRef = DropReference;
             }
         }
@@ -140,19 +159,27 @@
         }
     }
 
-    private ValueTask OnBodyClickHandler(bool isInside)
+    private async ValueTask OnBodyClickHandler(bool isInside, ICollection<ElementReference> targetElements)
     {
-        if (isInside)
+        Tracer.Write<DropBase>("OnBodyClickHandler", "Clicked Inside");
+
+        if (CloseBehavior != DropCloseBehavior.CloseManually)
+            clickedOnAction = targetElements.Contains(ActionReference);
+
+        // if close behavior is close on click outside
+        // and not clicked inside the content, then close
+        if (CloseBehavior == DropCloseBehavior.CloseOnClickOutside && !targetElements.Contains(ContentReference))
         {
-            clickedInside = true;
-            Tracer.Write<DropBase>("OnBodyClickHandler", "Clicked Inside");
+            Tracer.Write<DropBase>("OnBodyClickHandler", "Close drop because of close behavior");
+            await Close();
+            return;
         }
 
-        Tracer.Write<DropBase>("OnBodyClickHandler", "Close drop because body click");
-        Close();
-
-
-        return ValueTask.CompletedTask;
+        if (CloseBehavior == DropCloseBehavior.CloseOnClick)
+        {
+            Tracer.Write<DropBase>("OnBodyClickHandler", "Close drop because body click");
+            await Close();
+        }
     }
 
     public async ValueTask DisposeAsync()
@@ -160,5 +187,6 @@
         if (listener is not null)
             await listener.DisposeAsync();
         listener = null;
+        handler?.Unlisten();
     }
 }

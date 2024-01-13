@@ -48,6 +48,6 @@ public class Scene<TComponent> : IScene<TComponent>
 
     public ScenePropertyDescription? FindPropertyDescription(PropertyInfo propertyInfo)
     {
-        return sceneProperties.FirstOrDefault(p => p.Property == propertyInfo);
+        return sceneProperties.FirstOrDefault(p => p.Property.Name == propertyInfo.Name);
     }
 }

@@ -9,6 +9,7 @@ using RoyalCode.Yasamen.Demos.Wasm.Shows.Components;
 using RoyalCode.Yasamen.Demos.Wasm.Shows.Graphics;
 using RoyalCode.Yasamen.Demos.Wasm.Shows.Layouts;
 using RoyalCode.Yasamen.Forms.Modules;
+using RoyalCode.Yasamen.Forms.Validation;
 using RoyalCode.Yasamen.Icons;
 using RoyalCode.Yasamen.Layout;
 using RoyalCode.Yasamen.Layout.Admin;
@@ -26,6 +27,7 @@ builder.Services.AddLocalization();
 // yasamen services
 builder.Services.AddDataServices();
 builder.Services.AddYasamenLocalization();
+builder.Services.AddScoped<IValidatorProvider, ValidatorProvider>();
 
 // yasamen js modules
 builder.Services.AddScoped<CommonsJsModule>();

@@ -91,7 +91,7 @@ public sealed class DropIcon : DropBase
             return;
 
         Tracer.Write<DropButton>("OnClick", "Open the drop.");
-        Open();
+        await Open();
 
         await OnClick.InvokeAsync(args);
     }

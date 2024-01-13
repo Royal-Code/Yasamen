@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using RoyalCode.Yasamen.Commons.Interops;
 
@@ -8,7 +9,7 @@ public sealed class ClickJsModule : JsModuleBase
 {
     public ClickJsModule(IJSRuntime js) : base(js, "click.js") { }
 
-    public async ValueTask<JsBodyClickListener> CreateListenerAsync(Func<bool, ValueTask> callback)
+    public async ValueTask<JsBodyClickListener> CreateListenerAsync(Func<bool, ICollection<ElementReference>, ValueTask> callback)
     {
         var module = await GetModuleAsync();
         return new JsBodyClickListener(module, callback);
