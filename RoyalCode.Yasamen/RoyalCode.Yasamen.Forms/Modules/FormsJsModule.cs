@@ -30,6 +30,4 @@ public sealed class FormsJsModule : JsModuleBase
     {
         return commonsJs.CallMethodWithSetTimeoutAsync(element, "select", 20);
     }
-
-    
 }

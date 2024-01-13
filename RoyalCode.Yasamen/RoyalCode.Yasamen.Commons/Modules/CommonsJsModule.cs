@@ -49,6 +49,18 @@ public sealed class CommonsJsModule : JsModuleBase
     }
 
     /// <summary>
+    /// Get the value of a property of an element.
+    /// </summary>
+    /// <typeparam name="T">The type of the property.</typeparam>
+    /// <param name="element">The element reference.</param>
+    /// <param name="property">The name of the property.</param>
+    /// <returns>The value of the property.</returns>
+    public static async ValueTask<T> GetPropertyAsync<T>(IJSRuntime js, ElementReference element, string property)
+    {
+        return await js.InvokeAsync<T>(getPropertyFn, element, property);
+    }
+
+    /// <summary>
     /// Set the value of a property of an element.
     /// </summary>
     /// <typeparam name="T">The type of the property.</typeparam>
@@ -56,15 +68,28 @@ public sealed class CommonsJsModule : JsModuleBase
     /// <param name="property">The name of the property.</param>
     /// <param name="value">The value of the property.</param>
     /// <returns>A task that represents the asynchronous operation.</returns>
-    public async ValueTask SetPropertyAsync<T>(ElementReference element, string property, object value)
+    public async ValueTask SetPropertyAsync(ElementReference element, string property, object value)
     {
         var js = await GetModuleAsync();
         await js.InvokeVoidAsync(setPropertyFn, element, property, value);
     }
 
+    /// <summary>
+    /// Set the value of a property of an element.
+    /// </summary>
+    /// <typeparam name="T">The type of the property.</typeparam>
+    /// <param name="element">The element reference.</param>
+    /// <param name="property">The name of the property.</param>
+    /// <param name="value">The value of the property.</param>
+    /// <returns>A task that represents the asynchronous operation.</returns>
+    public static async ValueTask SetPropertyAsync(IJSRuntime js, ElementReference element, string property, object value)
+    {
+        await js.InvokeVoidAsync(setPropertyFn, element, property, value);
+    }
+
     #endregion
 
-    #region js properties and functions
+    #region JS properties and functions
 
     public async ValueTask<T> ReadPropertyAsync<T>(string path)
     {
@@ -72,10 +97,23 @@ public sealed class CommonsJsModule : JsModuleBase
         return await js.InvokeAsync<T>(readPropertyFn, path);
     }
 
+    public static async ValueTask<T> ReadPropertyAsync<T>(IJSRuntime js, string path)
+    {
+        return await js.InvokeAsync<T>(readPropertyFn, path);
+    }
+
     public async ValueTask<T> CallMethodAsync<T>(ElementReference element, string method, params object[]? arguments)
     {
         var js = await GetModuleAsync();
 
+        if (arguments is null || arguments.Length is 0)
+            return await js.InvokeAsync<T>(callMethodFn, method);
+
+        return await js.InvokeAsync<T>(callMethodFn, args: ReOrgArgs(element, method, 0, arguments));
+    }
+
+    public static async ValueTask<T> CallMethodAsync<T>(IJSRuntime js, ElementReference element, string method, params object[]? arguments)
+    {
         if (arguments is null || arguments.Length is 0)
             return await js.InvokeAsync<T>(callMethodFn, method);
 
@@ -91,6 +129,14 @@ public sealed class CommonsJsModule : JsModuleBase
     {
         var js = await GetModuleAsync();
 
+        if (arguments is null || arguments.Length is 0)
+            await js.InvokeVoidAsync(callMethodFn, method, timeout);
+        else
+            await js.InvokeVoidAsync(callMethodFn, args: ReOrgArgs(element, method, timeout, arguments));
+    }
+
+    public static async ValueTask CallMethodWithSetTimeoutAsync(IJSRuntime js, ElementReference element, string method, int timeout, params object[]? arguments)
+    {
         if (arguments is null || arguments.Length is 0)
             await js.InvokeVoidAsync(callMethodFn, method, timeout);
         else

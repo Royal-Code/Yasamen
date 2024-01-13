@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project=".\base.targets" />
+	<Import Project=".\depends.targets" />
+	
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+
+		<ShowVer>0.0.0.1</ShowVer>
+		<PreVer></PreVer>
+		
+		<Version>$(ShowVer)$(PreVer)</Version>
+		<AssemblyVersion>$(ShowVer)</AssemblyVersion>
+		<FileVersion>$(ShowVer)</FileVersion>
+	</PropertyGroup>
+
+</Project>

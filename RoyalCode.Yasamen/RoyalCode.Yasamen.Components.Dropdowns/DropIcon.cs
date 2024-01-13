@@ -45,6 +45,9 @@ public sealed class DropIcon : DropBase
     [Parameter]
     public RenderFragment ChildContent { get; set; } = null!;
 
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick { get; set; }
+
     public override Task SetParametersAsync(ParameterView parameters)
     {
         // check if the child content is set
@@ -59,7 +62,7 @@ public sealed class DropIcon : DropBase
         }
 
         // check if the action parameter is set
-        if (parameters.TryGetValue(nameof(Action), out RenderFragment _))
+        if (parameters.TryGetValue(nameof(Action), out RenderFragment? _))
             throw new InvalidOperationException($"The parameter '{nameof(Action)}' can not be used in DropIcon.");
 
         Action = renderButton;
@@ -82,12 +85,14 @@ public sealed class DropIcon : DropBase
         builder.CloseComponent();
     }
 
-    private void OnClickHandler(MouseEventArgs args)
+    private async Task OnClickHandler(MouseEventArgs args)
     {
         if (IsOpen)
             return;
 
         Tracer.Write<DropButton>("OnClick", "Open the drop.");
         Open();
+
+        await OnClick.InvokeAsync(args);
     }
 }
