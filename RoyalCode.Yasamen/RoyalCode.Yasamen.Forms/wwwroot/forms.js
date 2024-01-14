@@ -7,7 +7,7 @@ export function blurOnPressEnter(el) {
 
     el.addEventListener('keydown', evt => {
         if (evt.keyCode === 13) {
-            var blured = blur(form, el);
+            let blured = blur(form, el);
             if (blured) {
                 evt.preventDefault();
                 return false;
@@ -17,6 +17,10 @@ export function blurOnPressEnter(el) {
 }
 
 function closest(el, name) {
+
+    if (el === null || el === undefined)
+        return false;
+
     if (el.nodeName === name)
         return el;
     if (el === document)
@@ -25,6 +29,10 @@ function closest(el, name) {
 }
 
 function blur(form, el) {
+
+    if (form === null || form === undefined || el === null || el === undefined)
+        return false;
+
     let focusable = form.querySelectorAll('input:enabled:not([readonly]),select:enabled:not([readonly]),button:enabled,textarea:enabled:not([readonly])');
     let match = false;
     for (var item of focusable) {

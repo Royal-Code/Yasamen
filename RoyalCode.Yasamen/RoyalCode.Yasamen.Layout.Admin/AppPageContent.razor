@@ -1,6 +1,6 @@
 ﻿
-<div class="@PanelClasses" @attributes="@Attributes">
-    <header class="@HeaderClasses">
+<div class="@panelClasses(this)" @attributes="@Attributes">
+    <header class="@headerClasses(this)">
         <div class="d-flex justify-content-start">
             @HeaderStartContent
             <h2>
@@ -11,18 +11,28 @@
             @HeaderEndContent
         </div>
     </header>
-    <div class="@MainClasses">
+    <div class="@mainClasses(this)">
         @MainContent    
     </div>
 </div>
 
 @code {
-    CssClassMap PanelClasses => CssClassMap.Create(
-        "app-page-content", PanelBorder.CssClasses, PanelAdditionalClasses);
-    CssClassMap MainClasses => CssClassMap.Create(
-        "app-page-content-main m-2", MainAdditionalClasses);
-    CssClassMap HeaderClasses => CssClassMap.Create(
-        "app-page-content-header d-flex justify-content-between px-2 m-2", HeaderBorder.CssClasses, HeaderAdditionalClasses);
+    private static readonly CssMap<AppPageContent> panelClasses = Css.Map<AppPageContent>()
+        .Add("app-page-content")
+        .Add(static a => a.PanelBorder.CssClasses)
+        .Add(static a => a.PanelAdditionalClasses)
+        .Build();
+
+    private static readonly CssMap<AppPageContent> mainClasses = Css.Map<AppPageContent>()
+        .Add("app-page-content-main m-2")
+        .Add(static a => a.MainAdditionalClasses)
+        .Build();
+
+    private static readonly CssMap<AppPageContent> headerClasses = Css.Map<AppPageContent>()
+        .Add("app-page-content-header d-flex justify-content-between px-2 m-2")
+        .Add(static a => a.HeaderBorder.CssClasses)
+        .Add(static a => a.HeaderAdditionalClasses)
+        .Build();
 
     [Parameter]
     public Borders PanelBorder { get; set; } = AppDefaults.PageContentPanelBorder;

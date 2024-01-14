@@ -1,17 +1,55 @@
 ﻿
-<footer class="@Classes" @attributes="AdditionalAttributes" @ref="Reference">
+<footer class="@classes(this)" @attributes="AdditionalAttributes" @ref="Reference">
     @ChildContent
+    @if (UseStart)
+    {
+        <div class="start">
+            @Start
+        </div>
+    }
+    @if (UseMiddle)
+    {
+        <div class="middle">
+            @Middle
+        </div>
+    }
+    @if (UseEnd)
+    {
+        <div class="end">
+            @End
+        </div>
+    }
 </footer>
 
 @code {
-
-    private CssClassMap Classes => CssClassMap.Create("app-footer", LayouContext.GetInteractedCssClass())
-        .Add(AdditionalClasses);
+    private static readonly CssMap<AppFooter> classes = Css.Map<AppFooter>()
+        .Add("app-footer")
+        .Add(static a => a.LayoutContext.GetInteractedCssClass())
+        .Add(static a => a.AdditionalClasses)
+        .Build();
 
     public ElementReference Reference { get; private set; }
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public RenderFragment Start { get; set; }
+
+    [Parameter]
+    public RenderFragment Middle { get; set; }
+
+    [Parameter]
+    public RenderFragment End { get; set; }
+
+    [Parameter]
+    public bool UseStart { get; set; }
+
+    [Parameter]
+    public bool UseMiddle { get; set; }
+
+    [Parameter]
+    public bool UseEnd { get; set; }
     
     [Parameter]
     public string AdditionalClasses { get; set; }
@@ -20,5 +58,5 @@
     public Dictionary<string, object> AdditionalAttributes { get; set; }
     
     [CascadingParameter]
-    public LayoutContext LayouContext { get; set; }
+    public LayoutContext LayoutContext { get; set; }
 }

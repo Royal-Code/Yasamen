@@ -7,15 +7,36 @@ using System.Globalization;
 
 namespace RoyalCode.Yasamen.Forms.Components;
 
-public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
+public static class SelectFieldShared
 {
-    protected const string CssScopeAttribute = "b-select-field";
+    public const string CssScopeAttribute = "b-select-field";
 
-    protected static readonly Dictionary<string, object> AdditionalContainerAttributes = new()
+    public static readonly Dictionary<string, object> AdditionalContainerAttributes = new()
     {
         {CssScopeAttribute, true}
     };
-    
+}
+
+public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
+{
+    private static readonly CssMap<SelectFieldBase<TValue>> labelCssClasses = Css.Map<SelectFieldBase<TValue>>()
+        .Add("form-label")
+        .Add(static s => s.LabelAdditionalClasses)
+        .Build();
+
+    private static readonly CssMap<SelectFieldBase<TValue>> selectCssClasses = Css.Map<SelectFieldBase<TValue>>()
+        .Add("form-select")
+        .Add(static s => s.SelectAdditionalClasses)
+        .Add(static s => s.InternalSelectClasses)
+        .Add(static s => s.IsInvalid, "is-invalid")
+        .Add(static s => s.IsLoading, "is-loading")
+        .Build();
+
+    private static readonly CssMap<SelectFieldBase<TValue>> inputGroupCssClasses = Css.Map<SelectFieldBase<TValue>>()
+        .Add("input-group")
+        .Add(static s => s.IsLoading, "is-loading")
+        .Build();
+
     private readonly RenderFragment contentFragment;
     private readonly bool isMultipleSelect;
     private readonly bool isArray;
@@ -27,19 +48,7 @@ public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
         isArray = typeof(TValue).IsArray;
         isMultipleSelect = isArray || typeof(TValue) == typeof(IEnumerable<string>);
     }
-
-    private CssClassMap LabelCssClasses => CssClassMap.Create("form-label")
-        .Add(() => LabelAdditionalClasses);
-    
-    private CssClassMap SelectCssClasses => CssClassMap.Create("form-select")
-        .Add(() => SelectAdditionalClasses)
-        .Add(() => InternalSelectClasses)
-        .Add(() => IsInvalid, "is-invalid")
-        .Add(() => IsLoading, "is-loading");
-
-    private CssClassMap InputGroupCssClasses => CssClassMap.Create("input-group")
-        .Add(() => IsLoading, "is-loading");
-    
+        
     protected virtual bool HasInputGroup => Prepend.IsNotEmptyFragment() || Append.IsNotEmptyFragment();
 
     protected virtual bool IsLoading => ModelContext.ContainerState.IsLoading;
@@ -71,7 +80,7 @@ public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
             builder.OpenComponent<Column>(0);
             builder.AddAttribute(1, "ParentColumn", this);
             builder.AddAttribute(2, "AdditionalClasses", "field");
-            builder.AddMultipleAttributes(3, AdditionalContainerAttributes);
+            builder.AddMultipleAttributes(3, SelectFieldShared.AdditionalContainerAttributes);
             builder.AddAttribute(4, "ChildContent", contentFragment);
             builder.CloseComponent();
         }
@@ -90,8 +99,8 @@ public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
         if (hasInputGroup)
         {
             builder.OpenElement(index, "div");
-            builder.AddAttribute(1 + index, "class", InputGroupCssClasses);
-            builder.AddAttribute(2 + index, CssScopeAttribute);
+            builder.AddAttribute(1 + index, "class", inputGroupCssClasses(this));
+            builder.AddAttribute(2 + index, SelectFieldShared.CssScopeAttribute);
 
             index += 3;
         }
@@ -122,8 +131,8 @@ public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
         {
             builder.OpenElement(index, "label");
             builder.AddAttribute(1 + index, "for", FieldId);
-            builder.AddAttribute(2 + index, "class", LabelCssClasses);
-            builder.AddAttribute(3 + index, CssScopeAttribute);
+            builder.AddAttribute(2 + index, "class", labelCssClasses(this));
+            builder.AddAttribute(3 + index, SelectFieldShared.CssScopeAttribute);
             builder.AddContent(4 + index, FieldLabel);
             builder.CloseElement();
         }
@@ -147,8 +156,8 @@ public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
         builder.AddAttribute(2 + index, "id", FieldId);
         builder.AddAttribute(3 + index, "name", FieldName);
         builder.AddAttribute(3, "multiple", isMultipleSelect);
-        builder.AddAttribute(5 + index, "class", SelectCssClasses);
-        builder.AddAttribute(6 + index, CssScopeAttribute);
+        builder.AddAttribute(5 + index, "class", selectCssClasses(this));
+        builder.AddAttribute(6 + index, SelectFieldShared.CssScopeAttribute);
 
         if (isMultipleSelect)
         {
@@ -185,7 +194,7 @@ public abstract partial class SelectFieldBase<TValue> : FieldBase<TValue>
 
         builder.OpenElement(index, "div");
         builder.AddAttribute(1 + index, "class", "form-loading");
-        builder.AddAttribute(2 + index, CssScopeAttribute);
+        builder.AddAttribute(2 + index, SelectFieldShared.CssScopeAttribute);
         builder.OpenComponent<ProgressBar>(3 + index);
         builder.AddAttribute(4 + index, "CurrentValue", 100);
         builder.CloseComponent();

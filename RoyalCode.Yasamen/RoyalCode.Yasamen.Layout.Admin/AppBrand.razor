@@ -1,5 +1,5 @@
 
-<div @attributes="AdditionalAttributes" class="@classes">
+<div @attributes="AdditionalAttributes" class="@classes(this)">
     @ChildContent
     @if (WhenLarge.IsNotEmptyFragment())
     {
@@ -16,9 +16,10 @@
 </div>
 
 @code {
-
-    private CssClassMap classes => CssClassMap.Create("app-brand")
-        .Add(AdditionalClasses);
+    private static CssMap<AppBrand> classes => Css.Map<AppBrand>()
+        .Add("app-brand")
+        .Add(static a => a.AdditionalClasses)
+        .Build();
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }

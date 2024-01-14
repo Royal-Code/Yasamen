@@ -3,7 +3,7 @@
 @using RoyalCode.Yasamen.Icons
 
 <button b-input-field b-button type="button"
-        class="@Classes" 
+        class="@classes(this)"
         @onclick="ClickHandler" 
         @attributes="AdditionalAttributes" 
         @ref="Reference">
@@ -11,10 +11,11 @@
 </button>
 
 @code {
-    private CssClassMap Classes =>
-        CssClassMap.Create("btn")
-            .Add(Style.ToCssClass(true))
-            .Add(AdditionalClasses);
+    private static readonly CssMap<FieldButton> classes = Css.Map<FieldButton>()
+        .Add("btn")
+        .Add(static f => f.Style.ToCssClass(true))
+        .Add(static f => f.AdditionalClasses)
+        .Build();
 
     public ElementReference Reference { get; private set; }
 

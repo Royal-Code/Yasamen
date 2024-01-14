@@ -1,8 +1,12 @@
 ﻿
-<a class="@classes" @attributes="AdditionalAttributes">@ChildContent</a>
+<a class="@classes(this)" @attributes="AdditionalAttributes">@ChildContent</a>
 
 @code {
-    private CssClassMap classes => CssClassMap.Create("alert-link").Add(AdditionalClasses);
+
+    private static CssMap<AlertLink> classes = Css.Map<AlertLink>()
+        .Add("alert-link")
+        .Add(static a => a.AdditionalClasses)
+        .Build();
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }

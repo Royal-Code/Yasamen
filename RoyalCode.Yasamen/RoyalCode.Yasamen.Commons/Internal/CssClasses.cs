@@ -10,7 +10,7 @@ internal class CssClasses : ICssClassBuilder
         this.cssClasses = cssClasses ?? throw new ArgumentNullException(nameof(cssClasses));
     }
 
-    public void Build(ICollection<string> classes)
+    public void Build(ClassesCollection classes)
     {
         for (int i = 0; i < cssClasses.Length; i++)
         {
@@ -27,5 +27,5 @@ internal class CssClasses<T> : CssClasses, ICssClassBuilder<T>
 {
     public CssClasses(string?[] cssClasses) : base(cssClasses) { }
 
-    public void Build(T value, ICollection<string> classes) => Build(classes);
+    public void Build(T value, ClassesCollection classes) => Build(classes);
 }

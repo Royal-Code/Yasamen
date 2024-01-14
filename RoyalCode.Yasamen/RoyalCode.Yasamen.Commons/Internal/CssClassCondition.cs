@@ -12,7 +12,7 @@ internal class CssClassCondition : ICssClassBuilder
         this.cssClass = cssClass ?? throw new ArgumentNullException(nameof(cssClass));
     }
 
-    public void Build(ICollection<string> classes)
+    public void Build(ClassesCollection classes)
     {
         if (condition())
             classes.Add(cssClass);
@@ -30,7 +30,7 @@ internal class CssClassCondition<T> : ICssClassBuilder<T>
         this.cssClass = cssClass ?? throw new ArgumentNullException(nameof(cssClass));
     }
 
-    public void Build(T value, ICollection<string> classes)
+    public void Build(T value, ClassesCollection classes)
     {
         if (string.IsNullOrWhiteSpace(cssClass))
             return;

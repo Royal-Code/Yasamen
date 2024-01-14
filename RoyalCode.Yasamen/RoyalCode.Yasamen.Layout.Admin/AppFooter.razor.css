@@ -6,11 +6,37 @@ footer {
     bottom: 0;
     box-sizing: border-box;
     flex-shrink: 0;
-    display: block;
-    align-items: flex-start;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     font-size: var(--b-size-3);
     color: var(--b-theme-main);
 }
+
+    footer > div {
+        display: flex;
+        flex-shrink: 1;
+    }
+
+    footer > .start {
+        justify-content: flex-start;
+        align-items: center;
+        order: -1;
+    }
+
+    footer > .middle {
+        justify-content: center;
+        align-items: center;
+        order: 0;
+    }
+
+    footer > .end {
+        justify-content: flex-end;
+        align-items: center;
+        order: 1;
+    }
 
 @media(max-width: 68rem) {
     footer {

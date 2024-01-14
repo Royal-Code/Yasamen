@@ -1,7 +1,7 @@
 ﻿<div class="progress" 
      role="progressbar" aria-valuenow="@CurrentValue" aria-valuemin="@MinValue" aria-valuemax="@MaxValue" 
      style="@ProgressStyle">
-    <div class="@classes" style="@BarStyle" @attributes="AdditionalAttributes">
+    <div class="@classes(this)" style="@BarStyle" @attributes="AdditionalAttributes">
         @ShowPercent
     </div>
     
@@ -9,11 +9,13 @@
 
 @code {
 
-    CssClassMap classes => CssClassMap.Create("progress-bar")
-        .Add(() => Animated, "animated")
-        .Add(() => Striped, "progress-bar-striped")
-        .Add(Style.ToCssClass())
-        .Add(AdditionalClasses);
+    private static readonly CssMap<ProgressBar> classes = Css.Map<ProgressBar>()
+        .Add("progress-bar")
+        .Add(static p => p.Animated, "animated")
+        .Add(static p => p.Striped, "progress-bar-striped")
+        .Add(static p => p.Style.ToCssClass())
+        .Add(static p => p.AdditionalClasses)
+        .Build();
 
     private string ProgressStyle => $"{(Height > 0 ? $"height: {Height}px;" : "")}{(Stacked ? $"width: {Percent}" : "")}";
     private string BarStyle => Stacked ? "" : $"width: {Percent}";

@@ -4,7 +4,7 @@
 
 @if (!dismissed)
 {
-    <div class="@classes" @attributes="AdditionalAttributes" @ref="alertRef">
+    <div class="@classes(this)" @attributes="AdditionalAttributes" @ref="alertRef">
         @if (withHeader)
         {
             <h4 class="alert-heading">
@@ -45,11 +45,12 @@
     private bool withHeader, hasHeader, hasTitle;
     private readonly Action<object?> dismissEffectEndded;
 
-    private CssClassMap classes => CssClassMap.Create("alert")
-        .Add(AlertStyle.ToCssClass())
-        .Add(AdditionalClasses)
-        .Add(() => Dismissable, "alert-dismissible fade")
-        .Add(() => Dismissable && !dismissing, "show");
+    private static CssMap<Alert> classes = Css.Map<Alert>()
+        .Add(static a => a.AlertStyle.ToCssClass())
+        .Add(static a => a.AdditionalClasses)
+        .Add(static a => a.Dismissable, "alert-dismissible fade")
+        .Add(static a => a.Dismissable && !a.dismissing, "show")
+        .Build();
 
     private JsEventInterop<object>? eventInterop;
 

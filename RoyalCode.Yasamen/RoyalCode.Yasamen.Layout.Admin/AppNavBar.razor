@@ -5,7 +5,7 @@
 @inject ToggleJsModule ToggleJs
 @implements IAsyncDisposable
 
-<nav class="@HeaderClass" @ref="navRef" @attribute="@AdditionalAttributes">
+<nav class="@headerClasses(this)" @ref="navRef" @attribute="@AdditionalAttributes">
     @if (UseStart)
     {
         <div class="start">
@@ -32,11 +32,12 @@
     private ScrollInterop? listener;
     private ElementReference navRef;
 
-    private CssClassMap HeaderClass => CssClassMap
-        .Create("main-as-primary app-nav-bar")
-        .Add(() => Shadow, "b-shadow")
-        .Add(() => scrolled, "b-scrolled")
-        .Add(AdditionalClasses);
+    private static readonly CssMap<AppNavBar> headerClasses = Css.Map<AppNavBar>()
+        .Add("main-as-primary app-nav-bar")
+        .Add(static a => a.Shadow, "b-shadow")
+        .Add(static a => a.scrolled, "b-scrolled")
+        .Add(static a => a.AdditionalClasses)
+        .Build();
 
     [Parameter]
     public RenderFragment Start { get; set; }

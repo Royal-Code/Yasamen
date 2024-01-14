@@ -56,15 +56,15 @@ internal class CssClassesBuilder<T> : ICssMapBuilder<T>
             if (value is null)
                 return null;
 
-            var classes = new List<string>();
+            var classes = new ClassesCollection();
 
             foreach (var condition in conditions)
                 condition.Build(value, classes);
 
-            if (classes.Count is 0)
+            if (classes.IsEmpty)
                 return null;
 
-            return string.Join(" ", classes);
+            return classes.ToString();
         };
     }
 }

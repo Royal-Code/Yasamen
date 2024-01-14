@@ -5,15 +5,18 @@ using RoyalCode.Yasamen.Layout;
 
 namespace RoyalCode.Yasamen.Forms.Components;
 
-public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
+public static class InputFieldShared
 {
-    protected const string CssScopeAttribute = "b-input-field";
+    public const string CssScopeAttribute = "b-input-field";
 
-    protected static readonly Dictionary<string, object> AdditionalContainerAttributes = new()
+    public static readonly Dictionary<string, object> AdditionalContainerAttributes = new()
     {
         {CssScopeAttribute, true}
     };
+}
 
+public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
+{
     private readonly RenderFragment contentFragment;
     private bool isFocused;
 
@@ -22,10 +25,12 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
         contentFragment = BuildContent;
     }
 
-    private CssClassMap InputCssClasses => CssClassMap.Create("form-control")
-        .Add(() => InputAdditionalClasses)
-        .Add(() => InternalInputClasses)
-        .Add(() => IsInvalid, "is-invalid");
+    private static readonly CssMap<InputFieldBase<TValue>> inputCssClasses = Css.Map<InputFieldBase<TValue>>()
+        .Add("form-control")
+        .Add(static i => i.InputAdditionalClasses)
+        .Add(static i => i.InternalInputClasses)
+        .Add(static i => i.IsInvalid, "is-invalid")
+        .Build();
 
     protected virtual bool HasInputGroup => Prepend.IsNotEmptyFragment() || Append.IsNotEmptyFragment();
 
@@ -70,7 +75,7 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
             builder.OpenComponent<Column>(0);
             builder.AddAttribute(1, "ParentColumn", this);
             builder.AddAttribute(2, "AdditionalClasses", "field");
-            builder.AddMultipleAttributes(3, AdditionalContainerAttributes);
+            builder.AddMultipleAttributes(3, InputFieldShared.AdditionalContainerAttributes);
             builder.AddAttribute(4, "ChildContent", contentFragment);
             builder.CloseComponent();
         }
@@ -90,7 +95,7 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
         {
             builder.OpenElement(index, "div");
             builder.AddAttribute(1 + index, "class", "input-group");
-            builder.AddAttribute(2 + index, CssScopeAttribute);
+            builder.AddAttribute(2 + index, InputFieldShared.CssScopeAttribute);
 
             index += 3;
         }
@@ -121,7 +126,7 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
             builder.OpenElement(index, "label");
             builder.AddAttribute(1 + index, "for", FieldId);
             builder.AddAttribute(2 + index, "class", $"form-label {LabelAdditionalClasses}");
-            builder.AddAttribute(3 + index, CssScopeAttribute);
+            builder.AddAttribute(3 + index, InputFieldShared.CssScopeAttribute);
             builder.AddContent(4 + index, FieldLabel);
             builder.CloseElement();
         }
@@ -144,8 +149,8 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
         builder.AddAttribute(2 + index, "id", FieldId);
         builder.AddAttribute(3 + index, "name", FieldName);
         builder.AddAttribute(4 + index, "type", FieldType);
-        builder.AddAttribute(5 + index, "class", InputCssClasses);
-        builder.AddAttribute(6 + index, CssScopeAttribute);
+        builder.AddAttribute(5 + index, "class", inputCssClasses(this));
+        builder.AddAttribute(6 + index, InputFieldShared.CssScopeAttribute);
 
         index = RenderInputValueAndBinder(builder, index + 7);
 
@@ -200,7 +205,7 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
             builder.AddAttribute(1 + index, "class", "spinner-border spinner-border-sm");
             builder.AddAttribute(2 + index, "role", "status");
             builder.AddAttribute(3 + index, "aria-hidden", "true");
-            builder.AddAttribute(4 + index, CssScopeAttribute);
+            builder.AddAttribute(4 + index, InputFieldShared.CssScopeAttribute);
             builder.CloseElement();
         }
         return index + 5;

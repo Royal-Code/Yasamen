@@ -7,9 +7,9 @@ namespace RoyalCode.Yasamen.Forms.Components;
 
 public sealed partial class CheckField : CheckFieldBase
 {
-    private const string CssScopeAttribute = "b-checkbox-field";
+    public const string CssScopeAttribute = "b-checkbox-field";
 
-    private static readonly Dictionary<string, object> AdditionalContainerAttributes = new()
+    public static readonly Dictionary<string, object> AdditionalContainerAttributes = new()
     {
         {CssScopeAttribute, true}
     };
@@ -23,18 +23,23 @@ public sealed partial class CheckField : CheckFieldBase
         contentFragment = BuildContent;
     }
 
-    private CssClassMap FormCssClasses => CssClassMap.Create("form-check")
-        .Add(() => ModelContext.ContainerState.UsingContainer, "within-container")
-        .Add(() => Reverse, "form-check-reverse")
-        .Add(() => InlineSize, "form-check-large");
+    private static readonly CssMap<CheckField> formCssClasses = Css.Map<CheckField>()
+        .Add("form-check")
+        .Add(static c => c.ModelContext.ContainerState.UsingContainer, "within-container")
+        .Add(static c => c.Reverse, "form-check-reverse")
+        .Add(static c => c.InlineSize, "form-check-large")
+        .Build();
 
+    private static readonly CssMap<CheckField> inputCssClasses = Css.Map<CheckField>()
+        .Add("form-check-input")
+        .Add(static c => c.InputAdditionalClasses)
+        .Add(static c => c.IsInvalid, "is-invalid")
+        .Build();
 
-    private CssClassMap InputCssClasses => CssClassMap.Create("form-check-input")
-        .Add(() => InputAdditionalClasses)
-        .Add(() => IsInvalid, "is-invalid");
-
-    private CssClassMap LabelCssClasses => CssClassMap.Create("form-check-label")
-        .Add(() => LabelAdditionalClasses);
+    private static readonly CssMap<CheckField> labelCssClasses = Css.Map<CheckField>()
+        .Add("form-check-label")
+        .Add(static c => c.LabelAdditionalClasses)
+        .Build();
 
     [MultiplesParameters]
     public ColumnSizes ColumnSizes { set; get; } = new();
@@ -71,7 +76,7 @@ public sealed partial class CheckField : CheckFieldBase
     private void BuildContent(RenderTreeBuilder builder)
     {
         builder.OpenElement(0, "div");
-        builder.AddAttribute(1, "class", FormCssClasses);
+        builder.AddAttribute(1, "class", formCssClasses(this));
         builder.AddAttribute(2, CssScopeAttribute);
 
         int index = RenderInput(builder, 3);
@@ -92,7 +97,7 @@ public sealed partial class CheckField : CheckFieldBase
             builder.AddAttribute(2 + index, "id", FieldId);
             builder.AddAttribute(3 + index, "name", FieldName);
             builder.AddAttribute(4 + index, "type", "checkbox");
-            builder.AddAttribute(5 + index, "class", InputCssClasses);
+            builder.AddAttribute(5 + index, "class", inputCssClasses(this));
             builder.AddAttribute(6 + index, CssScopeAttribute);
             builder.AddAttribute(7 + index, "checked", BindConverter.FormatValue(CurrentValue));
             builder.AddAttribute(8 + index, "onchange", EventCallback.Factory.CreateBinder<bool>(this, __value => CurrentValue = __value, CurrentValue));
@@ -121,7 +126,7 @@ public sealed partial class CheckField : CheckFieldBase
         if (Label is not null)
         {
             builder.OpenElement(index, "label");
-            builder.AddAttribute(1 + index, "class", LabelCssClasses);
+            builder.AddAttribute(1 + index, "class", labelCssClasses(this));
             builder.AddAttribute(2 + index, "for", FieldId);
             builder.AddAttribute(3 + index, CssScopeAttribute);
             builder.AddAttribute(4 + index, "onfocus", EventCallback.Factory.Create(this, OnFocus));
