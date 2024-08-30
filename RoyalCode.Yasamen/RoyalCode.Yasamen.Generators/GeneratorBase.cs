@@ -11,7 +11,7 @@ internal abstract class GeneratorBase
     private List<Action<StringBuilder>> bodyGenerators;
     
 
-    public GeneratorBase(SourceProductionContext context, string @namespace, string className)
+    protected GeneratorBase(SourceProductionContext context, string @namespace, string className)
     {
         Context = context;
         Namespace = @namespace;
