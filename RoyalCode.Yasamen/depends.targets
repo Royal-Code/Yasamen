@@ -1,7 +1,8 @@
 <Project>
 	<PropertyGroup>
-		<AspNetVer>8.0.0</AspNetVer>
-		<WasmVer>8.0.0</WasmVer>
-		<OperationResult>2.0.0-rc9.11</OperationResult>
+		<AspNetVer>8.0.8</AspNetVer>
+		<WasmVer>8.0.8</WasmVer>
+		<ExtVer>8.0.1</ExtVer>
+		<OperationResult>2.0.0</OperationResult>
 	</PropertyGroup>
 </Project>

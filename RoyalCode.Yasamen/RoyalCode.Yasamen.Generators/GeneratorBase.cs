@@ -9,7 +9,6 @@ internal abstract class GeneratorBase
     private GenericsGenerator genericsGenerator;
     private HierarchyGenerator hierarchyGenerator;
     private List<Action<StringBuilder>> bodyGenerators;
-    
 
     protected GeneratorBase(SourceProductionContext context, string @namespace, string className)
     {
@@ -76,11 +75,17 @@ internal abstract class GeneratorBase
     public virtual void Generate()
     {
         StringBuilder builder = new();
+        OnGenerating(builder);
         Write(builder);
+        OnGenerated(builder);
         var source = builder.ToString();
 
         // write the source
         Context.AddSource($"{ClassName}{ExtensionFileName}.g.cs", source);
     }
+    
+    protected virtual void OnGenerating(StringBuilder builder) { }
+    
+    protected virtual void OnGenerated(StringBuilder builder) { }
 }
 

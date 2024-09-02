@@ -18,8 +18,8 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="$(WasmVer)" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="$(WasmVer)" PrivateAssets="all" />
-		<PackageReference Include="Microsoft.Extensions.Localization" Version="$(AspNetVer)" />
-		<PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Localization" Version="$(ExtVer)" />
+		<PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="$(AspNetVer)" />
 	</ItemGroup>
 
 	<ItemGroup>

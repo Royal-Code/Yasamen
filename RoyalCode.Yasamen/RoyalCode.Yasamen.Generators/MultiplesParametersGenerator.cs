@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using System.Text;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
@@ -87,5 +88,10 @@ internal class MultiplesParametersGenerator : GeneratorBase
             UsingsGenerator.AddUsing(interfaceNamespace);
             HierarchyGenerator.AddImplements(@interface.Name);
         }
+    }
+
+    protected override void OnGenerating(StringBuilder builder)
+    {
+        builder.AppendLine("#pragma warning disable BL0007");
     }
 }

@@ -4,7 +4,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(WasmVer)" />
-		<PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="$(AspNetVer)" />
+		<PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="$(ExtVer)" />
 		<PackageReference Include="RoyalCode.OperationResult" Version="$(OperationResult)" />
 	</ItemGroup>
 

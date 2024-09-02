@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Components;
 
 namespace RoyalCode.Yasamen.Generators.Tests;
 
-[UsesVerify]
 public class MultiplesParametersTests
 {
     [Fact]

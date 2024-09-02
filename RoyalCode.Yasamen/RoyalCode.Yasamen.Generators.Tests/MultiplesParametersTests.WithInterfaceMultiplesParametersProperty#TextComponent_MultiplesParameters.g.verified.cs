@@ -1,4 +1,5 @@
 ﻿//HintName: TextComponent_MultiplesParameters.g.cs
+#pragma warning disable BL0007
 using Microsoft.AspNetCore.Components;
 
 namespace RoyalCode.Yasamen.Generators.Tests
