@@ -73,6 +73,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlazorShow", "BlazorShow", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalCode.Yasamen.BlazorShow", "RoyalCode.Yasamen.BlazorShow\RoyalCode.Yasamen.BlazorShow.csproj", "{7F853913-29E9-4BF6-AAB8-FABC70A7043A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{8481D566-930E-4D42-9C9A-5FBD22E7B885}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Yasamen.Demo.NewResources", "RoyalCode.Yasamen.Demo.NewResources\RoyalCode.Yasamen.Demo.NewResources.csproj", "{94E454D1-EC1F-47EB-B230-C48A59A8AA12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -167,6 +171,10 @@ Global
 		{7F853913-29E9-4BF6-AAB8-FABC70A7043A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F853913-29E9-4BF6-AAB8-FABC70A7043A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F853913-29E9-4BF6-AAB8-FABC70A7043A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94E454D1-EC1F-47EB-B230-C48A59A8AA12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94E454D1-EC1F-47EB-B230-C48A59A8AA12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94E454D1-EC1F-47EB-B230-C48A59A8AA12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94E454D1-EC1F-47EB-B230-C48A59A8AA12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -199,6 +207,8 @@ Global
 		{505911CD-AA2E-4076-A5EF-F38FCA1FA179} = {6EF06E41-C0C1-4795-87F6-4211E108BD26}
 		{10F347E0-CE4A-433D-BC16-BB0AACCFAB7B} = {9A2739B3-0033-4046-81CD-53BEC5E3360F}
 		{7F853913-29E9-4BF6-AAB8-FABC70A7043A} = {4D16DB12-0FAE-47D5-A050-970140C8A8A5}
+		{8481D566-930E-4D42-9C9A-5FBD22E7B885} = {C1EE0F8C-7FA0-47AC-82C9-A634489C6206}
+		{94E454D1-EC1F-47EB-B230-C48A59A8AA12} = {8481D566-930E-4D42-9C9A-5FBD22E7B885}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {274B8D8D-7446-4563-A4F0-0000A0C7209B}
