@@ -1,14 +1,26 @@
-<mxfile host="Electron" modified="2024-11-21T13:41:50.761Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.1 Chrome/112.0.5615.87 Electron/24.1.2 Safari/537.36" etag="S2dpyLsR7vN3BBgWlUbR" version="21.2.1" type="device">
+<mxfile host="Electron" modified="2024-11-22T12:24:16.609Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.1 Chrome/112.0.5615.87 Electron/24.1.2 Safari/537.36" etag="A5kQum7HfRcc8pFXKc6w" version="21.2.1" type="device">
   <diagram name="Página-1" id="X_7wvOFgzzjB752pESpC">
-    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1418" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="189cMDyVyvuTUJDXd4mm-1" value="Resources" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="189cMDyVyvuTUJDXd4mm-1" value="Resources" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="160" y="280" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="189cMDyVyvuTUJDXd4mm-3" value="&lt;b&gt;Resources:&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Interface geral para obténção de recursos&lt;br&gt;&lt;/span&gt;&lt;br&gt;Posso pegar dados de um determinado tipo. Deve haver um vículo entre um serviço que fornece os dados e o tipo.&lt;br&gt;Algumas operações podem existir, como:&lt;br&gt;- Obter todos.&lt;br&gt;- Obter páginado (Search)&lt;br&gt;- Obter todos por filtro (um ou mais filtros)&lt;br&gt;- Obter um por id ou filtro (um ou mais filtros)&lt;br&gt;&lt;br&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;align=left;verticalAlign=top;spacingLeft=5;spacingRight=5;spacingBottom=5;spacingTop=5;" vertex="1" parent="1">
-          <mxGeometry x="520" y="130" width="370" height="370" as="geometry" />
+        <mxCell id="NdRdli7vG9q-qMHW6ajA-1" value="ResourceSet&lt;br&gt;&amp;lt;TEntity, TId&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="390" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NdRdli7vG9q-qMHW6ajA-2" value="ResourcePage&lt;br&gt;&amp;lt;TEntity&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="500" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NdRdli7vG9q-qMHW6ajA-3" value="ResourceList&lt;br&gt;&amp;lt;TEntity&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="590" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NdRdli7vG9q-qMHW6ajA-4" value="Resource&lt;br&gt;&amp;lt;TEntity&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="680" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NdRdli7vG9q-qMHW6ajA-5" value="&lt;b style=&quot;border-color: var(--border-color); font-size: 12px;&quot;&gt;Resources:&lt;/b&gt;&lt;br style=&quot;border-color: var(--border-color); font-size: 12px;&quot;&gt;Interface geral para obténção de recursos&lt;br style=&quot;border-color: var(--border-color); font-size: 12px;&quot;&gt;&lt;br style=&quot;border-color: var(--border-color); font-size: 12px;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;Posso pegar dados de um determinado tipo. Deve haver um vículo entre um serviço que fornece os dados e o tipo.&lt;/span&gt;&lt;br style=&quot;border-color: var(--border-color); font-size: 12px;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;Algumas operações podem existir, como:&lt;/span&gt;&lt;br style=&quot;border-color: var(--border-color); font-size: 12px;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;- Obter todos.&lt;/span&gt;&lt;br style=&quot;border-color: var(--border-color); font-size: 12px;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;- Obter páginado (Search)&lt;/span&gt;&lt;br style=&quot;border-color: var(--border-color); font-size: 12px;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;- Obter todos por filtro (um ou mais filtros)&lt;/span&gt;&lt;br style=&quot;border-color: var(--border-color); font-size: 12px;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;- Obter um por id ou filtro (um ou mais filtros)&lt;/span&gt;&lt;br style=&quot;border-color: var(--border-color); font-size: 12px;&quot;&gt;&lt;br style=&quot;border-color: var(--border-color); font-size: 12px;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;O objetivo é fornecer dados para componentes de forma genérica.&lt;/span&gt;&lt;br style=&quot;border-color: var(--border-color); font-size: 12px;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;Para entender as necessidades é precisa descrever os componentes que irão acessar dados e como eles usam os dados.&lt;/span&gt;&lt;br style=&quot;border-color: var(--border-color); font-size: 12px;&quot;&gt;&lt;br style=&quot;border-color: var(--border-color); font-size: 12px;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;Vejamos alguns componentes.:&lt;br&gt;&lt;br&gt;ComboBox:&lt;br&gt;&amp;nbsp;- O combo box pode obter os dados das opções a partir de uma fonte de dados. O IResourceSet poderia ser usado para obter a lista de recursos (IResourceList).&lt;br&gt;- Um combo box poderá depender de outro, onde o valor de um campo é usado como filtro para o outro.&lt;br&gt;&lt;/span&gt;" style="shape=card;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontSize=12;spacingTop=30;spacing=2;spacingLeft=8;spacingBottom=12;spacingRight=8;" vertex="1" parent="1">
+          <mxGeometry x="530" y="140" width="390" height="500" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
