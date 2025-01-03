@@ -18,7 +18,7 @@ internal interface ILoaderPerformer<TModel>
     /// </summary>
     /// <param name="token">The cancellation token.</param>
     /// <returns>The list of data models.</returns>
-    Task<IEnumerable<TModel>> LoadAsync(CancellationToken token = default);
+    Task<IReadOnlyList<TModel>> LoadAsync(CancellationToken token = default);
 }
 
 /// <summary>
@@ -40,5 +40,5 @@ internal interface ILoaderPerformer<TModel, TFilter>
     /// <param name="filter">The filter.</param>
     /// <param name="token">The cancellation token.</param>
     /// <returns>The list of data models.</returns>
-    Task<IEnumerable<TModel>> LoadAsync(TFilter filter, CancellationToken token = default);
+    Task<IReadOnlyList<TModel>> LoadAsync(TFilter filter, CancellationToken token = default);
 }

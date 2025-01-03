@@ -1,0 +1,94 @@
+﻿@page "/show"
+@page "/show/{component}"
+@page "/show/{component}/{scene}"
+
+@layout BlazorShowLayout;
+
+@implements IDisposable
+
+@inject NavigationManager NavigationManager;
+@inject ICatalog Catalog;
+
+<div class="show-page">
+    <MainNav />
+    @if (routedScene is not null)
+    {
+        <SceneShow Scene="routedScene" />
+    }
+    else
+    {
+        <div class="hello-blazor-show">
+            <p>Welcome to the Blazor Show!</p>
+            <p>Select a component to show</p>
+        </div>
+    }
+</div>
+
+@code {
+    private readonly EventHandler<LocationChangedEventArgs> locationChangedDelegate;
+    private IScene? routedScene;
+    private bool rendered;
+    private bool changingScene;
+
+    [Parameter]
+    public string? Component { get; set; }
+
+    [Parameter]
+    public string? Scene { get; set; }
+
+    public BlazorShowPage()
+    {
+        locationChangedDelegate = LocationChanged;
+    }
+
+    protected override void OnInitialized()
+    {
+        NavigationManager.LocationChanged += locationChangedDelegate;
+    }
+
+    private void LocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        InvokeAsync(() => {
+            Tracer.Begin<BlazorShowPage>("LocationChanged");
+            changingScene = false;
+            StateHasChanged();
+            Tracer.End<BlazorShowPage>("LocationChanged");
+        });
+    }
+
+    protected override void OnParametersSet()
+    {
+        Tracer.Begin<BlazorShowPage>($"OnParametersSet, Component: {Component}, Scene: {Scene}");
+
+        if (rendered)
+            changingScene = true;
+
+        if (Component is not null)
+        {
+            var show = Catalog.ShowDescriptions.FirstOrDefault(s => (s.Route ?? s.Name) == Component);
+            if (show is null)
+                return;
+
+            routedScene = Scene is null
+                ? show.Scenes.FirstOrDefault()
+                : show.Scenes.FirstOrDefault(s => s.Name == Scene);
+        }
+
+        Tracer.End<BlazorShowPage>($"OnParametersSet, changingScene: {changingScene}");
+    }
+
+    protected override bool ShouldRender()
+    {
+        return !changingScene;
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        rendered = true;
+    }
+
+    public void Dispose()
+    {
+        NavigationManager.LocationChanged -= locationChangedDelegate;
+    }
+}

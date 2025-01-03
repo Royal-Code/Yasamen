@@ -1,0 +1,35 @@
+﻿@using RoyalCode.YasamenBlazorShow.Components.Contexts;
+
+<div>
+    <span><strong>@Property.Name</strong></span> 
+    : 
+    <span>@Property.Description</span>
+</div>
+
+@code {
+
+    private ScenePropertyValue? propertyValue;
+
+    private string Value
+    {
+        get => propertyValue?.ValueString ?? string.Empty;
+        set
+        {
+            if (propertyValue is null)
+                return;
+            propertyValue.Value = value;
+            propertyValue.StateHasChanged();
+        }
+    }
+
+    [Parameter, EditorRequired]
+    public SceneContext Context { get; set; }
+
+    [Parameter, EditorRequired]
+    public IShowPropertyDescription Property { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        propertyValue = Context?.GetProperty(Property.Property.Name);
+    }
+}

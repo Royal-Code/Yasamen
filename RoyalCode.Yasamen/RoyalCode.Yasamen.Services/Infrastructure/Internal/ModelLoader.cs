@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Services.Infrastructure.Performers;
+using System.Collections;
 
 namespace RoyalCode.Yasamen.Services.Infrastructure.Internal;
 
@@ -11,7 +12,7 @@ internal class ModelLoader<TModel> : IModelLoader<TModel>
     private LinkedList<Func<IModelLoader<TModel>, ValueTask>>? callbacks;
     private bool? any;
 
-    public ModelLoader(IEnumerable<TModel> values)
+    public ModelLoader(IReadOnlyList<TModel> values)
     {
         Values = values ?? throw new ArgumentNullException(nameof(values));
         NotLoaded = false;
@@ -19,7 +20,7 @@ internal class ModelLoader<TModel> : IModelLoader<TModel>
 
     public ModelLoader(IServiceProvider provider, string? loaderName)
     {
-        Values = Enumerable.Empty<TModel>();
+        Values = [];
         NotLoaded = true;
         IsFirstLoad = true;
         this.provider = provider;
@@ -36,7 +37,7 @@ internal class ModelLoader<TModel> : IModelLoader<TModel>
 
     public Exception? LoadException { get; private set; }
 
-    public IEnumerable<TModel> Values { get; private set; }
+    public IReadOnlyList<TModel> Values { get; private set; }
 
     public bool Any
     {
@@ -163,7 +164,7 @@ internal class ModelLoader<TModel> : IModelLoader<TModel>
         any = null;
         IsLoading = true;
         LoadException = null;
-        Values = Enumerable.Empty<TModel>();
+        Values = [];
 
         return FireCallbacksAsync();
     }

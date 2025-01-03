@@ -1,0 +1,21 @@
+﻿
+.scene-show {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #eee;
+    text-align: center;
+}
+
+.scene-component {
+    min-width: 32px;
+    min-height: 32px;
+    padding: 16px;
+    border-bottom: 1px solid #ccc;
+    margin: 8px auto;
+}
+
+.scene-properties {
+    min-width: 32px;
+    min-height: 32px;
+    padding: 16px;
+}

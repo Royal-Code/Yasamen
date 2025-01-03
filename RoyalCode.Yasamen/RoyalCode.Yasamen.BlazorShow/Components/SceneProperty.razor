@@ -1,0 +1,26 @@
+﻿@using RoyalCode.YasamenBlazorShow.Components.Contexts;
+
+<div class="scene-property">
+    <div class="scene-property-name" title="@Property.Description">
+        @Name
+    </div>
+    <div class="scene-property-value">
+        <PropertyValueRender Property="Property" Context=Context />
+    </div>
+</div>
+
+@code {
+
+    private string? Name => Property.IsFragment ? "Fragment" : Property.Name;
+
+    [Parameter, EditorRequired]
+    public SceneContext? Context { get; set; }
+
+    [Parameter, EditorRequired]
+    public IScenePropertyDescription Property { get; set; }
+
+    protected override bool ShouldRender()
+    {
+        return Context is not null;
+    }
+}

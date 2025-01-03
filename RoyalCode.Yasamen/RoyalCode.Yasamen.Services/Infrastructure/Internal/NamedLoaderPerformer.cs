@@ -12,7 +12,7 @@ internal class NamedLoaderPerformer<TModel, TService> : INamedLoaderPerformer<TM
         this.service = service;
     }
 
-    public Task<IEnumerable<TModel>> LoadAsync(string name, CancellationToken token = default)
+    public Task<IReadOnlyList<TModel>> LoadAsync(string name, CancellationToken token = default)
     {
         var loaderDelegate = NamedLoaders.GetDelegate(name, typeof(TModel));
         if (loaderDelegate is not LoaderDelegate<TService, TModel> loader)
@@ -32,7 +32,7 @@ internal class NamedLoaderPerformer<TModel, TFilter, TService> : INamedLoaderPer
         this.service = service;
     }
 
-    public Task<IEnumerable<TModel>> LoadAsync(string name, TFilter filter, CancellationToken token = default)
+    public Task<IReadOnlyList<TModel>> LoadAsync(string name, TFilter filter, CancellationToken token = default)
     {
         var loaderDelegate = NamedLoaders.GetDelegate(name, typeof(TModel), typeof(TFilter));
         if (loaderDelegate is not LoaderDelegate<TService, TFilter, TModel> loader)
