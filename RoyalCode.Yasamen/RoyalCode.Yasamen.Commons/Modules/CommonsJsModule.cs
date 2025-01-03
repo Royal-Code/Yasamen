@@ -153,18 +153,6 @@ public sealed class CommonsJsModule : JsModuleBase
         await js.InvokeVoidAsync(setLocalStorageItem, key, value);
     }
 
-    public async ValueTask<string> GetLocalStorageItem(string key)
-    {
-        var js = await GetModuleAsync();
-        return await js.InvokeAsync<string>(getLocalStorageItem, key);
-    }
-
-    public async ValueTask RemoveLocalStorageItem(string key)
-    {
-        var js = await GetModuleAsync();
-        await js.InvokeVoidAsync(removeLocalStorageItem, key);
-    }
-
     public ValueTask SetLocalStorageItem<T>(T value, string? key = null)
     {
         // serialize value to json
@@ -176,6 +164,12 @@ public sealed class CommonsJsModule : JsModuleBase
         return SetLocalStorageItem(key, jsonValue);
     }
 
+    public async ValueTask<string> GetLocalStorageItem(string key)
+    {
+        var js = await GetModuleAsync();
+        return await js.InvokeAsync<string>(getLocalStorageItem, key);
+    }
+
     public async ValueTask<T> GetLocalStorageItem<T>(string? key = null)
     {
         // check key name
@@ -185,6 +179,12 @@ public sealed class CommonsJsModule : JsModuleBase
 
         // deserialize from json
         return JsonSerializer.Deserialize<T>(jsonValue, Options)!;
+    }
+
+    public async ValueTask RemoveLocalStorageItem(string key)
+    {
+        var js = await GetModuleAsync();
+        await js.InvokeVoidAsync(removeLocalStorageItem, key);
     }
 
     public ValueTask RemoveLocalStorageItem<T>()
@@ -202,18 +202,6 @@ public sealed class CommonsJsModule : JsModuleBase
         await js.InvokeVoidAsync(setSessionStorageItem, key, value);
     }
 
-    public async ValueTask<string> GetSessionStorageItem(string key)
-    {
-        var js = await GetModuleAsync();
-        return await js.InvokeAsync<string>(getSessionStorageItem, key);
-    }
-
-    public async ValueTask RemoveSessionStorageItem(string key)
-    {
-        var js = await GetModuleAsync();
-        await js.InvokeVoidAsync(removeSessionStorageItem, key);
-    }
-
     public ValueTask SetSessionStorageItem<T>(T value, string? key = null)
     {
         // serialize value to json
@@ -225,6 +213,12 @@ public sealed class CommonsJsModule : JsModuleBase
         return SetSessionStorageItem(key, jsonValue);
     }
 
+    public async ValueTask<string> GetSessionStorageItem(string key)
+    {
+        var js = await GetModuleAsync();
+        return await js.InvokeAsync<string>(getSessionStorageItem, key);
+    }
+
     public async ValueTask<T> GetSessionStorageItem<T>(string? key = null)
     {
         // check key name
@@ -234,6 +228,12 @@ public sealed class CommonsJsModule : JsModuleBase
 
         // deserialize from json
         return JsonSerializer.Deserialize<T>(jsonValue, Options)!;
+    }
+
+    public async ValueTask RemoveSessionStorageItem(string key)
+    {
+        var js = await GetModuleAsync();
+        await js.InvokeVoidAsync(removeSessionStorageItem, key);
     }
 
     public ValueTask RemoveSessionStorageItem<T>()

@@ -14,7 +14,7 @@ internal class LoaderPerformer<TModel, TService> : ILoaderPerformer<TModel>
         this.loaderDelegate = loaderDelegate;
     }
 
-    public Task<IEnumerable<TModel>> LoadAsync(CancellationToken token = default)
+    public Task<IReadOnlyList<TModel>> LoadAsync(CancellationToken token = default)
         => loaderDelegate(service, token);
 }
 
@@ -30,9 +30,9 @@ internal class LoaderPerformer<TModel, TFilter, TService> : ILoaderPerformer<TMo
         this.loaderDelegate = loaderDelegate;
     }
 
-    public Task<IEnumerable<TModel>> LoadAsync(TFilter filter, CancellationToken token = default)
+    public Task<IReadOnlyList<TModel>> LoadAsync(TFilter filter, CancellationToken token = default)
         => loaderDelegate(service, filter, token);
 }
 
-internal delegate Task<IEnumerable<TModel>> LoaderDelegate<TService, TModel>(TService service, CancellationToken cancellationToken = default);
-internal delegate Task<IEnumerable<TModel>> LoaderDelegate<TService, TFilter, TModel>(TService service, TFilter filter, CancellationToken cancellationToken = default);
+internal delegate Task<IReadOnlyList<TModel>> LoaderDelegate<TService, TModel>(TService service, CancellationToken cancellationToken = default);
+internal delegate Task<IReadOnlyList<TModel>> LoaderDelegate<TService, TFilter, TModel>(TService service, TFilter filter, CancellationToken cancellationToken = default);

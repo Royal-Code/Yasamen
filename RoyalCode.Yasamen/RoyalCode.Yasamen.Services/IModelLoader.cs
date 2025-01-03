@@ -37,7 +37,7 @@ public interface IModelLoader<TModel>
     /// <summary>
     /// Loaded values.
     /// </summary>
-    IEnumerable<TModel> Values { get; }
+    IReadOnlyList<TModel> Values { get; }
 
     /// <summary>
     /// Exception occurred when loading the data.,

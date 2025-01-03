@@ -70,7 +70,7 @@ public class NumberField<TValue> : InputFieldBase<TValue>
             result = default;
             errorMessage = ParsingErrorMessage is not null
                 ? string.Format(ParsingErrorMessage, FieldLabel)
-                : InvalidInputErrorMessage;
+                : GetInvalidInputErrorMessage();
             return false;
         }
     }

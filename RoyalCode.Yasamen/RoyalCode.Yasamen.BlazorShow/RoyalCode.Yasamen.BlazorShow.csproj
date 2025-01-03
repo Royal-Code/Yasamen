@@ -4,8 +4,6 @@
 	<Import Project="..\depends.targets" />
 	
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
-
 		<ShowVer>0.0.0.1</ShowVer>
 		<PreVer></PreVer>
 		
@@ -14,4 +12,17 @@
 		<FileVersion>$(ShowVer)</FileVersion>
 	</PropertyGroup>
 
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="$(WasmVer)" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="$(WasmVer)" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.Extensions.Localization" Version="$(ExtVer)" />
+		<PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="$(AspNetVer)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\RoyalCode.Yasamen.Commons\RoyalCode.Yasamen.Commons.csproj" />
+	  <ProjectReference Include="..\RoyalCode.Yasamen.Forms\RoyalCode.Yasamen.Forms.csproj" />
+	  <ProjectReference Include="..\RoyalCode.Yasamen.Icons.Bootstrap\RoyalCode.Yasamen.Icons.Bootstrap.csproj" />
+	  <ProjectReference Include="..\RoyalCode.Yasamen.Layout.Admin\RoyalCode.Yasamen.Layout.Admin.csproj" />
+	</ItemGroup>
 </Project>

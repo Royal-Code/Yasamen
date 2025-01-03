@@ -1,0 +1,15 @@
+﻿
+.show-page {
+    display: flex;
+}
+
+.hello-blazor-show {
+    text-align: center;
+    width: 100%;
+    margin-top: 48px;
+}
+
+p {
+    font-size: 1.2rem;
+    font-weight:600;
+}

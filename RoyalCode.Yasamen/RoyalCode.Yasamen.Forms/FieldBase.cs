@@ -14,7 +14,7 @@ namespace RoyalCode.Yasamen.Forms;
 
 public partial class FieldBase<TValue> : ComponentBase, IDisposable
 {
-    protected const string InvalidInputErrorMessage = "Invalid input";
+    private const string InvalidInputErrorMessage = "Invalid input";
 
     private readonly Action messagesChangedDelegate;
     
@@ -22,7 +22,6 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
     private bool initialized;
     private Type? nullableUnderlyingType; // is not used, but can be used in the future, so it is kept until the final version
     private bool settingNewValue;
-    private PropertyInfo? propertyInfo;
     private string? fieldLabel;
     private string? fieldName;
     private string? fieldId;
@@ -184,6 +183,8 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
     [Parameter(CaptureUnmatchedValues = true)]
     public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
 
+    private PropertyInfo? propertyInfo;
+
     protected PropertyInfo? FieldPropertyInfo
     {
         get
@@ -209,6 +210,8 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
                 var oldValue = Value;
                 _ = ValueChanged.InvokeAsync(value);
                 ModelContext.PropertyChangeSupport.PropertyHasChanged(FieldIdentifier, oldValue, value);
+                OnAfterValueChanged(value);
+                OnChange.InvokeAsync(value);
             }
             else
             {
@@ -302,7 +305,7 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
         }
 
         errorMessage = parsed is false
-            ? InvalidInputErrorMessage
+            ? GetInvalidInputErrorMessage()
             : null;
 
         return parsed;

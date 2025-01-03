@@ -1,0 +1,13 @@
+@inject BlazorShowOptions Options;
+
+<div class="scene">
+    <a class="scene-name scene-link" title="@Scene.Description" href="@Options.MakeRoute(Scene.GetRoute())">
+        @Scene.Name
+    </a>
+</div>
+
+@code {
+
+    [Parameter, EditorRequired]
+    public IScene Scene { get; set; }
+}

@@ -1,0 +1,21 @@
+
+.scene-link {
+    text-decoration: none;
+    color: #00bfff;
+}
+
+.has-multiple-scenes {
+    color: #00bfff;
+    cursor: pointer;
+}
+
+.component-scenes {
+    animation: slide 0.5s ease-in-out;
+    animation-fill-mode: forwards;
+    max-height: 0;
+    overflow: hidden;
+}
+
+    .component-scenes.show {
+        max-height: 10vh;
+    }

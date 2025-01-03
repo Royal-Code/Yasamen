@@ -1,0 +1,164 @@
+﻿
+.html-classes {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.html-classes-content {
+    background-color: #fff;
+    color: #212529;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.25rem .75rem 0.25rem 0.75rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: wrap;
+}
+
+.html-classes-list {
+    display: flex;
+    flex-flow: wrap;
+    margin-top: 0.25rem;
+}
+
+.html-classes-dropdown {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 192px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin: 1px 0 0 2px;
+}
+
+    .html-classes-dropdown.show {
+        display: block;
+        padding: .5rem;
+        border-radius: 4px;
+    }
+
+    .html-classes-dropdown input {
+        background-color: #fff;
+        color: #212529;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 0.375rem .75rem 0.375rem 0.75rem;
+    }
+
+.html-classes-item {
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.5rem 0.25rem 0.5rem 0.8rem;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 1rem;
+    margin: 0 0.25rem 0.25rem 0;
+}
+    .html-classes-item:hover {
+        background-color: #0069d9;
+    }
+
+.html-classes-item-remove {
+    /* danger ball */
+    background-color: #dc3545;
+    color: #fff;
+    padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 1rem;
+    margin: 0 0 0 .5rem;
+    cursor: pointer;
+    position: relative;
+    top: -1px;
+}
+
+    .html-classes-item-remove:hover {
+        background-color: #bd2130;
+    }
+
+.html-classes-add {
+    /* secondary button */
+    background-color: #6c757d;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: Consolas, monospace;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid #6c757d;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 1.75rem;
+    width: 1.75rem;
+    margin: auto 0;
+}
+
+    .html-classes-add:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+
+.html-classes-enter {
+    /* success button */
+    background-color: #28a745;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: Consolas, monospace;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: auto 0;
+    height: 2.375rem;
+}
+
+    .html-classes-enter:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+
+.html-classes-close {
+    /* danger button */
+    background-color: #dc3545;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: Consolas, monospace;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid #dc3545;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: auto 0;
+    height: 2.375rem;
+    min-width: 2.375rem;
+}
+
+    .html-classes-close:hover {
+        background-color: #bd2130;
+        border-color: #b21f2d;
+    }
