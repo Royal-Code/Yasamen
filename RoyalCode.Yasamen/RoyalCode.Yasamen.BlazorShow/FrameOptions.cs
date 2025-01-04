@@ -1,4 +1,4 @@
-﻿namespace RoyalCode.YasamenBlazorShow;
+﻿namespace RoyalCode.Yasamen.BlazorShow;
 
 public class FrameOptions
 {

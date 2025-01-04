@@ -1,6 +1,6 @@
 ﻿using RoyalCode.Yasamen.Commons;
 
-namespace RoyalCode.YasamenBlazorShow;
+namespace RoyalCode.Yasamen.BlazorShow;
 
 public interface IScene
 {

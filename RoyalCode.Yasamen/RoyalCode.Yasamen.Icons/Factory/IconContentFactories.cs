@@ -7,11 +7,8 @@ public static class IconContentFactories
 
     public static void AddIconContentFactory(Type enumType, IIconContentFactory factory)
     {
-        if (enumType is null)
-            throw new ArgumentNullException(nameof(enumType));
-
-        if (factory is null)
-            throw new ArgumentNullException(nameof(factory));
+        ArgumentNullException.ThrowIfNull(enumType);
+        ArgumentNullException.ThrowIfNull(factory);
 
         if (!enumType.IsEnum)
             throw new InvalidOperationException($"The {nameof(enumType)} must be an Enum, the type {enumType.FullName} is not a enum.");

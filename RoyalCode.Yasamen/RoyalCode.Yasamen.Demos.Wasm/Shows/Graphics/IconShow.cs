@@ -1,4 +1,4 @@
-﻿using RoyalCode.Yasamen.Demos.Wasm.BlazorShow;
+﻿using RoyalCode.Yasamen.BlazorShow;
 using RoyalCode.Yasamen.Icons;
 using RoyalCode.Yasamen.Icons.Bootstrap;
 

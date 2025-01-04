@@ -1,31 +1,14 @@
 ﻿
 .scene-property {
-    display: flex;
     margin-bottom: .5rem;
+    width: 100%;
+    text-align: start;
 }
 
 .scene-property-name {
-    width: 30%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding-right: 8px;
+    width: 100%;
 }
 
 .scene-property-value {
-    width: 70%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding-left: 8px;
-}
-
-@media (min-width: 1200px) {
-    
-    .scene-property-value {
-        width: 60%;
-    }
-    .scene-property-name {
-        width: 25%;
-    }
+    width: 100%;
 }

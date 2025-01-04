@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Components;
-using System.Reflection;
+﻿using System.Reflection;
+using Microsoft.AspNetCore.Components;
 
-namespace RoyalCode.YasamenBlazorShow.Internal;
+namespace RoyalCode.Yasamen.BlazorShow.Internal;
 
 public class ShowDescription : IShowDescription
 {

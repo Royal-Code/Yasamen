@@ -1,12 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
-	<Import Project="..\depends.targets" />
-
-	<PropertyGroup>
-		<Nullable>enable</Nullable>
-		<ImplicitUsings>enable</ImplicitUsings>
-	</PropertyGroup>
-
 	<ItemGroup>
 		<Content Remove="wwwroot\sample-code\*.razor" />
 		<None Include="wwwroot\sample-code\*.razor">
@@ -23,6 +16,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\RoyalCode.Yasamen.Animations\RoyalCode.Yasamen.Animations.csproj" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.BlazorShow\RoyalCode.Yasamen.BlazorShow.csproj" />
 		<ProjectReference Include="..\RoyalCode.Yasamen.Components.Alerts\RoyalCode.Yasamen.Components.Alerts.csproj" />
 		<ProjectReference Include="..\RoyalCode.Yasamen.Components.Buttons\RoyalCode.Yasamen.Components.Buttons.csproj" />
 		<ProjectReference Include="..\RoyalCode.Yasamen.Components.Dropdowns\RoyalCode.Yasamen.Components.Dropdowns.csproj" />
@@ -34,6 +28,28 @@
 		<ProjectReference Include="..\RoyalCode.Yasamen.Layout\RoyalCode.Yasamen.Layout.csproj" />
 		<ProjectReference Include="..\RoyalCode.Yasamen.Localization\RoyalCode.Yasamen.Localization.csproj" />
 		<ProjectReference Include="..\RoyalCode.Yasamen.Spinners\RoyalCode.Yasamen.Spinners.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <_ContentIncludedByDefault Remove="BlazorShow\Components\GroupNav.razor" />
+	  <_ContentIncludedByDefault Remove="BlazorShow\Components\MainNav.razor" />
+	  <_ContentIncludedByDefault Remove="BlazorShow\Components\Pages\BlazorShowFrameRender.razor" />
+	  <_ContentIncludedByDefault Remove="BlazorShow\Components\Pages\BlazorShowLayout.razor" />
+	  <_ContentIncludedByDefault Remove="BlazorShow\Components\Pages\BlazorShowPage.razor" />
+	  <_ContentIncludedByDefault Remove="BlazorShow\Components\PropertyRenders\BoolProperty.razor" />
+	  <_ContentIncludedByDefault Remove="BlazorShow\Components\PropertyRenders\EnumProperty.razor" />
+	  <_ContentIncludedByDefault Remove="BlazorShow\Components\PropertyRenders\FragmentProperty.razor" />
+	  <_ContentIncludedByDefault Remove="BlazorShow\Components\PropertyRenders\HtmlAttributesProperty.razor" />
+	  <_ContentIncludedByDefault Remove="BlazorShow\Components\PropertyRenders\HtmlClassesProperty.razor" />
+	  <_ContentIncludedByDefault Remove="BlazorShow\Components\PropertyRenders\TextProperty.razor" />
+	  <_ContentIncludedByDefault Remove="BlazorShow\Components\PropertyRenders\ValueSetProperty.razor" />
+	  <_ContentIncludedByDefault Remove="BlazorShow\Components\SceneEventsProperties.razor" />
+	  <_ContentIncludedByDefault Remove="BlazorShow\Components\SceneFragmentProperties.razor" />
+	  <_ContentIncludedByDefault Remove="BlazorShow\Components\SceneFrame.razor" />
+	  <_ContentIncludedByDefault Remove="BlazorShow\Components\SceneNav.razor" />
+	  <_ContentIncludedByDefault Remove="BlazorShow\Components\SceneProperty.razor" />
+	  <_ContentIncludedByDefault Remove="BlazorShow\Components\SceneShow.razor" />
+	  <_ContentIncludedByDefault Remove="BlazorShow\Components\ShowNav.razor" />
 	</ItemGroup>
 
 </Project>

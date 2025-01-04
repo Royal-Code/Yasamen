@@ -1,6 +1,5 @@
 <Project>
 	<Import Project=".\base.targets" />
-	<Import Project=".\depends.targets" />
 	<PropertyGroup>
 		<Version>0.1.3.8</Version>
 		<AssemblyVersion>0.1.3.8</AssemblyVersion>

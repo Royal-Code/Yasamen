@@ -1,32 +1,34 @@
-﻿@using RoyalCode.YasamenBlazorShow.Components.Contexts;
-@using System.Diagnostics.CodeAnalysis;
+﻿@using System.Diagnostics.CodeAnalysis;
+@using RoyalCode.Yasamen.BlazorShow.Components.Contexts
 
 <CascadingValue Value="context">
     <div class="scene-show">
-        <h3>@Scene.Show.Name - @Scene.Name</h3>
-        <div class="scene-component @AlignClass">
-            @if (Scene.RenderKind == ShowRenderKind.Direct)
-            {
-                <SceneRender />
-            }
-            else
-            {
-                <SceneFrame />
-            }
+        <div class="scene-content">
+            <h3>@Scene.Show.Name - @Scene.Name</h3>
+            <div class="scene-component @AlignClass">
+                @if (Scene.RenderKind == ShowRenderKind.Direct)
+                {
+                    <SceneRender/>
+                }
+                else
+                {
+                    <SceneFrame/>
+                }
+            </div>
         </div>
         <div class="scene-properties">
-            
-            The properties of the component.
+
+            <h5>Properties</h5>
 
             @foreach (var property in Scene.SceneProperties.Where(p => !p.IsHidden && !p.IsFragment && !p.IsEvent))
             {
-                <SceneProperty Property="property" Context="context" @key=@property.Name />
+                <SceneProperty Property="property" Context="context" @key=@property.Name/>
             }
-            
-            <SceneFragmentProperties Properties="Scene.SceneProperties.Where(p => p.IsFragment)" Context="context" />
 
-            <SceneEventsProperties Properties="Scene.SceneProperties.Where(p => p.IsEvent)" Context="context" />
-                
+            <SceneFragmentProperties Properties="Scene.SceneProperties.Where(p => p.IsFragment)" Context="context"/>
+
+            <SceneEventsProperties Properties="Scene.SceneProperties.Where(p => p.IsEvent)" Context="context"/>
+
         </div>
     </div>
 </CascadingValue>

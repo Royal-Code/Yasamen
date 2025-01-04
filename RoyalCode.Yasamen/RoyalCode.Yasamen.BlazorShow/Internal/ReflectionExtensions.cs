@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Components;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 using System.Reflection;
+using Microsoft.AspNetCore.Components;
+
+namespace RoyalCode.Yasamen.BlazorShow.Internal;
 
 internal static class ReflectionExtensions
 {

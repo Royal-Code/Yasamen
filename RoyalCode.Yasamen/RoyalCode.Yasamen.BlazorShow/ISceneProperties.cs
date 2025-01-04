@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Components;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
+using Microsoft.AspNetCore.Components;
 
-namespace RoyalCode.YasamenBlazorShow;
+namespace RoyalCode.Yasamen.BlazorShow;
 
 public interface ISceneProperties<TComponent>
     where TComponent : class, IComponent

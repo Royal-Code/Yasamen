@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
-using RoyalCode.Yasamen.Commons;
-using RoyalCode.YasamenBlazorShow.Components.Contexts;
+using RoyalCode.Yasamen.BlazorShow.Components.Contexts;
 using RoyalCode.Yasamen.BlazorShow.Components.PropertyRenders;
+using RoyalCode.Yasamen.Commons;
 
-namespace RoyalCode.YasamenBlazorShow.Components;
+namespace RoyalCode.Yasamen.BlazorShow.Components;
 
 public class PropertyValueRender : ComponentBase
 {

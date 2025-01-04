@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace RoyalCode.YasamenBlazorShow;
+namespace RoyalCode.Yasamen.BlazorShow;
 
 public interface IShowPropertyDescription
 {

@@ -4,18 +4,63 @@
     min-height: 100vh;
     background-color: #eee;
     text-align: center;
+    display: flex;
+}
+
+.scene-content {
+    display: block;
+    flex-grow: 1;
+}
+
+.scene-content > h3 {
+    padding-top: 0.125rem;
+    line-height: 1.5;
 }
 
 .scene-component {
-    min-width: 32px;
-    min-height: 32px;
+    width: 100%;
+    min-height: 320px;
     padding: 16px;
+    border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     margin: 8px auto;
 }
 
 .scene-properties {
-    min-width: 32px;
+    min-width: 399px;
     min-height: 32px;
-    padding: 16px;
+    padding: .5rem;
+    width: 15%;
+    border-left: 1px solid #ccc;
+    scroll-behavior: auto;
+    overflow-y: auto;
+    max-height: 100vh;
+}
+
+.scene-properties > h5 {
+    padding: 0.625rem;
+    line-height: 1.2;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Personaliza a largura do scrollbar */
+.scene-properties::-webkit-scrollbar {
+    width: 8px; /* Define a largura do scrollbar */
+}
+
+/* Personaliza a aparência do track do scrollbar */
+.scene-properties::-webkit-scrollbar-track {
+    background: #CCC; /* Cor de fundo do track */
+    border-radius: 8px; /* Bordas arredondadas */
+}
+
+/* Personaliza a aparência do thumb do scrollbar */
+.scene-properties::-webkit-scrollbar-thumb {
+    background: #888; /* Cor do thumb */
+    border-radius: 8px; /* Bordas arredondadas */
+}
+
+/* Personaliza a aparência do thumb do scrollbar ao passar o mouse */
+.scene-properties::-webkit-scrollbar-thumb:hover {
+    background: #999; /* Cor do thumb ao passar o mouse */
 }

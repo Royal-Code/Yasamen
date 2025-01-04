@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace RoyalCode.YasamenBlazorShow.Internal;
+namespace RoyalCode.Yasamen.BlazorShow.Internal;
 
 public class ShowDescriptionBuilder<TComponent> : IShowDescriptionBuilder<TComponent>
     where TComponent : class, IComponent

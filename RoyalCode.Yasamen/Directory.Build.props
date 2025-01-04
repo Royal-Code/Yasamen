@@ -1,11 +1,16 @@
 <Project>
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 	</PropertyGroup>
 	<PropertyGroup>
-		<AspNetVer>8.0.8</AspNetVer>
-		<WasmVer>8.0.8</WasmVer>
-		<ExtVer>8.0.1</ExtVer>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
+	<PropertyGroup>
+		<AspNetVer>9.0.0</AspNetVer>
+		<WasmVer>9.0.0</WasmVer>
+		<ExtVer>9.0.0</ExtVer>
 		<OperationResult>2.0.0</OperationResult>
 	</PropertyGroup>
 </Project>

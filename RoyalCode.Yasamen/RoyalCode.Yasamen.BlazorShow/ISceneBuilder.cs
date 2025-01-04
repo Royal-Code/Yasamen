@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using RoyalCode.Yasamen.Commons;
 
-namespace RoyalCode.YasamenBlazorShow;
+namespace RoyalCode.Yasamen.BlazorShow;
 
 public interface ISceneBuilder<TComponent>
     where TComponent : class, IComponent

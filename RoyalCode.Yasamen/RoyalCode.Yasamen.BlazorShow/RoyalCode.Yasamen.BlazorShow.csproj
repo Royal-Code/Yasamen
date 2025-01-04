@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<Import Project="..\base.targets" />
-	<Import Project="..\depends.targets" />
 	
 	<PropertyGroup>
 		<ShowVer>0.0.0.1</ShowVer>

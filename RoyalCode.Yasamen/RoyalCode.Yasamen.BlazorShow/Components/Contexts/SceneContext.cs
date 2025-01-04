@@ -1,7 +1,7 @@
-﻿using RoyalCode.Yasamen.Commons;
-using System.Text.Json;
+﻿using System.Text.Json;
+using RoyalCode.Yasamen.Commons;
 
-namespace RoyalCode.YasamenBlazorShow.Components.Contexts;
+namespace RoyalCode.Yasamen.BlazorShow.Components.Contexts;
 
 public class SceneContext
 {

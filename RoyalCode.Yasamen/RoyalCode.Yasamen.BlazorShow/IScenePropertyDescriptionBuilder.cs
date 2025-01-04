@@ -1,5 +1,6 @@
-﻿namespace RoyalCode.YasamenBlazorShow;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
+
+namespace RoyalCode.Yasamen.BlazorShow;
 
 public interface IScenePropertyDescriptionBuilder<TComponent, TProperty>
     where TComponent : class, IComponent

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
-using RoyalCode.Yasamen.Demos.Wasm.BlazorShow;
+using RoyalCode.Yasamen.BlazorShow;
 using RoyalCode.Yasamen.Demos.Wasm.Shows.ValueSets;
 using RoyalCode.Yasamen.Layout;
 

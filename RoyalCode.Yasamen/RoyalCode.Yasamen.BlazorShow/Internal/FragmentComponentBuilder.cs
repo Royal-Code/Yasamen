@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Components;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
+using Microsoft.AspNetCore.Components;
 
-namespace RoyalCode.YasamenBlazorShow.Internal;
+namespace RoyalCode.Yasamen.BlazorShow.Internal;
 
 public class FragmentComponentBuilder<TFragmentComponent> : IFragmentComponentBuilder<TFragmentComponent>
     where TFragmentComponent : class, IComponent

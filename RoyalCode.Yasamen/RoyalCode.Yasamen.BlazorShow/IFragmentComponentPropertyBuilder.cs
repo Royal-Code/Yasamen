@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace RoyalCode.YasamenBlazorShow;
+namespace RoyalCode.Yasamen.BlazorShow;
 
 public interface IFragmentComponentPropertyBuilder<TFragmentComponent, TProperty>
     where TFragmentComponent : class, IComponent

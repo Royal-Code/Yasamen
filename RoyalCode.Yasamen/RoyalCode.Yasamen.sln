@@ -32,7 +32,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".items", ".items", "{246EC85B-93EF-435A-8290-054311804EA9}"
 	ProjectSection(SolutionItems) = preProject
 		base.targets = base.targets
-		depends.targets = depends.targets
 		Directory.Build.props = Directory.Build.props
 		icon.png = icon.png
 		version.targets = version.targets

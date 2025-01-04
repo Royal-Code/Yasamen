@@ -6,7 +6,7 @@
 		<!--<DocumentationFile>$(BaseOutputPath)\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>-->
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Authors>Royal Code</Authors>
-		<Copyright>Royal Code Copyright ©  2024</Copyright>
+		<Copyright>Royal Code Copyright ©  2025</Copyright>
 		<RepositoryUrl>https://github.com/Royal-Code/Yasamen</RepositoryUrl>
 		<RepositoryType>Git</RepositoryType>
 		<Configurations>Debug;Release</Configurations>

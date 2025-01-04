@@ -1,4 +1,4 @@
-﻿namespace RoyalCode.YasamenBlazorShow.Internal;
+﻿namespace RoyalCode.Yasamen.BlazorShow.Internal;
 
 /// <summary>
 /// <para>

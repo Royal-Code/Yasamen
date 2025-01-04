@@ -1,7 +1,7 @@
-﻿using RoyalCode.YasamenBlazorShow.Internal;
-using System.Text.Json;
+﻿using System.Text.Json;
+using RoyalCode.Yasamen.BlazorShow.Internal;
 
-namespace RoyalCode.YasamenBlazorShow.Components.Contexts;
+namespace RoyalCode.Yasamen.BlazorShow.Components.Contexts;
 
 public class ScenePropertyValue
 {

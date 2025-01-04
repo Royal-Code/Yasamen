@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System.Reflection;
+using Microsoft.AspNetCore.Components;
 using RoyalCode.Yasamen.Commons;
-using System.Reflection;
 
-namespace RoyalCode.YasamenBlazorShow.Internal;
+namespace RoyalCode.Yasamen.BlazorShow.Internal;
 
 public class Scene<TComponent> : IScene<TComponent>
     where TComponent : class, IComponent

@@ -1,6 +1,6 @@
-﻿using RoyalCode.Yasamen.Commons;
+﻿using RoyalCode.Yasamen.BlazorShow;
+using RoyalCode.Yasamen.Commons;
 using RoyalCode.Yasamen.Components;
-using RoyalCode.Yasamen.Demos.Wasm.BlazorShow;
 using RoyalCode.Yasamen.Demos.Wasm.Shows.Layouts;
 using RoyalCode.Yasamen.Icons;
 using RoyalCode.Yasamen.Icons.Bootstrap;

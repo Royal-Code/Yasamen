@@ -1,5 +1,5 @@
-﻿using RoyalCode.Yasamen.Components;
-using RoyalCode.Yasamen.Demos.Wasm.BlazorShow;
+﻿using RoyalCode.Yasamen.BlazorShow;
+using RoyalCode.Yasamen.Components;
 
 namespace RoyalCode.Yasamen.Demos.Wasm.Shows.Components;
 

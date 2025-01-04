@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
-using RoyalCode.YasamenBlazorShow;
-using RoyalCode.YasamenBlazorShow.Internal;
 using System.Diagnostics.CodeAnalysis;
+using RoyalCode.Yasamen.BlazorShow;
+using RoyalCode.Yasamen.BlazorShow.Internal;
 
 namespace Microsoft.Extensions.DependencyInjection;
 

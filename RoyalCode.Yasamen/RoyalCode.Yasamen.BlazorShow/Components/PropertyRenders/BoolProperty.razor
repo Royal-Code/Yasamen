@@ -1,6 +1,10 @@
-﻿@using RoyalCode.YasamenBlazorShow.Components.Contexts;
+﻿@using RoyalCode.Yasamen.BlazorShow.Components.Contexts
 
-<input type="checkbox" @bind="@Value" />
+<label aria-disabled="false" for="control-block" aria-label="block" class="css-ntzqnl">
+    <input type="checkbox" role="switch" name="block" @bind="@Value"/>
+    <span aria-hidden="true">False</span>
+    <span aria-hidden="true">True</span>
+</label>
 
 @code {
 
@@ -16,14 +20,13 @@
         }
     }
 
-    [Parameter, EditorRequired]
-    public SceneContext Context { get; set; }
+    [Parameter, EditorRequired] public SceneContext Context { get; set; }
 
-    [Parameter, EditorRequired]
-    public IShowPropertyDescription Property { get; set; }
+    [Parameter, EditorRequired] public IShowPropertyDescription Property { get; set; }
 
     protected override void OnParametersSet()
     {
         propertyValue = Context.GetProperty(Property.Property.Name);
     }
+
 }

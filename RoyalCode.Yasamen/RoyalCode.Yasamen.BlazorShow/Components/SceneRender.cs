@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
-using RoyalCode.YasamenBlazorShow.Components.Contexts;
-using RoyalCode.YasamenBlazorShow.Internal;
+using RoyalCode.Yasamen.BlazorShow.Components.Contexts;
+using RoyalCode.Yasamen.BlazorShow.Internal;
 
-namespace RoyalCode.YasamenBlazorShow.Components;
+namespace RoyalCode.Yasamen.BlazorShow.Components;
 
 public sealed class SceneRender : ComponentBase, IDisposable
 {
