@@ -26,33 +26,6 @@
     margin-top: 0.25rem;
 }
 
-.html-attributes-dropdown {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 192px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    margin: 1px 0 0 2px;
-}
-
-    .html-attributes-dropdown.show {
-        display: block;
-        padding: .5rem;
-        border-radius: 4px;
-    }
-
-    .html-attributes-dropdown input {
-        background-color: #fff;
-        color: #212529;
-        font-size: 1rem;
-        font-weight: 400;
-        line-height: 1.5;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        padding: 0.375rem .75rem 0.375rem 0.75rem;
-    }
-
 .html-attributes-item {
     background-color: #007bff;
     color: #fff;
@@ -157,16 +130,18 @@
     .html-attributes-dropdown input {
         background-color: #fff;
         color: #212529;
-        font-size: 1rem;
+        font-size: .8rem;
         font-weight: 400;
-        line-height: 1.5;
+        line-height: 1.2;
         border: 1px solid #ccc;
         border-radius: 4px;
-        padding: 0.375rem .75rem 0.375rem 0.75rem;
+        padding: 0.375rem 0.375rem 0.375rem 0.375rem;
+        margin-bottom: 0.25rem;
     }
 
 .html-attributes-equals {
-    margin: 0 0.25rem;
+    margin: 0 0.125rem;
+    font-size: .75rem;
 }
 
 .html-classes-enter {
@@ -184,7 +159,8 @@
     border-radius: 4px;
     cursor: pointer;
     margin: auto 0;
-    height: 2.375rem;
+    height: 2rem;
+    min-width: 3rem;
 }
 
     .html-classes-enter:hover {
@@ -207,7 +183,8 @@
     border-radius: 4px;
     cursor: pointer;
     margin: auto 0;
-    height: 2.375rem;
+    height: 2rem;
+    min-width: 3rem;
 }
 
     .html-classes-close:hover {

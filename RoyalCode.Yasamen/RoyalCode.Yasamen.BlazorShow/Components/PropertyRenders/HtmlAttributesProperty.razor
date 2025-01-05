@@ -29,9 +29,9 @@
         </button>
     </div>
     <div class="html-attributes-dropdown @show">
-        <input type="text" placeholder="Enter the attribute name..." @bind=attrkey @ref=inputkeyElement />
+        <input type="text" placeholder="Enter the attribute name..." class="input-name" @bind=attrkey @ref=inputkeyElement />
         <span class="html-attributes-equals">=</span>
-        <input type="text" placeholder="Enter the attribute value..." @bind=attrValue @ref=inputValueElement />
+        <input type="text" placeholder="Enter the attribute value..." class="input-value" @bind=attrValue @ref=inputValueElement />
         <button class="html-classes-enter" @onclick=HandleSet>
             Add
         </button>
