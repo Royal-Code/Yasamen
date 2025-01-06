@@ -150,7 +150,7 @@ public class CityService
     };
 
     [Loader]
-    public async Task<IEnumerable<City>> GetCities()
+    public async Task<IReadOnlyList<City>> GetCities()
     {
         await Task.Delay(3_000);
         return cities;
@@ -215,7 +215,7 @@ public class CarService
 
     [Loader]
     [SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Loader can't be static")]
-    public async Task<IEnumerable<Car>> GetCars()
+    public async Task<IReadOnlyList<Car>> GetCars()
     {
         await Task.Delay(3_000);
         return cars;
