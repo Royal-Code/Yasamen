@@ -1,16 +1,14 @@
 ﻿
 .scene-fragment-properties {
-    display: flex;
     margin-bottom: .5rem;
 }
 
 .fragments-label {
-    width: 30%;
-    display: flex;
-    justify-content: flex-end;
+    width: 100%;
     align-items: center;
-    padding-right: 8px;
-    align-self: flex-start;
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 .fragments-values {
@@ -27,12 +25,3 @@
     white-space: nowrap;
 }
 
-@media (min-width: 1200px) {
-    .fragments-values {
-        width: 60%;
-    }
-
-    .fragments-label {
-        width: 25%;
-    }
-}
