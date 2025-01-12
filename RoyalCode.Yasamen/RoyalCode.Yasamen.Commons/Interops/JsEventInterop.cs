@@ -70,7 +70,7 @@ public class JsEventInterop<TData> : IAsyncDisposable
         this.element = element;
         this.eventName = eventName ?? throw new ArgumentNullException(nameof(eventName));
         this.options = options ?? throw new ArgumentNullException(nameof(options));
-        this.eventHandlerAsync = eventHandlerAsync ?? throw new ArgumentNullException(nameof(eventHandler));
+        this.eventHandlerAsync = eventHandlerAsync ?? throw new ArgumentNullException(nameof(eventHandlerAsync));
 
         handleReference = DotNetObjectReference.Create(this);
 

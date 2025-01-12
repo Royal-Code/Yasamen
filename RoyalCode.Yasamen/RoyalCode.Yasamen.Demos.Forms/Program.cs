@@ -5,6 +5,7 @@ using RoyalCode.Yasamen.Commons.Modules;
 using RoyalCode.Yasamen.Forms.Modules;
 using RoyalCode.Yasamen.Forms.Validation;
 using RoyalCode.Yasamen.Demos.Forms;
+using RoyalCode.Yasamen.Forms;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -35,5 +36,6 @@ Tracer.IsActive = true;
 Tracer.UseAllowedList = true;
 Tracer.AllowedComponents.Add("ModelEditor");
 Tracer.AllowedComponents.Add("FieldBase");
+Tracer.AllowedComponents.Add("FieldJs");
 
 await builder.Build().RunAsync();

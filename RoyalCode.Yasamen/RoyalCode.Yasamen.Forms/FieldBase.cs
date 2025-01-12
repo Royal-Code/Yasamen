@@ -14,7 +14,7 @@ using System.Reflection;
 
 namespace RoyalCode.Yasamen.Forms;
 
-public partial class FieldBase<TValue> : ComponentBase, IDisposable
+public partial class FieldBase<TValue> : ComponentBase, IAsyncDisposable
 {
     private const string InvalidErrorMessage = "Invalid input";
 
@@ -294,6 +294,16 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
         }
     }
 
+    // TODO: remove - tests.
+    ////protected override async Task OnAfterRenderAsync(bool firstRender)
+    ////{
+    ////    if (firstRender)
+    ////    {
+    ////        Tracer.Write<FieldBase<TValue>>("OnAfterRenderAsync", "Call RegisterInputLength");
+    ////        await Js.ListenInputLengthChangesAsync();
+    ////    }
+    ////}
+
     protected virtual string? FormatValue(TValue? value) => value?.ToString();
 
     protected virtual bool TryParseValue(string? value,
@@ -388,13 +398,18 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
         return base.SetParametersAsync(ParameterView.Empty);
     }
 
-    public void Dispose()
+    protected virtual void Dispose(bool disposing) { }
+
+    protected virtual ValueTask DisposeAsync(bool disposing) => default;
+
+    public async ValueTask DisposeAsync()
     {
         messageListener?.Dispose();
         changeSupport?.Reset();
 
-        Dispose(true);
-    }
+        await Js.DisposeAsync();
 
-    protected virtual void Dispose(bool disposing) { }
+        Dispose(true);
+        await DisposeAsync(true);
+    }
 }

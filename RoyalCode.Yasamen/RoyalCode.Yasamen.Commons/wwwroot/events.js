@@ -1,10 +1,10 @@
-﻿var fn = (function () {
+﻿let fn = (function () {
 
-    var _events = {};
+    const _events = {};
     _events._registry = {};
 
     function getProperties(evt, requiredProperties) {
-        var obj = {};
+        let obj = {};
 
         if (requiredProperties.indexOf(',') > 0) {
             requiredProperties
@@ -12,9 +12,9 @@
                 .forEach((name) => getProperty(evt, name, obj));
         } else if (requiredProperties.length > 0) {
             getProperty(evt, requiredProperties, obj)
-        };
+        }
 
-        var json = JSON.stringify(obj);
+        const json = JSON.stringify(obj);
         return json;
     }
 
@@ -28,15 +28,14 @@
 
     function getTargetProperties(target) {
 
-        var attributes = [];
-        for (var i = 0; i < target.attributes.length; i++) {
-            var attr = target.attributes[i];
+        let attributes = [];
+        for (let attr of target.attributes) {
             attributes.push({
                 name: attr.name,
                 value: attr.value
             });
         }
-
+        
         return {
             id: target.id,
             nodeName: target.nodeName,
@@ -61,9 +60,8 @@
             if (stopPropagation)
                 evt.stopPropagation();
 
-            var json = getProperties(evt, requiredProperties);
-            //var result = listener.invokeMethod('OnEventFired', json);
-            var result = await listener.invokeMethodAsync('OnEventFiredAsync', json);
+            const json = getProperties(evt, requiredProperties);
+            const result = await listener.invokeMethodAsync('OnEventFiredAsync', json);
             if (result !== undefined && result !== null && result.length > 0) {
                 console.error(result);
             }
@@ -81,7 +79,7 @@
 
         const item = _events._registry[listener._id];
         if (item !== undefined) {
-            delete _topBar._registry[listener._id];
+            delete _events._registry[listener._id];
             item();
         }
     };
