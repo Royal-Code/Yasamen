@@ -6,7 +6,7 @@ internal class CssClassesBuilder<T> : ICssMapBuilder<T>
 
     public ICssMapBuilder<T> Add(string? cssClass)
     {
-        conditions.Add(new CssClasses<T>(new string?[] { cssClass }));
+        conditions.Add(new CssClasses<T>([cssClass]));
         return this;
     }
         

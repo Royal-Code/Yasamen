@@ -4,7 +4,7 @@
 
 @if (!dismissed)
 {
-    <div class="@classes(this)" @attributes="AdditionalAttributes" @ref="alertRef">
+    <div class="@classes(this)" @attributes="AdditionalAttributes" @ref="alertRef" role="alert">
         @if (withHeader)
         {
             <h4 class="alert-heading">
@@ -46,6 +46,7 @@
     private readonly Action<object?> dismissEffectEndded;
 
     private static CssMap<Alert> classes = Css.Map<Alert>()
+        .Add("alert")
         .Add(static a => a.AlertStyle.ToCssClass())
         .Add(static a => a.AdditionalClasses)
         .Add(static a => a.Dismissable, "alert-dismissible fade")
@@ -111,7 +112,7 @@
         {
             if (prm.Name == "Header")
             {
-                RenderFragment frag = prm.Value as RenderFragment;
+                RenderFragment? frag = prm.Value as RenderFragment;
                 hasHeader = frag.IsNotEmptyFragment();
             }
             else if (prm.Name == "Title")
