@@ -8,6 +8,14 @@ public sealed class DateOnlyField : DateFieldBase<DateOnly>
 {
     protected override string FieldType => "date";
 
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+
+        if (ParsingErrorPattern.IsMissing())
+            ParsingErrorPattern = "The {0} field must be a \"yyyy-MM-dd\".";
+    }
+
     protected override string? FormatValue(DateOnly value)
     {
         if (value == default)
@@ -27,11 +35,7 @@ public sealed class DateOnlyField : DateFieldBase<DateOnly>
         }
         else
         {
-            errorMessage = string.IsNullOrWhiteSpace(ParsingErrorMessage)
-                ? string.Format(CultureInfo.InvariantCulture,
-                    $"The {{0}} field must be a \"yyyy-MM-dd\".", FieldLabel)
-                : ParsingErrorMessage;
-
+            errorMessage = GetInvalidInputErrorMessage();
             return false;
         }
     }

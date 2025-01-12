@@ -5,19 +5,19 @@ public record Borders
 {
     public static class Standards
     {
-        public static BorderStyle DefaultStyle = BorderStyle.Default;
-        public static Themes DefaultColor = Themes.Default;
-        public static Sizes DefaultWidth = Sizes.Default;
-        public static BorderRadius DefaultRadius = BorderRadius.None;
-        public static BorderRoundedSize DefaultRoundedSize = BorderRoundedSize.Default;
-        public static Shadows DefaultShadow = Shadows.Default;
+        public static readonly BorderStyle DefaultStyle = BorderStyle.Default;
+        public static readonly Themes DefaultColor = Themes.Default;
+        public static readonly Sizes DefaultWidth = Sizes.Default;
+        public static readonly BorderRadius DefaultRadius = BorderRadius.None;
+        public static readonly BorderRoundedSize DefaultRoundedSize = BorderRoundedSize.Default;
+        public static readonly Shadows DefaultShadow = Shadows.Default;
 
-        public static BorderRadius DefaultRoundedBorderRadius = BorderRadius.Default;
-        public static BorderRoundedSize DefaultRoundedBorderRoundedSize = BorderRoundedSize.Medium;
-        public static Shadows DefaultWithShadow = Shadows.Small;
+        public static readonly BorderRadius DefaultRoundedBorderRadius = BorderRadius.Default;
+        public static readonly BorderRoundedSize DefaultRoundedBorderRoundedSize = BorderRoundedSize.Medium;
+        public static readonly Shadows DefaultBorderWithShadow = Shadows.Small;
         
-        public static BorderStyle DefaultHeaderStyle = BorderStyle.Bottom;
-        public static BorderStyle DefaultFooterStyle = BorderStyle.Top;
+        public static readonly BorderStyle DefaultHeaderStyle = BorderStyle.Bottom;
+        public static readonly BorderStyle DefaultFooterStyle = BorderStyle.Top;
     }
 
     private static Borders? _default;
@@ -46,12 +46,12 @@ public record Borders
     
     public static Borders DefaultWithShadow => _defaultWithShadow ??= (Default with
     {
-        Shadow = Standards.DefaultWithShadow
+        Shadow = Standards.DefaultBorderWithShadow
     });
     
     public static Borders DefaultRoundedWithShadow => _defaultRoundedWithShadow ??= (DefaultRounded with
     {
-        Shadow = Standards.DefaultWithShadow
+        Shadow = Standards.DefaultBorderWithShadow
     });
 
     public static Borders DefaultRoundedLightWithShadow => _defaultRoundedWithShadow ??= (DefaultRoundedWithShadow with
@@ -352,16 +352,9 @@ public interface IBorderShadowBuilder
     IBorderBuilder Largest();
 }
 
-internal class BorderBuilder : IBorderBuilder
+internal class BorderBuilder(Borders borders) : IBorderBuilder
 {
-    private Borders borders;
-
     public BorderBuilder() : this(Borders.Default) { }
-    
-    public BorderBuilder(Borders borders)
-    {
-        this.borders = borders;
-    }
 
     public IBorderStyleBuilder Style => new BorderStyleBuilder(borders);
 
@@ -376,23 +369,14 @@ internal class BorderBuilder : IBorderBuilder
     public Borders Build() => borders;
 }
 
-internal class BorderShadowBuilder : IBorderShadowBuilder
+internal class BorderShadowBuilder(Borders borders) : IBorderShadowBuilder
 {
-    private Borders borders;
-
-    public BorderShadowBuilder(Borders borders)
-    {
-        this.borders = borders;
-    }
-
     public IBorderBuilder Shadow(Shadows shadow)
     {
-        borders = borders with
+        return new BorderBuilder(borders with
         {
             Shadow = shadow
-        };
-
-        return new BorderBuilder(borders);
+        });
     }
 
     public IBorderBuilder None() => Shadow(Shadows.None);
@@ -408,23 +392,14 @@ internal class BorderShadowBuilder : IBorderShadowBuilder
     public IBorderBuilder Largest() => Shadow(Shadows.Largest);
 }
 
-internal class BorderRoundedSizeBuilder : IBorderRoundedSizeBuilder
+internal class BorderRoundedSizeBuilder(Borders borders) : IBorderRoundedSizeBuilder
 {
-    private Borders borders;
-
-    public BorderRoundedSizeBuilder(Borders borders)
-    {
-        this.borders = borders;
-    }
-
     public IBorderBuilder RoundedSize(BorderRoundedSize roundedSize)
     {
-        borders = borders with
+        return new BorderBuilder(borders with
         {
             RoundedSize = roundedSize
-        };
-
-        return new BorderBuilder(borders);
+        });
     }
 
     public IBorderBuilder Default() => RoundedSize(BorderRoundedSize.Default);
@@ -438,23 +413,14 @@ internal class BorderRoundedSizeBuilder : IBorderRoundedSizeBuilder
     public IBorderBuilder Large() => RoundedSize(BorderRoundedSize.Large);
 }
 
-internal class BorderRadiusBuilder : IBorderRadiusBuilder
+internal class BorderRadiusBuilder(Borders borders) : IBorderRadiusBuilder
 {
-    private Borders borders;
-
-    public BorderRadiusBuilder(Borders borders)
-    {
-        this.borders = borders;
-    }
-
     public IBorderRoundedSizeBuilder Radius(BorderRadius radius)
     {
-        borders = borders with
+        return new BorderRoundedSizeBuilder(borders with
         {
             Radius = radius
-        };
-
-        return new BorderRoundedSizeBuilder(borders);
+        });
     }
 
     public IBorderRoundedSizeBuilder Default() => Radius(BorderRadius.Default);
@@ -474,23 +440,14 @@ internal class BorderRadiusBuilder : IBorderRadiusBuilder
     public IBorderRoundedSizeBuilder None() => Radius(BorderRadius.None);
 }
 
-internal class BorderWidthBuilder : IBorderWidthBuilder
+internal class BorderWidthBuilder(Borders borders) : IBorderWidthBuilder
 {
-    private Borders borders;
-
-    public BorderWidthBuilder(Borders borders)
-    {
-        this.borders = borders;
-    }
-
     public IBorderBuilder Size(Sizes size)
     {
-        borders = borders with
+        return new BorderBuilder(borders with
         {
             Width = size
-        };
-
-        return new BorderBuilder(borders);
+        });
     }
 
     public IBorderBuilder Smallest() => Size(Sizes.Smallest);
@@ -504,23 +461,14 @@ internal class BorderWidthBuilder : IBorderWidthBuilder
     public IBorderBuilder Largest() => Size(Sizes.Largest);
 }
 
-internal class BorderColorBuilder : IBorderColorBuilder
+internal class BorderColorBuilder(Borders borders) : IBorderColorBuilder
 {
-    private Borders borders;
-
-    public BorderColorBuilder(Borders borders)
-    {
-        this.borders = borders;
-    }
-
     public IBorderBuilder Color(Themes color)
     {
-        borders = borders with
+        return new BorderBuilder(borders with
         {
             Color = color
-        };
-
-        return new BorderBuilder(borders);
+        });
     }
 
     public IBorderBuilder Default() => Color(Themes.Default);
@@ -546,23 +494,14 @@ internal class BorderColorBuilder : IBorderColorBuilder
     public IBorderBuilder Main() => Color(Themes.Main);
 }
 
-internal class BorderStyleBuilder : IBorderStyleBuilder
+internal class BorderStyleBuilder(Borders borders) : IBorderStyleBuilder
 {
-    private Borders borders;
-
-    public BorderStyleBuilder(Borders borders)
-    {
-        this.borders = borders;
-    }
-
     public IBorderBuilder Style(BorderStyle style)
     {
-        borders = borders with
+        return new BorderBuilder(borders with
         {
             Style = style
-        };
-        
-        return new BorderBuilder(borders);
+        });
     }
 
     public IBorderBuilder Default() => Style(BorderStyle.Default);

@@ -97,7 +97,7 @@ internal class CssBuilderBase : ICssBuilder
 
 internal class CssCollection
 {
-    private readonly List<string> classes = new();
+    private readonly List<string> classes = [];
 
     public void Add(string cssClass) => classes.Add(cssClass);
 

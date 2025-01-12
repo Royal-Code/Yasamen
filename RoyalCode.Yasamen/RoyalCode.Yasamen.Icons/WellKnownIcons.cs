@@ -43,6 +43,4 @@ public static class WellKnownIcons
     public const string MenuExpand = nameof(MenuExpand);
     public const string MenuCollapseAll = nameof(MenuCollapseAll);
     public const string MenuExpandAll = nameof(MenuExpandAll);
-    
-    
 }

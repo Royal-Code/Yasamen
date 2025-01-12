@@ -10,7 +10,7 @@ public partial class SearchButton : SubmitButton
     public SearchButton()
 	{
         IsInline = true;
-        CommonsOptions.Get<Icon>().TryGet<Enum>(WellKnownIcons.Search, out searchItemKind);
+        CommonsOptions.Get<Icon>().TryGet(WellKnownIcons.Search, out searchItemKind);
         Icon = searchItemKind;
     }
 }

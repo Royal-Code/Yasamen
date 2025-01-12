@@ -19,6 +19,7 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
 {
     private readonly RenderFragment contentFragment;
     private bool isFocused;
+    private bool hasDisableAttribute;
 
     protected InputFieldBase()
     {
@@ -38,11 +39,7 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
 
     protected virtual string FieldType => Type.ToString().ToLower();
 
-    protected virtual bool Disabled => (AdditionalAttributes?.TryGetValue("disabled", out var value) ?? false)
-        && ((value is bool bv && bv is true) 
-            || (value is string sv 
-                && (sv.Equals("true", StringComparison.InvariantCultureIgnoreCase) 
-                    || sv.Equals("disabled", StringComparison.InvariantCultureIgnoreCase))));
+    protected virtual bool Disabled => hasDisableAttribute;
 
     [MultiplesParameters]
     public ColumnSizes ColumnSizes { set; get; } = new();
@@ -62,11 +59,11 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
     [Parameter]
     public RenderFragment? Append { get; set; }
 
-    /// <summary>
-    /// Gets or sets the error message used when displaying an a parsing error.
-    /// </summary>
-    [Parameter] 
-    public string? ParsingErrorMessage { get; set; } = string.Empty;
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        hasDisableAttribute = AdditionalAttributes?.TryGetValue("disabled", out _) ?? false;
+    }
 
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
@@ -213,11 +210,6 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
 
     protected virtual void RenderEnd(RenderTreeBuilder builder, int index) { }
 
-    protected override string GetInvalidInputErrorMessage()
-    {
-        return ParsingErrorMessage ?? base.GetInvalidInputErrorMessage();
-    }
-
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -247,13 +239,13 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
 
     protected virtual void OnMouseOut()
     {
-        if (IsInvalid && isFocused is false)
+        if (IsInvalid && !isFocused)
             ModelContext.EditorMessages.Hide(FieldIdentifier);
     }
 
     protected virtual void OnMouseEnter()
     {
-        if (IsInvalid && isFocused is false)
+        if (IsInvalid && !isFocused)
             ModelContext.EditorMessages.Show(FieldIdentifier);
     }
 }

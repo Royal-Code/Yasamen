@@ -11,6 +11,14 @@ public sealed class NDateTimeOffsetField : DateFieldBase<DateTimeOffset?>
     [Parameter]
     public DateTimeFormat Format { get; set; }
 
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+
+        if (ParsingErrorPattern.IsMissing())
+            ParsingErrorPattern = $"The {{0}} field must be a \"{Format.ToHtmlFormat()}\".";
+    }
+
     protected override string? FormatValue(DateTimeOffset? value)
     {
         if (value == default)
@@ -32,12 +40,7 @@ public sealed class NDateTimeOffsetField : DateFieldBase<DateTimeOffset?>
         else
         {
             result = null;
-            var msgFormat = string.IsNullOrWhiteSpace(ParsingErrorMessage)
-                ? "The {0} field must be a \"{1}\"."
-                : ParsingErrorMessage;
-
-            errorMessage = string.Format(CultureInfo.InvariantCulture, msgFormat, FieldLabel, Format.ToHtmlFormat());
-
+            errorMessage = GetInvalidInputErrorMessage();
             return false;
         }
     }

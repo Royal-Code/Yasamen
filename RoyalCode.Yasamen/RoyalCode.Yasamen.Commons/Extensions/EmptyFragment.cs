@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Components.Rendering;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace Microsoft.AspNetCore.Components;
@@ -24,6 +25,20 @@ public static class EmptyFragment
     {
         return fragment is not null && !Equate(fragment, GetDelegate<T>());
     }
+
+    /// <summary>
+    /// Checks that the value is present, it must not be null or blank.
+    /// </summary>
+    /// <param name="s"></param>
+    /// <returns></returns>
+    public static bool IsPresent([NotNullWhen(true)] this string? s) => !string.IsNullOrWhiteSpace(s);
+
+    /// <summary>
+    /// Checks if the value is missing, null or blank.
+    /// </summary>
+    /// <param name="s"></param>
+    /// <returns></returns>
+    public static bool IsMissing([NotNullWhen(false)] this string? s) => string.IsNullOrWhiteSpace(s);
 
     internal static bool Equate(Delegate a, Delegate b)
     {

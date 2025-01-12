@@ -10,17 +10,18 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using System.Reflection;
 
+#pragma warning disable S3881 // "IDisposable" should be implemented correctly
+
 namespace RoyalCode.Yasamen.Forms;
 
 public partial class FieldBase<TValue> : ComponentBase, IDisposable
 {
-    private const string InvalidInputErrorMessage = "Invalid input";
+    private const string InvalidErrorMessage = "Invalid input";
 
     private readonly Action messagesChangedDelegate;
     
     private IMessageListener? messageListener;
     private bool initialized;
-    private Type? nullableUnderlyingType; // is not used, but can be used in the future, so it is kept until the final version
     private bool settingNewValue;
     private string? fieldLabel;
     private string? fieldName;
@@ -178,6 +179,12 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
     public string? ChangeSupport { get; set; }
 
     /// <summary>
+    /// Gets or sets the error message used when displaying an a parsing error.
+    /// </summary>
+    [Parameter]
+    public string? ParsingErrorPattern { get; set; }
+
+    /// <summary>
     /// Gets or sets a collection of additional attributes that will be applied to the created element.
     /// </summary>
     [Parameter(CaptureUnmatchedValues = true)]
@@ -304,14 +311,14 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
             parsed = BindConverter.TryConvertTo(value, null, out result);
         }
 
-        errorMessage = parsed is false
-            ? GetInvalidInputErrorMessage()
-            : null;
+        errorMessage = parsed ? null : GetInvalidInputErrorMessage();
 
         return parsed;
     }
 
-    protected virtual string GetInvalidInputErrorMessage() => InvalidInputErrorMessage;
+    protected virtual string GetInvalidInputErrorMessage() => ParsingErrorPattern.IsPresent()
+                ? string.Format(ParsingErrorPattern, FieldLabel)
+                : InvalidErrorMessage;
 
     protected virtual void OnMessagesChanged()
     {
@@ -351,8 +358,6 @@ public partial class FieldBase<TValue> : ComponentBase, IDisposable
                 changeSupport = ModelContext.PropertyChangeSupport.GetChangeSupport(ChangeSupport ?? FieldIdentifier.FieldName);
                 changeSupport.Initialize(FieldIdentifier, Value);
             }
-
-            nullableUnderlyingType = Nullable.GetUnderlyingType(typeof(TValue));
 
             Js.Module = JsModule;
 
