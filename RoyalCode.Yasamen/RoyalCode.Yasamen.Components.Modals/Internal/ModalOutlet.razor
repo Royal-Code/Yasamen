@@ -1,17 +1,45 @@
 ﻿@using Microsoft.AspNetCore.Components.Sections
+@using RoyalCode.Yasamen.Commons.Interops
+@using RoyalCode.Yasamen.Commons.Modules
 
 @inject ModalService ModalService
 
-<Backdrop Show="ModalService.IsOpen">
+<div class="@Classes" id="modal-outlet" tabindex="-1" @onkeydown="KeyDownHandler" @attributes="Attributes">
     @foreach (var item in ModalService.Items)
     {
         <SectionOutlet SectionId="item" @key="item" />
     }
-</Backdrop>
-
+    <Backdrop Show="ModalService.IsOpen" />
+</div>
 
 @code {
 
+    private static readonly IReadOnlyDictionary<string, object> closedAttributes = new Dictionary<string, object>()
+    {
+        { "aria-hidden", "true" }
+    };
+
+    private static readonly IReadOnlyDictionary<string, object> openedAttributes = new Dictionary<string, object>()
+    {
+        { "aria-modal", "true" },
+        { "role", "dialog" }
+    };
+
+    private IReadOnlyDictionary<string, object> Attributes => ModalService.IsOpen ? openedAttributes : closedAttributes;
+
+    private string Classes => ModalService.IsOpen ? "modal show" : "modal";
+
     internal new void StateHasChanged() => base.StateHasChanged();
-    
+
+    protected override void OnInitialized()
+    {
+        ModalService.Outlet = this;
+        base.OnInitialized();
+    }
+
+    private Task KeyDownHandler(KeyboardEventArgs args)
+    {
+        // if escape is pressed, then do same as click, otherwise return
+        return args.Key == "Escape" ? ModalService.BackdropActionAsync() : Task.CompletedTask;
+    }
 }

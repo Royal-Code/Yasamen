@@ -19,7 +19,9 @@
 		<ProjectReference Include="..\RoyalCode.Yasamen.BlazorShow\RoyalCode.Yasamen.BlazorShow.csproj" />
 		<ProjectReference Include="..\RoyalCode.Yasamen.Components.Alerts\RoyalCode.Yasamen.Components.Alerts.csproj" />
 		<ProjectReference Include="..\RoyalCode.Yasamen.Components.Buttons\RoyalCode.Yasamen.Components.Buttons.csproj" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.Components.Dialogs\RoyalCode.Yasamen.Components.Dialogs.csproj" />
 		<ProjectReference Include="..\RoyalCode.Yasamen.Components.Dropdowns\RoyalCode.Yasamen.Components.Dropdowns.csproj" />
+		<ProjectReference Include="..\RoyalCode.Yasamen.Components.Modals\RoyalCode.Yasamen.Components.Modals.csproj" />
 		<ProjectReference Include="..\RoyalCode.Yasamen.Components.OffCanvas\RoyalCode.Yasamen.Components.OffCanvas.csproj" />
 		<ProjectReference Include="..\RoyalCode.Yasamen.Components.ProgressBar\RoyalCode.Yasamen.Components.ProgressBar.csproj" />
 		<ProjectReference Include="..\RoyalCode.Yasamen.Forms\RoyalCode.Yasamen.Forms.csproj" />

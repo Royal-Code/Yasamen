@@ -25,8 +25,9 @@ builder.Services.AddOptions();
 builder.Services.AddLocalization();
 
 // yasamen services
-builder.Services.AddDataServices();
+builder.Services.AddYasamenDataServices();
 builder.Services.AddYasamenLocalization();
+builder.Services.AddYasamenModal();
 builder.Services.AddScoped<IValidatorProvider, ValidatorProvider>();
 
 // yasamen js modules

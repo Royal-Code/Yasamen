@@ -2,6 +2,11 @@
 
 namespace RoyalCode.Yasamen.Components.Internal;
 
+/// <summary>
+/// <para>
+///     A service to manage modal interactions.
+/// </para>
+/// </summary>
 public sealed class ModalService
 {
     private readonly List<ModalItem> items = [];
@@ -33,37 +38,77 @@ public sealed class ModalService
         var openedItem = openedItems.LastOrDefault();
         if (openedItem is not null)
         {
-            openedItem.IsOpen = false;
-            await openedItem.StateHasChangedAsync();
-        }
+            await Task.Run(async () =>
+            {
+                openedItem.IsOpen = false;
+                await openedItem.StateHasChangedAsync();
 
-        openedItems.Add(item);
-        item.IsOpen = true;
-        await item.StateHasChangedAsync();
+                openedItems.Add(item);
+                item.IsOpen = true;
+                await item.StateHasChangedAsync();
+            });
+        }
+        else
+        {
+            openedItems.Add(item);
+            item.IsOpen = true;
+            await item.StateHasChangedAsync();
+        }
     }
 
-    public async Task CloseAsync()
+    public Task CloseAsync()
+    {
+        var openedItem = openedItems.LastOrDefault();
+        if (openedItem is null)
+            return Task.CompletedTask;
+
+        return CloseAsync(openedItem);
+    }
+
+    public async Task CloseAsync(ModalItem item)
     {
         var openedItem = openedItems.LastOrDefault();
         if (openedItem is null)
             return;
 
-        openedItems.Remove(openedItem);
-        var nextOpenedItem = openedItems.LastOrDefault();
+        openedItems.Remove(item);
+        if (openedItem != item)
+            return;
 
-        openedItem.IsOpen = false;
-        await openedItem.StateHasChangedAsync();
+        var nextOpenedItem = openedItems.LastOrDefault();
 
         if (nextOpenedItem is not null)
         {
-            nextOpenedItem.IsOpen = true;
-            await nextOpenedItem.StateHasChangedAsync();
+            await Task.Run(async () =>
+            {
+                openedItem.IsOpen = false;
+                await openedItem.StateHasChangedAsync();
+                nextOpenedItem.IsOpen = true;
+                await nextOpenedItem.StateHasChangedAsync();
+            });
         }
         else
         {
+            openedItem.IsOpen = false;
+            await openedItem.StateHasChangedAsync();
             IsOpen = false;
             Outlet?.StateHasChanged();
         }
+    }
+
+    /// <summary>
+    /// <para>
+    ///     Executes the action for the backdrop.
+    /// </para>
+    /// <para>
+    ///     If the last opened item is closeable, it will be closed.
+    /// </para>
+    /// </summary>
+    /// <returns></returns>
+    public Task BackdropActionAsync()
+    {
+        var openedItem = openedItems.LastOrDefault();
+        return openedItem?.Closeable is true ? CloseAsync(openedItem) : Task.CompletedTask;
     }
 }
 
@@ -103,6 +148,11 @@ public sealed class ModalItem
     /// The modal identifier. Required to identify the modal. Must be unique.
     /// </summary>
     public string Id { get; }
+
+    /// <summary>
+    /// Determines whether the modal can be closed by clicking the backdrop or pressing the escape key.
+    /// </summary>
+    public bool Closeable { get; set; } = true;
 
     /// <summary>
     /// The action to invoke when the state of the modal has changed.

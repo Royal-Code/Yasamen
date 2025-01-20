@@ -9,7 +9,7 @@ namespace Microsoft.Extensions.DependencyInjection;
 public static class YasamenDataServiceCollectionExtensions
 {
 
-    public static void AddDataServices(this IServiceCollection services)
+    public static void AddYasamenDataServices(this IServiceCollection services)
     {
         services.AddScoped<IDataServicesProvider, DataServicesProvider>();
         services.AddScoped(typeof(FinderPerformerService<,>));

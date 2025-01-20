@@ -23,8 +23,28 @@
     <li @onclick="@(e => { Console.WriteLine("Hello drop item"); })">Hello</li>
 </DropButton>
 
+<br />
+
+<Button Label="Open Modal" OnClick="@(async e => await modalHandler1.OpenAsync())" />
+
+<Modal Id="modal-sample-1" Handler="modalHandler1">
+    <Box Style="BoxStyles.Light">
+        Hello modal!
+        <Button Label="Open Second Modal" OnClick="@(async e => await modalHandler2.OpenAsync())" />
+    </Box>
+</Modal>
+
+<Modal Id="modal-sample-2" Handler="modalHandler2">
+    <Box Style="BoxStyles.Light">
+        Hello Second modal!
+        <Button Label="Close Second Modal" OnClick="@(async e => await modalHandler2.CloseAsync())" />
+    </Box>
+</Modal>
+
 @code {
     private int currentCount = 0;
+    private ModalHandler modalHandler1 = new();
+    private ModalHandler modalHandler2 = new();
 
     private void IncrementCount()
     {

@@ -1,21 +1,39 @@
-﻿.modal {
+﻿.modal-content {
     position: relative;
     width: auto;
     margin: var(--b-modal--margin);
     pointer-events: none;
-    transform: none;
+    transition: var(--b-theme-transition);
+    z-index: var(--b-modal--z-index);
+    display: none;
 }
 
+    .modal-content ::deep > * {
+        pointer-events: auto;
+        opacity: 0;
+        transition: var(--b-theme-transition);
+    }
+
+    .modal-content.show ::deep > * {
+        opacity: 1;
+    }
+
+    .modal-content.show.closing ::deep > * {
+        opacity: 0;
+    }
+
 .show {
-    transition: transform 0.3s ease-out;
+    transform: none;
+    display: block;
 }
 
 .opening, .closing {
-  transform: translate(0, -50px);
+    transform: translate(0, -50px);
+    display: block;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .modal.fade .modal-dialog {
-    transition: none;
-  }
+    .modal-content {
+        transition: none;
+    }
 }

@@ -5,5 +5,8 @@
 /// </summary>
 public class ModalContext
 {
-
+    /// <summary>
+    /// The handler of the modal.
+    /// </summary>
+    public ModalHandler Handler { get; internal set; }
 }

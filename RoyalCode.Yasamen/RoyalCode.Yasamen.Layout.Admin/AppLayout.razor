@@ -8,6 +8,7 @@
 @implements IAsyncDisposable
 
 <CascadingValue Value="context" IsFixed="true">
+    @PreContent
     <div class="@InteractedCssClass @AdditionalClasses layout" @attributes="Attributes" @ref="LayoutReference">
         <header class="app-top-content @TransitionClass" @ref="HeaderReference">
             <AppNavBar Shadow="NavBarShadow">
@@ -83,6 +84,9 @@
 
     [Parameter]
     public RenderFragment Menu { get; set; }
+
+    [Parameter]
+    public RenderFragment PreContent { get; set; }
 
     [Parameter]
     public bool NavBarShadow { get; set; } = AppDefaults.NavBarShadow;

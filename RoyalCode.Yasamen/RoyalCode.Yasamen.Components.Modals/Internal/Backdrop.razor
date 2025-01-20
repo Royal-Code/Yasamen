@@ -1,5 +1,19 @@
-﻿@{
-    /* Se the code in Backdrop.razor.cs */
-    /* This file exists for set the CssScope only. */
+﻿@using RoyalCode.Yasamen.Commons
+
+@inject ModalService ModalService
+
+<div class="@Classes" id="modal-backdrop" tabindex="-1" @onclick="BackdropClickHandler"></div>
+
+@code {
+    private string Classes => Show ? "modal-backdrop fade show" : "modal-backdrop fade";
+
+    [Parameter]
+    public bool Show { get; set; }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+    }
+
+    private Task BackdropClickHandler(MouseEventArgs args) => ModalService.BackdropActionAsync();
 }
-@render

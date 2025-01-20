@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<Import Project="..\version.targets" />
 
@@ -15,7 +15,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="wwwroot\" />
+		<None Update=".\Internal\Backdrop.razor.css" CssScope="b-modal-backdrop" />
+		<None Update=".\Internal\ModalOutlet.razor.css" CssScope="b-modal-outlet" />
+		<None Update=".\Modal.razor.css" CssScope="b-modal" />
 	</ItemGroup>
 
 </Project>

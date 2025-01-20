@@ -16,9 +16,9 @@ export function register(element, listener) {
         if (targetElements !== undefined && targetElements.length > 0) {
             // check if the click target is one of the target elements or a child of the target elements
             for (const item of targetElements) {
-                console.log("Checking target element: " + item.id, item.element);
+                //console.log("Checking target element: " + item.id, item.element);
                 if (evt.target === item.element || item.element.contains(evt.target)) {
-                    console.log("Target element clicked: " + item.id, item.element);
+                    //console.log("Target element clicked: " + item.id, item.element);
                     targetsClicked += item.id + ";";
                 }
             }

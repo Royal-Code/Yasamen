@@ -1,3 +1,4 @@
+@using Microsoft.AspNetCore.Components.Sections
 @using RoyalCode.Yasamen.Commons
 @using RoyalCode.Yasamen.Commons.Interops
 @using RoyalCode.Yasamen.Commons.Modules
@@ -7,18 +8,20 @@
 @inject ModalService ModalService
 @inject EventsJsModule EventsJs;
 
-<div class="@classes(this)" id="@Id" @ref="element">
-    <CascadingValue Value="context" IsFixed="true">
-        @ChildContent
-    </CascadingValue>
-</div>
+<SectionContent SectionId="item">
+    <div class="@classes(this)" id="@Id" @ref="element">
+        <CascadingValue Value="context" IsFixed="true">
+            @ChildContent
+        </CascadingValue>
+    </div>
+</SectionContent>
 
 @code {
 
-    public static int ModalMaxTransitionTime = 300;
+    public static int ModalMaxTransitionTime = 360;
 
     private static CssMap<Modal> classes = Css.Map<Modal>()
-        .Add("modal")
+        .Add("modal-content")
         .Add(m => m.isOpen || m.closing, "show")
         .Add(m => m.opening, "opening")
         .Add(m => m.closing, "closing")
@@ -37,9 +40,9 @@
     private bool closing;
     private bool isOpen;
 
-    public Modal(ModalContext context)
+    public Modal()
     {
-        this.context = context;
+        context = new();
         item = new ModalItem(Id, StateHasChangedAsync);
         transitionEnd = TransitionEnd;
     }
@@ -49,6 +52,12 @@
 
     [Parameter]
     public RenderFragment ChildContent { get; set; } = default!;
+
+    [Parameter]
+    public ModalHandler? Handler { get; set; }
+
+    [Parameter]
+    public bool Closeable { get; set; } = true;
 
     private Task StateHasChangedAsync()
     {
@@ -62,6 +71,8 @@
 
         isOpen = item.IsOpen;
 
+        Tracer.Write<Modal>("StateHasChangedAsync", $"Closing: {closing}, Opening: {opening}, IsOpen: {isOpen}");
+
         StateHasChanged();
 
         // source completition
@@ -71,7 +82,7 @@
     private Task CreateTransitionEndTask()
     {
         // end the old task
-        CompleteTransitionEndTask();
+        transitionEndTaskCompletionSource?.SetResult();
 
         // create new TCS
         var taskCompletionSource = new TaskCompletionSource();
@@ -80,9 +91,18 @@
         // run a task with a delay to avoid failing the transition end event
         Task.Run(async () =>
         {
+            if (opening)
+            {
+                opening = false;
+                await InvokeAsync(StateHasChanged);
+            }
+
             await Task.Delay(ModalMaxTransitionTime);
             if (taskCompletionSource == transitionEndTaskCompletionSource)
+            {
+                Tracer.Write<Modal>("CreateTransitionEndTask", "Completing transition end task");
                 await InvokeAsync(CompleteTransitionEndTask);
+            }
         });
 
         return transitionEndTaskCompletionSource.Task;
@@ -90,18 +110,30 @@
 
     private void CompleteTransitionEndTask()
     {
+        Tracer.Begin<Modal>("CompleteTransitionEndTask");
+
         if (transitionEndTaskCompletionSource is not null)
         {
+            Tracer.Write<Modal>("CompleteTransitionEndTask", "Completing transition end task");
+
             transitionEndTaskCompletionSource.SetResult();
             transitionEndTaskCompletionSource = null;
         }
 
         opening = false;
         closing = false;
+
+        StateHasChanged();
+
+        if (isOpen)
+            element.FocusAsync();
+
+        Tracer.End<Modal>("CompleteTransitionEndTask");
     }
 
     private async ValueTask TransitionEnd(object? args)
     {
+        Tracer.Write<Modal>("TransitionEnd", $"Closing: {closing}, Opening: {opening}, IsOpen: {isOpen}");
         await InvokeAsync(CompleteTransitionEndTask);
     }
 
@@ -117,6 +149,21 @@
         if (string.IsNullOrWhiteSpace(Id))
             throw new InvalidOperationException($"The type {GetType()} requires a value for the parameter {nameof(Id)}.");
 
+        if (context.Handler is null)
+        {
+            context.Handler = Handler ?? new ModalHandler();
+            context.Handler.Modal = this;
+        }
+        else if (Handler is not null && Handler != context.Handler)
+        {
+            throw new InvalidOperationException(
+                $"The parameter {nameof(Handler)} must be the same instance for the same modal.");
+        }
+
+        item.Closeable = Closeable;
+
+        Tracer.Write<Modal>("OnParametersSet", $"Id: {Id}, Closeable: {Closeable}");
+
         base.OnParametersSet();
     }
 
@@ -124,10 +171,41 @@
     {
         if (firstRender)
         {
-            eventInterop = await EventsJs.On<object>(element, "transitionend", transitionEnd);
+            eventInterop = await EventsJs.On<object>(
+                element, 
+                "transitionend", 
+                transitionEnd, 
+                new JsEventListenerOptions()
+                {
+                    OnlyTarget = true
+                });
         }
 
+        Tracer.Write<Modal>("OnAfterRenderAsync", $"FirstRender: {firstRender}");
+
         await base.OnAfterRenderAsync(firstRender);
+    }
+
+    public async Task OpenAsync()
+    {
+        if (disposed)
+            throw new ObjectDisposedException(GetType().Name, $"Modal [{Id}] was disposed");
+
+        if (isOpen)
+            return;
+
+        await ModalService.OpenAsync(item);
+    }
+
+    public async Task CloseAsync()
+    {
+        if (disposed)
+            throw new ObjectDisposedException(GetType().Name, $"Modal [{Id}] was disposed");
+
+        if (!isOpen)
+            return;
+
+        await ModalService.CloseAsync(item);
     }
 
     public async ValueTask DisposeAsync()
@@ -135,7 +213,7 @@
         disposed = true;
 
         if (item.IsOpen)
-            await ModalService.CloseAsync();
+            await ModalService.CloseAsync(item);
 
         if (eventInterop is not null)
             await eventInterop.DisposeAsync();

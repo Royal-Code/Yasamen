@@ -423,9 +423,10 @@
     --b-drop--transition: all .30s linear;
     --b-drop--opacity: 0;
     --b-drop--opacity--active: 1;
-    --b-drop--padding: .75rem
+    --b-drop--padding: .75rem;
     /* modal */
-    --b-modal--z-index: 1050;
+    --b-modal-backdrop--z-index: 1050;
+    --b-modal--z-index: 1055;
     --b-modal--box-shadow: var(--b-shadow-2);
     --b-modal--margin: var(--b-size-4);
 }
