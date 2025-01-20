@@ -27,7 +27,7 @@ public class FieldJs : IAsyncDisposable
     [MemberNotNullWhen(true, nameof(Element), nameof(Module))]
     private bool IsInitialized()
     {
-        return !string.IsNullOrEmpty(Element.Id) && Module is not null;
+        return Element.Id.IsPresent() && Module is not null;
     }
     
     public ValueTask SetFocusAsync()

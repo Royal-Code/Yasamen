@@ -1,0 +1,147 @@
+@using RoyalCode.Yasamen.Commons
+@using RoyalCode.Yasamen.Commons.Interops
+@using RoyalCode.Yasamen.Commons.Modules
+@using RoyalCode.Yasamen.Components.Internal
+
+@implements IAsyncDisposable
+@inject ModalService ModalService
+@inject EventsJsModule EventsJs;
+
+<div class="@classes(this)" id="@Id" @ref="element">
+    <CascadingValue Value="context" IsFixed="true">
+        @ChildContent
+    </CascadingValue>
+</div>
+
+@code {
+
+    public static int ModalMaxTransitionTime = 300;
+
+    private static CssMap<Modal> classes = Css.Map<Modal>()
+        .Add("modal")
+        .Add(m => m.isOpen || m.closing, "show")
+        .Add(m => m.opening, "opening")
+        .Add(m => m.closing, "closing")
+        .Build();
+
+    private readonly ModalContext context;
+    private readonly ModalItem item;
+    private readonly Func<object?, ValueTask> transitionEnd;
+
+    private ElementReference element;
+    private JsEventInterop<object>? eventInterop;
+    private TaskCompletionSource? transitionEndTaskCompletionSource;
+
+    private bool disposed;
+    private bool opening;
+    private bool closing;
+    private bool isOpen;
+
+    public Modal(ModalContext context)
+    {
+        this.context = context;
+        item = new ModalItem(Id, StateHasChangedAsync);
+        transitionEnd = TransitionEnd;
+    }
+
+    [Parameter, EditorRequired]
+    public string Id { get; set; } = default!;
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = default!;
+
+    private Task StateHasChangedAsync()
+    {
+        if (disposed || isOpen == item.IsOpen)
+            return Task.CompletedTask;
+
+        if (isOpen)
+            closing = true;
+        else
+            opening = true;
+
+        isOpen = item.IsOpen;
+
+        StateHasChanged();
+
+        // source completition
+        return CreateTransitionEndTask();
+    }
+
+    private Task CreateTransitionEndTask()
+    {
+        // end the old task
+        CompleteTransitionEndTask();
+
+        // create new TCS
+        var taskCompletionSource = new TaskCompletionSource();
+        transitionEndTaskCompletionSource = taskCompletionSource;
+
+        // run a task with a delay to avoid failing the transition end event
+        Task.Run(async () =>
+        {
+            await Task.Delay(ModalMaxTransitionTime);
+            if (taskCompletionSource == transitionEndTaskCompletionSource)
+                await InvokeAsync(CompleteTransitionEndTask);
+        });
+
+        return transitionEndTaskCompletionSource.Task;
+    }
+
+    private void CompleteTransitionEndTask()
+    {
+        if (transitionEndTaskCompletionSource is not null)
+        {
+            transitionEndTaskCompletionSource.SetResult();
+            transitionEndTaskCompletionSource = null;
+        }
+
+        opening = false;
+        closing = false;
+    }
+
+    private async ValueTask TransitionEnd(object? args)
+    {
+        await InvokeAsync(CompleteTransitionEndTask);
+    }
+
+    protected override Task OnInitializedAsync()
+    {
+        ModalService.Add(item);
+        return base.OnInitializedAsync();
+    }
+
+    protected override void OnParametersSet()
+    {
+        // id is required
+        if (string.IsNullOrWhiteSpace(Id))
+            throw new InvalidOperationException($"The type {GetType()} requires a value for the parameter {nameof(Id)}.");
+
+        base.OnParametersSet();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            eventInterop = await EventsJs.On<object>(element, "transitionend", transitionEnd);
+        }
+
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        disposed = true;
+
+        if (item.IsOpen)
+            await ModalService.CloseAsync();
+
+        if (eventInterop is not null)
+            await eventInterop.DisposeAsync();
+
+        CompleteTransitionEndTask();
+
+        ModalService.Remove(item);
+    }
+}

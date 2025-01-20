@@ -19,7 +19,7 @@ public abstract class NumberFieldBase<TValue> : InputFieldBase<TValue>
             typeof(TValue) == typeof(short) ||
             typeof(TValue) == typeof(byte);
 
-    private string format = default!;
+    private string? format;
 
     protected override bool HasInputGroup => HasStep() || base.HasInputGroup;
 
@@ -31,7 +31,7 @@ public abstract class NumberFieldBase<TValue> : InputFieldBase<TValue>
 
     protected override void OnParametersSet()
     {
-        format = Format!;
+        format = Format;
         if (format is null)
         {
             if (IsInteger)

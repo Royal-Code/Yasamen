@@ -82,7 +82,7 @@
         else
             handler ??= new();
 
-        handler?.Init(this);
+        handler.Init(this);
 
         return base.SetParametersAsync(ParameterView.Empty);
     }

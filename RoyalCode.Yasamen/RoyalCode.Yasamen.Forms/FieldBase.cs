@@ -11,10 +11,12 @@ using System.Linq.Expressions;
 using System.Reflection;
 
 #pragma warning disable S3881 // "IDisposable" should be implemented correctly
+#pragma warning disable S6966 // Awaitable method should be used
+#pragma warning disable S2953 // Methods named "Dispose" should implement "IDisposable.Dispose"
 
 namespace RoyalCode.Yasamen.Forms;
 
-public partial class FieldBase<TValue> : ComponentBase, IAsyncDisposable
+public partial class FieldBase<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] TValue> : ComponentBase, IAsyncDisposable
 {
     private const string InvalidErrorMessage = "Invalid input";
 
@@ -102,13 +104,10 @@ public partial class FieldBase<TValue> : ComponentBase, IAsyncDisposable
     protected string FieldDescription => $"{FieldName} (Label: {FieldLabel}, Id: {FieldId}, Property: {FieldPropertyInfo?.Name}, ModelType: {FieldPropertyInfo?.DeclaringType?.Name})";
 
     /// <summary>
-    /// The field element that has the value (input, select, textarea).
+    /// Module for Js interop.
     /// </summary>
-    public ElementReference Element 
-    { 
-        get => Js.Element;
-        protected set => Js.Element = value;
-    }
+    [Inject]
+    public FormsJsModule JsModule { get; set; } = null!;
 
     /// <summary>
     /// JS interop utilities for work with the field element.
@@ -116,10 +115,13 @@ public partial class FieldBase<TValue> : ComponentBase, IAsyncDisposable
     public FieldJs Js { get; } = new();
 
     /// <summary>
-    /// Module for Js interop.
+    /// The field element that has the value (input, select, textarea).
     /// </summary>
-    [Inject]
-    public FormsJsModule JsModule { get; set; } = null!;
+    public ElementReference Element 
+    { 
+        get => Js.Element;
+        protected set => Js.Element = value;
+    }
 
     /// <summary>
     /// Context received by the <see cref="ModelEditor{TModel}"/>.
@@ -293,16 +295,6 @@ public partial class FieldBase<TValue> : ComponentBase, IAsyncDisposable
             settingNewValue = false;
         }
     }
-
-    // TODO: remove - tests.
-    ////protected override async Task OnAfterRenderAsync(bool firstRender)
-    ////{
-    ////    if (firstRender)
-    ////    {
-    ////        Tracer.Write<FieldBase<TValue>>("OnAfterRenderAsync", "Call RegisterInputLength");
-    ////        await Js.ListenInputLengthChangesAsync();
-    ////    }
-    ////}
 
     protected virtual string? FormatValue(TValue? value) => value?.ToString();
 

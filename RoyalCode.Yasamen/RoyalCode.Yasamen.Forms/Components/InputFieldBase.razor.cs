@@ -220,14 +220,13 @@ public abstract partial class InputFieldBase<TValue> : FieldBase<TValue>
         await base.OnAfterRenderAsync(firstRender);
     }
     
-    protected virtual async void OnFocus()
+    protected virtual async Task OnFocus()
     {
         isFocused = true;
         if (IsInvalid)
             ModelContext.EditorMessages.Show(FieldIdentifier);
 
-        if (Element.Id is not null)
-            await Js.SelectTextAsync();
+        await Js.SelectTextAsync();
     }
 
     protected virtual void OnBlur()

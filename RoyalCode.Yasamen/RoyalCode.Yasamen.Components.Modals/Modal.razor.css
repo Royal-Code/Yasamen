@@ -1,0 +1,21 @@
+﻿.modal {
+    position: relative;
+    width: auto;
+    margin: var(--b-modal--margin);
+    pointer-events: none;
+    transform: none;
+}
+
+.show {
+    transition: transform 0.3s ease-out;
+}
+
+.opening, .closing {
+  transform: translate(0, -50px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal.fade .modal-dialog {
+    transition: none;
+  }
+}

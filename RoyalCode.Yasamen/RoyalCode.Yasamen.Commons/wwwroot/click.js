@@ -1,5 +1,5 @@
 ﻿
-const registry = [];
+const registry = {};
 
 export function register(element, listener) {
 

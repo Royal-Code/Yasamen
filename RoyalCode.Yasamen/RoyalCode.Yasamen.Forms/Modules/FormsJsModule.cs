@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using RoyalCode.Yasamen.Commons.Modules;
-using System.Xml.Linq;
 
 namespace RoyalCode.Yasamen.Forms.Modules;
 
@@ -35,7 +34,6 @@ public sealed class FormsJsModule : JsModuleBase
         var js = await GetModuleAsync();
         await js.InvokeVoidAsync(UnregisterInputLengthFn, handler);
     }
-
 
     public async ValueTask<string> GetValueAsync(ElementReference element)
     {

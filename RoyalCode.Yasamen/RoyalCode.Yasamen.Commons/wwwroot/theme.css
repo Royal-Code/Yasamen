@@ -424,6 +424,10 @@
     --b-drop--opacity: 0;
     --b-drop--opacity--active: 1;
     --b-drop--padding: .75rem
+    /* modal */
+    --b-modal--z-index: 1050;
+    --b-modal--box-shadow: var(--b-shadow-2);
+    --b-modal--margin: var(--b-size-4);
 }
 
 /***** Theme Colors *****/

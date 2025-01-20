@@ -6,4 +6,4 @@
 /// <typeparam name="TComponent">O tipo do componente.</typeparam>
 /// <param name="component">O componente.</param>
 /// <returns>As classes CSS do componente.</returns>
-public delegate string? CssMap<TComponent>(TComponent component);
+public delegate string? CssMap<in TComponent>(TComponent component);

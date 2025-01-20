@@ -14,9 +14,9 @@ export function setProperty(reference, property, value) {
 export function readProperty(path) {
     let names = path.indexOf('.') > 0 ? path.split('.') : [path];
     let value = window;
-    for (let i = 0; i < names.length; i++) {
-        if (value !== undefined)
-            value = value[names[i]];
+    for (let name of names) {
+        if (name !== undefined)
+            value = name;
     }
     return value;
 }
