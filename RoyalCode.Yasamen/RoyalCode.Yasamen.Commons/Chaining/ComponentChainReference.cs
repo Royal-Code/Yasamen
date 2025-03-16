@@ -14,7 +14,7 @@ public class ComponentChainReference : IDisposable
     }
 
     /// <summary>
-    /// If setted, will be called after the component fragment was rendered.
+    /// If set, will be called after the component fragment was rendered.
     /// </summary>
     public Action? OnAfterRender { get; set; }
 

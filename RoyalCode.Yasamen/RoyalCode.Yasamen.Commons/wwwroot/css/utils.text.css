@@ -1,0 +1,513 @@
+@import url(theme.css);
+
+/*** text ***/
+
+/* colors - default */
+
+.text-default {
+    color: var(--font-color);
+    background-color: var(--font-bg);
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-normal);
+    font-stretch: var(--font-stretch-normal);
+    line-height: var(--font-line-height-base);
+    letter-spacing: var(--font-letter-spacing-base);
+}
+
+.text-muted {
+    color: var(--color-dark-250);
+}
+
+.text-readonly {
+    color: var(--color-dark-200);
+}
+
+.text-disabled {
+    color: var(--color-dark-150);
+}
+
+/* colors - theme */
+
+.text-primary {
+    color: var(--color-primary);
+}
+
+.text-secondary {
+    color: var(--color-secondary);
+}
+
+.text-tertiary {
+    color: var(--color-tertiary);
+}
+
+.text-info {
+    color: var(--color-info);
+}
+
+.text-highlight {
+    color: var(--color-highlight);
+}
+
+.text-success {
+    color: var(--color-success);
+}
+
+.text-warning {
+    color: var(--color-warning);
+}
+
+.text-alert {
+    color: var(--color-alert);
+}
+
+.text-danger {
+    color: var(--color-danger);
+}
+
+.text-light {
+    color: var(--color-light);
+}
+
+text-dark {
+    color: var(--color-dark);
+}
+
+/* colors - theme light and dark */
+
+.text-primary-light {
+    color: var(--color-primary-light);
+}
+
+.text-primary-lighter {
+    color: var(--color-primary-lighter);
+}
+
+.text-primary-lightest {
+    color: var(--color-primary-lightest);
+}
+
+.text-primary-white {
+    color: var(--color-primary-white);
+}
+
+.text-primary-dark {
+    color: var(--color-primary-dark);
+}
+
+.text-primary-darker {
+    color: var(--color-primary-darker);
+}
+
+.text-primary-darkest {
+    color: var(--color-primary-darkest);
+}
+
+.text-primary-black {
+    color: var(--color-primary-black);
+}
+
+.text-secondary-light {
+    color: var(--color-secondary-light);
+}
+
+.text-secondary-lighter {
+    color: var(--color-secondary-lighter);
+}
+
+.text-secondary-lightest {
+    color: var(--color-secondary-lightest);
+}
+
+.text-secondary-white {
+    color: var(--color-secondary-white);
+}
+
+.text-secondary-dark {
+    color: var(--color-secondary-dark);
+}
+
+.text-secondary-darker {
+    color: var(--color-secondary-darker);
+}
+
+.text-secondary-darkest {
+    color: var(--color-secondary-darkest);
+}
+
+.text-secondary-black {
+    color: var(--color-secondary-black);
+}
+
+.text-tertiary-light {
+    color: var(--color-tertiary-light);
+}
+
+.text-tertiary-lighter {
+    color: var(--color-tertiary-lighter);
+}
+
+.text-tertiary-lightest {
+    color: var(--color-tertiary-lightest);
+}
+
+.text-tertiary-white {
+    color: var(--color-tertiary-white);
+}
+
+.text-tertiary-dark {
+    color: var(--color-tertiary-dark);
+}
+
+.text-tertiary-darker {
+    color: var(--color-tertiary-darker);
+}
+
+.text-tertiary-darkest {
+    color: var(--color-tertiary-darkest);
+}
+
+.text-tertiary-black {
+    color: var(--color-tertiary-black);
+}
+
+.text-info-light {
+    color: var(--color-info-light);
+}
+
+.text-info-lighter {
+    color: var(--color-info-lighter);
+}
+
+.text-info-lightest {
+    color: var(--color-info-lightest);
+}
+
+.text-info-white {
+    color: var(--color-info-white);
+}
+
+.text-info-dark {
+    color: var(--color-info-dark);
+}
+
+.text-info-darker {
+    color: var(--color-info-darker);
+}
+
+.text-info-darkest {
+    color: var(--color-info-darkest);
+}
+
+.text-info-black {
+    color: var(--color-info-black);
+}
+
+.text-highlight-light {
+    color: var(--color-highlight-light);
+}
+
+.text-highlight-lighter {
+    color: var(--color-highlight-lighter);
+}
+
+.text-highlight-lightest {
+    color: var(--color-highlight-lightest);
+}
+
+.text-highlight-white {
+    color: var(--color-highlight-white);
+}
+
+.text-highlight-dark {
+    color: var(--color-highlight-dark);
+}
+
+.text-highlight-darker {
+    color: var(--color-highlight-darker);
+}
+
+.text-highlight-darkest {
+    color: var(--color-highlight-darkest);
+}
+
+.text-highlight-black {
+    color: var(--color-highlight-black);
+}
+
+.text-success-light {
+    color: var(--color-success-light);
+}
+
+.text-success-lighter {
+    color: var(--color-success-lighter);
+}
+
+.text-success-lightest {
+    color: var(--color-success-lightest);
+}
+
+.text-success-white {
+    color: var(--color-alert-white);
+}
+
+.text-success-dark {
+    color: var(--color-success-dark);
+}
+
+.text-success-darker {
+    color: var(--color-success-darker);
+}
+
+.text-success-darkest {
+    color: var(--color-success-darkest);
+}
+
+.text-success-black {
+    color: var(--color-success-black);
+}
+
+.text-warning-light {
+    color: var(--color-warning-light);
+}
+
+.text-warning-lighter {
+    color: var(--color-warning-lighter);
+}
+
+.text-warning-lightest {
+    color: var(--color-warning-lightest);
+}
+
+text-warning-white {
+    color: var(--color-warning-white);
+}
+
+.text-warning-dark {
+    color: var(--color-warning-dark);
+}
+
+.text-warning-darker {
+    color: var(--color-warning-darker);
+}
+
+.text-warning-darkest {
+    color: var(--color-warning-darkest);
+}
+
+.text-warning-black {
+    color: var(--color-warning-black);
+}
+
+.text-alert-light {
+    color: var(--color-alert-light);
+}
+
+.text-alert-lighter {
+    color: var(--color-alert-lighter);
+}
+
+.text-alert-lightest {
+    color: var(--color-alert-lightest);
+}
+
+.text-alert-white {
+    color: var(--color-alert-white);
+}
+
+.text-alert-dark {
+    color: var(--color-alert-dark);
+}
+
+.text-alert-darker {
+    color: var(--color-alert-darker);
+}
+
+.text-alert-darkest {
+    color: var(--color-alert-darkest);
+}
+
+.text-alert-black {
+    color: var(--color-alert-black);
+}
+
+.text-danger-light {
+    color: var(--color-danger-light);
+}
+
+.text-danger-lighter {
+    color: var(--color-danger-lighter);
+}
+
+.text-danger-lightest {
+    color: var(--color-danger-lightest);
+}
+
+.text-danger-white {
+    color: var(--color-danger-white);
+}
+
+.text-danger-dark {
+    color: var(--color-danger-dark);
+}
+
+.text-danger-darker {
+    color: var(--color-danger-darker);
+}
+
+.text-danger-darkest {
+    color: var(--color-danger-darkest);
+}
+
+.text-danger-black {
+    color: var(--color-danger-black);
+}
+
+/* utile */
+
+/* text-align */
+
+.text-start {
+    text-align: left;
+}
+
+.text-end {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+/* text-decoration */
+
+.text-decoration-none {
+    text-decoration: none;
+}
+
+.text-decoration-underline {
+    text-decoration: underline;
+}
+
+.text-decoration-line-through {
+    text-decoration: line-through;
+}
+
+.text-decoration-overline {
+    text-decoration: overline;
+}
+
+.text-decoration-underline-line-through {
+    text-decoration: underline line-through;
+}
+
+.text-decoration-overline-line-through {
+    text-decoration: overline line-through;
+}
+
+.text-decoration-overline-underline {
+    text-decoration: overline underline;
+}
+
+.text-decoration-overline-underline-line-through {
+    text-decoration: overline underline line-through;
+}
+
+/* text-transform */
+
+.text-lowercase {
+    text-transform: lowercase;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+/* white-space */
+
+.text-wrap {
+    white-space: normal;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+}
+
+.text-pre {
+    white-space: pre;
+}
+
+.text-pre-line {
+    white-space: pre-line;
+}
+
+.text-pre-wrap {
+    white-space: pre-wrap;
+}
+
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.text-break {
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.text-reset {
+    color: inherit;
+}
+
+/* vertical-align */
+
+.text-top {
+    vertical-align: top;
+}
+
+.text-middle {
+    vertical-align: middle;
+}
+
+.text-bottom {
+    vertical-align: bottom;
+}
+
+.text-baseline {
+    vertical-align: baseline;
+}
+
+/* text-overflow */
+
+.text-overflow-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.text-overflow-clip {
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+}
+
+.text-overflow-visible {
+    overflow: visible;
+    text-overflow: inherit;
+    white-space: inherit;
+}
+
+.text-overflow-hidden {
+    overflow: hidden;
+    text-overflow: inherit;
+    white-space: inherit;
+}

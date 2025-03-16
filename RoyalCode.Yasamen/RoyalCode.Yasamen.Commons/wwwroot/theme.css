@@ -236,14 +236,15 @@
     --b-size-g3: 1rem;
     --b-size-g4: 1.5rem;
     --b-size-g5: 3rem;
-    /** Shadowns **/
 
+    /** Shadows **/
     --b-shadow-0: none;
     --b-shadow-1: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
     --b-shadow-2: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
     --b-shadow-3: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.125);
     --b-shadow-4: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     --b-shadow-5: 0 1rem 2rem rgba(0, 0, 0, 0.175);
+    
     /*****  Theme Default  *****/
 
     --b-theme-current: var(--b-color-main);
