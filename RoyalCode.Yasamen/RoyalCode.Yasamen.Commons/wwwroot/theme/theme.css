@@ -113,6 +113,8 @@
     --gap-lg: var(--gap-8);
     --gap-xl: var(--gap-10);
     --gap-xxl: var(--gap-12);
+    --gap-col: var(--gap-4);
+    --gap-row: var(--gap-4);
     /** border **/
     /** border size **/
     --border-0: 0;
@@ -138,6 +140,7 @@
     --radius-9: var(--size-9);
     --radius-circle: 50%;
     --radius-pill: 9999px;
+    --radius-ellipse: 100%;
     /** border defaults - size - style - color **/
     --border--width: var(--border-1);
     --border--style: solid;
@@ -227,6 +230,7 @@
     --font-color: var(--color-dark);
     --font-bg: transparent;
     /* font-size */
+    --font-size-xxs: var(--size-5);
     --font-size-xs: var(--size-6);
     --font-size-sm: var(--size-7);
     --font-size-base: var(--size-8);
@@ -252,6 +256,8 @@
     --font-weight-extra-bold: 800;
     --font-weight-black: 900;
     /* line-height */
+    --font-line-height-1: 1;
+    --font-line-height-xxs: 0.8;
     --font-line-height-xs: 1;
     --font-line-height-sm: 1.25;
     --font-line-height-base: 1.5;
@@ -263,8 +269,9 @@
     --font-line-height-5xl: 3;
     --font-line-height-6xl: 3.25;
     /* letter-spacing */
-    --font-letter-spacing-xs: -0.05em;
-    --font-letter-spacing-sm: -0.025em;
+    --font-letter-spacing-xxs: -0.0375em;
+    --font-letter-spacing-xs: -0.025em;
+    --font-letter-spacing-sm: -0.0125em;
     --font-letter-spacing-base: 0;
     --font-letter-spacing-lg: 0.025em;
     --font-letter-spacing-xl: 0.05em;

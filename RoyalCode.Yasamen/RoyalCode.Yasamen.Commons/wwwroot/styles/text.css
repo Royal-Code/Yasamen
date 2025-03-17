@@ -1,5 +1,3 @@
-@import url(theme.css);
-
 /*** text ***/
 
 /* colors - default */
@@ -381,6 +379,32 @@ text-warning-white {
 
 .text-justify {
     text-align: justify;
+}
+
+/* vertical-align */
+
+.align-baseline {
+    vertical-align: baseline;
+}
+
+.align-top {
+    vertical-align: top;
+}
+
+.align-middle {
+    vertical-align: middle;
+}
+
+.align-bottom {
+    vertical-align: bottom;
+}
+
+.align-text-bottom {
+    vertical-align: text-bottom;
+}
+
+.align-text-top {
+    vertical-align: text-top;
 }
 
 /* text-decoration */

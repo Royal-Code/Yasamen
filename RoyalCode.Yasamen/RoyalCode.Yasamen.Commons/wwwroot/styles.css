@@ -1,3 +1,16 @@
-@import "theme.css?v=0-1-1-preview-5";
-@import "reboot.css?v=0-1-1-preview-5";
-@import "utilities.css?v=0-1-1-preview-5";
+/*@import url(theme.css);
+@import url(reboot.css);
+@import url(utilities.css);*/
+
+@import url(theme/tokens.css);
+@import url(theme/colors.css);
+@import url(theme/theme.css);
+
+@import url(styles/bg.css);
+@import url(styles/border.css);
+@import url(styles/font.css);
+@import url(styles/spacing.css);
+@import url(styles/text.css);
+@import url(styles/util.css);
+
+@import url(styles/reboot.css);

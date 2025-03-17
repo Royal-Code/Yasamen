@@ -1,11 +1,9 @@
-@import url(theme.css);
-
 /*** border ***/
 
 /* border */
 
 .border {
-    --border--width: var(--border--width);
+    border-width: var(--border--width);
     border-style: var(--border--style);
     border-color: var(--border--color);
 }
@@ -478,7 +476,7 @@
     --border--color: var(--color-danger-black);
 }
 
-/* round - radius */
+/* round - radius - round */
 
 .round {
     border-radius: var(--border-radius);
@@ -568,4 +566,62 @@
 
 .round-pill {
     border-radius: var(--radius-pill);
+}
+
+.round-ellipse {
+    border-radius: var(--radius-ellipse);
+}
+
+/* shadow */
+
+.shadow-0 {
+    box-shadow: var(--shadow-0);
+}
+
+.shadow-1 {
+    box-shadow: var(--shadow-1);
+}
+
+.shadow-2 {
+    box-shadow: var(--shadow-2);
+}
+
+.shadow-3 {
+    box-shadow: var(--shadow-3);
+}
+
+.shadow-4 {
+    box-shadow: var(--shadow-4);
+}
+
+.shadow-5 {
+    box-shadow: var(--shadow-5);
+}
+
+.shadow-6 {
+    box-shadow: var(--shadow-6);
+}
+
+.shadow-7 {
+    box-shadow: var(--shadow-7);
+}
+
+.shadow-8 {
+    box-shadow: var(--shadow-8);
+}
+
+.shadow-9 {
+    box-shadow: var(--shadow-9);
+}
+
+.shadow-10 {
+    box-shadow: var(--shadow-10);
+}
+
+.shadow-11 {
+    box-shadow: var(--shadow-11);
+}
+
+.shadow-12 {
+    box-shadow: var(--shadow-12);
 }

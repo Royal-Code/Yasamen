@@ -5,19 +5,20 @@ public record Borders
 {
     public static class Standards
     {
-        public static readonly BorderStyle DefaultStyle = BorderStyle.Default;
+        public static readonly BorderPositions DefaultPositions = BorderPositions.Default;
         public static readonly Themes DefaultColor = Themes.Default;
-        public static readonly Sizes DefaultWidth = Sizes.Default;
-        public static readonly BorderRadius DefaultRadius = BorderRadius.None;
-        public static readonly BorderRoundedSize DefaultRoundedSize = BorderRoundedSize.Default;
+        public static readonly BorderWidth DefaultWidth = BorderWidth.One;
+        public static readonly BorderStyles DefaultStyle = BorderStyles.Default;
+        public static readonly BorderRound DefaultRound = BorderRound.None;
+        public static readonly BorderRadius DefaultRadius = BorderRadius.Default;
         public static readonly Shadows DefaultShadow = Shadows.Default;
 
-        public static readonly BorderRadius DefaultRoundedBorderRadius = BorderRadius.Default;
-        public static readonly BorderRoundedSize DefaultRoundedBorderRoundedSize = BorderRoundedSize.Medium;
+        public static readonly BorderRound DefaultBorderRounded = BorderRound.Default;
+
         public static readonly Shadows DefaultBorderWithShadow = Shadows.Small;
-        
-        public static readonly BorderStyle DefaultHeaderStyle = BorderStyle.Bottom;
-        public static readonly BorderStyle DefaultFooterStyle = BorderStyle.Top;
+
+        public static readonly BorderPositions DefaultHeaderStyle = BorderPositions.Bottom;
+        public static readonly BorderPositions DefaultFooterStyle = BorderPositions.Top;
     }
 
     private static Borders? _default;
@@ -29,26 +30,26 @@ public record Borders
     private static Borders? _none;
 
     public static Borders Default => _default ??= new Borders
-        {
-            Style = Standards.DefaultStyle,
-            Color = Standards.DefaultColor,
-            Width = Standards.DefaultWidth,
-            Radius = Standards.DefaultRadius,
-            RoundedSize = Standards.DefaultRoundedSize,
-            Shadow = Standards.DefaultShadow
-        };
+    {
+        Positions = Standards.DefaultPositions,
+        Color = Standards.DefaultColor,
+        Width = Standards.DefaultWidth,
+        Style = Standards.DefaultStyle,
+        Round = Standards.DefaultRound,
+        Radius = Standards.DefaultRadius,
+        Shadow = Standards.DefaultShadow
+    };
 
     public static Borders DefaultRounded => _defaultRounded ??= (Default with
     {
-        Radius = Standards.DefaultRoundedBorderRadius,
-        RoundedSize = Standards.DefaultRoundedBorderRoundedSize
+        Round = Standards.DefaultBorderRounded,
     });
-    
+
     public static Borders DefaultWithShadow => _defaultWithShadow ??= (Default with
     {
         Shadow = Standards.DefaultBorderWithShadow
     });
-    
+
     public static Borders DefaultRoundedWithShadow => _defaultRoundedWithShadow ??= (DefaultRounded with
     {
         Shadow = Standards.DefaultBorderWithShadow
@@ -61,160 +62,264 @@ public record Borders
 
     public static Borders DefaultForHeaders => _defaultForHeaders ??= (Default with
     {
-        Style = Standards.DefaultHeaderStyle
+        Positions = Standards.DefaultHeaderStyle
     });
-    
+
     public static Borders DefaultForFooters => _defaultForFooters ??= (Default with
     {
-        Style = Standards.DefaultFooterStyle
+        Positions = Standards.DefaultFooterStyle
     });
 
     public static Borders DefaultNone => _none ??= (Default with
     {
-        Style = BorderStyle.None
+        Positions = BorderPositions.None
     });
 
     private string? cssClasses;
-    
-    public BorderStyle Style { get; init; }
-    
+
+    public BorderPositions Positions { get; init; }
+
     public Themes Color { get; init; }
-    
-    public Sizes Width { get; init; }
-    
+
+    public BorderWidth Width { get; init; }
+
+    public BorderStyles Style { get; set; }
+
+    public BorderRound Round { get; init; }
+
     public BorderRadius Radius { get; init; }
-    
-    public BorderRoundedSize RoundedSize { get; init; }
-    
+
     public Shadows Shadow { get; init; }
 
     public string CssClasses => cssClasses ??=
-        Style == BorderStyle.None 
-            ? string.Empty 
+        Positions == BorderPositions.None
+            ? string.Empty
             : string.Join(' ', AllCssClasses().Where(s => s != string.Empty));
-    
+
     private IEnumerable<string> AllCssClasses()
     {
-        yield return ToStyleCssClasses();
-        yield return ToColorCssClasses();
-        yield return ToWidthCssClasses();
-        yield return ToRadiusCssClasses();
-        yield return ToRoundedSizeCssClasses();
+        yield return Positions.ToBorderCssClasses();
+        yield return Color.ToBorderCssClasses();
+        yield return Width.ToBorderCssClasses();
+        yield return Style.ToBorderCssClasses();
+        yield return Round.ToBorderCssClasses();
+        yield return Radius.ToBorderCssClasses();
         yield return Shadow.ToCssClass();
     }
 
-    private string ToStyleCssClasses()
+}
+
+public static class BordersExtensions
+{
+    public static string ToBorderCssClasses(this BorderPositions style)
     {
-        return Style switch
+        return style switch
         {
-            BorderStyle.Default => "border",
-            BorderStyle.Top => "border-top",
-            BorderStyle.End => "border-end",
-            BorderStyle.Bottom => "border-bottom",
-            BorderStyle.Start => "border-start",
-            BorderStyle.NotAtTop => "border-top-0",
-            BorderStyle.NotAtEnd => "border-end-0",
-            BorderStyle.NotAtBottom => "border-bottom-0",
-            BorderStyle.NotAtStart => "border-start-0",
+            BorderPositions.None => "border-0",
+            BorderPositions.Default => "border",
+            BorderPositions.Top => "border-top",
+            BorderPositions.End => "border-end",
+            BorderPositions.Bottom => "border-bottom",
+            BorderPositions.Start => "border-start",
+            BorderPositions.NotAtTop => "border border-top-0",
+            BorderPositions.NotAtEnd => "border border-end-0",
+            BorderPositions.NotAtBottom => "border border-bottom-0",
+            BorderPositions.NotAtStart => "border border-start-0",
+            BorderPositions.TopEnd => "border-top border-end",
+            BorderPositions.TopBottom => "border-top border-bottom",
+            BorderPositions.TopStart => "border-top border-start",
+            BorderPositions.EndBottom => "border-end border-bottom",
+            BorderPositions.EndStart => "border-end border-start",
+            BorderPositions.BottomStart => "border-bottom border-start",
             _ => string.Empty
         };
     }
 
-    private string ToColorCssClasses()
+    public static string ToBorderCssClasses(this Themes color)
     {
-        return Color switch
+        return color switch
         {
-            Themes.Default => string.Empty,
             Themes.Primary => "border-primary",
             Themes.Secondary => "border-secondary",
-            Themes.Success => "border-success",
-            Themes.Danger => "border-danger",
-            Themes.Warning => "border-warning",
+            Themes.Tertiary => "border-tertiary",
             Themes.Info => "border-info",
+            Themes.Highlight => "border-highlight",
+            Themes.Success => "border-success",
+            Themes.Warning => "border-warning",
+            Themes.Alert => "border-alert",
+            Themes.Danger => "border-danger",
             Themes.Light => "border-light",
             Themes.Dark => "border-dark",
-            Themes.White => "border-white",
-            Themes.Main => "border-main",
             _ => string.Empty
         };
     }
 
-    private string ToWidthCssClasses()
+    public static string ToBorderCssClasses(this BorderWidth width)
     {
-        return Width switch
+        return width switch
         {
-            Sizes.Smallest => "border-1",
-            Sizes.Small => "border-2",
-            Sizes.Medium => "border-3",
-            Sizes.Large => "border-4",
-            Sizes.Largest => "border-5",
+            BorderWidth.One => "border-1",
+            BorderWidth.Two => "border-2",
+            BorderWidth.Three => "border-3",
+            BorderWidth.Four => "border-4",
+            BorderWidth.Five => "border-5",
+            BorderWidth.Six => "border-6",
+            BorderWidth.Seven => "border-7",
+            BorderWidth.Eight => "border-8",
+            BorderWidth.Nine => "border-9",
             _ => string.Empty
         };
     }
 
-    private string ToRadiusCssClasses()
+    public static string ToBorderCssClasses(this BorderStyles style)
     {
-        return Radius switch
+        return style switch
         {
-            BorderRadius.None => string.Empty,
-            BorderRadius.Default => "rounded",
-            BorderRadius.Top => "rounded-top",
-            BorderRadius.End => "rounded-end",
-            BorderRadius.Bottom => "rounded-bottom",
-            BorderRadius.Start => "rounded-start",
-            BorderRadius.Circle => "rounded-circle",
-            BorderRadius.Pill => "rounded-pill",
+            BorderStyles.Solid => "border-solid",
+            BorderStyles.Dashed => "border-dashed",
+            BorderStyles.DotDashed => "border-dot-dashed",
+            BorderStyles.DotDotDashed => "border-dot-dot-dashed",
+            BorderStyles.Dotted => "border-dotted",
+            BorderStyles.Double => "border-double",
+            BorderStyles.Groove => "border-groove",
+            BorderStyles.Hidden => "border-hidden",
+            BorderStyles.Inset => "border-inset",
+            BorderStyles.Outset => "border-outset",
+            BorderStyles.Ridge => "border-ridge",
+            BorderStyles.Wave => "border-wave",
+            BorderStyles.Revert => "border-revert",
+            BorderStyles.None => "border-none",
             _ => string.Empty
         };
     }
 
-    private string ToRoundedSizeCssClasses()
+    public static string ToBorderCssClasses(this BorderRound round)
     {
-        return RoundedSize switch
+        return round switch
         {
-            BorderRoundedSize.Default => string.Empty,
-            BorderRoundedSize.None => "rounded-0",
-            BorderRoundedSize.Small => "rounded-1",
-            BorderRoundedSize.Medium => "rounded-2",
-            BorderRoundedSize.Large => "rounded-3",
+            BorderRound.None => "round-0",
+            BorderRound.Default => "round",
+            BorderRound.Top => "round-top",
+            BorderRound.End => "round-end",
+            BorderRound.Bottom => "round-bottom",
+            BorderRound.Start => "round-start",
+            BorderRound.TopStart => "round-top-start",
+            BorderRound.TopEnd => "round-top-end",
+            BorderRound.BottomStart => "round-bottom-start",
+            BorderRound.BottomEnd => "round-bottom-end",
+            BorderRound.Circle => "round-circle",
+            BorderRound.Pill => "round-pill",
+            BorderRound.Ellipse => "round-ellipse",
+            _ => string.Empty
+        };
+    }
+
+    public static string ToBorderCssClasses(this BorderRadius radius)
+    {
+        return radius switch
+        {
+            BorderRadius.One => "round-1",
+            BorderRadius.Two => "round-2",
+            BorderRadius.Three => "round-3",
+            BorderRadius.Four => "round-4",
+            BorderRadius.Five => "round-5",
+            BorderRadius.Six => "round-6",
+            BorderRadius.Seven => "round-7",
+            BorderRadius.Eight => "round-8",
+            BorderRadius.Nine => "round-9",
             _ => string.Empty
         };
     }
 }
 
-public enum BorderStyle
+[Flags]
+public enum BorderPositions
 {
-    None,
+    None = 0,
+    Top = 1,
+    End = 2,
+    Bottom = 4,
+    Start = 8,
+
+    Default = Top | End | Bottom | Start,
+
+    NotAtTop = End | Bottom | Start,
+    NotAtEnd = Top | Bottom | Start,
+    NotAtBottom = Top | End | Start,
+    NotAtStart = Top | End | Bottom,
+
+    TopEnd = Top | End,
+    TopBottom = Top | Bottom,
+    TopStart = Top | Start,
+    EndBottom = End | Bottom,
+    EndStart = End | Start,
+    BottomStart = Bottom | Start,
+}
+
+public enum BorderWidth
+{
+    One,
+    Two,
+    Three,
+    Four,
+    Five,
+    Six,
+    Seven,
+    Eight,
+    Nine
+}
+
+public enum BorderStyles
+{
     Default,
-    Top,
-    End,
-    Bottom,
-    Start,
-    NotAtTop,
-    NotAtEnd,
-    NotAtBottom,
-    NotAtStart
+    Solid,
+    Dashed,
+    DotDashed,
+    DotDotDashed,
+    Dotted,
+    Double,
+    Groove,
+    Hidden,
+    Inset,
+    Outset,
+    Ridge,
+    Wave,
+    Revert,
+    None
+}
+
+[Flags]
+public enum BorderRound
+{
+    None = 0,
+    Top = 1,
+    End = 2,
+    Bottom = 4,
+    Start = 8,
+    Circle = 16,
+    Pill = 32,
+    Ellipse = 64,
+
+    Default = 15,
+
+    TopStart = Top | Start,
+    TopEnd = Top | End,
+    BottomStart = Bottom | Start,
+    BottomEnd = Bottom | End
 }
 
 public enum BorderRadius
 {
-    None,
     Default,
-    Top,
-    End,
-    Bottom,
-    Start,
-    Circle,
-    Pill
-}
-
-public enum BorderRoundedSize
-{
-    Default,
-    None,
-    Small,
-    Medium,
-    Large
+    One,
+    Two,
+    Three,
+    Four,
+    Five,
+    Six,
+    Seven,
+    Eight,
+    Nine
 }
 
 public interface IBorderBuilder
@@ -225,7 +330,7 @@ public interface IBorderBuilder
 
     IBorderWidthBuilder Width { get; }
 
-    IBorderRadiusBuilder Radius { get; }
+    IBorderRoundBuilder Radius { get; }
 
     IBorderShadowBuilder Shadow { get; }
 
@@ -234,7 +339,7 @@ public interface IBorderBuilder
 
 public interface IBorderStyleBuilder
 {
-    IBorderBuilder Style(BorderStyle style);
+    IBorderBuilder Style(BorderPositions style);
 
     IBorderBuilder Default();
 
@@ -267,72 +372,99 @@ public interface IBorderColorBuilder
 
     IBorderBuilder Secondary();
 
-    IBorderBuilder Success();
+    IBorderBuilder Tertiary();
 
-    IBorderBuilder Danger();
+    IBorderBuilder Info();
+
+    IBorderBuilder Highlight();
+
+    IBorderBuilder Success();
 
     IBorderBuilder Warning();
 
-    IBorderBuilder Info();
+    IBorderBuilder Alert();
+
+    IBorderBuilder Danger();
 
     IBorderBuilder Light();
 
     IBorderBuilder Dark();
 
-    IBorderBuilder White();
-
-    IBorderBuilder Main();
 }
 
 public interface IBorderWidthBuilder
 {
-    IBorderBuilder Size(Sizes size);
+    IBorderBuilder Size(BorderWidth width);
 
-    IBorderBuilder Smallest();
+    IBorderBuilder One();
 
-    IBorderBuilder Small();
+    IBorderBuilder Two();
 
-    IBorderBuilder Medium();
+    IBorderBuilder Three();
 
-    IBorderBuilder Large();
+    IBorderBuilder Four();
 
-    IBorderBuilder Largest();
+    IBorderBuilder Five();
+
+    IBorderBuilder Six();
+
+    IBorderBuilder Seven();
+
+    IBorderBuilder Eight();
+
+    IBorderBuilder Nine();
+}
+
+public interface IBorderRoundBuilder
+{
+    IBorderRadiusBuilder All();
+
+    IBorderRadiusBuilder Top();
+
+    IBorderRadiusBuilder End();
+
+    IBorderRadiusBuilder Bottom();
+
+    IBorderRadiusBuilder Start();
+
+    IBorderRadiusBuilder TopStart();
+
+    IBorderRadiusBuilder TopEnd();
+
+    IBorderRadiusBuilder BottomStart();
+
+    IBorderRadiusBuilder BottomEnd();
+
+    IBorderBuilder Circle();
+
+    IBorderBuilder Pill();
+
+    IBorderBuilder Ellipse();
+
+    IBorderBuilder None();
 }
 
 public interface IBorderRadiusBuilder
 {
-    IBorderRoundedSizeBuilder Radius(BorderRadius radius);
-
-    IBorderRoundedSizeBuilder Default();
-
-    IBorderRoundedSizeBuilder Top();
-
-    IBorderRoundedSizeBuilder End();
-
-    IBorderRoundedSizeBuilder Bottom();
-
-    IBorderRoundedSizeBuilder Start();
-
-    IBorderRoundedSizeBuilder Circle();
-
-    IBorderRoundedSizeBuilder Pill();
-
-    IBorderRoundedSizeBuilder None();
-}
-
-public interface IBorderRoundedSizeBuilder
-{
-    IBorderBuilder RoundedSize(BorderRoundedSize roundedSize);
-
     IBorderBuilder Default();
 
-    IBorderBuilder None();
+    IBorderBuilder One();
 
-    IBorderBuilder Small();
+    IBorderBuilder Two();
 
-    IBorderBuilder Medium();
+    IBorderBuilder Three();
 
-    IBorderBuilder Large();
+    IBorderBuilder Four();
+
+    IBorderBuilder Five();
+
+    IBorderBuilder Six();
+
+    IBorderBuilder Seven();
+
+    IBorderBuilder Eight();
+
+    IBorderBuilder Nine();
 }
 
 public interface IBorderShadowBuilder
@@ -362,7 +494,7 @@ internal class BorderBuilder(Borders borders) : IBorderBuilder
 
     public IBorderWidthBuilder Width => new BorderWidthBuilder(borders);
 
-    public IBorderRadiusBuilder Radius => new BorderRadiusBuilder(borders);
+    public IBorderRoundBuilder Radius => new BorderRoundBuilder(borders);
 
     public IBorderShadowBuilder Shadow => new BorderShadowBuilder(borders);
 
@@ -392,73 +524,109 @@ internal class BorderShadowBuilder(Borders borders) : IBorderShadowBuilder
     public IBorderBuilder Largest() => Shadow(Shadows.Largest);
 }
 
-internal class BorderRoundedSizeBuilder(Borders borders) : IBorderRoundedSizeBuilder
+internal class BorderRadiusBuilder(Borders borders) : IBorderRadiusBuilder
 {
-    public IBorderBuilder RoundedSize(BorderRoundedSize roundedSize)
+    public IBorderBuilder RoundedSize(BorderRadius roundedSize)
     {
         return new BorderBuilder(borders with
         {
-            RoundedSize = roundedSize
+            Radius = roundedSize
         });
     }
 
-    public IBorderBuilder Default() => RoundedSize(BorderRoundedSize.Default);
+    public IBorderBuilder Default() => RoundedSize(BorderRadius.Default);
 
-    public IBorderBuilder None() => RoundedSize(BorderRoundedSize.None);
+    public IBorderBuilder One() => RoundedSize(BorderRadius.One);
 
-    public IBorderBuilder Small() => RoundedSize(BorderRoundedSize.Small);
+    public IBorderBuilder Two() => RoundedSize(BorderRadius.Two);
 
-    public IBorderBuilder Medium() => RoundedSize(BorderRoundedSize.Medium);
+    public IBorderBuilder Three() => RoundedSize(BorderRadius.Three);
 
-    public IBorderBuilder Large() => RoundedSize(BorderRoundedSize.Large);
+    public IBorderBuilder Four() => RoundedSize(BorderRadius.Four);
+
+    public IBorderBuilder Five() => RoundedSize(BorderRadius.Five);
+
+    public IBorderBuilder Six() => RoundedSize(BorderRadius.Six);
+
+    public IBorderBuilder Seven() => RoundedSize(BorderRadius.Seven);
+
+    public IBorderBuilder Eight() => RoundedSize(BorderRadius.Eight);
+
+    public IBorderBuilder Nine() => RoundedSize(BorderRadius.Nine);
 }
 
-internal class BorderRadiusBuilder(Borders borders) : IBorderRadiusBuilder
+internal class BorderRoundBuilder(Borders borders) : IBorderRoundBuilder
 {
-    public IBorderRoundedSizeBuilder Radius(BorderRadius radius)
+    public IBorderRadiusBuilder Radius(BorderRound radius)
     {
-        return new BorderRoundedSizeBuilder(borders with
+        return new BorderRadiusBuilder(borders with
         {
-            Radius = radius
+            Round = radius
         });
     }
 
-    public IBorderRoundedSizeBuilder Default() => Radius(BorderRadius.Default);
+    private IBorderBuilder RadiusStyle(BorderRound radius)
+    {
+        return new BorderBuilder(borders with
+        {
+            Round = radius
+        });
+    }
 
-    public IBorderRoundedSizeBuilder Top() => Radius(BorderRadius.Top);
+    public IBorderRadiusBuilder All() => Radius(BorderRound.Default);
 
-    public IBorderRoundedSizeBuilder End() => Radius(BorderRadius.End);
+    public IBorderRadiusBuilder Top() => Radius(BorderRound.Top);
 
-    public IBorderRoundedSizeBuilder Bottom() => Radius(BorderRadius.Bottom);
+    public IBorderRadiusBuilder End() => Radius(BorderRound.End);
 
-    public IBorderRoundedSizeBuilder Start() => Radius(BorderRadius.Start);
+    public IBorderRadiusBuilder Bottom() => Radius(BorderRound.Bottom);
 
-    public IBorderRoundedSizeBuilder Circle() => Radius(BorderRadius.Circle);
+    public IBorderRadiusBuilder Start() => Radius(BorderRound.Start);
 
-    public IBorderRoundedSizeBuilder Pill() => Radius(BorderRadius.Pill);
+    public IBorderRadiusBuilder TopStart() => Radius(BorderRound.TopStart);
 
-    public IBorderRoundedSizeBuilder None() => Radius(BorderRadius.None);
+    public IBorderRadiusBuilder TopEnd() => Radius(BorderRound.TopEnd);
+
+    public IBorderRadiusBuilder BottomStart() => Radius(BorderRound.BottomStart);
+
+    public IBorderRadiusBuilder BottomEnd() => Radius(BorderRound.BottomEnd);
+
+    public IBorderBuilder Circle() => RadiusStyle(BorderRound.Circle);
+
+    public IBorderBuilder Pill() => RadiusStyle(BorderRound.Pill);
+
+    public IBorderBuilder Ellipse() => RadiusStyle(BorderRound.Ellipse);
+
+    public IBorderBuilder None() => RadiusStyle(BorderRound.None);
 }
 
 internal class BorderWidthBuilder(Borders borders) : IBorderWidthBuilder
 {
-    public IBorderBuilder Size(Sizes size)
+    public IBorderBuilder Size(BorderWidth width)
     {
         return new BorderBuilder(borders with
         {
-            Width = size
+            Width = width
         });
     }
 
-    public IBorderBuilder Smallest() => Size(Sizes.Smallest);
+    public IBorderBuilder One() => Size(BorderWidth.One);
 
-    public IBorderBuilder Small() => Size(Sizes.Small);
+    public IBorderBuilder Two() => Size(BorderWidth.Two);
 
-    public IBorderBuilder Medium() => Size(Sizes.Medium);
+    public IBorderBuilder Three() => Size(BorderWidth.Three);
 
-    public IBorderBuilder Large() => Size(Sizes.Large);
+    public IBorderBuilder Four() => Size(BorderWidth.Four);
 
-    public IBorderBuilder Largest() => Size(Sizes.Largest);
+    public IBorderBuilder Five() => Size(BorderWidth.Five);
+
+    public IBorderBuilder Six() => Size(BorderWidth.Six);
+
+    public IBorderBuilder Seven() => Size(BorderWidth.Seven);
+
+    public IBorderBuilder Eight() => Size(BorderWidth.Eight);
+
+    public IBorderBuilder Nine() => Size(BorderWidth.Nine);
 }
 
 internal class BorderColorBuilder(Borders borders) : IBorderColorBuilder
@@ -477,50 +645,52 @@ internal class BorderColorBuilder(Borders borders) : IBorderColorBuilder
 
     public IBorderBuilder Secondary() => Color(Themes.Secondary);
 
-    public IBorderBuilder Success() => Color(Themes.Success);
+    public IBorderBuilder Tertiary() => Color(Themes.Tertiary);
 
-    public IBorderBuilder Danger() => Color(Themes.Danger);
+    public IBorderBuilder Info() => Color(Themes.Info);
+
+    public IBorderBuilder Highlight() => Color(Themes.Highlight);
+
+    public IBorderBuilder Success() => Color(Themes.Success);
 
     public IBorderBuilder Warning() => Color(Themes.Warning);
 
-    public IBorderBuilder Info() => Color(Themes.Info);
+    public IBorderBuilder Alert() => Color(Themes.Alert);
+
+    public IBorderBuilder Danger() => Color(Themes.Danger);
 
     public IBorderBuilder Light() => Color(Themes.Light);
 
     public IBorderBuilder Dark() => Color(Themes.Dark);
-
-    public IBorderBuilder White() => Color(Themes.White);
-
-    public IBorderBuilder Main() => Color(Themes.Main);
 }
 
 internal class BorderStyleBuilder(Borders borders) : IBorderStyleBuilder
 {
-    public IBorderBuilder Style(BorderStyle style)
+    public IBorderBuilder Style(BorderPositions style)
     {
         return new BorderBuilder(borders with
         {
-            Style = style
+            Positions = style
         });
     }
 
-    public IBorderBuilder Default() => Style(BorderStyle.Default);
+    public IBorderBuilder Default() => Style(BorderPositions.Default);
 
-    public IBorderBuilder Top() => Style(BorderStyle.Top);
+    public IBorderBuilder Top() => Style(BorderPositions.Top);
 
-    public IBorderBuilder End() => Style(BorderStyle.End);
+    public IBorderBuilder End() => Style(BorderPositions.End);
 
-    public IBorderBuilder Bottom() => Style(BorderStyle.Bottom);
+    public IBorderBuilder Bottom() => Style(BorderPositions.Bottom);
 
-    public IBorderBuilder Start() => Style(BorderStyle.Start);
+    public IBorderBuilder Start() => Style(BorderPositions.Start);
 
-    public IBorderBuilder NotAtTop() => Style(BorderStyle.NotAtTop);
+    public IBorderBuilder NotAtTop() => Style(BorderPositions.NotAtTop);
 
-    public IBorderBuilder NotAtEnd() => Style(BorderStyle.NotAtEnd);
+    public IBorderBuilder NotAtEnd() => Style(BorderPositions.NotAtEnd);
 
-    public IBorderBuilder NotAtBottom() => Style(BorderStyle.NotAtBottom);
+    public IBorderBuilder NotAtBottom() => Style(BorderPositions.NotAtBottom);
 
-    public IBorderBuilder NotAtStart() => Style(BorderStyle.NotAtStart);
+    public IBorderBuilder NotAtStart() => Style(BorderPositions.NotAtStart);
 
-    public IBorderBuilder None() => Style(BorderStyle.None);
+    public IBorderBuilder None() => Style(BorderPositions.None);
 }

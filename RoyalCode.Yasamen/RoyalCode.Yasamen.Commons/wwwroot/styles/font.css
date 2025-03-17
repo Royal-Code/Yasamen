@@ -1,5 +1,3 @@
-@import url(theme.css);
-
 /*** font ***/
 
 /* font-weight */
@@ -52,6 +50,12 @@
 }
 
 /* font-size - line-height - letter-spacing */
+
+.text-xxs {
+    font-size: var(--font-size-xxs);
+    line-height: var(--font-line-height-xxs);
+    letter-spacing: var(--font-letter-spacing-xxs);
+}
 
 .text-xs {
     font-size: var(--font-size-xs);
