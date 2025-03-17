@@ -6,13 +6,13 @@ public enum Themes
     
     Primary,
     Secondary,
-    Success,
-    Danger,
-    Warning,
+    Tertiary,
     Info,
+    Highlight,
+    Success,
+    Warning,
+    Alert,
+    Danger,
     Light,
-    Dark,
-    White,
-    
-    Main
+    Dark
 }
