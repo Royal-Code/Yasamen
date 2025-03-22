@@ -1,0 +1,56 @@
+﻿
+.screen-mini {
+    max-width: var(--screen-mini);
+}
+
+.screen-phone {
+    max-width: var(--screen-phone);
+}
+
+.screen-tablet {
+    max-width: var(--screen-tablet);
+}
+
+.screen-laptop {
+    max-width: var(--screen-laptop);
+}
+
+.screen-desktop {
+    max-width: var(--screen-desktop);
+}
+
+.screen-large {
+    max-width: var(--screen-large);
+}
+
+.screen-ultra {
+    max-width: var(--screen-ultra);
+}
+
+.screen-xxs {
+    max-width: var(--screen-xxs);
+}
+
+.screen-xs {
+    max-width: var(--screen-xs);
+}
+
+.screen-sm {
+    max-width: var(--screen-sm);
+}
+
+.screen-md {
+    max-width: var(--screen-md);
+}
+
+.screen-lg {
+    max-width: var(--screen-lg);
+}
+
+.screen-xl {
+    max-width: var(--screen-xl);
+}
+
+.screen-xxl {
+    max-width: var(--screen-xxl);
+}

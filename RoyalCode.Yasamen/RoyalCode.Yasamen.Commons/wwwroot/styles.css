@@ -2,15 +2,31 @@
 @import url(reboot.css);
 @import url(utilities.css);*/
 
-@import url(theme/tokens.css);
+@import url(theme/sizes.css);
 @import url(theme/colors.css);
 @import url(theme/theme.css);
 
-@import url(styles/bg.css);
-@import url(styles/border.css);
-@import url(styles/font.css);
-@import url(styles/spacing.css);
-@import url(styles/text.css);
-@import url(styles/util.css);
+@import url(classes/bg.css);
+@import url(classes/border.css);
+@import url(classes/font.css);
+@import url(classes/spacing.css);
+@import url(classes/text.css);
+@import url(classes/util.css);
 
-@import url(styles/reboot.css);
+@import url(classes/width.css);
+@import url(classes/width.screen.mini.css);
+@import url(classes/width.screen.phone.css);
+@import url(classes/width.screen.tablet.css);
+@import url(classes/width.screen.laptop.css);
+@import url(classes/width.screen.desktop.css);
+@import url(classes/width.screen.large.css);
+@import url(classes/width.screen.ultra.css);
+@import url(classes/width.media.tablet.css);
+@import url(classes/width.media.laptop.css);
+@import url(classes/width.media.desktop.css);
+@import url(classes/width.media.large.css);
+@import url(classes/width.media.ultra.css);
+@import url(classes/width.media.phone.css);
+@import url(classes/width.media.mini.css);
+
+@import url(classes/reboot.css);

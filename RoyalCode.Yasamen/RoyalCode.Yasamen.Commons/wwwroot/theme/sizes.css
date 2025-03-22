@@ -68,8 +68,18 @@
     --space-31: 448px;
     --space-32: 512px;
     /* screen break */
-    --screen-tablet: 48rem; /* 768px - @media (min-width: 768px) */
-    --screen-laptop: 64rem; /* 1024px - @media (min-width: 1024px) */
-    --screen-desktop: 80rem; /* 1280px - @media (min-width: 1280px) */
-    --screen-large: 100rem; /* 1600px - @media (min-width: 1600px) */
+    --screen-mini: 24rem; /* 384px - max: 1 col */
+    --screen-phone: 36rem; /* 576px - max: 4 cols min: 6 cols */
+    --screen-tablet: 48rem; /* 768px - min 768px: 8 cols */
+    --screen-laptop: 68rem; /* 1088px - min: 12 cols */
+    --screen-desktop: 90rem; /* 1440px - min: 16 cols */
+    --screen-large: 116rem; /* 1856px - min: 20 cols */
+    --screen-ultra: 160rem; /* 2560px - min: 24 cols */
+    --screen-xxs: var(--screen-mini);
+    --screen-xs: var(--screen-phone);
+    --screen-sm: var(--screen-tablet);
+    --screen-md: var(--screen-laptop);
+    --screen-lg: var(--screen-desktop);
+    --screen-xl: var(--screen-large);
+    --screen-xxl: var(--screen-ultra);
 }

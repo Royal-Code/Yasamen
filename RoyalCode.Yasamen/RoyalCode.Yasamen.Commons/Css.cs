@@ -5,7 +5,7 @@ namespace RoyalCode.Yasamen.Commons;
 /// <summary>
 /// Utility to create CSS classes for components.
 /// </summary>
-public static class Css
+public static partial class Css
 {
     /// <summary>
     /// <para>

@@ -1,0 +1,212 @@
+﻿.screen-laptop .w-laptop-auto,
+.screen-md .w-md-auto {
+    width: auto;
+}
+
+/* 1/20 */
+.screen-laptop .w-laptop-5,
+.screen-md .w-md-5 {
+    width: 5%;
+}
+
+/* 1/12 */
+.screen-laptop .w-laptop-8,
+.screen-md .w-md-8 {
+    width: 8.333333%;
+}
+
+/* 2/20 */
+.screen-laptop .w-laptop-10,
+.screen-md .w-md-10 {
+    width: 10%;
+}
+
+/* 3/20 */
+.screen-laptop .w-laptop-15,
+.screen-md .w-md-15 {
+    width: 15%;
+}
+
+/* 1/6 2/12 */
+.screen-laptop .w-laptop-16,
+.screen-laptop .w-laptop-1-6,
+.screen-laptop .w-laptop-2-12,
+.screen-md .w-md-16,
+.screen-md .w-md-1-6,
+.screen-md .w-md-2-12 {
+    width: 16.666667%;
+}
+
+/* 4/20 */
+.screen-laptop .w-laptop-20,
+.screen-md .w-md-20 {
+    width: 20%;
+}
+
+/* 5/20 3/12 */
+.screen-laptop .w-laptop-25,
+.screen-laptop .w-laptop-3-12,
+.screen-md .w-md-25,
+.screen-md .w-md-3-12 {
+    width: 25%;
+}
+
+/* 6/20 */
+.screen-laptop .w-laptop-30,
+.screen-md .w-md-30 {
+    width: 30%;
+}
+
+/* 1/3 2/6 4/12 */
+.screen-laptop .w-laptop-33,
+.screen-laptop .w-laptop-1-3,
+.screen-laptop .w-laptop-2-6,
+.screen-laptop .w-laptop-4-12,
+.screen-md .w-md-33,
+.screen-md .w-md-1-3,
+.screen-md .w-md-2-6,
+.screen-md .w-md-4-12 {
+    width: 33.333333%;
+}
+
+/* 7/20 */
+.screen-laptop .w-laptop-35,
+.screen-md .w-md-35 {
+    width: 35%;
+}
+
+/* 8/20 */
+.screen-laptop .w-laptop-40,
+.screen-md .w-md-40 {
+    width: 40%;
+}
+
+/* 5/12 */
+.screen-laptop .w-laptop-42,
+.screen-md .w-md-42 {
+    width: 41.666667%;
+}
+
+/* 9/20 */
+.screen-laptop .w-laptop-45,
+.screen-md .w-md-45 {
+    width: 45%;
+}
+
+/* 10/20 6/12 3/6 */
+.screen-laptop .w-laptop-50,
+.screen-laptop .w-laptop-6-12,
+.screen-laptop .w-laptop-3-6,
+.screen-md .w-md-50,
+.screen-md .w-md-6-12,
+.screen-md .w-md-3-6 {
+    width: 50%;
+}
+
+/* 11/20 */
+.screen-laptop .w-laptop-55,
+.screen-md .w-md-55 {
+    width: 55%;
+}
+
+/* 7/12 */
+.screen-laptop .w-laptop-58,
+.screen-laptop .w-laptop-7-12,
+.screen-md .w-md-58,
+.screen-md .w-md-7-12 {
+    width: 58.333333%;
+}
+
+/* 12/20 */
+.screen-laptop .w-laptop-60,
+.screen-md .w-md-60 {
+    width: 60%;
+}
+
+/* 13/20 */
+.screen-laptop .w-laptop-65,
+.screen-md .w-md-65 {
+    width: 65%;
+}
+
+/* 2/3 4/6 8/12 */
+.screen-laptop .w-laptop-66,
+.screen-laptop .w-laptop-2-3,
+.screen-laptop .w-laptop-4-6,
+.screen-laptop .w-laptop-8-12,
+.screen-md .w-md-66,
+.screen-md .w-md-2-3,
+.screen-md .w-md-4-6,
+.screen-md .w-md-8-12 {
+    width: 66.666667%;
+}
+
+/* 14/20 */
+.screen-laptop .w-laptop-70,
+.screen-md .w-md-70 {
+    width: 70%;
+}
+
+/* 15/20 9/12 */
+.screen-laptop .w-laptop-75,
+.screen-laptop .w-laptop-9-12,
+.screen-md .w-md-75,
+.screen-md .w-md-9-12 {
+    width: 75%;
+}
+
+/* 16/20 */
+.screen-laptop .w-laptop-80,
+.screen-md .w-md-80 {
+    width: 80%;
+}
+
+/* 5/6 10/12 */
+.screen-laptop .w-laptop-83,
+.screen-laptop .w-laptop-5-6,
+.screen-laptop .w-laptop-10-12,
+.screen-md .w-md-83,
+.screen-md .w-md-5-6,
+.screen-md .w-md-10-12 {
+    width: 83.333333%;
+}
+
+/* 17/20 */
+.screen-laptop .w-laptop-85,
+.screen-md .w-md-85 {
+    width: 85%;
+}
+
+/* 18/20 */
+.screen-laptop .w-laptop-90,
+.screen-md .w-md-90 {
+    width: 90%;
+}
+
+/* 11/12 */
+.screen-laptop .w-laptop-91,
+.screen-laptop .w-laptop-11-12,
+.screen-md .w-md-91,
+.screen-md .w-md-11-12 {
+    width: 91.666667%;
+}
+
+/* 19/20 */
+.screen-laptop .w-laptop-95,
+.screen-md .w-md-95 {
+    width: 95%;
+}
+
+/* 20/20 12/12 6/6 3/3 */
+.screen-laptop .w-laptop-100,
+.screen-laptop .w-laptop-12-12,
+.screen-laptop .w-laptop-6-6,
+.screen-laptop .w-laptop-3-3,
+.screen-laptop .w-laptop-full,
+.screen-md .w-md-100,
+.screen-md .w-md-12-12,
+.screen-md .w-md-6-6,
+.screen-md .w-md-3-3,
+.screen-md .w-md-full {
+    width: 100%;
+}

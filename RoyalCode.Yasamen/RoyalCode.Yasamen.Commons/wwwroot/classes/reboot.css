@@ -207,7 +207,7 @@ abbr[title] {
   text-decoration-skip-ink: none;
 }
 
-address {
+address, .address {
     margin-top: var(--address--margin-top);
     margin-right: var(--address--margin-right);
     margin-bottom: var(--address--margin-bottom);
@@ -242,7 +242,7 @@ caption, .caption {
     background-color: var(--caption--bg);
 }
 
-blockquote {
+blockquote, .blockquote {
     margin: var(--blockquote--margin);
 }
 
@@ -260,19 +260,19 @@ mark, .mark {
     background-color: var(--mark--bg);
 }
 
-sub,
-sup {
+sub, .sub
+sup, .sup {
     position: relative;
     font-size: var(--font-size-xs);
     line-height: 0;
     vertical-align: baseline;
 }
 
-sub {
+sub, .sub {
     bottom: calc(var(--sub--bottom) * -1);
 }
 
-sup {
+sup, .sup {
     top: calc(var(--sup--top) * -1);
 }
 
@@ -333,7 +333,7 @@ dd {
 }
 
 pre,
-code,
+code, .code
 kbd,
 samp {
     font-family: var(--font-family-mono);
@@ -354,14 +354,14 @@ pre {
         word-break: normal;
     }
 
-code {
+code, .code {
     font-size: var(--font-size-sm);
     color: var(--color-dark-700);
     word-wrap: break-word;
 }
 
 
-kbd {
+kbd, .kbd {
     padding: var(--padding-3) var(--padding-4);
     font-size: var(--font-size-sm);
     color: var(--font-bg);
@@ -524,7 +524,7 @@ progress {
     vertical-align: baseline;
 }
 
-[hidden] {
+[hidden], .hidden {
   display: none !important;
 }
 
