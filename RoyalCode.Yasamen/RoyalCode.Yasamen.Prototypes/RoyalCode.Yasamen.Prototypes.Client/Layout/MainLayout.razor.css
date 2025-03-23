@@ -1,0 +1,25 @@
+﻿.storybook-layout {
+    display: flex;
+    height: 100vh;  /* Garantindo que a altura ocupe toda a tela */
+}
+
+.main-content {
+    flex-grow: 1;  /* Preenchendo o restante da tela */
+    margin-left: 350px;  /* Deixando o espaço para a sidebar fixa */
+    padding: 20px;
+    background-color: #ecf0f1;
+    overflow-y: auto;
+    transition: margin-left 0.3s ease;
+}
+
+/* Estilos responsivos para a sidebar em telas menores */
+@media (max-width: 768px) {
+    .nav-menu {
+        width: 200px;  /* Largura menor em dispositivos móveis */
+    }
+    
+    .main-content {
+        margin-left: 200px;  /* Ajustando o espaço para a sidebar menor */
+        padding: 15px;
+    }
+}

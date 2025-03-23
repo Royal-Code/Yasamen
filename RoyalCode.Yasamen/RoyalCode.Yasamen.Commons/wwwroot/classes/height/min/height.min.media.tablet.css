@@ -1,0 +1,241 @@
+﻿@media (min-width: 48rem) {
+    .h-min-tablet-auto,
+    .h-min-sm-auto {
+        min-height: auto;
+    }
+
+    .vw-tablet-100,
+    .vw-sm-100 {
+        width: 100vw;
+    }
+
+    .vh-min-tablet-100,
+    .vh-min-sm-100 {
+        min-height: 100vh;
+    }
+
+    .vw-tablet-90,
+    .vw-sm-90 {
+        width: 90vw;
+    }
+
+    .vh-min-tablet-90,
+    .vh-min-sm-90 {
+        min-height: 90vh;
+    }
+
+    .vw-tablet-75,
+    .vw-sm-75 {
+        width: 75vw;
+    }
+
+    .vh-min-tablet-75,
+    .vh-min-sm-75 {
+        min-height: 75vh;
+    }
+
+    .vw-tablet-66,
+    .vw-sm-66 {
+        width: 66.666666vw;
+    }
+
+    .vh-min-tablet-66,
+    .vh-min-sm-66 {
+        min-height: 66.666666vh;
+    }
+
+    .vw-tablet-50,
+    .vw-sm-50 {
+        width: 50vw;
+    }
+
+    .vh-min-tablet-50,
+    .vh-min-sm-50 {
+        min-height: 50vh;
+    }
+
+    .vw-tablet-33,
+    .vw-sm-33 {
+        width: 33.333333vw;
+    }
+
+    .vh-min-tablet-33,
+    .vh-min-sm-33 {
+        min-height: 33.333333vh;
+    }
+
+    .vw-tablet-25,
+    .vw-sm-25 {
+        width: 25vw;
+    }
+
+    .vh-min-tablet-25,
+    .vh-min-sm-25 {
+        min-height: 25vh;
+    }
+
+    .h-min-tablet-0,
+    .h-min-sm-0 {
+        min-height: var(--size-0);
+    }
+
+    .h-min-tablet-1,
+    .h-min-sm-1 {
+        min-height: var(--size-1);
+    }
+
+    .h-min-tablet-2,
+    .h-min-sm-2 {
+        min-height: var(--size-2);
+    }
+
+    .h-min-tablet-3,
+    .h-min-sm-3 {
+        min-height: var(--size-3);
+    }
+
+    .h-min-tablet-4,
+    .h-min-sm-4 {
+        min-height: var(--size-4);
+    }
+
+    .h-min-tablet-5,
+    .h-min-sm-5 {
+        min-height: var(--size-5);
+    }
+
+    .h-min-tablet-6,
+    .h-min-sm-6 {
+        min-height: var(--size-6);
+    }
+
+    .h-min-tablet-7,
+    .h-min-sm-7 {
+        min-height: var(--size-7);
+    }
+
+    .h-min-tablet-8,
+    .h-min-sm-8 {
+        min-height: var(--size-8);
+    }
+
+    .h-min-tablet-9,
+    .h-min-sm-9 {
+        min-height: var(--size-9);
+    }
+
+    .h-min-tablet-10,
+    .h-min-sm-10 {
+        min-height: var(--size-10);
+    }
+
+    .h-min-tablet-11,
+    .h-min-sm-11 {
+        min-height: var(--size-11);
+    }
+
+    .h-min-tablet-12,
+    .h-min-sm-12 {
+        min-height: var(--size-12);
+    }
+
+    .h-min-tablet-13,
+    .h-min-sm-13 {
+        min-height: var(--size-13);
+    }
+
+    .h-min-tablet-14,
+    .h-min-sm-14 {
+        min-height: var(--size-14);
+    }
+
+    .h-min-tablet-15,
+    .h-min-sm-15 {
+        min-height: var(--size-15);
+    }
+
+    .h-min-tablet-16,
+    .h-min-sm-16 {
+        min-height: var(--size-16);
+    }
+
+    .h-min-tablet-17,
+    .h-min-sm-17 {
+        min-height: var(--size-17);
+    }
+
+    .h-min-tablet-18,
+    .h-min-sm-18 {
+        min-height: var(--size-18);
+    }
+
+    .h-min-tablet-19,
+    .h-min-sm-19 {
+        min-height: var(--size-19);
+    }
+
+    .h-min-tablet-20,
+    .h-min-sm-20 {
+        min-height: var(--size-20);
+    }
+
+    .h-min-tablet-21,
+    .h-min-sm-21 {
+        min-height: var(--size-21);
+    }
+
+    .h-min-tablet-22,
+    .h-min-sm-22 {
+        min-height: var(--size-22);
+    }
+
+    .h-min-tablet-23,
+    .h-min-sm-23 {
+        min-height: var(--size-23);
+    }
+
+    .h-min-tablet-24,
+    .h-min-sm-24 {
+        min-height: var(--size-24);
+    }
+
+    .h-min-tablet-25,
+    .h-min-sm-25 {
+        min-height: var(--size-25);
+    }
+
+    .h-min-tablet-26,
+    .h-min-sm-26 {
+        min-height: var(--size-26);
+    }
+
+    .h-min-tablet-27,
+    .h-min-sm-27 {
+        min-height: var(--size-27);
+    }
+
+    .h-min-tablet-28,
+    .h-min-sm-28 {
+        min-height: var(--size-28);
+    }
+
+    .h-min-tablet-29,
+    .h-min-sm-29 {
+        min-height: var(--size-29);
+    }
+
+    .h-min-tablet-30,
+    .h-min-sm-30 {
+        min-height: var(--size-30);
+    }
+
+    .h-min-tablet-31,
+    .h-min-sm-31 {
+        min-height: var(--size-31);
+    }
+
+    .h-min-tablet-32,
+    .h-min-sm-32 {
+        min-height: var(--size-32);
+    }
+}

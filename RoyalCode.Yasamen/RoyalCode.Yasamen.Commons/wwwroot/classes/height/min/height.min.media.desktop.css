@@ -1,0 +1,241 @@
+﻿@media (min-width: 90rem) {
+    .h-min-desktop-auto,
+    .h-min-lg-auto {
+        min-height: auto;
+    }
+
+    .vw-desktop-100,
+    .vw-lg-100 {
+        width: 100vw;
+    }
+
+    .vh-min-desktop-100,
+    .vh-min-lg-100 {
+        min-height: 100vh;
+    }
+
+    .vw-desktop-90,
+    .vw-lg-90 {
+        width: 90vw;
+    }
+
+    .vh-min-desktop-90,
+    .vh-min-lg-90 {
+        min-height: 90vh;
+    }
+
+    .vw-desktop-75,
+    .vw-lg-75 {
+        width: 75vw;
+    }
+
+    .vh-min-desktop-75,
+    .vh-min-lg-75 {
+        min-height: 75vh;
+    }
+
+    .vw-desktop-66,
+    .vw-lg-66 {
+        width: 66.666666vw;
+    }
+
+    .vh-min-desktop-66,
+    .vh-min-lg-66 {
+        min-height: 66.666666vh;
+    }
+
+    .vw-desktop-50,
+    .vw-lg-50 {
+        width: 50vw;
+    }
+
+    .vh-min-desktop-50,
+    .vh-min-lg-50 {
+        min-height: 50vh;
+    }
+
+    .vw-desktop-33,
+    .vw-lg-33 {
+        width: 33.333333vw;
+    }
+
+    .vh-min-desktop-33,
+    .vh-min-lg-33 {
+        min-height: 33.333333vh;
+    }
+
+    .vw-desktop-25,
+    .vw-lg-25 {
+        width: 25vw;
+    }
+
+    .vh-min-desktop-25,
+    .vh-min-lg-25 {
+        min-height: 25vh;
+    }
+
+    .h-min-desktop-0,
+    .h-min-lg-0 {
+        min-height: var(--size-0);
+    }
+
+    .h-min-desktop-1,
+    .h-min-lg-1 {
+        min-height: var(--size-1);
+    }
+
+    .h-min-desktop-2,
+    .h-min-lg-2 {
+        min-height: var(--size-2);
+    }
+
+    .h-min-desktop-3,
+    .h-min-lg-3 {
+        min-height: var(--size-3);
+    }
+
+    .h-min-desktop-4,
+    .h-min-lg-4 {
+        min-height: var(--size-4);
+    }
+
+    .h-min-desktop-5,
+    .h-min-lg-5 {
+        min-height: var(--size-5);
+    }
+
+    .h-min-desktop-6,
+    .h-min-lg-6 {
+        min-height: var(--size-6);
+    }
+
+    .h-min-desktop-7,
+    .h-min-lg-7 {
+        min-height: var(--size-7);
+    }
+
+    .h-min-desktop-8,
+    .h-min-lg-8 {
+        min-height: var(--size-8);
+    }
+
+    .h-min-desktop-9,
+    .h-min-lg-9 {
+        min-height: var(--size-9);
+    }
+
+    .h-min-desktop-10,
+    .h-min-lg-10 {
+        min-height: var(--size-10);
+    }
+
+    .h-min-desktop-11,
+    .h-min-lg-11 {
+        min-height: var(--size-11);
+    }
+
+    .h-min-desktop-12,
+    .h-min-lg-12 {
+        min-height: var(--size-12);
+    }
+
+    .h-min-desktop-13,
+    .h-min-lg-13 {
+        min-height: var(--size-13);
+    }
+
+    .h-min-desktop-14,
+    .h-min-lg-14 {
+        min-height: var(--size-14);
+    }
+
+    .h-min-desktop-15,
+    .h-min-lg-15 {
+        min-height: var(--size-15);
+    }
+
+    .h-min-desktop-16,
+    .h-min-lg-16 {
+        min-height: var(--size-16);
+    }
+
+    .h-min-desktop-17,
+    .h-min-lg-17 {
+        min-height: var(--size-17);
+    }
+
+    .h-min-desktop-18,
+    .h-min-lg-18 {
+        min-height: var(--size-18);
+    }
+
+    .h-min-desktop-19,
+    .h-min-lg-19 {
+        min-height: var(--size-19);
+    }
+
+    .h-min-desktop-20,
+    .h-min-lg-20 {
+        min-height: var(--size-20);
+    }
+
+    .h-min-desktop-21,
+    .h-min-lg-21 {
+        min-height: var(--size-21);
+    }
+
+    .h-min-desktop-22,
+    .h-min-lg-22 {
+        min-height: var(--size-22);
+    }
+
+    .h-min-desktop-23,
+    .h-min-lg-23 {
+        min-height: var(--size-23);
+    }
+
+    .h-min-desktop-24,
+    .h-min-lg-24 {
+        min-height: var(--size-24);
+    }
+
+    .h-min-desktop-25,
+    .h-min-lg-25 {
+        min-height: var(--size-25);
+    }
+
+    .h-min-desktop-26,
+    .h-min-lg-26 {
+        min-height: var(--size-26);
+    }
+
+    .h-min-desktop-27,
+    .h-min-lg-27 {
+        min-height: var(--size-27);
+    }
+
+    .h-min-desktop-28,
+    .h-min-lg-28 {
+        min-height: var(--size-28);
+    }
+
+    .h-min-desktop-29,
+    .h-min-lg-29 {
+        min-height: var(--size-29);
+    }
+
+    .h-min-desktop-30,
+    .h-min-lg-30 {
+        min-height: var(--size-30);
+    }
+
+    .h-min-desktop-31,
+    .h-min-lg-31 {
+        min-height: var(--size-31);
+    }
+
+    .h-min-desktop-32,
+    .h-min-lg-32 {
+        min-height: var(--size-32);
+    }
+}

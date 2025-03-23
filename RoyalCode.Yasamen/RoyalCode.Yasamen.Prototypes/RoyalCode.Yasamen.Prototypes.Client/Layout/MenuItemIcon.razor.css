@@ -1,0 +1,7 @@
+﻿/* Estilo específico para os ícones de menu */
+svg {
+    width: 16px;
+    height: 16px;
+    fill: #ecf0f1;
+    margin-right: 8px;
+}

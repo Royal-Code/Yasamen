@@ -1,0 +1,159 @@
+﻿.h-min-auto {
+    min-height: auto;
+}
+
+.vh-min-100 {
+    min-height: 100vh;
+}
+
+.vh-min-90 {
+    min-height: 90vh;
+}
+
+.vh-min-75 {
+    min-height: 75vh;
+}
+
+.vh-min-66 {
+    min-height: 66.666666vh;
+}
+
+.vh-min-50 {
+    min-height: 50vh;
+}
+
+.vh-min-33 {
+    min-height: 33.333333vh;
+}
+
+.vh-min-25 {
+    min-height: 25vh;
+}
+
+.h-min-1 {
+    min-height: var(--size-1);
+}
+
+.h-min-2 {
+    min-height: var(--size-2);
+}
+
+.h-min-3 {
+    min-height: var(--size-3);
+}
+
+.h-min-4 {
+    min-height: var(--size-4);
+}
+
+.h-min-5 {
+    min-height: var(--size-5);
+}
+
+.h-min-6 {
+    min-height: var(--size-6);
+}
+
+.h-min-7 {
+    min-height: var(--size-7);
+}
+
+.h-min-8 {
+    min-height: var(--size-8);
+}
+
+.h-min-9 {
+    min-height: var(--size-9);
+}
+
+.h-min-10 {
+    min-height: var(--size-10);
+}
+
+.h-min-11 {
+    min-height: var(--size-11);
+}
+
+.h-min-12 {
+    min-height: var(--size-12);
+}
+
+.h-min-13 {
+    min-height: var(--size-13);
+}
+
+.h-min-14 {
+    min-height: var(--size-14);
+}
+
+.h-min-15 {
+    min-height: var(--size-15);
+}
+
+.h-min-16 {
+    min-height: var(--size-16);
+}
+
+.h-min-17 {
+    min-height: var(--size-17);
+}
+
+.h-min-18 {
+    min-height: var(--size-18);
+}
+
+.h-min-19 {
+    min-height: var(--size-19);
+}
+
+.h-min-20 {
+    min-height: var(--size-20);
+}
+
+.h-min-21 {
+    min-height: var(--size-21);
+}
+
+.h-min-22 {
+    min-height: var(--size-22);
+}
+
+.h-min-23 {
+    min-height: var(--size-23);
+}
+
+.h-min-24 {
+    min-height: var(--size-24);
+}
+
+.h-min-25 {
+    min-height: var(--size-25);
+}
+
+.h-min-26 {
+    min-height: var(--size-26);
+}
+
+.h-min-27 {
+    min-height: var(--size-27);
+}
+
+.h-min-28 {
+    min-height: var(--size-28);
+}
+
+.h-min-29 {
+    min-height: var(--size-29);
+}
+
+.h-min-30 {
+    min-height: var(--size-30);
+}
+
+.h-min-31 {
+    min-height: var(--size-31);
+}
+
+.h-min-32 {
+    min-height: var(--size-32);
+}

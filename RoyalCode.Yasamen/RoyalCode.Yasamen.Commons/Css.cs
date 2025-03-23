@@ -17,6 +17,7 @@ public static partial class Css
     /// </summary>
     /// <typeparam name="TComponent">The type of the component.</typeparam>
     /// <returns>The builder new instance.</returns>
+    [Obsolete("Usar CssClasses")]
     public static ICssMapBuilder<TComponent> Map<TComponent>() => new CssClassesBuilder<TComponent>();
 
     /// <summary>
@@ -25,12 +26,4 @@ public static partial class Css
     /// </summary>
     /// <returns>The builder new instance.</returns>
     public static ICssBuilder Utils() => new CssBuilder();
-
-    /// <summary>
-    /// <para>
-    ///     Creates a builder for borders CSS classes.
-    /// </para>
-    /// </summary>
-    /// <returns>The builder new instance.</returns>
-    public static IBorderBuilder Border() => new BorderBuilder();
 }

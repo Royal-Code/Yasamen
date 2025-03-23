@@ -18,7 +18,7 @@
     // static CssMap<PanelBox> for panel-box
     private static readonly CssMap<PanelBox> panelClasses = Css.Map<PanelBox>()
         .Add("panel-box")
-        .Add(static c => c.PanelBorder.CssClasses)
+        .Add(static c => c.PanelBorder)
         .Add(static c => c.PanelAdditionalClasses)
         .Build();
 
@@ -31,25 +31,25 @@
     // static CssMap<PanelBox> for panel-box-header
     private static readonly CssMap<PanelBox> headerClasses = Css.Map<PanelBox>()
         .Add("panel-box-header")
-        .Add(static c => c.HeaderBorder.CssClasses)
+        .Add(static c => c.HeaderBorder)
         .Add(static c => c.HeaderAdditionalClasses)
         .Build();
 
     // static CssMap<PanelBox> for panel-box-footer
     private static readonly CssMap<PanelBox> footerClasses = Css.Map<PanelBox>()
         .Add("panel-box-footer")
-        .Add(static c => c.FooterBorder.CssClasses)
+        .Add(static c => c.FooterBorder)
         .Add(static c => c.FooterAdditionalClasses)
         .Build();
 
     [Parameter]
-    public Borders PanelBorder { get; set; } = Borders.Default;
+    public BorderClasses PanelBorder { get; set; } = Css.Border.Box();
 
     [Parameter]
-    public Borders HeaderBorder { get; set; } = Borders.DefaultForHeaders;
-    
+    public BorderClasses HeaderBorder { get; set; } = Css.Border.Header();
+
     [Parameter]
-    public Borders FooterBorder { get; set; } = Borders.DefaultForFooters;
+    public BorderClasses FooterBorder { get; set; } = Css.Border.Footer();
     
     [Parameter]
     public string? PanelAdditionalClasses { get; set; }

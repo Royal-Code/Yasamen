@@ -1,0 +1,49 @@
+﻿/* Estilo para os itens de menu */
+.menu-item {
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #ecf0f1;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+/* Estilo de um item de menu ao passar o mouse */
+.menu-item:hover {
+    background-color: #34495e;
+}
+
+/* Alinhamento do título do item de menu */
+.menu-item-title {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+/* Estilo do submenu */
+.submenu {
+    list-style-type: none;
+    margin: 0;
+}
+
+.submenu.close {
+    transform: scaleY(0);
+    height: 0;
+}
+
+.submenu .menu-item {
+    padding-left: 0;
+}
+
+/* Setas indicativas de submenu */
+::deep .submenu-arrow {
+    transition: transform 0.3s ease;
+    min-width: 12px;
+}
+
+::deep .submenu-arrow.open {
+    transform: rotate(0deg); /* Setas para abrir para baixo */
+}
+
+::deep .submenu-arrow.closed {
+    transform: rotate(-90deg); /* Setas para fechar */
+}

@@ -1,0 +1,212 @@
+﻿.screen-laptop .w-min-laptop-auto,
+.screen-md .w-min-md-auto {
+    min-width: auto;
+}
+
+/* 1/20 */
+.screen-laptop .w-min-laptop-5,
+.screen-md .w-min-md-5 {
+    min-width: 5%;
+}
+
+/* 1/12 */
+.screen-laptop .w-min-laptop-8,
+.screen-md .w-min-md-8 {
+    min-width: 8.333333%;
+}
+
+/* 2/20 */
+.screen-laptop .w-min-laptop-10,
+.screen-md .w-min-md-10 {
+    min-width: 10%;
+}
+
+/* 3/20 */
+.screen-laptop .w-min-laptop-15,
+.screen-md .w-min-md-15 {
+    min-width: 15%;
+}
+
+/* 1/6 2/12 */
+.screen-laptop .w-min-laptop-16,
+.screen-laptop .w-min-laptop-1-6,
+.screen-laptop .w-min-laptop-2-12,
+.screen-md .w-min-md-16,
+.screen-md .w-min-md-1-6,
+.screen-md .w-min-md-2-12 {
+    min-width: 16.666667%;
+}
+
+/* 4/20 */
+.screen-laptop .w-min-laptop-20,
+.screen-md .w-min-md-20 {
+    min-width: 20%;
+}
+
+/* 5/20 3/12 */
+.screen-laptop .w-min-laptop-25,
+.screen-laptop .w-min-laptop-3-12,
+.screen-md .w-min-md-25,
+.screen-md .w-min-md-3-12 {
+    min-width: 25%;
+}
+
+/* 6/20 */
+.screen-laptop .w-min-laptop-30,
+.screen-md .w-min-md-30 {
+    min-width: 30%;
+}
+
+/* 1/3 2/6 4/12 */
+.screen-laptop .w-min-laptop-33,
+.screen-laptop .w-min-laptop-1-3,
+.screen-laptop .w-min-laptop-2-6,
+.screen-laptop .w-min-laptop-4-12,
+.screen-md .w-min-md-33,
+.screen-md .w-min-md-1-3,
+.screen-md .w-min-md-2-6,
+.screen-md .w-min-md-4-12 {
+    min-width: 33.333333%;
+}
+
+/* 7/20 */
+.screen-laptop .w-min-laptop-35,
+.screen-md .w-min-md-35 {
+    min-width: 35%;
+}
+
+/* 8/20 */
+.screen-laptop .w-min-laptop-40,
+.screen-md .w-min-md-40 {
+    min-width: 40%;
+}
+
+/* 5/12 */
+.screen-laptop .w-min-laptop-42,
+.screen-md .w-min-md-42 {
+    min-width: 41.666667%;
+}
+
+/* 9/20 */
+.screen-laptop .w-min-laptop-45,
+.screen-md .w-min-md-45 {
+    min-width: 45%;
+}
+
+/* 10/20 6/12 3/6 */
+.screen-laptop .w-min-laptop-50,
+.screen-laptop .w-min-laptop-6-12,
+.screen-laptop .w-min-laptop-3-6,
+.screen-md .w-min-md-50,
+.screen-md .w-min-md-6-12,
+.screen-md .w-min-md-3-6 {
+    min-width: 50%;
+}
+
+/* 11/20 */
+.screen-laptop .w-min-laptop-55,
+.screen-md .w-min-md-55 {
+    min-width: 55%;
+}
+
+/* 7/12 */
+.screen-laptop .w-min-laptop-58,
+.screen-laptop .w-min-laptop-7-12,
+.screen-md .w-min-md-58,
+.screen-md .w-min-md-7-12 {
+    min-width: 58.333333%;
+}
+
+/* 12/20 */
+.screen-laptop .w-min-laptop-60,
+.screen-md .w-min-md-60 {
+    min-width: 60%;
+}
+
+/* 13/20 */
+.screen-laptop .w-min-laptop-65,
+.screen-md .w-min-md-65 {
+    min-width: 65%;
+}
+
+/* 2/3 4/6 8/12 */
+.screen-laptop .w-min-laptop-66,
+.screen-laptop .w-min-laptop-2-3,
+.screen-laptop .w-min-laptop-4-6,
+.screen-laptop .w-min-laptop-8-12,
+.screen-md .w-min-md-66,
+.screen-md .w-min-md-2-3,
+.screen-md .w-min-md-4-6,
+.screen-md .w-min-md-8-12 {
+    min-width: 66.666667%;
+}
+
+/* 14/20 */
+.screen-laptop .w-min-laptop-70,
+.screen-md .w-min-md-70 {
+    min-width: 70%;
+}
+
+/* 15/20 9/12 */
+.screen-laptop .w-min-laptop-75,
+.screen-laptop .w-min-laptop-9-12,
+.screen-md .w-min-md-75,
+.screen-md .w-min-md-9-12 {
+    min-width: 75%;
+}
+
+/* 16/20 */
+.screen-laptop .w-min-laptop-80,
+.screen-md .w-min-md-80 {
+    min-width: 80%;
+}
+
+/* 5/6 10/12 */
+.screen-laptop .w-min-laptop-83,
+.screen-laptop .w-min-laptop-5-6,
+.screen-laptop .w-min-laptop-10-12,
+.screen-md .w-min-md-83,
+.screen-md .w-min-md-5-6,
+.screen-md .w-min-md-10-12 {
+    min-width: 83.333333%;
+}
+
+/* 17/20 */
+.screen-laptop .w-min-laptop-85,
+.screen-md .w-min-md-85 {
+    min-width: 85%;
+}
+
+/* 18/20 */
+.screen-laptop .w-min-laptop-90,
+.screen-md .w-min-md-90 {
+    min-width: 90%;
+}
+
+/* 11/12 */
+.screen-laptop .w-min-laptop-91,
+.screen-laptop .w-min-laptop-11-12,
+.screen-md .w-min-md-91,
+.screen-md .w-min-md-11-12 {
+    min-width: 91.666667%;
+}
+
+/* 19/20 */
+.screen-laptop .w-min-laptop-95,
+.screen-md .w-min-md-95 {
+    min-width: 95%;
+}
+
+/* 20/20 12/12 6/6 3/3 */
+.screen-laptop .w-min-laptop-100,
+.screen-laptop .w-min-laptop-12-12,
+.screen-laptop .w-min-laptop-6-6,
+.screen-laptop .w-min-laptop-3-3,
+.screen-laptop .w-min-laptop-full,
+.screen-md .w-min-md-100,
+.screen-md .w-min-md-12-12,
+.screen-md .w-min-md-6-6,
+.screen-md .w-min-md-3-3,
+.screen-md .w-min-md-full {
+    min-width: 100%;
+}

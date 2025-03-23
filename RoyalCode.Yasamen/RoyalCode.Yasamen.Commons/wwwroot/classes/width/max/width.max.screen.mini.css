@@ -1,0 +1,212 @@
+﻿.screen-mini .w-max-mini-auto,
+.screen-xxs .w-max-xxs-auto {
+    max-width: auto;
+}
+
+/* 1/20 */
+.screen-mini .w-max-mini-5,
+.screen-xxs .w-max-xxs-5 {
+    max-width: 5%;
+}
+
+/* 1/12 */
+.screen-mini .w-max-mini-8,
+.screen-xxs .w-max-xxs-8 {
+    max-width: 8.333333%;
+}
+
+/* 2/20 */
+.screen-mini .w-max-mini-10,
+.screen-xxs .w-max-xxs-10 {
+    max-width: 10%;
+}
+
+/* 3/20 */
+.screen-mini .w-max-mini-15,
+.screen-xxs .w-max-xxs-15 {
+    max-width: 15%;
+}
+
+/* 1/6 2/12 */
+.screen-mini .w-max-mini-16,
+.screen-mini .w-max-mini-1-6,
+.screen-mini .w-max-mini-2-12,
+.screen-xxs .w-max-xxs-16,
+.screen-xxs .w-max-xxs-1-6,
+.screen-xxs .w-max-xxs-2-12 {
+    max-width: 16.666667%;
+}
+
+/* 4/20 */
+.screen-mini .w-max-mini-20,
+.screen-xxs .w-max-xxs-20 {
+    max-width: 20%;
+}
+
+/* 5/20 3/12 */
+.screen-mini .w-max-mini-25,
+.screen-mini .w-max-mini-3-12,
+.screen-xxs .w-max-xxs-25,
+.screen-xxs .w-max-xxs-3-12 {
+    max-width: 25%;
+}
+
+/* 6/20 */
+.screen-mini .w-max-mini-30,
+.screen-xxs .w-max-xxs-30 {
+    max-width: 30%;
+}
+
+/* 1/3 2/6 4/12 */
+.screen-mini .w-max-mini-33,
+.screen-mini .w-max-mini-1-3,
+.screen-mini .w-max-mini-2-6,
+.screen-mini .w-max-mini-4-12,
+.screen-xxs .w-max-xxs-33,
+.screen-xxs .w-max-xxs-1-3,
+.screen-xxs .w-max-xxs-2-6,
+.screen-xxs .w-max-xxs-4-12 {
+    max-width: 33.333333%;
+}
+
+/* 7/20 */
+.screen-mini .w-max-mini-35,
+.screen-xxs .w-max-xxs-35 {
+    max-width: 35%;
+}
+
+/* 8/20 */
+.screen-mini .w-max-mini-40,
+.screen-xxs .w-max-xxs-40 {
+    max-width: 40%;
+}
+
+/* 5/12 */
+.screen-mini .w-max-mini-42,
+.screen-xxs .w-max-xxs-42 {
+    max-width: 41.666667%;
+}
+
+/* 9/20 */
+.screen-mini .w-max-mini-45,
+.screen-xxs .w-max-xxs-45 {
+    max-width: 45%;
+}
+
+/* 10/20 6/12 3/6 */
+.screen-mini .w-max-mini-50,
+.screen-mini .w-max-mini-6-12,
+.screen-mini .w-max-mini-3-6,
+.screen-xxs .w-max-xxs-50,
+.screen-xxs .w-max-xxs-6-12,
+.screen-xxs .w-max-xxs-3-6 {
+    max-width: 50%;
+}
+
+/* 11/20 */
+.screen-mini .w-max-mini-55,
+.screen-xxs .w-max-xxs-55 {
+    max-width: 55%;
+}
+
+/* 7/12 */
+.screen-mini .w-max-mini-58,
+.screen-mini .w-max-mini-7-12,
+.screen-xxs .w-max-xxs-58,
+.screen-xxs .w-max-xxs-7-12 {
+    max-width: 58.333333%;
+}
+
+/* 12/20 */
+.screen-mini .w-max-mini-60,
+.screen-xxs .w-max-xxs-60 {
+    max-width: 60%;
+}
+
+/* 13/20 */
+.screen-mini .w-max-mini-65,
+.screen-xxs .w-max-xxs-65 {
+    max-width: 65%;
+}
+
+/* 2/3 4/6 8/12 */
+.screen-mini .w-max-mini-66,
+.screen-mini .w-max-mini-2-3,
+.screen-mini .w-max-mini-4-6,
+.screen-mini .w-max-mini-8-12,
+.screen-xxs .w-max-xxs-66,
+.screen-xxs .w-max-xxs-2-3,
+.screen-xxs .w-max-xxs-4-6,
+.screen-xxs .w-max-xxs-8-12 {
+    max-width: 66.666667%;
+}
+
+/* 14/20 */
+.screen-mini .w-max-mini-70,
+.screen-xxs .w-max-xxs-70 {
+    max-width: 70%;
+}
+
+/* 15/20 9/12 */
+.screen-mini .w-max-mini-75,
+.screen-mini .w-max-mini-9-12,
+.screen-xxs .w-max-xxs-75,
+.screen-xxs .w-max-xxs-9-12 {
+    max-width: 75%;
+}
+
+/* 16/20 */
+.screen-mini .w-max-mini-80,
+.screen-xxs .w-max-xxs-80 {
+    max-width: 80%;
+}
+
+/* 5/6 10/12 */
+.screen-mini .w-max-mini-83,
+.screen-mini .w-max-mini-5-6,
+.screen-mini .w-max-mini-10-12,
+.screen-xxs .w-max-xxs-83,
+.screen-xxs .w-max-xxs-5-6,
+.screen-xxs .w-max-xxs-10-12 {
+    max-width: 83.333333%;
+}
+
+/* 17/20 */
+.screen-mini .w-max-mini-85,
+.screen-xxs .w-max-xxs-85 {
+    max-width: 85%;
+}
+
+/* 18/20 */
+.screen-mini .w-max-mini-90,
+.screen-xxs .w-max-xxs-90 {
+    max-width: 90%;
+}
+
+/* 11/12 */
+.screen-mini .w-max-mini-91,
+.screen-mini .w-max-mini-11-12,
+.screen-xxs .w-max-xxs-91,
+.screen-xxs .w-max-xxs-11-12 {
+    max-width: 91.666667%;
+}
+
+/* 19/20 */
+.screen-mini .w-max-mini-95,
+.screen-xxs .w-max-xxs-95 {
+    max-width: 95%;
+}
+
+/* 20/20 12/12 6/6 3/3 */
+.screen-mini .w-max-mini-100,
+.screen-mini .w-max-mini-12-12,
+.screen-mini .w-max-mini-6-6,
+.screen-mini .w-max-mini-3-3,
+.screen-mini .w-max-mini-full,
+.screen-xxs .w-max-xxs-100,
+.screen-xxs .w-max-xxs-12-12,
+.screen-xxs .w-max-xxs-6-6,
+.screen-xxs .w-max-xxs-3-3,
+.screen-xxs .w-max-xxs-full {
+    max-width: 100%;
+}

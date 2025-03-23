@@ -1,4 +1,6 @@
-﻿div {
+﻿
+
+div {
     min-height: var(--b-box--min-height);
     padding: var(--b-box--padding);
 }

@@ -1,0 +1,212 @@
+﻿.screen-ultra .w-min-ultra-auto,
+.screen-xxl .w-min-xxl-auto {
+    min-width: auto;
+}
+
+/* 1/20 */
+.screen-ultra .w-min-ultra-5,
+.screen-xxl .w-min-xxl-5 {
+    min-width: 5%;
+}
+
+/* 1/12 */
+.screen-ultra .w-min-ultra-8,
+.screen-xxl .w-min-xxl-8 {
+    min-width: 8.333333%;
+}
+
+/* 2/20 */
+.screen-ultra .w-min-ultra-10,
+.screen-xxl .w-min-xxl-10 {
+    min-width: 10%;
+}
+
+/* 3/20 */
+.screen-ultra .w-min-ultra-15,
+.screen-xxl .w-min-xxl-15 {
+    min-width: 15%;
+}
+
+/* 1/6 2/12 */
+.screen-ultra .w-min-ultra-16,
+.screen-ultra .w-min-ultra-1-6,
+.screen-ultra .w-min-ultra-2-12,
+.screen-xxl .w-min-xxl-16,
+.screen-xxl .w-min-xxl-1-6,
+.screen-xxl .w-min-xxl-2-12 {
+    min-width: 16.666667%;
+}
+
+/* 4/20 */
+.screen-ultra .w-min-ultra-20,
+.screen-xxl .w-min-xxl-20 {
+    min-width: 20%;
+}
+
+/* 5/20 3/12 */
+.screen-ultra .w-min-ultra-25,
+.screen-ultra .w-min-ultra-3-12,
+.screen-xxl .w-min-xxl-25,
+.screen-xxl .w-min-xxl-3-12 {
+    min-width: 25%;
+}
+
+/* 6/20 */
+.screen-ultra .w-min-ultra-30,
+.screen-xxl .w-min-xxl-30 {
+    min-width: 30%;
+}
+
+/* 1/3 2/6 4/12 */
+.screen-ultra .w-min-ultra-33,
+.screen-ultra .w-min-ultra-1-3,
+.screen-ultra .w-min-ultra-2-6,
+.screen-ultra .w-min-ultra-4-12,
+.screen-xxl .w-min-xxl-33,
+.screen-xxl .w-min-xxl-1-3,
+.screen-xxl .w-min-xxl-2-6,
+.screen-xxl .w-min-xxl-4-12 {
+    min-width: 33.333333%;
+}
+
+/* 7/20 */
+.screen-ultra .w-min-ultra-35,
+.screen-xxl .w-min-xxl-35 {
+    min-width: 35%;
+}
+
+/* 8/20 */
+.screen-ultra .w-min-ultra-40,
+.screen-xxl .w-min-xxl-40 {
+    min-width: 40%;
+}
+
+/* 5/12 */
+.screen-ultra .w-min-ultra-42,
+.screen-xxl .w-min-xxl-42 {
+    min-width: 41.666667%;
+}
+
+/* 9/20 */
+.screen-ultra .w-min-ultra-45,
+.screen-xxl .w-min-xxl-45 {
+    min-width: 45%;
+}
+
+/* 10/20 6/12 3/6 */
+.screen-ultra .w-min-ultra-50,
+.screen-ultra .w-min-ultra-6-12,
+.screen-ultra .w-min-ultra-3-6,
+.screen-xxl .w-min-xxl-50,
+.screen-xxl .w-min-xxl-6-12,
+.screen-xxl .w-min-xxl-3-6 {
+    min-width: 50%;
+}
+
+/* 11/20 */
+.screen-ultra .w-min-ultra-55,
+.screen-xxl .w-min-xxl-55 {
+    min-width: 55%;
+}
+
+/* 7/12 */
+.screen-ultra .w-min-ultra-58,
+.screen-ultra .w-min-ultra-7-12,
+.screen-xxl .w-min-xxl-58,
+.screen-xxl .w-min-xxl-7-12 {
+    min-width: 58.333333%;
+}
+
+/* 12/20 */
+.screen-ultra .w-min-ultra-60,
+.screen-xxl .w-min-xxl-60 {
+    min-width: 60%;
+}
+
+/* 13/20 */
+.screen-ultra .w-min-ultra-65,
+.screen-xxl .w-min-xxl-65 {
+    min-width: 65%;
+}
+
+/* 2/3 4/6 8/12 */
+.screen-ultra .w-min-ultra-66,
+.screen-ultra .w-min-ultra-2-3,
+.screen-ultra .w-min-ultra-4-6,
+.screen-ultra .w-min-ultra-8-12,
+.screen-xxl .w-min-xxl-66,
+.screen-xxl .w-min-xxl-2-3,
+.screen-xxl .w-min-xxl-4-6,
+.screen-xxl .w-min-xxl-8-12 {
+    min-width: 66.666667%;
+}
+
+/* 14/20 */
+.screen-ultra .w-min-ultra-70,
+.screen-xxl .w-min-xxl-70 {
+    min-width: 70%;
+}
+
+/* 15/20 9/12 */
+.screen-ultra .w-min-ultra-75,
+.screen-ultra .w-min-ultra-9-12,
+.screen-xxl .w-min-xxl-75,
+.screen-xxl .w-min-xxl-9-12 {
+    min-width: 75%;
+}
+
+/* 16/20 */
+.screen-ultra .w-min-ultra-80,
+.screen-xxl .w-min-xxl-80 {
+    min-width: 80%;
+}
+
+/* 5/6 10/12 */
+.screen-ultra .w-min-ultra-83,
+.screen-ultra .w-min-ultra-5-6,
+.screen-ultra .w-min-ultra-10-12,
+.screen-xxl .w-min-xxl-83,
+.screen-xxl .w-min-xxl-5-6,
+.screen-xxl .w-min-xxl-10-12 {
+    min-width: 83.333333%;
+}
+
+/* 17/20 */
+.screen-ultra .w-min-ultra-85,
+.screen-xxl .w-min-xxl-85 {
+    min-width: 85%;
+}
+
+/* 18/20 */
+.screen-ultra .w-min-ultra-90,
+.screen-xxl .w-min-xxl-90 {
+    min-width: 90%;
+}
+
+/* 11/12 */
+.screen-ultra .w-min-ultra-91,
+.screen-ultra .w-min-ultra-11-12,
+.screen-xxl .w-min-xxl-91,
+.screen-xxl .w-min-xxl-11-12 {
+    min-width: 91.666667%;
+}
+
+/* 19/20 */
+.screen-ultra .w-min-ultra-95,
+.screen-xxl .w-min-xxl-95 {
+    min-width: 95%;
+}
+
+/* 20/20 12/12 6/6 3/3 */
+.screen-ultra .w-min-ultra-100,
+.screen-ultra .w-min-ultra-12-12,
+.screen-ultra .w-min-ultra-6-6,
+.screen-ultra .w-min-ultra-3-3,
+.screen-ultra .w-min-ultra-full,
+.screen-xxl .w-min-xxl-100,
+.screen-xxl .w-min-xxl-12-12,
+.screen-xxl .w-min-xxl-6-6,
+.screen-xxl .w-min-xxl-3-3,
+.screen-xxl .w-min-xxl-full {
+    min-width: 100%;
+}

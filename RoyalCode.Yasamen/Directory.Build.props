@@ -8,8 +8,8 @@
 		<LangVersion>latest</LangVersion>
 	</PropertyGroup>
 	<PropertyGroup>
-		<AspNetVer>9.0.0</AspNetVer>
-		<WasmVer>9.0.0</WasmVer>
+		<AspNetVer>9.0.3</AspNetVer>
+		<WasmVer>9.0.3</WasmVer>
 		<ExtVer>9.0.0</ExtVer>
 		<OperationResult>2.0.0</OperationResult>
 	</PropertyGroup>

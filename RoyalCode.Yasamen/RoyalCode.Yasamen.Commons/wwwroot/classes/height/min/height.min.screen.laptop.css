@@ -1,0 +1,239 @@
+﻿.screen-laptop .h-min-laptop-auto,
+.screen-md .h-min-md-auto {
+    min-height: auto;
+}
+
+.screen-laptop .vw-laptop-100,
+.screen-md .vw-md-100 {
+    width: 100vw;
+}
+
+.screen-laptop .vh-min-laptop-100,
+.screen-md .vh-min-md-100 {
+    min-height: 100vh;
+}
+
+.screen-laptop .vw-laptop-90,
+.screen-md .vw-md-90 {
+    width: 90vw;
+}
+
+.screen-laptop .vh-min-laptop-90,
+.screen-md .vh-min-md-90 {
+    min-height: 90vh;
+}
+
+.screen-laptop .vw-laptop-75,
+.screen-md .vw-md-75 {
+    width: 75vw;
+}
+
+.screen-laptop .vh-min-laptop-75,
+.screen-md .vh-min-md-75 {
+    min-height: 75vh;
+}
+
+.screen-laptop .vw-laptop-66,
+.screen-md .vw-md-66 {
+    width: 66.666666vw;
+}
+
+.screen-laptop .vh-min-laptop-66,
+.screen-md .vh-min-md-66 {
+    min-height: 66.666666vh;
+}
+
+.screen-laptop .vw-laptop-50,
+.screen-md .vw-md-50 {
+    width: 50vw;
+}
+
+.screen-laptop .vh-min-laptop-50,
+.screen-md .vh-min-md-50 {
+    min-height: 50vh;
+}
+
+.screen-laptop .vw-laptop-33,
+.screen-md .vw-md-33 {
+    width: 33.333333vw;
+}
+
+.screen-laptop .vh-min-laptop-33,
+.screen-md .vh-min-md-33 {
+    min-height: 33.333333vh;
+}
+
+.screen-laptop .vw-laptop-25,
+.screen-md .vw-md-25 {
+    width: 25vw;
+}
+
+.screen-laptop .vh-min-laptop-25,
+.screen-md .vh-min-md-25 {
+    min-height: 25vh;
+}
+
+.screen-laptop .h-min-laptop-0,
+.screen-md .h-min-md-0 {
+    min-height: var(--size-0);
+}
+
+.screen-laptop .h-min-laptop-1,
+.screen-md .h-min-md-1 {
+    min-height: var(--size-1);
+}
+
+.screen-laptop .h-min-laptop-2,
+.screen-md .h-min-md-2 {
+    min-height: var(--size-2);
+}
+
+.screen-laptop .h-min-laptop-3,
+.screen-md .h-min-md-3 {
+    min-height: var(--size-3);
+}
+
+.screen-laptop .h-min-laptop-4,
+.screen-md .h-min-md-4 {
+    min-height: var(--size-4);
+}
+
+.screen-laptop .h-min-laptop-5,
+.screen-md .h-min-md-5 {
+    min-height: var(--size-5);
+}
+
+.screen-laptop .h-min-laptop-6,
+.screen-md .h-min-md-6 {
+    min-height: var(--size-6);
+}
+
+.screen-laptop .h-min-laptop-7,
+.screen-md .h-min-md-7 {
+    min-height: var(--size-7);
+}
+
+.screen-laptop .h-min-laptop-8,
+.screen-md .h-min-md-8 {
+    min-height: var(--size-8);
+}
+
+.screen-laptop .h-min-laptop-9,
+.screen-md .h-min-md-9 {
+    min-height: var(--size-9);
+}
+
+.screen-laptop .h-min-laptop-10,
+.screen-md .h-min-md-10 {
+    min-height: var(--size-10);
+}
+
+.screen-laptop .h-min-laptop-11,
+.screen-md .h-min-md-11 {
+    min-height: var(--size-11);
+}
+
+.screen-laptop .h-min-laptop-12,
+.screen-md .h-min-md-12 {
+    min-height: var(--size-12);
+}
+
+.screen-laptop .h-min-laptop-13,
+.screen-md .h-min-md-13 {
+    min-height: var(--size-13);
+}
+
+.screen-laptop .h-min-laptop-14,
+.screen-md .h-min-md-14 {
+    min-height: var(--size-14);
+}
+
+.screen-laptop .h-min-laptop-15,
+.screen-md .h-min-md-15 {
+    min-height: var(--size-15);
+}
+
+.screen-laptop .h-min-laptop-16,
+.screen-md .h-min-md-16 {
+    min-height: var(--size-16);
+}
+
+.screen-laptop .h-min-laptop-17,
+.screen-md .h-min-md-17 {
+    min-height: var(--size-17);
+}
+
+.screen-laptop .h-min-laptop-18,
+.screen-md .h-min-md-18 {
+    min-height: var(--size-18);
+}
+
+.screen-laptop .h-min-laptop-19,
+.screen-md .h-min-md-19 {
+    min-height: var(--size-19);
+}
+
+.screen-laptop .h-min-laptop-20,
+.screen-md .h-min-md-20 {
+    min-height: var(--size-20);
+}
+
+.screen-laptop .h-min-laptop-21,
+.screen-md .h-min-md-21 {
+    min-height: var(--size-21);
+}
+
+.screen-laptop .h-min-laptop-22,
+.screen-md .h-min-md-22 {
+    min-height: var(--size-22);
+}
+
+.screen-laptop .h-min-laptop-23,
+.screen-md .h-min-md-23 {
+    min-height: var(--size-23);
+}
+
+.screen-laptop .h-min-laptop-24,
+.screen-md .h-min-md-24 {
+    min-height: var(--size-24);
+}
+
+.screen-laptop .h-min-laptop-25,
+.screen-md .h-min-md-25 {
+    min-height: var(--size-25);
+}
+
+.screen-laptop .h-min-laptop-26,
+.screen-md .h-min-md-26 {
+    min-height: var(--size-26);
+}
+
+.screen-laptop .h-min-laptop-27,
+.screen-md .h-min-md-27 {
+    min-height: var(--size-27);
+}
+
+.screen-laptop .h-min-laptop-28,
+.screen-md .h-min-md-28 {
+    min-height: var(--size-28);
+}
+
+.screen-laptop .h-min-laptop-29,
+.screen-md .h-min-md-29 {
+    min-height: var(--size-29);
+}
+
+.screen-laptop .h-min-laptop-30,
+.screen-md .h-min-md-30 {
+    min-height: var(--size-30);
+}
+
+.screen-laptop .h-min-laptop-31,
+.screen-md .h-min-md-31 {
+    min-height: var(--size-31);
+}
+
+.screen-laptop .h-min-laptop-32,
+.screen-md .h-min-md-32 {
+    min-height: var(--size-32);
+}

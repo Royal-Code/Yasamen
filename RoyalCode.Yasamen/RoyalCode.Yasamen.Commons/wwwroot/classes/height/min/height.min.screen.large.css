@@ -1,0 +1,239 @@
+﻿.screen-large .h-min-large-auto,
+.screen-xl .h-min-xl-auto {
+    min-height: auto;
+}
+
+.screen-large .vw-large-100,
+.screen-xl .vw-xl-100 {
+    width: 100vw;
+}
+
+.screen-large .vh-min-large-100,
+.screen-xl .vh-min-xl-100 {
+    min-height: 100vh;
+}
+
+.screen-large .vw-large-90,
+.screen-xl .vw-xl-90 {
+    width: 90vw;
+}
+
+.screen-large .vh-min-large-90,
+.screen-xl .vh-min-xl-90 {
+    min-height: 90vh;
+}
+
+.screen-large .vw-large-75,
+.screen-xl .vw-xl-75 {
+    width: 75vw;
+}
+
+.screen-large .vh-min-large-75,
+.screen-xl .vh-min-xl-75 {
+    min-height: 75vh;
+}
+
+.screen-large .vw-large-66,
+.screen-xl .vw-xl-66 {
+    width: 66.666666vw;
+}
+
+.screen-large .vh-min-large-66,
+.screen-xl .vh-min-xl-66 {
+    min-height: 66.666666vh;
+}
+
+.screen-large .vw-large-50,
+.screen-xl .vw-xl-50 {
+    width: 50vw;
+}
+
+.screen-large .vh-min-large-50,
+.screen-xl .vh-min-xl-50 {
+    min-height: 50vh;
+}
+
+.screen-large .vw-large-33,
+.screen-xl .vw-xl-33 {
+    width: 33.333333vw;
+}
+
+.screen-large .vh-min-large-33,
+.screen-xl .vh-min-xl-33 {
+    min-height: 33.333333vh;
+}
+
+.screen-large .vw-large-25,
+.screen-xl .vw-xl-25 {
+    width: 25vw;
+}
+
+.screen-large .vh-min-large-25,
+.screen-xl .vh-min-xl-25 {
+    min-height: 25vh;
+}
+
+.screen-large .h-min-large-0,
+.screen-xl .h-min-xl-0 {
+    min-height: var(--size-0);
+}
+
+.screen-large .h-min-large-1,
+.screen-xl .h-min-xl-1 {
+    min-height: var(--size-1);
+}
+
+.screen-large .h-min-large-2,
+.screen-xl .h-min-xl-2 {
+    min-height: var(--size-2);
+}
+
+.screen-large .h-min-large-3,
+.screen-xl .h-min-xl-3 {
+    min-height: var(--size-3);
+}
+
+.screen-large .h-min-large-4,
+.screen-xl .h-min-xl-4 {
+    min-height: var(--size-4);
+}
+
+.screen-large .h-min-large-5,
+.screen-xl .h-min-xl-5 {
+    min-height: var(--size-5);
+}
+
+.screen-large .h-min-large-6,
+.screen-xl .h-min-xl-6 {
+    min-height: var(--size-6);
+}
+
+.screen-large .h-min-large-7,
+.screen-xl .h-min-xl-7 {
+    min-height: var(--size-7);
+}
+
+.screen-large .h-min-large-8,
+.screen-xl .h-min-xl-8 {
+    min-height: var(--size-8);
+}
+
+.screen-large .h-min-large-9,
+.screen-xl .h-min-xl-9 {
+    min-height: var(--size-9);
+}
+
+.screen-large .h-min-large-10,
+.screen-xl .h-min-xl-10 {
+    min-height: var(--size-10);
+}
+
+.screen-large .h-min-large-11,
+.screen-xl .h-min-xl-11 {
+    min-height: var(--size-11);
+}
+
+.screen-large .h-min-large-12,
+.screen-xl .h-min-xl-12 {
+    min-height: var(--size-12);
+}
+
+.screen-large .h-min-large-13,
+.screen-xl .h-min-xl-13 {
+    min-height: var(--size-13);
+}
+
+.screen-large .h-min-large-14,
+.screen-xl .h-min-xl-14 {
+    min-height: var(--size-14);
+}
+
+.screen-large .h-min-large-15,
+.screen-xl .h-min-xl-15 {
+    min-height: var(--size-15);
+}
+
+.screen-large .h-min-large-16,
+.screen-xl .h-min-xl-16 {
+    min-height: var(--size-16);
+}
+
+.screen-large .h-min-large-17,
+.screen-xl .h-min-xl-17 {
+    min-height: var(--size-17);
+}
+
+.screen-large .h-min-large-18,
+.screen-xl .h-min-xl-18 {
+    min-height: var(--size-18);
+}
+
+.screen-large .h-min-large-19,
+.screen-xl .h-min-xl-19 {
+    min-height: var(--size-19);
+}
+
+.screen-large .h-min-large-20,
+.screen-xl .h-min-xl-20 {
+    min-height: var(--size-20);
+}
+
+.screen-large .h-min-large-21,
+.screen-xl .h-min-xl-21 {
+    min-height: var(--size-21);
+}
+
+.screen-large .h-min-large-22,
+.screen-xl .h-min-xl-22 {
+    min-height: var(--size-22);
+}
+
+.screen-large .h-min-large-23,
+.screen-xl .h-min-xl-23 {
+    min-height: var(--size-23);
+}
+
+.screen-large .h-min-large-24,
+.screen-xl .h-min-xl-24 {
+    min-height: var(--size-24);
+}
+
+.screen-large .h-min-large-25,
+.screen-xl .h-min-xl-25 {
+    min-height: var(--size-25);
+}
+
+.screen-large .h-min-large-26,
+.screen-xl .h-min-xl-26 {
+    min-height: var(--size-26);
+}
+
+.screen-large .h-min-large-27,
+.screen-xl .h-min-xl-27 {
+    min-height: var(--size-27);
+}
+
+.screen-large .h-min-large-28,
+.screen-xl .h-min-xl-28 {
+    min-height: var(--size-28);
+}
+
+.screen-large .h-min-large-29,
+.screen-xl .h-min-xl-29 {
+    min-height: var(--size-29);
+}
+
+.screen-large .h-min-large-30,
+.screen-xl .h-min-xl-30 {
+    min-height: var(--size-30);
+}
+
+.screen-large .h-min-large-31,
+.screen-xl .h-min-xl-31 {
+    min-height: var(--size-31);
+}
+
+.screen-large .h-min-large-32,
+.screen-xl .h-min-xl-32 {
+    min-height: var(--size-32);
+}

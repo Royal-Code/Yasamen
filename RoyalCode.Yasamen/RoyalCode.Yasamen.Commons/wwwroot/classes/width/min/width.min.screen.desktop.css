@@ -1,0 +1,212 @@
+﻿.screen-desktop .w-min-desktop-auto,
+.screen-lg .w-min-lg-auto {
+    min-width: auto;
+}
+
+/* 1/20 */
+.screen-desktop .w-min-desktop-5,
+.screen-lg .w-min-lg-5 {
+    min-width: 5%;
+}
+
+/* 1/12 */
+.screen-desktop .w-min-desktop-8,
+.screen-lg .w-min-lg-8 {
+    min-width: 8.333333%;
+}
+
+/* 2/20 */
+.screen-desktop .w-min-desktop-10,
+.screen-lg .w-min-lg-10 {
+    min-width: 10%;
+}
+
+/* 3/20 */
+.screen-desktop .w-min-desktop-15,
+.screen-lg .w-min-lg-15 {
+    min-width: 15%;
+}
+
+/* 1/6 2/12 */
+.screen-desktop .w-min-desktop-16,
+.screen-desktop .w-min-desktop-1-6,
+.screen-desktop .w-min-desktop-2-12,
+.screen-lg .w-min-lg-16,
+.screen-lg .w-min-lg-1-6,
+.screen-lg .w-min-lg-2-12 {
+    min-width: 16.666667%;
+}
+
+/* 4/20 */
+.screen-desktop .w-min-desktop-20,
+.screen-lg .w-min-lg-20 {
+    min-width: 20%;
+}
+
+/* 5/20 3/12 */
+.screen-desktop .w-min-desktop-25,
+.screen-desktop .w-min-desktop-3-12,
+.screen-lg .w-min-lg-25,
+.screen-lg .w-min-lg-3-12 {
+    min-width: 25%;
+}
+
+/* 6/20 */
+.screen-desktop .w-min-desktop-30,
+.screen-lg .w-min-lg-30 {
+    min-width: 30%;
+}
+
+/* 1/3 2/6 4/12 */
+.screen-desktop .w-min-desktop-33,
+.screen-desktop .w-min-desktop-1-3,
+.screen-desktop .w-min-desktop-2-6,
+.screen-desktop .w-min-desktop-4-12,
+.screen-lg .w-min-lg-33,
+.screen-lg .w-min-lg-1-3,
+.screen-lg .w-min-lg-2-6,
+.screen-lg .w-min-lg-4-12 {
+    min-width: 33.333333%;
+}
+
+/* 7/20 */
+.screen-desktop .w-min-desktop-35,
+.screen-lg .w-min-lg-35 {
+    min-width: 35%;
+}
+
+/* 8/20 */
+.screen-desktop .w-min-desktop-40,
+.screen-lg .w-min-lg-40 {
+    min-width: 40%;
+}
+
+/* 5/12 */
+.screen-desktop .w-min-desktop-42,
+.screen-lg .w-min-lg-42 {
+    min-width: 41.666667%;
+}
+
+/* 9/20 */
+.screen-desktop .w-min-desktop-45,
+.screen-lg .w-min-lg-45 {
+    min-width: 45%;
+}
+
+/* 10/20 6/12 3/6 */
+.screen-desktop .w-min-desktop-50,
+.screen-desktop .w-min-desktop-6-12,
+.screen-desktop .w-min-desktop-3-6,
+.screen-lg .w-min-lg-50,
+.screen-lg .w-min-lg-6-12,
+.screen-lg .w-min-lg-3-6 {
+    min-width: 50%;
+}
+
+/* 11/20 */
+.screen-desktop .w-min-desktop-55,
+.screen-lg .w-min-lg-55 {
+    min-width: 55%;
+}
+
+/* 7/12 */
+.screen-desktop .w-min-desktop-58,
+.screen-desktop .w-min-desktop-7-12,
+.screen-lg .w-min-lg-58,
+.screen-lg .w-min-lg-7-12 {
+    min-width: 58.333333%;
+}
+
+/* 12/20 */
+.screen-desktop .w-min-desktop-60,
+.screen-lg .w-min-lg-60 {
+    min-width: 60%;
+}
+
+/* 13/20 */
+.screen-desktop .w-min-desktop-65,
+.screen-lg .w-min-lg-65 {
+    min-width: 65%;
+}
+
+/* 2/3 4/6 8/12 */
+.screen-desktop .w-min-desktop-66,
+.screen-desktop .w-min-desktop-2-3,
+.screen-desktop .w-min-desktop-4-6,
+.screen-desktop .w-min-desktop-8-12,
+.screen-lg .w-min-lg-66,
+.screen-lg .w-min-lg-2-3,
+.screen-lg .w-min-lg-4-6,
+.screen-lg .w-min-lg-8-12 {
+    min-width: 66.666667%;
+}
+
+/* 14/20 */
+.screen-desktop .w-min-desktop-70,
+.screen-lg .w-min-lg-70 {
+    min-width: 70%;
+}
+
+/* 15/20 9/12 */
+.screen-desktop .w-min-desktop-75,
+.screen-desktop .w-min-desktop-9-12,
+.screen-lg .w-min-lg-75,
+.screen-lg .w-min-lg-9-12 {
+    min-width: 75%;
+}
+
+/* 16/20 */
+.screen-desktop .w-min-desktop-80,
+.screen-lg .w-min-lg-80 {
+    min-width: 80%;
+}
+
+/* 5/6 10/12 */
+.screen-desktop .w-min-desktop-83,
+.screen-desktop .w-min-desktop-5-6,
+.screen-desktop .w-min-desktop-10-12,
+.screen-lg .w-min-lg-83,
+.screen-lg .w-min-lg-5-6,
+.screen-lg .w-min-lg-10-12 {
+    min-width: 83.333333%;
+}
+
+/* 17/20 */
+.screen-desktop .w-min-desktop-85,
+.screen-lg .w-min-lg-85 {
+    min-width: 85%;
+}
+
+/* 18/20 */
+.screen-desktop .w-min-desktop-90,
+.screen-lg .w-min-lg-90 {
+    min-width: 90%;
+}
+
+/* 11/12 */
+.screen-desktop .w-min-desktop-91,
+.screen-desktop .w-min-desktop-11-12,
+.screen-lg .w-min-lg-91,
+.screen-lg .w-min-lg-11-12 {
+    min-width: 91.666667%;
+}
+
+/* 19/20 */
+.screen-desktop .w-min-desktop-95,
+.screen-lg .w-min-lg-95 {
+    min-width: 95%;
+}
+
+/* 20/20 12/12 6/6 3/3 */
+.screen-desktop .w-min-desktop-100,
+.screen-desktop .w-min-desktop-12-12,
+.screen-desktop .w-min-desktop-6-6,
+.screen-desktop .w-min-desktop-3-3,
+.screen-desktop .w-min-desktop-full,
+.screen-lg .w-min-lg-100,
+.screen-lg .w-min-lg-12-12,
+.screen-lg .w-min-lg-6-6,
+.screen-lg .w-min-lg-3-3,
+.screen-lg .w-min-lg-full {
+    min-width: 100%;
+}

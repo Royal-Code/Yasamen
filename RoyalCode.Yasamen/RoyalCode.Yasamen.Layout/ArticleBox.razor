@@ -14,31 +14,28 @@
 
 @code {
     private static readonly CssMap<ArticleBox> articleClasses = Css.Map<ArticleBox>()
-        .Add(static c => c.ArticleBorder?.CssClasses)
+        .Add(static c => c.ArticleBorder)
         .Add(static c => c.ArticleAdditionalClasses)
         .Build();
 
     private static readonly CssMap<ArticleBox> headerClasses = Css.Map<ArticleBox>()
-        .Add(static c => c.HeaderBorder?.CssClasses)
+        .Add(static c => c.HeaderBorder)
         .Add(static c => c.HeaderAdditionalClasses)
         .Build();
 
     private static readonly CssMap<ArticleBox> footerClasses = Css.Map<ArticleBox>()
-        .Add(static c => c.FooterBorder?.CssClasses)
+        .Add(static c => c.FooterBorder)
         .Add(static c => c.FooterAdditionalClasses)
         .Build();
 
     [Parameter]
-    public Borders ArticleBorder { get; set; } = Borders.DefaultNone;
+    public BorderClasses ArticleBorder { get; set; } = Css.Border.None();
 
     [Parameter]
-    public Borders HeaderBorder { get; set; } = Borders.DefaultForHeaders with
-        {
-            Shadow = Shadows.Small
-        };
+    public BorderClasses HeaderBorder { get; set; } = Css.Border.HeaderWithShadow();
 
     [Parameter]
-    public Borders FooterBorder { get; set; } = Borders.DefaultForFooters;
+    public BorderClasses FooterBorder { get; set; } = Css.Border.Footer();
 
     [Parameter]
     public string? ArticleAdditionalClasses { get; set; }

@@ -1,0 +1,241 @@
+﻿@media (min-width: 160rem) {
+    .h-min-ultra-auto,
+    .h-min-xxl-auto {
+        min-height: auto;
+    }
+
+    .vw-ultra-100,
+    .vw-xxl-100 {
+        width: 100vw;
+    }
+
+    .vh-min-ultra-100,
+    .vh-min-xxl-100 {
+        min-height: 100vh;
+    }
+
+    .vw-ultra-90,
+    .vw-xxl-90 {
+        width: 90vw;
+    }
+
+    .vh-min-ultra-90,
+    .vh-min-xxl-90 {
+        min-height: 90vh;
+    }
+
+    .vw-ultra-75,
+    .vw-xxl-75 {
+        width: 75vw;
+    }
+
+    .vh-min-ultra-75,
+    .vh-min-xxl-75 {
+        min-height: 75vh;
+    }
+
+    .vw-ultra-66,
+    .vw-xxl-66 {
+        width: 66.666666vw;
+    }
+
+    .vh-min-ultra-66,
+    .vh-min-xxl-66 {
+        min-height: 66.666666vh;
+    }
+
+    .vw-ultra-50,
+    .vw-xxl-50 {
+        width: 50vw;
+    }
+
+    .vh-min-ultra-50,
+    .vh-min-xxl-50 {
+        min-height: 50vh;
+    }
+
+    .vw-ultra-33,
+    .vw-xxl-33 {
+        width: 33.333333vw;
+    }
+
+    .vh-min-ultra-33,
+    .vh-min-xxl-33 {
+        min-height: 33.333333vh;
+    }
+
+    .vw-ultra-25,
+    .vw-xxl-25 {
+        width: 25vw;
+    }
+
+    .vh-min-ultra-25,
+    .vh-min-xxl-25 {
+        min-height: 25vh;
+    }
+
+    .h-min-ultra-0,
+    .h-min-xxl-0 {
+        min-height: var(--size-0);
+    }
+
+    .h-min-ultra-1,
+    .h-min-xxl-1 {
+        min-height: var(--size-1);
+    }
+
+    .h-min-ultra-2,
+    .h-min-xxl-2 {
+        min-height: var(--size-2);
+    }
+
+    .h-min-ultra-3,
+    .h-min-xxl-3 {
+        min-height: var(--size-3);
+    }
+
+    .h-min-ultra-4,
+    .h-min-xxl-4 {
+        min-height: var(--size-4);
+    }
+
+    .h-min-ultra-5,
+    .h-min-xxl-5 {
+        min-height: var(--size-5);
+    }
+
+    .h-min-ultra-6,
+    .h-min-xxl-6 {
+        min-height: var(--size-6);
+    }
+
+    .h-min-ultra-7,
+    .h-min-xxl-7 {
+        min-height: var(--size-7);
+    }
+
+    .h-min-ultra-8,
+    .h-min-xxl-8 {
+        min-height: var(--size-8);
+    }
+
+    .h-min-ultra-9,
+    .h-min-xxl-9 {
+        min-height: var(--size-9);
+    }
+
+    .h-min-ultra-10,
+    .h-min-xxl-10 {
+        min-height: var(--size-10);
+    }
+
+    .h-min-ultra-11,
+    .h-min-xxl-11 {
+        min-height: var(--size-11);
+    }
+
+    .h-min-ultra-12,
+    .h-min-xxl-12 {
+        min-height: var(--size-12);
+    }
+
+    .h-min-ultra-13,
+    .h-min-xxl-13 {
+        min-height: var(--size-13);
+    }
+
+    .h-min-ultra-14,
+    .h-min-xxl-14 {
+        min-height: var(--size-14);
+    }
+
+    .h-min-ultra-15,
+    .h-min-xxl-15 {
+        min-height: var(--size-15);
+    }
+
+    .h-min-ultra-16,
+    .h-min-xxl-16 {
+        min-height: var(--size-16);
+    }
+
+    .h-min-ultra-17,
+    .h-min-xxl-17 {
+        min-height: var(--size-17);
+    }
+
+    .h-min-ultra-18,
+    .h-min-xxl-18 {
+        min-height: var(--size-18);
+    }
+
+    .h-min-ultra-19,
+    .h-min-xxl-19 {
+        min-height: var(--size-19);
+    }
+
+    .h-min-ultra-20,
+    .h-min-xxl-20 {
+        min-height: var(--size-20);
+    }
+
+    .h-min-ultra-21,
+    .h-min-xxl-21 {
+        min-height: var(--size-21);
+    }
+
+    .h-min-ultra-22,
+    .h-min-xxl-22 {
+        min-height: var(--size-22);
+    }
+
+    .h-min-ultra-23,
+    .h-min-xxl-23 {
+        min-height: var(--size-23);
+    }
+
+    .h-min-ultra-24,
+    .h-min-xxl-24 {
+        min-height: var(--size-24);
+    }
+
+    .h-min-ultra-25,
+    .h-min-xxl-25 {
+        min-height: var(--size-25);
+    }
+
+    .h-min-ultra-26,
+    .h-min-xxl-26 {
+        min-height: var(--size-26);
+    }
+
+    .h-min-ultra-27,
+    .h-min-xxl-27 {
+        min-height: var(--size-27);
+    }
+
+    .h-min-ultra-28,
+    .h-min-xxl-28 {
+        min-height: var(--size-28);
+    }
+
+    .h-min-ultra-29,
+    .h-min-xxl-29 {
+        min-height: var(--size-29);
+    }
+
+    .h-min-ultra-30,
+    .h-min-xxl-30 {
+        min-height: var(--size-30);
+    }
+
+    .h-min-ultra-31,
+    .h-min-xxl-31 {
+        min-height: var(--size-31);
+    }
+
+    .h-min-ultra-32,
+    .h-min-xxl-32 {
+        min-height: var(--size-32);
+    }
+}

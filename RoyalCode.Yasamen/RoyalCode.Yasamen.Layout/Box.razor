@@ -1,40 +1,16 @@
+@inherits YasamenBase
 
-<div @attributes="@AdditionalAttributes" class="@classes(this)">
+<div @attributes="AdditionalAttributes" class="@Classes">
     @ChildContent
 </div>
 
 @code {
-    private static readonly CssMap<Box> classes = Css.Map<Box>()
-        .Add("d-flex")
-        .Add(static c => c.Border.CssClasses)
-        .Add(static c => c.MinHeight.ToAbbrCssClass())
-        .Add(static c => c.Align.ToItemsCssClass())
-        .Add(static c => c.Justify.ToContentCssClass())
-        .Add(static c => c.Style.ToCssClass())
-        .Add(static c => c.AdditionalClasses)
-        .Build();
 
-    [Parameter]
-    public Borders Border { get; set; } = Borders.Default;
-
-    [Parameter]
-    public RenderFragment? ChildContent { get; set; }
-
-    [Parameter]
-    public Sizes MinHeight { get; set; }
-
-    [Parameter]
-    public Align Align { get; set; } = Align.Center;
-
-    [Parameter]
-    public Justify Justify { get; set; } = Justify.Start;
-
-    [Parameter]
-    public BoxStyles Style { get; set; }
-
-    [Parameter]
-    public string? AdditionalClasses { get; set; }
-
-    [Parameter(CaptureUnmatchedValues = true)]
-    public Dictionary<string, object>? AdditionalAttributes { get; set; }
+    private string Classes => "d-flex"
+        .AddClass(Border)
+        .AddClass(MinHeight.ToAbbrCssClass())
+        .AddClass(Align.ToItemsCssClass())
+        .AddClass(Justify.ToContentCssClass())
+        .AddClass(Style.ToCssClass())
+        .AddClass(AdditionalClasses);
 }

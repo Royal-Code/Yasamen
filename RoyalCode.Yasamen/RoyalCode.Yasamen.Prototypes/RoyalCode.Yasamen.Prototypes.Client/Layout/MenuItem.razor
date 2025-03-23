@@ -1,0 +1,42 @@
+﻿<li class="menu-item">
+    <div class="menu-item-title" @onclick="ToggleSubMenu">
+        <span class="submenu-arrow">
+            @if (HasSubMenu)
+            {
+                <DownArrowIcon />
+            }
+        </span>
+        <MenuItemIcon Type="@ItemType" />
+        <span class="menu-item-text">@Title</span>
+    </div>
+    @if (HasSubMenu)
+    {
+        <ul class="@SubMenuClasses">
+            @ChildContent
+        </ul>
+    }
+</li>
+
+@code {
+
+    private string IconClasses => IsOpen ? "submenu-arrow open" : "submenu-arrow close";
+    private string SubMenuClasses => IsOpen ? "submenu open" : "submenu close";
+
+    [Parameter]
+    public string Title { get; set; } // Título do item de menu
+    
+    [Parameter] 
+    public MenuItemType ItemType { get; set; } // Tipo do item de menu
+    
+    [Parameter] 
+    public RenderFragment ChildContent { get; set; } // Submenu (ChildContent)
+
+    private bool IsOpen { get; set; }  // Estado do submenu (aberto ou fechado)
+
+    private bool HasSubMenu => ChildContent != null; // Verifica se o item de menu possui submenu
+
+    private void ToggleSubMenu()
+    {
+        IsOpen = !IsOpen;
+    }
+}

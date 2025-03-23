@@ -1,0 +1,239 @@
+﻿.screen-phone .h-min-phone-auto,
+.screen-xs .h-min-xs-auto {
+    min-height: auto;
+}
+
+.screen-phone .vw-phone-100,
+.screen-xs .vw-xs-100 {
+    width: 100vw;
+}
+
+.screen-phone .vh-min-phone-100,
+.screen-xs .vh-min-xs-100 {
+    min-height: 100vh;
+}
+
+.screen-phone .vw-phone-90,
+.screen-xs .vw-xs-90 {
+    width: 90vw;
+}
+
+.screen-phone .vh-min-phone-90,
+.screen-xs .vh-min-xs-90 {
+    min-height: 90vh;
+}
+
+.screen-phone .vw-phone-75,
+.screen-xs .vw-xs-75 {
+    width: 75vw;
+}
+
+.screen-phone .vh-min-phone-75,
+.screen-xs .vh-min-xs-75 {
+    min-height: 75vh;
+}
+
+.screen-phone .vw-phone-66,
+.screen-xs .vw-xs-66 {
+    width: 66.666666vw;
+}
+
+.screen-phone .vh-min-phone-66,
+.screen-xs .vh-min-xs-66 {
+    min-height: 66.666666vh;
+}
+
+.screen-phone .vw-phone-50,
+.screen-xs .vw-xs-50 {
+    width: 50vw;
+}
+
+.screen-phone .vh-min-phone-50,
+.screen-xs .vh-min-xs-50 {
+    min-height: 50vh;
+}
+
+.screen-phone .vw-phone-33,
+.screen-xs .vw-xs-33 {
+    width: 33.333333vw;
+}
+
+.screen-phone .vh-min-phone-33,
+.screen-xs .vh-min-xs-33 {
+    min-height: 33.333333vh;
+}
+
+.screen-phone .vw-phone-25,
+.screen-xs .vw-xs-25 {
+    width: 25vw;
+}
+
+.screen-phone .vh-min-phone-25,
+.screen-xs .vh-min-xs-25 {
+    min-height: 25vh;
+}
+
+.screen-phone .h-min-phone-0,
+.screen-xs .h-min-xs-0 {
+    min-height: var(--size-0);
+}
+
+.screen-phone .h-min-phone-1,
+.screen-xs .h-min-xs-1 {
+    min-height: var(--size-1);
+}
+
+.screen-phone .h-min-phone-2,
+.screen-xs .h-min-xs-2 {
+    min-height: var(--size-2);
+}
+
+.screen-phone .h-min-phone-3,
+.screen-xs .h-min-xs-3 {
+    min-height: var(--size-3);
+}
+
+.screen-phone .h-min-phone-4,
+.screen-xs .h-min-xs-4 {
+    min-height: var(--size-4);
+}
+
+.screen-phone .h-min-phone-5,
+.screen-xs .h-min-xs-5 {
+    min-height: var(--size-5);
+}
+
+.screen-phone .h-min-phone-6,
+.screen-xs .h-min-xs-6 {
+    min-height: var(--size-6);
+}
+
+.screen-phone .h-min-phone-7,
+.screen-xs .h-min-xs-7 {
+    min-height: var(--size-7);
+}
+
+.screen-phone .h-min-phone-8,
+.screen-xs .h-min-xs-8 {
+    min-height: var(--size-8);
+}
+
+.screen-phone .h-min-phone-9,
+.screen-xs .h-min-xs-9 {
+    min-height: var(--size-9);
+}
+
+.screen-phone .h-min-phone-10,
+.screen-xs .h-min-xs-10 {
+    min-height: var(--size-10);
+}
+
+.screen-phone .h-min-phone-11,
+.screen-xs .h-min-xs-11 {
+    min-height: var(--size-11);
+}
+
+.screen-phone .h-min-phone-12,
+.screen-xs .h-min-xs-12 {
+    min-height: var(--size-12);
+}
+
+.screen-phone .h-min-phone-13,
+.screen-xs .h-min-xs-13 {
+    min-height: var(--size-13);
+}
+
+.screen-phone .h-min-phone-14,
+.screen-xs .h-min-xs-14 {
+    min-height: var(--size-14);
+}
+
+.screen-phone .h-min-phone-15,
+.screen-xs .h-min-xs-15 {
+    min-height: var(--size-15);
+}
+
+.screen-phone .h-min-phone-16,
+.screen-xs .h-min-xs-16 {
+    min-height: var(--size-16);
+}
+
+.screen-phone .h-min-phone-17,
+.screen-xs .h-min-xs-17 {
+    min-height: var(--size-17);
+}
+
+.screen-phone .h-min-phone-18,
+.screen-xs .h-min-xs-18 {
+    min-height: var(--size-18);
+}
+
+.screen-phone .h-min-phone-19,
+.screen-xs .h-min-xs-19 {
+    min-height: var(--size-19);
+}
+
+.screen-phone .h-min-phone-20,
+.screen-xs .h-min-xs-20 {
+    min-height: var(--size-20);
+}
+
+.screen-phone .h-min-phone-21,
+.screen-xs .h-min-xs-21 {
+    min-height: var(--size-21);
+}
+
+.screen-phone .h-min-phone-22,
+.screen-xs .h-min-xs-22 {
+    min-height: var(--size-22);
+}
+
+.screen-phone .h-min-phone-23,
+.screen-xs .h-min-xs-23 {
+    min-height: var(--size-23);
+}
+
+.screen-phone .h-min-phone-24,
+.screen-xs .h-min-xs-24 {
+    min-height: var(--size-24);
+}
+
+.screen-phone .h-min-phone-25,
+.screen-xs .h-min-xs-25 {
+    min-height: var(--size-25);
+}
+
+.screen-phone .h-min-phone-26,
+.screen-xs .h-min-xs-26 {
+    min-height: var(--size-26);
+}
+
+.screen-phone .h-min-phone-27,
+.screen-xs .h-min-xs-27 {
+    min-height: var(--size-27);
+}
+
+.screen-phone .h-min-phone-28,
+.screen-xs .h-min-xs-28 {
+    min-height: var(--size-28);
+}
+
+.screen-phone .h-min-phone-29,
+.screen-xs .h-min-xs-29 {
+    min-height: var(--size-29);
+}
+
+.screen-phone .h-min-phone-30,
+.screen-xs .h-min-xs-30 {
+    min-height: var(--size-30);
+}
+
+.screen-phone .h-min-phone-31,
+.screen-xs .h-min-xs-31 {
+    min-height: var(--size-31);
+}
+
+.screen-phone .h-min-phone-32,
+.screen-xs .h-min-xs-32 {
+    min-height: var(--size-32);
+}

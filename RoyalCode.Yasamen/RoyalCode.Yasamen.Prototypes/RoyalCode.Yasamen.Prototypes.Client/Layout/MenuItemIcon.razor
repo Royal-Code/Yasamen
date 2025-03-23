@@ -1,0 +1,26 @@
+﻿@if (Type == MenuItemType.Folder)
+{
+    <FolderIcon />
+}
+else if (Type == MenuItemType.Document)
+{
+    <DocumentIcon />
+}
+else if (Type == MenuItemType.Component)
+{
+    <ComponentIcon />
+}
+else if (Type == MenuItemType.Story)
+{
+    <StoryIcon />
+}
+else
+{
+    <DocumentIcon />
+}
+
+
+@code {
+    [Parameter] 
+    public MenuItemType Type { get; set; }  // Tipo do ícone
+}

@@ -1,0 +1,239 @@
+﻿.screen-desktop .h-min-desktop-auto,
+.screen-lg .h-min-lg-auto {
+    min-height: auto;
+}
+
+.screen-desktop .vw-desktop-100,
+.screen-lg .vw-lg-100 {
+    width: 100vw;
+}
+
+.screen-desktop .vh-min-desktop-100,
+.screen-lg .vh-min-lg-100 {
+    min-height: 100vh;
+}
+
+.screen-desktop .vw-desktop-90,
+.screen-lg .vw-lg-90 {
+    width: 90vw;
+}
+
+.screen-desktop .vh-min-desktop-90,
+.screen-lg .vh-min-lg-90 {
+    min-height: 90vh;
+}
+
+.screen-desktop .vw-desktop-75,
+.screen-lg .vw-lg-75 {
+    width: 75vw;
+}
+
+.screen-desktop .vh-min-desktop-75,
+.screen-lg .vh-min-lg-75 {
+    min-height: 75vh;
+}
+
+.screen-desktop .vw-desktop-66,
+.screen-lg .vw-lg-66 {
+    width: 66.666666vw;
+}
+
+.screen-desktop .vh-min-desktop-66,
+.screen-lg .vh-min-lg-66 {
+    min-height: 66.666666vh;
+}
+
+.screen-desktop .vw-desktop-50,
+.screen-lg .vw-lg-50 {
+    width: 50vw;
+}
+
+.screen-desktop .vh-min-desktop-50,
+.screen-lg .vh-min-lg-50 {
+    min-height: 50vh;
+}
+
+.screen-desktop .vw-desktop-33,
+.screen-lg .vw-lg-33 {
+    width: 33.333333vw;
+}
+
+.screen-desktop .vh-min-desktop-33,
+.screen-lg .vh-min-lg-33 {
+    min-height: 33.333333vh;
+}
+
+.screen-desktop .vw-desktop-25,
+.screen-lg .vw-lg-25 {
+    width: 25vw;
+}
+
+.screen-desktop .vh-min-desktop-25,
+.screen-lg .vh-min-lg-25 {
+    min-height: 25vh;
+}
+
+.screen-desktop .h-min-desktop-0,
+.screen-lg .h-min-lg-0 {
+    min-height: var(--size-0);
+}
+
+.screen-desktop .h-min-desktop-1,
+.screen-lg .h-min-lg-1 {
+    min-height: var(--size-1);
+}
+
+.screen-desktop .h-min-desktop-2,
+.screen-lg .h-min-lg-2 {
+    min-height: var(--size-2);
+}
+
+.screen-desktop .h-min-desktop-3,
+.screen-lg .h-min-lg-3 {
+    min-height: var(--size-3);
+}
+
+.screen-desktop .h-min-desktop-4,
+.screen-lg .h-min-lg-4 {
+    min-height: var(--size-4);
+}
+
+.screen-desktop .h-min-desktop-5,
+.screen-lg .h-min-lg-5 {
+    min-height: var(--size-5);
+}
+
+.screen-desktop .h-min-desktop-6,
+.screen-lg .h-min-lg-6 {
+    min-height: var(--size-6);
+}
+
+.screen-desktop .h-min-desktop-7,
+.screen-lg .h-min-lg-7 {
+    min-height: var(--size-7);
+}
+
+.screen-desktop .h-min-desktop-8,
+.screen-lg .h-min-lg-8 {
+    min-height: var(--size-8);
+}
+
+.screen-desktop .h-min-desktop-9,
+.screen-lg .h-min-lg-9 {
+    min-height: var(--size-9);
+}
+
+.screen-desktop .h-min-desktop-10,
+.screen-lg .h-min-lg-10 {
+    min-height: var(--size-10);
+}
+
+.screen-desktop .h-min-desktop-11,
+.screen-lg .h-min-lg-11 {
+    min-height: var(--size-11);
+}
+
+.screen-desktop .h-min-desktop-12,
+.screen-lg .h-min-lg-12 {
+    min-height: var(--size-12);
+}
+
+.screen-desktop .h-min-desktop-13,
+.screen-lg .h-min-lg-13 {
+    min-height: var(--size-13);
+}
+
+.screen-desktop .h-min-desktop-14,
+.screen-lg .h-min-lg-14 {
+    min-height: var(--size-14);
+}
+
+.screen-desktop .h-min-desktop-15,
+.screen-lg .h-min-lg-15 {
+    min-height: var(--size-15);
+}
+
+.screen-desktop .h-min-desktop-16,
+.screen-lg .h-min-lg-16 {
+    min-height: var(--size-16);
+}
+
+.screen-desktop .h-min-desktop-17,
+.screen-lg .h-min-lg-17 {
+    min-height: var(--size-17);
+}
+
+.screen-desktop .h-min-desktop-18,
+.screen-lg .h-min-lg-18 {
+    min-height: var(--size-18);
+}
+
+.screen-desktop .h-min-desktop-19,
+.screen-lg .h-min-lg-19 {
+    min-height: var(--size-19);
+}
+
+.screen-desktop .h-min-desktop-20,
+.screen-lg .h-min-lg-20 {
+    min-height: var(--size-20);
+}
+
+.screen-desktop .h-min-desktop-21,
+.screen-lg .h-min-lg-21 {
+    min-height: var(--size-21);
+}
+
+.screen-desktop .h-min-desktop-22,
+.screen-lg .h-min-lg-22 {
+    min-height: var(--size-22);
+}
+
+.screen-desktop .h-min-desktop-23,
+.screen-lg .h-min-lg-23 {
+    min-height: var(--size-23);
+}
+
+.screen-desktop .h-min-desktop-24,
+.screen-lg .h-min-lg-24 {
+    min-height: var(--size-24);
+}
+
+.screen-desktop .h-min-desktop-25,
+.screen-lg .h-min-lg-25 {
+    min-height: var(--size-25);
+}
+
+.screen-desktop .h-min-desktop-26,
+.screen-lg .h-min-lg-26 {
+    min-height: var(--size-26);
+}
+
+.screen-desktop .h-min-desktop-27,
+.screen-lg .h-min-lg-27 {
+    min-height: var(--size-27);
+}
+
+.screen-desktop .h-min-desktop-28,
+.screen-lg .h-min-lg-28 {
+    min-height: var(--size-28);
+}
+
+.screen-desktop .h-min-desktop-29,
+.screen-lg .h-min-lg-29 {
+    min-height: var(--size-29);
+}
+
+.screen-desktop .h-min-desktop-30,
+.screen-lg .h-min-lg-30 {
+    min-height: var(--size-30);
+}
+
+.screen-desktop .h-min-desktop-31,
+.screen-lg .h-min-lg-31 {
+    min-height: var(--size-31);
+}
+
+.screen-desktop .h-min-desktop-32,
+.screen-lg .h-min-lg-32 {
+    min-height: var(--size-32);
+}

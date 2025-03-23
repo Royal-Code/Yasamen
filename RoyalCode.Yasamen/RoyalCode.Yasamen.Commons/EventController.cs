@@ -2,7 +2,7 @@ namespace RoyalCode.Yasamen.Commons;
 
 public sealed class EventController<TEventValue>
 {
-    public LinkedList<EventListener<TEventValue>>? listeners;
+    private LinkedList<EventListener<TEventValue>>? listeners;
 
     public EventListener<TEventValue> Listen(Action<TEventValue> callback)
     {

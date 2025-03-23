@@ -1,0 +1,212 @@
+﻿.screen-large .w-min-large-auto,
+.screen-xl .w-min-xl-auto {
+    min-width: auto;
+}
+
+/* 1/20 */
+.screen-large .w-min-large-5,
+.screen-xl .w-min-xl-5 {
+    min-width: 5%;
+}
+
+/* 1/12 */
+.screen-large .w-min-large-8,
+.screen-xl .w-min-xl-8 {
+    min-width: 8.333333%;
+}
+
+/* 2/20 */
+.screen-large .w-min-large-10,
+.screen-xl .w-min-xl-10 {
+    min-width: 10%;
+}
+
+/* 3/20 */
+.screen-large .w-min-large-15,
+.screen-xl .w-min-xl-15 {
+    min-width: 15%;
+}
+
+/* 1/6 2/12 */
+.screen-large .w-min-large-16,
+.screen-large .w-min-large-1-6,
+.screen-large .w-min-large-2-12,
+.screen-xl .w-min-xl-16,
+.screen-xl .w-min-xl-1-6,
+.screen-xl .w-min-xl-2-12 {
+    min-width: 16.666667%;
+}
+
+/* 4/20 */
+.screen-large .w-min-large-20,
+.screen-xl .w-min-xl-20 {
+    min-width: 20%;
+}
+
+/* 5/20 3/12 */
+.screen-large .w-min-large-25,
+.screen-large .w-min-large-3-12,
+.screen-xl .w-min-xl-25,
+.screen-xl .w-min-xl-3-12 {
+    min-width: 25%;
+}
+
+/* 6/20 */
+.screen-large .w-min-large-30,
+.screen-xl .w-min-xl-30 {
+    min-width: 30%;
+}
+
+/* 1/3 2/6 4/12 */
+.screen-large .w-min-large-33,
+.screen-large .w-min-large-1-3,
+.screen-large .w-min-large-2-6,
+.screen-large .w-min-large-4-12,
+.screen-xl .w-min-xl-33,
+.screen-xl .w-min-xl-1-3,
+.screen-xl .w-min-xl-2-6,
+.screen-xl .w-min-xl-4-12 {
+    min-width: 33.333333%;
+}
+
+/* 7/20 */
+.screen-large .w-min-large-35,
+.screen-xl .w-min-xl-35 {
+    min-width: 35%;
+}
+
+/* 8/20 */
+.screen-large .w-min-large-40,
+.screen-xl .w-min-xl-40 {
+    min-width: 40%;
+}
+
+/* 5/12 */
+.screen-large .w-min-large-42,
+.screen-xl .w-min-xl-42 {
+    min-width: 41.666667%;
+}
+
+/* 9/20 */
+.screen-large .w-min-large-45,
+.screen-xl .w-min-xl-45 {
+    min-width: 45%;
+}
+
+/* 10/20 6/12 3/6 */
+.screen-large .w-min-large-50,
+.screen-large .w-min-large-6-12,
+.screen-large .w-min-large-3-6,
+.screen-xl .w-min-xl-50,
+.screen-xl .w-min-xl-6-12,
+.screen-xl .w-min-xl-3-6 {
+    min-width: 50%;
+}
+
+/* 11/20 */
+.screen-large .w-min-large-55,
+.screen-xl .w-min-xl-55 {
+    min-width: 55%;
+}
+
+/* 7/12 */
+.screen-large .w-min-large-58,
+.screen-large .w-min-large-7-12,
+.screen-xl .w-min-xl-58,
+.screen-xl .w-min-xl-7-12 {
+    min-width: 58.333333%;
+}
+
+/* 12/20 */
+.screen-large .w-min-large-60,
+.screen-xl .w-min-xl-60 {
+    min-width: 60%;
+}
+
+/* 13/20 */
+.screen-large .w-min-large-65,
+.screen-xl .w-min-xl-65 {
+    min-width: 65%;
+}
+
+/* 2/3 4/6 8/12 */
+.screen-large .w-min-large-66,
+.screen-large .w-min-large-2-3,
+.screen-large .w-min-large-4-6,
+.screen-large .w-min-large-8-12,
+.screen-xl .w-min-xl-66,
+.screen-xl .w-min-xl-2-3,
+.screen-xl .w-min-xl-4-6,
+.screen-xl .w-min-xl-8-12 {
+    min-width: 66.666667%;
+}
+
+/* 14/20 */
+.screen-large .w-min-large-70,
+.screen-xl .w-min-xl-70 {
+    min-width: 70%;
+}
+
+/* 15/20 9/12 */
+.screen-large .w-min-large-75,
+.screen-large .w-min-large-9-12,
+.screen-xl .w-min-xl-75,
+.screen-xl .w-min-xl-9-12 {
+    min-width: 75%;
+}
+
+/* 16/20 */
+.screen-large .w-min-large-80,
+.screen-xl .w-min-xl-80 {
+    min-width: 80%;
+}
+
+/* 5/6 10/12 */
+.screen-large .w-min-large-83,
+.screen-large .w-min-large-5-6,
+.screen-large .w-min-large-10-12,
+.screen-xl .w-min-xl-83,
+.screen-xl .w-min-xl-5-6,
+.screen-xl .w-min-xl-10-12 {
+    min-width: 83.333333%;
+}
+
+/* 17/20 */
+.screen-large .w-min-large-85,
+.screen-xl .w-min-xl-85 {
+    min-width: 85%;
+}
+
+/* 18/20 */
+.screen-large .w-min-large-90,
+.screen-xl .w-min-xl-90 {
+    min-width: 90%;
+}
+
+/* 11/12 */
+.screen-large .w-min-large-91,
+.screen-large .w-min-large-11-12,
+.screen-xl .w-min-xl-91,
+.screen-xl .w-min-xl-11-12 {
+    min-width: 91.666667%;
+}
+
+/* 19/20 */
+.screen-large .w-min-large-95,
+.screen-xl .w-min-xl-95 {
+    min-width: 95%;
+}
+
+/* 20/20 12/12 6/6 3/3 */
+.screen-large .w-min-large-100,
+.screen-large .w-min-large-12-12,
+.screen-large .w-min-large-6-6,
+.screen-large .w-min-large-3-3,
+.screen-large .w-min-large-full,
+.screen-xl .w-min-xl-100,
+.screen-xl .w-min-xl-12-12,
+.screen-xl .w-min-xl-6-6,
+.screen-xl .w-min-xl-3-3,
+.screen-xl .w-min-xl-full {
+    min-width: 100%;
+}
