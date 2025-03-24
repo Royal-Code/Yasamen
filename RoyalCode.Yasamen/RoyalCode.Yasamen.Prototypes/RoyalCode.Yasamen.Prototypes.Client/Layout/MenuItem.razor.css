@@ -5,12 +5,25 @@
     color: #ecf0f1;
     transition: background-color 0.3s ease;
     border-radius: 4px;
+    list-style: none;
 }
 
 /* Estilo de um item de menu ao passar o mouse */
 .menu-item:hover {
     background-color: #34495e;
 }
+
+    .menu-item .menu-item:hover {
+        background-color: #425d77;
+    }
+
+    .menu-item .menu-item .menu-item:hover {
+        background-color: #507190;
+    }
+
+    .menu-item .menu-item .menu-item .menu-item:hover {
+        background-color: #6085a7;
+    }
 
 /* Alinhamento do título do item de menu */
 .menu-item-title {
@@ -19,31 +32,39 @@
     gap: 2px;
 }
 
+.submenu-content {
+    overflow: hidden;
+}
+
 /* Estilo do submenu */
 .submenu {
     list-style-type: none;
     margin: 0;
+    padding-left: 1rem;
+    max-height: 200vh;
+    transition: transform 0.3s ease-out, max-height 0.3s ease-in-out;
+    transform: translateY(0); /* Move para a posição original ao abrir */
 }
 
-.submenu.close {
-    transform: scaleY(0);
-    height: 0;
-}
+    .submenu.closed {
+        transform: translateY(-100%); /* Inicialmente, move a sublista para fora da tela */
+        max-height: 0;
+    }
 
 .submenu .menu-item {
     padding-left: 0;
 }
 
 /* Setas indicativas de submenu */
-::deep .submenu-arrow {
+.submenu-arrow {
     transition: transform 0.3s ease;
     min-width: 12px;
 }
 
-::deep .submenu-arrow.open {
+.submenu-arrow.open {
     transform: rotate(0deg); /* Setas para abrir para baixo */
 }
 
-::deep .submenu-arrow.closed {
+.submenu-arrow.closed {
     transform: rotate(-90deg); /* Setas para fechar */
 }
