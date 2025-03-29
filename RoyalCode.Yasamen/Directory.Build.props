@@ -10,7 +10,7 @@
 	<PropertyGroup>
 		<AspNetVer>9.0.3</AspNetVer>
 		<WasmVer>9.0.3</WasmVer>
-		<ExtVer>9.0.0</ExtVer>
+		<ExtVer>9.0.3</ExtVer>
 		<OperationResult>2.0.0</OperationResult>
 	</PropertyGroup>
 </Project>

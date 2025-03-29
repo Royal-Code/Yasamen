@@ -1,0 +1,7 @@
+﻿
+.square {
+    width: 64px;
+    height: 64px;
+    display: inline-block;
+    padding: 4px;
+}

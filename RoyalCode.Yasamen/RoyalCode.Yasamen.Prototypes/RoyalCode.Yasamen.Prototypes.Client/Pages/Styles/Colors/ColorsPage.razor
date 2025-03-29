@@ -1,0 +1,148 @@
+﻿@page "/styles/colors"
+
+<h1>Colors</h1>
+
+<p>
+    Color can be applyed to text, background and border.
+    <br />
+    The color palette is defined by the design system and should be used consistently across the application.
+</p>
+
+<p>
+    The colors can be used by theme colors or by direct color names.
+</p>
+
+<p>
+    The theme classes are:
+    <ul>
+        <li>primary</li>
+        <li>secondary</li>
+        <li>tertiary</li>
+        <li>info</li>
+        <li>highlight</li>
+        <li>success</li>
+        <li>warning</li>
+        <li>alert</li>
+        <li>danger</li>
+    </ul>
+</p>
+
+<p>
+    For each thematic color there are levels of gradients:
+    <ul>
+        <li>
+            <span>Gradients for lightening</span>
+            <ul>
+                <li>light</li>
+                <li>lighter</li>
+                <li>lightest</li>
+                <li>white</li>
+            </ul>
+        </li>
+        <li>
+            <span>Gradients for hardening</span>
+            <ul>
+                <li>dark</li>
+                <li>darker</li>
+                <li>darkest</li>
+                <li>black</li>
+            </ul>
+        </li>
+    </ul>
+</p>
+
+<p>
+    These colors are defined in CSS variables and there are also classes for defining them in text,
+    backgrounds and borders.
+    <br />
+    The variables will follow the pattern:
+    <ul>
+        <li>--color-{theme}</li>
+        <li>--color-{theme}-{level}</li>
+    </ul>
+    <br />
+    Examples:
+    <ul>
+        <li>--color-primary</li>
+        <li>--color-primary-light</li>
+        <li>--color-primary-lighter</li>
+        <li>--color-primary-lightest</li>
+        <li>--color-primary-white</li>
+        <li>--color-primary-dark</li>
+        <li>--color-primary-darker</li>
+        <li>--color-primary-darkest</li>
+        <li>--color-primary-black</li>
+    </ul>
+    <br />
+    The classes follow the pattern:
+    <ul>
+        <li>text-{theme}</li>
+        <li>text-{theme}-{level}</li>
+        <li>bg-{theme}</li>
+        <li>bg-{theme}-{level}</li>
+        <li>border-{theme}</li>
+        <li>border-{theme}-{level}</li>
+    </ul>
+    <br />
+    Examples:
+    <ul>
+        <li>text-primary</li>
+        <li>text-primary-light</li>
+        <li>text-primary-lighter</li>
+        <li>text-primary-lightest</li>
+        <li>text-primary-white</li>
+        <li>text-primary-dark</li>
+        <li>text-primary-darker</li>
+        <li>text-primary-darkest</li>
+        <li>text-primary-black</li>
+    </ul>
+</p>
+
+<p>
+    Here's a look at the color palette by theme.
+</p>
+
+@code
+{
+    private readonly string[] themes = ["primary", "secondary", "tertiary", "info", "highlight", "success", "warning", "alert", "danger"];
+
+    private readonly string[] themeLevels = ["light", "lighter", "lightest", "white", "dark", "darker", "darkest", "black"];
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>Theme</th>
+            <th>Color</th>
+            <th>Light</th>
+            <th>Lighter</th>
+            <th>Lightest</th>
+            <th>White</th>
+            <th>Dark</th>
+            <th>Darker</th>
+            <th>Darkest</th>
+            <th>Black</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var theme in themes)
+        {
+            <tr>
+                <td>@theme</td>
+                <td>
+                    <div class="square bg-@theme" />
+                </td>
+                @foreach (var level in themeLevels)
+                {
+                    <td>
+                        <div class="square bg-@theme-@level" />
+                    </td>
+                }
+            </tr>
+        })
+    </tbody>
+</table>
+
+@code {
+
+}

@@ -1,44 +1,46 @@
-﻿<div class="sidebar-nav">
-    <div class="sidebar-title">
-        <span>Prototype</span>
-    </div>
-    <ul>
-        <MenuItem ItemType="MenuItemType.Section" Title="Introdução">
-            <MenuItem Title="Bem vindo" ItemType="MenuItemType.Document" />
-            <MenuItem Title="Estórias" ItemType="MenuItemType.Document" />
-            <MenuItem Title="Documentação" ItemType="MenuItemType.Document" />
-        </MenuItem>
+﻿@using RoyalCode.Yasamen.Prototypes.Client.Layout.SidebarNav
 
-        <MenuItem Title="Componentes" ItemType="MenuItemType.Section">
-            <MenuItem Title="Typografia" ItemType="MenuItemType.Folder">
-                <MenuItem Title="Paragraph" ItemType="MenuItemType.Component">
-                    <MenuItem Title="Dcos" ItemType="MenuItemType.Document" />
-                    <MenuItem Title="Estórias 1" ItemType="MenuItemType.Story" />
-                    <MenuItem Title="Estórias 3" ItemType="MenuItemType.Story" />
-                </MenuItem>
-                <MenuItem Title="Headings" ItemType="MenuItemType.Component">
-                    <MenuItem Title="Dcos" ItemType="MenuItemType.Document" />
-                    <MenuItem Title="Estórias 1" ItemType="MenuItemType.Story" />
-                    <MenuItem Title="Estórias 3" ItemType="MenuItemType.Story" />
-                </MenuItem>
+<SideBarMenu Title="Prototype">
+    <MenuItem ItemType="MenuItemType.Section" Title="Introdução">
+        <MenuItem Title="Bem vindo" ItemType="MenuItemType.Document" />
+        <MenuItem Title="Estórias" ItemType="MenuItemType.Document" />
+        <MenuItem Title="Documentação" ItemType="MenuItemType.Document" />
+    </MenuItem>
+
+    <MenuItem Title="Styles e Theme" ItemType="MenuItemType.Section">
+        <MenuItem Title="Cores" ItemType="MenuItemType.Document" Link="/styles/colors" />
+        <MenuItem Title="Tipografia" ItemType="MenuItemType.Document" />
+        <MenuItem Title="Espaçamento" ItemType="MenuItemType.Document" />
+        <MenuItem Title="Elevação" ItemType="MenuItemType.Document" />
+    </MenuItem>
+
+    <MenuItem Title="Componentes" ItemType="MenuItemType.Section">
+        <MenuItem Title="Typografia" ItemType="MenuItemType.Folder">
+            <MenuItem Title="Paragraph" ItemType="MenuItemType.Component">
+                <MenuItem Title="Docs" ItemType="MenuItemType.Document" />
+                <MenuItem Title="Estórias 1" ItemType="MenuItemType.Story" />
+                <MenuItem Title="Estórias 3" ItemType="MenuItemType.Story" />
             </MenuItem>
-            <MenuItem Title="Buttons" ItemType="MenuItemType.Folder">
-                <MenuItem Title="Buton" ItemType="MenuItemType.Component">
-                    <MenuItem Title="Dcos" ItemType="MenuItemType.Document" />
-                    <MenuItem Title="Estórias 1" ItemType="MenuItemType.Story" />
-                    <MenuItem Title="Estórias 3" ItemType="MenuItemType.Story" />
-                </MenuItem>
-                <MenuItem Title="IconButton" ItemType="MenuItemType.Component">
-                    <MenuItem Title="Dcos" ItemType="MenuItemType.Document" />
-                    <MenuItem Title="Estórias 1" ItemType="MenuItemType.Story" />
-                    <MenuItem Title="Estórias 3" ItemType="MenuItemType.Story" />
-                </MenuItem>
-                <MenuItem Title="IconButton" ItemType="MenuItemType.Component">
-                    <MenuItem Title="Estória" ItemType="MenuItemType.Story" />
-                </MenuItem>
+            <MenuItem Title="Headings" ItemType="MenuItemType.Component">
+                <MenuItem Title="Docs" ItemType="MenuItemType.Document" />
+                <MenuItem Title="Estórias 1" ItemType="MenuItemType.Story" />
+                <MenuItem Title="Estórias 3" ItemType="MenuItemType.Story" />
             </MenuItem>
         </MenuItem>
-    </ul>
-
-</div>
-
+        <MenuItem Title="Buttons" ItemType="MenuItemType.Folder">
+            <MenuItem Title="Buton" ItemType="MenuItemType.Component">
+                <MenuItem Title="Docs" ItemType="MenuItemType.Document" />
+                <MenuItem Title="Estórias 1" ItemType="MenuItemType.Story" />
+                <MenuItem Title="Estórias 3" ItemType="MenuItemType.Story" />
+            </MenuItem>
+            <MenuItem Title="IconButton" ItemType="MenuItemType.Component">
+                <MenuItem Title="Docs" ItemType="MenuItemType.Document" />
+                <MenuItem Title="Estórias 1" ItemType="MenuItemType.Story" />
+                <MenuItem Title="Estórias 3" ItemType="MenuItemType.Story" />
+            </MenuItem>
+            <MenuItem Title="IconButton" ItemType="MenuItemType.Component">
+                <MenuItem Title="Estória" ItemType="MenuItemType.Story" />
+            </MenuItem>
+        </MenuItem>
+    </MenuItem>
+</SideBarMenu>

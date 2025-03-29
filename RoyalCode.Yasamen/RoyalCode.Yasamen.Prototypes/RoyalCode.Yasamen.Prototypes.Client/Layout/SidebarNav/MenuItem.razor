@@ -1,4 +1,6 @@
-﻿<li class="menu-item">
+﻿@using RoyalCode.Yasamen.Prototypes.Client.Layout.SidebarNav.Icons
+
+<li class="menu-item">
     <div class="menu-item-title" @onclick="ToggleSubMenu">
         <span class="@IconClasses">
             @if (HasSubMenu)
@@ -7,7 +9,7 @@
             }
         </span>
         <MenuItemIcon Type="@ItemType" />
-        <span class="menu-item-text">@Title</span>
+        <span class="menu-item-text" @onclick="ClickHandler">@Title</span>
     </div>
     @if (HasSubMenu)
     {
@@ -33,6 +35,12 @@
     [Parameter]
     public RenderFragment ChildContent { get; set; } // Submenu (ChildContent)
 
+    [Parameter]
+    public string? Link { get; set; } // Link para redirecionamento
+
+    [Inject]
+    private NavigationManager? Navigation { get; set; }
+
     private bool IsOpen { get; set; }  // Estado do submenu (aberto ou fechado)
 
     private bool HasSubMenu => ChildContent != null; // Verifica se o item de menu possui submenu
@@ -40,5 +48,15 @@
     private void ToggleSubMenu()
     {
         IsOpen = !IsOpen;
+    }
+
+    private void ClickHandler(MouseEventArgs args)
+    {
+        if (string.IsNullOrEmpty(Link))
+        {
+            return;
+        }
+
+        Navigation?.NavigateTo(Link);
     }
 }

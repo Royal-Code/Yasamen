@@ -1,29 +1,24 @@
 using Microsoft.AspNetCore.Components.Rendering;
 using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
 
 namespace Microsoft.AspNetCore.Components;
 
 public static class EmptyFragment
 {
-    private static readonly MethodInfo EmptyFragmentMethod = typeof(EmptyFragment).GetMethod(nameof(EmptyRenderFragment))!;
+    public static readonly RenderFragment Delegate = EmptyRenderFragment;
 
-    public static RenderFragment Delegate => EmptyRenderFragment;
+    public static RenderFragment<TModel> GetDelegate<TModel>() => TypedEmptyFragment<TModel>.TypedDelegate;
 
-    public static RenderFragment<TModel> GetDelegate<TModel>() => EmptyRenderFragment;
-
-    private static void EmptyRenderFragment(RenderTreeBuilder builder) { }
-
-    private static RenderFragment EmptyRenderFragment<TModel>(TModel model) => EmptyRenderFragment;
+    private static void EmptyRenderFragment(RenderTreeBuilder builder) { /* Empty Render Fragment */ }
 
     public static bool IsNotEmptyFragment(this RenderFragment? fragment)
     {
-        return fragment is not null && !Equate(fragment, Delegate);
+        return fragment is not null && !ReferenceEquals(fragment, Delegate);
     }
     
     public static bool IsNotEmptyFragment<T>(this RenderFragment<T>? fragment)
     {
-        return fragment is not null && !Equate(fragment, GetDelegate<T>());
+        return fragment is not null && !ReferenceEquals(fragment, TypedEmptyFragment<T>.TypedDelegate);
     }
 
     /// <summary>
@@ -40,30 +35,10 @@ public static class EmptyFragment
     /// <returns></returns>
     public static bool IsMissing([NotNullWhen(false)] this string? s) => string.IsNullOrWhiteSpace(s);
 
-    internal static bool Equate(Delegate a, Delegate b)
+    private static class TypedEmptyFragment<T>
     {
-        // remove delegate overhead
-        while (a.Target is Delegate target)
-            a = target;
-        while (b.Target is Delegate target)
-            b = target;
+        public static readonly RenderFragment<T> TypedDelegate = TypedEmptyRenderFragment;
 
-        // standard equality
-        if (a == b)
-            return true;
-
-        // compiled method body
-        if (a.Target != b.Target)
-            return false;
-        byte[] a_body = a.Method.GetMethodBody()!.GetILAsByteArray()!;
-        byte[] b_body = b.Method.GetMethodBody()!.GetILAsByteArray()!;
-        if (a_body.Length != b_body.Length)
-            return false;
-        for (int i = 0; i < a_body.Length; i++)
-        {
-            if (a_body[i] != b_body[i])
-                return false;
-        }
-        return true;
+        public static RenderFragment TypedEmptyRenderFragment<TModel>(TModel model) => Delegate;
     }
 }

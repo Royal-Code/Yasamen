@@ -1,4 +1,4 @@
-﻿namespace RoyalCode.Yasamen.Prototypes.Client.Layout;
+﻿namespace RoyalCode.Yasamen.Prototypes.Client.Layout.SidebarNav;
 
 public enum MenuItemType
 {

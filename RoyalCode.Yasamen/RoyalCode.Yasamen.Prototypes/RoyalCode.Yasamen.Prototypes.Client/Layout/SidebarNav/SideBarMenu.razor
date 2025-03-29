@@ -1,0 +1,17 @@
+﻿<div class="sidebar-nav">
+    <div class="sidebar-title">
+        <span>@Title</span>
+    </div>
+    <ul>
+        @ChildContent
+    </ul>
+</div>
+
+@code {
+
+    [Parameter, EditorRequired]
+    public string Title { get; set; } = default!;
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}

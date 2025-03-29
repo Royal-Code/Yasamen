@@ -1,18 +1,13 @@
 ﻿@using RoyalCode.Yasamen.Commons;
 
-<li class="@classes(this)" @onclick="ClickHandler" @attributes="Attributes" role="@Role">
+<li class="@Classes" @onclick="ClickHandler" @attributes="Attributes" role="@Role">
     @ChildContent
 </li>
 
 @code {
+    private static readonly BorderClasses defaultBorder = Css.Border.None();
 
-    private static readonly Borders defaultBorder = Borders.DefaultNone;
-
-    private static readonly CssMap<DropItem> classes = Css.Map<DropItem>()
-        .Add("drop-item")
-        .Add(static d => d.Border.CssClasses)
-        .Add(static d => d.AdditionalClasses)
-        .Build();
+    private string Classes => "drop-item".AddClass(Border).AddClass(AdditionalClasses);
 
     private string Role => OnClick.HasDelegate ? "button" : "menuitem";
 
@@ -20,7 +15,7 @@
     public RenderFragment ChildContent { get; set; } = null!;
 
     [Parameter]
-    public Borders Border { get; set; } = defaultBorder;
+    public BorderClasses Border { get; set; } = defaultBorder;
 
     [Parameter]
     public string? AdditionalClasses { get; set; }

@@ -1,7 +1,7 @@
-﻿@code {
-    [Parameter] public string Color { get; set; } = "#ecf0f1";  // Cor do ícone, padrão: branco
-}
-
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
     <path d="M2 4H5L6 5H14C14.5523 5 15 5.44772 15 6V14C15 14.5523 14.5523 15 14 15H2C1.44772 15 1 14.5523 1 14V6C1 5.44772 1.44772 5 2 5H5L6 4H2Z" stroke="@Color" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 </svg>
+
+@code {
+    [Parameter] public string Color { get; set; } = "#ecf0f1";  // Cor do ícone, padrão: branco
+}
