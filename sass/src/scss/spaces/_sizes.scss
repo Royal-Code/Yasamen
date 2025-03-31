@@ -1,0 +1,52 @@
+@use "sass:math";
+@use "sass:map";
+
+$spacing-rem: (
+        16: 4,
+        8: 6,
+        4: 4,
+        2: 4,
+        1: 4,
+        0.5: 4,
+        0.25: 4,
+        0.125: 4
+);
+
+$spacing-divs: 2, 3, 4, 5, 6, 8, 12, 16, 20, 24;
+
+@function generate-spaces() {
+  $output: (
+          0: 0,
+  );
+  $number: 0;
+  $sum: 0;
+  @each $div, $steps in $spacing-rem {
+    @for $i from 1 through $steps {
+      $number: $number + 1;
+      $current: $sum + math.div(1, $div);
+      $output: map.set($output, $number, #{$current}rem);
+      $sum: $current;
+    }
+  }
+  @each $div in $spacing-divs {
+    $percent: math.div(100%, $div);
+    @for $i from 1 through $div {
+      $value: $i * $percent;
+      $output: map.set($output, #{$i}\/#{$div}, $value);
+    }
+  }
+  $output: map.set($output, full, 100%);
+  @return $output;
+}
+
+$sizes: generate-spaces();
+
+@function generate-css-spacing-variables() {
+  $css-spacing: ();
+  @each $key, $value in $sizes {
+    $css-spacing: map.set($css-spacing, $key, var(--space-#{$key}));
+  }
+  @return $css-spacing;
+}
+
+$var-sizes: generate-css-spacing-variables();

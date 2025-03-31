@@ -1,0 +1,23 @@
+:root {
+  --blue: #0d6dfd;
+  --gray: #6c757d;
+  --purple: #7c3aed;
+  --blue-light: #7db8f0;
+  --blue-royal: #4169E1;
+  --green: #10b981;
+  --yellow: #fbbf24;
+  --orange: #f97316;
+  --red: #DC3545;
+  --light: #F2F1F3;
+  --dark: #38333c;
+  --indigo: #6366f1;
+  --pink: #ec4899;
+  --teal: #14b8a6;
+  --amber: #f59e0b;
+  --lime: #84cc16;
+  --emerald: #10b981;
+  --cyan: #06b6d4;
+  --rose: #f43f5e;
+}
+
+/*# sourceMappingURL=colors.css.map */

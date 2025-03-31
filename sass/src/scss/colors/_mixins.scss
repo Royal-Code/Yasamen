@@ -1,0 +1,58 @@
+@use "colors" as *;
+@use "sass:map";
+
+// Mixin para gerar as variáveis de cores no formato CSS
+@mixin generate-color-variables() {
+  @each $color-name, $scale in $color-scales {
+    // Criando a variável --color-{color}
+    --color-#{$color-name}: #{map.get($colors, $color-name)};
+    @each $step, $color in $scale {
+      // Criando a variável --color-{color}-{step}
+      --color-#{$color-name}-#{$step}: #{$color};
+    }
+  }
+  // white e black
+  --color-white: #{$color-white};
+  --color-black: #{$color-black};
+}
+
+// Mixin para gerar classes de background color
+@mixin generate-bg-classes() {
+  @each $color-name, $scale in $var-colors-scales {
+    // Criando a classe principal bg-{color} (ex: bg-blue → bg-blue-500)
+    .bg-#{$color-name} {
+      background-color: map.get($var-colors, $color-name);
+    }
+
+    // Criando classes bg-{color}-{step} (ex: bg-blue-100, bg-blue-900)
+    @each $step, $color in $scale {
+      .bg-#{$color-name}-#{$step} {
+        background-color: $color;
+      }
+    }
+  }
+  // white e black
+  .bg-white {
+      background-color: map.get($var-colors, white);
+  }
+  .bg-black {
+      background-color: map.get($var-colors, black);
+  }
+}
+
+// Mixin para gerar classes de text color
+@mixin generate-text-classes() {
+  @each $color-name, $scale in $var-colors-scales {
+    // Criando a classe principal text-{color} (ex: text-blue → text-blue-500)
+    .text-#{$color-name} {
+      color: map.get($var-colors, $color-name);
+    }
+
+    // Criando classes text-{color}-{step} (ex: text-blue-100, text-blue-900)
+    @each $step, $color in $scale {
+      .text-#{$color-name}-#{$step} {
+        color: $color;
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+@use 'index' as ds;
+
+:root{
+    @include ds.generate-color-variables();
+    @include ds.generate-spacing-variables();
+    @include ds.generate-breakpoint-variables();
+}
+@include ds.generate-screen-classes();
+@include ds.generate-width-classes();
+@include ds.generate-bg-classes();
+@include ds.generate-text-classes();
+

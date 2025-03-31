@@ -1,0 +1,50 @@
+// breakpoints
+
+@use "sass:map";
+
+$breakpoints: (
+        xxs: 24rem, // 384px - max: 1 col
+        xs: 36rem, // 576px - max: 4 cols min: 6 cols
+        sm: 48rem, // 768px - min: 8 cols
+        md: 68rem, // 1088px - min: 12 cols
+        lg: 90rem, // 1440px - min: 16 cols
+        xl: 116rem, // 1856px - min: 20 cols
+        xxl: 160rem // 2560px - min: 24 cols
+);
+
+$breakpoints-rules: (
+        max-width: (
+                xxs: 24rem, // 384px - max: 1 col
+        ),
+        min-width: (
+                xs: 36rem, // 576px - min: 6 cols
+                sm: 48rem, // 768px - min: 8 cols
+                md: 68rem, // 1088px - min: 12 cols
+                lg: 90rem, // 1440px - min: 16 cols
+                xl: 116rem, // 1856px - min: 20 cols
+                xxl: 160rem // 2560px - min: 24 cols
+        )
+);
+
+$breakpoints-cols: (
+        max-width: (
+                xxs: 1, // 384px - max: 1 col
+                xs: 4, // 576px - max: 4 cols
+        ),
+        min-width: (
+                xs: 6, // 576px - min: 6 cols
+                sm: 8, // 768px - min: 8 cols
+                md: 12, // 1088px - min: 12 cols
+                lg: 16, // 1440px - min: 16 cols
+                xl: 20, // 1856px - min: 20 cols
+                xxl: 24 // 2560px - min: 24 cols
+        )
+);
+
+@function get-breakpoint($breakpoint) {
+    @return map.get($breakpoints, $breakpoint);
+}
+
+@function get-breakpoint-cols($rule, $breakpoint) {
+    @return map.get(map.get($breakpoints-rules, $rule), $breakpoint);
+}

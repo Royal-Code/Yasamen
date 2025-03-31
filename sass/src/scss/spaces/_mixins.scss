@@ -1,0 +1,57 @@
+@use "sizes" as *;
+@use "breaks" as *;
+
+// gera as variáveis de espaçamento
+@mixin generate-spacing-variables() {
+  @each $key, $value in $sizes {
+    --space-#{$key}: #{$value};
+  }
+}
+
+// gera as variáveis de breakpoints (--screen-{key})
+@mixin generate-breakpoint-variables() {
+  @each $key, $value in $breakpoints {
+    --screen-#{$key}: #{$value};
+  }
+}
+
+// classes para screen
+@mixin generate-screen-classes() {
+  @each $key, $value in $breakpoints {
+    .screen-#{$key} {
+      width: var(--screen-#{$key});
+    }
+  }
+}
+
+// mix media breakpoints
+@mixin media-breakpoints() {
+  @each $rule, $breakpoints in $breakpoints-rules {
+    @each $key, $value in $breakpoints {
+      @media (#{$rule}: #{$value}) {
+        @content($key);
+      }
+    }
+  }
+}
+
+// classes para width
+@mixin generate-width-classes() {
+  @each $key, $value in $var-sizes {
+    .w-#{$key} {
+      width: #{$value};
+    }
+    @each $breakpoint, $v in $breakpoints {
+      .screen-#{$breakpoint} .#{$breakpoint}\:w-#{$key} {
+        @extend .w-#{$key};
+      }
+    }
+  }
+  @include media-breakpoints() using ($breakpoint) {
+    @each $key, $value in $var-sizes {
+      .#{$breakpoint}\:w-#{$key} {
+        width: #{$value};
+      }
+    }
+  }
+}

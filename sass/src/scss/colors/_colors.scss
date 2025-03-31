@@ -1,0 +1,154 @@
+@use "sass:map";
+@use "sass:math";
+@use "sass:color";
+@use "sass:string";
+
+// Cores principais
+$color-blue: #0d6dfd;
+$color-gray: #6c757d;
+$color-purple: #7c3aed;
+$color-blue-light: #7db8f0;
+$color-blue-royal: #4169E1;
+$color-green: #10b981;
+$color-yellow: #fbbf24;
+$color-orange: #f97316;
+$color-red: #DC3545;
+$color-light: #F2F1F3;
+$color-dark: #38333c;
+$color-white: #ffffff;
+$color-black: #000000;
+
+$thematic-colors: (
+        "primary": $color-blue,
+        "secondary": $color-gray,
+        "tertiary": $color-purple,
+        "info": $color-blue-light,
+        "highlight": $color-blue-royal,
+        "success": $color-green,
+        "warning": $color-yellow,
+        "alert": $color-orange,
+        "danger": $color-red
+);
+
+// cores baseadas em temas
+$colors: (
+        "primary": $color-blue,
+        "secondary": $color-gray,
+        "tertiary": $color-purple,
+        "info": $color-blue-light,
+        "highlight": $color-blue-royal,
+        "success": $color-green,
+        "warning": $color-yellow,
+        "alert": $color-orange,
+        "danger": $color-red,
+        "light": $color-light,
+        "dark": $color-dark,
+);
+
+// função para obter uma cor específica
+@function get-color($color-name) {
+  @return map.get($colors, $color-name);
+}
+
+// Função para garantir que as cores sejam sempre hexadecimais
+@function normalize-color($color) {
+  // Obtém os componentes RGB
+  $r: math.round(color.red($color));
+  $g: math.round(color.green($color));
+  $b: math.round(color.blue($color));
+
+  // Convertemos para hexadecimal concatenando as partes
+  @return #{"#" +
+    dec-to-hex($r) +
+    dec-to-hex($g) +
+    dec-to-hex($b)};
+}
+
+@function dec-to-hex($value) {
+  $hex-chars: '0123456789abcdef';
+  $high: math.floor(math.div($value, 16));
+  $low: $value % 16;
+
+  $high-char: string.slice($hex-chars, $high + 1, $high + 1);
+  $low-char: string.slice($hex-chars, $low + 1, $low + 1);
+
+  @return $high-char + $low-char;
+}
+
+// Função para gerar uma escala de cores
+@function generate-color-scale() {
+  $scales: ();
+  $steps: (100, 200, 300, 400, 500, 600, 700, 800, 900);
+  // cores temáticas
+  @each $color-name, $color in $thematic-colors {
+    $scale: ();
+    @each $step in $steps {
+      $lightness-adjust: 100% - math.div($step, 5);
+      $new-color: color.scale($color, $lightness: $lightness-adjust);
+      $scale: map.set($scale, $step, normalize-color($new-color));
+    }
+    // Adicionando a escala de cores ao mapa de escalas
+    $scales: map.set($scales, $color-name, $scale);
+  }
+  // cor clara
+  $light-scale: ();
+  @each $step in $steps {
+    $lightness-adjust: 0% - math.div($step - 100, 20);
+    $new-color: color.scale($color-light, $lightness: $lightness-adjust);
+    $light-scale: map.set($light-scale, $step, normalize-color($new-color));
+  }
+  // Adicionando a escala de cores ao mapa de escalas
+  $scales: map.set($scales, light, $light-scale);
+
+  // cor escura
+  $dark-scale: ();
+  @each $step in $steps {
+    $lightness-adjust: math.div(100% - math.div($step, 5), 1.5);
+    $new-color: color.scale($color-dark, $lightness: $lightness-adjust);
+    $dark-scale: map.set($dark-scale, $step, normalize-color($new-color));
+  }
+  // Adicionando a escala de cores ao mapa de escalas
+  $scales: map.set($scales, dark, $dark-scale);
+
+  @return $scales;
+}
+
+// cores baseadas em temas e escalas
+$color-scales: generate-color-scale();
+
+// Função para obter uma cor específica de uma escala
+@function get-color-scale($color-name, $step) {
+  $scale: map.get($color-scales, $color-name);
+  @return map.get($scale, $step);
+}
+
+// Função para gerar as variáveis de cor
+@function generate-css-color-variables() {
+  $css-color: ();
+  @each $color-name, $color in $colors {
+    $css-color: map.set($css-color, $color-name, var(--color-#{$color-name}));
+  }
+  $css-color: map.set($css-color, white, var(--color-white));
+  $css-color: map.set($css-color, black, var(--color-black));
+
+  @return $css-color;
+}
+
+// Função para gerar as variáveis de cor com escala
+@function generate-css-color-scales-variables() {
+  $scales: ();
+  @each $color-name, $scale in $color-scales {
+    $var-scales: ();
+    @each $step, $color in $scale {
+      // Adicionando variáveis de cor
+      $var-scales: map.set($var-scales, $step, var(--color-#{$color-name}-#{$step}));
+    }
+    // Adicionando a variável de cor base
+    $scales: map.set($scales, $color-name, $var-scales);
+  }
+
+  @return $scales;
+}
+
+$var-colors: generate-css-color-variables();
+$var-colors-scales: generate-css-color-scales-variables();
