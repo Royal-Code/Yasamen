@@ -1,15 +1,10 @@
 @use "sizes" as *;
 @use "breaks" as *;
+@use "sass:map";
 
 // gera as variáveis de espaçamento
 @mixin generate-sizes-variables() {
-  @each $key, $value in $sizes {
-    --size-#{$key}: #{$value};
-  }
-  @each $key, $value in $sizing-w-only {
-    --size-#{$key}: #{$value};
-  }
-  @each $key, $value in $sizing-h-only {
+  @each $key, $value in $sizes-rem {
     --size-#{$key}: #{$value};
   }
 }
@@ -45,7 +40,15 @@
 $w-classes-names: (w: width, max-w: max-width, min-w: min-width);
 // classes para width
 @mixin generate-width-classes() {
-  @each $key, $value in $var-w-sizes {
+
+  $sizes: ();
+  $sizes: map.merge($sizes, $sizes-alts);
+  $sizes: map.merge($sizes, $var-sizes);
+  $sizes: map.merge($sizes, $sizes-divs);
+  $sizes: map.merge($sizes, $w-sizes);
+
+
+  @each $key, $value in $sizes {
     @each $w-class, $w-prop in $w-classes-names {
       .#{$w-class}-#{$key} {
         #{$w-prop}: #{$value};
@@ -58,7 +61,7 @@ $w-classes-names: (w: width, max-w: max-width, min-w: min-width);
     //}
   }
   @include media-breakpoints() using ($breakpoint) {
-    @each $key, $value in $var-w-sizes {
+    @each $key, $value in $sizes {
       @each $w-class, $w-prop in $w-classes-names {
         .#{$breakpoint}\:#{$w-class}-#{$key} {
           #{$w-prop}: #{$value};

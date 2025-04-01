@@ -1,17 +1,6 @@
 @use "sass:math";
 @use "sass:map";
 
-$spacing-rem: (
-        16: 4,
-        8: 6,
-        4: 4,
-        2: 4,
-        1: 4,
-        0.5: 4,
-        0.25: 4,
-        0.125: 4
-);
-
 $sizing-rem: (
         16: 2,   // 0.0625rem e 0.125rem - 1 e 2 px
         8: 1,    // 0.25rem - 4 px
@@ -26,9 +15,9 @@ $sizing-rem: (
 $sizing-divs: 2, 3, 4, 5, 6, 8, 12, 16, 20, 24;
 
 $sizing-alts: (
-        0: 0,
-        full: 100%,
-        auto: auto
+  auto: auto,
+  full: 100%,
+  0: 0
 );
 
 $sizing-w-only: (
@@ -51,13 +40,8 @@ $sizing-h-only: (
         vh-10: 10vh
 );
 
-@function generate-sizes() {
+@function generate-sizes-rem() {
   $output: ();
-
-  @each $altKey, $altValue in $sizing-alts {
-    $output: map.set($output, $altKey, $altValue);
-  }
-
   $number: 0;
   $sum: 0;
   @each $div, $steps in $sizing-rem {
@@ -68,22 +52,50 @@ $sizing-h-only: (
       $sum: $current;
     }
   }
+  @return $output;
+}
 
+$sizes-rem: generate-sizes-rem();
+
+@function generate-sizes-rem-css-variables() {
+  $css-sizes: ();
+  @each $key, $value in $sizes-rem {
+    $css-sizes: map.set($css-sizes, $key, var(--size-#{$key}));
+  }
+  @return $css-sizes;
+}
+
+$var-sizes: generate-sizes-rem-css-variables();
+
+@function generate-sizes-alts()
+{
+  $output: ();
+  @each $altKey, $altValue in $sizing-alts {
+    $output: map.set($output, $altKey, $altValue);
+  }
+  @return $output;
+}
+
+$sizes-alts: generate-sizes-alts();
+
+@function generate-sizes-divs()
+{
+  $output: ();
   @each $div in $sizing-divs {
     $percent: math.div(100%, $div);
-    @for $i from 1 through $div {
+    $f: $div - 1;
+    @for $i from 1 through $f {
       $value: $i * $percent;
       $output: map.set($output, #{$i}\/#{$div}, $value);
     }
   }
-
   @return $output;
 }
 
-$sizes: generate-sizes();
+$sizes-divs: generate-sizes-divs();
 
 @function generate-w-sizes() {
-  $output: $sizes;
+  $output: ();
   @each $key,$value in $sizing-w-only {
     $output: map.set($output, $key, $value);
   }
@@ -91,13 +103,3 @@ $sizes: generate-sizes();
 }
 
 $w-sizes: generate-w-sizes();
-
-@function generate-css-size-variables() {
-  $css-sizes: ();
-  @each $key, $value in $w-sizes {
-    $css-sizes: map.set($css-sizes, $key, var(--size-#{$key}));
-  }
-  @return $css-sizes;
-}
-
-$var-w-sizes: generate-css-size-variables();

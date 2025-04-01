@@ -1,0 +1,19 @@
+@use "sass:math";
+@use "sass:map";
+
+$spacing-rem: (
+        16: 4,    // 1, 2, 3 e 4 px
+        8: 6,     // 6 e 8, 10, 12, 14 e 16 px
+        4: 2,     // 20 e 24 px
+        2: 3,     // 32, 40 e 48 px
+        1: 1,     // 64 px
+        0.5: 2,   // 96, 128 px
+        0.25: 2,  // 192, 256 px
+);
+
+$spaces-alts: (
+  auto: auto,
+  full: 100%,
+  half: 50%,
+  0: 0
+);
