@@ -2,9 +2,15 @@
 @use "breaks" as *;
 
 // gera as variáveis de espaçamento
-@mixin generate-spacing-variables() {
+@mixin generate-sizes-variables() {
   @each $key, $value in $sizes {
-    --space-#{$key}: #{$value};
+    --size-#{$key}: #{$value};
+  }
+  @each $key, $value in $sizing-w-only {
+    --size-#{$key}: #{$value};
+  }
+  @each $key, $value in $sizing-h-only {
+    --size-#{$key}: #{$value};
   }
 }
 
@@ -35,22 +41,28 @@
   }
 }
 
+
+$w-classes-names: (w: width, max-w: max-width, min-w: min-width);
 // classes para width
 @mixin generate-width-classes() {
-  @each $key, $value in $var-sizes {
-    .w-#{$key} {
-      width: #{$value};
-    }
-    @each $breakpoint, $v in $breakpoints {
-      .screen-#{$breakpoint} .#{$breakpoint}\:w-#{$key} {
-        @extend .w-#{$key};
+  @each $key, $value in $var-w-sizes {
+    @each $w-class, $w-prop in $w-classes-names {
+      .#{$w-class}-#{$key} {
+        #{$w-prop}: #{$value};
       }
     }
+    //@each $breakpoint, $v in $breakpoints {
+    //  .screen-#{$breakpoint} .#{$breakpoint}\:w-#{$key} {
+    //    @extend .w-#{$key};
+    //  }
+    //}
   }
   @include media-breakpoints() using ($breakpoint) {
-    @each $key, $value in $var-sizes {
-      .#{$breakpoint}\:w-#{$key} {
-        width: #{$value};
+    @each $key, $value in $var-w-sizes {
+      @each $w-class, $w-prop in $w-classes-names {
+        .#{$breakpoint}\:#{$w-class}-#{$key} {
+          #{$w-prop}: #{$value};
+        }
       }
     }
   }

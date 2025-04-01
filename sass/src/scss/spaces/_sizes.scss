@@ -12,15 +12,55 @@ $spacing-rem: (
         0.125: 4
 );
 
-$spacing-divs: 2, 3, 4, 5, 6, 8, 12, 16, 20, 24;
+$sizing-rem: (
+        16: 2,   // 0.0625rem e 0.125rem - 1 e 2 px
+        8: 1,    // 0.25rem - 4 px
+        4: 1,    // 0.5rem - 8 px
+        2: 3,    // 1rem, 1.5rem e 2rem - 16 px, 24 px e 32 px
+        1: 2,    // 3rem e 4rem - 48 px e 64 px
+        0.5: 4,  // 6rem, 8rem, 10rem e 12rem - 96 px, 128 px, 160 px e 192 px
+        0.25: 1, // 16rem - 256 px
+        0.125: 2 // 24rem e 32rem - 384 px e 512 px
+);
 
-@function generate-spaces() {
-  $output: (
-          0: 0,
-  );
+$sizing-divs: 2, 3, 4, 5, 6, 8, 12, 16, 20, 24;
+
+$sizing-alts: (
+        0: 0,
+        full: 100%,
+        auto: auto
+);
+
+$sizing-w-only: (
+        vw-100: 100vw,
+        vw-90: 90vw,
+        vw-80: 80vw,
+        vw-75: 75vw,
+        vw-50: 50vw,
+        vw-25: 25vw,
+        vw-10: 10vw
+);
+
+$sizing-h-only: (
+        vh-100: 100vh,
+        vh-90: 90vh,
+        vh-80: 80vh,
+        vh-75: 75vh,
+        vh-50: 50vh,
+        vh-25: 25vh,
+        vh-10: 10vh
+);
+
+@function generate-sizes() {
+  $output: ();
+
+  @each $altKey, $altValue in $sizing-alts {
+    $output: map.set($output, $altKey, $altValue);
+  }
+
   $number: 0;
   $sum: 0;
-  @each $div, $steps in $spacing-rem {
+  @each $div, $steps in $sizing-rem {
     @for $i from 1 through $steps {
       $number: $number + 1;
       $current: $sum + math.div(1, $div);
@@ -28,25 +68,36 @@ $spacing-divs: 2, 3, 4, 5, 6, 8, 12, 16, 20, 24;
       $sum: $current;
     }
   }
-  @each $div in $spacing-divs {
+
+  @each $div in $sizing-divs {
     $percent: math.div(100%, $div);
     @for $i from 1 through $div {
       $value: $i * $percent;
       $output: map.set($output, #{$i}\/#{$div}, $value);
     }
   }
-  $output: map.set($output, full, 100%);
+
   @return $output;
 }
 
-$sizes: generate-spaces();
+$sizes: generate-sizes();
 
-@function generate-css-spacing-variables() {
-  $css-spacing: ();
-  @each $key, $value in $sizes {
-    $css-spacing: map.set($css-spacing, $key, var(--space-#{$key}));
+@function generate-w-sizes() {
+  $output: $sizes;
+  @each $key,$value in $sizing-w-only {
+    $output: map.set($output, $key, $value);
   }
-  @return $css-spacing;
+  @return $output;
 }
 
-$var-sizes: generate-css-spacing-variables();
+$w-sizes: generate-w-sizes();
+
+@function generate-css-size-variables() {
+  $css-sizes: ();
+  @each $key, $value in $w-sizes {
+    $css-sizes: map.set($css-sizes, $key, var(--size-#{$key}));
+  }
+  @return $css-sizes;
+}
+
+$var-w-sizes: generate-css-size-variables();
