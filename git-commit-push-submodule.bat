@@ -13,7 +13,7 @@ set /p "commit_message=Enter the commit message: "
 
 git add --all
 git commit -m "%commit_message%"
-git push 
+git push origin HEAD:main
 
 echo Git operations completed successfully.
 echo --------------------------------------
