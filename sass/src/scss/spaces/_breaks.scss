@@ -48,3 +48,14 @@ $breakpoints-cols: (
 @function get-breakpoint-cols($rule, $breakpoint) {
     @return map.get(map.get($breakpoints-rules, $rule), $breakpoint);
 }
+
+// mix media breakpoints
+@mixin media-breakpoints() {
+  @each $rule, $breakpoints in $breakpoints-rules {
+    @each $key, $value in $breakpoints {
+      @media (#{$rule}: #{$value}) {
+        @content($key);
+      }
+    }
+  }
+}

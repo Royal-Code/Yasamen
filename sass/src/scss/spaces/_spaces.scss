@@ -17,3 +17,39 @@ $spaces-alts: (
   half: 50%,
   0: 0
 );
+
+@function generate-spacing-rem() {
+  $output: ();
+  $number: 0;
+  $sum: 0;
+  @each $div, $steps in $spacing-rem {
+    @for $i from 1 through $steps {
+      $number: $number + 1;
+      $current: $sum + math.div(1, $div);
+      $output: map.set($output, $number, #{$current}rem);
+      $sum: $current;
+    }
+  }
+  @return $output;
+}
+
+@function generate-spacing-rem-css-variables() {
+  $output: ();
+  @each $key, $value in $spacing-rem {
+    $output: map.set($output, $key, var(--space-#{$key}));
+  }
+  @return $output;
+}
+
+@function generate-spaces-alts()
+{
+  $output: ();
+  @each $altKey, $altValue in $spaces-alts {
+    $output: map.set($output, $altKey, $altValue);
+  }
+  @return $output;
+}
+
+$spacing-rem: generate-spacing-rem();
+$var-spacing: generate-spacing-rem-css-variables();
+$spaces-alts: generate-spaces-alts();

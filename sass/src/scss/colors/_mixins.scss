@@ -11,9 +11,6 @@
       --color-#{$color-name}-#{$step}: #{$color};
     }
   }
-  // white e black
-  --color-white: #{$color-white};
-  --color-black: #{$color-black};
 }
 
 // Mixin para gerar classes de background color
@@ -33,10 +30,10 @@
   }
   // white e black
   .bg-white {
-      background-color: map.get($var-colors, white);
+      background-color: white;
   }
   .bg-black {
-      background-color: map.get($var-colors, black);
+      background-color: black;
   }
 }
 

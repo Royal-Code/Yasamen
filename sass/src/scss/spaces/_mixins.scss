@@ -1,4 +1,5 @@
 @use "sizes" as *;
+@use "spaces" as *;
 @use "breaks" as *;
 @use "sass:map";
 
@@ -6,6 +7,9 @@
 @mixin generate-sizes-variables() {
   @each $key, $value in $sizes-rem {
     --size-#{$key}: #{$value};
+  }
+  @each $key, $value in $spacing-rem {
+    --space-#{$key}: #{$value};
   }
 }
 
@@ -25,18 +29,6 @@
   }
 }
 
-// mix media breakpoints
-@mixin media-breakpoints() {
-  @each $rule, $breakpoints in $breakpoints-rules {
-    @each $key, $value in $breakpoints {
-      @media (#{$rule}: #{$value}) {
-        @content($key);
-      }
-    }
-  }
-}
-
-
 $w-classes-names: (w: width, max-w: max-width, min-w: min-width);
 // classes para width
 @mixin generate-width-classes() {
@@ -50,8 +42,11 @@ $w-classes-names: (w: width, max-w: max-width, min-w: min-width);
 
   @each $key, $value in $sizes {
     @each $w-class, $w-prop in $w-classes-names {
-      .#{$w-class}-#{$key} {
-        #{$w-prop}: #{$value};
+      // se prop for max-width e o valor for auto, não gera a classe
+      @if not ($w-prop == max-width and $value == auto) {
+        .#{$w-class}-#{$key} {
+          #{$w-prop}: #{$value};
+        }
       }
     }
     //@each $breakpoint, $v in $breakpoints {
@@ -60,13 +55,48 @@ $w-classes-names: (w: width, max-w: max-width, min-w: min-width);
     //  }
     //}
   }
-  @include media-breakpoints() using ($breakpoint) {
+  @include media-breakpoints() using($breakpoint) {
     @each $key, $value in $sizes {
       @each $w-class, $w-prop in $w-classes-names {
-        .#{$breakpoint}\:#{$w-class}-#{$key} {
-          #{$w-prop}: #{$value};
+        @if not ($w-prop == max-width and $value == auto) {
+          .#{$breakpoint}\:#{$w-class}-#{$key} {
+            #{$w-prop}: #{$value};
+          }
         }
       }
     }
   }
+}
+
+$h-classes-names: (h: height, max-h: max-height, min-h: min-height);
+// classes para height
+@mixin generate-height-classes() {
+
+  $sizes: ();
+  $sizes: map.merge($sizes, $sizes-alts);
+  $sizes: map.merge($sizes, $var-sizes);
+  $sizes: map.merge($sizes, $h-sizes);
+
+  @each $key, $value in $sizes {
+    @each $h-class, $h-prop in $h-classes-names {
+      // se prop for max-height e o valor for auto, não gera a classe
+      @if not ($h-prop == max-height and $value == auto) {
+        .#{$h-class}-#{$key} {
+          #{$h-prop}: #{$value};
+        }
+      }
+    }
+  }
+
+  //@include media-breakpoints() using($breakpoint) {
+  //  @each $key, $value in $sizes {
+  //    @each $h-class, $h-prop in $h-classes-names {
+  //      @if not ($h-prop == max-height and $value == auto) {
+  //        .#{$breakpoint}\:#{$h-class}-#{$key} {
+  //          #{$h-prop}: #{$value};
+  //        }
+  //      }
+  //    }
+  //  }
+  //}
 }

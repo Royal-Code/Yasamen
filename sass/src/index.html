@@ -5,6 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Design System Test</title>
     <link rel="stylesheet" href="../dist/css/main.css">
+    <style>
+        .pink-100 {
+            background-color: #f8bbd0;
+        }
+
+        .pink-200 {
+            background-color: #f48fb1;
+        }
+
+        .pink-300 {
+            background-color: #f06292;
+        }
+
+        .pink-400 {
+            background-color: #ec407a;
+        }
+
+        .demo-width {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .demo-width > div {
+            height: 2.5rem;
+            margin: 0 2px 0 2px;
+        }
+        .demo-width > div > div {
+            height: 1rem;
+        }
+        .demo-width.divs > div {
+            width: 100%;
+        }
+
+        .demo-height {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .demo-height > div > div {
+            min-width: 1rem;
+            margin: 2px;
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -12,10 +57,598 @@
 </header>
 <main>
     <section>
-        <h2>Typography</h2>
-        <p>Este é um parágrafo de exemplo para testar a tipografia.</p>
-        <h3>Subtítulo</h3>
-        <p>Outro parágrafo para verificar diferentes estilos de texto.</p>
+        <h2>Width</h2>
+        <p>Estes são os tamanhos disponíveis</p>
+        <p> w-{n} onde n vai de 1 até 16 </p>
+        <div class="demo-width pink-100">
+            <div>
+                <div class="w-1 pink-200"></div>
+                <div>w-1</div>
+            </div>
+            <div>
+                <div class="w-2 pink-200"></div>
+                <div>w-2</div>
+            </div>
+            <div>
+                <div class="w-3 pink-200"></div>
+                <div>w-3</div>
+            </div>
+            <div>
+                <div class="w-4 pink-200"></div>
+                <div>w-4</div>
+            </div>
+            <div>
+                <div class="w-5 pink-200"></div>
+                <div>w-5</div>
+            </div>
+            <div>
+                <div class="w-6 pink-200"></div>
+                <div>w-6</div>
+            </div>
+            <div>
+                <div class="w-7 pink-200"></div>
+                <div>w-7</div>
+            </div>
+            <div>
+                <div class="w-8 pink-200"></div>
+                <div>w-8</div>
+            </div>
+            <div>
+                <div class="w-9 pink-200"></div>
+                <div>w-9</div>
+            </div>
+            <div>
+                <div class="w-10 pink-200"></div>
+                <div>w-10</div>
+            </div>
+            <div>
+                <div class="w-11 pink-200"></div>
+                <div>w-11</div>
+            </div>
+            <div>
+                <div class="w-12 pink-200"></div>
+                <div>w-12</div>
+            </div>
+            <div>
+                <div class="w-13 pink-200"></div>
+                <div>w-13</div>
+            </div>
+            <div>
+                <div class="w-14 pink-200"></div>
+                <div>w-14</div>
+            </div>
+            <div>
+                <div class="w-15 pink-200"></div>
+                <div>w-15</div>
+            </div>
+            <div>
+                <div class="w-16 pink-200"></div>
+                <div>w-16</div>
+            </div>
+        </div>
+        <p> w-full, w-auto, w-0</p>
+        <div class="demo-width pink-100">
+            <div>
+                <div class="w-full pink-200"></div>
+                <div>w-full</div>
+            </div>
+            <div>
+                <div class="w-auto pink-200"></div>
+                <div>w-auto</div>
+            </div>
+            <div>
+                <div class="w-0 pink-200"></div>
+                <div>w-0</div>
+            </div>
+        </div>
+        <p> w-{n}/{div} onde n vai de 1 até div - 1 e div tem os valores 2, 3, 4, 5, 6, 8, 12, 16, 20, 24</p>
+        <p>div 2</p>
+        <div class="demo-width pink-100 divs">
+            <div>
+                <div class="w-1/2 pink-200"></div>
+                <div>w-1/2</div>
+            </div>
+        </div>
+        <p>div 3</p>
+        <div class="demo-width pink-100 divs">
+            <div>
+                <div class="w-1/3 pink-200"></div>
+                <div>w-1/3</div>
+            </div>
+            <div>
+                <div class="w-2/3 pink-200"></div>
+                <div>w-2/3</div>
+            </div>
+        </div>
+        <p>div 4</p>
+        <div class="demo-width pink-100 divs">
+            <div>
+                <div class="w-1/4 pink-200"></div>
+                <div>w-1/4</div>
+            </div>
+            <div>
+                <div class="w-2/4 pink-200"></div>
+                <div>w-2/4</div>
+            </div>
+            <div>
+                <div class="w-3/4 pink-200"></div>
+                <div>w-3/4</div>
+            </div>
+        </div>
+        <p>div 5</p>
+        <div class="demo-width pink-100 divs">
+            <div>
+                <div class="w-1/5 pink-200"></div>
+                <div>w-1/5</div>
+            </div>
+            <div>
+                <div class="w-2/5 pink-200"></div>
+                <div>w-2/5</div>
+            </div>
+            <div>
+                <div class="w-3/5 pink-200"></div>
+                <div>w-3/5</div>
+            </div>
+            <div>
+                <div class="w-4/5 pink-200"></div>
+                <div>w-4/5</div>
+            </div>
+        </div>
+        <p>div 6</p>
+        <div class="demo-width pink-100 divs">
+            <div>
+                <div class="w-1/6 pink-200"></div>
+                <div>w-1/6</div>
+            </div>
+            <div>
+                <div class="w-2/6 pink-200"></div>
+                <div>w-2/6</div>
+            </div>
+            <div>
+                <div class="w-3/6 pink-200"></div>
+                <div>w-3/6</div>
+            </div>
+            <div>
+                <div class="w-4/6 pink-200"></div>
+                <div>w-4/6</div>
+            </div>
+            <div>
+                <div class="w-5/6 pink-200"></div>
+                <div>w-5/6</div>
+            </div>
+        </div>
+        <p>div 8</p>
+        <div class="demo-width pink-100 divs">
+            <div>
+                <div class="w-1/8 pink-200"></div>
+                <div>w-1/8</div>
+            </div>
+            <div>
+                <div class="w-2/8 pink-200"></div>
+                <div>w-2/8</div>
+            </div>
+            <div>
+                <div class="w-3/8 pink-200"></div>
+                <div>w-3/8</div>
+            </div>
+            <div>
+                <div class="w-4/8 pink-200"></div>
+                <div>w-4/8</div>
+            </div>
+            <div>
+                <div class="w-5/8 pink-200"></div>
+                <div>w-5/8</div>
+            </div>
+            <div>
+                <div class="w-6/8 pink-200"></div>
+                <div>w-6/8</div>
+            </div>
+            <div>
+                <div class="w-7/8 pink-200"></div>
+                <div>w-7/8</div>
+            </div>
+        </div>
+        <p>div 12</p>
+        <div class="demo-width pink-100 divs">
+            <div>
+                <div class="w-1/12 pink-200"></div>
+                <div>w-1/12</div>
+            </div>
+            <div>
+                <div class="w-2/12 pink-200"></div>
+                <div>w-2/12</div>
+            </div>
+            <div>
+                <div class="w-3/12 pink-200"></div>
+                <div>w-3/12</div>
+            </div>
+            <div>
+                <div class="w-4/12 pink-200"></div>
+                <div>w-4/12</div>
+            </div>
+            <div>
+                <div class="w-5/12 pink-200"></div>
+                <div>w-5/12</div>
+            </div>
+            <div>
+                <div class="w-6/12 pink-200"></div>
+                <div>w-6/12</div>
+            </div>
+            <div>
+                <div class="w-7/12 pink-200"></div>
+                <div>w-7/12</div>
+            </div>
+            <div>
+                <div class="w-8/12 pink-200"></div>
+                <div>w-8/12</div>
+            </div>
+            <div>
+                <div class="w-9/12 pink-200"></div>
+                <div>w-9/12</div>
+            </div>
+            <div>
+                <div class="w-10/12 pink-200"></div>
+                <div>w-10/12</div>
+            </div>
+            <div>
+                <div class="w-11/12 pink-200"></div>
+                <div>w-11/12</div>
+            </div>
+        </div>
+        <p>div 16</p>
+        <div class="demo-width pink-100 divs">
+            <div>
+                <div class="w-1/16 pink-200"></div>
+                <div>w-1/16</div>
+            </div>
+            <div>
+                <div class="w-2/16 pink-200"></div>
+                <div>w-2/16</div>
+            </div>
+            <div>
+                <div class="w-3/16 pink-200"></div>
+                <div>w-3/16</div>
+            </div>
+            <div>
+                <div class="w-4/16 pink-200"></div>
+                <div>w-4/16</div>
+            </div>
+            <div>
+                <div class="w-5/16 pink-200"></div>
+                <div>w-5/16</div>
+            </div>
+            <div>
+                <div class="w-6/16 pink-200"></div>
+                <div>w-6/16</div>
+            </div>
+            <div>
+                <div class="w-7/16 pink-200"></div>
+                <div>w-7/16</div>
+            </div>
+            <div>
+                <div class="w-8/16 pink-200"></div>
+                <div>w-8/16</div>
+            </div>
+            <div>
+                <div class="w-9/16 pink-200"></div>
+                <div>w-9/16</div>
+            </div>
+            <div>
+                <div class="w-10/16 pink-200"></div>
+                <div>w-10/16</div>
+            </div>
+            <div>
+                <div class="w-11/16 pink-200"></div>
+                <div>w-11/16</div>
+            </div>
+            <div>
+                <div class="w-12/16 pink-200"></div>
+                <div>w-12/16</div>
+            </div>
+            <div>
+                <div class="w-13/16 pink-200"></div>
+                <div>w-13/16</div>
+            </div>
+            <div>
+                <div class="w-14/16 pink-200"></div>
+                <div>w-14/16</div>
+            </div>
+            <div>
+                <div class="w-15/16 pink-200"></div>
+                <div>w-15/16</div>
+            </div>
+        </div>
+        <p>div 20</p>
+        <div class="demo-width pink-100 divs">
+            <div>
+                <div class="w-1/20 pink-200"></div>
+                <div>w-1/20</div>
+            </div>
+            <div>
+                <div class="w-2/20 pink-200"></div>
+                <div>w-2/20</div>
+            </div>
+            <div>
+                <div class="w-3/20 pink-200"></div>
+                <div>w-3/20</div>
+            </div>
+            <div>
+                <div class="w-4/20 pink-200"></div>
+                <div>w-4/20</div>
+            </div>
+            <div>
+                <div class="w-5/20 pink-200"></div>
+                <div>w-5/20</div>
+            </div>
+            <div>
+                <div class="w-6/20 pink-200"></div>
+                <div>w-6/20</div>
+            </div>
+            <div>
+                <div class="w-7/20 pink-200"></div>
+                <div>w-7/20</div>
+            </div>
+            <div>
+                <div class="w-8/20 pink-200"></div>
+                <div>w-8/20</div>
+            </div>
+            <div>
+                <div class="w-9/20 pink-200"></div>
+                <div>w-9/20</div>
+            </div>
+            <div>
+                <div class="w-10/20 pink-200"></div>
+                <div>w-10/20</div>
+            </div>
+            <div>
+                <div class="w-11/20 pink-200"></div>
+                <div>w-11/20</div>
+            </div>
+            <div>
+                <div class="w-12/20 pink-200"></div>
+                <div>w-12/20</div>
+            </div>
+            <div>
+                <div class="w-13/20 pink-200"></div>
+                <div>w-13/20</div>
+            </div>
+            <div>
+                <div class="w-14/20 pink-200"></div>
+                <div>w-14/20</div>
+            </div>
+            <div>
+                <div class="w-15/20 pink-200"></div>
+                <div>w-15/20</div>
+            </div>
+            <div>
+                <div class="w-16/20 pink-200"></div>
+                <div>w-16/20</div>
+            </div>
+            <div>
+                <div class="w-17/20 pink-200"></div>
+                <div>w-17/20</div>
+            </div>
+            <div>
+                <div class="w-18/20 pink-200"></div>
+                <div>w-18/20</div>
+            </div>
+            <div>
+                <div class="w-19/20 pink-200"></div>
+                <div>w-19/20</div>
+            </div>
+        </div>
+        <p>div 24</p>
+        <div class="demo-width pink-100 divs">
+            <div>
+                <div class="w-1/24 pink-200"></div>
+                <div>w-1/24</div>
+            </div>
+            <div>
+                <div class="w-2/24 pink-200"></div>
+                <div>w-2/24</div>
+            </div>
+            <div>
+                <div class="w-3/24 pink-200"></div>
+                <div>w-3/24</div>
+            </div>
+            <div>
+                <div class="w-4/24 pink-200"></div>
+                <div>w-4/24</div>
+            </div>
+            <div>
+                <div class="w-5/24 pink-200"></div>
+                <div>w-5/24</div>
+            </div>
+            <div>
+                <div class="w-6/24 pink-200"></div>
+                <div>w-6/24</div>
+            </div>
+            <div>
+                <div class="w-7/24 pink-200"></div>
+                <div>w-7/24</div>
+            </div>
+            <div>
+                <div class="w-8/24 pink-200"></div>
+                <div>w-8/24</div>
+            </div>
+            <div>
+                <div class="w-9/24 pink-200"></div>
+                <div>w-9/24</div>
+            </div>
+            <div>
+                <div class="w-10/24 pink-200"></div>
+                <div>w-10/24</div>
+            </div>
+            <div>
+                <div class="w-11/24 pink-200"></div>
+                <div>w-11/24</div>
+            </div>
+            <div>
+                <div class="w-12/24 pink-200"></div>
+                <div>w-12/24</div>
+            </div>
+            <div>
+                <div class="w-13/24 pink-200"></div>
+                <div>w-13/24</div>
+            </div>
+            <div>
+                <div class="w-14/24 pink-200"></div>
+                <div>w-14/24</div>
+            </div>
+            <div>
+                <div class="w-15/24 pink-200"></div>
+                <div>w-15/24</div>
+            </div>
+            <div>
+                <div class="w-16/24 pink-200"></div>
+                <div>w-16/24</div>
+            </div>
+            <div>
+                <div class="w-17/24 pink-200"></div>
+                <div>w-17/24</div>
+            </div>
+            <div>
+                <div class="w-18/24 pink-200"></div>
+                <div>w-18/24</div>
+            </div>
+            <div>
+                <div class="w-19/24 pink-200"></div>
+                <div>w-19/24</div>
+            </div>
+            <div>
+                <div class="w-20/24 pink-200"></div>
+                <div>w-20/24</div>
+            </div>
+            <div>
+                <div class="w-21/24 pink-200"></div>
+                <div>w-21/24</div>
+            </div>
+            <div>
+                <div class="w-22/24 pink-200"></div>
+                <div>w-22/24</div>
+            </div>
+            <div>
+                <div class="w-23/24 pink-200"></div>
+                <div>w-23/24</div>
+            </div>
+        </div>
+        <p> .w-vw-{n} onde n tem os valores 100 90 80 75 50 25 10</p>
+        <div class="demo-width pink-100">
+            <div>
+                <div class="w-vw-100 pink-200"></div>
+                <div>w-vw-100</div>
+            </div>
+            <div>
+                <div class="w-vw-90 pink-200"></div>
+                <div>w-vw-90</div>
+            </div>
+            <div>
+                <div class="w-vw-80 pink-200"></div>
+                <div>w-vw-80</div>
+            </div>
+            <div>
+                <div class="w-vw-75 pink-200"></div>
+                <div>w-vw-75</div>
+            </div>
+            <div>
+                <div class="w-vw-50 pink-200"></div>
+                <div>w-vw-50</div>
+            </div>
+            <div>
+                <div class="w-vw-25 pink-200"></div>
+                <div>w-vw-25</div>
+            </div>
+            <div>
+                <div class="w-vw-10 pink-200"></div>
+                <div>w-vw-10</div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h2>Height</h2>
+        <p>Estes são os tamanhos disponíveis</p>
+        <p> h-{n} onde n vai de 1 até 16 </p>
+        <div class="demo-height pink-100">
+            <div>
+                <div>h-1</div>
+                <div class="h-1 pink-200"></div>
+            </div>
+            <div>
+                <div>h-2</div>
+                <div class="h-2 pink-200"></div>
+            </div>
+            <div>
+                <div>h-3</div>
+                <div class="h-3 pink-200"></div>
+            </div>
+            <div>
+                <div>h-4</div>
+                <div class="h-4 pink-200"></div>
+            </div>
+            <div>
+                <div>h-5</div>
+                <div class="h-5 pink-200"></div>
+            </div>
+            <div>
+                <div>h-6</div>
+                <div class="h-6 pink-200"></div>
+            </div>
+            <div>
+                <div>h-7</div>
+                <div class="h-7 pink-200"></div>
+            </div>
+            <div>
+                <div>h-8</div>
+                <div class="h-8 pink-200"></div>
+            </div>
+            <div>
+                <div>h-9</div>
+                <div class="h-9 pink-200"></div>
+            </div>
+            <div>
+                <div>h-10</div>
+                <div class="h-10 pink-200"></div>
+            </div>
+            <div>
+                <div>h-11</div>
+                <div class="h-11 pink-200"></div>
+            </div>
+            <div>
+                <div>h-12</div>
+                <div class="h-12 pink-200"></div>
+            </div>
+            <div>
+                <div>h-13</div>
+                <div class="h-13 pink-200"></div>
+            </div>
+            <div>
+                <div>h-14</div>
+                <div class="h-14 pink-200"></div>
+            </div>
+            <div>
+                <div>h-15</div>
+                <div class="h-15 pink-200"></div>
+            </div>
+            <div>
+                <div>h-16</div>
+                <div class="h-16 pink-200"></div>
+            </div>
+        </div>
+        <p> h-auto h-full h-0</p>
+        <div class="demo-height pink-100">
+            <div>
+                <div>h-auto</div>
+                <div class="h-auto pink-200"></div>
+            </div>
+            <div>
+                <div>h-full</div>
+                <div class="h-full pink-200"></div>
+            </div>
+            <div>
+                <div>h-0</div>
+                <div class="h-0 pink-200"></div>
+            </div>
+        </div>
     </section>
     <section>
         <h2>Buttons</h2>
