@@ -13,6 +13,8 @@
   }
 }
 
+$states: [hover, focus, active, disabled];
+
 // Mixin para gerar classes de background color
 @mixin generate-bg-classes() {
   @each $color-name, $scale in $var-colors-scales {
@@ -20,20 +22,37 @@
     .bg-#{$color-name} {
       background-color: map.get($var-colors, $color-name);
     }
+    @each $state in $states {
+      .#{$state}\:bg-#{$color-name}:#{$state} {
+        background-color: map.get($var-colors, $color-name);
+      }
+    }
 
     // Criando classes bg-{color}-{step} (ex: bg-blue-100, bg-blue-900)
     @each $step, $color in $scale {
       .bg-#{$color-name}-#{$step} {
         background-color: $color;
       }
+      @each $state in $states {
+        .#{$state}\:bg-#{$color-name}-#{$step}:#{$state} {
+          background-color: $color;
+        }
+      }
     }
   }
   // white e black
   .bg-white {
-      background-color: white;
+    background-color: white;
   }
   .bg-black {
-      background-color: black;
+    background-color: black;
+  }
+  // transparent, none
+  .bg-transparent {
+    background-color: transparent;
+  }
+  .bg-none {
+    background: none;
   }
 }
 
@@ -44,12 +63,26 @@
     .text-#{$color-name} {
       color: map.get($var-colors, $color-name);
     }
+    .hover\:text-#{$color-name}:hover {
+      color: map.get($var-colors, $color-name);
+    }
 
     // Criando classes text-{color}-{step} (ex: text-blue-100, text-blue-900)
     @each $step, $color in $scale {
       .text-#{$color-name}-#{$step} {
         color: $color;
       }
+      .hover\:text-#{$color-name}-#{$step}:hover {
+        color: $color;
+      }
+    }
+
+    // white e black
+    .text-white {
+      color: white;
+    }
+    .text-black {
+      color: black;
     }
   }
 }

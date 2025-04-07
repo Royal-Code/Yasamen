@@ -27,13 +27,16 @@
             flex-wrap: wrap;
             gap: 1rem;
         }
+
         .demo-width > div {
             height: 2.5rem;
             margin: 0 2px 0 2px;
         }
+
         .demo-width > div > div {
             height: 1rem;
         }
+
         .demo-width.divs > div {
             width: 100%;
         }
@@ -48,6 +51,12 @@
         .demo-height > div > div {
             min-width: 1rem;
             margin: 2px;
+        }
+
+        .demo-colors {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
         }
     </style>
 </head>
@@ -128,16 +137,16 @@
         </div>
         <p> w-full, w-auto, w-0</p>
         <div class="demo-width pink-100">
-            <div>
-                <div class="w-full pink-200"></div>
+            <div style="width: 100%;">
+                <div class="w-full pink-200">hi</div>
                 <div>w-full</div>
             </div>
-            <div>
-                <div class="w-auto pink-200"></div>
+            <div style="width: 100%;">
+                <div class="w-auto pink-200">hi</div>
                 <div>w-auto</div>
             </div>
-            <div>
-                <div class="w-0 pink-200"></div>
+            <div style="width: 100%;">
+                <div class="w-0 pink-200">hi</div>
                 <div>w-0</div>
             </div>
         </div>
@@ -634,19 +643,83 @@
                 <div class="h-16 pink-200"></div>
             </div>
         </div>
-        <p> h-auto h-full h-0</p>
-        <div class="demo-height pink-100">
+        <p>h-auto h-full h-0</p>
+        <div class="demo-height pink-100" style="height: 250px;">
             <div>
                 <div>h-auto</div>
-                <div class="h-auto pink-200"></div>
+                <div class="h-auto pink-200">hi</div>
             </div>
             <div>
                 <div>h-full</div>
-                <div class="h-full pink-200"></div>
+                <div class="h-full pink-200">hi</div>
             </div>
             <div>
                 <div>h-0</div>
-                <div class="h-0 pink-200"></div>
+                <div class="h-0 pink-200">hi</div>
+            </div>
+        </div>
+        <p>h-vh-{n} onde n tem os valores 100 90 80 75 50 25 10</p>
+        <div class="demo-height pink-100">
+            <div>
+                <div>h-vh-100</div>
+                <div class="h-vh-100 pink-200"></div>
+            </div>
+            <div>
+                <div>h-vh-90</div>
+                <div class="h-vh-90 pink-200"></div>
+            </div>
+            <div>
+                <div>h-vh-80</div>
+                <div class="h-vh-80 pink-200"></div>
+            </div>
+            <div>
+                <div>h-vh-75</div>
+                <div class="h-vh-75 pink-200"></div>
+            </div>
+            <div>
+                <div>h-vh-50</div>
+                <div class="h-vh-50 pink-200"></div>
+            </div>
+            <div>
+                <div>h-vh-25</div>
+                <div class="h-vh-25 pink-200"></div>
+            </div>
+            <div>
+                <div>h-vh-10</div>
+                <div class="h-vh-10 pink-200"></div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h2>Screen sizes</h2>
+        <div class="demo-width pink-100" style="overflow-x: scroll">
+            <div>
+                <div class="screen-xxs pink-200"></div>
+                <div>screen-xxs</div>
+            </div>
+            <div>
+                <div class="screen-xs pink-200"></div>
+                <div>screen-xs</div>
+            </div>
+            <div>
+                <div class="screen-sm pink-200"></div>
+                <div>screen-sm</div>
+            </div>
+            <div>
+                <div class="screen-md pink-200"></div>
+                <div>screen-md</div>
+            </div>
+            <div>
+                <div class="screen-lg pink-200"></div>
+                <div>screen-lg</div>
+            </div>
+            <div>
+                <div class="screen-xl pink-200"></div>
+                <div>screen-xl</div>
+            </div>
+            <div>
+                <div class="screen-xxl pink-200"></div>
+                <div>screen-xxl</div>
             </div>
         </div>
     </section>
@@ -666,127 +739,242 @@
     </section>
     <section>
         <h2>Background</h2>
-        <h3 class="text-primary">bg-primary</h3>
-        <div class="bg-primary w-1/2">Cor Azul Padrão</div>
-        <div class="bg-primary-100 text-primary-900 md:w-1/2">Cor Azul 100</div>
-        <div class="bg-primary-200 text-primary-800">Cor Azul 200</div>
-        <div class="bg-primary-300 text-primary-700">Cor Azul 300</div>
-        <div class="bg-primary-400 text-primary-600">Cor Azul 400</div>
-        <div class="bg-primary-500">Cor Azul 500</div>
-        <div class="bg-primary-600 text-primary-400">Cor Azul 600</div>
-        <div class="bg-primary-700 text-primary-300">Cor Azul 700</div>
-        <div class="bg-primary-800 text-primary-200">Cor Azul 800</div>
-        <div class="bg-primary-900 text-primary-100">Cor Azul 900</div>
-        <h3>bg-secondary</h3>
-        <div class="bg-secondary">Cor Cinza Padrão</div>
-        <div class="bg-secondary-100">Cor Cinza 100</div>
-        <div class="bg-secondary-200">Cor Cinza 200</div>
-        <div class="bg-secondary-300">Cor Cinza 300</div>
-        <div class="bg-secondary-400">Cor Cinza 400</div>
-        <div class="bg-secondary-500">Cor Cinza 500</div>
-        <div class="bg-secondary-600">Cor Cinza 600</div>
-        <div class="bg-secondary-700">Cor Cinza 700</div>
-        <div class="bg-secondary-800">Cor Cinza 800</div>
-        <div class="bg-secondary-900">Cor Cinza 900</div>
-        <h3>bg-tertiary</h3>
-        <div class="bg-tertiary">Cor Roxo Padrão</div>
-        <div class="bg-tertiary-100">Cor Roxo 100</div>
-        <div class="bg-tertiary-200">Cor Roxo 200</div>
-        <div class="bg-tertiary-300">Cor Roxo 300</div>
-        <div class="bg-tertiary-400">Cor Roxo 400</div>
-        <div class="bg-tertiary-500">Cor Roxo 500</div>
-        <div class="bg-tertiary-600">Cor Roxo 600</div>
-        <div class="bg-tertiary-700">Cor Roxo 700</div>
-        <div class="bg-tertiary-800">Cor Roxo 800</div>
-        <div class="bg-tertiary-900">Cor Roxo 900</div>
-        <h3>bg-info</h3>
-        <div class="bg-info">Cor Azul Claro Padrão</div>
-        <div class="bg-info-100">Cor Azul Claro 100</div>
-        <div class="bg-info-200">Cor Azul Claro 200</div>
-        <div class="bg-info-300">Cor Azul Claro 300</div>
-        <div class="bg-info-400">Cor Azul Claro 400</div>
-        <div class="bg-info-500">Cor Azul Claro 500</div>
-        <div class="bg-info-600">Cor Azul Claro 600</div>
-        <div class="bg-info-700">Cor Azul Claro 700</div>
-        <div class="bg-info-800">Cor Azul Claro 800</div>
-        <div class="bg-info-900">Cor Azul Claro 900</div>
-        <h3>bg-highlight</h3>
-        <div class="bg-highlight">Cor Azul Royal Padrão</div>
-        <div class="bg-highlight-100">Cor Azul Royal 100</div>
-        <div class="bg-highlight-200">Cor Azul Royal 200</div>
-        <div class="bg-highlight-300">Cor Azul Royal 300</div>
-        <div class="bg-highlight-400">Cor Azul Royal 400</div>
-        <div class="bg-highlight-500">Cor Azul Royal 500</div>
-        <div class="bg-highlight-600">Cor Azul Royal 600</div>
-        <div class="bg-highlight-700">Cor Azul Royal 700</div>
-        <div class="bg-highlight-800">Cor Azul Royal 800</div>
-        <div class="bg-highlight-900">Cor Azul Royal 900</div>
-        <h3>bg-success</h3>
-        <div class="bg-success">Cor Verde Padrão</div>
-        <div class="bg-success-100">Cor Verde 100</div>
-        <div class="bg-success-200">Cor Verde 200</div>
-        <div class="bg-success-300">Cor Verde 300</div>
-        <div class="bg-success-400">Cor Verde 400</div>
-        <div class="bg-success-500">Cor Verde 500</div>
-        <div class="bg-success-600">Cor Verde 600</div>
-        <div class="bg-success-700">Cor Verde 700</div>
-        <div class="bg-success-800">Cor Verde 800</div>
-        <div class="bg-success-900">Cor Verde 900</div>
-        <h3>bg-warning</h3>
-        <div class="bg-warning">Cor Amarelo Padrão</div>
-        <div class="bg-warning-100">Cor Amarelo 100</div>
-        <div class="bg-warning-200">Cor Amarelo 200</div>
-        <div class="bg-warning-300">Cor Amarelo 300</div>
-        <div class="bg-warning-400">Cor Amarelo 400</div>
-        <div class="bg-warning-500">Cor Amarelo 500</div>
-        <div class="bg-warning-600">Cor Amarelo 600</div>
-        <div class="bg-warning-700">Cor Amarelo 700</div>
-        <div class="bg-warning-800">Cor Amarelo 800</div>
-        <div class="bg-warning-900">Cor Amarelo 900</div>
-        <h3>bg-alert</h3>
-        <div class="bg-alert">Cor Laranja Padrão</div>
-        <div class="bg-alert-100">Cor Laranja 100</div>
-        <div class="bg-alert-200">Cor Laranja 200</div>
-        <div class="bg-alert-300">Cor Laranja 300</div>
-        <div class="bg-alert-400">Cor Laranja 400</div>
-        <div class="bg-alert-500">Cor Laranja 500</div>
-        <div class="bg-alert-600">Cor Laranja 600</div>
-        <div class="bg-alert-700">Cor Laranja 700</div>
-        <div class="bg-alert-800">Cor Laranja 800</div>
-        <div class="bg-alert-900">Cor Laranja 900</div>
-        <h3>bg-danger</h3>
-        <div class="bg-danger">Cor Vermelho Padrão</div>
-        <div class="bg-danger-100">Cor Vermelho 100</div>
-        <div class="bg-danger-200">Cor Vermelho 200</div>
-        <div class="bg-danger-300">Cor Vermelho 300</div>
-        <div class="bg-danger-400">Cor Vermelho 400</div>
-        <div class="bg-danger-500">Cor Vermelho 500</div>
-        <div class="bg-danger-600">Cor Vermelho 600</div>
-        <div class="bg-danger-700">Cor Vermelho 700</div>
-        <div class="bg-danger-800">Cor Vermelho 800</div>
-        <div class="bg-danger-900">Cor Vermelho 900</div>
-        <h3>bg-light</h3>
-        <div class="bg-light">Cor Claro Padrão</div>
-        <div class="bg-light-100">Cor Claro 100</div>
-        <div class="bg-light-200">Cor Claro 200</div>
-        <div class="bg-light-300">Cor Claro 300</div>
-        <div class="bg-light-400">Cor Claro 400</div>
-        <div class="bg-light-500">Cor Claro 500</div>
-        <div class="bg-light-600">Cor Claro 600</div>
-        <div class="bg-light-700">Cor Claro 700</div>
-        <div class="bg-light-800">Cor Claro 800</div>
-        <div class="bg-light-900">Cor Claro 900</div>
-        <h3>bg-dark</h3>
-        <div class="bg-dark">Cor Escuro Padrão</div>
-        <div class="bg-dark-100">Cor Escuro 100</div>
-        <div class="bg-dark-200">Cor Escuro 200</div>
-        <div class="bg-dark-300">Cor Escuro 300</div>
-        <div class="bg-dark-400">Cor Escuro 400</div>
-        <div class="bg-dark-500">Cor Escuro 500</div>
-        <div class="bg-dark-600">Cor Escuro 600</div>
-        <div class="bg-dark-700">Cor Escuro 700</div>
-        <div class="bg-dark-800">Cor Escuro 800</div>
-        <div class="bg-dark-900">Cor Escuro 900</div>
+        <div class="demo-colors">
+            <div class="w-1/3">
+                <h3 class="text-primary">bg-primary - text-primary</h3>
+                <div class="w-full" style="display: flex;">
+                    <div class="bg-primary w-1/2"></div>
+                    <div class="text-primary w-1/2">Cor Azul Padrão</div>
+                </div>
+                <div class="bg-primary-100 text-primary-900">Cor Azul 100</div>
+                <div class="bg-primary-200 text-primary-800">Cor Azul 200</div>
+                <div class="bg-primary-300 text-primary-700">Cor Azul 300</div>
+                <div class="bg-primary-400 text-primary-600">Cor Azul 400</div>
+                <div class="bg-primary-500">Cor Azul 500</div>
+                <div class="bg-primary-600 text-primary-400">Cor Azul 600</div>
+                <div class="bg-primary-700 text-primary-300">Cor Azul 700</div>
+                <div class="bg-primary-800 text-primary-200">Cor Azul 800</div>
+                <div class="bg-primary-900 text-primary-100">Cor Azul 900</div>
+            </div>
+            <div class="w-1/3">
+                <h3 class="text-secondary">bg-secondary - text-secondary</h3>
+                <div class="w-full" style="display: flex;">
+                    <div class="bg-secondary w-1/2">Cor Cinza Padrão</div>
+                    <div class="text-secondary w-1/2">Cor Cinza Padrão</div>
+                </div>
+                <div class="bg-secondary-100 text-secondary-900">Cor Cinza 100</div>
+                <div class="bg-secondary-200 text-secondary-800">Cor Cinza 200</div>
+                <div class="bg-secondary-300 text-secondary-700">Cor Cinza 300</div>
+                <div class="bg-secondary-400 text-secondary-600">Cor Cinza 400</div>
+                <div class="bg-secondary-500">Cor Cinza 500</div>
+                <div class="bg-secondary-600 text-secondary-400">Cor Cinza 600</div>
+                <div class="bg-secondary-700 text-secondary-300">Cor Cinza 700</div>
+                <div class="bg-secondary-800 text-secondary-200">Cor Cinza 800</div>
+                <div class="bg-secondary-900 text-secondary-100">Cor Cinza 900</div>
+            </div>
+            <div class="w-1/3">
+                <h3 class="text-tertiary">bg-tertiary - text-tertiary</h3>
+                <div class="w-full" style="display: flex;">
+                    <div class="bg-tertiary w-1/2">Cor Roxo Padrão</div>
+                    <div class="text-tertiary w-1/2">Cor Roxo Padrão</div>
+                </div>
+                <div class="bg-tertiary-100 text-tertiary-900">Cor Roxo 100</div>
+                <div class="bg-tertiary-200 text-tertiary-800">Cor Roxo 200</div>
+                <div class="bg-tertiary-300 text-tertiary-700">Cor Roxo 300</div>
+                <div class="bg-tertiary-400 text-tertiary-600">Cor Roxo 400</div>
+                <div class="bg-tertiary-500">Cor Roxo 500</div>
+                <div class="bg-tertiary-600 text-tertiary-400">Cor Roxo 600</div>
+                <div class="bg-tertiary-700 text-tertiary-300">Cor Roxo 700</div>
+                <div class="bg-tertiary-800 text-tertiary-200">Cor Roxo 800</div>
+                <div class="bg-tertiary-900 text-tertiary-100">Cor Roxo 900</div>
+            </div>
+            <div class="w-1/3">
+                <h3 class="text-info">bg-info - text-info</h3>
+                <div class="w-full" style="display: flex;">
+                    <div class="bg-info w-1/2">Cor Azul Claro Padrão</div>
+                    <div class="text-info w-1/2">Cor Azul Claro Padrão</div>
+                </div>
+                <div class="bg-info-100 text-info-900">Cor Azul Claro 100</div>
+                <div class="bg-info-200 text-info-800">Cor Azul Claro 200</div>
+                <div class="bg-info-300 text-info-700">Cor Azul Claro 300</div>
+                <div class="bg-info-400 text-info-600">Cor Azul Claro 400</div>
+                <div class="bg-info-500">Cor Azul Claro 500</div>
+                <div class="bg-info-600 text-info-400">Cor Azul Claro 600</div>
+                <div class="bg-info-700 text-info-300">Cor Azul Claro 700</div>
+                <div class="bg-info-800 text-info-200">Cor Azul Claro 800</div>
+                <div class="bg-info-900 text-info-100">Cor Azul Claro 900</div>
+            </div>
+            <div class="w-1/3">
+                <h3 class="text-highlight">bg-highlight - text-highlight</h3>
+                <div class="w-full" style="display: flex;">
+                    <div class="bg-highlight w-1/2">Cor Azul Royal Padrão</div>
+                    <div class="text-highlight w-1/2">Cor Azul Royal Padrão</div>
+                </div>
+                <div class="bg-highlight-100 text-highlight-900">Cor Azul Royal 100</div>
+                <div class="bg-highlight-200 text-highlight-800">Cor Azul Royal 200</div>
+                <div class="bg-highlight-300 text-highlight-700">Cor Azul Royal 300</div>
+                <div class="bg-highlight-400 text-highlight-600">Cor Azul Royal 400</div>
+                <div class="bg-highlight-500">Cor Azul Royal 500</div>
+                <div class="bg-highlight-600 text-highlight-400">Cor Azul Royal 600</div>
+                <div class="bg-highlight-700 text-highlight-300">Cor Azul Royal 700</div>
+                <div class="bg-highlight-800 text-highlight-200">Cor Azul Royal 800</div>
+                <div class="bg-highlight-900 text-highlight-100">Cor Azul Royal 900</div>
+            </div>
+            <div class="w-1/3">
+                <h3 class="text-success">bg-success - text-success</h3>
+                <div class="w-full" style="display: flex;">
+                    <div class="bg-success w-1/2">Cor Verde Padrão</div>
+                    <div class="text-success w-1/2">Cor Verde Padrão</div>
+                </div>
+                <div class="bg-success-100 text-success-900">Cor Verde 100</div>
+                <div class="bg-success-200 text-success-800">Cor Verde 200</div>
+                <div class="bg-success-300 text-success-700">Cor Verde 300</div>
+                <div class="bg-success-400 text-success-600">Cor Verde 400</div>
+                <div class="bg-success-500">Cor Verde 500</div>
+                <div class="bg-success-600 text-success-400">Cor Verde 600</div>
+                <div class="bg-success-700 text-success-300">Cor Verde 700</div>
+                <div class="bg-success-800 text-success-200">Cor Verde 800</div>
+                <div class="bg-success-900 text-success-100">Cor Verde 900</div>
+            </div>
+            <div class="w-1/3">
+                <h3 class="text-warning">bg-warning - text-warning</h3>
+                <div class="w-full" style="display: flex;">
+                    <div class="bg-warning w-1/2">Cor Amarelo Padrão</div>
+                    <div class="text-warning w-1/2">Cor Amarelo Padrão</div>
+                </div>
+                <div class="bg-warning-100 text-warning-900">Cor Amarelo 100</div>
+                <div class="bg-warning-200 text-warning-800">Cor Amarelo 200</div>
+                <div class="bg-warning-300 text-warning-700">Cor Amarelo 300</div>
+                <div class="bg-warning-400 text-warning-600">Cor Amarelo 400</div>
+                <div class="bg-warning-500">Cor Amarelo 500</div>
+                <div class="bg-warning-600 text-warning-400">Cor Amarelo 600</div>
+                <div class="bg-warning-700 text-warning-300">Cor Amarelo 700</div>
+                <div class="bg-warning-800 text-warning-200">Cor Amarelo 800</div>
+                <div class="bg-warning-900 text-warning-100">Cor Amarelo 900</div>
+            </div>
+            <div class="w-1/3">
+                <h3 class="text-alert">bg-alert - text-alert</h3>
+                <div class="w-full" style="display: flex;">
+                    <div class="bg-alert w-1/2">Cor Laranja Padrão</div>
+                    <div class="text-alert w-1/2">Cor Laranja Padrão</div>
+                </div>
+                <div class="bg-alert-100 text-alert-900">Cor Laranja 100</div>
+                <div class="bg-alert-200 text-alert-800">Cor Laranja 200</div>
+                <div class="bg-alert-300 text-alert-700">Cor Laranja 300</div>
+                <div class="bg-alert-400 text-alert-600">Cor Laranja 400</div>
+                <div class="bg-alert-500">Cor Laranja 500</div>
+                <div class="bg-alert-600 text-alert-400">Cor Laranja 600</div>
+                <div class="bg-alert-700 text-alert-300">Cor Laranja 700</div>
+                <div class="bg-alert-800 text-alert-200">Cor Laranja 800</div>
+                <div class="bg-alert-900 text-alert-100">Cor Laranja 900</div>
+            </div>
+            <div class="w-1/3">
+                <h3 class="text-danger">bg-danger - text-danger</h3>
+                <div class="w-full" style="display: flex;">
+                    <div class="bg-danger w-1/2">Cor Vermelho Padrão</div>
+                    <div class="text-danger w-1/2">Cor Vermelho Padrão</div>
+                </div>
+                <div class="bg-danger-100 text-danger-900">Cor Vermelho 100</div>
+                <div class="bg-danger-200 text-danger-800">Cor Vermelho 200</div>
+                <div class="bg-danger-300 text-danger-700">Cor Vermelho 300</div>
+                <div class="bg-danger-400 text-danger-600">Cor Vermelho 400</div>
+                <div class="bg-danger-500">Cor Vermelho 500</div>
+                <div class="bg-danger-600 text-danger-400">Cor Vermelho 600</div>
+                <div class="bg-danger-700 text-danger-300">Cor Vermelho 700</div>
+                <div class="bg-danger-800 text-danger-200">Cor Vermelho 800</div>
+                <div class="bg-danger-900 text-danger-100">Cor Vermelho 900</div>
+            </div>
+            <div class="w-1/3">
+                <h3 class="text-light bg-dark">bg-light - text-light</h3>
+                <div class="w-full" style="display: flex;">
+                    <div class="bg-light w-1/2">Cor Claro Padrão</div>
+                    <div class="text-light w-1/2">Cor Claro Padrão</div>
+                </div>
+                <div class="bg-light-100 text-light-900">Cor Claro 100</div>
+                <div class="bg-light-200 text-light-800">Cor Claro 200</div>
+                <div class="bg-light-300 text-light-700">Cor Claro 300</div>
+                <div class="bg-light-400 text-light-600">Cor Claro 400</div>
+                <div class="bg-light-500">Cor Claro 500</div>
+                <div class="bg-light-600 text-light-400">Cor Claro 600</div>
+                <div class="bg-light-700 text-light-300">Cor Claro 700</div>
+                <div class="bg-light-800 text-light-200">Cor Claro 800</div>
+                <div class="bg-light-900 text-light-100">Cor Claro 900</div>
+            </div>
+            <div class="w-1/3">
+                <h3 class="text-dark">bg-dark - text-dark</h3>
+                <div class="w-full" style="display: flex;">
+                    <div class="bg-dark text-light w-1/2">Cor Escuro Padrão</div>
+                    <div class="text-dark w-1/2">Cor Escuro Padrão</div>
+                </div>
+                <div class="bg-dark-100 text-dark-900">Cor Escuro 100</div>
+                <div class="bg-dark-200 text-dark-800">Cor Escuro 200</div>
+                <div class="bg-dark-300 text-dark-700">Cor Escuro 300</div>
+                <div class="bg-dark-400 text-dark-600">Cor Escuro 400</div>
+                <div class="bg-dark-500">Cor Escuro 500</div>
+                <div class="bg-dark-600 text-dark-400">Cor Escuro 600</div>
+                <div class="bg-dark-700 text-dark-300">Cor Escuro 700</div>
+                <div class="bg-dark-800 text-dark-200">Cor Escuro 800</div>
+                <div class="bg-dark-900 text-dark-100">Cor Escuro 900</div>
+            </div>
+        </div>
+        <h2>Hover Background</h2>
+        <div class="demo-colors">
+            <div class="w-1/2 bg-primary-100 text-primary-900 hover:bg-primary-900 hover:text-primary-100">
+                bg-primary-100 text-primary-900
+                <br />
+                hover:bg-primary-900 hover:text-primary-100
+            </div>
+            <div class="w-1/2 bg-secondary-100 text-secondary-900 hover:bg-secondary-900 hover:text-secondary-100">
+                bg-secondary-100 text-secondary-900
+                <br />
+                hover:bg-secondary-900 hover:text-secondary-100
+            </div>
+            <div class="w-1/2 bg-tertiary-100 text-tertiary-900 hover:bg-tertiary-900 hover:text-tertiary-100">
+                bg-tertiary-100 text-tertiary-900
+                <br />
+                hover:bg-tertiary-900 hover:text-tertiary-100
+            </div>
+            <div class="w-1/2 bg-info-100 text-info-900 hover:bg-info-900 hover:text-info-100">
+                bg-info-100 text-info-900
+                <br />
+                hover:bg-info-900 hover:text-info-100
+            </div>
+            <div class="w-1/2 bg-highlight-100 text-highlight-900 hover:bg-highlight-900 hover:text-highlight-100">
+                bg-highlight-100 text-highlight-900
+                <br />
+                hover:bg-highlight-900 hover:text-highlight-100
+            </div>
+            <div class="w-1/2 bg-success-100 text-success-900 hover:bg-success-900 hover:text-success-100">
+                bg-success-100 text-success-900
+                <br />
+                hover:bg-success-900 hover:text-success-100
+            </div>
+            <div class="w-1/2 bg-warning-100 text-warning-900 hover:bg-warning-900 hover:text-warning-100">
+                bg-warning-100 text-warning-900
+                <br />
+                hover:bg-warning-900 hover:text-warning-100
+            </div>
+            <div class="w-1/2 bg-alert-100 text-alert-900 hover:bg-alert-900 hover:text-alert-100">
+                bg-alert-100 text-alert-900
+                <br />
+                hover:bg-alert-900 hover:text-alert-100
+            </div>
+            <div class="w-1/2 bg-danger-100 text-danger-900 hover:bg-danger-900 hover:text-danger-100">
+                bg-danger-100 text-danger-900
+                <br />
+                hover:bg-danger-900 hover:text-danger-100
+            </div>
+            <div class="w-1/2 bg-light-100 text-light-900 hover:bg-light-900 hover:text-light-100">
+                bg-light-100 text-light-900
+                <br />
+                hover:bg-light-900 hover:text-light-100
+            </div>
+            <div class="w-full bg-dark-100 text-dark-900 hover:bg-dark-900 hover:text-dark-100">
+                bg-dark-100 text-dark-900
+                <br />
+                hover:bg-dark-900 hover:text-dark-100
+            </div>
+        </div>
     </section>
 </main>
 <footer>
