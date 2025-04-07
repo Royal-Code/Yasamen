@@ -1,0 +1,54 @@
+@use "spaces" as *;
+@use "breaks" as *;
+
+$margins: (
+    t: top,
+    e: right,
+    b: bottom,
+    s: left,
+);
+
+@mixin generate-margins() {
+    @each $key, $variant in $margins {
+        @each $size, $value in $var-spacing {
+            .m#{$key}-#{$size} {
+                margin-#{$variant}: #{$value};
+            }
+            .m-#{$size} {
+                @extend .m#{$key}-#{$size};
+            }
+            @if ($key == s or $key == e) {
+                .mx-#{$size} {
+                    @extend .m#{$key}-#{$size};
+                }
+            }
+            @else {
+                .my-#{$size} {
+                    @extend .m#{$key}-#{$size};
+                }
+            }
+        }
+    }
+    @include media-breakpoints() using($breakpoint) {
+        @each $key, $variant in $margins {
+            @each $size, $value in $var-spacing {
+                .#{$breakpoint}\:m#{$key}-#{$size} {
+                    margin-#{$variant}: #{$value};
+                }
+                .#{$breakpoint}\:m-#{$size} {
+                    @extend .#{$breakpoint}\:m#{$key}-#{$size};
+                }
+                @if ($key == s or $key == e) {
+                    .#{$breakpoint}\:mx-#{$size} {
+                        @extend .#{$breakpoint}\:m#{$key}-#{$size};
+                    }
+                }
+                @else {
+                    .#{$breakpoint}\:my-#{$size} {
+                        @extend .#{$breakpoint}\:m#{$key}-#{$size};
+                    }
+                }
+            }
+        }
+    }
+}

@@ -13,7 +13,18 @@
   }
 }
 
-$states: [hover, focus, active, disabled];
+$states: (
+  hover: hover,
+  focus: focus,
+  active: active,
+  disabled: disabled,
+  read-only: read-only,
+  focus-within: focus-within,
+  first: first-child,
+  last: last-child,
+  odd: nth-child(odd),
+  even: nth-child(even),
+);
 
 // Mixin para gerar classes de background color
 @mixin generate-bg-classes() {
@@ -22,9 +33,9 @@ $states: [hover, focus, active, disabled];
     .bg-#{$color-name} {
       background-color: map.get($var-colors, $color-name);
     }
-    @each $state in $states {
-      .#{$state}\:bg-#{$color-name}:#{$state} {
-        background-color: map.get($var-colors, $color-name);
+    @each $s-name, $state in $states {
+      .#{$s-name}\:bg-#{$color-name}:#{$state} {
+        @extend .bg-#{$color-name};
       }
     }
 
@@ -33,9 +44,9 @@ $states: [hover, focus, active, disabled];
       .bg-#{$color-name}-#{$step} {
         background-color: $color;
       }
-      @each $state in $states {
-        .#{$state}\:bg-#{$color-name}-#{$step}:#{$state} {
-          background-color: $color;
+      @each $s-name, $state in $states {
+        .#{$s-name}\:bg-#{$color-name}-#{$step}:#{$state} {
+          @extend .bg-#{$color-name}-#{$step};
         }
       }
     }
@@ -63,17 +74,20 @@ $states: [hover, focus, active, disabled];
     .text-#{$color-name} {
       color: map.get($var-colors, $color-name);
     }
-    .hover\:text-#{$color-name}:hover {
-      color: map.get($var-colors, $color-name);
+    @each $s-name, $state in $states {
+      .#{$s-name}\:text-#{$color-name}:#{$state} {
+        @extend .text-#{$color-name};
+      }
     }
-
     // Criando classes text-{color}-{step} (ex: text-blue-100, text-blue-900)
     @each $step, $color in $scale {
       .text-#{$color-name}-#{$step} {
         color: $color;
       }
-      .hover\:text-#{$color-name}-#{$step}:hover {
-        color: $color;
+      @each $s-name, $state in $states {
+        .#{$s-name}\:text-#{$color-name}-#{$step}:#{$state} {
+          @extend .text-#{$color-name}-#{$step};
+        }
       }
     }
 

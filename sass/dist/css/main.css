@@ -131,20 +131,12 @@
   --space-4: 0.25rem;
   --space-5: 0.375rem;
   --space-6: 0.5rem;
-  --space-7: 0.625rem;
-  --space-8: 0.75rem;
-  --space-9: 0.875rem;
-  --space-10: 1rem;
-  --space-11: 1.25rem;
-  --space-12: 1.5rem;
-  --space-13: 2rem;
-  --space-14: 2.5rem;
-  --space-15: 3rem;
-  --space-16: 4rem;
-  --space-17: 6rem;
-  --space-18: 8rem;
-  --space-19: 12rem;
-  --space-20: 16rem;
+  --space-7: 0.75rem;
+  --space-8: 1rem;
+  --space-9: 1.5rem;
+  --space-10: 2rem;
+  --space-11: 3rem;
+  --space-12: 4rem;
   --screen-xxs: 24rem;
   --screen-xs: 36rem;
   --screen-sm: 48rem;
@@ -9179,2203 +9171,443 @@
   min-height: 10vh;
 }
 
-.bg-primary {
+.bg-primary, .even\:bg-primary:nth-child(even), .odd\:bg-primary:nth-child(odd), .last\:bg-primary:last-child, .first\:bg-primary:first-child, .focus-within\:bg-primary:focus-within, .read-only\:bg-primary:read-only, .disabled\:bg-primary:disabled, .active\:bg-primary:active, .focus\:bg-primary:focus, .hover\:bg-primary:hover {
   background-color: var(--color-primary);
 }
 
-.hover\:bg-primary:hover {
-  background-color: var(--color-primary);
-}
-
-.focus\:bg-primary:focus {
-  background-color: var(--color-primary);
-}
-
-.active\:bg-primary:active {
-  background-color: var(--color-primary);
-}
-
-.disabled\:bg-primary:disabled {
-  background-color: var(--color-primary);
-}
-
-.bg-primary-100 {
+.bg-primary-100, .even\:bg-primary-100:nth-child(even), .odd\:bg-primary-100:nth-child(odd), .last\:bg-primary-100:last-child, .first\:bg-primary-100:first-child, .focus-within\:bg-primary-100:focus-within, .read-only\:bg-primary-100:read-only, .disabled\:bg-primary-100:disabled, .active\:bg-primary-100:active, .focus\:bg-primary-100:focus, .hover\:bg-primary-100:hover {
   background-color: var(--color-primary-100);
 }
 
-.hover\:bg-primary-100:hover {
-  background-color: var(--color-primary-100);
-}
-
-.focus\:bg-primary-100:focus {
-  background-color: var(--color-primary-100);
-}
-
-.active\:bg-primary-100:active {
-  background-color: var(--color-primary-100);
-}
-
-.disabled\:bg-primary-100:disabled {
-  background-color: var(--color-primary-100);
-}
-
-.bg-primary-200 {
+.bg-primary-200, .even\:bg-primary-200:nth-child(even), .odd\:bg-primary-200:nth-child(odd), .last\:bg-primary-200:last-child, .first\:bg-primary-200:first-child, .focus-within\:bg-primary-200:focus-within, .read-only\:bg-primary-200:read-only, .disabled\:bg-primary-200:disabled, .active\:bg-primary-200:active, .focus\:bg-primary-200:focus, .hover\:bg-primary-200:hover {
   background-color: var(--color-primary-200);
 }
 
-.hover\:bg-primary-200:hover {
-  background-color: var(--color-primary-200);
-}
-
-.focus\:bg-primary-200:focus {
-  background-color: var(--color-primary-200);
-}
-
-.active\:bg-primary-200:active {
-  background-color: var(--color-primary-200);
-}
-
-.disabled\:bg-primary-200:disabled {
-  background-color: var(--color-primary-200);
-}
-
-.bg-primary-300 {
+.bg-primary-300, .even\:bg-primary-300:nth-child(even), .odd\:bg-primary-300:nth-child(odd), .last\:bg-primary-300:last-child, .first\:bg-primary-300:first-child, .focus-within\:bg-primary-300:focus-within, .read-only\:bg-primary-300:read-only, .disabled\:bg-primary-300:disabled, .active\:bg-primary-300:active, .focus\:bg-primary-300:focus, .hover\:bg-primary-300:hover {
   background-color: var(--color-primary-300);
 }
 
-.hover\:bg-primary-300:hover {
-  background-color: var(--color-primary-300);
-}
-
-.focus\:bg-primary-300:focus {
-  background-color: var(--color-primary-300);
-}
-
-.active\:bg-primary-300:active {
-  background-color: var(--color-primary-300);
-}
-
-.disabled\:bg-primary-300:disabled {
-  background-color: var(--color-primary-300);
-}
-
-.bg-primary-400 {
+.bg-primary-400, .even\:bg-primary-400:nth-child(even), .odd\:bg-primary-400:nth-child(odd), .last\:bg-primary-400:last-child, .first\:bg-primary-400:first-child, .focus-within\:bg-primary-400:focus-within, .read-only\:bg-primary-400:read-only, .disabled\:bg-primary-400:disabled, .active\:bg-primary-400:active, .focus\:bg-primary-400:focus, .hover\:bg-primary-400:hover {
   background-color: var(--color-primary-400);
 }
 
-.hover\:bg-primary-400:hover {
-  background-color: var(--color-primary-400);
-}
-
-.focus\:bg-primary-400:focus {
-  background-color: var(--color-primary-400);
-}
-
-.active\:bg-primary-400:active {
-  background-color: var(--color-primary-400);
-}
-
-.disabled\:bg-primary-400:disabled {
-  background-color: var(--color-primary-400);
-}
-
-.bg-primary-500 {
+.bg-primary-500, .even\:bg-primary-500:nth-child(even), .odd\:bg-primary-500:nth-child(odd), .last\:bg-primary-500:last-child, .first\:bg-primary-500:first-child, .focus-within\:bg-primary-500:focus-within, .read-only\:bg-primary-500:read-only, .disabled\:bg-primary-500:disabled, .active\:bg-primary-500:active, .focus\:bg-primary-500:focus, .hover\:bg-primary-500:hover {
   background-color: var(--color-primary-500);
 }
 
-.hover\:bg-primary-500:hover {
-  background-color: var(--color-primary-500);
-}
-
-.focus\:bg-primary-500:focus {
-  background-color: var(--color-primary-500);
-}
-
-.active\:bg-primary-500:active {
-  background-color: var(--color-primary-500);
-}
-
-.disabled\:bg-primary-500:disabled {
-  background-color: var(--color-primary-500);
-}
-
-.bg-primary-600 {
+.bg-primary-600, .even\:bg-primary-600:nth-child(even), .odd\:bg-primary-600:nth-child(odd), .last\:bg-primary-600:last-child, .first\:bg-primary-600:first-child, .focus-within\:bg-primary-600:focus-within, .read-only\:bg-primary-600:read-only, .disabled\:bg-primary-600:disabled, .active\:bg-primary-600:active, .focus\:bg-primary-600:focus, .hover\:bg-primary-600:hover {
   background-color: var(--color-primary-600);
 }
 
-.hover\:bg-primary-600:hover {
-  background-color: var(--color-primary-600);
-}
-
-.focus\:bg-primary-600:focus {
-  background-color: var(--color-primary-600);
-}
-
-.active\:bg-primary-600:active {
-  background-color: var(--color-primary-600);
-}
-
-.disabled\:bg-primary-600:disabled {
-  background-color: var(--color-primary-600);
-}
-
-.bg-primary-700 {
+.bg-primary-700, .even\:bg-primary-700:nth-child(even), .odd\:bg-primary-700:nth-child(odd), .last\:bg-primary-700:last-child, .first\:bg-primary-700:first-child, .focus-within\:bg-primary-700:focus-within, .read-only\:bg-primary-700:read-only, .disabled\:bg-primary-700:disabled, .active\:bg-primary-700:active, .focus\:bg-primary-700:focus, .hover\:bg-primary-700:hover {
   background-color: var(--color-primary-700);
 }
 
-.hover\:bg-primary-700:hover {
-  background-color: var(--color-primary-700);
-}
-
-.focus\:bg-primary-700:focus {
-  background-color: var(--color-primary-700);
-}
-
-.active\:bg-primary-700:active {
-  background-color: var(--color-primary-700);
-}
-
-.disabled\:bg-primary-700:disabled {
-  background-color: var(--color-primary-700);
-}
-
-.bg-primary-800 {
+.bg-primary-800, .even\:bg-primary-800:nth-child(even), .odd\:bg-primary-800:nth-child(odd), .last\:bg-primary-800:last-child, .first\:bg-primary-800:first-child, .focus-within\:bg-primary-800:focus-within, .read-only\:bg-primary-800:read-only, .disabled\:bg-primary-800:disabled, .active\:bg-primary-800:active, .focus\:bg-primary-800:focus, .hover\:bg-primary-800:hover {
   background-color: var(--color-primary-800);
 }
 
-.hover\:bg-primary-800:hover {
-  background-color: var(--color-primary-800);
-}
-
-.focus\:bg-primary-800:focus {
-  background-color: var(--color-primary-800);
-}
-
-.active\:bg-primary-800:active {
-  background-color: var(--color-primary-800);
-}
-
-.disabled\:bg-primary-800:disabled {
-  background-color: var(--color-primary-800);
-}
-
-.bg-primary-900 {
+.bg-primary-900, .even\:bg-primary-900:nth-child(even), .odd\:bg-primary-900:nth-child(odd), .last\:bg-primary-900:last-child, .first\:bg-primary-900:first-child, .focus-within\:bg-primary-900:focus-within, .read-only\:bg-primary-900:read-only, .disabled\:bg-primary-900:disabled, .active\:bg-primary-900:active, .focus\:bg-primary-900:focus, .hover\:bg-primary-900:hover {
   background-color: var(--color-primary-900);
 }
 
-.hover\:bg-primary-900:hover {
-  background-color: var(--color-primary-900);
-}
-
-.focus\:bg-primary-900:focus {
-  background-color: var(--color-primary-900);
-}
-
-.active\:bg-primary-900:active {
-  background-color: var(--color-primary-900);
-}
-
-.disabled\:bg-primary-900:disabled {
-  background-color: var(--color-primary-900);
-}
-
-.bg-secondary {
+.bg-secondary, .even\:bg-secondary:nth-child(even), .odd\:bg-secondary:nth-child(odd), .last\:bg-secondary:last-child, .first\:bg-secondary:first-child, .focus-within\:bg-secondary:focus-within, .read-only\:bg-secondary:read-only, .disabled\:bg-secondary:disabled, .active\:bg-secondary:active, .focus\:bg-secondary:focus, .hover\:bg-secondary:hover {
   background-color: var(--color-secondary);
 }
 
-.hover\:bg-secondary:hover {
-  background-color: var(--color-secondary);
-}
-
-.focus\:bg-secondary:focus {
-  background-color: var(--color-secondary);
-}
-
-.active\:bg-secondary:active {
-  background-color: var(--color-secondary);
-}
-
-.disabled\:bg-secondary:disabled {
-  background-color: var(--color-secondary);
-}
-
-.bg-secondary-100 {
+.bg-secondary-100, .even\:bg-secondary-100:nth-child(even), .odd\:bg-secondary-100:nth-child(odd), .last\:bg-secondary-100:last-child, .first\:bg-secondary-100:first-child, .focus-within\:bg-secondary-100:focus-within, .read-only\:bg-secondary-100:read-only, .disabled\:bg-secondary-100:disabled, .active\:bg-secondary-100:active, .focus\:bg-secondary-100:focus, .hover\:bg-secondary-100:hover {
   background-color: var(--color-secondary-100);
 }
 
-.hover\:bg-secondary-100:hover {
-  background-color: var(--color-secondary-100);
-}
-
-.focus\:bg-secondary-100:focus {
-  background-color: var(--color-secondary-100);
-}
-
-.active\:bg-secondary-100:active {
-  background-color: var(--color-secondary-100);
-}
-
-.disabled\:bg-secondary-100:disabled {
-  background-color: var(--color-secondary-100);
-}
-
-.bg-secondary-200 {
+.bg-secondary-200, .even\:bg-secondary-200:nth-child(even), .odd\:bg-secondary-200:nth-child(odd), .last\:bg-secondary-200:last-child, .first\:bg-secondary-200:first-child, .focus-within\:bg-secondary-200:focus-within, .read-only\:bg-secondary-200:read-only, .disabled\:bg-secondary-200:disabled, .active\:bg-secondary-200:active, .focus\:bg-secondary-200:focus, .hover\:bg-secondary-200:hover {
   background-color: var(--color-secondary-200);
 }
 
-.hover\:bg-secondary-200:hover {
-  background-color: var(--color-secondary-200);
-}
-
-.focus\:bg-secondary-200:focus {
-  background-color: var(--color-secondary-200);
-}
-
-.active\:bg-secondary-200:active {
-  background-color: var(--color-secondary-200);
-}
-
-.disabled\:bg-secondary-200:disabled {
-  background-color: var(--color-secondary-200);
-}
-
-.bg-secondary-300 {
+.bg-secondary-300, .even\:bg-secondary-300:nth-child(even), .odd\:bg-secondary-300:nth-child(odd), .last\:bg-secondary-300:last-child, .first\:bg-secondary-300:first-child, .focus-within\:bg-secondary-300:focus-within, .read-only\:bg-secondary-300:read-only, .disabled\:bg-secondary-300:disabled, .active\:bg-secondary-300:active, .focus\:bg-secondary-300:focus, .hover\:bg-secondary-300:hover {
   background-color: var(--color-secondary-300);
 }
 
-.hover\:bg-secondary-300:hover {
-  background-color: var(--color-secondary-300);
-}
-
-.focus\:bg-secondary-300:focus {
-  background-color: var(--color-secondary-300);
-}
-
-.active\:bg-secondary-300:active {
-  background-color: var(--color-secondary-300);
-}
-
-.disabled\:bg-secondary-300:disabled {
-  background-color: var(--color-secondary-300);
-}
-
-.bg-secondary-400 {
+.bg-secondary-400, .even\:bg-secondary-400:nth-child(even), .odd\:bg-secondary-400:nth-child(odd), .last\:bg-secondary-400:last-child, .first\:bg-secondary-400:first-child, .focus-within\:bg-secondary-400:focus-within, .read-only\:bg-secondary-400:read-only, .disabled\:bg-secondary-400:disabled, .active\:bg-secondary-400:active, .focus\:bg-secondary-400:focus, .hover\:bg-secondary-400:hover {
   background-color: var(--color-secondary-400);
 }
 
-.hover\:bg-secondary-400:hover {
-  background-color: var(--color-secondary-400);
-}
-
-.focus\:bg-secondary-400:focus {
-  background-color: var(--color-secondary-400);
-}
-
-.active\:bg-secondary-400:active {
-  background-color: var(--color-secondary-400);
-}
-
-.disabled\:bg-secondary-400:disabled {
-  background-color: var(--color-secondary-400);
-}
-
-.bg-secondary-500 {
+.bg-secondary-500, .even\:bg-secondary-500:nth-child(even), .odd\:bg-secondary-500:nth-child(odd), .last\:bg-secondary-500:last-child, .first\:bg-secondary-500:first-child, .focus-within\:bg-secondary-500:focus-within, .read-only\:bg-secondary-500:read-only, .disabled\:bg-secondary-500:disabled, .active\:bg-secondary-500:active, .focus\:bg-secondary-500:focus, .hover\:bg-secondary-500:hover {
   background-color: var(--color-secondary-500);
 }
 
-.hover\:bg-secondary-500:hover {
-  background-color: var(--color-secondary-500);
-}
-
-.focus\:bg-secondary-500:focus {
-  background-color: var(--color-secondary-500);
-}
-
-.active\:bg-secondary-500:active {
-  background-color: var(--color-secondary-500);
-}
-
-.disabled\:bg-secondary-500:disabled {
-  background-color: var(--color-secondary-500);
-}
-
-.bg-secondary-600 {
+.bg-secondary-600, .even\:bg-secondary-600:nth-child(even), .odd\:bg-secondary-600:nth-child(odd), .last\:bg-secondary-600:last-child, .first\:bg-secondary-600:first-child, .focus-within\:bg-secondary-600:focus-within, .read-only\:bg-secondary-600:read-only, .disabled\:bg-secondary-600:disabled, .active\:bg-secondary-600:active, .focus\:bg-secondary-600:focus, .hover\:bg-secondary-600:hover {
   background-color: var(--color-secondary-600);
 }
 
-.hover\:bg-secondary-600:hover {
-  background-color: var(--color-secondary-600);
-}
-
-.focus\:bg-secondary-600:focus {
-  background-color: var(--color-secondary-600);
-}
-
-.active\:bg-secondary-600:active {
-  background-color: var(--color-secondary-600);
-}
-
-.disabled\:bg-secondary-600:disabled {
-  background-color: var(--color-secondary-600);
-}
-
-.bg-secondary-700 {
+.bg-secondary-700, .even\:bg-secondary-700:nth-child(even), .odd\:bg-secondary-700:nth-child(odd), .last\:bg-secondary-700:last-child, .first\:bg-secondary-700:first-child, .focus-within\:bg-secondary-700:focus-within, .read-only\:bg-secondary-700:read-only, .disabled\:bg-secondary-700:disabled, .active\:bg-secondary-700:active, .focus\:bg-secondary-700:focus, .hover\:bg-secondary-700:hover {
   background-color: var(--color-secondary-700);
 }
 
-.hover\:bg-secondary-700:hover {
-  background-color: var(--color-secondary-700);
-}
-
-.focus\:bg-secondary-700:focus {
-  background-color: var(--color-secondary-700);
-}
-
-.active\:bg-secondary-700:active {
-  background-color: var(--color-secondary-700);
-}
-
-.disabled\:bg-secondary-700:disabled {
-  background-color: var(--color-secondary-700);
-}
-
-.bg-secondary-800 {
+.bg-secondary-800, .even\:bg-secondary-800:nth-child(even), .odd\:bg-secondary-800:nth-child(odd), .last\:bg-secondary-800:last-child, .first\:bg-secondary-800:first-child, .focus-within\:bg-secondary-800:focus-within, .read-only\:bg-secondary-800:read-only, .disabled\:bg-secondary-800:disabled, .active\:bg-secondary-800:active, .focus\:bg-secondary-800:focus, .hover\:bg-secondary-800:hover {
   background-color: var(--color-secondary-800);
 }
 
-.hover\:bg-secondary-800:hover {
-  background-color: var(--color-secondary-800);
-}
-
-.focus\:bg-secondary-800:focus {
-  background-color: var(--color-secondary-800);
-}
-
-.active\:bg-secondary-800:active {
-  background-color: var(--color-secondary-800);
-}
-
-.disabled\:bg-secondary-800:disabled {
-  background-color: var(--color-secondary-800);
-}
-
-.bg-secondary-900 {
+.bg-secondary-900, .even\:bg-secondary-900:nth-child(even), .odd\:bg-secondary-900:nth-child(odd), .last\:bg-secondary-900:last-child, .first\:bg-secondary-900:first-child, .focus-within\:bg-secondary-900:focus-within, .read-only\:bg-secondary-900:read-only, .disabled\:bg-secondary-900:disabled, .active\:bg-secondary-900:active, .focus\:bg-secondary-900:focus, .hover\:bg-secondary-900:hover {
   background-color: var(--color-secondary-900);
 }
 
-.hover\:bg-secondary-900:hover {
-  background-color: var(--color-secondary-900);
-}
-
-.focus\:bg-secondary-900:focus {
-  background-color: var(--color-secondary-900);
-}
-
-.active\:bg-secondary-900:active {
-  background-color: var(--color-secondary-900);
-}
-
-.disabled\:bg-secondary-900:disabled {
-  background-color: var(--color-secondary-900);
-}
-
-.bg-tertiary {
+.bg-tertiary, .even\:bg-tertiary:nth-child(even), .odd\:bg-tertiary:nth-child(odd), .last\:bg-tertiary:last-child, .first\:bg-tertiary:first-child, .focus-within\:bg-tertiary:focus-within, .read-only\:bg-tertiary:read-only, .disabled\:bg-tertiary:disabled, .active\:bg-tertiary:active, .focus\:bg-tertiary:focus, .hover\:bg-tertiary:hover {
   background-color: var(--color-tertiary);
 }
 
-.hover\:bg-tertiary:hover {
-  background-color: var(--color-tertiary);
-}
-
-.focus\:bg-tertiary:focus {
-  background-color: var(--color-tertiary);
-}
-
-.active\:bg-tertiary:active {
-  background-color: var(--color-tertiary);
-}
-
-.disabled\:bg-tertiary:disabled {
-  background-color: var(--color-tertiary);
-}
-
-.bg-tertiary-100 {
+.bg-tertiary-100, .even\:bg-tertiary-100:nth-child(even), .odd\:bg-tertiary-100:nth-child(odd), .last\:bg-tertiary-100:last-child, .first\:bg-tertiary-100:first-child, .focus-within\:bg-tertiary-100:focus-within, .read-only\:bg-tertiary-100:read-only, .disabled\:bg-tertiary-100:disabled, .active\:bg-tertiary-100:active, .focus\:bg-tertiary-100:focus, .hover\:bg-tertiary-100:hover {
   background-color: var(--color-tertiary-100);
 }
 
-.hover\:bg-tertiary-100:hover {
-  background-color: var(--color-tertiary-100);
-}
-
-.focus\:bg-tertiary-100:focus {
-  background-color: var(--color-tertiary-100);
-}
-
-.active\:bg-tertiary-100:active {
-  background-color: var(--color-tertiary-100);
-}
-
-.disabled\:bg-tertiary-100:disabled {
-  background-color: var(--color-tertiary-100);
-}
-
-.bg-tertiary-200 {
+.bg-tertiary-200, .even\:bg-tertiary-200:nth-child(even), .odd\:bg-tertiary-200:nth-child(odd), .last\:bg-tertiary-200:last-child, .first\:bg-tertiary-200:first-child, .focus-within\:bg-tertiary-200:focus-within, .read-only\:bg-tertiary-200:read-only, .disabled\:bg-tertiary-200:disabled, .active\:bg-tertiary-200:active, .focus\:bg-tertiary-200:focus, .hover\:bg-tertiary-200:hover {
   background-color: var(--color-tertiary-200);
 }
 
-.hover\:bg-tertiary-200:hover {
-  background-color: var(--color-tertiary-200);
-}
-
-.focus\:bg-tertiary-200:focus {
-  background-color: var(--color-tertiary-200);
-}
-
-.active\:bg-tertiary-200:active {
-  background-color: var(--color-tertiary-200);
-}
-
-.disabled\:bg-tertiary-200:disabled {
-  background-color: var(--color-tertiary-200);
-}
-
-.bg-tertiary-300 {
+.bg-tertiary-300, .even\:bg-tertiary-300:nth-child(even), .odd\:bg-tertiary-300:nth-child(odd), .last\:bg-tertiary-300:last-child, .first\:bg-tertiary-300:first-child, .focus-within\:bg-tertiary-300:focus-within, .read-only\:bg-tertiary-300:read-only, .disabled\:bg-tertiary-300:disabled, .active\:bg-tertiary-300:active, .focus\:bg-tertiary-300:focus, .hover\:bg-tertiary-300:hover {
   background-color: var(--color-tertiary-300);
 }
 
-.hover\:bg-tertiary-300:hover {
-  background-color: var(--color-tertiary-300);
-}
-
-.focus\:bg-tertiary-300:focus {
-  background-color: var(--color-tertiary-300);
-}
-
-.active\:bg-tertiary-300:active {
-  background-color: var(--color-tertiary-300);
-}
-
-.disabled\:bg-tertiary-300:disabled {
-  background-color: var(--color-tertiary-300);
-}
-
-.bg-tertiary-400 {
+.bg-tertiary-400, .even\:bg-tertiary-400:nth-child(even), .odd\:bg-tertiary-400:nth-child(odd), .last\:bg-tertiary-400:last-child, .first\:bg-tertiary-400:first-child, .focus-within\:bg-tertiary-400:focus-within, .read-only\:bg-tertiary-400:read-only, .disabled\:bg-tertiary-400:disabled, .active\:bg-tertiary-400:active, .focus\:bg-tertiary-400:focus, .hover\:bg-tertiary-400:hover {
   background-color: var(--color-tertiary-400);
 }
 
-.hover\:bg-tertiary-400:hover {
-  background-color: var(--color-tertiary-400);
-}
-
-.focus\:bg-tertiary-400:focus {
-  background-color: var(--color-tertiary-400);
-}
-
-.active\:bg-tertiary-400:active {
-  background-color: var(--color-tertiary-400);
-}
-
-.disabled\:bg-tertiary-400:disabled {
-  background-color: var(--color-tertiary-400);
-}
-
-.bg-tertiary-500 {
+.bg-tertiary-500, .even\:bg-tertiary-500:nth-child(even), .odd\:bg-tertiary-500:nth-child(odd), .last\:bg-tertiary-500:last-child, .first\:bg-tertiary-500:first-child, .focus-within\:bg-tertiary-500:focus-within, .read-only\:bg-tertiary-500:read-only, .disabled\:bg-tertiary-500:disabled, .active\:bg-tertiary-500:active, .focus\:bg-tertiary-500:focus, .hover\:bg-tertiary-500:hover {
   background-color: var(--color-tertiary-500);
 }
 
-.hover\:bg-tertiary-500:hover {
-  background-color: var(--color-tertiary-500);
-}
-
-.focus\:bg-tertiary-500:focus {
-  background-color: var(--color-tertiary-500);
-}
-
-.active\:bg-tertiary-500:active {
-  background-color: var(--color-tertiary-500);
-}
-
-.disabled\:bg-tertiary-500:disabled {
-  background-color: var(--color-tertiary-500);
-}
-
-.bg-tertiary-600 {
+.bg-tertiary-600, .even\:bg-tertiary-600:nth-child(even), .odd\:bg-tertiary-600:nth-child(odd), .last\:bg-tertiary-600:last-child, .first\:bg-tertiary-600:first-child, .focus-within\:bg-tertiary-600:focus-within, .read-only\:bg-tertiary-600:read-only, .disabled\:bg-tertiary-600:disabled, .active\:bg-tertiary-600:active, .focus\:bg-tertiary-600:focus, .hover\:bg-tertiary-600:hover {
   background-color: var(--color-tertiary-600);
 }
 
-.hover\:bg-tertiary-600:hover {
-  background-color: var(--color-tertiary-600);
-}
-
-.focus\:bg-tertiary-600:focus {
-  background-color: var(--color-tertiary-600);
-}
-
-.active\:bg-tertiary-600:active {
-  background-color: var(--color-tertiary-600);
-}
-
-.disabled\:bg-tertiary-600:disabled {
-  background-color: var(--color-tertiary-600);
-}
-
-.bg-tertiary-700 {
+.bg-tertiary-700, .even\:bg-tertiary-700:nth-child(even), .odd\:bg-tertiary-700:nth-child(odd), .last\:bg-tertiary-700:last-child, .first\:bg-tertiary-700:first-child, .focus-within\:bg-tertiary-700:focus-within, .read-only\:bg-tertiary-700:read-only, .disabled\:bg-tertiary-700:disabled, .active\:bg-tertiary-700:active, .focus\:bg-tertiary-700:focus, .hover\:bg-tertiary-700:hover {
   background-color: var(--color-tertiary-700);
 }
 
-.hover\:bg-tertiary-700:hover {
-  background-color: var(--color-tertiary-700);
-}
-
-.focus\:bg-tertiary-700:focus {
-  background-color: var(--color-tertiary-700);
-}
-
-.active\:bg-tertiary-700:active {
-  background-color: var(--color-tertiary-700);
-}
-
-.disabled\:bg-tertiary-700:disabled {
-  background-color: var(--color-tertiary-700);
-}
-
-.bg-tertiary-800 {
+.bg-tertiary-800, .even\:bg-tertiary-800:nth-child(even), .odd\:bg-tertiary-800:nth-child(odd), .last\:bg-tertiary-800:last-child, .first\:bg-tertiary-800:first-child, .focus-within\:bg-tertiary-800:focus-within, .read-only\:bg-tertiary-800:read-only, .disabled\:bg-tertiary-800:disabled, .active\:bg-tertiary-800:active, .focus\:bg-tertiary-800:focus, .hover\:bg-tertiary-800:hover {
   background-color: var(--color-tertiary-800);
 }
 
-.hover\:bg-tertiary-800:hover {
-  background-color: var(--color-tertiary-800);
-}
-
-.focus\:bg-tertiary-800:focus {
-  background-color: var(--color-tertiary-800);
-}
-
-.active\:bg-tertiary-800:active {
-  background-color: var(--color-tertiary-800);
-}
-
-.disabled\:bg-tertiary-800:disabled {
-  background-color: var(--color-tertiary-800);
-}
-
-.bg-tertiary-900 {
+.bg-tertiary-900, .even\:bg-tertiary-900:nth-child(even), .odd\:bg-tertiary-900:nth-child(odd), .last\:bg-tertiary-900:last-child, .first\:bg-tertiary-900:first-child, .focus-within\:bg-tertiary-900:focus-within, .read-only\:bg-tertiary-900:read-only, .disabled\:bg-tertiary-900:disabled, .active\:bg-tertiary-900:active, .focus\:bg-tertiary-900:focus, .hover\:bg-tertiary-900:hover {
   background-color: var(--color-tertiary-900);
 }
 
-.hover\:bg-tertiary-900:hover {
-  background-color: var(--color-tertiary-900);
-}
-
-.focus\:bg-tertiary-900:focus {
-  background-color: var(--color-tertiary-900);
-}
-
-.active\:bg-tertiary-900:active {
-  background-color: var(--color-tertiary-900);
-}
-
-.disabled\:bg-tertiary-900:disabled {
-  background-color: var(--color-tertiary-900);
-}
-
-.bg-info {
+.bg-info, .even\:bg-info:nth-child(even), .odd\:bg-info:nth-child(odd), .last\:bg-info:last-child, .first\:bg-info:first-child, .focus-within\:bg-info:focus-within, .read-only\:bg-info:read-only, .disabled\:bg-info:disabled, .active\:bg-info:active, .focus\:bg-info:focus, .hover\:bg-info:hover {
   background-color: var(--color-info);
 }
 
-.hover\:bg-info:hover {
-  background-color: var(--color-info);
-}
-
-.focus\:bg-info:focus {
-  background-color: var(--color-info);
-}
-
-.active\:bg-info:active {
-  background-color: var(--color-info);
-}
-
-.disabled\:bg-info:disabled {
-  background-color: var(--color-info);
-}
-
-.bg-info-100 {
+.bg-info-100, .even\:bg-info-100:nth-child(even), .odd\:bg-info-100:nth-child(odd), .last\:bg-info-100:last-child, .first\:bg-info-100:first-child, .focus-within\:bg-info-100:focus-within, .read-only\:bg-info-100:read-only, .disabled\:bg-info-100:disabled, .active\:bg-info-100:active, .focus\:bg-info-100:focus, .hover\:bg-info-100:hover {
   background-color: var(--color-info-100);
 }
 
-.hover\:bg-info-100:hover {
-  background-color: var(--color-info-100);
-}
-
-.focus\:bg-info-100:focus {
-  background-color: var(--color-info-100);
-}
-
-.active\:bg-info-100:active {
-  background-color: var(--color-info-100);
-}
-
-.disabled\:bg-info-100:disabled {
-  background-color: var(--color-info-100);
-}
-
-.bg-info-200 {
+.bg-info-200, .even\:bg-info-200:nth-child(even), .odd\:bg-info-200:nth-child(odd), .last\:bg-info-200:last-child, .first\:bg-info-200:first-child, .focus-within\:bg-info-200:focus-within, .read-only\:bg-info-200:read-only, .disabled\:bg-info-200:disabled, .active\:bg-info-200:active, .focus\:bg-info-200:focus, .hover\:bg-info-200:hover {
   background-color: var(--color-info-200);
 }
 
-.hover\:bg-info-200:hover {
-  background-color: var(--color-info-200);
-}
-
-.focus\:bg-info-200:focus {
-  background-color: var(--color-info-200);
-}
-
-.active\:bg-info-200:active {
-  background-color: var(--color-info-200);
-}
-
-.disabled\:bg-info-200:disabled {
-  background-color: var(--color-info-200);
-}
-
-.bg-info-300 {
+.bg-info-300, .even\:bg-info-300:nth-child(even), .odd\:bg-info-300:nth-child(odd), .last\:bg-info-300:last-child, .first\:bg-info-300:first-child, .focus-within\:bg-info-300:focus-within, .read-only\:bg-info-300:read-only, .disabled\:bg-info-300:disabled, .active\:bg-info-300:active, .focus\:bg-info-300:focus, .hover\:bg-info-300:hover {
   background-color: var(--color-info-300);
 }
 
-.hover\:bg-info-300:hover {
-  background-color: var(--color-info-300);
-}
-
-.focus\:bg-info-300:focus {
-  background-color: var(--color-info-300);
-}
-
-.active\:bg-info-300:active {
-  background-color: var(--color-info-300);
-}
-
-.disabled\:bg-info-300:disabled {
-  background-color: var(--color-info-300);
-}
-
-.bg-info-400 {
+.bg-info-400, .even\:bg-info-400:nth-child(even), .odd\:bg-info-400:nth-child(odd), .last\:bg-info-400:last-child, .first\:bg-info-400:first-child, .focus-within\:bg-info-400:focus-within, .read-only\:bg-info-400:read-only, .disabled\:bg-info-400:disabled, .active\:bg-info-400:active, .focus\:bg-info-400:focus, .hover\:bg-info-400:hover {
   background-color: var(--color-info-400);
 }
 
-.hover\:bg-info-400:hover {
-  background-color: var(--color-info-400);
-}
-
-.focus\:bg-info-400:focus {
-  background-color: var(--color-info-400);
-}
-
-.active\:bg-info-400:active {
-  background-color: var(--color-info-400);
-}
-
-.disabled\:bg-info-400:disabled {
-  background-color: var(--color-info-400);
-}
-
-.bg-info-500 {
+.bg-info-500, .even\:bg-info-500:nth-child(even), .odd\:bg-info-500:nth-child(odd), .last\:bg-info-500:last-child, .first\:bg-info-500:first-child, .focus-within\:bg-info-500:focus-within, .read-only\:bg-info-500:read-only, .disabled\:bg-info-500:disabled, .active\:bg-info-500:active, .focus\:bg-info-500:focus, .hover\:bg-info-500:hover {
   background-color: var(--color-info-500);
 }
 
-.hover\:bg-info-500:hover {
-  background-color: var(--color-info-500);
-}
-
-.focus\:bg-info-500:focus {
-  background-color: var(--color-info-500);
-}
-
-.active\:bg-info-500:active {
-  background-color: var(--color-info-500);
-}
-
-.disabled\:bg-info-500:disabled {
-  background-color: var(--color-info-500);
-}
-
-.bg-info-600 {
+.bg-info-600, .even\:bg-info-600:nth-child(even), .odd\:bg-info-600:nth-child(odd), .last\:bg-info-600:last-child, .first\:bg-info-600:first-child, .focus-within\:bg-info-600:focus-within, .read-only\:bg-info-600:read-only, .disabled\:bg-info-600:disabled, .active\:bg-info-600:active, .focus\:bg-info-600:focus, .hover\:bg-info-600:hover {
   background-color: var(--color-info-600);
 }
 
-.hover\:bg-info-600:hover {
-  background-color: var(--color-info-600);
-}
-
-.focus\:bg-info-600:focus {
-  background-color: var(--color-info-600);
-}
-
-.active\:bg-info-600:active {
-  background-color: var(--color-info-600);
-}
-
-.disabled\:bg-info-600:disabled {
-  background-color: var(--color-info-600);
-}
-
-.bg-info-700 {
+.bg-info-700, .even\:bg-info-700:nth-child(even), .odd\:bg-info-700:nth-child(odd), .last\:bg-info-700:last-child, .first\:bg-info-700:first-child, .focus-within\:bg-info-700:focus-within, .read-only\:bg-info-700:read-only, .disabled\:bg-info-700:disabled, .active\:bg-info-700:active, .focus\:bg-info-700:focus, .hover\:bg-info-700:hover {
   background-color: var(--color-info-700);
 }
 
-.hover\:bg-info-700:hover {
-  background-color: var(--color-info-700);
-}
-
-.focus\:bg-info-700:focus {
-  background-color: var(--color-info-700);
-}
-
-.active\:bg-info-700:active {
-  background-color: var(--color-info-700);
-}
-
-.disabled\:bg-info-700:disabled {
-  background-color: var(--color-info-700);
-}
-
-.bg-info-800 {
+.bg-info-800, .even\:bg-info-800:nth-child(even), .odd\:bg-info-800:nth-child(odd), .last\:bg-info-800:last-child, .first\:bg-info-800:first-child, .focus-within\:bg-info-800:focus-within, .read-only\:bg-info-800:read-only, .disabled\:bg-info-800:disabled, .active\:bg-info-800:active, .focus\:bg-info-800:focus, .hover\:bg-info-800:hover {
   background-color: var(--color-info-800);
 }
 
-.hover\:bg-info-800:hover {
-  background-color: var(--color-info-800);
-}
-
-.focus\:bg-info-800:focus {
-  background-color: var(--color-info-800);
-}
-
-.active\:bg-info-800:active {
-  background-color: var(--color-info-800);
-}
-
-.disabled\:bg-info-800:disabled {
-  background-color: var(--color-info-800);
-}
-
-.bg-info-900 {
+.bg-info-900, .even\:bg-info-900:nth-child(even), .odd\:bg-info-900:nth-child(odd), .last\:bg-info-900:last-child, .first\:bg-info-900:first-child, .focus-within\:bg-info-900:focus-within, .read-only\:bg-info-900:read-only, .disabled\:bg-info-900:disabled, .active\:bg-info-900:active, .focus\:bg-info-900:focus, .hover\:bg-info-900:hover {
   background-color: var(--color-info-900);
 }
 
-.hover\:bg-info-900:hover {
-  background-color: var(--color-info-900);
-}
-
-.focus\:bg-info-900:focus {
-  background-color: var(--color-info-900);
-}
-
-.active\:bg-info-900:active {
-  background-color: var(--color-info-900);
-}
-
-.disabled\:bg-info-900:disabled {
-  background-color: var(--color-info-900);
-}
-
-.bg-highlight {
+.bg-highlight, .even\:bg-highlight:nth-child(even), .odd\:bg-highlight:nth-child(odd), .last\:bg-highlight:last-child, .first\:bg-highlight:first-child, .focus-within\:bg-highlight:focus-within, .read-only\:bg-highlight:read-only, .disabled\:bg-highlight:disabled, .active\:bg-highlight:active, .focus\:bg-highlight:focus, .hover\:bg-highlight:hover {
   background-color: var(--color-highlight);
 }
 
-.hover\:bg-highlight:hover {
-  background-color: var(--color-highlight);
-}
-
-.focus\:bg-highlight:focus {
-  background-color: var(--color-highlight);
-}
-
-.active\:bg-highlight:active {
-  background-color: var(--color-highlight);
-}
-
-.disabled\:bg-highlight:disabled {
-  background-color: var(--color-highlight);
-}
-
-.bg-highlight-100 {
+.bg-highlight-100, .even\:bg-highlight-100:nth-child(even), .odd\:bg-highlight-100:nth-child(odd), .last\:bg-highlight-100:last-child, .first\:bg-highlight-100:first-child, .focus-within\:bg-highlight-100:focus-within, .read-only\:bg-highlight-100:read-only, .disabled\:bg-highlight-100:disabled, .active\:bg-highlight-100:active, .focus\:bg-highlight-100:focus, .hover\:bg-highlight-100:hover {
   background-color: var(--color-highlight-100);
 }
 
-.hover\:bg-highlight-100:hover {
-  background-color: var(--color-highlight-100);
-}
-
-.focus\:bg-highlight-100:focus {
-  background-color: var(--color-highlight-100);
-}
-
-.active\:bg-highlight-100:active {
-  background-color: var(--color-highlight-100);
-}
-
-.disabled\:bg-highlight-100:disabled {
-  background-color: var(--color-highlight-100);
-}
-
-.bg-highlight-200 {
+.bg-highlight-200, .even\:bg-highlight-200:nth-child(even), .odd\:bg-highlight-200:nth-child(odd), .last\:bg-highlight-200:last-child, .first\:bg-highlight-200:first-child, .focus-within\:bg-highlight-200:focus-within, .read-only\:bg-highlight-200:read-only, .disabled\:bg-highlight-200:disabled, .active\:bg-highlight-200:active, .focus\:bg-highlight-200:focus, .hover\:bg-highlight-200:hover {
   background-color: var(--color-highlight-200);
 }
 
-.hover\:bg-highlight-200:hover {
-  background-color: var(--color-highlight-200);
-}
-
-.focus\:bg-highlight-200:focus {
-  background-color: var(--color-highlight-200);
-}
-
-.active\:bg-highlight-200:active {
-  background-color: var(--color-highlight-200);
-}
-
-.disabled\:bg-highlight-200:disabled {
-  background-color: var(--color-highlight-200);
-}
-
-.bg-highlight-300 {
+.bg-highlight-300, .even\:bg-highlight-300:nth-child(even), .odd\:bg-highlight-300:nth-child(odd), .last\:bg-highlight-300:last-child, .first\:bg-highlight-300:first-child, .focus-within\:bg-highlight-300:focus-within, .read-only\:bg-highlight-300:read-only, .disabled\:bg-highlight-300:disabled, .active\:bg-highlight-300:active, .focus\:bg-highlight-300:focus, .hover\:bg-highlight-300:hover {
   background-color: var(--color-highlight-300);
 }
 
-.hover\:bg-highlight-300:hover {
-  background-color: var(--color-highlight-300);
-}
-
-.focus\:bg-highlight-300:focus {
-  background-color: var(--color-highlight-300);
-}
-
-.active\:bg-highlight-300:active {
-  background-color: var(--color-highlight-300);
-}
-
-.disabled\:bg-highlight-300:disabled {
-  background-color: var(--color-highlight-300);
-}
-
-.bg-highlight-400 {
+.bg-highlight-400, .even\:bg-highlight-400:nth-child(even), .odd\:bg-highlight-400:nth-child(odd), .last\:bg-highlight-400:last-child, .first\:bg-highlight-400:first-child, .focus-within\:bg-highlight-400:focus-within, .read-only\:bg-highlight-400:read-only, .disabled\:bg-highlight-400:disabled, .active\:bg-highlight-400:active, .focus\:bg-highlight-400:focus, .hover\:bg-highlight-400:hover {
   background-color: var(--color-highlight-400);
 }
 
-.hover\:bg-highlight-400:hover {
-  background-color: var(--color-highlight-400);
-}
-
-.focus\:bg-highlight-400:focus {
-  background-color: var(--color-highlight-400);
-}
-
-.active\:bg-highlight-400:active {
-  background-color: var(--color-highlight-400);
-}
-
-.disabled\:bg-highlight-400:disabled {
-  background-color: var(--color-highlight-400);
-}
-
-.bg-highlight-500 {
+.bg-highlight-500, .even\:bg-highlight-500:nth-child(even), .odd\:bg-highlight-500:nth-child(odd), .last\:bg-highlight-500:last-child, .first\:bg-highlight-500:first-child, .focus-within\:bg-highlight-500:focus-within, .read-only\:bg-highlight-500:read-only, .disabled\:bg-highlight-500:disabled, .active\:bg-highlight-500:active, .focus\:bg-highlight-500:focus, .hover\:bg-highlight-500:hover {
   background-color: var(--color-highlight-500);
 }
 
-.hover\:bg-highlight-500:hover {
-  background-color: var(--color-highlight-500);
-}
-
-.focus\:bg-highlight-500:focus {
-  background-color: var(--color-highlight-500);
-}
-
-.active\:bg-highlight-500:active {
-  background-color: var(--color-highlight-500);
-}
-
-.disabled\:bg-highlight-500:disabled {
-  background-color: var(--color-highlight-500);
-}
-
-.bg-highlight-600 {
+.bg-highlight-600, .even\:bg-highlight-600:nth-child(even), .odd\:bg-highlight-600:nth-child(odd), .last\:bg-highlight-600:last-child, .first\:bg-highlight-600:first-child, .focus-within\:bg-highlight-600:focus-within, .read-only\:bg-highlight-600:read-only, .disabled\:bg-highlight-600:disabled, .active\:bg-highlight-600:active, .focus\:bg-highlight-600:focus, .hover\:bg-highlight-600:hover {
   background-color: var(--color-highlight-600);
 }
 
-.hover\:bg-highlight-600:hover {
-  background-color: var(--color-highlight-600);
-}
-
-.focus\:bg-highlight-600:focus {
-  background-color: var(--color-highlight-600);
-}
-
-.active\:bg-highlight-600:active {
-  background-color: var(--color-highlight-600);
-}
-
-.disabled\:bg-highlight-600:disabled {
-  background-color: var(--color-highlight-600);
-}
-
-.bg-highlight-700 {
+.bg-highlight-700, .even\:bg-highlight-700:nth-child(even), .odd\:bg-highlight-700:nth-child(odd), .last\:bg-highlight-700:last-child, .first\:bg-highlight-700:first-child, .focus-within\:bg-highlight-700:focus-within, .read-only\:bg-highlight-700:read-only, .disabled\:bg-highlight-700:disabled, .active\:bg-highlight-700:active, .focus\:bg-highlight-700:focus, .hover\:bg-highlight-700:hover {
   background-color: var(--color-highlight-700);
 }
 
-.hover\:bg-highlight-700:hover {
-  background-color: var(--color-highlight-700);
-}
-
-.focus\:bg-highlight-700:focus {
-  background-color: var(--color-highlight-700);
-}
-
-.active\:bg-highlight-700:active {
-  background-color: var(--color-highlight-700);
-}
-
-.disabled\:bg-highlight-700:disabled {
-  background-color: var(--color-highlight-700);
-}
-
-.bg-highlight-800 {
+.bg-highlight-800, .even\:bg-highlight-800:nth-child(even), .odd\:bg-highlight-800:nth-child(odd), .last\:bg-highlight-800:last-child, .first\:bg-highlight-800:first-child, .focus-within\:bg-highlight-800:focus-within, .read-only\:bg-highlight-800:read-only, .disabled\:bg-highlight-800:disabled, .active\:bg-highlight-800:active, .focus\:bg-highlight-800:focus, .hover\:bg-highlight-800:hover {
   background-color: var(--color-highlight-800);
 }
 
-.hover\:bg-highlight-800:hover {
-  background-color: var(--color-highlight-800);
-}
-
-.focus\:bg-highlight-800:focus {
-  background-color: var(--color-highlight-800);
-}
-
-.active\:bg-highlight-800:active {
-  background-color: var(--color-highlight-800);
-}
-
-.disabled\:bg-highlight-800:disabled {
-  background-color: var(--color-highlight-800);
-}
-
-.bg-highlight-900 {
+.bg-highlight-900, .even\:bg-highlight-900:nth-child(even), .odd\:bg-highlight-900:nth-child(odd), .last\:bg-highlight-900:last-child, .first\:bg-highlight-900:first-child, .focus-within\:bg-highlight-900:focus-within, .read-only\:bg-highlight-900:read-only, .disabled\:bg-highlight-900:disabled, .active\:bg-highlight-900:active, .focus\:bg-highlight-900:focus, .hover\:bg-highlight-900:hover {
   background-color: var(--color-highlight-900);
 }
 
-.hover\:bg-highlight-900:hover {
-  background-color: var(--color-highlight-900);
-}
-
-.focus\:bg-highlight-900:focus {
-  background-color: var(--color-highlight-900);
-}
-
-.active\:bg-highlight-900:active {
-  background-color: var(--color-highlight-900);
-}
-
-.disabled\:bg-highlight-900:disabled {
-  background-color: var(--color-highlight-900);
-}
-
-.bg-success {
+.bg-success, .even\:bg-success:nth-child(even), .odd\:bg-success:nth-child(odd), .last\:bg-success:last-child, .first\:bg-success:first-child, .focus-within\:bg-success:focus-within, .read-only\:bg-success:read-only, .disabled\:bg-success:disabled, .active\:bg-success:active, .focus\:bg-success:focus, .hover\:bg-success:hover {
   background-color: var(--color-success);
 }
 
-.hover\:bg-success:hover {
-  background-color: var(--color-success);
-}
-
-.focus\:bg-success:focus {
-  background-color: var(--color-success);
-}
-
-.active\:bg-success:active {
-  background-color: var(--color-success);
-}
-
-.disabled\:bg-success:disabled {
-  background-color: var(--color-success);
-}
-
-.bg-success-100 {
+.bg-success-100, .even\:bg-success-100:nth-child(even), .odd\:bg-success-100:nth-child(odd), .last\:bg-success-100:last-child, .first\:bg-success-100:first-child, .focus-within\:bg-success-100:focus-within, .read-only\:bg-success-100:read-only, .disabled\:bg-success-100:disabled, .active\:bg-success-100:active, .focus\:bg-success-100:focus, .hover\:bg-success-100:hover {
   background-color: var(--color-success-100);
 }
 
-.hover\:bg-success-100:hover {
-  background-color: var(--color-success-100);
-}
-
-.focus\:bg-success-100:focus {
-  background-color: var(--color-success-100);
-}
-
-.active\:bg-success-100:active {
-  background-color: var(--color-success-100);
-}
-
-.disabled\:bg-success-100:disabled {
-  background-color: var(--color-success-100);
-}
-
-.bg-success-200 {
+.bg-success-200, .even\:bg-success-200:nth-child(even), .odd\:bg-success-200:nth-child(odd), .last\:bg-success-200:last-child, .first\:bg-success-200:first-child, .focus-within\:bg-success-200:focus-within, .read-only\:bg-success-200:read-only, .disabled\:bg-success-200:disabled, .active\:bg-success-200:active, .focus\:bg-success-200:focus, .hover\:bg-success-200:hover {
   background-color: var(--color-success-200);
 }
 
-.hover\:bg-success-200:hover {
-  background-color: var(--color-success-200);
-}
-
-.focus\:bg-success-200:focus {
-  background-color: var(--color-success-200);
-}
-
-.active\:bg-success-200:active {
-  background-color: var(--color-success-200);
-}
-
-.disabled\:bg-success-200:disabled {
-  background-color: var(--color-success-200);
-}
-
-.bg-success-300 {
+.bg-success-300, .even\:bg-success-300:nth-child(even), .odd\:bg-success-300:nth-child(odd), .last\:bg-success-300:last-child, .first\:bg-success-300:first-child, .focus-within\:bg-success-300:focus-within, .read-only\:bg-success-300:read-only, .disabled\:bg-success-300:disabled, .active\:bg-success-300:active, .focus\:bg-success-300:focus, .hover\:bg-success-300:hover {
   background-color: var(--color-success-300);
 }
 
-.hover\:bg-success-300:hover {
-  background-color: var(--color-success-300);
-}
-
-.focus\:bg-success-300:focus {
-  background-color: var(--color-success-300);
-}
-
-.active\:bg-success-300:active {
-  background-color: var(--color-success-300);
-}
-
-.disabled\:bg-success-300:disabled {
-  background-color: var(--color-success-300);
-}
-
-.bg-success-400 {
+.bg-success-400, .even\:bg-success-400:nth-child(even), .odd\:bg-success-400:nth-child(odd), .last\:bg-success-400:last-child, .first\:bg-success-400:first-child, .focus-within\:bg-success-400:focus-within, .read-only\:bg-success-400:read-only, .disabled\:bg-success-400:disabled, .active\:bg-success-400:active, .focus\:bg-success-400:focus, .hover\:bg-success-400:hover {
   background-color: var(--color-success-400);
 }
 
-.hover\:bg-success-400:hover {
-  background-color: var(--color-success-400);
-}
-
-.focus\:bg-success-400:focus {
-  background-color: var(--color-success-400);
-}
-
-.active\:bg-success-400:active {
-  background-color: var(--color-success-400);
-}
-
-.disabled\:bg-success-400:disabled {
-  background-color: var(--color-success-400);
-}
-
-.bg-success-500 {
+.bg-success-500, .even\:bg-success-500:nth-child(even), .odd\:bg-success-500:nth-child(odd), .last\:bg-success-500:last-child, .first\:bg-success-500:first-child, .focus-within\:bg-success-500:focus-within, .read-only\:bg-success-500:read-only, .disabled\:bg-success-500:disabled, .active\:bg-success-500:active, .focus\:bg-success-500:focus, .hover\:bg-success-500:hover {
   background-color: var(--color-success-500);
 }
 
-.hover\:bg-success-500:hover {
-  background-color: var(--color-success-500);
-}
-
-.focus\:bg-success-500:focus {
-  background-color: var(--color-success-500);
-}
-
-.active\:bg-success-500:active {
-  background-color: var(--color-success-500);
-}
-
-.disabled\:bg-success-500:disabled {
-  background-color: var(--color-success-500);
-}
-
-.bg-success-600 {
+.bg-success-600, .even\:bg-success-600:nth-child(even), .odd\:bg-success-600:nth-child(odd), .last\:bg-success-600:last-child, .first\:bg-success-600:first-child, .focus-within\:bg-success-600:focus-within, .read-only\:bg-success-600:read-only, .disabled\:bg-success-600:disabled, .active\:bg-success-600:active, .focus\:bg-success-600:focus, .hover\:bg-success-600:hover {
   background-color: var(--color-success-600);
 }
 
-.hover\:bg-success-600:hover {
-  background-color: var(--color-success-600);
-}
-
-.focus\:bg-success-600:focus {
-  background-color: var(--color-success-600);
-}
-
-.active\:bg-success-600:active {
-  background-color: var(--color-success-600);
-}
-
-.disabled\:bg-success-600:disabled {
-  background-color: var(--color-success-600);
-}
-
-.bg-success-700 {
+.bg-success-700, .even\:bg-success-700:nth-child(even), .odd\:bg-success-700:nth-child(odd), .last\:bg-success-700:last-child, .first\:bg-success-700:first-child, .focus-within\:bg-success-700:focus-within, .read-only\:bg-success-700:read-only, .disabled\:bg-success-700:disabled, .active\:bg-success-700:active, .focus\:bg-success-700:focus, .hover\:bg-success-700:hover {
   background-color: var(--color-success-700);
 }
 
-.hover\:bg-success-700:hover {
-  background-color: var(--color-success-700);
-}
-
-.focus\:bg-success-700:focus {
-  background-color: var(--color-success-700);
-}
-
-.active\:bg-success-700:active {
-  background-color: var(--color-success-700);
-}
-
-.disabled\:bg-success-700:disabled {
-  background-color: var(--color-success-700);
-}
-
-.bg-success-800 {
+.bg-success-800, .even\:bg-success-800:nth-child(even), .odd\:bg-success-800:nth-child(odd), .last\:bg-success-800:last-child, .first\:bg-success-800:first-child, .focus-within\:bg-success-800:focus-within, .read-only\:bg-success-800:read-only, .disabled\:bg-success-800:disabled, .active\:bg-success-800:active, .focus\:bg-success-800:focus, .hover\:bg-success-800:hover {
   background-color: var(--color-success-800);
 }
 
-.hover\:bg-success-800:hover {
-  background-color: var(--color-success-800);
-}
-
-.focus\:bg-success-800:focus {
-  background-color: var(--color-success-800);
-}
-
-.active\:bg-success-800:active {
-  background-color: var(--color-success-800);
-}
-
-.disabled\:bg-success-800:disabled {
-  background-color: var(--color-success-800);
-}
-
-.bg-success-900 {
+.bg-success-900, .even\:bg-success-900:nth-child(even), .odd\:bg-success-900:nth-child(odd), .last\:bg-success-900:last-child, .first\:bg-success-900:first-child, .focus-within\:bg-success-900:focus-within, .read-only\:bg-success-900:read-only, .disabled\:bg-success-900:disabled, .active\:bg-success-900:active, .focus\:bg-success-900:focus, .hover\:bg-success-900:hover {
   background-color: var(--color-success-900);
 }
 
-.hover\:bg-success-900:hover {
-  background-color: var(--color-success-900);
-}
-
-.focus\:bg-success-900:focus {
-  background-color: var(--color-success-900);
-}
-
-.active\:bg-success-900:active {
-  background-color: var(--color-success-900);
-}
-
-.disabled\:bg-success-900:disabled {
-  background-color: var(--color-success-900);
-}
-
-.bg-warning {
+.bg-warning, .even\:bg-warning:nth-child(even), .odd\:bg-warning:nth-child(odd), .last\:bg-warning:last-child, .first\:bg-warning:first-child, .focus-within\:bg-warning:focus-within, .read-only\:bg-warning:read-only, .disabled\:bg-warning:disabled, .active\:bg-warning:active, .focus\:bg-warning:focus, .hover\:bg-warning:hover {
   background-color: var(--color-warning);
 }
 
-.hover\:bg-warning:hover {
-  background-color: var(--color-warning);
-}
-
-.focus\:bg-warning:focus {
-  background-color: var(--color-warning);
-}
-
-.active\:bg-warning:active {
-  background-color: var(--color-warning);
-}
-
-.disabled\:bg-warning:disabled {
-  background-color: var(--color-warning);
-}
-
-.bg-warning-100 {
+.bg-warning-100, .even\:bg-warning-100:nth-child(even), .odd\:bg-warning-100:nth-child(odd), .last\:bg-warning-100:last-child, .first\:bg-warning-100:first-child, .focus-within\:bg-warning-100:focus-within, .read-only\:bg-warning-100:read-only, .disabled\:bg-warning-100:disabled, .active\:bg-warning-100:active, .focus\:bg-warning-100:focus, .hover\:bg-warning-100:hover {
   background-color: var(--color-warning-100);
 }
 
-.hover\:bg-warning-100:hover {
-  background-color: var(--color-warning-100);
-}
-
-.focus\:bg-warning-100:focus {
-  background-color: var(--color-warning-100);
-}
-
-.active\:bg-warning-100:active {
-  background-color: var(--color-warning-100);
-}
-
-.disabled\:bg-warning-100:disabled {
-  background-color: var(--color-warning-100);
-}
-
-.bg-warning-200 {
+.bg-warning-200, .even\:bg-warning-200:nth-child(even), .odd\:bg-warning-200:nth-child(odd), .last\:bg-warning-200:last-child, .first\:bg-warning-200:first-child, .focus-within\:bg-warning-200:focus-within, .read-only\:bg-warning-200:read-only, .disabled\:bg-warning-200:disabled, .active\:bg-warning-200:active, .focus\:bg-warning-200:focus, .hover\:bg-warning-200:hover {
   background-color: var(--color-warning-200);
 }
 
-.hover\:bg-warning-200:hover {
-  background-color: var(--color-warning-200);
-}
-
-.focus\:bg-warning-200:focus {
-  background-color: var(--color-warning-200);
-}
-
-.active\:bg-warning-200:active {
-  background-color: var(--color-warning-200);
-}
-
-.disabled\:bg-warning-200:disabled {
-  background-color: var(--color-warning-200);
-}
-
-.bg-warning-300 {
+.bg-warning-300, .even\:bg-warning-300:nth-child(even), .odd\:bg-warning-300:nth-child(odd), .last\:bg-warning-300:last-child, .first\:bg-warning-300:first-child, .focus-within\:bg-warning-300:focus-within, .read-only\:bg-warning-300:read-only, .disabled\:bg-warning-300:disabled, .active\:bg-warning-300:active, .focus\:bg-warning-300:focus, .hover\:bg-warning-300:hover {
   background-color: var(--color-warning-300);
 }
 
-.hover\:bg-warning-300:hover {
-  background-color: var(--color-warning-300);
-}
-
-.focus\:bg-warning-300:focus {
-  background-color: var(--color-warning-300);
-}
-
-.active\:bg-warning-300:active {
-  background-color: var(--color-warning-300);
-}
-
-.disabled\:bg-warning-300:disabled {
-  background-color: var(--color-warning-300);
-}
-
-.bg-warning-400 {
+.bg-warning-400, .even\:bg-warning-400:nth-child(even), .odd\:bg-warning-400:nth-child(odd), .last\:bg-warning-400:last-child, .first\:bg-warning-400:first-child, .focus-within\:bg-warning-400:focus-within, .read-only\:bg-warning-400:read-only, .disabled\:bg-warning-400:disabled, .active\:bg-warning-400:active, .focus\:bg-warning-400:focus, .hover\:bg-warning-400:hover {
   background-color: var(--color-warning-400);
 }
 
-.hover\:bg-warning-400:hover {
-  background-color: var(--color-warning-400);
-}
-
-.focus\:bg-warning-400:focus {
-  background-color: var(--color-warning-400);
-}
-
-.active\:bg-warning-400:active {
-  background-color: var(--color-warning-400);
-}
-
-.disabled\:bg-warning-400:disabled {
-  background-color: var(--color-warning-400);
-}
-
-.bg-warning-500 {
+.bg-warning-500, .even\:bg-warning-500:nth-child(even), .odd\:bg-warning-500:nth-child(odd), .last\:bg-warning-500:last-child, .first\:bg-warning-500:first-child, .focus-within\:bg-warning-500:focus-within, .read-only\:bg-warning-500:read-only, .disabled\:bg-warning-500:disabled, .active\:bg-warning-500:active, .focus\:bg-warning-500:focus, .hover\:bg-warning-500:hover {
   background-color: var(--color-warning-500);
 }
 
-.hover\:bg-warning-500:hover {
-  background-color: var(--color-warning-500);
-}
-
-.focus\:bg-warning-500:focus {
-  background-color: var(--color-warning-500);
-}
-
-.active\:bg-warning-500:active {
-  background-color: var(--color-warning-500);
-}
-
-.disabled\:bg-warning-500:disabled {
-  background-color: var(--color-warning-500);
-}
-
-.bg-warning-600 {
+.bg-warning-600, .even\:bg-warning-600:nth-child(even), .odd\:bg-warning-600:nth-child(odd), .last\:bg-warning-600:last-child, .first\:bg-warning-600:first-child, .focus-within\:bg-warning-600:focus-within, .read-only\:bg-warning-600:read-only, .disabled\:bg-warning-600:disabled, .active\:bg-warning-600:active, .focus\:bg-warning-600:focus, .hover\:bg-warning-600:hover {
   background-color: var(--color-warning-600);
 }
 
-.hover\:bg-warning-600:hover {
-  background-color: var(--color-warning-600);
-}
-
-.focus\:bg-warning-600:focus {
-  background-color: var(--color-warning-600);
-}
-
-.active\:bg-warning-600:active {
-  background-color: var(--color-warning-600);
-}
-
-.disabled\:bg-warning-600:disabled {
-  background-color: var(--color-warning-600);
-}
-
-.bg-warning-700 {
+.bg-warning-700, .even\:bg-warning-700:nth-child(even), .odd\:bg-warning-700:nth-child(odd), .last\:bg-warning-700:last-child, .first\:bg-warning-700:first-child, .focus-within\:bg-warning-700:focus-within, .read-only\:bg-warning-700:read-only, .disabled\:bg-warning-700:disabled, .active\:bg-warning-700:active, .focus\:bg-warning-700:focus, .hover\:bg-warning-700:hover {
   background-color: var(--color-warning-700);
 }
 
-.hover\:bg-warning-700:hover {
-  background-color: var(--color-warning-700);
-}
-
-.focus\:bg-warning-700:focus {
-  background-color: var(--color-warning-700);
-}
-
-.active\:bg-warning-700:active {
-  background-color: var(--color-warning-700);
-}
-
-.disabled\:bg-warning-700:disabled {
-  background-color: var(--color-warning-700);
-}
-
-.bg-warning-800 {
+.bg-warning-800, .even\:bg-warning-800:nth-child(even), .odd\:bg-warning-800:nth-child(odd), .last\:bg-warning-800:last-child, .first\:bg-warning-800:first-child, .focus-within\:bg-warning-800:focus-within, .read-only\:bg-warning-800:read-only, .disabled\:bg-warning-800:disabled, .active\:bg-warning-800:active, .focus\:bg-warning-800:focus, .hover\:bg-warning-800:hover {
   background-color: var(--color-warning-800);
 }
 
-.hover\:bg-warning-800:hover {
-  background-color: var(--color-warning-800);
-}
-
-.focus\:bg-warning-800:focus {
-  background-color: var(--color-warning-800);
-}
-
-.active\:bg-warning-800:active {
-  background-color: var(--color-warning-800);
-}
-
-.disabled\:bg-warning-800:disabled {
-  background-color: var(--color-warning-800);
-}
-
-.bg-warning-900 {
+.bg-warning-900, .even\:bg-warning-900:nth-child(even), .odd\:bg-warning-900:nth-child(odd), .last\:bg-warning-900:last-child, .first\:bg-warning-900:first-child, .focus-within\:bg-warning-900:focus-within, .read-only\:bg-warning-900:read-only, .disabled\:bg-warning-900:disabled, .active\:bg-warning-900:active, .focus\:bg-warning-900:focus, .hover\:bg-warning-900:hover {
   background-color: var(--color-warning-900);
 }
 
-.hover\:bg-warning-900:hover {
-  background-color: var(--color-warning-900);
-}
-
-.focus\:bg-warning-900:focus {
-  background-color: var(--color-warning-900);
-}
-
-.active\:bg-warning-900:active {
-  background-color: var(--color-warning-900);
-}
-
-.disabled\:bg-warning-900:disabled {
-  background-color: var(--color-warning-900);
-}
-
-.bg-alert {
+.bg-alert, .even\:bg-alert:nth-child(even), .odd\:bg-alert:nth-child(odd), .last\:bg-alert:last-child, .first\:bg-alert:first-child, .focus-within\:bg-alert:focus-within, .read-only\:bg-alert:read-only, .disabled\:bg-alert:disabled, .active\:bg-alert:active, .focus\:bg-alert:focus, .hover\:bg-alert:hover {
   background-color: var(--color-alert);
 }
 
-.hover\:bg-alert:hover {
-  background-color: var(--color-alert);
-}
-
-.focus\:bg-alert:focus {
-  background-color: var(--color-alert);
-}
-
-.active\:bg-alert:active {
-  background-color: var(--color-alert);
-}
-
-.disabled\:bg-alert:disabled {
-  background-color: var(--color-alert);
-}
-
-.bg-alert-100 {
+.bg-alert-100, .even\:bg-alert-100:nth-child(even), .odd\:bg-alert-100:nth-child(odd), .last\:bg-alert-100:last-child, .first\:bg-alert-100:first-child, .focus-within\:bg-alert-100:focus-within, .read-only\:bg-alert-100:read-only, .disabled\:bg-alert-100:disabled, .active\:bg-alert-100:active, .focus\:bg-alert-100:focus, .hover\:bg-alert-100:hover {
   background-color: var(--color-alert-100);
 }
 
-.hover\:bg-alert-100:hover {
-  background-color: var(--color-alert-100);
-}
-
-.focus\:bg-alert-100:focus {
-  background-color: var(--color-alert-100);
-}
-
-.active\:bg-alert-100:active {
-  background-color: var(--color-alert-100);
-}
-
-.disabled\:bg-alert-100:disabled {
-  background-color: var(--color-alert-100);
-}
-
-.bg-alert-200 {
+.bg-alert-200, .even\:bg-alert-200:nth-child(even), .odd\:bg-alert-200:nth-child(odd), .last\:bg-alert-200:last-child, .first\:bg-alert-200:first-child, .focus-within\:bg-alert-200:focus-within, .read-only\:bg-alert-200:read-only, .disabled\:bg-alert-200:disabled, .active\:bg-alert-200:active, .focus\:bg-alert-200:focus, .hover\:bg-alert-200:hover {
   background-color: var(--color-alert-200);
 }
 
-.hover\:bg-alert-200:hover {
-  background-color: var(--color-alert-200);
-}
-
-.focus\:bg-alert-200:focus {
-  background-color: var(--color-alert-200);
-}
-
-.active\:bg-alert-200:active {
-  background-color: var(--color-alert-200);
-}
-
-.disabled\:bg-alert-200:disabled {
-  background-color: var(--color-alert-200);
-}
-
-.bg-alert-300 {
+.bg-alert-300, .even\:bg-alert-300:nth-child(even), .odd\:bg-alert-300:nth-child(odd), .last\:bg-alert-300:last-child, .first\:bg-alert-300:first-child, .focus-within\:bg-alert-300:focus-within, .read-only\:bg-alert-300:read-only, .disabled\:bg-alert-300:disabled, .active\:bg-alert-300:active, .focus\:bg-alert-300:focus, .hover\:bg-alert-300:hover {
   background-color: var(--color-alert-300);
 }
 
-.hover\:bg-alert-300:hover {
-  background-color: var(--color-alert-300);
-}
-
-.focus\:bg-alert-300:focus {
-  background-color: var(--color-alert-300);
-}
-
-.active\:bg-alert-300:active {
-  background-color: var(--color-alert-300);
-}
-
-.disabled\:bg-alert-300:disabled {
-  background-color: var(--color-alert-300);
-}
-
-.bg-alert-400 {
+.bg-alert-400, .even\:bg-alert-400:nth-child(even), .odd\:bg-alert-400:nth-child(odd), .last\:bg-alert-400:last-child, .first\:bg-alert-400:first-child, .focus-within\:bg-alert-400:focus-within, .read-only\:bg-alert-400:read-only, .disabled\:bg-alert-400:disabled, .active\:bg-alert-400:active, .focus\:bg-alert-400:focus, .hover\:bg-alert-400:hover {
   background-color: var(--color-alert-400);
 }
 
-.hover\:bg-alert-400:hover {
-  background-color: var(--color-alert-400);
-}
-
-.focus\:bg-alert-400:focus {
-  background-color: var(--color-alert-400);
-}
-
-.active\:bg-alert-400:active {
-  background-color: var(--color-alert-400);
-}
-
-.disabled\:bg-alert-400:disabled {
-  background-color: var(--color-alert-400);
-}
-
-.bg-alert-500 {
+.bg-alert-500, .even\:bg-alert-500:nth-child(even), .odd\:bg-alert-500:nth-child(odd), .last\:bg-alert-500:last-child, .first\:bg-alert-500:first-child, .focus-within\:bg-alert-500:focus-within, .read-only\:bg-alert-500:read-only, .disabled\:bg-alert-500:disabled, .active\:bg-alert-500:active, .focus\:bg-alert-500:focus, .hover\:bg-alert-500:hover {
   background-color: var(--color-alert-500);
 }
 
-.hover\:bg-alert-500:hover {
-  background-color: var(--color-alert-500);
-}
-
-.focus\:bg-alert-500:focus {
-  background-color: var(--color-alert-500);
-}
-
-.active\:bg-alert-500:active {
-  background-color: var(--color-alert-500);
-}
-
-.disabled\:bg-alert-500:disabled {
-  background-color: var(--color-alert-500);
-}
-
-.bg-alert-600 {
+.bg-alert-600, .even\:bg-alert-600:nth-child(even), .odd\:bg-alert-600:nth-child(odd), .last\:bg-alert-600:last-child, .first\:bg-alert-600:first-child, .focus-within\:bg-alert-600:focus-within, .read-only\:bg-alert-600:read-only, .disabled\:bg-alert-600:disabled, .active\:bg-alert-600:active, .focus\:bg-alert-600:focus, .hover\:bg-alert-600:hover {
   background-color: var(--color-alert-600);
 }
 
-.hover\:bg-alert-600:hover {
-  background-color: var(--color-alert-600);
-}
-
-.focus\:bg-alert-600:focus {
-  background-color: var(--color-alert-600);
-}
-
-.active\:bg-alert-600:active {
-  background-color: var(--color-alert-600);
-}
-
-.disabled\:bg-alert-600:disabled {
-  background-color: var(--color-alert-600);
-}
-
-.bg-alert-700 {
+.bg-alert-700, .even\:bg-alert-700:nth-child(even), .odd\:bg-alert-700:nth-child(odd), .last\:bg-alert-700:last-child, .first\:bg-alert-700:first-child, .focus-within\:bg-alert-700:focus-within, .read-only\:bg-alert-700:read-only, .disabled\:bg-alert-700:disabled, .active\:bg-alert-700:active, .focus\:bg-alert-700:focus, .hover\:bg-alert-700:hover {
   background-color: var(--color-alert-700);
 }
 
-.hover\:bg-alert-700:hover {
-  background-color: var(--color-alert-700);
-}
-
-.focus\:bg-alert-700:focus {
-  background-color: var(--color-alert-700);
-}
-
-.active\:bg-alert-700:active {
-  background-color: var(--color-alert-700);
-}
-
-.disabled\:bg-alert-700:disabled {
-  background-color: var(--color-alert-700);
-}
-
-.bg-alert-800 {
+.bg-alert-800, .even\:bg-alert-800:nth-child(even), .odd\:bg-alert-800:nth-child(odd), .last\:bg-alert-800:last-child, .first\:bg-alert-800:first-child, .focus-within\:bg-alert-800:focus-within, .read-only\:bg-alert-800:read-only, .disabled\:bg-alert-800:disabled, .active\:bg-alert-800:active, .focus\:bg-alert-800:focus, .hover\:bg-alert-800:hover {
   background-color: var(--color-alert-800);
 }
 
-.hover\:bg-alert-800:hover {
-  background-color: var(--color-alert-800);
-}
-
-.focus\:bg-alert-800:focus {
-  background-color: var(--color-alert-800);
-}
-
-.active\:bg-alert-800:active {
-  background-color: var(--color-alert-800);
-}
-
-.disabled\:bg-alert-800:disabled {
-  background-color: var(--color-alert-800);
-}
-
-.bg-alert-900 {
+.bg-alert-900, .even\:bg-alert-900:nth-child(even), .odd\:bg-alert-900:nth-child(odd), .last\:bg-alert-900:last-child, .first\:bg-alert-900:first-child, .focus-within\:bg-alert-900:focus-within, .read-only\:bg-alert-900:read-only, .disabled\:bg-alert-900:disabled, .active\:bg-alert-900:active, .focus\:bg-alert-900:focus, .hover\:bg-alert-900:hover {
   background-color: var(--color-alert-900);
 }
 
-.hover\:bg-alert-900:hover {
-  background-color: var(--color-alert-900);
-}
-
-.focus\:bg-alert-900:focus {
-  background-color: var(--color-alert-900);
-}
-
-.active\:bg-alert-900:active {
-  background-color: var(--color-alert-900);
-}
-
-.disabled\:bg-alert-900:disabled {
-  background-color: var(--color-alert-900);
-}
-
-.bg-danger {
+.bg-danger, .even\:bg-danger:nth-child(even), .odd\:bg-danger:nth-child(odd), .last\:bg-danger:last-child, .first\:bg-danger:first-child, .focus-within\:bg-danger:focus-within, .read-only\:bg-danger:read-only, .disabled\:bg-danger:disabled, .active\:bg-danger:active, .focus\:bg-danger:focus, .hover\:bg-danger:hover {
   background-color: var(--color-danger);
 }
 
-.hover\:bg-danger:hover {
-  background-color: var(--color-danger);
-}
-
-.focus\:bg-danger:focus {
-  background-color: var(--color-danger);
-}
-
-.active\:bg-danger:active {
-  background-color: var(--color-danger);
-}
-
-.disabled\:bg-danger:disabled {
-  background-color: var(--color-danger);
-}
-
-.bg-danger-100 {
+.bg-danger-100, .even\:bg-danger-100:nth-child(even), .odd\:bg-danger-100:nth-child(odd), .last\:bg-danger-100:last-child, .first\:bg-danger-100:first-child, .focus-within\:bg-danger-100:focus-within, .read-only\:bg-danger-100:read-only, .disabled\:bg-danger-100:disabled, .active\:bg-danger-100:active, .focus\:bg-danger-100:focus, .hover\:bg-danger-100:hover {
   background-color: var(--color-danger-100);
 }
 
-.hover\:bg-danger-100:hover {
-  background-color: var(--color-danger-100);
-}
-
-.focus\:bg-danger-100:focus {
-  background-color: var(--color-danger-100);
-}
-
-.active\:bg-danger-100:active {
-  background-color: var(--color-danger-100);
-}
-
-.disabled\:bg-danger-100:disabled {
-  background-color: var(--color-danger-100);
-}
-
-.bg-danger-200 {
+.bg-danger-200, .even\:bg-danger-200:nth-child(even), .odd\:bg-danger-200:nth-child(odd), .last\:bg-danger-200:last-child, .first\:bg-danger-200:first-child, .focus-within\:bg-danger-200:focus-within, .read-only\:bg-danger-200:read-only, .disabled\:bg-danger-200:disabled, .active\:bg-danger-200:active, .focus\:bg-danger-200:focus, .hover\:bg-danger-200:hover {
   background-color: var(--color-danger-200);
 }
 
-.hover\:bg-danger-200:hover {
-  background-color: var(--color-danger-200);
-}
-
-.focus\:bg-danger-200:focus {
-  background-color: var(--color-danger-200);
-}
-
-.active\:bg-danger-200:active {
-  background-color: var(--color-danger-200);
-}
-
-.disabled\:bg-danger-200:disabled {
-  background-color: var(--color-danger-200);
-}
-
-.bg-danger-300 {
+.bg-danger-300, .even\:bg-danger-300:nth-child(even), .odd\:bg-danger-300:nth-child(odd), .last\:bg-danger-300:last-child, .first\:bg-danger-300:first-child, .focus-within\:bg-danger-300:focus-within, .read-only\:bg-danger-300:read-only, .disabled\:bg-danger-300:disabled, .active\:bg-danger-300:active, .focus\:bg-danger-300:focus, .hover\:bg-danger-300:hover {
   background-color: var(--color-danger-300);
 }
 
-.hover\:bg-danger-300:hover {
-  background-color: var(--color-danger-300);
-}
-
-.focus\:bg-danger-300:focus {
-  background-color: var(--color-danger-300);
-}
-
-.active\:bg-danger-300:active {
-  background-color: var(--color-danger-300);
-}
-
-.disabled\:bg-danger-300:disabled {
-  background-color: var(--color-danger-300);
-}
-
-.bg-danger-400 {
+.bg-danger-400, .even\:bg-danger-400:nth-child(even), .odd\:bg-danger-400:nth-child(odd), .last\:bg-danger-400:last-child, .first\:bg-danger-400:first-child, .focus-within\:bg-danger-400:focus-within, .read-only\:bg-danger-400:read-only, .disabled\:bg-danger-400:disabled, .active\:bg-danger-400:active, .focus\:bg-danger-400:focus, .hover\:bg-danger-400:hover {
   background-color: var(--color-danger-400);
 }
 
-.hover\:bg-danger-400:hover {
-  background-color: var(--color-danger-400);
-}
-
-.focus\:bg-danger-400:focus {
-  background-color: var(--color-danger-400);
-}
-
-.active\:bg-danger-400:active {
-  background-color: var(--color-danger-400);
-}
-
-.disabled\:bg-danger-400:disabled {
-  background-color: var(--color-danger-400);
-}
-
-.bg-danger-500 {
+.bg-danger-500, .even\:bg-danger-500:nth-child(even), .odd\:bg-danger-500:nth-child(odd), .last\:bg-danger-500:last-child, .first\:bg-danger-500:first-child, .focus-within\:bg-danger-500:focus-within, .read-only\:bg-danger-500:read-only, .disabled\:bg-danger-500:disabled, .active\:bg-danger-500:active, .focus\:bg-danger-500:focus, .hover\:bg-danger-500:hover {
   background-color: var(--color-danger-500);
 }
 
-.hover\:bg-danger-500:hover {
-  background-color: var(--color-danger-500);
-}
-
-.focus\:bg-danger-500:focus {
-  background-color: var(--color-danger-500);
-}
-
-.active\:bg-danger-500:active {
-  background-color: var(--color-danger-500);
-}
-
-.disabled\:bg-danger-500:disabled {
-  background-color: var(--color-danger-500);
-}
-
-.bg-danger-600 {
+.bg-danger-600, .even\:bg-danger-600:nth-child(even), .odd\:bg-danger-600:nth-child(odd), .last\:bg-danger-600:last-child, .first\:bg-danger-600:first-child, .focus-within\:bg-danger-600:focus-within, .read-only\:bg-danger-600:read-only, .disabled\:bg-danger-600:disabled, .active\:bg-danger-600:active, .focus\:bg-danger-600:focus, .hover\:bg-danger-600:hover {
   background-color: var(--color-danger-600);
 }
 
-.hover\:bg-danger-600:hover {
-  background-color: var(--color-danger-600);
-}
-
-.focus\:bg-danger-600:focus {
-  background-color: var(--color-danger-600);
-}
-
-.active\:bg-danger-600:active {
-  background-color: var(--color-danger-600);
-}
-
-.disabled\:bg-danger-600:disabled {
-  background-color: var(--color-danger-600);
-}
-
-.bg-danger-700 {
+.bg-danger-700, .even\:bg-danger-700:nth-child(even), .odd\:bg-danger-700:nth-child(odd), .last\:bg-danger-700:last-child, .first\:bg-danger-700:first-child, .focus-within\:bg-danger-700:focus-within, .read-only\:bg-danger-700:read-only, .disabled\:bg-danger-700:disabled, .active\:bg-danger-700:active, .focus\:bg-danger-700:focus, .hover\:bg-danger-700:hover {
   background-color: var(--color-danger-700);
 }
 
-.hover\:bg-danger-700:hover {
-  background-color: var(--color-danger-700);
-}
-
-.focus\:bg-danger-700:focus {
-  background-color: var(--color-danger-700);
-}
-
-.active\:bg-danger-700:active {
-  background-color: var(--color-danger-700);
-}
-
-.disabled\:bg-danger-700:disabled {
-  background-color: var(--color-danger-700);
-}
-
-.bg-danger-800 {
+.bg-danger-800, .even\:bg-danger-800:nth-child(even), .odd\:bg-danger-800:nth-child(odd), .last\:bg-danger-800:last-child, .first\:bg-danger-800:first-child, .focus-within\:bg-danger-800:focus-within, .read-only\:bg-danger-800:read-only, .disabled\:bg-danger-800:disabled, .active\:bg-danger-800:active, .focus\:bg-danger-800:focus, .hover\:bg-danger-800:hover {
   background-color: var(--color-danger-800);
 }
 
-.hover\:bg-danger-800:hover {
-  background-color: var(--color-danger-800);
-}
-
-.focus\:bg-danger-800:focus {
-  background-color: var(--color-danger-800);
-}
-
-.active\:bg-danger-800:active {
-  background-color: var(--color-danger-800);
-}
-
-.disabled\:bg-danger-800:disabled {
-  background-color: var(--color-danger-800);
-}
-
-.bg-danger-900 {
+.bg-danger-900, .even\:bg-danger-900:nth-child(even), .odd\:bg-danger-900:nth-child(odd), .last\:bg-danger-900:last-child, .first\:bg-danger-900:first-child, .focus-within\:bg-danger-900:focus-within, .read-only\:bg-danger-900:read-only, .disabled\:bg-danger-900:disabled, .active\:bg-danger-900:active, .focus\:bg-danger-900:focus, .hover\:bg-danger-900:hover {
   background-color: var(--color-danger-900);
 }
 
-.hover\:bg-danger-900:hover {
-  background-color: var(--color-danger-900);
-}
-
-.focus\:bg-danger-900:focus {
-  background-color: var(--color-danger-900);
-}
-
-.active\:bg-danger-900:active {
-  background-color: var(--color-danger-900);
-}
-
-.disabled\:bg-danger-900:disabled {
-  background-color: var(--color-danger-900);
-}
-
-.bg-light {
+.bg-light, .even\:bg-light:nth-child(even), .odd\:bg-light:nth-child(odd), .last\:bg-light:last-child, .first\:bg-light:first-child, .focus-within\:bg-light:focus-within, .read-only\:bg-light:read-only, .disabled\:bg-light:disabled, .active\:bg-light:active, .focus\:bg-light:focus, .hover\:bg-light:hover {
   background-color: var(--color-light);
 }
 
-.hover\:bg-light:hover {
-  background-color: var(--color-light);
-}
-
-.focus\:bg-light:focus {
-  background-color: var(--color-light);
-}
-
-.active\:bg-light:active {
-  background-color: var(--color-light);
-}
-
-.disabled\:bg-light:disabled {
-  background-color: var(--color-light);
-}
-
-.bg-light-100 {
+.bg-light-100, .even\:bg-light-100:nth-child(even), .odd\:bg-light-100:nth-child(odd), .last\:bg-light-100:last-child, .first\:bg-light-100:first-child, .focus-within\:bg-light-100:focus-within, .read-only\:bg-light-100:read-only, .disabled\:bg-light-100:disabled, .active\:bg-light-100:active, .focus\:bg-light-100:focus, .hover\:bg-light-100:hover {
   background-color: var(--color-light-100);
 }
 
-.hover\:bg-light-100:hover {
-  background-color: var(--color-light-100);
-}
-
-.focus\:bg-light-100:focus {
-  background-color: var(--color-light-100);
-}
-
-.active\:bg-light-100:active {
-  background-color: var(--color-light-100);
-}
-
-.disabled\:bg-light-100:disabled {
-  background-color: var(--color-light-100);
-}
-
-.bg-light-200 {
+.bg-light-200, .even\:bg-light-200:nth-child(even), .odd\:bg-light-200:nth-child(odd), .last\:bg-light-200:last-child, .first\:bg-light-200:first-child, .focus-within\:bg-light-200:focus-within, .read-only\:bg-light-200:read-only, .disabled\:bg-light-200:disabled, .active\:bg-light-200:active, .focus\:bg-light-200:focus, .hover\:bg-light-200:hover {
   background-color: var(--color-light-200);
 }
 
-.hover\:bg-light-200:hover {
-  background-color: var(--color-light-200);
-}
-
-.focus\:bg-light-200:focus {
-  background-color: var(--color-light-200);
-}
-
-.active\:bg-light-200:active {
-  background-color: var(--color-light-200);
-}
-
-.disabled\:bg-light-200:disabled {
-  background-color: var(--color-light-200);
-}
-
-.bg-light-300 {
+.bg-light-300, .even\:bg-light-300:nth-child(even), .odd\:bg-light-300:nth-child(odd), .last\:bg-light-300:last-child, .first\:bg-light-300:first-child, .focus-within\:bg-light-300:focus-within, .read-only\:bg-light-300:read-only, .disabled\:bg-light-300:disabled, .active\:bg-light-300:active, .focus\:bg-light-300:focus, .hover\:bg-light-300:hover {
   background-color: var(--color-light-300);
 }
 
-.hover\:bg-light-300:hover {
-  background-color: var(--color-light-300);
-}
-
-.focus\:bg-light-300:focus {
-  background-color: var(--color-light-300);
-}
-
-.active\:bg-light-300:active {
-  background-color: var(--color-light-300);
-}
-
-.disabled\:bg-light-300:disabled {
-  background-color: var(--color-light-300);
-}
-
-.bg-light-400 {
+.bg-light-400, .even\:bg-light-400:nth-child(even), .odd\:bg-light-400:nth-child(odd), .last\:bg-light-400:last-child, .first\:bg-light-400:first-child, .focus-within\:bg-light-400:focus-within, .read-only\:bg-light-400:read-only, .disabled\:bg-light-400:disabled, .active\:bg-light-400:active, .focus\:bg-light-400:focus, .hover\:bg-light-400:hover {
   background-color: var(--color-light-400);
 }
 
-.hover\:bg-light-400:hover {
-  background-color: var(--color-light-400);
-}
-
-.focus\:bg-light-400:focus {
-  background-color: var(--color-light-400);
-}
-
-.active\:bg-light-400:active {
-  background-color: var(--color-light-400);
-}
-
-.disabled\:bg-light-400:disabled {
-  background-color: var(--color-light-400);
-}
-
-.bg-light-500 {
+.bg-light-500, .even\:bg-light-500:nth-child(even), .odd\:bg-light-500:nth-child(odd), .last\:bg-light-500:last-child, .first\:bg-light-500:first-child, .focus-within\:bg-light-500:focus-within, .read-only\:bg-light-500:read-only, .disabled\:bg-light-500:disabled, .active\:bg-light-500:active, .focus\:bg-light-500:focus, .hover\:bg-light-500:hover {
   background-color: var(--color-light-500);
 }
 
-.hover\:bg-light-500:hover {
-  background-color: var(--color-light-500);
-}
-
-.focus\:bg-light-500:focus {
-  background-color: var(--color-light-500);
-}
-
-.active\:bg-light-500:active {
-  background-color: var(--color-light-500);
-}
-
-.disabled\:bg-light-500:disabled {
-  background-color: var(--color-light-500);
-}
-
-.bg-light-600 {
+.bg-light-600, .even\:bg-light-600:nth-child(even), .odd\:bg-light-600:nth-child(odd), .last\:bg-light-600:last-child, .first\:bg-light-600:first-child, .focus-within\:bg-light-600:focus-within, .read-only\:bg-light-600:read-only, .disabled\:bg-light-600:disabled, .active\:bg-light-600:active, .focus\:bg-light-600:focus, .hover\:bg-light-600:hover {
   background-color: var(--color-light-600);
 }
 
-.hover\:bg-light-600:hover {
-  background-color: var(--color-light-600);
-}
-
-.focus\:bg-light-600:focus {
-  background-color: var(--color-light-600);
-}
-
-.active\:bg-light-600:active {
-  background-color: var(--color-light-600);
-}
-
-.disabled\:bg-light-600:disabled {
-  background-color: var(--color-light-600);
-}
-
-.bg-light-700 {
+.bg-light-700, .even\:bg-light-700:nth-child(even), .odd\:bg-light-700:nth-child(odd), .last\:bg-light-700:last-child, .first\:bg-light-700:first-child, .focus-within\:bg-light-700:focus-within, .read-only\:bg-light-700:read-only, .disabled\:bg-light-700:disabled, .active\:bg-light-700:active, .focus\:bg-light-700:focus, .hover\:bg-light-700:hover {
   background-color: var(--color-light-700);
 }
 
-.hover\:bg-light-700:hover {
-  background-color: var(--color-light-700);
-}
-
-.focus\:bg-light-700:focus {
-  background-color: var(--color-light-700);
-}
-
-.active\:bg-light-700:active {
-  background-color: var(--color-light-700);
-}
-
-.disabled\:bg-light-700:disabled {
-  background-color: var(--color-light-700);
-}
-
-.bg-light-800 {
+.bg-light-800, .even\:bg-light-800:nth-child(even), .odd\:bg-light-800:nth-child(odd), .last\:bg-light-800:last-child, .first\:bg-light-800:first-child, .focus-within\:bg-light-800:focus-within, .read-only\:bg-light-800:read-only, .disabled\:bg-light-800:disabled, .active\:bg-light-800:active, .focus\:bg-light-800:focus, .hover\:bg-light-800:hover {
   background-color: var(--color-light-800);
 }
 
-.hover\:bg-light-800:hover {
-  background-color: var(--color-light-800);
-}
-
-.focus\:bg-light-800:focus {
-  background-color: var(--color-light-800);
-}
-
-.active\:bg-light-800:active {
-  background-color: var(--color-light-800);
-}
-
-.disabled\:bg-light-800:disabled {
-  background-color: var(--color-light-800);
-}
-
-.bg-light-900 {
+.bg-light-900, .even\:bg-light-900:nth-child(even), .odd\:bg-light-900:nth-child(odd), .last\:bg-light-900:last-child, .first\:bg-light-900:first-child, .focus-within\:bg-light-900:focus-within, .read-only\:bg-light-900:read-only, .disabled\:bg-light-900:disabled, .active\:bg-light-900:active, .focus\:bg-light-900:focus, .hover\:bg-light-900:hover {
   background-color: var(--color-light-900);
 }
 
-.hover\:bg-light-900:hover {
-  background-color: var(--color-light-900);
-}
-
-.focus\:bg-light-900:focus {
-  background-color: var(--color-light-900);
-}
-
-.active\:bg-light-900:active {
-  background-color: var(--color-light-900);
-}
-
-.disabled\:bg-light-900:disabled {
-  background-color: var(--color-light-900);
-}
-
-.bg-dark {
+.bg-dark, .even\:bg-dark:nth-child(even), .odd\:bg-dark:nth-child(odd), .last\:bg-dark:last-child, .first\:bg-dark:first-child, .focus-within\:bg-dark:focus-within, .read-only\:bg-dark:read-only, .disabled\:bg-dark:disabled, .active\:bg-dark:active, .focus\:bg-dark:focus, .hover\:bg-dark:hover {
   background-color: var(--color-dark);
 }
 
-.hover\:bg-dark:hover {
-  background-color: var(--color-dark);
-}
-
-.focus\:bg-dark:focus {
-  background-color: var(--color-dark);
-}
-
-.active\:bg-dark:active {
-  background-color: var(--color-dark);
-}
-
-.disabled\:bg-dark:disabled {
-  background-color: var(--color-dark);
-}
-
-.bg-dark-100 {
+.bg-dark-100, .even\:bg-dark-100:nth-child(even), .odd\:bg-dark-100:nth-child(odd), .last\:bg-dark-100:last-child, .first\:bg-dark-100:first-child, .focus-within\:bg-dark-100:focus-within, .read-only\:bg-dark-100:read-only, .disabled\:bg-dark-100:disabled, .active\:bg-dark-100:active, .focus\:bg-dark-100:focus, .hover\:bg-dark-100:hover {
   background-color: var(--color-dark-100);
 }
 
-.hover\:bg-dark-100:hover {
-  background-color: var(--color-dark-100);
-}
-
-.focus\:bg-dark-100:focus {
-  background-color: var(--color-dark-100);
-}
-
-.active\:bg-dark-100:active {
-  background-color: var(--color-dark-100);
-}
-
-.disabled\:bg-dark-100:disabled {
-  background-color: var(--color-dark-100);
-}
-
-.bg-dark-200 {
+.bg-dark-200, .even\:bg-dark-200:nth-child(even), .odd\:bg-dark-200:nth-child(odd), .last\:bg-dark-200:last-child, .first\:bg-dark-200:first-child, .focus-within\:bg-dark-200:focus-within, .read-only\:bg-dark-200:read-only, .disabled\:bg-dark-200:disabled, .active\:bg-dark-200:active, .focus\:bg-dark-200:focus, .hover\:bg-dark-200:hover {
   background-color: var(--color-dark-200);
 }
 
-.hover\:bg-dark-200:hover {
-  background-color: var(--color-dark-200);
-}
-
-.focus\:bg-dark-200:focus {
-  background-color: var(--color-dark-200);
-}
-
-.active\:bg-dark-200:active {
-  background-color: var(--color-dark-200);
-}
-
-.disabled\:bg-dark-200:disabled {
-  background-color: var(--color-dark-200);
-}
-
-.bg-dark-300 {
+.bg-dark-300, .even\:bg-dark-300:nth-child(even), .odd\:bg-dark-300:nth-child(odd), .last\:bg-dark-300:last-child, .first\:bg-dark-300:first-child, .focus-within\:bg-dark-300:focus-within, .read-only\:bg-dark-300:read-only, .disabled\:bg-dark-300:disabled, .active\:bg-dark-300:active, .focus\:bg-dark-300:focus, .hover\:bg-dark-300:hover {
   background-color: var(--color-dark-300);
 }
 
-.hover\:bg-dark-300:hover {
-  background-color: var(--color-dark-300);
-}
-
-.focus\:bg-dark-300:focus {
-  background-color: var(--color-dark-300);
-}
-
-.active\:bg-dark-300:active {
-  background-color: var(--color-dark-300);
-}
-
-.disabled\:bg-dark-300:disabled {
-  background-color: var(--color-dark-300);
-}
-
-.bg-dark-400 {
+.bg-dark-400, .even\:bg-dark-400:nth-child(even), .odd\:bg-dark-400:nth-child(odd), .last\:bg-dark-400:last-child, .first\:bg-dark-400:first-child, .focus-within\:bg-dark-400:focus-within, .read-only\:bg-dark-400:read-only, .disabled\:bg-dark-400:disabled, .active\:bg-dark-400:active, .focus\:bg-dark-400:focus, .hover\:bg-dark-400:hover {
   background-color: var(--color-dark-400);
 }
 
-.hover\:bg-dark-400:hover {
-  background-color: var(--color-dark-400);
-}
-
-.focus\:bg-dark-400:focus {
-  background-color: var(--color-dark-400);
-}
-
-.active\:bg-dark-400:active {
-  background-color: var(--color-dark-400);
-}
-
-.disabled\:bg-dark-400:disabled {
-  background-color: var(--color-dark-400);
-}
-
-.bg-dark-500 {
+.bg-dark-500, .even\:bg-dark-500:nth-child(even), .odd\:bg-dark-500:nth-child(odd), .last\:bg-dark-500:last-child, .first\:bg-dark-500:first-child, .focus-within\:bg-dark-500:focus-within, .read-only\:bg-dark-500:read-only, .disabled\:bg-dark-500:disabled, .active\:bg-dark-500:active, .focus\:bg-dark-500:focus, .hover\:bg-dark-500:hover {
   background-color: var(--color-dark-500);
 }
 
-.hover\:bg-dark-500:hover {
-  background-color: var(--color-dark-500);
-}
-
-.focus\:bg-dark-500:focus {
-  background-color: var(--color-dark-500);
-}
-
-.active\:bg-dark-500:active {
-  background-color: var(--color-dark-500);
-}
-
-.disabled\:bg-dark-500:disabled {
-  background-color: var(--color-dark-500);
-}
-
-.bg-dark-600 {
+.bg-dark-600, .even\:bg-dark-600:nth-child(even), .odd\:bg-dark-600:nth-child(odd), .last\:bg-dark-600:last-child, .first\:bg-dark-600:first-child, .focus-within\:bg-dark-600:focus-within, .read-only\:bg-dark-600:read-only, .disabled\:bg-dark-600:disabled, .active\:bg-dark-600:active, .focus\:bg-dark-600:focus, .hover\:bg-dark-600:hover {
   background-color: var(--color-dark-600);
 }
 
-.hover\:bg-dark-600:hover {
-  background-color: var(--color-dark-600);
-}
-
-.focus\:bg-dark-600:focus {
-  background-color: var(--color-dark-600);
-}
-
-.active\:bg-dark-600:active {
-  background-color: var(--color-dark-600);
-}
-
-.disabled\:bg-dark-600:disabled {
-  background-color: var(--color-dark-600);
-}
-
-.bg-dark-700 {
+.bg-dark-700, .even\:bg-dark-700:nth-child(even), .odd\:bg-dark-700:nth-child(odd), .last\:bg-dark-700:last-child, .first\:bg-dark-700:first-child, .focus-within\:bg-dark-700:focus-within, .read-only\:bg-dark-700:read-only, .disabled\:bg-dark-700:disabled, .active\:bg-dark-700:active, .focus\:bg-dark-700:focus, .hover\:bg-dark-700:hover {
   background-color: var(--color-dark-700);
 }
 
-.hover\:bg-dark-700:hover {
-  background-color: var(--color-dark-700);
-}
-
-.focus\:bg-dark-700:focus {
-  background-color: var(--color-dark-700);
-}
-
-.active\:bg-dark-700:active {
-  background-color: var(--color-dark-700);
-}
-
-.disabled\:bg-dark-700:disabled {
-  background-color: var(--color-dark-700);
-}
-
-.bg-dark-800 {
+.bg-dark-800, .even\:bg-dark-800:nth-child(even), .odd\:bg-dark-800:nth-child(odd), .last\:bg-dark-800:last-child, .first\:bg-dark-800:first-child, .focus-within\:bg-dark-800:focus-within, .read-only\:bg-dark-800:read-only, .disabled\:bg-dark-800:disabled, .active\:bg-dark-800:active, .focus\:bg-dark-800:focus, .hover\:bg-dark-800:hover {
   background-color: var(--color-dark-800);
 }
 
-.hover\:bg-dark-800:hover {
-  background-color: var(--color-dark-800);
-}
-
-.focus\:bg-dark-800:focus {
-  background-color: var(--color-dark-800);
-}
-
-.active\:bg-dark-800:active {
-  background-color: var(--color-dark-800);
-}
-
-.disabled\:bg-dark-800:disabled {
-  background-color: var(--color-dark-800);
-}
-
-.bg-dark-900 {
-  background-color: var(--color-dark-900);
-}
-
-.hover\:bg-dark-900:hover {
-  background-color: var(--color-dark-900);
-}
-
-.focus\:bg-dark-900:focus {
-  background-color: var(--color-dark-900);
-}
-
-.active\:bg-dark-900:active {
-  background-color: var(--color-dark-900);
-}
-
-.disabled\:bg-dark-900:disabled {
+.bg-dark-900, .even\:bg-dark-900:nth-child(even), .odd\:bg-dark-900:nth-child(odd), .last\:bg-dark-900:last-child, .first\:bg-dark-900:first-child, .focus-within\:bg-dark-900:focus-within, .read-only\:bg-dark-900:read-only, .disabled\:bg-dark-900:disabled, .active\:bg-dark-900:active, .focus\:bg-dark-900:focus, .hover\:bg-dark-900:hover {
   background-color: var(--color-dark-900);
 }
 
@@ -11395,83 +9627,43 @@
   background: none;
 }
 
-.text-primary {
+.text-primary, .even\:text-primary:nth-child(even), .odd\:text-primary:nth-child(odd), .last\:text-primary:last-child, .first\:text-primary:first-child, .focus-within\:text-primary:focus-within, .read-only\:text-primary:read-only, .disabled\:text-primary:disabled, .active\:text-primary:active, .focus\:text-primary:focus, .hover\:text-primary:hover {
   color: var(--color-primary);
 }
 
-.hover\:text-primary:hover {
-  color: var(--color-primary);
-}
-
-.text-primary-100 {
+.text-primary-100, .even\:text-primary-100:nth-child(even), .odd\:text-primary-100:nth-child(odd), .last\:text-primary-100:last-child, .first\:text-primary-100:first-child, .focus-within\:text-primary-100:focus-within, .read-only\:text-primary-100:read-only, .disabled\:text-primary-100:disabled, .active\:text-primary-100:active, .focus\:text-primary-100:focus, .hover\:text-primary-100:hover {
   color: var(--color-primary-100);
 }
 
-.hover\:text-primary-100:hover {
-  color: var(--color-primary-100);
-}
-
-.text-primary-200 {
+.text-primary-200, .even\:text-primary-200:nth-child(even), .odd\:text-primary-200:nth-child(odd), .last\:text-primary-200:last-child, .first\:text-primary-200:first-child, .focus-within\:text-primary-200:focus-within, .read-only\:text-primary-200:read-only, .disabled\:text-primary-200:disabled, .active\:text-primary-200:active, .focus\:text-primary-200:focus, .hover\:text-primary-200:hover {
   color: var(--color-primary-200);
 }
 
-.hover\:text-primary-200:hover {
-  color: var(--color-primary-200);
-}
-
-.text-primary-300 {
+.text-primary-300, .even\:text-primary-300:nth-child(even), .odd\:text-primary-300:nth-child(odd), .last\:text-primary-300:last-child, .first\:text-primary-300:first-child, .focus-within\:text-primary-300:focus-within, .read-only\:text-primary-300:read-only, .disabled\:text-primary-300:disabled, .active\:text-primary-300:active, .focus\:text-primary-300:focus, .hover\:text-primary-300:hover {
   color: var(--color-primary-300);
 }
 
-.hover\:text-primary-300:hover {
-  color: var(--color-primary-300);
-}
-
-.text-primary-400 {
+.text-primary-400, .even\:text-primary-400:nth-child(even), .odd\:text-primary-400:nth-child(odd), .last\:text-primary-400:last-child, .first\:text-primary-400:first-child, .focus-within\:text-primary-400:focus-within, .read-only\:text-primary-400:read-only, .disabled\:text-primary-400:disabled, .active\:text-primary-400:active, .focus\:text-primary-400:focus, .hover\:text-primary-400:hover {
   color: var(--color-primary-400);
 }
 
-.hover\:text-primary-400:hover {
-  color: var(--color-primary-400);
-}
-
-.text-primary-500 {
+.text-primary-500, .even\:text-primary-500:nth-child(even), .odd\:text-primary-500:nth-child(odd), .last\:text-primary-500:last-child, .first\:text-primary-500:first-child, .focus-within\:text-primary-500:focus-within, .read-only\:text-primary-500:read-only, .disabled\:text-primary-500:disabled, .active\:text-primary-500:active, .focus\:text-primary-500:focus, .hover\:text-primary-500:hover {
   color: var(--color-primary-500);
 }
 
-.hover\:text-primary-500:hover {
-  color: var(--color-primary-500);
-}
-
-.text-primary-600 {
+.text-primary-600, .even\:text-primary-600:nth-child(even), .odd\:text-primary-600:nth-child(odd), .last\:text-primary-600:last-child, .first\:text-primary-600:first-child, .focus-within\:text-primary-600:focus-within, .read-only\:text-primary-600:read-only, .disabled\:text-primary-600:disabled, .active\:text-primary-600:active, .focus\:text-primary-600:focus, .hover\:text-primary-600:hover {
   color: var(--color-primary-600);
 }
 
-.hover\:text-primary-600:hover {
-  color: var(--color-primary-600);
-}
-
-.text-primary-700 {
+.text-primary-700, .even\:text-primary-700:nth-child(even), .odd\:text-primary-700:nth-child(odd), .last\:text-primary-700:last-child, .first\:text-primary-700:first-child, .focus-within\:text-primary-700:focus-within, .read-only\:text-primary-700:read-only, .disabled\:text-primary-700:disabled, .active\:text-primary-700:active, .focus\:text-primary-700:focus, .hover\:text-primary-700:hover {
   color: var(--color-primary-700);
 }
 
-.hover\:text-primary-700:hover {
-  color: var(--color-primary-700);
-}
-
-.text-primary-800 {
+.text-primary-800, .even\:text-primary-800:nth-child(even), .odd\:text-primary-800:nth-child(odd), .last\:text-primary-800:last-child, .first\:text-primary-800:first-child, .focus-within\:text-primary-800:focus-within, .read-only\:text-primary-800:read-only, .disabled\:text-primary-800:disabled, .active\:text-primary-800:active, .focus\:text-primary-800:focus, .hover\:text-primary-800:hover {
   color: var(--color-primary-800);
 }
 
-.hover\:text-primary-800:hover {
-  color: var(--color-primary-800);
-}
-
-.text-primary-900 {
-  color: var(--color-primary-900);
-}
-
-.hover\:text-primary-900:hover {
+.text-primary-900, .even\:text-primary-900:nth-child(even), .odd\:text-primary-900:nth-child(odd), .last\:text-primary-900:last-child, .first\:text-primary-900:first-child, .focus-within\:text-primary-900:focus-within, .read-only\:text-primary-900:read-only, .disabled\:text-primary-900:disabled, .active\:text-primary-900:active, .focus\:text-primary-900:focus, .hover\:text-primary-900:hover {
   color: var(--color-primary-900);
 }
 
@@ -11483,83 +9675,43 @@
   color: black;
 }
 
-.text-secondary {
+.text-secondary, .even\:text-secondary:nth-child(even), .odd\:text-secondary:nth-child(odd), .last\:text-secondary:last-child, .first\:text-secondary:first-child, .focus-within\:text-secondary:focus-within, .read-only\:text-secondary:read-only, .disabled\:text-secondary:disabled, .active\:text-secondary:active, .focus\:text-secondary:focus, .hover\:text-secondary:hover {
   color: var(--color-secondary);
 }
 
-.hover\:text-secondary:hover {
-  color: var(--color-secondary);
-}
-
-.text-secondary-100 {
+.text-secondary-100, .even\:text-secondary-100:nth-child(even), .odd\:text-secondary-100:nth-child(odd), .last\:text-secondary-100:last-child, .first\:text-secondary-100:first-child, .focus-within\:text-secondary-100:focus-within, .read-only\:text-secondary-100:read-only, .disabled\:text-secondary-100:disabled, .active\:text-secondary-100:active, .focus\:text-secondary-100:focus, .hover\:text-secondary-100:hover {
   color: var(--color-secondary-100);
 }
 
-.hover\:text-secondary-100:hover {
-  color: var(--color-secondary-100);
-}
-
-.text-secondary-200 {
+.text-secondary-200, .even\:text-secondary-200:nth-child(even), .odd\:text-secondary-200:nth-child(odd), .last\:text-secondary-200:last-child, .first\:text-secondary-200:first-child, .focus-within\:text-secondary-200:focus-within, .read-only\:text-secondary-200:read-only, .disabled\:text-secondary-200:disabled, .active\:text-secondary-200:active, .focus\:text-secondary-200:focus, .hover\:text-secondary-200:hover {
   color: var(--color-secondary-200);
 }
 
-.hover\:text-secondary-200:hover {
-  color: var(--color-secondary-200);
-}
-
-.text-secondary-300 {
+.text-secondary-300, .even\:text-secondary-300:nth-child(even), .odd\:text-secondary-300:nth-child(odd), .last\:text-secondary-300:last-child, .first\:text-secondary-300:first-child, .focus-within\:text-secondary-300:focus-within, .read-only\:text-secondary-300:read-only, .disabled\:text-secondary-300:disabled, .active\:text-secondary-300:active, .focus\:text-secondary-300:focus, .hover\:text-secondary-300:hover {
   color: var(--color-secondary-300);
 }
 
-.hover\:text-secondary-300:hover {
-  color: var(--color-secondary-300);
-}
-
-.text-secondary-400 {
+.text-secondary-400, .even\:text-secondary-400:nth-child(even), .odd\:text-secondary-400:nth-child(odd), .last\:text-secondary-400:last-child, .first\:text-secondary-400:first-child, .focus-within\:text-secondary-400:focus-within, .read-only\:text-secondary-400:read-only, .disabled\:text-secondary-400:disabled, .active\:text-secondary-400:active, .focus\:text-secondary-400:focus, .hover\:text-secondary-400:hover {
   color: var(--color-secondary-400);
 }
 
-.hover\:text-secondary-400:hover {
-  color: var(--color-secondary-400);
-}
-
-.text-secondary-500 {
+.text-secondary-500, .even\:text-secondary-500:nth-child(even), .odd\:text-secondary-500:nth-child(odd), .last\:text-secondary-500:last-child, .first\:text-secondary-500:first-child, .focus-within\:text-secondary-500:focus-within, .read-only\:text-secondary-500:read-only, .disabled\:text-secondary-500:disabled, .active\:text-secondary-500:active, .focus\:text-secondary-500:focus, .hover\:text-secondary-500:hover {
   color: var(--color-secondary-500);
 }
 
-.hover\:text-secondary-500:hover {
-  color: var(--color-secondary-500);
-}
-
-.text-secondary-600 {
+.text-secondary-600, .even\:text-secondary-600:nth-child(even), .odd\:text-secondary-600:nth-child(odd), .last\:text-secondary-600:last-child, .first\:text-secondary-600:first-child, .focus-within\:text-secondary-600:focus-within, .read-only\:text-secondary-600:read-only, .disabled\:text-secondary-600:disabled, .active\:text-secondary-600:active, .focus\:text-secondary-600:focus, .hover\:text-secondary-600:hover {
   color: var(--color-secondary-600);
 }
 
-.hover\:text-secondary-600:hover {
-  color: var(--color-secondary-600);
-}
-
-.text-secondary-700 {
+.text-secondary-700, .even\:text-secondary-700:nth-child(even), .odd\:text-secondary-700:nth-child(odd), .last\:text-secondary-700:last-child, .first\:text-secondary-700:first-child, .focus-within\:text-secondary-700:focus-within, .read-only\:text-secondary-700:read-only, .disabled\:text-secondary-700:disabled, .active\:text-secondary-700:active, .focus\:text-secondary-700:focus, .hover\:text-secondary-700:hover {
   color: var(--color-secondary-700);
 }
 
-.hover\:text-secondary-700:hover {
-  color: var(--color-secondary-700);
-}
-
-.text-secondary-800 {
+.text-secondary-800, .even\:text-secondary-800:nth-child(even), .odd\:text-secondary-800:nth-child(odd), .last\:text-secondary-800:last-child, .first\:text-secondary-800:first-child, .focus-within\:text-secondary-800:focus-within, .read-only\:text-secondary-800:read-only, .disabled\:text-secondary-800:disabled, .active\:text-secondary-800:active, .focus\:text-secondary-800:focus, .hover\:text-secondary-800:hover {
   color: var(--color-secondary-800);
 }
 
-.hover\:text-secondary-800:hover {
-  color: var(--color-secondary-800);
-}
-
-.text-secondary-900 {
-  color: var(--color-secondary-900);
-}
-
-.hover\:text-secondary-900:hover {
+.text-secondary-900, .even\:text-secondary-900:nth-child(even), .odd\:text-secondary-900:nth-child(odd), .last\:text-secondary-900:last-child, .first\:text-secondary-900:first-child, .focus-within\:text-secondary-900:focus-within, .read-only\:text-secondary-900:read-only, .disabled\:text-secondary-900:disabled, .active\:text-secondary-900:active, .focus\:text-secondary-900:focus, .hover\:text-secondary-900:hover {
   color: var(--color-secondary-900);
 }
 
@@ -11571,83 +9723,43 @@
   color: black;
 }
 
-.text-tertiary {
+.text-tertiary, .even\:text-tertiary:nth-child(even), .odd\:text-tertiary:nth-child(odd), .last\:text-tertiary:last-child, .first\:text-tertiary:first-child, .focus-within\:text-tertiary:focus-within, .read-only\:text-tertiary:read-only, .disabled\:text-tertiary:disabled, .active\:text-tertiary:active, .focus\:text-tertiary:focus, .hover\:text-tertiary:hover {
   color: var(--color-tertiary);
 }
 
-.hover\:text-tertiary:hover {
-  color: var(--color-tertiary);
-}
-
-.text-tertiary-100 {
+.text-tertiary-100, .even\:text-tertiary-100:nth-child(even), .odd\:text-tertiary-100:nth-child(odd), .last\:text-tertiary-100:last-child, .first\:text-tertiary-100:first-child, .focus-within\:text-tertiary-100:focus-within, .read-only\:text-tertiary-100:read-only, .disabled\:text-tertiary-100:disabled, .active\:text-tertiary-100:active, .focus\:text-tertiary-100:focus, .hover\:text-tertiary-100:hover {
   color: var(--color-tertiary-100);
 }
 
-.hover\:text-tertiary-100:hover {
-  color: var(--color-tertiary-100);
-}
-
-.text-tertiary-200 {
+.text-tertiary-200, .even\:text-tertiary-200:nth-child(even), .odd\:text-tertiary-200:nth-child(odd), .last\:text-tertiary-200:last-child, .first\:text-tertiary-200:first-child, .focus-within\:text-tertiary-200:focus-within, .read-only\:text-tertiary-200:read-only, .disabled\:text-tertiary-200:disabled, .active\:text-tertiary-200:active, .focus\:text-tertiary-200:focus, .hover\:text-tertiary-200:hover {
   color: var(--color-tertiary-200);
 }
 
-.hover\:text-tertiary-200:hover {
-  color: var(--color-tertiary-200);
-}
-
-.text-tertiary-300 {
+.text-tertiary-300, .even\:text-tertiary-300:nth-child(even), .odd\:text-tertiary-300:nth-child(odd), .last\:text-tertiary-300:last-child, .first\:text-tertiary-300:first-child, .focus-within\:text-tertiary-300:focus-within, .read-only\:text-tertiary-300:read-only, .disabled\:text-tertiary-300:disabled, .active\:text-tertiary-300:active, .focus\:text-tertiary-300:focus, .hover\:text-tertiary-300:hover {
   color: var(--color-tertiary-300);
 }
 
-.hover\:text-tertiary-300:hover {
-  color: var(--color-tertiary-300);
-}
-
-.text-tertiary-400 {
+.text-tertiary-400, .even\:text-tertiary-400:nth-child(even), .odd\:text-tertiary-400:nth-child(odd), .last\:text-tertiary-400:last-child, .first\:text-tertiary-400:first-child, .focus-within\:text-tertiary-400:focus-within, .read-only\:text-tertiary-400:read-only, .disabled\:text-tertiary-400:disabled, .active\:text-tertiary-400:active, .focus\:text-tertiary-400:focus, .hover\:text-tertiary-400:hover {
   color: var(--color-tertiary-400);
 }
 
-.hover\:text-tertiary-400:hover {
-  color: var(--color-tertiary-400);
-}
-
-.text-tertiary-500 {
+.text-tertiary-500, .even\:text-tertiary-500:nth-child(even), .odd\:text-tertiary-500:nth-child(odd), .last\:text-tertiary-500:last-child, .first\:text-tertiary-500:first-child, .focus-within\:text-tertiary-500:focus-within, .read-only\:text-tertiary-500:read-only, .disabled\:text-tertiary-500:disabled, .active\:text-tertiary-500:active, .focus\:text-tertiary-500:focus, .hover\:text-tertiary-500:hover {
   color: var(--color-tertiary-500);
 }
 
-.hover\:text-tertiary-500:hover {
-  color: var(--color-tertiary-500);
-}
-
-.text-tertiary-600 {
+.text-tertiary-600, .even\:text-tertiary-600:nth-child(even), .odd\:text-tertiary-600:nth-child(odd), .last\:text-tertiary-600:last-child, .first\:text-tertiary-600:first-child, .focus-within\:text-tertiary-600:focus-within, .read-only\:text-tertiary-600:read-only, .disabled\:text-tertiary-600:disabled, .active\:text-tertiary-600:active, .focus\:text-tertiary-600:focus, .hover\:text-tertiary-600:hover {
   color: var(--color-tertiary-600);
 }
 
-.hover\:text-tertiary-600:hover {
-  color: var(--color-tertiary-600);
-}
-
-.text-tertiary-700 {
+.text-tertiary-700, .even\:text-tertiary-700:nth-child(even), .odd\:text-tertiary-700:nth-child(odd), .last\:text-tertiary-700:last-child, .first\:text-tertiary-700:first-child, .focus-within\:text-tertiary-700:focus-within, .read-only\:text-tertiary-700:read-only, .disabled\:text-tertiary-700:disabled, .active\:text-tertiary-700:active, .focus\:text-tertiary-700:focus, .hover\:text-tertiary-700:hover {
   color: var(--color-tertiary-700);
 }
 
-.hover\:text-tertiary-700:hover {
-  color: var(--color-tertiary-700);
-}
-
-.text-tertiary-800 {
+.text-tertiary-800, .even\:text-tertiary-800:nth-child(even), .odd\:text-tertiary-800:nth-child(odd), .last\:text-tertiary-800:last-child, .first\:text-tertiary-800:first-child, .focus-within\:text-tertiary-800:focus-within, .read-only\:text-tertiary-800:read-only, .disabled\:text-tertiary-800:disabled, .active\:text-tertiary-800:active, .focus\:text-tertiary-800:focus, .hover\:text-tertiary-800:hover {
   color: var(--color-tertiary-800);
 }
 
-.hover\:text-tertiary-800:hover {
-  color: var(--color-tertiary-800);
-}
-
-.text-tertiary-900 {
-  color: var(--color-tertiary-900);
-}
-
-.hover\:text-tertiary-900:hover {
+.text-tertiary-900, .even\:text-tertiary-900:nth-child(even), .odd\:text-tertiary-900:nth-child(odd), .last\:text-tertiary-900:last-child, .first\:text-tertiary-900:first-child, .focus-within\:text-tertiary-900:focus-within, .read-only\:text-tertiary-900:read-only, .disabled\:text-tertiary-900:disabled, .active\:text-tertiary-900:active, .focus\:text-tertiary-900:focus, .hover\:text-tertiary-900:hover {
   color: var(--color-tertiary-900);
 }
 
@@ -11659,83 +9771,43 @@
   color: black;
 }
 
-.text-info {
+.text-info, .even\:text-info:nth-child(even), .odd\:text-info:nth-child(odd), .last\:text-info:last-child, .first\:text-info:first-child, .focus-within\:text-info:focus-within, .read-only\:text-info:read-only, .disabled\:text-info:disabled, .active\:text-info:active, .focus\:text-info:focus, .hover\:text-info:hover {
   color: var(--color-info);
 }
 
-.hover\:text-info:hover {
-  color: var(--color-info);
-}
-
-.text-info-100 {
+.text-info-100, .even\:text-info-100:nth-child(even), .odd\:text-info-100:nth-child(odd), .last\:text-info-100:last-child, .first\:text-info-100:first-child, .focus-within\:text-info-100:focus-within, .read-only\:text-info-100:read-only, .disabled\:text-info-100:disabled, .active\:text-info-100:active, .focus\:text-info-100:focus, .hover\:text-info-100:hover {
   color: var(--color-info-100);
 }
 
-.hover\:text-info-100:hover {
-  color: var(--color-info-100);
-}
-
-.text-info-200 {
+.text-info-200, .even\:text-info-200:nth-child(even), .odd\:text-info-200:nth-child(odd), .last\:text-info-200:last-child, .first\:text-info-200:first-child, .focus-within\:text-info-200:focus-within, .read-only\:text-info-200:read-only, .disabled\:text-info-200:disabled, .active\:text-info-200:active, .focus\:text-info-200:focus, .hover\:text-info-200:hover {
   color: var(--color-info-200);
 }
 
-.hover\:text-info-200:hover {
-  color: var(--color-info-200);
-}
-
-.text-info-300 {
+.text-info-300, .even\:text-info-300:nth-child(even), .odd\:text-info-300:nth-child(odd), .last\:text-info-300:last-child, .first\:text-info-300:first-child, .focus-within\:text-info-300:focus-within, .read-only\:text-info-300:read-only, .disabled\:text-info-300:disabled, .active\:text-info-300:active, .focus\:text-info-300:focus, .hover\:text-info-300:hover {
   color: var(--color-info-300);
 }
 
-.hover\:text-info-300:hover {
-  color: var(--color-info-300);
-}
-
-.text-info-400 {
+.text-info-400, .even\:text-info-400:nth-child(even), .odd\:text-info-400:nth-child(odd), .last\:text-info-400:last-child, .first\:text-info-400:first-child, .focus-within\:text-info-400:focus-within, .read-only\:text-info-400:read-only, .disabled\:text-info-400:disabled, .active\:text-info-400:active, .focus\:text-info-400:focus, .hover\:text-info-400:hover {
   color: var(--color-info-400);
 }
 
-.hover\:text-info-400:hover {
-  color: var(--color-info-400);
-}
-
-.text-info-500 {
+.text-info-500, .even\:text-info-500:nth-child(even), .odd\:text-info-500:nth-child(odd), .last\:text-info-500:last-child, .first\:text-info-500:first-child, .focus-within\:text-info-500:focus-within, .read-only\:text-info-500:read-only, .disabled\:text-info-500:disabled, .active\:text-info-500:active, .focus\:text-info-500:focus, .hover\:text-info-500:hover {
   color: var(--color-info-500);
 }
 
-.hover\:text-info-500:hover {
-  color: var(--color-info-500);
-}
-
-.text-info-600 {
+.text-info-600, .even\:text-info-600:nth-child(even), .odd\:text-info-600:nth-child(odd), .last\:text-info-600:last-child, .first\:text-info-600:first-child, .focus-within\:text-info-600:focus-within, .read-only\:text-info-600:read-only, .disabled\:text-info-600:disabled, .active\:text-info-600:active, .focus\:text-info-600:focus, .hover\:text-info-600:hover {
   color: var(--color-info-600);
 }
 
-.hover\:text-info-600:hover {
-  color: var(--color-info-600);
-}
-
-.text-info-700 {
+.text-info-700, .even\:text-info-700:nth-child(even), .odd\:text-info-700:nth-child(odd), .last\:text-info-700:last-child, .first\:text-info-700:first-child, .focus-within\:text-info-700:focus-within, .read-only\:text-info-700:read-only, .disabled\:text-info-700:disabled, .active\:text-info-700:active, .focus\:text-info-700:focus, .hover\:text-info-700:hover {
   color: var(--color-info-700);
 }
 
-.hover\:text-info-700:hover {
-  color: var(--color-info-700);
-}
-
-.text-info-800 {
+.text-info-800, .even\:text-info-800:nth-child(even), .odd\:text-info-800:nth-child(odd), .last\:text-info-800:last-child, .first\:text-info-800:first-child, .focus-within\:text-info-800:focus-within, .read-only\:text-info-800:read-only, .disabled\:text-info-800:disabled, .active\:text-info-800:active, .focus\:text-info-800:focus, .hover\:text-info-800:hover {
   color: var(--color-info-800);
 }
 
-.hover\:text-info-800:hover {
-  color: var(--color-info-800);
-}
-
-.text-info-900 {
-  color: var(--color-info-900);
-}
-
-.hover\:text-info-900:hover {
+.text-info-900, .even\:text-info-900:nth-child(even), .odd\:text-info-900:nth-child(odd), .last\:text-info-900:last-child, .first\:text-info-900:first-child, .focus-within\:text-info-900:focus-within, .read-only\:text-info-900:read-only, .disabled\:text-info-900:disabled, .active\:text-info-900:active, .focus\:text-info-900:focus, .hover\:text-info-900:hover {
   color: var(--color-info-900);
 }
 
@@ -11747,83 +9819,43 @@
   color: black;
 }
 
-.text-highlight {
+.text-highlight, .even\:text-highlight:nth-child(even), .odd\:text-highlight:nth-child(odd), .last\:text-highlight:last-child, .first\:text-highlight:first-child, .focus-within\:text-highlight:focus-within, .read-only\:text-highlight:read-only, .disabled\:text-highlight:disabled, .active\:text-highlight:active, .focus\:text-highlight:focus, .hover\:text-highlight:hover {
   color: var(--color-highlight);
 }
 
-.hover\:text-highlight:hover {
-  color: var(--color-highlight);
-}
-
-.text-highlight-100 {
+.text-highlight-100, .even\:text-highlight-100:nth-child(even), .odd\:text-highlight-100:nth-child(odd), .last\:text-highlight-100:last-child, .first\:text-highlight-100:first-child, .focus-within\:text-highlight-100:focus-within, .read-only\:text-highlight-100:read-only, .disabled\:text-highlight-100:disabled, .active\:text-highlight-100:active, .focus\:text-highlight-100:focus, .hover\:text-highlight-100:hover {
   color: var(--color-highlight-100);
 }
 
-.hover\:text-highlight-100:hover {
-  color: var(--color-highlight-100);
-}
-
-.text-highlight-200 {
+.text-highlight-200, .even\:text-highlight-200:nth-child(even), .odd\:text-highlight-200:nth-child(odd), .last\:text-highlight-200:last-child, .first\:text-highlight-200:first-child, .focus-within\:text-highlight-200:focus-within, .read-only\:text-highlight-200:read-only, .disabled\:text-highlight-200:disabled, .active\:text-highlight-200:active, .focus\:text-highlight-200:focus, .hover\:text-highlight-200:hover {
   color: var(--color-highlight-200);
 }
 
-.hover\:text-highlight-200:hover {
-  color: var(--color-highlight-200);
-}
-
-.text-highlight-300 {
+.text-highlight-300, .even\:text-highlight-300:nth-child(even), .odd\:text-highlight-300:nth-child(odd), .last\:text-highlight-300:last-child, .first\:text-highlight-300:first-child, .focus-within\:text-highlight-300:focus-within, .read-only\:text-highlight-300:read-only, .disabled\:text-highlight-300:disabled, .active\:text-highlight-300:active, .focus\:text-highlight-300:focus, .hover\:text-highlight-300:hover {
   color: var(--color-highlight-300);
 }
 
-.hover\:text-highlight-300:hover {
-  color: var(--color-highlight-300);
-}
-
-.text-highlight-400 {
+.text-highlight-400, .even\:text-highlight-400:nth-child(even), .odd\:text-highlight-400:nth-child(odd), .last\:text-highlight-400:last-child, .first\:text-highlight-400:first-child, .focus-within\:text-highlight-400:focus-within, .read-only\:text-highlight-400:read-only, .disabled\:text-highlight-400:disabled, .active\:text-highlight-400:active, .focus\:text-highlight-400:focus, .hover\:text-highlight-400:hover {
   color: var(--color-highlight-400);
 }
 
-.hover\:text-highlight-400:hover {
-  color: var(--color-highlight-400);
-}
-
-.text-highlight-500 {
+.text-highlight-500, .even\:text-highlight-500:nth-child(even), .odd\:text-highlight-500:nth-child(odd), .last\:text-highlight-500:last-child, .first\:text-highlight-500:first-child, .focus-within\:text-highlight-500:focus-within, .read-only\:text-highlight-500:read-only, .disabled\:text-highlight-500:disabled, .active\:text-highlight-500:active, .focus\:text-highlight-500:focus, .hover\:text-highlight-500:hover {
   color: var(--color-highlight-500);
 }
 
-.hover\:text-highlight-500:hover {
-  color: var(--color-highlight-500);
-}
-
-.text-highlight-600 {
+.text-highlight-600, .even\:text-highlight-600:nth-child(even), .odd\:text-highlight-600:nth-child(odd), .last\:text-highlight-600:last-child, .first\:text-highlight-600:first-child, .focus-within\:text-highlight-600:focus-within, .read-only\:text-highlight-600:read-only, .disabled\:text-highlight-600:disabled, .active\:text-highlight-600:active, .focus\:text-highlight-600:focus, .hover\:text-highlight-600:hover {
   color: var(--color-highlight-600);
 }
 
-.hover\:text-highlight-600:hover {
-  color: var(--color-highlight-600);
-}
-
-.text-highlight-700 {
+.text-highlight-700, .even\:text-highlight-700:nth-child(even), .odd\:text-highlight-700:nth-child(odd), .last\:text-highlight-700:last-child, .first\:text-highlight-700:first-child, .focus-within\:text-highlight-700:focus-within, .read-only\:text-highlight-700:read-only, .disabled\:text-highlight-700:disabled, .active\:text-highlight-700:active, .focus\:text-highlight-700:focus, .hover\:text-highlight-700:hover {
   color: var(--color-highlight-700);
 }
 
-.hover\:text-highlight-700:hover {
-  color: var(--color-highlight-700);
-}
-
-.text-highlight-800 {
+.text-highlight-800, .even\:text-highlight-800:nth-child(even), .odd\:text-highlight-800:nth-child(odd), .last\:text-highlight-800:last-child, .first\:text-highlight-800:first-child, .focus-within\:text-highlight-800:focus-within, .read-only\:text-highlight-800:read-only, .disabled\:text-highlight-800:disabled, .active\:text-highlight-800:active, .focus\:text-highlight-800:focus, .hover\:text-highlight-800:hover {
   color: var(--color-highlight-800);
 }
 
-.hover\:text-highlight-800:hover {
-  color: var(--color-highlight-800);
-}
-
-.text-highlight-900 {
-  color: var(--color-highlight-900);
-}
-
-.hover\:text-highlight-900:hover {
+.text-highlight-900, .even\:text-highlight-900:nth-child(even), .odd\:text-highlight-900:nth-child(odd), .last\:text-highlight-900:last-child, .first\:text-highlight-900:first-child, .focus-within\:text-highlight-900:focus-within, .read-only\:text-highlight-900:read-only, .disabled\:text-highlight-900:disabled, .active\:text-highlight-900:active, .focus\:text-highlight-900:focus, .hover\:text-highlight-900:hover {
   color: var(--color-highlight-900);
 }
 
@@ -11835,83 +9867,43 @@
   color: black;
 }
 
-.text-success {
+.text-success, .even\:text-success:nth-child(even), .odd\:text-success:nth-child(odd), .last\:text-success:last-child, .first\:text-success:first-child, .focus-within\:text-success:focus-within, .read-only\:text-success:read-only, .disabled\:text-success:disabled, .active\:text-success:active, .focus\:text-success:focus, .hover\:text-success:hover {
   color: var(--color-success);
 }
 
-.hover\:text-success:hover {
-  color: var(--color-success);
-}
-
-.text-success-100 {
+.text-success-100, .even\:text-success-100:nth-child(even), .odd\:text-success-100:nth-child(odd), .last\:text-success-100:last-child, .first\:text-success-100:first-child, .focus-within\:text-success-100:focus-within, .read-only\:text-success-100:read-only, .disabled\:text-success-100:disabled, .active\:text-success-100:active, .focus\:text-success-100:focus, .hover\:text-success-100:hover {
   color: var(--color-success-100);
 }
 
-.hover\:text-success-100:hover {
-  color: var(--color-success-100);
-}
-
-.text-success-200 {
+.text-success-200, .even\:text-success-200:nth-child(even), .odd\:text-success-200:nth-child(odd), .last\:text-success-200:last-child, .first\:text-success-200:first-child, .focus-within\:text-success-200:focus-within, .read-only\:text-success-200:read-only, .disabled\:text-success-200:disabled, .active\:text-success-200:active, .focus\:text-success-200:focus, .hover\:text-success-200:hover {
   color: var(--color-success-200);
 }
 
-.hover\:text-success-200:hover {
-  color: var(--color-success-200);
-}
-
-.text-success-300 {
+.text-success-300, .even\:text-success-300:nth-child(even), .odd\:text-success-300:nth-child(odd), .last\:text-success-300:last-child, .first\:text-success-300:first-child, .focus-within\:text-success-300:focus-within, .read-only\:text-success-300:read-only, .disabled\:text-success-300:disabled, .active\:text-success-300:active, .focus\:text-success-300:focus, .hover\:text-success-300:hover {
   color: var(--color-success-300);
 }
 
-.hover\:text-success-300:hover {
-  color: var(--color-success-300);
-}
-
-.text-success-400 {
+.text-success-400, .even\:text-success-400:nth-child(even), .odd\:text-success-400:nth-child(odd), .last\:text-success-400:last-child, .first\:text-success-400:first-child, .focus-within\:text-success-400:focus-within, .read-only\:text-success-400:read-only, .disabled\:text-success-400:disabled, .active\:text-success-400:active, .focus\:text-success-400:focus, .hover\:text-success-400:hover {
   color: var(--color-success-400);
 }
 
-.hover\:text-success-400:hover {
-  color: var(--color-success-400);
-}
-
-.text-success-500 {
+.text-success-500, .even\:text-success-500:nth-child(even), .odd\:text-success-500:nth-child(odd), .last\:text-success-500:last-child, .first\:text-success-500:first-child, .focus-within\:text-success-500:focus-within, .read-only\:text-success-500:read-only, .disabled\:text-success-500:disabled, .active\:text-success-500:active, .focus\:text-success-500:focus, .hover\:text-success-500:hover {
   color: var(--color-success-500);
 }
 
-.hover\:text-success-500:hover {
-  color: var(--color-success-500);
-}
-
-.text-success-600 {
+.text-success-600, .even\:text-success-600:nth-child(even), .odd\:text-success-600:nth-child(odd), .last\:text-success-600:last-child, .first\:text-success-600:first-child, .focus-within\:text-success-600:focus-within, .read-only\:text-success-600:read-only, .disabled\:text-success-600:disabled, .active\:text-success-600:active, .focus\:text-success-600:focus, .hover\:text-success-600:hover {
   color: var(--color-success-600);
 }
 
-.hover\:text-success-600:hover {
-  color: var(--color-success-600);
-}
-
-.text-success-700 {
+.text-success-700, .even\:text-success-700:nth-child(even), .odd\:text-success-700:nth-child(odd), .last\:text-success-700:last-child, .first\:text-success-700:first-child, .focus-within\:text-success-700:focus-within, .read-only\:text-success-700:read-only, .disabled\:text-success-700:disabled, .active\:text-success-700:active, .focus\:text-success-700:focus, .hover\:text-success-700:hover {
   color: var(--color-success-700);
 }
 
-.hover\:text-success-700:hover {
-  color: var(--color-success-700);
-}
-
-.text-success-800 {
+.text-success-800, .even\:text-success-800:nth-child(even), .odd\:text-success-800:nth-child(odd), .last\:text-success-800:last-child, .first\:text-success-800:first-child, .focus-within\:text-success-800:focus-within, .read-only\:text-success-800:read-only, .disabled\:text-success-800:disabled, .active\:text-success-800:active, .focus\:text-success-800:focus, .hover\:text-success-800:hover {
   color: var(--color-success-800);
 }
 
-.hover\:text-success-800:hover {
-  color: var(--color-success-800);
-}
-
-.text-success-900 {
-  color: var(--color-success-900);
-}
-
-.hover\:text-success-900:hover {
+.text-success-900, .even\:text-success-900:nth-child(even), .odd\:text-success-900:nth-child(odd), .last\:text-success-900:last-child, .first\:text-success-900:first-child, .focus-within\:text-success-900:focus-within, .read-only\:text-success-900:read-only, .disabled\:text-success-900:disabled, .active\:text-success-900:active, .focus\:text-success-900:focus, .hover\:text-success-900:hover {
   color: var(--color-success-900);
 }
 
@@ -11923,83 +9915,43 @@
   color: black;
 }
 
-.text-warning {
+.text-warning, .even\:text-warning:nth-child(even), .odd\:text-warning:nth-child(odd), .last\:text-warning:last-child, .first\:text-warning:first-child, .focus-within\:text-warning:focus-within, .read-only\:text-warning:read-only, .disabled\:text-warning:disabled, .active\:text-warning:active, .focus\:text-warning:focus, .hover\:text-warning:hover {
   color: var(--color-warning);
 }
 
-.hover\:text-warning:hover {
-  color: var(--color-warning);
-}
-
-.text-warning-100 {
+.text-warning-100, .even\:text-warning-100:nth-child(even), .odd\:text-warning-100:nth-child(odd), .last\:text-warning-100:last-child, .first\:text-warning-100:first-child, .focus-within\:text-warning-100:focus-within, .read-only\:text-warning-100:read-only, .disabled\:text-warning-100:disabled, .active\:text-warning-100:active, .focus\:text-warning-100:focus, .hover\:text-warning-100:hover {
   color: var(--color-warning-100);
 }
 
-.hover\:text-warning-100:hover {
-  color: var(--color-warning-100);
-}
-
-.text-warning-200 {
+.text-warning-200, .even\:text-warning-200:nth-child(even), .odd\:text-warning-200:nth-child(odd), .last\:text-warning-200:last-child, .first\:text-warning-200:first-child, .focus-within\:text-warning-200:focus-within, .read-only\:text-warning-200:read-only, .disabled\:text-warning-200:disabled, .active\:text-warning-200:active, .focus\:text-warning-200:focus, .hover\:text-warning-200:hover {
   color: var(--color-warning-200);
 }
 
-.hover\:text-warning-200:hover {
-  color: var(--color-warning-200);
-}
-
-.text-warning-300 {
+.text-warning-300, .even\:text-warning-300:nth-child(even), .odd\:text-warning-300:nth-child(odd), .last\:text-warning-300:last-child, .first\:text-warning-300:first-child, .focus-within\:text-warning-300:focus-within, .read-only\:text-warning-300:read-only, .disabled\:text-warning-300:disabled, .active\:text-warning-300:active, .focus\:text-warning-300:focus, .hover\:text-warning-300:hover {
   color: var(--color-warning-300);
 }
 
-.hover\:text-warning-300:hover {
-  color: var(--color-warning-300);
-}
-
-.text-warning-400 {
+.text-warning-400, .even\:text-warning-400:nth-child(even), .odd\:text-warning-400:nth-child(odd), .last\:text-warning-400:last-child, .first\:text-warning-400:first-child, .focus-within\:text-warning-400:focus-within, .read-only\:text-warning-400:read-only, .disabled\:text-warning-400:disabled, .active\:text-warning-400:active, .focus\:text-warning-400:focus, .hover\:text-warning-400:hover {
   color: var(--color-warning-400);
 }
 
-.hover\:text-warning-400:hover {
-  color: var(--color-warning-400);
-}
-
-.text-warning-500 {
+.text-warning-500, .even\:text-warning-500:nth-child(even), .odd\:text-warning-500:nth-child(odd), .last\:text-warning-500:last-child, .first\:text-warning-500:first-child, .focus-within\:text-warning-500:focus-within, .read-only\:text-warning-500:read-only, .disabled\:text-warning-500:disabled, .active\:text-warning-500:active, .focus\:text-warning-500:focus, .hover\:text-warning-500:hover {
   color: var(--color-warning-500);
 }
 
-.hover\:text-warning-500:hover {
-  color: var(--color-warning-500);
-}
-
-.text-warning-600 {
+.text-warning-600, .even\:text-warning-600:nth-child(even), .odd\:text-warning-600:nth-child(odd), .last\:text-warning-600:last-child, .first\:text-warning-600:first-child, .focus-within\:text-warning-600:focus-within, .read-only\:text-warning-600:read-only, .disabled\:text-warning-600:disabled, .active\:text-warning-600:active, .focus\:text-warning-600:focus, .hover\:text-warning-600:hover {
   color: var(--color-warning-600);
 }
 
-.hover\:text-warning-600:hover {
-  color: var(--color-warning-600);
-}
-
-.text-warning-700 {
+.text-warning-700, .even\:text-warning-700:nth-child(even), .odd\:text-warning-700:nth-child(odd), .last\:text-warning-700:last-child, .first\:text-warning-700:first-child, .focus-within\:text-warning-700:focus-within, .read-only\:text-warning-700:read-only, .disabled\:text-warning-700:disabled, .active\:text-warning-700:active, .focus\:text-warning-700:focus, .hover\:text-warning-700:hover {
   color: var(--color-warning-700);
 }
 
-.hover\:text-warning-700:hover {
-  color: var(--color-warning-700);
-}
-
-.text-warning-800 {
+.text-warning-800, .even\:text-warning-800:nth-child(even), .odd\:text-warning-800:nth-child(odd), .last\:text-warning-800:last-child, .first\:text-warning-800:first-child, .focus-within\:text-warning-800:focus-within, .read-only\:text-warning-800:read-only, .disabled\:text-warning-800:disabled, .active\:text-warning-800:active, .focus\:text-warning-800:focus, .hover\:text-warning-800:hover {
   color: var(--color-warning-800);
 }
 
-.hover\:text-warning-800:hover {
-  color: var(--color-warning-800);
-}
-
-.text-warning-900 {
-  color: var(--color-warning-900);
-}
-
-.hover\:text-warning-900:hover {
+.text-warning-900, .even\:text-warning-900:nth-child(even), .odd\:text-warning-900:nth-child(odd), .last\:text-warning-900:last-child, .first\:text-warning-900:first-child, .focus-within\:text-warning-900:focus-within, .read-only\:text-warning-900:read-only, .disabled\:text-warning-900:disabled, .active\:text-warning-900:active, .focus\:text-warning-900:focus, .hover\:text-warning-900:hover {
   color: var(--color-warning-900);
 }
 
@@ -12011,83 +9963,43 @@
   color: black;
 }
 
-.text-alert {
+.text-alert, .even\:text-alert:nth-child(even), .odd\:text-alert:nth-child(odd), .last\:text-alert:last-child, .first\:text-alert:first-child, .focus-within\:text-alert:focus-within, .read-only\:text-alert:read-only, .disabled\:text-alert:disabled, .active\:text-alert:active, .focus\:text-alert:focus, .hover\:text-alert:hover {
   color: var(--color-alert);
 }
 
-.hover\:text-alert:hover {
-  color: var(--color-alert);
-}
-
-.text-alert-100 {
+.text-alert-100, .even\:text-alert-100:nth-child(even), .odd\:text-alert-100:nth-child(odd), .last\:text-alert-100:last-child, .first\:text-alert-100:first-child, .focus-within\:text-alert-100:focus-within, .read-only\:text-alert-100:read-only, .disabled\:text-alert-100:disabled, .active\:text-alert-100:active, .focus\:text-alert-100:focus, .hover\:text-alert-100:hover {
   color: var(--color-alert-100);
 }
 
-.hover\:text-alert-100:hover {
-  color: var(--color-alert-100);
-}
-
-.text-alert-200 {
+.text-alert-200, .even\:text-alert-200:nth-child(even), .odd\:text-alert-200:nth-child(odd), .last\:text-alert-200:last-child, .first\:text-alert-200:first-child, .focus-within\:text-alert-200:focus-within, .read-only\:text-alert-200:read-only, .disabled\:text-alert-200:disabled, .active\:text-alert-200:active, .focus\:text-alert-200:focus, .hover\:text-alert-200:hover {
   color: var(--color-alert-200);
 }
 
-.hover\:text-alert-200:hover {
-  color: var(--color-alert-200);
-}
-
-.text-alert-300 {
+.text-alert-300, .even\:text-alert-300:nth-child(even), .odd\:text-alert-300:nth-child(odd), .last\:text-alert-300:last-child, .first\:text-alert-300:first-child, .focus-within\:text-alert-300:focus-within, .read-only\:text-alert-300:read-only, .disabled\:text-alert-300:disabled, .active\:text-alert-300:active, .focus\:text-alert-300:focus, .hover\:text-alert-300:hover {
   color: var(--color-alert-300);
 }
 
-.hover\:text-alert-300:hover {
-  color: var(--color-alert-300);
-}
-
-.text-alert-400 {
+.text-alert-400, .even\:text-alert-400:nth-child(even), .odd\:text-alert-400:nth-child(odd), .last\:text-alert-400:last-child, .first\:text-alert-400:first-child, .focus-within\:text-alert-400:focus-within, .read-only\:text-alert-400:read-only, .disabled\:text-alert-400:disabled, .active\:text-alert-400:active, .focus\:text-alert-400:focus, .hover\:text-alert-400:hover {
   color: var(--color-alert-400);
 }
 
-.hover\:text-alert-400:hover {
-  color: var(--color-alert-400);
-}
-
-.text-alert-500 {
+.text-alert-500, .even\:text-alert-500:nth-child(even), .odd\:text-alert-500:nth-child(odd), .last\:text-alert-500:last-child, .first\:text-alert-500:first-child, .focus-within\:text-alert-500:focus-within, .read-only\:text-alert-500:read-only, .disabled\:text-alert-500:disabled, .active\:text-alert-500:active, .focus\:text-alert-500:focus, .hover\:text-alert-500:hover {
   color: var(--color-alert-500);
 }
 
-.hover\:text-alert-500:hover {
-  color: var(--color-alert-500);
-}
-
-.text-alert-600 {
+.text-alert-600, .even\:text-alert-600:nth-child(even), .odd\:text-alert-600:nth-child(odd), .last\:text-alert-600:last-child, .first\:text-alert-600:first-child, .focus-within\:text-alert-600:focus-within, .read-only\:text-alert-600:read-only, .disabled\:text-alert-600:disabled, .active\:text-alert-600:active, .focus\:text-alert-600:focus, .hover\:text-alert-600:hover {
   color: var(--color-alert-600);
 }
 
-.hover\:text-alert-600:hover {
-  color: var(--color-alert-600);
-}
-
-.text-alert-700 {
+.text-alert-700, .even\:text-alert-700:nth-child(even), .odd\:text-alert-700:nth-child(odd), .last\:text-alert-700:last-child, .first\:text-alert-700:first-child, .focus-within\:text-alert-700:focus-within, .read-only\:text-alert-700:read-only, .disabled\:text-alert-700:disabled, .active\:text-alert-700:active, .focus\:text-alert-700:focus, .hover\:text-alert-700:hover {
   color: var(--color-alert-700);
 }
 
-.hover\:text-alert-700:hover {
-  color: var(--color-alert-700);
-}
-
-.text-alert-800 {
+.text-alert-800, .even\:text-alert-800:nth-child(even), .odd\:text-alert-800:nth-child(odd), .last\:text-alert-800:last-child, .first\:text-alert-800:first-child, .focus-within\:text-alert-800:focus-within, .read-only\:text-alert-800:read-only, .disabled\:text-alert-800:disabled, .active\:text-alert-800:active, .focus\:text-alert-800:focus, .hover\:text-alert-800:hover {
   color: var(--color-alert-800);
 }
 
-.hover\:text-alert-800:hover {
-  color: var(--color-alert-800);
-}
-
-.text-alert-900 {
-  color: var(--color-alert-900);
-}
-
-.hover\:text-alert-900:hover {
+.text-alert-900, .even\:text-alert-900:nth-child(even), .odd\:text-alert-900:nth-child(odd), .last\:text-alert-900:last-child, .first\:text-alert-900:first-child, .focus-within\:text-alert-900:focus-within, .read-only\:text-alert-900:read-only, .disabled\:text-alert-900:disabled, .active\:text-alert-900:active, .focus\:text-alert-900:focus, .hover\:text-alert-900:hover {
   color: var(--color-alert-900);
 }
 
@@ -12099,83 +10011,43 @@
   color: black;
 }
 
-.text-danger {
+.text-danger, .even\:text-danger:nth-child(even), .odd\:text-danger:nth-child(odd), .last\:text-danger:last-child, .first\:text-danger:first-child, .focus-within\:text-danger:focus-within, .read-only\:text-danger:read-only, .disabled\:text-danger:disabled, .active\:text-danger:active, .focus\:text-danger:focus, .hover\:text-danger:hover {
   color: var(--color-danger);
 }
 
-.hover\:text-danger:hover {
-  color: var(--color-danger);
-}
-
-.text-danger-100 {
+.text-danger-100, .even\:text-danger-100:nth-child(even), .odd\:text-danger-100:nth-child(odd), .last\:text-danger-100:last-child, .first\:text-danger-100:first-child, .focus-within\:text-danger-100:focus-within, .read-only\:text-danger-100:read-only, .disabled\:text-danger-100:disabled, .active\:text-danger-100:active, .focus\:text-danger-100:focus, .hover\:text-danger-100:hover {
   color: var(--color-danger-100);
 }
 
-.hover\:text-danger-100:hover {
-  color: var(--color-danger-100);
-}
-
-.text-danger-200 {
+.text-danger-200, .even\:text-danger-200:nth-child(even), .odd\:text-danger-200:nth-child(odd), .last\:text-danger-200:last-child, .first\:text-danger-200:first-child, .focus-within\:text-danger-200:focus-within, .read-only\:text-danger-200:read-only, .disabled\:text-danger-200:disabled, .active\:text-danger-200:active, .focus\:text-danger-200:focus, .hover\:text-danger-200:hover {
   color: var(--color-danger-200);
 }
 
-.hover\:text-danger-200:hover {
-  color: var(--color-danger-200);
-}
-
-.text-danger-300 {
+.text-danger-300, .even\:text-danger-300:nth-child(even), .odd\:text-danger-300:nth-child(odd), .last\:text-danger-300:last-child, .first\:text-danger-300:first-child, .focus-within\:text-danger-300:focus-within, .read-only\:text-danger-300:read-only, .disabled\:text-danger-300:disabled, .active\:text-danger-300:active, .focus\:text-danger-300:focus, .hover\:text-danger-300:hover {
   color: var(--color-danger-300);
 }
 
-.hover\:text-danger-300:hover {
-  color: var(--color-danger-300);
-}
-
-.text-danger-400 {
+.text-danger-400, .even\:text-danger-400:nth-child(even), .odd\:text-danger-400:nth-child(odd), .last\:text-danger-400:last-child, .first\:text-danger-400:first-child, .focus-within\:text-danger-400:focus-within, .read-only\:text-danger-400:read-only, .disabled\:text-danger-400:disabled, .active\:text-danger-400:active, .focus\:text-danger-400:focus, .hover\:text-danger-400:hover {
   color: var(--color-danger-400);
 }
 
-.hover\:text-danger-400:hover {
-  color: var(--color-danger-400);
-}
-
-.text-danger-500 {
+.text-danger-500, .even\:text-danger-500:nth-child(even), .odd\:text-danger-500:nth-child(odd), .last\:text-danger-500:last-child, .first\:text-danger-500:first-child, .focus-within\:text-danger-500:focus-within, .read-only\:text-danger-500:read-only, .disabled\:text-danger-500:disabled, .active\:text-danger-500:active, .focus\:text-danger-500:focus, .hover\:text-danger-500:hover {
   color: var(--color-danger-500);
 }
 
-.hover\:text-danger-500:hover {
-  color: var(--color-danger-500);
-}
-
-.text-danger-600 {
+.text-danger-600, .even\:text-danger-600:nth-child(even), .odd\:text-danger-600:nth-child(odd), .last\:text-danger-600:last-child, .first\:text-danger-600:first-child, .focus-within\:text-danger-600:focus-within, .read-only\:text-danger-600:read-only, .disabled\:text-danger-600:disabled, .active\:text-danger-600:active, .focus\:text-danger-600:focus, .hover\:text-danger-600:hover {
   color: var(--color-danger-600);
 }
 
-.hover\:text-danger-600:hover {
-  color: var(--color-danger-600);
-}
-
-.text-danger-700 {
+.text-danger-700, .even\:text-danger-700:nth-child(even), .odd\:text-danger-700:nth-child(odd), .last\:text-danger-700:last-child, .first\:text-danger-700:first-child, .focus-within\:text-danger-700:focus-within, .read-only\:text-danger-700:read-only, .disabled\:text-danger-700:disabled, .active\:text-danger-700:active, .focus\:text-danger-700:focus, .hover\:text-danger-700:hover {
   color: var(--color-danger-700);
 }
 
-.hover\:text-danger-700:hover {
-  color: var(--color-danger-700);
-}
-
-.text-danger-800 {
+.text-danger-800, .even\:text-danger-800:nth-child(even), .odd\:text-danger-800:nth-child(odd), .last\:text-danger-800:last-child, .first\:text-danger-800:first-child, .focus-within\:text-danger-800:focus-within, .read-only\:text-danger-800:read-only, .disabled\:text-danger-800:disabled, .active\:text-danger-800:active, .focus\:text-danger-800:focus, .hover\:text-danger-800:hover {
   color: var(--color-danger-800);
 }
 
-.hover\:text-danger-800:hover {
-  color: var(--color-danger-800);
-}
-
-.text-danger-900 {
-  color: var(--color-danger-900);
-}
-
-.hover\:text-danger-900:hover {
+.text-danger-900, .even\:text-danger-900:nth-child(even), .odd\:text-danger-900:nth-child(odd), .last\:text-danger-900:last-child, .first\:text-danger-900:first-child, .focus-within\:text-danger-900:focus-within, .read-only\:text-danger-900:read-only, .disabled\:text-danger-900:disabled, .active\:text-danger-900:active, .focus\:text-danger-900:focus, .hover\:text-danger-900:hover {
   color: var(--color-danger-900);
 }
 
@@ -12187,83 +10059,43 @@
   color: black;
 }
 
-.text-light {
+.text-light, .even\:text-light:nth-child(even), .odd\:text-light:nth-child(odd), .last\:text-light:last-child, .first\:text-light:first-child, .focus-within\:text-light:focus-within, .read-only\:text-light:read-only, .disabled\:text-light:disabled, .active\:text-light:active, .focus\:text-light:focus, .hover\:text-light:hover {
   color: var(--color-light);
 }
 
-.hover\:text-light:hover {
-  color: var(--color-light);
-}
-
-.text-light-100 {
+.text-light-100, .even\:text-light-100:nth-child(even), .odd\:text-light-100:nth-child(odd), .last\:text-light-100:last-child, .first\:text-light-100:first-child, .focus-within\:text-light-100:focus-within, .read-only\:text-light-100:read-only, .disabled\:text-light-100:disabled, .active\:text-light-100:active, .focus\:text-light-100:focus, .hover\:text-light-100:hover {
   color: var(--color-light-100);
 }
 
-.hover\:text-light-100:hover {
-  color: var(--color-light-100);
-}
-
-.text-light-200 {
+.text-light-200, .even\:text-light-200:nth-child(even), .odd\:text-light-200:nth-child(odd), .last\:text-light-200:last-child, .first\:text-light-200:first-child, .focus-within\:text-light-200:focus-within, .read-only\:text-light-200:read-only, .disabled\:text-light-200:disabled, .active\:text-light-200:active, .focus\:text-light-200:focus, .hover\:text-light-200:hover {
   color: var(--color-light-200);
 }
 
-.hover\:text-light-200:hover {
-  color: var(--color-light-200);
-}
-
-.text-light-300 {
+.text-light-300, .even\:text-light-300:nth-child(even), .odd\:text-light-300:nth-child(odd), .last\:text-light-300:last-child, .first\:text-light-300:first-child, .focus-within\:text-light-300:focus-within, .read-only\:text-light-300:read-only, .disabled\:text-light-300:disabled, .active\:text-light-300:active, .focus\:text-light-300:focus, .hover\:text-light-300:hover {
   color: var(--color-light-300);
 }
 
-.hover\:text-light-300:hover {
-  color: var(--color-light-300);
-}
-
-.text-light-400 {
+.text-light-400, .even\:text-light-400:nth-child(even), .odd\:text-light-400:nth-child(odd), .last\:text-light-400:last-child, .first\:text-light-400:first-child, .focus-within\:text-light-400:focus-within, .read-only\:text-light-400:read-only, .disabled\:text-light-400:disabled, .active\:text-light-400:active, .focus\:text-light-400:focus, .hover\:text-light-400:hover {
   color: var(--color-light-400);
 }
 
-.hover\:text-light-400:hover {
-  color: var(--color-light-400);
-}
-
-.text-light-500 {
+.text-light-500, .even\:text-light-500:nth-child(even), .odd\:text-light-500:nth-child(odd), .last\:text-light-500:last-child, .first\:text-light-500:first-child, .focus-within\:text-light-500:focus-within, .read-only\:text-light-500:read-only, .disabled\:text-light-500:disabled, .active\:text-light-500:active, .focus\:text-light-500:focus, .hover\:text-light-500:hover {
   color: var(--color-light-500);
 }
 
-.hover\:text-light-500:hover {
-  color: var(--color-light-500);
-}
-
-.text-light-600 {
+.text-light-600, .even\:text-light-600:nth-child(even), .odd\:text-light-600:nth-child(odd), .last\:text-light-600:last-child, .first\:text-light-600:first-child, .focus-within\:text-light-600:focus-within, .read-only\:text-light-600:read-only, .disabled\:text-light-600:disabled, .active\:text-light-600:active, .focus\:text-light-600:focus, .hover\:text-light-600:hover {
   color: var(--color-light-600);
 }
 
-.hover\:text-light-600:hover {
-  color: var(--color-light-600);
-}
-
-.text-light-700 {
+.text-light-700, .even\:text-light-700:nth-child(even), .odd\:text-light-700:nth-child(odd), .last\:text-light-700:last-child, .first\:text-light-700:first-child, .focus-within\:text-light-700:focus-within, .read-only\:text-light-700:read-only, .disabled\:text-light-700:disabled, .active\:text-light-700:active, .focus\:text-light-700:focus, .hover\:text-light-700:hover {
   color: var(--color-light-700);
 }
 
-.hover\:text-light-700:hover {
-  color: var(--color-light-700);
-}
-
-.text-light-800 {
+.text-light-800, .even\:text-light-800:nth-child(even), .odd\:text-light-800:nth-child(odd), .last\:text-light-800:last-child, .first\:text-light-800:first-child, .focus-within\:text-light-800:focus-within, .read-only\:text-light-800:read-only, .disabled\:text-light-800:disabled, .active\:text-light-800:active, .focus\:text-light-800:focus, .hover\:text-light-800:hover {
   color: var(--color-light-800);
 }
 
-.hover\:text-light-800:hover {
-  color: var(--color-light-800);
-}
-
-.text-light-900 {
-  color: var(--color-light-900);
-}
-
-.hover\:text-light-900:hover {
+.text-light-900, .even\:text-light-900:nth-child(even), .odd\:text-light-900:nth-child(odd), .last\:text-light-900:last-child, .first\:text-light-900:first-child, .focus-within\:text-light-900:focus-within, .read-only\:text-light-900:read-only, .disabled\:text-light-900:disabled, .active\:text-light-900:active, .focus\:text-light-900:focus, .hover\:text-light-900:hover {
   color: var(--color-light-900);
 }
 
@@ -12275,83 +10107,43 @@
   color: black;
 }
 
-.text-dark {
+.text-dark, .even\:text-dark:nth-child(even), .odd\:text-dark:nth-child(odd), .last\:text-dark:last-child, .first\:text-dark:first-child, .focus-within\:text-dark:focus-within, .read-only\:text-dark:read-only, .disabled\:text-dark:disabled, .active\:text-dark:active, .focus\:text-dark:focus, .hover\:text-dark:hover {
   color: var(--color-dark);
 }
 
-.hover\:text-dark:hover {
-  color: var(--color-dark);
-}
-
-.text-dark-100 {
+.text-dark-100, .even\:text-dark-100:nth-child(even), .odd\:text-dark-100:nth-child(odd), .last\:text-dark-100:last-child, .first\:text-dark-100:first-child, .focus-within\:text-dark-100:focus-within, .read-only\:text-dark-100:read-only, .disabled\:text-dark-100:disabled, .active\:text-dark-100:active, .focus\:text-dark-100:focus, .hover\:text-dark-100:hover {
   color: var(--color-dark-100);
 }
 
-.hover\:text-dark-100:hover {
-  color: var(--color-dark-100);
-}
-
-.text-dark-200 {
+.text-dark-200, .even\:text-dark-200:nth-child(even), .odd\:text-dark-200:nth-child(odd), .last\:text-dark-200:last-child, .first\:text-dark-200:first-child, .focus-within\:text-dark-200:focus-within, .read-only\:text-dark-200:read-only, .disabled\:text-dark-200:disabled, .active\:text-dark-200:active, .focus\:text-dark-200:focus, .hover\:text-dark-200:hover {
   color: var(--color-dark-200);
 }
 
-.hover\:text-dark-200:hover {
-  color: var(--color-dark-200);
-}
-
-.text-dark-300 {
+.text-dark-300, .even\:text-dark-300:nth-child(even), .odd\:text-dark-300:nth-child(odd), .last\:text-dark-300:last-child, .first\:text-dark-300:first-child, .focus-within\:text-dark-300:focus-within, .read-only\:text-dark-300:read-only, .disabled\:text-dark-300:disabled, .active\:text-dark-300:active, .focus\:text-dark-300:focus, .hover\:text-dark-300:hover {
   color: var(--color-dark-300);
 }
 
-.hover\:text-dark-300:hover {
-  color: var(--color-dark-300);
-}
-
-.text-dark-400 {
+.text-dark-400, .even\:text-dark-400:nth-child(even), .odd\:text-dark-400:nth-child(odd), .last\:text-dark-400:last-child, .first\:text-dark-400:first-child, .focus-within\:text-dark-400:focus-within, .read-only\:text-dark-400:read-only, .disabled\:text-dark-400:disabled, .active\:text-dark-400:active, .focus\:text-dark-400:focus, .hover\:text-dark-400:hover {
   color: var(--color-dark-400);
 }
 
-.hover\:text-dark-400:hover {
-  color: var(--color-dark-400);
-}
-
-.text-dark-500 {
+.text-dark-500, .even\:text-dark-500:nth-child(even), .odd\:text-dark-500:nth-child(odd), .last\:text-dark-500:last-child, .first\:text-dark-500:first-child, .focus-within\:text-dark-500:focus-within, .read-only\:text-dark-500:read-only, .disabled\:text-dark-500:disabled, .active\:text-dark-500:active, .focus\:text-dark-500:focus, .hover\:text-dark-500:hover {
   color: var(--color-dark-500);
 }
 
-.hover\:text-dark-500:hover {
-  color: var(--color-dark-500);
-}
-
-.text-dark-600 {
+.text-dark-600, .even\:text-dark-600:nth-child(even), .odd\:text-dark-600:nth-child(odd), .last\:text-dark-600:last-child, .first\:text-dark-600:first-child, .focus-within\:text-dark-600:focus-within, .read-only\:text-dark-600:read-only, .disabled\:text-dark-600:disabled, .active\:text-dark-600:active, .focus\:text-dark-600:focus, .hover\:text-dark-600:hover {
   color: var(--color-dark-600);
 }
 
-.hover\:text-dark-600:hover {
-  color: var(--color-dark-600);
-}
-
-.text-dark-700 {
+.text-dark-700, .even\:text-dark-700:nth-child(even), .odd\:text-dark-700:nth-child(odd), .last\:text-dark-700:last-child, .first\:text-dark-700:first-child, .focus-within\:text-dark-700:focus-within, .read-only\:text-dark-700:read-only, .disabled\:text-dark-700:disabled, .active\:text-dark-700:active, .focus\:text-dark-700:focus, .hover\:text-dark-700:hover {
   color: var(--color-dark-700);
 }
 
-.hover\:text-dark-700:hover {
-  color: var(--color-dark-700);
-}
-
-.text-dark-800 {
+.text-dark-800, .even\:text-dark-800:nth-child(even), .odd\:text-dark-800:nth-child(odd), .last\:text-dark-800:last-child, .first\:text-dark-800:first-child, .focus-within\:text-dark-800:focus-within, .read-only\:text-dark-800:read-only, .disabled\:text-dark-800:disabled, .active\:text-dark-800:active, .focus\:text-dark-800:focus, .hover\:text-dark-800:hover {
   color: var(--color-dark-800);
 }
 
-.hover\:text-dark-800:hover {
-  color: var(--color-dark-800);
-}
-
-.text-dark-900 {
-  color: var(--color-dark-900);
-}
-
-.hover\:text-dark-900:hover {
+.text-dark-900, .even\:text-dark-900:nth-child(even), .odd\:text-dark-900:nth-child(odd), .last\:text-dark-900:last-child, .first\:text-dark-900:first-child, .focus-within\:text-dark-900:focus-within, .read-only\:text-dark-900:read-only, .disabled\:text-dark-900:disabled, .active\:text-dark-900:active, .focus\:text-dark-900:focus, .hover\:text-dark-900:hover {
   color: var(--color-dark-900);
 }
 
@@ -12361,6 +10153,1221 @@
 
 .text-black {
   color: black;
+}
+
+.mt-1, .my-1, .m-1 {
+  margin-top: var(--space-1);
+}
+
+.mt-2, .my-2, .m-2 {
+  margin-top: var(--space-2);
+}
+
+.mt-3, .my-3, .m-3 {
+  margin-top: var(--space-3);
+}
+
+.mt-4, .my-4, .m-4 {
+  margin-top: var(--space-4);
+}
+
+.mt-5, .my-5, .m-5 {
+  margin-top: var(--space-5);
+}
+
+.mt-6, .my-6, .m-6 {
+  margin-top: var(--space-6);
+}
+
+.mt-7, .my-7, .m-7 {
+  margin-top: var(--space-7);
+}
+
+.mt-8, .my-8, .m-8 {
+  margin-top: var(--space-8);
+}
+
+.mt-9, .my-9, .m-9 {
+  margin-top: var(--space-9);
+}
+
+.mt-10, .my-10, .m-10 {
+  margin-top: var(--space-10);
+}
+
+.mt-11, .my-11, .m-11 {
+  margin-top: var(--space-11);
+}
+
+.mt-12, .my-12, .m-12 {
+  margin-top: var(--space-12);
+}
+
+.me-1, .mx-1, .m-1 {
+  margin-right: var(--space-1);
+}
+
+.me-2, .mx-2, .m-2 {
+  margin-right: var(--space-2);
+}
+
+.me-3, .mx-3, .m-3 {
+  margin-right: var(--space-3);
+}
+
+.me-4, .mx-4, .m-4 {
+  margin-right: var(--space-4);
+}
+
+.me-5, .mx-5, .m-5 {
+  margin-right: var(--space-5);
+}
+
+.me-6, .mx-6, .m-6 {
+  margin-right: var(--space-6);
+}
+
+.me-7, .mx-7, .m-7 {
+  margin-right: var(--space-7);
+}
+
+.me-8, .mx-8, .m-8 {
+  margin-right: var(--space-8);
+}
+
+.me-9, .mx-9, .m-9 {
+  margin-right: var(--space-9);
+}
+
+.me-10, .mx-10, .m-10 {
+  margin-right: var(--space-10);
+}
+
+.me-11, .mx-11, .m-11 {
+  margin-right: var(--space-11);
+}
+
+.me-12, .mx-12, .m-12 {
+  margin-right: var(--space-12);
+}
+
+.mb-1, .my-1, .m-1 {
+  margin-bottom: var(--space-1);
+}
+
+.mb-2, .my-2, .m-2 {
+  margin-bottom: var(--space-2);
+}
+
+.mb-3, .my-3, .m-3 {
+  margin-bottom: var(--space-3);
+}
+
+.mb-4, .my-4, .m-4 {
+  margin-bottom: var(--space-4);
+}
+
+.mb-5, .my-5, .m-5 {
+  margin-bottom: var(--space-5);
+}
+
+.mb-6, .my-6, .m-6 {
+  margin-bottom: var(--space-6);
+}
+
+.mb-7, .my-7, .m-7 {
+  margin-bottom: var(--space-7);
+}
+
+.mb-8, .my-8, .m-8 {
+  margin-bottom: var(--space-8);
+}
+
+.mb-9, .my-9, .m-9 {
+  margin-bottom: var(--space-9);
+}
+
+.mb-10, .my-10, .m-10 {
+  margin-bottom: var(--space-10);
+}
+
+.mb-11, .my-11, .m-11 {
+  margin-bottom: var(--space-11);
+}
+
+.mb-12, .my-12, .m-12 {
+  margin-bottom: var(--space-12);
+}
+
+.ms-1, .mx-1, .m-1 {
+  margin-left: var(--space-1);
+}
+
+.ms-2, .mx-2, .m-2 {
+  margin-left: var(--space-2);
+}
+
+.ms-3, .mx-3, .m-3 {
+  margin-left: var(--space-3);
+}
+
+.ms-4, .mx-4, .m-4 {
+  margin-left: var(--space-4);
+}
+
+.ms-5, .mx-5, .m-5 {
+  margin-left: var(--space-5);
+}
+
+.ms-6, .mx-6, .m-6 {
+  margin-left: var(--space-6);
+}
+
+.ms-7, .mx-7, .m-7 {
+  margin-left: var(--space-7);
+}
+
+.ms-8, .mx-8, .m-8 {
+  margin-left: var(--space-8);
+}
+
+.ms-9, .mx-9, .m-9 {
+  margin-left: var(--space-9);
+}
+
+.ms-10, .mx-10, .m-10 {
+  margin-left: var(--space-10);
+}
+
+.ms-11, .mx-11, .m-11 {
+  margin-left: var(--space-11);
+}
+
+.ms-12, .mx-12, .m-12 {
+  margin-left: var(--space-12);
+}
+
+@media (max-width: 24rem) {
+  .xxs\:mt-1, .xxs\:my-1, .xxs\:m-1 {
+    margin-top: var(--space-1);
+  }
+  .xxs\:mt-2, .xxs\:my-2, .xxs\:m-2 {
+    margin-top: var(--space-2);
+  }
+  .xxs\:mt-3, .xxs\:my-3, .xxs\:m-3 {
+    margin-top: var(--space-3);
+  }
+  .xxs\:mt-4, .xxs\:my-4, .xxs\:m-4 {
+    margin-top: var(--space-4);
+  }
+  .xxs\:mt-5, .xxs\:my-5, .xxs\:m-5 {
+    margin-top: var(--space-5);
+  }
+  .xxs\:mt-6, .xxs\:my-6, .xxs\:m-6 {
+    margin-top: var(--space-6);
+  }
+  .xxs\:mt-7, .xxs\:my-7, .xxs\:m-7 {
+    margin-top: var(--space-7);
+  }
+  .xxs\:mt-8, .xxs\:my-8, .xxs\:m-8 {
+    margin-top: var(--space-8);
+  }
+  .xxs\:mt-9, .xxs\:my-9, .xxs\:m-9 {
+    margin-top: var(--space-9);
+  }
+  .xxs\:mt-10, .xxs\:my-10, .xxs\:m-10 {
+    margin-top: var(--space-10);
+  }
+  .xxs\:mt-11, .xxs\:my-11, .xxs\:m-11 {
+    margin-top: var(--space-11);
+  }
+  .xxs\:mt-12, .xxs\:my-12, .xxs\:m-12 {
+    margin-top: var(--space-12);
+  }
+  .xxs\:me-1, .xxs\:mx-1, .xxs\:m-1 {
+    margin-right: var(--space-1);
+  }
+  .xxs\:me-2, .xxs\:mx-2, .xxs\:m-2 {
+    margin-right: var(--space-2);
+  }
+  .xxs\:me-3, .xxs\:mx-3, .xxs\:m-3 {
+    margin-right: var(--space-3);
+  }
+  .xxs\:me-4, .xxs\:mx-4, .xxs\:m-4 {
+    margin-right: var(--space-4);
+  }
+  .xxs\:me-5, .xxs\:mx-5, .xxs\:m-5 {
+    margin-right: var(--space-5);
+  }
+  .xxs\:me-6, .xxs\:mx-6, .xxs\:m-6 {
+    margin-right: var(--space-6);
+  }
+  .xxs\:me-7, .xxs\:mx-7, .xxs\:m-7 {
+    margin-right: var(--space-7);
+  }
+  .xxs\:me-8, .xxs\:mx-8, .xxs\:m-8 {
+    margin-right: var(--space-8);
+  }
+  .xxs\:me-9, .xxs\:mx-9, .xxs\:m-9 {
+    margin-right: var(--space-9);
+  }
+  .xxs\:me-10, .xxs\:mx-10, .xxs\:m-10 {
+    margin-right: var(--space-10);
+  }
+  .xxs\:me-11, .xxs\:mx-11, .xxs\:m-11 {
+    margin-right: var(--space-11);
+  }
+  .xxs\:me-12, .xxs\:mx-12, .xxs\:m-12 {
+    margin-right: var(--space-12);
+  }
+  .xxs\:mb-1, .xxs\:my-1, .xxs\:m-1 {
+    margin-bottom: var(--space-1);
+  }
+  .xxs\:mb-2, .xxs\:my-2, .xxs\:m-2 {
+    margin-bottom: var(--space-2);
+  }
+  .xxs\:mb-3, .xxs\:my-3, .xxs\:m-3 {
+    margin-bottom: var(--space-3);
+  }
+  .xxs\:mb-4, .xxs\:my-4, .xxs\:m-4 {
+    margin-bottom: var(--space-4);
+  }
+  .xxs\:mb-5, .xxs\:my-5, .xxs\:m-5 {
+    margin-bottom: var(--space-5);
+  }
+  .xxs\:mb-6, .xxs\:my-6, .xxs\:m-6 {
+    margin-bottom: var(--space-6);
+  }
+  .xxs\:mb-7, .xxs\:my-7, .xxs\:m-7 {
+    margin-bottom: var(--space-7);
+  }
+  .xxs\:mb-8, .xxs\:my-8, .xxs\:m-8 {
+    margin-bottom: var(--space-8);
+  }
+  .xxs\:mb-9, .xxs\:my-9, .xxs\:m-9 {
+    margin-bottom: var(--space-9);
+  }
+  .xxs\:mb-10, .xxs\:my-10, .xxs\:m-10 {
+    margin-bottom: var(--space-10);
+  }
+  .xxs\:mb-11, .xxs\:my-11, .xxs\:m-11 {
+    margin-bottom: var(--space-11);
+  }
+  .xxs\:mb-12, .xxs\:my-12, .xxs\:m-12 {
+    margin-bottom: var(--space-12);
+  }
+  .xxs\:ms-1, .xxs\:mx-1, .xxs\:m-1 {
+    margin-left: var(--space-1);
+  }
+  .xxs\:ms-2, .xxs\:mx-2, .xxs\:m-2 {
+    margin-left: var(--space-2);
+  }
+  .xxs\:ms-3, .xxs\:mx-3, .xxs\:m-3 {
+    margin-left: var(--space-3);
+  }
+  .xxs\:ms-4, .xxs\:mx-4, .xxs\:m-4 {
+    margin-left: var(--space-4);
+  }
+  .xxs\:ms-5, .xxs\:mx-5, .xxs\:m-5 {
+    margin-left: var(--space-5);
+  }
+  .xxs\:ms-6, .xxs\:mx-6, .xxs\:m-6 {
+    margin-left: var(--space-6);
+  }
+  .xxs\:ms-7, .xxs\:mx-7, .xxs\:m-7 {
+    margin-left: var(--space-7);
+  }
+  .xxs\:ms-8, .xxs\:mx-8, .xxs\:m-8 {
+    margin-left: var(--space-8);
+  }
+  .xxs\:ms-9, .xxs\:mx-9, .xxs\:m-9 {
+    margin-left: var(--space-9);
+  }
+  .xxs\:ms-10, .xxs\:mx-10, .xxs\:m-10 {
+    margin-left: var(--space-10);
+  }
+  .xxs\:ms-11, .xxs\:mx-11, .xxs\:m-11 {
+    margin-left: var(--space-11);
+  }
+  .xxs\:ms-12, .xxs\:mx-12, .xxs\:m-12 {
+    margin-left: var(--space-12);
+  }
+}
+@media (min-width: 36rem) {
+  .xs\:mt-1, .xs\:my-1, .xs\:m-1 {
+    margin-top: var(--space-1);
+  }
+  .xs\:mt-2, .xs\:my-2, .xs\:m-2 {
+    margin-top: var(--space-2);
+  }
+  .xs\:mt-3, .xs\:my-3, .xs\:m-3 {
+    margin-top: var(--space-3);
+  }
+  .xs\:mt-4, .xs\:my-4, .xs\:m-4 {
+    margin-top: var(--space-4);
+  }
+  .xs\:mt-5, .xs\:my-5, .xs\:m-5 {
+    margin-top: var(--space-5);
+  }
+  .xs\:mt-6, .xs\:my-6, .xs\:m-6 {
+    margin-top: var(--space-6);
+  }
+  .xs\:mt-7, .xs\:my-7, .xs\:m-7 {
+    margin-top: var(--space-7);
+  }
+  .xs\:mt-8, .xs\:my-8, .xs\:m-8 {
+    margin-top: var(--space-8);
+  }
+  .xs\:mt-9, .xs\:my-9, .xs\:m-9 {
+    margin-top: var(--space-9);
+  }
+  .xs\:mt-10, .xs\:my-10, .xs\:m-10 {
+    margin-top: var(--space-10);
+  }
+  .xs\:mt-11, .xs\:my-11, .xs\:m-11 {
+    margin-top: var(--space-11);
+  }
+  .xs\:mt-12, .xs\:my-12, .xs\:m-12 {
+    margin-top: var(--space-12);
+  }
+  .xs\:me-1, .xs\:mx-1, .xs\:m-1 {
+    margin-right: var(--space-1);
+  }
+  .xs\:me-2, .xs\:mx-2, .xs\:m-2 {
+    margin-right: var(--space-2);
+  }
+  .xs\:me-3, .xs\:mx-3, .xs\:m-3 {
+    margin-right: var(--space-3);
+  }
+  .xs\:me-4, .xs\:mx-4, .xs\:m-4 {
+    margin-right: var(--space-4);
+  }
+  .xs\:me-5, .xs\:mx-5, .xs\:m-5 {
+    margin-right: var(--space-5);
+  }
+  .xs\:me-6, .xs\:mx-6, .xs\:m-6 {
+    margin-right: var(--space-6);
+  }
+  .xs\:me-7, .xs\:mx-7, .xs\:m-7 {
+    margin-right: var(--space-7);
+  }
+  .xs\:me-8, .xs\:mx-8, .xs\:m-8 {
+    margin-right: var(--space-8);
+  }
+  .xs\:me-9, .xs\:mx-9, .xs\:m-9 {
+    margin-right: var(--space-9);
+  }
+  .xs\:me-10, .xs\:mx-10, .xs\:m-10 {
+    margin-right: var(--space-10);
+  }
+  .xs\:me-11, .xs\:mx-11, .xs\:m-11 {
+    margin-right: var(--space-11);
+  }
+  .xs\:me-12, .xs\:mx-12, .xs\:m-12 {
+    margin-right: var(--space-12);
+  }
+  .xs\:mb-1, .xs\:my-1, .xs\:m-1 {
+    margin-bottom: var(--space-1);
+  }
+  .xs\:mb-2, .xs\:my-2, .xs\:m-2 {
+    margin-bottom: var(--space-2);
+  }
+  .xs\:mb-3, .xs\:my-3, .xs\:m-3 {
+    margin-bottom: var(--space-3);
+  }
+  .xs\:mb-4, .xs\:my-4, .xs\:m-4 {
+    margin-bottom: var(--space-4);
+  }
+  .xs\:mb-5, .xs\:my-5, .xs\:m-5 {
+    margin-bottom: var(--space-5);
+  }
+  .xs\:mb-6, .xs\:my-6, .xs\:m-6 {
+    margin-bottom: var(--space-6);
+  }
+  .xs\:mb-7, .xs\:my-7, .xs\:m-7 {
+    margin-bottom: var(--space-7);
+  }
+  .xs\:mb-8, .xs\:my-8, .xs\:m-8 {
+    margin-bottom: var(--space-8);
+  }
+  .xs\:mb-9, .xs\:my-9, .xs\:m-9 {
+    margin-bottom: var(--space-9);
+  }
+  .xs\:mb-10, .xs\:my-10, .xs\:m-10 {
+    margin-bottom: var(--space-10);
+  }
+  .xs\:mb-11, .xs\:my-11, .xs\:m-11 {
+    margin-bottom: var(--space-11);
+  }
+  .xs\:mb-12, .xs\:my-12, .xs\:m-12 {
+    margin-bottom: var(--space-12);
+  }
+  .xs\:ms-1, .xs\:mx-1, .xs\:m-1 {
+    margin-left: var(--space-1);
+  }
+  .xs\:ms-2, .xs\:mx-2, .xs\:m-2 {
+    margin-left: var(--space-2);
+  }
+  .xs\:ms-3, .xs\:mx-3, .xs\:m-3 {
+    margin-left: var(--space-3);
+  }
+  .xs\:ms-4, .xs\:mx-4, .xs\:m-4 {
+    margin-left: var(--space-4);
+  }
+  .xs\:ms-5, .xs\:mx-5, .xs\:m-5 {
+    margin-left: var(--space-5);
+  }
+  .xs\:ms-6, .xs\:mx-6, .xs\:m-6 {
+    margin-left: var(--space-6);
+  }
+  .xs\:ms-7, .xs\:mx-7, .xs\:m-7 {
+    margin-left: var(--space-7);
+  }
+  .xs\:ms-8, .xs\:mx-8, .xs\:m-8 {
+    margin-left: var(--space-8);
+  }
+  .xs\:ms-9, .xs\:mx-9, .xs\:m-9 {
+    margin-left: var(--space-9);
+  }
+  .xs\:ms-10, .xs\:mx-10, .xs\:m-10 {
+    margin-left: var(--space-10);
+  }
+  .xs\:ms-11, .xs\:mx-11, .xs\:m-11 {
+    margin-left: var(--space-11);
+  }
+  .xs\:ms-12, .xs\:mx-12, .xs\:m-12 {
+    margin-left: var(--space-12);
+  }
+}
+@media (min-width: 48rem) {
+  .sm\:mt-1, .sm\:my-1, .sm\:m-1 {
+    margin-top: var(--space-1);
+  }
+  .sm\:mt-2, .sm\:my-2, .sm\:m-2 {
+    margin-top: var(--space-2);
+  }
+  .sm\:mt-3, .sm\:my-3, .sm\:m-3 {
+    margin-top: var(--space-3);
+  }
+  .sm\:mt-4, .sm\:my-4, .sm\:m-4 {
+    margin-top: var(--space-4);
+  }
+  .sm\:mt-5, .sm\:my-5, .sm\:m-5 {
+    margin-top: var(--space-5);
+  }
+  .sm\:mt-6, .sm\:my-6, .sm\:m-6 {
+    margin-top: var(--space-6);
+  }
+  .sm\:mt-7, .sm\:my-7, .sm\:m-7 {
+    margin-top: var(--space-7);
+  }
+  .sm\:mt-8, .sm\:my-8, .sm\:m-8 {
+    margin-top: var(--space-8);
+  }
+  .sm\:mt-9, .sm\:my-9, .sm\:m-9 {
+    margin-top: var(--space-9);
+  }
+  .sm\:mt-10, .sm\:my-10, .sm\:m-10 {
+    margin-top: var(--space-10);
+  }
+  .sm\:mt-11, .sm\:my-11, .sm\:m-11 {
+    margin-top: var(--space-11);
+  }
+  .sm\:mt-12, .sm\:my-12, .sm\:m-12 {
+    margin-top: var(--space-12);
+  }
+  .sm\:me-1, .sm\:mx-1, .sm\:m-1 {
+    margin-right: var(--space-1);
+  }
+  .sm\:me-2, .sm\:mx-2, .sm\:m-2 {
+    margin-right: var(--space-2);
+  }
+  .sm\:me-3, .sm\:mx-3, .sm\:m-3 {
+    margin-right: var(--space-3);
+  }
+  .sm\:me-4, .sm\:mx-4, .sm\:m-4 {
+    margin-right: var(--space-4);
+  }
+  .sm\:me-5, .sm\:mx-5, .sm\:m-5 {
+    margin-right: var(--space-5);
+  }
+  .sm\:me-6, .sm\:mx-6, .sm\:m-6 {
+    margin-right: var(--space-6);
+  }
+  .sm\:me-7, .sm\:mx-7, .sm\:m-7 {
+    margin-right: var(--space-7);
+  }
+  .sm\:me-8, .sm\:mx-8, .sm\:m-8 {
+    margin-right: var(--space-8);
+  }
+  .sm\:me-9, .sm\:mx-9, .sm\:m-9 {
+    margin-right: var(--space-9);
+  }
+  .sm\:me-10, .sm\:mx-10, .sm\:m-10 {
+    margin-right: var(--space-10);
+  }
+  .sm\:me-11, .sm\:mx-11, .sm\:m-11 {
+    margin-right: var(--space-11);
+  }
+  .sm\:me-12, .sm\:mx-12, .sm\:m-12 {
+    margin-right: var(--space-12);
+  }
+  .sm\:mb-1, .sm\:my-1, .sm\:m-1 {
+    margin-bottom: var(--space-1);
+  }
+  .sm\:mb-2, .sm\:my-2, .sm\:m-2 {
+    margin-bottom: var(--space-2);
+  }
+  .sm\:mb-3, .sm\:my-3, .sm\:m-3 {
+    margin-bottom: var(--space-3);
+  }
+  .sm\:mb-4, .sm\:my-4, .sm\:m-4 {
+    margin-bottom: var(--space-4);
+  }
+  .sm\:mb-5, .sm\:my-5, .sm\:m-5 {
+    margin-bottom: var(--space-5);
+  }
+  .sm\:mb-6, .sm\:my-6, .sm\:m-6 {
+    margin-bottom: var(--space-6);
+  }
+  .sm\:mb-7, .sm\:my-7, .sm\:m-7 {
+    margin-bottom: var(--space-7);
+  }
+  .sm\:mb-8, .sm\:my-8, .sm\:m-8 {
+    margin-bottom: var(--space-8);
+  }
+  .sm\:mb-9, .sm\:my-9, .sm\:m-9 {
+    margin-bottom: var(--space-9);
+  }
+  .sm\:mb-10, .sm\:my-10, .sm\:m-10 {
+    margin-bottom: var(--space-10);
+  }
+  .sm\:mb-11, .sm\:my-11, .sm\:m-11 {
+    margin-bottom: var(--space-11);
+  }
+  .sm\:mb-12, .sm\:my-12, .sm\:m-12 {
+    margin-bottom: var(--space-12);
+  }
+  .sm\:ms-1, .sm\:mx-1, .sm\:m-1 {
+    margin-left: var(--space-1);
+  }
+  .sm\:ms-2, .sm\:mx-2, .sm\:m-2 {
+    margin-left: var(--space-2);
+  }
+  .sm\:ms-3, .sm\:mx-3, .sm\:m-3 {
+    margin-left: var(--space-3);
+  }
+  .sm\:ms-4, .sm\:mx-4, .sm\:m-4 {
+    margin-left: var(--space-4);
+  }
+  .sm\:ms-5, .sm\:mx-5, .sm\:m-5 {
+    margin-left: var(--space-5);
+  }
+  .sm\:ms-6, .sm\:mx-6, .sm\:m-6 {
+    margin-left: var(--space-6);
+  }
+  .sm\:ms-7, .sm\:mx-7, .sm\:m-7 {
+    margin-left: var(--space-7);
+  }
+  .sm\:ms-8, .sm\:mx-8, .sm\:m-8 {
+    margin-left: var(--space-8);
+  }
+  .sm\:ms-9, .sm\:mx-9, .sm\:m-9 {
+    margin-left: var(--space-9);
+  }
+  .sm\:ms-10, .sm\:mx-10, .sm\:m-10 {
+    margin-left: var(--space-10);
+  }
+  .sm\:ms-11, .sm\:mx-11, .sm\:m-11 {
+    margin-left: var(--space-11);
+  }
+  .sm\:ms-12, .sm\:mx-12, .sm\:m-12 {
+    margin-left: var(--space-12);
+  }
+}
+@media (min-width: 68rem) {
+  .md\:mt-1, .md\:my-1, .md\:m-1 {
+    margin-top: var(--space-1);
+  }
+  .md\:mt-2, .md\:my-2, .md\:m-2 {
+    margin-top: var(--space-2);
+  }
+  .md\:mt-3, .md\:my-3, .md\:m-3 {
+    margin-top: var(--space-3);
+  }
+  .md\:mt-4, .md\:my-4, .md\:m-4 {
+    margin-top: var(--space-4);
+  }
+  .md\:mt-5, .md\:my-5, .md\:m-5 {
+    margin-top: var(--space-5);
+  }
+  .md\:mt-6, .md\:my-6, .md\:m-6 {
+    margin-top: var(--space-6);
+  }
+  .md\:mt-7, .md\:my-7, .md\:m-7 {
+    margin-top: var(--space-7);
+  }
+  .md\:mt-8, .md\:my-8, .md\:m-8 {
+    margin-top: var(--space-8);
+  }
+  .md\:mt-9, .md\:my-9, .md\:m-9 {
+    margin-top: var(--space-9);
+  }
+  .md\:mt-10, .md\:my-10, .md\:m-10 {
+    margin-top: var(--space-10);
+  }
+  .md\:mt-11, .md\:my-11, .md\:m-11 {
+    margin-top: var(--space-11);
+  }
+  .md\:mt-12, .md\:my-12, .md\:m-12 {
+    margin-top: var(--space-12);
+  }
+  .md\:me-1, .md\:mx-1, .md\:m-1 {
+    margin-right: var(--space-1);
+  }
+  .md\:me-2, .md\:mx-2, .md\:m-2 {
+    margin-right: var(--space-2);
+  }
+  .md\:me-3, .md\:mx-3, .md\:m-3 {
+    margin-right: var(--space-3);
+  }
+  .md\:me-4, .md\:mx-4, .md\:m-4 {
+    margin-right: var(--space-4);
+  }
+  .md\:me-5, .md\:mx-5, .md\:m-5 {
+    margin-right: var(--space-5);
+  }
+  .md\:me-6, .md\:mx-6, .md\:m-6 {
+    margin-right: var(--space-6);
+  }
+  .md\:me-7, .md\:mx-7, .md\:m-7 {
+    margin-right: var(--space-7);
+  }
+  .md\:me-8, .md\:mx-8, .md\:m-8 {
+    margin-right: var(--space-8);
+  }
+  .md\:me-9, .md\:mx-9, .md\:m-9 {
+    margin-right: var(--space-9);
+  }
+  .md\:me-10, .md\:mx-10, .md\:m-10 {
+    margin-right: var(--space-10);
+  }
+  .md\:me-11, .md\:mx-11, .md\:m-11 {
+    margin-right: var(--space-11);
+  }
+  .md\:me-12, .md\:mx-12, .md\:m-12 {
+    margin-right: var(--space-12);
+  }
+  .md\:mb-1, .md\:my-1, .md\:m-1 {
+    margin-bottom: var(--space-1);
+  }
+  .md\:mb-2, .md\:my-2, .md\:m-2 {
+    margin-bottom: var(--space-2);
+  }
+  .md\:mb-3, .md\:my-3, .md\:m-3 {
+    margin-bottom: var(--space-3);
+  }
+  .md\:mb-4, .md\:my-4, .md\:m-4 {
+    margin-bottom: var(--space-4);
+  }
+  .md\:mb-5, .md\:my-5, .md\:m-5 {
+    margin-bottom: var(--space-5);
+  }
+  .md\:mb-6, .md\:my-6, .md\:m-6 {
+    margin-bottom: var(--space-6);
+  }
+  .md\:mb-7, .md\:my-7, .md\:m-7 {
+    margin-bottom: var(--space-7);
+  }
+  .md\:mb-8, .md\:my-8, .md\:m-8 {
+    margin-bottom: var(--space-8);
+  }
+  .md\:mb-9, .md\:my-9, .md\:m-9 {
+    margin-bottom: var(--space-9);
+  }
+  .md\:mb-10, .md\:my-10, .md\:m-10 {
+    margin-bottom: var(--space-10);
+  }
+  .md\:mb-11, .md\:my-11, .md\:m-11 {
+    margin-bottom: var(--space-11);
+  }
+  .md\:mb-12, .md\:my-12, .md\:m-12 {
+    margin-bottom: var(--space-12);
+  }
+  .md\:ms-1, .md\:mx-1, .md\:m-1 {
+    margin-left: var(--space-1);
+  }
+  .md\:ms-2, .md\:mx-2, .md\:m-2 {
+    margin-left: var(--space-2);
+  }
+  .md\:ms-3, .md\:mx-3, .md\:m-3 {
+    margin-left: var(--space-3);
+  }
+  .md\:ms-4, .md\:mx-4, .md\:m-4 {
+    margin-left: var(--space-4);
+  }
+  .md\:ms-5, .md\:mx-5, .md\:m-5 {
+    margin-left: var(--space-5);
+  }
+  .md\:ms-6, .md\:mx-6, .md\:m-6 {
+    margin-left: var(--space-6);
+  }
+  .md\:ms-7, .md\:mx-7, .md\:m-7 {
+    margin-left: var(--space-7);
+  }
+  .md\:ms-8, .md\:mx-8, .md\:m-8 {
+    margin-left: var(--space-8);
+  }
+  .md\:ms-9, .md\:mx-9, .md\:m-9 {
+    margin-left: var(--space-9);
+  }
+  .md\:ms-10, .md\:mx-10, .md\:m-10 {
+    margin-left: var(--space-10);
+  }
+  .md\:ms-11, .md\:mx-11, .md\:m-11 {
+    margin-left: var(--space-11);
+  }
+  .md\:ms-12, .md\:mx-12, .md\:m-12 {
+    margin-left: var(--space-12);
+  }
+}
+@media (min-width: 90rem) {
+  .lg\:mt-1, .lg\:my-1, .lg\:m-1 {
+    margin-top: var(--space-1);
+  }
+  .lg\:mt-2, .lg\:my-2, .lg\:m-2 {
+    margin-top: var(--space-2);
+  }
+  .lg\:mt-3, .lg\:my-3, .lg\:m-3 {
+    margin-top: var(--space-3);
+  }
+  .lg\:mt-4, .lg\:my-4, .lg\:m-4 {
+    margin-top: var(--space-4);
+  }
+  .lg\:mt-5, .lg\:my-5, .lg\:m-5 {
+    margin-top: var(--space-5);
+  }
+  .lg\:mt-6, .lg\:my-6, .lg\:m-6 {
+    margin-top: var(--space-6);
+  }
+  .lg\:mt-7, .lg\:my-7, .lg\:m-7 {
+    margin-top: var(--space-7);
+  }
+  .lg\:mt-8, .lg\:my-8, .lg\:m-8 {
+    margin-top: var(--space-8);
+  }
+  .lg\:mt-9, .lg\:my-9, .lg\:m-9 {
+    margin-top: var(--space-9);
+  }
+  .lg\:mt-10, .lg\:my-10, .lg\:m-10 {
+    margin-top: var(--space-10);
+  }
+  .lg\:mt-11, .lg\:my-11, .lg\:m-11 {
+    margin-top: var(--space-11);
+  }
+  .lg\:mt-12, .lg\:my-12, .lg\:m-12 {
+    margin-top: var(--space-12);
+  }
+  .lg\:me-1, .lg\:mx-1, .lg\:m-1 {
+    margin-right: var(--space-1);
+  }
+  .lg\:me-2, .lg\:mx-2, .lg\:m-2 {
+    margin-right: var(--space-2);
+  }
+  .lg\:me-3, .lg\:mx-3, .lg\:m-3 {
+    margin-right: var(--space-3);
+  }
+  .lg\:me-4, .lg\:mx-4, .lg\:m-4 {
+    margin-right: var(--space-4);
+  }
+  .lg\:me-5, .lg\:mx-5, .lg\:m-5 {
+    margin-right: var(--space-5);
+  }
+  .lg\:me-6, .lg\:mx-6, .lg\:m-6 {
+    margin-right: var(--space-6);
+  }
+  .lg\:me-7, .lg\:mx-7, .lg\:m-7 {
+    margin-right: var(--space-7);
+  }
+  .lg\:me-8, .lg\:mx-8, .lg\:m-8 {
+    margin-right: var(--space-8);
+  }
+  .lg\:me-9, .lg\:mx-9, .lg\:m-9 {
+    margin-right: var(--space-9);
+  }
+  .lg\:me-10, .lg\:mx-10, .lg\:m-10 {
+    margin-right: var(--space-10);
+  }
+  .lg\:me-11, .lg\:mx-11, .lg\:m-11 {
+    margin-right: var(--space-11);
+  }
+  .lg\:me-12, .lg\:mx-12, .lg\:m-12 {
+    margin-right: var(--space-12);
+  }
+  .lg\:mb-1, .lg\:my-1, .lg\:m-1 {
+    margin-bottom: var(--space-1);
+  }
+  .lg\:mb-2, .lg\:my-2, .lg\:m-2 {
+    margin-bottom: var(--space-2);
+  }
+  .lg\:mb-3, .lg\:my-3, .lg\:m-3 {
+    margin-bottom: var(--space-3);
+  }
+  .lg\:mb-4, .lg\:my-4, .lg\:m-4 {
+    margin-bottom: var(--space-4);
+  }
+  .lg\:mb-5, .lg\:my-5, .lg\:m-5 {
+    margin-bottom: var(--space-5);
+  }
+  .lg\:mb-6, .lg\:my-6, .lg\:m-6 {
+    margin-bottom: var(--space-6);
+  }
+  .lg\:mb-7, .lg\:my-7, .lg\:m-7 {
+    margin-bottom: var(--space-7);
+  }
+  .lg\:mb-8, .lg\:my-8, .lg\:m-8 {
+    margin-bottom: var(--space-8);
+  }
+  .lg\:mb-9, .lg\:my-9, .lg\:m-9 {
+    margin-bottom: var(--space-9);
+  }
+  .lg\:mb-10, .lg\:my-10, .lg\:m-10 {
+    margin-bottom: var(--space-10);
+  }
+  .lg\:mb-11, .lg\:my-11, .lg\:m-11 {
+    margin-bottom: var(--space-11);
+  }
+  .lg\:mb-12, .lg\:my-12, .lg\:m-12 {
+    margin-bottom: var(--space-12);
+  }
+  .lg\:ms-1, .lg\:mx-1, .lg\:m-1 {
+    margin-left: var(--space-1);
+  }
+  .lg\:ms-2, .lg\:mx-2, .lg\:m-2 {
+    margin-left: var(--space-2);
+  }
+  .lg\:ms-3, .lg\:mx-3, .lg\:m-3 {
+    margin-left: var(--space-3);
+  }
+  .lg\:ms-4, .lg\:mx-4, .lg\:m-4 {
+    margin-left: var(--space-4);
+  }
+  .lg\:ms-5, .lg\:mx-5, .lg\:m-5 {
+    margin-left: var(--space-5);
+  }
+  .lg\:ms-6, .lg\:mx-6, .lg\:m-6 {
+    margin-left: var(--space-6);
+  }
+  .lg\:ms-7, .lg\:mx-7, .lg\:m-7 {
+    margin-left: var(--space-7);
+  }
+  .lg\:ms-8, .lg\:mx-8, .lg\:m-8 {
+    margin-left: var(--space-8);
+  }
+  .lg\:ms-9, .lg\:mx-9, .lg\:m-9 {
+    margin-left: var(--space-9);
+  }
+  .lg\:ms-10, .lg\:mx-10, .lg\:m-10 {
+    margin-left: var(--space-10);
+  }
+  .lg\:ms-11, .lg\:mx-11, .lg\:m-11 {
+    margin-left: var(--space-11);
+  }
+  .lg\:ms-12, .lg\:mx-12, .lg\:m-12 {
+    margin-left: var(--space-12);
+  }
+}
+@media (min-width: 116rem) {
+  .xl\:mt-1, .xl\:my-1, .xl\:m-1 {
+    margin-top: var(--space-1);
+  }
+  .xl\:mt-2, .xl\:my-2, .xl\:m-2 {
+    margin-top: var(--space-2);
+  }
+  .xl\:mt-3, .xl\:my-3, .xl\:m-3 {
+    margin-top: var(--space-3);
+  }
+  .xl\:mt-4, .xl\:my-4, .xl\:m-4 {
+    margin-top: var(--space-4);
+  }
+  .xl\:mt-5, .xl\:my-5, .xl\:m-5 {
+    margin-top: var(--space-5);
+  }
+  .xl\:mt-6, .xl\:my-6, .xl\:m-6 {
+    margin-top: var(--space-6);
+  }
+  .xl\:mt-7, .xl\:my-7, .xl\:m-7 {
+    margin-top: var(--space-7);
+  }
+  .xl\:mt-8, .xl\:my-8, .xl\:m-8 {
+    margin-top: var(--space-8);
+  }
+  .xl\:mt-9, .xl\:my-9, .xl\:m-9 {
+    margin-top: var(--space-9);
+  }
+  .xl\:mt-10, .xl\:my-10, .xl\:m-10 {
+    margin-top: var(--space-10);
+  }
+  .xl\:mt-11, .xl\:my-11, .xl\:m-11 {
+    margin-top: var(--space-11);
+  }
+  .xl\:mt-12, .xl\:my-12, .xl\:m-12 {
+    margin-top: var(--space-12);
+  }
+  .xl\:me-1, .xl\:mx-1, .xl\:m-1 {
+    margin-right: var(--space-1);
+  }
+  .xl\:me-2, .xl\:mx-2, .xl\:m-2 {
+    margin-right: var(--space-2);
+  }
+  .xl\:me-3, .xl\:mx-3, .xl\:m-3 {
+    margin-right: var(--space-3);
+  }
+  .xl\:me-4, .xl\:mx-4, .xl\:m-4 {
+    margin-right: var(--space-4);
+  }
+  .xl\:me-5, .xl\:mx-5, .xl\:m-5 {
+    margin-right: var(--space-5);
+  }
+  .xl\:me-6, .xl\:mx-6, .xl\:m-6 {
+    margin-right: var(--space-6);
+  }
+  .xl\:me-7, .xl\:mx-7, .xl\:m-7 {
+    margin-right: var(--space-7);
+  }
+  .xl\:me-8, .xl\:mx-8, .xl\:m-8 {
+    margin-right: var(--space-8);
+  }
+  .xl\:me-9, .xl\:mx-9, .xl\:m-9 {
+    margin-right: var(--space-9);
+  }
+  .xl\:me-10, .xl\:mx-10, .xl\:m-10 {
+    margin-right: var(--space-10);
+  }
+  .xl\:me-11, .xl\:mx-11, .xl\:m-11 {
+    margin-right: var(--space-11);
+  }
+  .xl\:me-12, .xl\:mx-12, .xl\:m-12 {
+    margin-right: var(--space-12);
+  }
+  .xl\:mb-1, .xl\:my-1, .xl\:m-1 {
+    margin-bottom: var(--space-1);
+  }
+  .xl\:mb-2, .xl\:my-2, .xl\:m-2 {
+    margin-bottom: var(--space-2);
+  }
+  .xl\:mb-3, .xl\:my-3, .xl\:m-3 {
+    margin-bottom: var(--space-3);
+  }
+  .xl\:mb-4, .xl\:my-4, .xl\:m-4 {
+    margin-bottom: var(--space-4);
+  }
+  .xl\:mb-5, .xl\:my-5, .xl\:m-5 {
+    margin-bottom: var(--space-5);
+  }
+  .xl\:mb-6, .xl\:my-6, .xl\:m-6 {
+    margin-bottom: var(--space-6);
+  }
+  .xl\:mb-7, .xl\:my-7, .xl\:m-7 {
+    margin-bottom: var(--space-7);
+  }
+  .xl\:mb-8, .xl\:my-8, .xl\:m-8 {
+    margin-bottom: var(--space-8);
+  }
+  .xl\:mb-9, .xl\:my-9, .xl\:m-9 {
+    margin-bottom: var(--space-9);
+  }
+  .xl\:mb-10, .xl\:my-10, .xl\:m-10 {
+    margin-bottom: var(--space-10);
+  }
+  .xl\:mb-11, .xl\:my-11, .xl\:m-11 {
+    margin-bottom: var(--space-11);
+  }
+  .xl\:mb-12, .xl\:my-12, .xl\:m-12 {
+    margin-bottom: var(--space-12);
+  }
+  .xl\:ms-1, .xl\:mx-1, .xl\:m-1 {
+    margin-left: var(--space-1);
+  }
+  .xl\:ms-2, .xl\:mx-2, .xl\:m-2 {
+    margin-left: var(--space-2);
+  }
+  .xl\:ms-3, .xl\:mx-3, .xl\:m-3 {
+    margin-left: var(--space-3);
+  }
+  .xl\:ms-4, .xl\:mx-4, .xl\:m-4 {
+    margin-left: var(--space-4);
+  }
+  .xl\:ms-5, .xl\:mx-5, .xl\:m-5 {
+    margin-left: var(--space-5);
+  }
+  .xl\:ms-6, .xl\:mx-6, .xl\:m-6 {
+    margin-left: var(--space-6);
+  }
+  .xl\:ms-7, .xl\:mx-7, .xl\:m-7 {
+    margin-left: var(--space-7);
+  }
+  .xl\:ms-8, .xl\:mx-8, .xl\:m-8 {
+    margin-left: var(--space-8);
+  }
+  .xl\:ms-9, .xl\:mx-9, .xl\:m-9 {
+    margin-left: var(--space-9);
+  }
+  .xl\:ms-10, .xl\:mx-10, .xl\:m-10 {
+    margin-left: var(--space-10);
+  }
+  .xl\:ms-11, .xl\:mx-11, .xl\:m-11 {
+    margin-left: var(--space-11);
+  }
+  .xl\:ms-12, .xl\:mx-12, .xl\:m-12 {
+    margin-left: var(--space-12);
+  }
+}
+@media (min-width: 160rem) {
+  .xxl\:mt-1, .xxl\:my-1, .xxl\:m-1 {
+    margin-top: var(--space-1);
+  }
+  .xxl\:mt-2, .xxl\:my-2, .xxl\:m-2 {
+    margin-top: var(--space-2);
+  }
+  .xxl\:mt-3, .xxl\:my-3, .xxl\:m-3 {
+    margin-top: var(--space-3);
+  }
+  .xxl\:mt-4, .xxl\:my-4, .xxl\:m-4 {
+    margin-top: var(--space-4);
+  }
+  .xxl\:mt-5, .xxl\:my-5, .xxl\:m-5 {
+    margin-top: var(--space-5);
+  }
+  .xxl\:mt-6, .xxl\:my-6, .xxl\:m-6 {
+    margin-top: var(--space-6);
+  }
+  .xxl\:mt-7, .xxl\:my-7, .xxl\:m-7 {
+    margin-top: var(--space-7);
+  }
+  .xxl\:mt-8, .xxl\:my-8, .xxl\:m-8 {
+    margin-top: var(--space-8);
+  }
+  .xxl\:mt-9, .xxl\:my-9, .xxl\:m-9 {
+    margin-top: var(--space-9);
+  }
+  .xxl\:mt-10, .xxl\:my-10, .xxl\:m-10 {
+    margin-top: var(--space-10);
+  }
+  .xxl\:mt-11, .xxl\:my-11, .xxl\:m-11 {
+    margin-top: var(--space-11);
+  }
+  .xxl\:mt-12, .xxl\:my-12, .xxl\:m-12 {
+    margin-top: var(--space-12);
+  }
+  .xxl\:me-1, .xxl\:mx-1, .xxl\:m-1 {
+    margin-right: var(--space-1);
+  }
+  .xxl\:me-2, .xxl\:mx-2, .xxl\:m-2 {
+    margin-right: var(--space-2);
+  }
+  .xxl\:me-3, .xxl\:mx-3, .xxl\:m-3 {
+    margin-right: var(--space-3);
+  }
+  .xxl\:me-4, .xxl\:mx-4, .xxl\:m-4 {
+    margin-right: var(--space-4);
+  }
+  .xxl\:me-5, .xxl\:mx-5, .xxl\:m-5 {
+    margin-right: var(--space-5);
+  }
+  .xxl\:me-6, .xxl\:mx-6, .xxl\:m-6 {
+    margin-right: var(--space-6);
+  }
+  .xxl\:me-7, .xxl\:mx-7, .xxl\:m-7 {
+    margin-right: var(--space-7);
+  }
+  .xxl\:me-8, .xxl\:mx-8, .xxl\:m-8 {
+    margin-right: var(--space-8);
+  }
+  .xxl\:me-9, .xxl\:mx-9, .xxl\:m-9 {
+    margin-right: var(--space-9);
+  }
+  .xxl\:me-10, .xxl\:mx-10, .xxl\:m-10 {
+    margin-right: var(--space-10);
+  }
+  .xxl\:me-11, .xxl\:mx-11, .xxl\:m-11 {
+    margin-right: var(--space-11);
+  }
+  .xxl\:me-12, .xxl\:mx-12, .xxl\:m-12 {
+    margin-right: var(--space-12);
+  }
+  .xxl\:mb-1, .xxl\:my-1, .xxl\:m-1 {
+    margin-bottom: var(--space-1);
+  }
+  .xxl\:mb-2, .xxl\:my-2, .xxl\:m-2 {
+    margin-bottom: var(--space-2);
+  }
+  .xxl\:mb-3, .xxl\:my-3, .xxl\:m-3 {
+    margin-bottom: var(--space-3);
+  }
+  .xxl\:mb-4, .xxl\:my-4, .xxl\:m-4 {
+    margin-bottom: var(--space-4);
+  }
+  .xxl\:mb-5, .xxl\:my-5, .xxl\:m-5 {
+    margin-bottom: var(--space-5);
+  }
+  .xxl\:mb-6, .xxl\:my-6, .xxl\:m-6 {
+    margin-bottom: var(--space-6);
+  }
+  .xxl\:mb-7, .xxl\:my-7, .xxl\:m-7 {
+    margin-bottom: var(--space-7);
+  }
+  .xxl\:mb-8, .xxl\:my-8, .xxl\:m-8 {
+    margin-bottom: var(--space-8);
+  }
+  .xxl\:mb-9, .xxl\:my-9, .xxl\:m-9 {
+    margin-bottom: var(--space-9);
+  }
+  .xxl\:mb-10, .xxl\:my-10, .xxl\:m-10 {
+    margin-bottom: var(--space-10);
+  }
+  .xxl\:mb-11, .xxl\:my-11, .xxl\:m-11 {
+    margin-bottom: var(--space-11);
+  }
+  .xxl\:mb-12, .xxl\:my-12, .xxl\:m-12 {
+    margin-bottom: var(--space-12);
+  }
+  .xxl\:ms-1, .xxl\:mx-1, .xxl\:m-1 {
+    margin-left: var(--space-1);
+  }
+  .xxl\:ms-2, .xxl\:mx-2, .xxl\:m-2 {
+    margin-left: var(--space-2);
+  }
+  .xxl\:ms-3, .xxl\:mx-3, .xxl\:m-3 {
+    margin-left: var(--space-3);
+  }
+  .xxl\:ms-4, .xxl\:mx-4, .xxl\:m-4 {
+    margin-left: var(--space-4);
+  }
+  .xxl\:ms-5, .xxl\:mx-5, .xxl\:m-5 {
+    margin-left: var(--space-5);
+  }
+  .xxl\:ms-6, .xxl\:mx-6, .xxl\:m-6 {
+    margin-left: var(--space-6);
+  }
+  .xxl\:ms-7, .xxl\:mx-7, .xxl\:m-7 {
+    margin-left: var(--space-7);
+  }
+  .xxl\:ms-8, .xxl\:mx-8, .xxl\:m-8 {
+    margin-left: var(--space-8);
+  }
+  .xxl\:ms-9, .xxl\:mx-9, .xxl\:m-9 {
+    margin-left: var(--space-9);
+  }
+  .xxl\:ms-10, .xxl\:mx-10, .xxl\:m-10 {
+    margin-left: var(--space-10);
+  }
+  .xxl\:ms-11, .xxl\:mx-11, .xxl\:m-11 {
+    margin-left: var(--space-11);
+  }
+  .xxl\:ms-12, .xxl\:mx-12, .xxl\:m-12 {
+    margin-left: var(--space-12);
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

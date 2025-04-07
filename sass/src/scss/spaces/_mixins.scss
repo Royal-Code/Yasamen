@@ -49,11 +49,6 @@ $w-classes-names: (w: width, max-w: max-width, min-w: min-width);
         }
       }
     }
-    //@each $breakpoint, $v in $breakpoints {
-    //  .screen-#{$breakpoint} .#{$breakpoint}\:w-#{$key} {
-    //    @extend .w-#{$key};
-    //  }
-    //}
   }
   @include media-breakpoints() using($breakpoint) {
     @each $key, $value in $sizes {
