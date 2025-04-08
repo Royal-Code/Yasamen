@@ -144,6 +144,14 @@
   --screen-lg: 90rem;
   --screen-xl: 116rem;
   --screen-xxl: 160rem;
+  --border-1: var(--space-1);
+  --border-2: var(--space-2);
+  --border-3: var(--space-3);
+  --border-4: var(--space-4);
+  --border-5: var(--space-5);
+  --border-6: var(--space-6);
+  --border-7: var(--space-7);
+  --border-8: var(--space-8);
 }
 
 .screen-xxs {
@@ -9327,6 +9335,920 @@
   }
   .xxl\:ps-12, .xxl\:px-12, .xxl\:p-12 {
     padding-left: var(--space-12);
+  }
+}
+.border-t-0, .border-y-0, .border-0 {
+  border-top-width: 0;
+}
+
+.border-t-1, .border, .border-y-1, .border-1 {
+  border-top-width: var(--border-1);
+}
+
+.border-t-2, .border-y-2, .border-2 {
+  border-top-width: var(--border-2);
+}
+
+.border-t-3, .border-y-3, .border-3 {
+  border-top-width: var(--border-3);
+}
+
+.border-t-4, .border-y-4, .border-4 {
+  border-top-width: var(--border-4);
+}
+
+.border-t-5, .border-y-5, .border-5 {
+  border-top-width: var(--border-5);
+}
+
+.border-t-6, .border-y-6, .border-6 {
+  border-top-width: var(--border-6);
+}
+
+.border-t-7, .border-y-7, .border-7 {
+  border-top-width: var(--border-7);
+}
+
+.border-t-8, .border-y-8, .border-8 {
+  border-top-width: var(--border-8);
+}
+
+.border-e-0, .border-x-0, .border-0 {
+  border-right-width: 0;
+}
+
+.border-e-1, .border, .border-x-1, .border-1 {
+  border-right-width: var(--border-1);
+}
+
+.border-e-2, .border-x-2, .border-2 {
+  border-right-width: var(--border-2);
+}
+
+.border-e-3, .border-x-3, .border-3 {
+  border-right-width: var(--border-3);
+}
+
+.border-e-4, .border-x-4, .border-4 {
+  border-right-width: var(--border-4);
+}
+
+.border-e-5, .border-x-5, .border-5 {
+  border-right-width: var(--border-5);
+}
+
+.border-e-6, .border-x-6, .border-6 {
+  border-right-width: var(--border-6);
+}
+
+.border-e-7, .border-x-7, .border-7 {
+  border-right-width: var(--border-7);
+}
+
+.border-e-8, .border-x-8, .border-8 {
+  border-right-width: var(--border-8);
+}
+
+.border-b-0, .border-y-0, .border-0 {
+  border-bottom-width: 0;
+}
+
+.border-b-1, .border, .border-y-1, .border-1 {
+  border-bottom-width: var(--border-1);
+}
+
+.border-b-2, .border-y-2, .border-2 {
+  border-bottom-width: var(--border-2);
+}
+
+.border-b-3, .border-y-3, .border-3 {
+  border-bottom-width: var(--border-3);
+}
+
+.border-b-4, .border-y-4, .border-4 {
+  border-bottom-width: var(--border-4);
+}
+
+.border-b-5, .border-y-5, .border-5 {
+  border-bottom-width: var(--border-5);
+}
+
+.border-b-6, .border-y-6, .border-6 {
+  border-bottom-width: var(--border-6);
+}
+
+.border-b-7, .border-y-7, .border-7 {
+  border-bottom-width: var(--border-7);
+}
+
+.border-b-8, .border-y-8, .border-8 {
+  border-bottom-width: var(--border-8);
+}
+
+.border-s-0, .border-x-0, .border-0 {
+  border-left-width: 0;
+}
+
+.border-s-1, .border, .border-x-1, .border-1 {
+  border-left-width: var(--border-1);
+}
+
+.border-s-2, .border-x-2, .border-2 {
+  border-left-width: var(--border-2);
+}
+
+.border-s-3, .border-x-3, .border-3 {
+  border-left-width: var(--border-3);
+}
+
+.border-s-4, .border-x-4, .border-4 {
+  border-left-width: var(--border-4);
+}
+
+.border-s-5, .border-x-5, .border-5 {
+  border-left-width: var(--border-5);
+}
+
+.border-s-6, .border-x-6, .border-6 {
+  border-left-width: var(--border-6);
+}
+
+.border-s-7, .border-x-7, .border-7 {
+  border-left-width: var(--border-7);
+}
+
+.border-s-8, .border-x-8, .border-8 {
+  border-left-width: var(--border-8);
+}
+
+@media (max-width: 24rem) {
+  .xxs\:border-t-0, .xxs\:border-y-0, .xxs\:border-0 {
+    border-top-width: 0;
+  }
+  .xxs\:border-t-1, .xxs\:border, .xxs\:border-y-1, .xxs\:border-1 {
+    border-top-width: var(--border-1);
+  }
+  .xxs\:border-t-2, .xxs\:border-y-2, .xxs\:border-2 {
+    border-top-width: var(--border-2);
+  }
+  .xxs\:border-t-3, .xxs\:border-y-3, .xxs\:border-3 {
+    border-top-width: var(--border-3);
+  }
+  .xxs\:border-t-4, .xxs\:border-y-4, .xxs\:border-4 {
+    border-top-width: var(--border-4);
+  }
+  .xxs\:border-t-5, .xxs\:border-y-5, .xxs\:border-5 {
+    border-top-width: var(--border-5);
+  }
+  .xxs\:border-t-6, .xxs\:border-y-6, .xxs\:border-6 {
+    border-top-width: var(--border-6);
+  }
+  .xxs\:border-t-7, .xxs\:border-y-7, .xxs\:border-7 {
+    border-top-width: var(--border-7);
+  }
+  .xxs\:border-t-8, .xxs\:border-y-8, .xxs\:border-8 {
+    border-top-width: var(--border-8);
+  }
+  .xxs\:border-e-0, .xxs\:border-x-0, .xxs\:border-0 {
+    border-right-width: 0;
+  }
+  .xxs\:border-e-1, .xxs\:border, .xxs\:border-x-1, .xxs\:border-1 {
+    border-right-width: var(--border-1);
+  }
+  .xxs\:border-e-2, .xxs\:border-x-2, .xxs\:border-2 {
+    border-right-width: var(--border-2);
+  }
+  .xxs\:border-e-3, .xxs\:border-x-3, .xxs\:border-3 {
+    border-right-width: var(--border-3);
+  }
+  .xxs\:border-e-4, .xxs\:border-x-4, .xxs\:border-4 {
+    border-right-width: var(--border-4);
+  }
+  .xxs\:border-e-5, .xxs\:border-x-5, .xxs\:border-5 {
+    border-right-width: var(--border-5);
+  }
+  .xxs\:border-e-6, .xxs\:border-x-6, .xxs\:border-6 {
+    border-right-width: var(--border-6);
+  }
+  .xxs\:border-e-7, .xxs\:border-x-7, .xxs\:border-7 {
+    border-right-width: var(--border-7);
+  }
+  .xxs\:border-e-8, .xxs\:border-x-8, .xxs\:border-8 {
+    border-right-width: var(--border-8);
+  }
+  .xxs\:border-b-0, .xxs\:border-y-0, .xxs\:border-0 {
+    border-bottom-width: 0;
+  }
+  .xxs\:border-b-1, .xxs\:border, .xxs\:border-y-1, .xxs\:border-1 {
+    border-bottom-width: var(--border-1);
+  }
+  .xxs\:border-b-2, .xxs\:border-y-2, .xxs\:border-2 {
+    border-bottom-width: var(--border-2);
+  }
+  .xxs\:border-b-3, .xxs\:border-y-3, .xxs\:border-3 {
+    border-bottom-width: var(--border-3);
+  }
+  .xxs\:border-b-4, .xxs\:border-y-4, .xxs\:border-4 {
+    border-bottom-width: var(--border-4);
+  }
+  .xxs\:border-b-5, .xxs\:border-y-5, .xxs\:border-5 {
+    border-bottom-width: var(--border-5);
+  }
+  .xxs\:border-b-6, .xxs\:border-y-6, .xxs\:border-6 {
+    border-bottom-width: var(--border-6);
+  }
+  .xxs\:border-b-7, .xxs\:border-y-7, .xxs\:border-7 {
+    border-bottom-width: var(--border-7);
+  }
+  .xxs\:border-b-8, .xxs\:border-y-8, .xxs\:border-8 {
+    border-bottom-width: var(--border-8);
+  }
+  .xxs\:border-s-0, .xxs\:border-x-0, .xxs\:border-0 {
+    border-left-width: 0;
+  }
+  .xxs\:border-s-1, .xxs\:border, .xxs\:border-x-1, .xxs\:border-1 {
+    border-left-width: var(--border-1);
+  }
+  .xxs\:border-s-2, .xxs\:border-x-2, .xxs\:border-2 {
+    border-left-width: var(--border-2);
+  }
+  .xxs\:border-s-3, .xxs\:border-x-3, .xxs\:border-3 {
+    border-left-width: var(--border-3);
+  }
+  .xxs\:border-s-4, .xxs\:border-x-4, .xxs\:border-4 {
+    border-left-width: var(--border-4);
+  }
+  .xxs\:border-s-5, .xxs\:border-x-5, .xxs\:border-5 {
+    border-left-width: var(--border-5);
+  }
+  .xxs\:border-s-6, .xxs\:border-x-6, .xxs\:border-6 {
+    border-left-width: var(--border-6);
+  }
+  .xxs\:border-s-7, .xxs\:border-x-7, .xxs\:border-7 {
+    border-left-width: var(--border-7);
+  }
+  .xxs\:border-s-8, .xxs\:border-x-8, .xxs\:border-8 {
+    border-left-width: var(--border-8);
+  }
+}
+@media (min-width: 36rem) {
+  .xs\:border-t-0, .xs\:border-y-0, .xs\:border-0 {
+    border-top-width: 0;
+  }
+  .xs\:border-t-1, .xs\:border, .xs\:border-y-1, .xs\:border-1 {
+    border-top-width: var(--border-1);
+  }
+  .xs\:border-t-2, .xs\:border-y-2, .xs\:border-2 {
+    border-top-width: var(--border-2);
+  }
+  .xs\:border-t-3, .xs\:border-y-3, .xs\:border-3 {
+    border-top-width: var(--border-3);
+  }
+  .xs\:border-t-4, .xs\:border-y-4, .xs\:border-4 {
+    border-top-width: var(--border-4);
+  }
+  .xs\:border-t-5, .xs\:border-y-5, .xs\:border-5 {
+    border-top-width: var(--border-5);
+  }
+  .xs\:border-t-6, .xs\:border-y-6, .xs\:border-6 {
+    border-top-width: var(--border-6);
+  }
+  .xs\:border-t-7, .xs\:border-y-7, .xs\:border-7 {
+    border-top-width: var(--border-7);
+  }
+  .xs\:border-t-8, .xs\:border-y-8, .xs\:border-8 {
+    border-top-width: var(--border-8);
+  }
+  .xs\:border-e-0, .xs\:border-x-0, .xs\:border-0 {
+    border-right-width: 0;
+  }
+  .xs\:border-e-1, .xs\:border, .xs\:border-x-1, .xs\:border-1 {
+    border-right-width: var(--border-1);
+  }
+  .xs\:border-e-2, .xs\:border-x-2, .xs\:border-2 {
+    border-right-width: var(--border-2);
+  }
+  .xs\:border-e-3, .xs\:border-x-3, .xs\:border-3 {
+    border-right-width: var(--border-3);
+  }
+  .xs\:border-e-4, .xs\:border-x-4, .xs\:border-4 {
+    border-right-width: var(--border-4);
+  }
+  .xs\:border-e-5, .xs\:border-x-5, .xs\:border-5 {
+    border-right-width: var(--border-5);
+  }
+  .xs\:border-e-6, .xs\:border-x-6, .xs\:border-6 {
+    border-right-width: var(--border-6);
+  }
+  .xs\:border-e-7, .xs\:border-x-7, .xs\:border-7 {
+    border-right-width: var(--border-7);
+  }
+  .xs\:border-e-8, .xs\:border-x-8, .xs\:border-8 {
+    border-right-width: var(--border-8);
+  }
+  .xs\:border-b-0, .xs\:border-y-0, .xs\:border-0 {
+    border-bottom-width: 0;
+  }
+  .xs\:border-b-1, .xs\:border, .xs\:border-y-1, .xs\:border-1 {
+    border-bottom-width: var(--border-1);
+  }
+  .xs\:border-b-2, .xs\:border-y-2, .xs\:border-2 {
+    border-bottom-width: var(--border-2);
+  }
+  .xs\:border-b-3, .xs\:border-y-3, .xs\:border-3 {
+    border-bottom-width: var(--border-3);
+  }
+  .xs\:border-b-4, .xs\:border-y-4, .xs\:border-4 {
+    border-bottom-width: var(--border-4);
+  }
+  .xs\:border-b-5, .xs\:border-y-5, .xs\:border-5 {
+    border-bottom-width: var(--border-5);
+  }
+  .xs\:border-b-6, .xs\:border-y-6, .xs\:border-6 {
+    border-bottom-width: var(--border-6);
+  }
+  .xs\:border-b-7, .xs\:border-y-7, .xs\:border-7 {
+    border-bottom-width: var(--border-7);
+  }
+  .xs\:border-b-8, .xs\:border-y-8, .xs\:border-8 {
+    border-bottom-width: var(--border-8);
+  }
+  .xs\:border-s-0, .xs\:border-x-0, .xs\:border-0 {
+    border-left-width: 0;
+  }
+  .xs\:border-s-1, .xs\:border, .xs\:border-x-1, .xs\:border-1 {
+    border-left-width: var(--border-1);
+  }
+  .xs\:border-s-2, .xs\:border-x-2, .xs\:border-2 {
+    border-left-width: var(--border-2);
+  }
+  .xs\:border-s-3, .xs\:border-x-3, .xs\:border-3 {
+    border-left-width: var(--border-3);
+  }
+  .xs\:border-s-4, .xs\:border-x-4, .xs\:border-4 {
+    border-left-width: var(--border-4);
+  }
+  .xs\:border-s-5, .xs\:border-x-5, .xs\:border-5 {
+    border-left-width: var(--border-5);
+  }
+  .xs\:border-s-6, .xs\:border-x-6, .xs\:border-6 {
+    border-left-width: var(--border-6);
+  }
+  .xs\:border-s-7, .xs\:border-x-7, .xs\:border-7 {
+    border-left-width: var(--border-7);
+  }
+  .xs\:border-s-8, .xs\:border-x-8, .xs\:border-8 {
+    border-left-width: var(--border-8);
+  }
+}
+@media (min-width: 48rem) {
+  .sm\:border-t-0, .sm\:border-y-0, .sm\:border-0 {
+    border-top-width: 0;
+  }
+  .sm\:border-t-1, .sm\:border, .sm\:border-y-1, .sm\:border-1 {
+    border-top-width: var(--border-1);
+  }
+  .sm\:border-t-2, .sm\:border-y-2, .sm\:border-2 {
+    border-top-width: var(--border-2);
+  }
+  .sm\:border-t-3, .sm\:border-y-3, .sm\:border-3 {
+    border-top-width: var(--border-3);
+  }
+  .sm\:border-t-4, .sm\:border-y-4, .sm\:border-4 {
+    border-top-width: var(--border-4);
+  }
+  .sm\:border-t-5, .sm\:border-y-5, .sm\:border-5 {
+    border-top-width: var(--border-5);
+  }
+  .sm\:border-t-6, .sm\:border-y-6, .sm\:border-6 {
+    border-top-width: var(--border-6);
+  }
+  .sm\:border-t-7, .sm\:border-y-7, .sm\:border-7 {
+    border-top-width: var(--border-7);
+  }
+  .sm\:border-t-8, .sm\:border-y-8, .sm\:border-8 {
+    border-top-width: var(--border-8);
+  }
+  .sm\:border-e-0, .sm\:border-x-0, .sm\:border-0 {
+    border-right-width: 0;
+  }
+  .sm\:border-e-1, .sm\:border, .sm\:border-x-1, .sm\:border-1 {
+    border-right-width: var(--border-1);
+  }
+  .sm\:border-e-2, .sm\:border-x-2, .sm\:border-2 {
+    border-right-width: var(--border-2);
+  }
+  .sm\:border-e-3, .sm\:border-x-3, .sm\:border-3 {
+    border-right-width: var(--border-3);
+  }
+  .sm\:border-e-4, .sm\:border-x-4, .sm\:border-4 {
+    border-right-width: var(--border-4);
+  }
+  .sm\:border-e-5, .sm\:border-x-5, .sm\:border-5 {
+    border-right-width: var(--border-5);
+  }
+  .sm\:border-e-6, .sm\:border-x-6, .sm\:border-6 {
+    border-right-width: var(--border-6);
+  }
+  .sm\:border-e-7, .sm\:border-x-7, .sm\:border-7 {
+    border-right-width: var(--border-7);
+  }
+  .sm\:border-e-8, .sm\:border-x-8, .sm\:border-8 {
+    border-right-width: var(--border-8);
+  }
+  .sm\:border-b-0, .sm\:border-y-0, .sm\:border-0 {
+    border-bottom-width: 0;
+  }
+  .sm\:border-b-1, .sm\:border, .sm\:border-y-1, .sm\:border-1 {
+    border-bottom-width: var(--border-1);
+  }
+  .sm\:border-b-2, .sm\:border-y-2, .sm\:border-2 {
+    border-bottom-width: var(--border-2);
+  }
+  .sm\:border-b-3, .sm\:border-y-3, .sm\:border-3 {
+    border-bottom-width: var(--border-3);
+  }
+  .sm\:border-b-4, .sm\:border-y-4, .sm\:border-4 {
+    border-bottom-width: var(--border-4);
+  }
+  .sm\:border-b-5, .sm\:border-y-5, .sm\:border-5 {
+    border-bottom-width: var(--border-5);
+  }
+  .sm\:border-b-6, .sm\:border-y-6, .sm\:border-6 {
+    border-bottom-width: var(--border-6);
+  }
+  .sm\:border-b-7, .sm\:border-y-7, .sm\:border-7 {
+    border-bottom-width: var(--border-7);
+  }
+  .sm\:border-b-8, .sm\:border-y-8, .sm\:border-8 {
+    border-bottom-width: var(--border-8);
+  }
+  .sm\:border-s-0, .sm\:border-x-0, .sm\:border-0 {
+    border-left-width: 0;
+  }
+  .sm\:border-s-1, .sm\:border, .sm\:border-x-1, .sm\:border-1 {
+    border-left-width: var(--border-1);
+  }
+  .sm\:border-s-2, .sm\:border-x-2, .sm\:border-2 {
+    border-left-width: var(--border-2);
+  }
+  .sm\:border-s-3, .sm\:border-x-3, .sm\:border-3 {
+    border-left-width: var(--border-3);
+  }
+  .sm\:border-s-4, .sm\:border-x-4, .sm\:border-4 {
+    border-left-width: var(--border-4);
+  }
+  .sm\:border-s-5, .sm\:border-x-5, .sm\:border-5 {
+    border-left-width: var(--border-5);
+  }
+  .sm\:border-s-6, .sm\:border-x-6, .sm\:border-6 {
+    border-left-width: var(--border-6);
+  }
+  .sm\:border-s-7, .sm\:border-x-7, .sm\:border-7 {
+    border-left-width: var(--border-7);
+  }
+  .sm\:border-s-8, .sm\:border-x-8, .sm\:border-8 {
+    border-left-width: var(--border-8);
+  }
+}
+@media (min-width: 68rem) {
+  .md\:border-t-0, .md\:border-y-0, .md\:border-0 {
+    border-top-width: 0;
+  }
+  .md\:border-t-1, .md\:border, .md\:border-y-1, .md\:border-1 {
+    border-top-width: var(--border-1);
+  }
+  .md\:border-t-2, .md\:border-y-2, .md\:border-2 {
+    border-top-width: var(--border-2);
+  }
+  .md\:border-t-3, .md\:border-y-3, .md\:border-3 {
+    border-top-width: var(--border-3);
+  }
+  .md\:border-t-4, .md\:border-y-4, .md\:border-4 {
+    border-top-width: var(--border-4);
+  }
+  .md\:border-t-5, .md\:border-y-5, .md\:border-5 {
+    border-top-width: var(--border-5);
+  }
+  .md\:border-t-6, .md\:border-y-6, .md\:border-6 {
+    border-top-width: var(--border-6);
+  }
+  .md\:border-t-7, .md\:border-y-7, .md\:border-7 {
+    border-top-width: var(--border-7);
+  }
+  .md\:border-t-8, .md\:border-y-8, .md\:border-8 {
+    border-top-width: var(--border-8);
+  }
+  .md\:border-e-0, .md\:border-x-0, .md\:border-0 {
+    border-right-width: 0;
+  }
+  .md\:border-e-1, .md\:border, .md\:border-x-1, .md\:border-1 {
+    border-right-width: var(--border-1);
+  }
+  .md\:border-e-2, .md\:border-x-2, .md\:border-2 {
+    border-right-width: var(--border-2);
+  }
+  .md\:border-e-3, .md\:border-x-3, .md\:border-3 {
+    border-right-width: var(--border-3);
+  }
+  .md\:border-e-4, .md\:border-x-4, .md\:border-4 {
+    border-right-width: var(--border-4);
+  }
+  .md\:border-e-5, .md\:border-x-5, .md\:border-5 {
+    border-right-width: var(--border-5);
+  }
+  .md\:border-e-6, .md\:border-x-6, .md\:border-6 {
+    border-right-width: var(--border-6);
+  }
+  .md\:border-e-7, .md\:border-x-7, .md\:border-7 {
+    border-right-width: var(--border-7);
+  }
+  .md\:border-e-8, .md\:border-x-8, .md\:border-8 {
+    border-right-width: var(--border-8);
+  }
+  .md\:border-b-0, .md\:border-y-0, .md\:border-0 {
+    border-bottom-width: 0;
+  }
+  .md\:border-b-1, .md\:border, .md\:border-y-1, .md\:border-1 {
+    border-bottom-width: var(--border-1);
+  }
+  .md\:border-b-2, .md\:border-y-2, .md\:border-2 {
+    border-bottom-width: var(--border-2);
+  }
+  .md\:border-b-3, .md\:border-y-3, .md\:border-3 {
+    border-bottom-width: var(--border-3);
+  }
+  .md\:border-b-4, .md\:border-y-4, .md\:border-4 {
+    border-bottom-width: var(--border-4);
+  }
+  .md\:border-b-5, .md\:border-y-5, .md\:border-5 {
+    border-bottom-width: var(--border-5);
+  }
+  .md\:border-b-6, .md\:border-y-6, .md\:border-6 {
+    border-bottom-width: var(--border-6);
+  }
+  .md\:border-b-7, .md\:border-y-7, .md\:border-7 {
+    border-bottom-width: var(--border-7);
+  }
+  .md\:border-b-8, .md\:border-y-8, .md\:border-8 {
+    border-bottom-width: var(--border-8);
+  }
+  .md\:border-s-0, .md\:border-x-0, .md\:border-0 {
+    border-left-width: 0;
+  }
+  .md\:border-s-1, .md\:border, .md\:border-x-1, .md\:border-1 {
+    border-left-width: var(--border-1);
+  }
+  .md\:border-s-2, .md\:border-x-2, .md\:border-2 {
+    border-left-width: var(--border-2);
+  }
+  .md\:border-s-3, .md\:border-x-3, .md\:border-3 {
+    border-left-width: var(--border-3);
+  }
+  .md\:border-s-4, .md\:border-x-4, .md\:border-4 {
+    border-left-width: var(--border-4);
+  }
+  .md\:border-s-5, .md\:border-x-5, .md\:border-5 {
+    border-left-width: var(--border-5);
+  }
+  .md\:border-s-6, .md\:border-x-6, .md\:border-6 {
+    border-left-width: var(--border-6);
+  }
+  .md\:border-s-7, .md\:border-x-7, .md\:border-7 {
+    border-left-width: var(--border-7);
+  }
+  .md\:border-s-8, .md\:border-x-8, .md\:border-8 {
+    border-left-width: var(--border-8);
+  }
+}
+@media (min-width: 90rem) {
+  .lg\:border-t-0, .lg\:border-y-0, .lg\:border-0 {
+    border-top-width: 0;
+  }
+  .lg\:border-t-1, .lg\:border, .lg\:border-y-1, .lg\:border-1 {
+    border-top-width: var(--border-1);
+  }
+  .lg\:border-t-2, .lg\:border-y-2, .lg\:border-2 {
+    border-top-width: var(--border-2);
+  }
+  .lg\:border-t-3, .lg\:border-y-3, .lg\:border-3 {
+    border-top-width: var(--border-3);
+  }
+  .lg\:border-t-4, .lg\:border-y-4, .lg\:border-4 {
+    border-top-width: var(--border-4);
+  }
+  .lg\:border-t-5, .lg\:border-y-5, .lg\:border-5 {
+    border-top-width: var(--border-5);
+  }
+  .lg\:border-t-6, .lg\:border-y-6, .lg\:border-6 {
+    border-top-width: var(--border-6);
+  }
+  .lg\:border-t-7, .lg\:border-y-7, .lg\:border-7 {
+    border-top-width: var(--border-7);
+  }
+  .lg\:border-t-8, .lg\:border-y-8, .lg\:border-8 {
+    border-top-width: var(--border-8);
+  }
+  .lg\:border-e-0, .lg\:border-x-0, .lg\:border-0 {
+    border-right-width: 0;
+  }
+  .lg\:border-e-1, .lg\:border, .lg\:border-x-1, .lg\:border-1 {
+    border-right-width: var(--border-1);
+  }
+  .lg\:border-e-2, .lg\:border-x-2, .lg\:border-2 {
+    border-right-width: var(--border-2);
+  }
+  .lg\:border-e-3, .lg\:border-x-3, .lg\:border-3 {
+    border-right-width: var(--border-3);
+  }
+  .lg\:border-e-4, .lg\:border-x-4, .lg\:border-4 {
+    border-right-width: var(--border-4);
+  }
+  .lg\:border-e-5, .lg\:border-x-5, .lg\:border-5 {
+    border-right-width: var(--border-5);
+  }
+  .lg\:border-e-6, .lg\:border-x-6, .lg\:border-6 {
+    border-right-width: var(--border-6);
+  }
+  .lg\:border-e-7, .lg\:border-x-7, .lg\:border-7 {
+    border-right-width: var(--border-7);
+  }
+  .lg\:border-e-8, .lg\:border-x-8, .lg\:border-8 {
+    border-right-width: var(--border-8);
+  }
+  .lg\:border-b-0, .lg\:border-y-0, .lg\:border-0 {
+    border-bottom-width: 0;
+  }
+  .lg\:border-b-1, .lg\:border, .lg\:border-y-1, .lg\:border-1 {
+    border-bottom-width: var(--border-1);
+  }
+  .lg\:border-b-2, .lg\:border-y-2, .lg\:border-2 {
+    border-bottom-width: var(--border-2);
+  }
+  .lg\:border-b-3, .lg\:border-y-3, .lg\:border-3 {
+    border-bottom-width: var(--border-3);
+  }
+  .lg\:border-b-4, .lg\:border-y-4, .lg\:border-4 {
+    border-bottom-width: var(--border-4);
+  }
+  .lg\:border-b-5, .lg\:border-y-5, .lg\:border-5 {
+    border-bottom-width: var(--border-5);
+  }
+  .lg\:border-b-6, .lg\:border-y-6, .lg\:border-6 {
+    border-bottom-width: var(--border-6);
+  }
+  .lg\:border-b-7, .lg\:border-y-7, .lg\:border-7 {
+    border-bottom-width: var(--border-7);
+  }
+  .lg\:border-b-8, .lg\:border-y-8, .lg\:border-8 {
+    border-bottom-width: var(--border-8);
+  }
+  .lg\:border-s-0, .lg\:border-x-0, .lg\:border-0 {
+    border-left-width: 0;
+  }
+  .lg\:border-s-1, .lg\:border, .lg\:border-x-1, .lg\:border-1 {
+    border-left-width: var(--border-1);
+  }
+  .lg\:border-s-2, .lg\:border-x-2, .lg\:border-2 {
+    border-left-width: var(--border-2);
+  }
+  .lg\:border-s-3, .lg\:border-x-3, .lg\:border-3 {
+    border-left-width: var(--border-3);
+  }
+  .lg\:border-s-4, .lg\:border-x-4, .lg\:border-4 {
+    border-left-width: var(--border-4);
+  }
+  .lg\:border-s-5, .lg\:border-x-5, .lg\:border-5 {
+    border-left-width: var(--border-5);
+  }
+  .lg\:border-s-6, .lg\:border-x-6, .lg\:border-6 {
+    border-left-width: var(--border-6);
+  }
+  .lg\:border-s-7, .lg\:border-x-7, .lg\:border-7 {
+    border-left-width: var(--border-7);
+  }
+  .lg\:border-s-8, .lg\:border-x-8, .lg\:border-8 {
+    border-left-width: var(--border-8);
+  }
+}
+@media (min-width: 116rem) {
+  .xl\:border-t-0, .xl\:border-y-0, .xl\:border-0 {
+    border-top-width: 0;
+  }
+  .xl\:border-t-1, .xl\:border, .xl\:border-y-1, .xl\:border-1 {
+    border-top-width: var(--border-1);
+  }
+  .xl\:border-t-2, .xl\:border-y-2, .xl\:border-2 {
+    border-top-width: var(--border-2);
+  }
+  .xl\:border-t-3, .xl\:border-y-3, .xl\:border-3 {
+    border-top-width: var(--border-3);
+  }
+  .xl\:border-t-4, .xl\:border-y-4, .xl\:border-4 {
+    border-top-width: var(--border-4);
+  }
+  .xl\:border-t-5, .xl\:border-y-5, .xl\:border-5 {
+    border-top-width: var(--border-5);
+  }
+  .xl\:border-t-6, .xl\:border-y-6, .xl\:border-6 {
+    border-top-width: var(--border-6);
+  }
+  .xl\:border-t-7, .xl\:border-y-7, .xl\:border-7 {
+    border-top-width: var(--border-7);
+  }
+  .xl\:border-t-8, .xl\:border-y-8, .xl\:border-8 {
+    border-top-width: var(--border-8);
+  }
+  .xl\:border-e-0, .xl\:border-x-0, .xl\:border-0 {
+    border-right-width: 0;
+  }
+  .xl\:border-e-1, .xl\:border, .xl\:border-x-1, .xl\:border-1 {
+    border-right-width: var(--border-1);
+  }
+  .xl\:border-e-2, .xl\:border-x-2, .xl\:border-2 {
+    border-right-width: var(--border-2);
+  }
+  .xl\:border-e-3, .xl\:border-x-3, .xl\:border-3 {
+    border-right-width: var(--border-3);
+  }
+  .xl\:border-e-4, .xl\:border-x-4, .xl\:border-4 {
+    border-right-width: var(--border-4);
+  }
+  .xl\:border-e-5, .xl\:border-x-5, .xl\:border-5 {
+    border-right-width: var(--border-5);
+  }
+  .xl\:border-e-6, .xl\:border-x-6, .xl\:border-6 {
+    border-right-width: var(--border-6);
+  }
+  .xl\:border-e-7, .xl\:border-x-7, .xl\:border-7 {
+    border-right-width: var(--border-7);
+  }
+  .xl\:border-e-8, .xl\:border-x-8, .xl\:border-8 {
+    border-right-width: var(--border-8);
+  }
+  .xl\:border-b-0, .xl\:border-y-0, .xl\:border-0 {
+    border-bottom-width: 0;
+  }
+  .xl\:border-b-1, .xl\:border, .xl\:border-y-1, .xl\:border-1 {
+    border-bottom-width: var(--border-1);
+  }
+  .xl\:border-b-2, .xl\:border-y-2, .xl\:border-2 {
+    border-bottom-width: var(--border-2);
+  }
+  .xl\:border-b-3, .xl\:border-y-3, .xl\:border-3 {
+    border-bottom-width: var(--border-3);
+  }
+  .xl\:border-b-4, .xl\:border-y-4, .xl\:border-4 {
+    border-bottom-width: var(--border-4);
+  }
+  .xl\:border-b-5, .xl\:border-y-5, .xl\:border-5 {
+    border-bottom-width: var(--border-5);
+  }
+  .xl\:border-b-6, .xl\:border-y-6, .xl\:border-6 {
+    border-bottom-width: var(--border-6);
+  }
+  .xl\:border-b-7, .xl\:border-y-7, .xl\:border-7 {
+    border-bottom-width: var(--border-7);
+  }
+  .xl\:border-b-8, .xl\:border-y-8, .xl\:border-8 {
+    border-bottom-width: var(--border-8);
+  }
+  .xl\:border-s-0, .xl\:border-x-0, .xl\:border-0 {
+    border-left-width: 0;
+  }
+  .xl\:border-s-1, .xl\:border, .xl\:border-x-1, .xl\:border-1 {
+    border-left-width: var(--border-1);
+  }
+  .xl\:border-s-2, .xl\:border-x-2, .xl\:border-2 {
+    border-left-width: var(--border-2);
+  }
+  .xl\:border-s-3, .xl\:border-x-3, .xl\:border-3 {
+    border-left-width: var(--border-3);
+  }
+  .xl\:border-s-4, .xl\:border-x-4, .xl\:border-4 {
+    border-left-width: var(--border-4);
+  }
+  .xl\:border-s-5, .xl\:border-x-5, .xl\:border-5 {
+    border-left-width: var(--border-5);
+  }
+  .xl\:border-s-6, .xl\:border-x-6, .xl\:border-6 {
+    border-left-width: var(--border-6);
+  }
+  .xl\:border-s-7, .xl\:border-x-7, .xl\:border-7 {
+    border-left-width: var(--border-7);
+  }
+  .xl\:border-s-8, .xl\:border-x-8, .xl\:border-8 {
+    border-left-width: var(--border-8);
+  }
+}
+@media (min-width: 160rem) {
+  .xxl\:border-t-0, .xxl\:border-y-0, .xxl\:border-0 {
+    border-top-width: 0;
+  }
+  .xxl\:border-t-1, .xxl\:border, .xxl\:border-y-1, .xxl\:border-1 {
+    border-top-width: var(--border-1);
+  }
+  .xxl\:border-t-2, .xxl\:border-y-2, .xxl\:border-2 {
+    border-top-width: var(--border-2);
+  }
+  .xxl\:border-t-3, .xxl\:border-y-3, .xxl\:border-3 {
+    border-top-width: var(--border-3);
+  }
+  .xxl\:border-t-4, .xxl\:border-y-4, .xxl\:border-4 {
+    border-top-width: var(--border-4);
+  }
+  .xxl\:border-t-5, .xxl\:border-y-5, .xxl\:border-5 {
+    border-top-width: var(--border-5);
+  }
+  .xxl\:border-t-6, .xxl\:border-y-6, .xxl\:border-6 {
+    border-top-width: var(--border-6);
+  }
+  .xxl\:border-t-7, .xxl\:border-y-7, .xxl\:border-7 {
+    border-top-width: var(--border-7);
+  }
+  .xxl\:border-t-8, .xxl\:border-y-8, .xxl\:border-8 {
+    border-top-width: var(--border-8);
+  }
+  .xxl\:border-e-0, .xxl\:border-x-0, .xxl\:border-0 {
+    border-right-width: 0;
+  }
+  .xxl\:border-e-1, .xxl\:border, .xxl\:border-x-1, .xxl\:border-1 {
+    border-right-width: var(--border-1);
+  }
+  .xxl\:border-e-2, .xxl\:border-x-2, .xxl\:border-2 {
+    border-right-width: var(--border-2);
+  }
+  .xxl\:border-e-3, .xxl\:border-x-3, .xxl\:border-3 {
+    border-right-width: var(--border-3);
+  }
+  .xxl\:border-e-4, .xxl\:border-x-4, .xxl\:border-4 {
+    border-right-width: var(--border-4);
+  }
+  .xxl\:border-e-5, .xxl\:border-x-5, .xxl\:border-5 {
+    border-right-width: var(--border-5);
+  }
+  .xxl\:border-e-6, .xxl\:border-x-6, .xxl\:border-6 {
+    border-right-width: var(--border-6);
+  }
+  .xxl\:border-e-7, .xxl\:border-x-7, .xxl\:border-7 {
+    border-right-width: var(--border-7);
+  }
+  .xxl\:border-e-8, .xxl\:border-x-8, .xxl\:border-8 {
+    border-right-width: var(--border-8);
+  }
+  .xxl\:border-b-0, .xxl\:border-y-0, .xxl\:border-0 {
+    border-bottom-width: 0;
+  }
+  .xxl\:border-b-1, .xxl\:border, .xxl\:border-y-1, .xxl\:border-1 {
+    border-bottom-width: var(--border-1);
+  }
+  .xxl\:border-b-2, .xxl\:border-y-2, .xxl\:border-2 {
+    border-bottom-width: var(--border-2);
+  }
+  .xxl\:border-b-3, .xxl\:border-y-3, .xxl\:border-3 {
+    border-bottom-width: var(--border-3);
+  }
+  .xxl\:border-b-4, .xxl\:border-y-4, .xxl\:border-4 {
+    border-bottom-width: var(--border-4);
+  }
+  .xxl\:border-b-5, .xxl\:border-y-5, .xxl\:border-5 {
+    border-bottom-width: var(--border-5);
+  }
+  .xxl\:border-b-6, .xxl\:border-y-6, .xxl\:border-6 {
+    border-bottom-width: var(--border-6);
+  }
+  .xxl\:border-b-7, .xxl\:border-y-7, .xxl\:border-7 {
+    border-bottom-width: var(--border-7);
+  }
+  .xxl\:border-b-8, .xxl\:border-y-8, .xxl\:border-8 {
+    border-bottom-width: var(--border-8);
+  }
+  .xxl\:border-s-0, .xxl\:border-x-0, .xxl\:border-0 {
+    border-left-width: 0;
+  }
+  .xxl\:border-s-1, .xxl\:border, .xxl\:border-x-1, .xxl\:border-1 {
+    border-left-width: var(--border-1);
+  }
+  .xxl\:border-s-2, .xxl\:border-x-2, .xxl\:border-2 {
+    border-left-width: var(--border-2);
+  }
+  .xxl\:border-s-3, .xxl\:border-x-3, .xxl\:border-3 {
+    border-left-width: var(--border-3);
+  }
+  .xxl\:border-s-4, .xxl\:border-x-4, .xxl\:border-4 {
+    border-left-width: var(--border-4);
+  }
+  .xxl\:border-s-5, .xxl\:border-x-5, .xxl\:border-5 {
+    border-left-width: var(--border-5);
+  }
+  .xxl\:border-s-6, .xxl\:border-x-6, .xxl\:border-6 {
+    border-left-width: var(--border-6);
+  }
+  .xxl\:border-s-7, .xxl\:border-x-7, .xxl\:border-7 {
+    border-left-width: var(--border-7);
+  }
+  .xxl\:border-s-8, .xxl\:border-x-8, .xxl\:border-8 {
+    border-left-width: var(--border-8);
   }
 }
 

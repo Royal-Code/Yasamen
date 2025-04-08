@@ -90,7 +90,7 @@ $sizing-h-only: (
   @each $key, $value in $sizes-divs {
     $current: map.get($inverted, $value);
     $current: if($current == null, (), $current);
-    $current: append($current, $key);
+    $current: list.append($current, $key);
     $inverted: map.set($inverted, $value, $current);
   }
   @return $inverted;

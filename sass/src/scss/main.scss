@@ -4,6 +4,7 @@
     @include ds.generate-color-variables();
     @include ds.generate-sizes-variables();
     @include ds.generate-breakpoint-variables();
+    @include ds.generate-borders-variables();
 }
 @include ds.generate-screen-classes();
 @include ds.generate-width-classes();
@@ -11,3 +12,4 @@
 @include ds.generate-bg-classes();
 @include ds.generate-text-classes();
 @include ds.generate-margins-paddings();
+@include ds.generate-borders-sizes();

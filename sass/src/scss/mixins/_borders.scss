@@ -1,0 +1,65 @@
+@use "../vars/borders" as *;
+@use "../vars/colors" as *;
+@use "../vars/breaks" as *;
+@use "sass:map";
+
+@mixin generate-borders-variables() {
+  @each $key, $value in $var-borders-values {
+    #{$key}: #{$value};
+  }
+}
+
+@mixin generate-borders-sizes() {
+
+    $sizes: (0: 0);
+    $sizes: map.merge($sizes, $var-borders);
+
+    @each $key, $variant in $border-sides {
+        @each $size, $value in $sizes {
+            .border-#{$key}-#{$size} {
+                border-#{$variant}-width: #{$value};
+            }
+            .border-#{$size} {
+                @extend .border-#{$key}-#{$size};
+            }
+            @if ($key == s or $key == e) {
+                .border-x-#{$size} {
+                    @extend .border-#{$key}-#{$size};
+                }
+            }
+            @else {
+                .border-y-#{$size} {
+                    @extend .border-#{$key}-#{$size};
+                }
+            }
+        }
+        .border {
+            @extend .border-#{$key}-1;
+        }
+    }
+    @include media-breakpoints() using($breakpoint) {
+        @each $key, $variant in $border-sides {
+            @each $size, $value in $sizes {
+                .#{$breakpoint}\:border-#{$key}-#{$size} {
+                    border-#{$variant}-width: #{$value};
+                }
+                .#{$breakpoint}\:border-#{$size} {
+                    @extend .#{$breakpoint}\:border-#{$key}-#{$size};
+                }
+                @if ($key == s or $key == e) {
+                    .#{$breakpoint}\:border-x-#{$size} {
+                        @extend .#{$breakpoint}\:border-#{$key}-#{$size};
+                    }
+                }
+                @else {
+                    .#{$breakpoint}\:border-y-#{$size} {
+                        @extend .#{$breakpoint}\:border-#{$key}-#{$size};
+                    }
+                }
+            }
+            .#{$breakpoint}\:border {
+                @extend .#{$breakpoint}\:border-#{$key}-1;
+            }
+        }
+    }
+}

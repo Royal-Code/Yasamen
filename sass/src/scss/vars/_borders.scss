@@ -1,3 +1,51 @@
-@use "../spaces/_spaces" as *;
-@use "../colors/_colors" as *;
+@use "../vars/spaces" as *;
+@use "../vars/colors" as *;
+@use "sass:map";
+@use "sass:math";
 
+$borders-rem: (
+        16: 4,    // 1, 2, 3 e 4 px
+        8: 2,     // 6 e 8 px
+        4: 2,     // 12, 16 px
+);
+
+@function generate-borders-rem() {
+    $output: ();
+    $number: 0;
+    $sum: 0;
+    @each $div, $steps in $borders-rem {
+      @for $i from 1 through $steps {
+        $number: $number + 1;
+        $current: $sum + math.div(1, $div);
+        $output: map.set($output, $number, #{$current}rem);
+        $sum: $current;
+      }
+    }
+    @return $output;
+  }
+  
+@function generate-border-css-variables() {
+    $output: ();
+    @each $key, $value in generate-borders-rem() {
+      $output: map.set($output, $key, var(--border-#{$key}));
+    }
+    @return $output;
+}
+
+@function generate-border-css-variables-values() {
+    $output: ();
+    @each $key, $value in generate-borders-rem() {
+      $output: map.set($output, --border-#{$key}, var(--space-#{$key}));
+    }
+    @return $output;
+}
+
+$var-borders: generate-border-css-variables();
+$var-borders-values: generate-border-css-variables-values();
+
+$border-sides: (
+    t: top,
+    e: right,
+    b: bottom,
+    s: left,
+);
