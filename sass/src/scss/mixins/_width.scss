@@ -1,0 +1,70 @@
+@use "sass:map";
+@use "sass:list";
+@use "../vars/sizes" as *;
+@use "../vars/breaks" as *;
+
+// função estilo string.Join do C#, mas com uma variáveis para contatenar no inicio de cada item
+@function join($list, $separator: ", ", $prefix: "") {
+  $output: "";
+  $length: list.length($list);
+  @for $i from 1 through $length {
+    $item: list.nth($list, $i);
+    $output: #{$output}#{$prefix}#{$item};
+    @if $i != $length {
+      $output: #{$output}#{$separator};
+    }
+  }
+  @return $output;
+}
+
+// classes para screen
+@mixin generate-screen-classes() {
+    @each $key, $value in $breakpoints {
+      .screen-#{$key} {
+        width: var(--screen-#{$key});
+      }
+    }
+  }
+  
+  $w-classes-names: (w: width, max-w: max-width, min-w: min-width);
+  // classes para width
+  @mixin generate-width-classes() {
+  
+    $sizes: ();
+    $sizes: map.merge($sizes, $sizes-alts);
+    $sizes: map.merge($sizes, $var-sizes);
+    $sizes: map.merge($sizes, $w-sizes);
+  
+  
+    @each $w-class, $w-prop in $w-classes-names {
+      @each $key, $value in $sizes {
+        // se prop for max-width e o valor for auto, não gera a classe
+        @if not (($w-prop == max-width or $w-prop == min-width) and $value == auto) {
+          .#{$w-class}-#{$key} {
+            #{$w-prop}: #{$value};
+          }
+        }
+      }
+      @each $perc, $list in $sizes-percents {
+        #{join($list, ", ", ".#{$w-class}-")} {
+          #{$w-prop}: #{$perc};
+        }
+      }
+    }
+    @include media-breakpoints() using($breakpoint) {
+      @each $w-class, $w-prop in $w-classes-names {
+        @each $key, $value in $sizes {
+          @if not (($w-prop == max-width or $w-prop == min-width) and $value == auto) {
+            .#{$breakpoint}\:#{$w-class}-#{$key} {
+              #{$w-prop}: #{$value};
+            }
+          }
+        }
+        @each $perc, $list in $sizes-percents {
+          #{join($list, ", ", ".#{$breakpoint}\:#{$w-class}-")} {
+            #{$w-prop}: #{$perc};
+          }
+        }
+      }
+    }
+  }

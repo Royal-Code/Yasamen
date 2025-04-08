@@ -1,0 +1,25 @@
+@use "sass:map";
+@use "../vars/sizes" as *;
+
+
+
+$h-classes-names: (h: height, max-h: max-height, min-h: min-height);
+// classes para height
+@mixin generate-height-classes() {
+
+  $sizes: ();
+  $sizes: map.merge($sizes, $sizes-alts);
+  $sizes: map.merge($sizes, $var-sizes);
+  $sizes: map.merge($sizes, $h-sizes);
+
+  @each $key, $value in $sizes {
+    @each $h-class, $h-prop in $h-classes-names {
+      // se prop for max-height e o valor for auto, não gera a classe
+      @if not (($h-prop == max-height or $h-prop == min-height) and $value == auto) {
+        .#{$h-class}-#{$key} {
+          #{$h-prop}: #{$value};
+        }
+      }
+    }
+  }
+}

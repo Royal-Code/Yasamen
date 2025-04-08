@@ -1,0 +1,20 @@
+@use "../vars/sizes" as *;
+@use "../vars/spaces" as *;
+@use "../vars/breaks" as *;
+
+// gera as variáveis de espaçamento
+@mixin generate-sizes-variables() {
+    @each $key, $value in $sizes-rem {
+      --size-#{$key}: #{$value};
+    }
+    @each $key, $value in $spacing-rem {
+      --space-#{$key}: #{$value};
+    }
+  }
+  
+  // gera as variáveis de breakpoints (--screen-{key})
+  @mixin generate-breakpoint-variables() {
+    @each $key, $value in $breakpoints {
+      --screen-#{$key}: #{$value};
+    }
+  }

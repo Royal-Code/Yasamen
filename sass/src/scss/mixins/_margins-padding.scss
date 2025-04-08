@@ -1,0 +1,50 @@
+@use "../vars/spaces" as *;
+@use "../vars/breaks" as *;
+@use "../vars/margin-padding" as *;
+
+@mixin generate-margins-paddings() {
+    @each $char, $rule in $m-t {
+        @each $key, $variant in $m-t-types {
+            @each $size, $value in $var-spacing {
+                .#{$char}#{$key}-#{$size} {
+                    #{$rule}-#{$variant}: #{$value};
+                }
+                .#{$char}-#{$size} {
+                    @extend .#{$char}#{$key}-#{$size};
+                }
+                @if ($key == s or $key == e) {
+                    .#{$char}x-#{$size} {
+                        @extend .#{$char}#{$key}-#{$size};
+                    }
+                }
+                @else {
+                    .#{$char}y-#{$size} {
+                        @extend .#{$char}#{$key}-#{$size};
+                    }
+                }
+            }
+        }
+        @include media-breakpoints() using($breakpoint) {
+            @each $key, $variant in $m-t-types {
+                @each $size, $value in $var-spacing {
+                    .#{$breakpoint}\:#{$char}#{$key}-#{$size} {
+                        #{$rule}-#{$variant}: #{$value};
+                    }
+                    .#{$breakpoint}\:#{$char}-#{$size} {
+                        @extend .#{$breakpoint}\:#{$char}#{$key}-#{$size};
+                    }
+                    @if ($key == s or $key == e) {
+                        .#{$breakpoint}\:#{$char}x-#{$size} {
+                            @extend .#{$breakpoint}\:#{$char}#{$key}-#{$size};
+                        }
+                    }
+                    @else {
+                        .#{$breakpoint}\:#{$char}y-#{$size} {
+                            @extend .#{$breakpoint}\:#{$char}#{$key}-#{$size};
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

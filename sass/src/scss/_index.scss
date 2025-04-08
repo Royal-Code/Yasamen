@@ -1,5 +1,6 @@
 
-@forward "colors/colors";
-@forward "colors/mixins";
-@forward "spaces/mixins";
-@forward "spaces/margins";
+@forward "mixins/colors";
+@forward "mixins/sizes";
+@forward "mixins/width";
+@forward "mixins/height";
+@forward "mixins/margins-padding";

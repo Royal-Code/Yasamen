@@ -1,5 +1,6 @@
 @use "sass:math";
 @use "sass:map";
+@use "sass:list";
 
 $sizing-rem: (
         16: 2, // 0.0625rem e 0.125rem - 1 e 2 px
@@ -84,6 +85,17 @@ $sizing-h-only: (
   @return $output;
 }
 
+@function invert-sizes-divs() {
+  $inverted: ();
+  @each $key, $value in $sizes-divs {
+    $current: map.get($inverted, $value);
+    $current: if($current == null, (), $current);
+    $current: append($current, $key);
+    $inverted: map.set($inverted, $value, $current);
+  }
+  @return $inverted;
+}
+
 @function generate-w-sizes() {
   $output: ();
   @each $key, $value in $sizing-w-only {
@@ -104,5 +116,7 @@ $sizes-rem: generate-sizes-rem();
 $var-sizes: generate-sizes-rem-css-variables();
 $sizes-alts: generate-sizes-alts();
 $sizes-divs: generate-sizes-divs();
+$sizes-percents: invert-sizes-divs();
 $w-sizes: generate-w-sizes();
 $h-sizes: generate-h-sizes();
+
