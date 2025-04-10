@@ -9337,919 +9337,620 @@
     padding-left: var(--space-12);
   }
 }
-.border-t-0, .border-y-0, .border-0 {
+.border-t-0, .last\:border-y-0:last-child, .last\:border-0:last-child, .last\:border-t-0:last-child, .first\:border-y-0:first-child, .first\:border-0:first-child, .first\:border-t-0:first-child, .focus-within\:border-y-0:focus-within, .focus-within\:border-0:focus-within, .focus-within\:border-t-0:focus-within, .read-only\:border-y-0:read-only, .read-only\:border-0:read-only, .read-only\:border-t-0:read-only, .disabled\:border-y-0:disabled, .disabled\:border-0:disabled, .disabled\:border-t-0:disabled, .active\:border-y-0:active, .active\:border-0:active, .active\:border-t-0:active, .focus\:border-y-0:focus, .focus\:border-0:focus, .focus\:border-t-0:focus, .hover\:border-y-0:hover, .hover\:border-0:hover, .hover\:border-t-0:hover, .border-y-0, .border-0 {
   border-top-width: 0;
 }
 
-.border-t-1, .border, .border-y-1, .border-1 {
+.border-t-1, .last\:border:last-child, .first\:border:first-child, .focus-within\:border:focus-within, .read-only\:border:read-only, .disabled\:border:disabled, .active\:border:active, .focus\:border:focus, .hover\:border:hover, .border, .last\:border-y-1:last-child, .last\:border-1:last-child, .last\:border-t-1:last-child, .first\:border-y-1:first-child, .first\:border-1:first-child, .first\:border-t-1:first-child, .focus-within\:border-y-1:focus-within, .focus-within\:border-1:focus-within, .focus-within\:border-t-1:focus-within, .read-only\:border-y-1:read-only, .read-only\:border-1:read-only, .read-only\:border-t-1:read-only, .disabled\:border-y-1:disabled, .disabled\:border-1:disabled, .disabled\:border-t-1:disabled, .active\:border-y-1:active, .active\:border-1:active, .active\:border-t-1:active, .focus\:border-y-1:focus, .focus\:border-1:focus, .focus\:border-t-1:focus, .hover\:border-y-1:hover, .hover\:border-1:hover, .hover\:border-t-1:hover, .border-y-1, .border-1 {
   border-top-width: var(--border-1);
 }
 
-.border-t-2, .border-y-2, .border-2 {
+.border-t-2, .last\:border-y-2:last-child, .last\:border-2:last-child, .last\:border-t-2:last-child, .first\:border-y-2:first-child, .first\:border-2:first-child, .first\:border-t-2:first-child, .focus-within\:border-y-2:focus-within, .focus-within\:border-2:focus-within, .focus-within\:border-t-2:focus-within, .read-only\:border-y-2:read-only, .read-only\:border-2:read-only, .read-only\:border-t-2:read-only, .disabled\:border-y-2:disabled, .disabled\:border-2:disabled, .disabled\:border-t-2:disabled, .active\:border-y-2:active, .active\:border-2:active, .active\:border-t-2:active, .focus\:border-y-2:focus, .focus\:border-2:focus, .focus\:border-t-2:focus, .hover\:border-y-2:hover, .hover\:border-2:hover, .hover\:border-t-2:hover, .border-y-2, .border-2 {
   border-top-width: var(--border-2);
 }
 
-.border-t-3, .border-y-3, .border-3 {
+.border-t-3, .last\:border-y-3:last-child, .last\:border-3:last-child, .last\:border-t-3:last-child, .first\:border-y-3:first-child, .first\:border-3:first-child, .first\:border-t-3:first-child, .focus-within\:border-y-3:focus-within, .focus-within\:border-3:focus-within, .focus-within\:border-t-3:focus-within, .read-only\:border-y-3:read-only, .read-only\:border-3:read-only, .read-only\:border-t-3:read-only, .disabled\:border-y-3:disabled, .disabled\:border-3:disabled, .disabled\:border-t-3:disabled, .active\:border-y-3:active, .active\:border-3:active, .active\:border-t-3:active, .focus\:border-y-3:focus, .focus\:border-3:focus, .focus\:border-t-3:focus, .hover\:border-y-3:hover, .hover\:border-3:hover, .hover\:border-t-3:hover, .border-y-3, .border-3 {
   border-top-width: var(--border-3);
 }
 
-.border-t-4, .border-y-4, .border-4 {
+.border-t-4, .last\:border-y-4:last-child, .last\:border-4:last-child, .last\:border-t-4:last-child, .first\:border-y-4:first-child, .first\:border-4:first-child, .first\:border-t-4:first-child, .focus-within\:border-y-4:focus-within, .focus-within\:border-4:focus-within, .focus-within\:border-t-4:focus-within, .read-only\:border-y-4:read-only, .read-only\:border-4:read-only, .read-only\:border-t-4:read-only, .disabled\:border-y-4:disabled, .disabled\:border-4:disabled, .disabled\:border-t-4:disabled, .active\:border-y-4:active, .active\:border-4:active, .active\:border-t-4:active, .focus\:border-y-4:focus, .focus\:border-4:focus, .focus\:border-t-4:focus, .hover\:border-y-4:hover, .hover\:border-4:hover, .hover\:border-t-4:hover, .border-y-4, .border-4 {
   border-top-width: var(--border-4);
 }
 
-.border-t-5, .border-y-5, .border-5 {
+.border-t-5, .last\:border-y-5:last-child, .last\:border-5:last-child, .last\:border-t-5:last-child, .first\:border-y-5:first-child, .first\:border-5:first-child, .first\:border-t-5:first-child, .focus-within\:border-y-5:focus-within, .focus-within\:border-5:focus-within, .focus-within\:border-t-5:focus-within, .read-only\:border-y-5:read-only, .read-only\:border-5:read-only, .read-only\:border-t-5:read-only, .disabled\:border-y-5:disabled, .disabled\:border-5:disabled, .disabled\:border-t-5:disabled, .active\:border-y-5:active, .active\:border-5:active, .active\:border-t-5:active, .focus\:border-y-5:focus, .focus\:border-5:focus, .focus\:border-t-5:focus, .hover\:border-y-5:hover, .hover\:border-5:hover, .hover\:border-t-5:hover, .border-y-5, .border-5 {
   border-top-width: var(--border-5);
 }
 
-.border-t-6, .border-y-6, .border-6 {
+.border-t-6, .last\:border-y-6:last-child, .last\:border-6:last-child, .last\:border-t-6:last-child, .first\:border-y-6:first-child, .first\:border-6:first-child, .first\:border-t-6:first-child, .focus-within\:border-y-6:focus-within, .focus-within\:border-6:focus-within, .focus-within\:border-t-6:focus-within, .read-only\:border-y-6:read-only, .read-only\:border-6:read-only, .read-only\:border-t-6:read-only, .disabled\:border-y-6:disabled, .disabled\:border-6:disabled, .disabled\:border-t-6:disabled, .active\:border-y-6:active, .active\:border-6:active, .active\:border-t-6:active, .focus\:border-y-6:focus, .focus\:border-6:focus, .focus\:border-t-6:focus, .hover\:border-y-6:hover, .hover\:border-6:hover, .hover\:border-t-6:hover, .border-y-6, .border-6 {
   border-top-width: var(--border-6);
 }
 
-.border-t-7, .border-y-7, .border-7 {
+.border-t-7, .last\:border-y-7:last-child, .last\:border-7:last-child, .last\:border-t-7:last-child, .first\:border-y-7:first-child, .first\:border-7:first-child, .first\:border-t-7:first-child, .focus-within\:border-y-7:focus-within, .focus-within\:border-7:focus-within, .focus-within\:border-t-7:focus-within, .read-only\:border-y-7:read-only, .read-only\:border-7:read-only, .read-only\:border-t-7:read-only, .disabled\:border-y-7:disabled, .disabled\:border-7:disabled, .disabled\:border-t-7:disabled, .active\:border-y-7:active, .active\:border-7:active, .active\:border-t-7:active, .focus\:border-y-7:focus, .focus\:border-7:focus, .focus\:border-t-7:focus, .hover\:border-y-7:hover, .hover\:border-7:hover, .hover\:border-t-7:hover, .border-y-7, .border-7 {
   border-top-width: var(--border-7);
 }
 
-.border-t-8, .border-y-8, .border-8 {
+.border-t-8, .last\:border-y-8:last-child, .last\:border-8:last-child, .last\:border-t-8:last-child, .first\:border-y-8:first-child, .first\:border-8:first-child, .first\:border-t-8:first-child, .focus-within\:border-y-8:focus-within, .focus-within\:border-8:focus-within, .focus-within\:border-t-8:focus-within, .read-only\:border-y-8:read-only, .read-only\:border-8:read-only, .read-only\:border-t-8:read-only, .disabled\:border-y-8:disabled, .disabled\:border-8:disabled, .disabled\:border-t-8:disabled, .active\:border-y-8:active, .active\:border-8:active, .active\:border-t-8:active, .focus\:border-y-8:focus, .focus\:border-8:focus, .focus\:border-t-8:focus, .hover\:border-y-8:hover, .hover\:border-8:hover, .hover\:border-t-8:hover, .border-y-8, .border-8 {
   border-top-width: var(--border-8);
 }
 
-.border-e-0, .border-x-0, .border-0 {
+.border-e-0, .last\:border-x-0:last-child, .last\:border-0:last-child, .last\:border-e-0:last-child, .first\:border-x-0:first-child, .first\:border-0:first-child, .first\:border-e-0:first-child, .focus-within\:border-x-0:focus-within, .focus-within\:border-0:focus-within, .focus-within\:border-e-0:focus-within, .read-only\:border-x-0:read-only, .read-only\:border-0:read-only, .read-only\:border-e-0:read-only, .disabled\:border-x-0:disabled, .disabled\:border-0:disabled, .disabled\:border-e-0:disabled, .active\:border-x-0:active, .active\:border-0:active, .active\:border-e-0:active, .focus\:border-x-0:focus, .focus\:border-0:focus, .focus\:border-e-0:focus, .hover\:border-x-0:hover, .hover\:border-0:hover, .hover\:border-e-0:hover, .border-x-0, .border-0 {
   border-right-width: 0;
 }
 
-.border-e-1, .border, .border-x-1, .border-1 {
+.border-e-1, .last\:border:last-child, .first\:border:first-child, .focus-within\:border:focus-within, .read-only\:border:read-only, .disabled\:border:disabled, .active\:border:active, .focus\:border:focus, .hover\:border:hover, .border, .last\:border-x-1:last-child, .last\:border-1:last-child, .last\:border-e-1:last-child, .first\:border-x-1:first-child, .first\:border-1:first-child, .first\:border-e-1:first-child, .focus-within\:border-x-1:focus-within, .focus-within\:border-1:focus-within, .focus-within\:border-e-1:focus-within, .read-only\:border-x-1:read-only, .read-only\:border-1:read-only, .read-only\:border-e-1:read-only, .disabled\:border-x-1:disabled, .disabled\:border-1:disabled, .disabled\:border-e-1:disabled, .active\:border-x-1:active, .active\:border-1:active, .active\:border-e-1:active, .focus\:border-x-1:focus, .focus\:border-1:focus, .focus\:border-e-1:focus, .hover\:border-x-1:hover, .hover\:border-1:hover, .hover\:border-e-1:hover, .border-x-1, .border-1 {
   border-right-width: var(--border-1);
 }
 
-.border-e-2, .border-x-2, .border-2 {
+.border-e-2, .last\:border-x-2:last-child, .last\:border-2:last-child, .last\:border-e-2:last-child, .first\:border-x-2:first-child, .first\:border-2:first-child, .first\:border-e-2:first-child, .focus-within\:border-x-2:focus-within, .focus-within\:border-2:focus-within, .focus-within\:border-e-2:focus-within, .read-only\:border-x-2:read-only, .read-only\:border-2:read-only, .read-only\:border-e-2:read-only, .disabled\:border-x-2:disabled, .disabled\:border-2:disabled, .disabled\:border-e-2:disabled, .active\:border-x-2:active, .active\:border-2:active, .active\:border-e-2:active, .focus\:border-x-2:focus, .focus\:border-2:focus, .focus\:border-e-2:focus, .hover\:border-x-2:hover, .hover\:border-2:hover, .hover\:border-e-2:hover, .border-x-2, .border-2 {
   border-right-width: var(--border-2);
 }
 
-.border-e-3, .border-x-3, .border-3 {
+.border-e-3, .last\:border-x-3:last-child, .last\:border-3:last-child, .last\:border-e-3:last-child, .first\:border-x-3:first-child, .first\:border-3:first-child, .first\:border-e-3:first-child, .focus-within\:border-x-3:focus-within, .focus-within\:border-3:focus-within, .focus-within\:border-e-3:focus-within, .read-only\:border-x-3:read-only, .read-only\:border-3:read-only, .read-only\:border-e-3:read-only, .disabled\:border-x-3:disabled, .disabled\:border-3:disabled, .disabled\:border-e-3:disabled, .active\:border-x-3:active, .active\:border-3:active, .active\:border-e-3:active, .focus\:border-x-3:focus, .focus\:border-3:focus, .focus\:border-e-3:focus, .hover\:border-x-3:hover, .hover\:border-3:hover, .hover\:border-e-3:hover, .border-x-3, .border-3 {
   border-right-width: var(--border-3);
 }
 
-.border-e-4, .border-x-4, .border-4 {
+.border-e-4, .last\:border-x-4:last-child, .last\:border-4:last-child, .last\:border-e-4:last-child, .first\:border-x-4:first-child, .first\:border-4:first-child, .first\:border-e-4:first-child, .focus-within\:border-x-4:focus-within, .focus-within\:border-4:focus-within, .focus-within\:border-e-4:focus-within, .read-only\:border-x-4:read-only, .read-only\:border-4:read-only, .read-only\:border-e-4:read-only, .disabled\:border-x-4:disabled, .disabled\:border-4:disabled, .disabled\:border-e-4:disabled, .active\:border-x-4:active, .active\:border-4:active, .active\:border-e-4:active, .focus\:border-x-4:focus, .focus\:border-4:focus, .focus\:border-e-4:focus, .hover\:border-x-4:hover, .hover\:border-4:hover, .hover\:border-e-4:hover, .border-x-4, .border-4 {
   border-right-width: var(--border-4);
 }
 
-.border-e-5, .border-x-5, .border-5 {
+.border-e-5, .last\:border-x-5:last-child, .last\:border-5:last-child, .last\:border-e-5:last-child, .first\:border-x-5:first-child, .first\:border-5:first-child, .first\:border-e-5:first-child, .focus-within\:border-x-5:focus-within, .focus-within\:border-5:focus-within, .focus-within\:border-e-5:focus-within, .read-only\:border-x-5:read-only, .read-only\:border-5:read-only, .read-only\:border-e-5:read-only, .disabled\:border-x-5:disabled, .disabled\:border-5:disabled, .disabled\:border-e-5:disabled, .active\:border-x-5:active, .active\:border-5:active, .active\:border-e-5:active, .focus\:border-x-5:focus, .focus\:border-5:focus, .focus\:border-e-5:focus, .hover\:border-x-5:hover, .hover\:border-5:hover, .hover\:border-e-5:hover, .border-x-5, .border-5 {
   border-right-width: var(--border-5);
 }
 
-.border-e-6, .border-x-6, .border-6 {
+.border-e-6, .last\:border-x-6:last-child, .last\:border-6:last-child, .last\:border-e-6:last-child, .first\:border-x-6:first-child, .first\:border-6:first-child, .first\:border-e-6:first-child, .focus-within\:border-x-6:focus-within, .focus-within\:border-6:focus-within, .focus-within\:border-e-6:focus-within, .read-only\:border-x-6:read-only, .read-only\:border-6:read-only, .read-only\:border-e-6:read-only, .disabled\:border-x-6:disabled, .disabled\:border-6:disabled, .disabled\:border-e-6:disabled, .active\:border-x-6:active, .active\:border-6:active, .active\:border-e-6:active, .focus\:border-x-6:focus, .focus\:border-6:focus, .focus\:border-e-6:focus, .hover\:border-x-6:hover, .hover\:border-6:hover, .hover\:border-e-6:hover, .border-x-6, .border-6 {
   border-right-width: var(--border-6);
 }
 
-.border-e-7, .border-x-7, .border-7 {
+.border-e-7, .last\:border-x-7:last-child, .last\:border-7:last-child, .last\:border-e-7:last-child, .first\:border-x-7:first-child, .first\:border-7:first-child, .first\:border-e-7:first-child, .focus-within\:border-x-7:focus-within, .focus-within\:border-7:focus-within, .focus-within\:border-e-7:focus-within, .read-only\:border-x-7:read-only, .read-only\:border-7:read-only, .read-only\:border-e-7:read-only, .disabled\:border-x-7:disabled, .disabled\:border-7:disabled, .disabled\:border-e-7:disabled, .active\:border-x-7:active, .active\:border-7:active, .active\:border-e-7:active, .focus\:border-x-7:focus, .focus\:border-7:focus, .focus\:border-e-7:focus, .hover\:border-x-7:hover, .hover\:border-7:hover, .hover\:border-e-7:hover, .border-x-7, .border-7 {
   border-right-width: var(--border-7);
 }
 
-.border-e-8, .border-x-8, .border-8 {
+.border-e-8, .last\:border-x-8:last-child, .last\:border-8:last-child, .last\:border-e-8:last-child, .first\:border-x-8:first-child, .first\:border-8:first-child, .first\:border-e-8:first-child, .focus-within\:border-x-8:focus-within, .focus-within\:border-8:focus-within, .focus-within\:border-e-8:focus-within, .read-only\:border-x-8:read-only, .read-only\:border-8:read-only, .read-only\:border-e-8:read-only, .disabled\:border-x-8:disabled, .disabled\:border-8:disabled, .disabled\:border-e-8:disabled, .active\:border-x-8:active, .active\:border-8:active, .active\:border-e-8:active, .focus\:border-x-8:focus, .focus\:border-8:focus, .focus\:border-e-8:focus, .hover\:border-x-8:hover, .hover\:border-8:hover, .hover\:border-e-8:hover, .border-x-8, .border-8 {
   border-right-width: var(--border-8);
 }
 
-.border-b-0, .border-y-0, .border-0 {
+.border-b-0, .last\:border-y-0:last-child, .last\:border-0:last-child, .last\:border-b-0:last-child, .first\:border-y-0:first-child, .first\:border-0:first-child, .first\:border-b-0:first-child, .focus-within\:border-y-0:focus-within, .focus-within\:border-0:focus-within, .focus-within\:border-b-0:focus-within, .read-only\:border-y-0:read-only, .read-only\:border-0:read-only, .read-only\:border-b-0:read-only, .disabled\:border-y-0:disabled, .disabled\:border-0:disabled, .disabled\:border-b-0:disabled, .active\:border-y-0:active, .active\:border-0:active, .active\:border-b-0:active, .focus\:border-y-0:focus, .focus\:border-0:focus, .focus\:border-b-0:focus, .hover\:border-y-0:hover, .hover\:border-0:hover, .hover\:border-b-0:hover, .border-y-0, .border-0 {
   border-bottom-width: 0;
 }
 
-.border-b-1, .border, .border-y-1, .border-1 {
+.border-b-1, .last\:border:last-child, .first\:border:first-child, .focus-within\:border:focus-within, .read-only\:border:read-only, .disabled\:border:disabled, .active\:border:active, .focus\:border:focus, .hover\:border:hover, .border, .last\:border-y-1:last-child, .last\:border-1:last-child, .last\:border-b-1:last-child, .first\:border-y-1:first-child, .first\:border-1:first-child, .first\:border-b-1:first-child, .focus-within\:border-y-1:focus-within, .focus-within\:border-1:focus-within, .focus-within\:border-b-1:focus-within, .read-only\:border-y-1:read-only, .read-only\:border-1:read-only, .read-only\:border-b-1:read-only, .disabled\:border-y-1:disabled, .disabled\:border-1:disabled, .disabled\:border-b-1:disabled, .active\:border-y-1:active, .active\:border-1:active, .active\:border-b-1:active, .focus\:border-y-1:focus, .focus\:border-1:focus, .focus\:border-b-1:focus, .hover\:border-y-1:hover, .hover\:border-1:hover, .hover\:border-b-1:hover, .border-y-1, .border-1 {
   border-bottom-width: var(--border-1);
 }
 
-.border-b-2, .border-y-2, .border-2 {
+.border-b-2, .last\:border-y-2:last-child, .last\:border-2:last-child, .last\:border-b-2:last-child, .first\:border-y-2:first-child, .first\:border-2:first-child, .first\:border-b-2:first-child, .focus-within\:border-y-2:focus-within, .focus-within\:border-2:focus-within, .focus-within\:border-b-2:focus-within, .read-only\:border-y-2:read-only, .read-only\:border-2:read-only, .read-only\:border-b-2:read-only, .disabled\:border-y-2:disabled, .disabled\:border-2:disabled, .disabled\:border-b-2:disabled, .active\:border-y-2:active, .active\:border-2:active, .active\:border-b-2:active, .focus\:border-y-2:focus, .focus\:border-2:focus, .focus\:border-b-2:focus, .hover\:border-y-2:hover, .hover\:border-2:hover, .hover\:border-b-2:hover, .border-y-2, .border-2 {
   border-bottom-width: var(--border-2);
 }
 
-.border-b-3, .border-y-3, .border-3 {
+.border-b-3, .last\:border-y-3:last-child, .last\:border-3:last-child, .last\:border-b-3:last-child, .first\:border-y-3:first-child, .first\:border-3:first-child, .first\:border-b-3:first-child, .focus-within\:border-y-3:focus-within, .focus-within\:border-3:focus-within, .focus-within\:border-b-3:focus-within, .read-only\:border-y-3:read-only, .read-only\:border-3:read-only, .read-only\:border-b-3:read-only, .disabled\:border-y-3:disabled, .disabled\:border-3:disabled, .disabled\:border-b-3:disabled, .active\:border-y-3:active, .active\:border-3:active, .active\:border-b-3:active, .focus\:border-y-3:focus, .focus\:border-3:focus, .focus\:border-b-3:focus, .hover\:border-y-3:hover, .hover\:border-3:hover, .hover\:border-b-3:hover, .border-y-3, .border-3 {
   border-bottom-width: var(--border-3);
 }
 
-.border-b-4, .border-y-4, .border-4 {
+.border-b-4, .last\:border-y-4:last-child, .last\:border-4:last-child, .last\:border-b-4:last-child, .first\:border-y-4:first-child, .first\:border-4:first-child, .first\:border-b-4:first-child, .focus-within\:border-y-4:focus-within, .focus-within\:border-4:focus-within, .focus-within\:border-b-4:focus-within, .read-only\:border-y-4:read-only, .read-only\:border-4:read-only, .read-only\:border-b-4:read-only, .disabled\:border-y-4:disabled, .disabled\:border-4:disabled, .disabled\:border-b-4:disabled, .active\:border-y-4:active, .active\:border-4:active, .active\:border-b-4:active, .focus\:border-y-4:focus, .focus\:border-4:focus, .focus\:border-b-4:focus, .hover\:border-y-4:hover, .hover\:border-4:hover, .hover\:border-b-4:hover, .border-y-4, .border-4 {
   border-bottom-width: var(--border-4);
 }
 
-.border-b-5, .border-y-5, .border-5 {
+.border-b-5, .last\:border-y-5:last-child, .last\:border-5:last-child, .last\:border-b-5:last-child, .first\:border-y-5:first-child, .first\:border-5:first-child, .first\:border-b-5:first-child, .focus-within\:border-y-5:focus-within, .focus-within\:border-5:focus-within, .focus-within\:border-b-5:focus-within, .read-only\:border-y-5:read-only, .read-only\:border-5:read-only, .read-only\:border-b-5:read-only, .disabled\:border-y-5:disabled, .disabled\:border-5:disabled, .disabled\:border-b-5:disabled, .active\:border-y-5:active, .active\:border-5:active, .active\:border-b-5:active, .focus\:border-y-5:focus, .focus\:border-5:focus, .focus\:border-b-5:focus, .hover\:border-y-5:hover, .hover\:border-5:hover, .hover\:border-b-5:hover, .border-y-5, .border-5 {
   border-bottom-width: var(--border-5);
 }
 
-.border-b-6, .border-y-6, .border-6 {
+.border-b-6, .last\:border-y-6:last-child, .last\:border-6:last-child, .last\:border-b-6:last-child, .first\:border-y-6:first-child, .first\:border-6:first-child, .first\:border-b-6:first-child, .focus-within\:border-y-6:focus-within, .focus-within\:border-6:focus-within, .focus-within\:border-b-6:focus-within, .read-only\:border-y-6:read-only, .read-only\:border-6:read-only, .read-only\:border-b-6:read-only, .disabled\:border-y-6:disabled, .disabled\:border-6:disabled, .disabled\:border-b-6:disabled, .active\:border-y-6:active, .active\:border-6:active, .active\:border-b-6:active, .focus\:border-y-6:focus, .focus\:border-6:focus, .focus\:border-b-6:focus, .hover\:border-y-6:hover, .hover\:border-6:hover, .hover\:border-b-6:hover, .border-y-6, .border-6 {
   border-bottom-width: var(--border-6);
 }
 
-.border-b-7, .border-y-7, .border-7 {
+.border-b-7, .last\:border-y-7:last-child, .last\:border-7:last-child, .last\:border-b-7:last-child, .first\:border-y-7:first-child, .first\:border-7:first-child, .first\:border-b-7:first-child, .focus-within\:border-y-7:focus-within, .focus-within\:border-7:focus-within, .focus-within\:border-b-7:focus-within, .read-only\:border-y-7:read-only, .read-only\:border-7:read-only, .read-only\:border-b-7:read-only, .disabled\:border-y-7:disabled, .disabled\:border-7:disabled, .disabled\:border-b-7:disabled, .active\:border-y-7:active, .active\:border-7:active, .active\:border-b-7:active, .focus\:border-y-7:focus, .focus\:border-7:focus, .focus\:border-b-7:focus, .hover\:border-y-7:hover, .hover\:border-7:hover, .hover\:border-b-7:hover, .border-y-7, .border-7 {
   border-bottom-width: var(--border-7);
 }
 
-.border-b-8, .border-y-8, .border-8 {
+.border-b-8, .last\:border-y-8:last-child, .last\:border-8:last-child, .last\:border-b-8:last-child, .first\:border-y-8:first-child, .first\:border-8:first-child, .first\:border-b-8:first-child, .focus-within\:border-y-8:focus-within, .focus-within\:border-8:focus-within, .focus-within\:border-b-8:focus-within, .read-only\:border-y-8:read-only, .read-only\:border-8:read-only, .read-only\:border-b-8:read-only, .disabled\:border-y-8:disabled, .disabled\:border-8:disabled, .disabled\:border-b-8:disabled, .active\:border-y-8:active, .active\:border-8:active, .active\:border-b-8:active, .focus\:border-y-8:focus, .focus\:border-8:focus, .focus\:border-b-8:focus, .hover\:border-y-8:hover, .hover\:border-8:hover, .hover\:border-b-8:hover, .border-y-8, .border-8 {
   border-bottom-width: var(--border-8);
 }
 
-.border-s-0, .border-x-0, .border-0 {
+.border-s-0, .last\:border-x-0:last-child, .last\:border-0:last-child, .last\:border-s-0:last-child, .first\:border-x-0:first-child, .first\:border-0:first-child, .first\:border-s-0:first-child, .focus-within\:border-x-0:focus-within, .focus-within\:border-0:focus-within, .focus-within\:border-s-0:focus-within, .read-only\:border-x-0:read-only, .read-only\:border-0:read-only, .read-only\:border-s-0:read-only, .disabled\:border-x-0:disabled, .disabled\:border-0:disabled, .disabled\:border-s-0:disabled, .active\:border-x-0:active, .active\:border-0:active, .active\:border-s-0:active, .focus\:border-x-0:focus, .focus\:border-0:focus, .focus\:border-s-0:focus, .hover\:border-x-0:hover, .hover\:border-0:hover, .hover\:border-s-0:hover, .border-x-0, .border-0 {
   border-left-width: 0;
 }
 
-.border-s-1, .border, .border-x-1, .border-1 {
+.border-s-1, .last\:border:last-child, .first\:border:first-child, .focus-within\:border:focus-within, .read-only\:border:read-only, .disabled\:border:disabled, .active\:border:active, .focus\:border:focus, .hover\:border:hover, .border, .last\:border-x-1:last-child, .last\:border-1:last-child, .last\:border-s-1:last-child, .first\:border-x-1:first-child, .first\:border-1:first-child, .first\:border-s-1:first-child, .focus-within\:border-x-1:focus-within, .focus-within\:border-1:focus-within, .focus-within\:border-s-1:focus-within, .read-only\:border-x-1:read-only, .read-only\:border-1:read-only, .read-only\:border-s-1:read-only, .disabled\:border-x-1:disabled, .disabled\:border-1:disabled, .disabled\:border-s-1:disabled, .active\:border-x-1:active, .active\:border-1:active, .active\:border-s-1:active, .focus\:border-x-1:focus, .focus\:border-1:focus, .focus\:border-s-1:focus, .hover\:border-x-1:hover, .hover\:border-1:hover, .hover\:border-s-1:hover, .border-x-1, .border-1 {
   border-left-width: var(--border-1);
 }
 
-.border-s-2, .border-x-2, .border-2 {
+.border-s-2, .last\:border-x-2:last-child, .last\:border-2:last-child, .last\:border-s-2:last-child, .first\:border-x-2:first-child, .first\:border-2:first-child, .first\:border-s-2:first-child, .focus-within\:border-x-2:focus-within, .focus-within\:border-2:focus-within, .focus-within\:border-s-2:focus-within, .read-only\:border-x-2:read-only, .read-only\:border-2:read-only, .read-only\:border-s-2:read-only, .disabled\:border-x-2:disabled, .disabled\:border-2:disabled, .disabled\:border-s-2:disabled, .active\:border-x-2:active, .active\:border-2:active, .active\:border-s-2:active, .focus\:border-x-2:focus, .focus\:border-2:focus, .focus\:border-s-2:focus, .hover\:border-x-2:hover, .hover\:border-2:hover, .hover\:border-s-2:hover, .border-x-2, .border-2 {
   border-left-width: var(--border-2);
 }
 
-.border-s-3, .border-x-3, .border-3 {
+.border-s-3, .last\:border-x-3:last-child, .last\:border-3:last-child, .last\:border-s-3:last-child, .first\:border-x-3:first-child, .first\:border-3:first-child, .first\:border-s-3:first-child, .focus-within\:border-x-3:focus-within, .focus-within\:border-3:focus-within, .focus-within\:border-s-3:focus-within, .read-only\:border-x-3:read-only, .read-only\:border-3:read-only, .read-only\:border-s-3:read-only, .disabled\:border-x-3:disabled, .disabled\:border-3:disabled, .disabled\:border-s-3:disabled, .active\:border-x-3:active, .active\:border-3:active, .active\:border-s-3:active, .focus\:border-x-3:focus, .focus\:border-3:focus, .focus\:border-s-3:focus, .hover\:border-x-3:hover, .hover\:border-3:hover, .hover\:border-s-3:hover, .border-x-3, .border-3 {
   border-left-width: var(--border-3);
 }
 
-.border-s-4, .border-x-4, .border-4 {
+.border-s-4, .last\:border-x-4:last-child, .last\:border-4:last-child, .last\:border-s-4:last-child, .first\:border-x-4:first-child, .first\:border-4:first-child, .first\:border-s-4:first-child, .focus-within\:border-x-4:focus-within, .focus-within\:border-4:focus-within, .focus-within\:border-s-4:focus-within, .read-only\:border-x-4:read-only, .read-only\:border-4:read-only, .read-only\:border-s-4:read-only, .disabled\:border-x-4:disabled, .disabled\:border-4:disabled, .disabled\:border-s-4:disabled, .active\:border-x-4:active, .active\:border-4:active, .active\:border-s-4:active, .focus\:border-x-4:focus, .focus\:border-4:focus, .focus\:border-s-4:focus, .hover\:border-x-4:hover, .hover\:border-4:hover, .hover\:border-s-4:hover, .border-x-4, .border-4 {
   border-left-width: var(--border-4);
 }
 
-.border-s-5, .border-x-5, .border-5 {
+.border-s-5, .last\:border-x-5:last-child, .last\:border-5:last-child, .last\:border-s-5:last-child, .first\:border-x-5:first-child, .first\:border-5:first-child, .first\:border-s-5:first-child, .focus-within\:border-x-5:focus-within, .focus-within\:border-5:focus-within, .focus-within\:border-s-5:focus-within, .read-only\:border-x-5:read-only, .read-only\:border-5:read-only, .read-only\:border-s-5:read-only, .disabled\:border-x-5:disabled, .disabled\:border-5:disabled, .disabled\:border-s-5:disabled, .active\:border-x-5:active, .active\:border-5:active, .active\:border-s-5:active, .focus\:border-x-5:focus, .focus\:border-5:focus, .focus\:border-s-5:focus, .hover\:border-x-5:hover, .hover\:border-5:hover, .hover\:border-s-5:hover, .border-x-5, .border-5 {
   border-left-width: var(--border-5);
 }
 
-.border-s-6, .border-x-6, .border-6 {
+.border-s-6, .last\:border-x-6:last-child, .last\:border-6:last-child, .last\:border-s-6:last-child, .first\:border-x-6:first-child, .first\:border-6:first-child, .first\:border-s-6:first-child, .focus-within\:border-x-6:focus-within, .focus-within\:border-6:focus-within, .focus-within\:border-s-6:focus-within, .read-only\:border-x-6:read-only, .read-only\:border-6:read-only, .read-only\:border-s-6:read-only, .disabled\:border-x-6:disabled, .disabled\:border-6:disabled, .disabled\:border-s-6:disabled, .active\:border-x-6:active, .active\:border-6:active, .active\:border-s-6:active, .focus\:border-x-6:focus, .focus\:border-6:focus, .focus\:border-s-6:focus, .hover\:border-x-6:hover, .hover\:border-6:hover, .hover\:border-s-6:hover, .border-x-6, .border-6 {
   border-left-width: var(--border-6);
 }
 
-.border-s-7, .border-x-7, .border-7 {
+.border-s-7, .last\:border-x-7:last-child, .last\:border-7:last-child, .last\:border-s-7:last-child, .first\:border-x-7:first-child, .first\:border-7:first-child, .first\:border-s-7:first-child, .focus-within\:border-x-7:focus-within, .focus-within\:border-7:focus-within, .focus-within\:border-s-7:focus-within, .read-only\:border-x-7:read-only, .read-only\:border-7:read-only, .read-only\:border-s-7:read-only, .disabled\:border-x-7:disabled, .disabled\:border-7:disabled, .disabled\:border-s-7:disabled, .active\:border-x-7:active, .active\:border-7:active, .active\:border-s-7:active, .focus\:border-x-7:focus, .focus\:border-7:focus, .focus\:border-s-7:focus, .hover\:border-x-7:hover, .hover\:border-7:hover, .hover\:border-s-7:hover, .border-x-7, .border-7 {
   border-left-width: var(--border-7);
 }
 
-.border-s-8, .border-x-8, .border-8 {
+.border-s-8, .last\:border-x-8:last-child, .last\:border-8:last-child, .last\:border-s-8:last-child, .first\:border-x-8:first-child, .first\:border-8:first-child, .first\:border-s-8:first-child, .focus-within\:border-x-8:focus-within, .focus-within\:border-8:focus-within, .focus-within\:border-s-8:focus-within, .read-only\:border-x-8:read-only, .read-only\:border-8:read-only, .read-only\:border-s-8:read-only, .disabled\:border-x-8:disabled, .disabled\:border-8:disabled, .disabled\:border-s-8:disabled, .active\:border-x-8:active, .active\:border-8:active, .active\:border-s-8:active, .focus\:border-x-8:focus, .focus\:border-8:focus, .focus\:border-s-8:focus, .hover\:border-x-8:hover, .hover\:border-8:hover, .hover\:border-s-8:hover, .border-x-8, .border-8 {
   border-left-width: var(--border-8);
 }
 
-@media (max-width: 24rem) {
-  .xxs\:border-t-0, .xxs\:border-y-0, .xxs\:border-0 {
-    border-top-width: 0;
-  }
-  .xxs\:border-t-1, .xxs\:border, .xxs\:border-y-1, .xxs\:border-1 {
-    border-top-width: var(--border-1);
-  }
-  .xxs\:border-t-2, .xxs\:border-y-2, .xxs\:border-2 {
-    border-top-width: var(--border-2);
-  }
-  .xxs\:border-t-3, .xxs\:border-y-3, .xxs\:border-3 {
-    border-top-width: var(--border-3);
-  }
-  .xxs\:border-t-4, .xxs\:border-y-4, .xxs\:border-4 {
-    border-top-width: var(--border-4);
-  }
-  .xxs\:border-t-5, .xxs\:border-y-5, .xxs\:border-5 {
-    border-top-width: var(--border-5);
-  }
-  .xxs\:border-t-6, .xxs\:border-y-6, .xxs\:border-6 {
-    border-top-width: var(--border-6);
-  }
-  .xxs\:border-t-7, .xxs\:border-y-7, .xxs\:border-7 {
-    border-top-width: var(--border-7);
-  }
-  .xxs\:border-t-8, .xxs\:border-y-8, .xxs\:border-8 {
-    border-top-width: var(--border-8);
-  }
-  .xxs\:border-e-0, .xxs\:border-x-0, .xxs\:border-0 {
-    border-right-width: 0;
-  }
-  .xxs\:border-e-1, .xxs\:border, .xxs\:border-x-1, .xxs\:border-1 {
-    border-right-width: var(--border-1);
-  }
-  .xxs\:border-e-2, .xxs\:border-x-2, .xxs\:border-2 {
-    border-right-width: var(--border-2);
-  }
-  .xxs\:border-e-3, .xxs\:border-x-3, .xxs\:border-3 {
-    border-right-width: var(--border-3);
-  }
-  .xxs\:border-e-4, .xxs\:border-x-4, .xxs\:border-4 {
-    border-right-width: var(--border-4);
-  }
-  .xxs\:border-e-5, .xxs\:border-x-5, .xxs\:border-5 {
-    border-right-width: var(--border-5);
-  }
-  .xxs\:border-e-6, .xxs\:border-x-6, .xxs\:border-6 {
-    border-right-width: var(--border-6);
-  }
-  .xxs\:border-e-7, .xxs\:border-x-7, .xxs\:border-7 {
-    border-right-width: var(--border-7);
-  }
-  .xxs\:border-e-8, .xxs\:border-x-8, .xxs\:border-8 {
-    border-right-width: var(--border-8);
-  }
-  .xxs\:border-b-0, .xxs\:border-y-0, .xxs\:border-0 {
-    border-bottom-width: 0;
-  }
-  .xxs\:border-b-1, .xxs\:border, .xxs\:border-y-1, .xxs\:border-1 {
-    border-bottom-width: var(--border-1);
-  }
-  .xxs\:border-b-2, .xxs\:border-y-2, .xxs\:border-2 {
-    border-bottom-width: var(--border-2);
-  }
-  .xxs\:border-b-3, .xxs\:border-y-3, .xxs\:border-3 {
-    border-bottom-width: var(--border-3);
-  }
-  .xxs\:border-b-4, .xxs\:border-y-4, .xxs\:border-4 {
-    border-bottom-width: var(--border-4);
-  }
-  .xxs\:border-b-5, .xxs\:border-y-5, .xxs\:border-5 {
-    border-bottom-width: var(--border-5);
-  }
-  .xxs\:border-b-6, .xxs\:border-y-6, .xxs\:border-6 {
-    border-bottom-width: var(--border-6);
-  }
-  .xxs\:border-b-7, .xxs\:border-y-7, .xxs\:border-7 {
-    border-bottom-width: var(--border-7);
-  }
-  .xxs\:border-b-8, .xxs\:border-y-8, .xxs\:border-8 {
-    border-bottom-width: var(--border-8);
-  }
-  .xxs\:border-s-0, .xxs\:border-x-0, .xxs\:border-0 {
-    border-left-width: 0;
-  }
-  .xxs\:border-s-1, .xxs\:border, .xxs\:border-x-1, .xxs\:border-1 {
-    border-left-width: var(--border-1);
-  }
-  .xxs\:border-s-2, .xxs\:border-x-2, .xxs\:border-2 {
-    border-left-width: var(--border-2);
-  }
-  .xxs\:border-s-3, .xxs\:border-x-3, .xxs\:border-3 {
-    border-left-width: var(--border-3);
-  }
-  .xxs\:border-s-4, .xxs\:border-x-4, .xxs\:border-4 {
-    border-left-width: var(--border-4);
-  }
-  .xxs\:border-s-5, .xxs\:border-x-5, .xxs\:border-5 {
-    border-left-width: var(--border-5);
-  }
-  .xxs\:border-s-6, .xxs\:border-x-6, .xxs\:border-6 {
-    border-left-width: var(--border-6);
-  }
-  .xxs\:border-s-7, .xxs\:border-x-7, .xxs\:border-7 {
-    border-left-width: var(--border-7);
-  }
-  .xxs\:border-s-8, .xxs\:border-x-8, .xxs\:border-8 {
-    border-left-width: var(--border-8);
-  }
+.border-primary, .last\:border-primary:last-child, .first\:border-primary:first-child, .focus-within\:border-primary:focus-within, .read-only\:border-primary:read-only, .disabled\:border-primary:disabled, .active\:border-primary:active, .focus\:border-primary:focus, .hover\:border-primary:hover {
+  border-color: var(--color-primary);
 }
-@media (min-width: 36rem) {
-  .xs\:border-t-0, .xs\:border-y-0, .xs\:border-0 {
-    border-top-width: 0;
-  }
-  .xs\:border-t-1, .xs\:border, .xs\:border-y-1, .xs\:border-1 {
-    border-top-width: var(--border-1);
-  }
-  .xs\:border-t-2, .xs\:border-y-2, .xs\:border-2 {
-    border-top-width: var(--border-2);
-  }
-  .xs\:border-t-3, .xs\:border-y-3, .xs\:border-3 {
-    border-top-width: var(--border-3);
-  }
-  .xs\:border-t-4, .xs\:border-y-4, .xs\:border-4 {
-    border-top-width: var(--border-4);
-  }
-  .xs\:border-t-5, .xs\:border-y-5, .xs\:border-5 {
-    border-top-width: var(--border-5);
-  }
-  .xs\:border-t-6, .xs\:border-y-6, .xs\:border-6 {
-    border-top-width: var(--border-6);
-  }
-  .xs\:border-t-7, .xs\:border-y-7, .xs\:border-7 {
-    border-top-width: var(--border-7);
-  }
-  .xs\:border-t-8, .xs\:border-y-8, .xs\:border-8 {
-    border-top-width: var(--border-8);
-  }
-  .xs\:border-e-0, .xs\:border-x-0, .xs\:border-0 {
-    border-right-width: 0;
-  }
-  .xs\:border-e-1, .xs\:border, .xs\:border-x-1, .xs\:border-1 {
-    border-right-width: var(--border-1);
-  }
-  .xs\:border-e-2, .xs\:border-x-2, .xs\:border-2 {
-    border-right-width: var(--border-2);
-  }
-  .xs\:border-e-3, .xs\:border-x-3, .xs\:border-3 {
-    border-right-width: var(--border-3);
-  }
-  .xs\:border-e-4, .xs\:border-x-4, .xs\:border-4 {
-    border-right-width: var(--border-4);
-  }
-  .xs\:border-e-5, .xs\:border-x-5, .xs\:border-5 {
-    border-right-width: var(--border-5);
-  }
-  .xs\:border-e-6, .xs\:border-x-6, .xs\:border-6 {
-    border-right-width: var(--border-6);
-  }
-  .xs\:border-e-7, .xs\:border-x-7, .xs\:border-7 {
-    border-right-width: var(--border-7);
-  }
-  .xs\:border-e-8, .xs\:border-x-8, .xs\:border-8 {
-    border-right-width: var(--border-8);
-  }
-  .xs\:border-b-0, .xs\:border-y-0, .xs\:border-0 {
-    border-bottom-width: 0;
-  }
-  .xs\:border-b-1, .xs\:border, .xs\:border-y-1, .xs\:border-1 {
-    border-bottom-width: var(--border-1);
-  }
-  .xs\:border-b-2, .xs\:border-y-2, .xs\:border-2 {
-    border-bottom-width: var(--border-2);
-  }
-  .xs\:border-b-3, .xs\:border-y-3, .xs\:border-3 {
-    border-bottom-width: var(--border-3);
-  }
-  .xs\:border-b-4, .xs\:border-y-4, .xs\:border-4 {
-    border-bottom-width: var(--border-4);
-  }
-  .xs\:border-b-5, .xs\:border-y-5, .xs\:border-5 {
-    border-bottom-width: var(--border-5);
-  }
-  .xs\:border-b-6, .xs\:border-y-6, .xs\:border-6 {
-    border-bottom-width: var(--border-6);
-  }
-  .xs\:border-b-7, .xs\:border-y-7, .xs\:border-7 {
-    border-bottom-width: var(--border-7);
-  }
-  .xs\:border-b-8, .xs\:border-y-8, .xs\:border-8 {
-    border-bottom-width: var(--border-8);
-  }
-  .xs\:border-s-0, .xs\:border-x-0, .xs\:border-0 {
-    border-left-width: 0;
-  }
-  .xs\:border-s-1, .xs\:border, .xs\:border-x-1, .xs\:border-1 {
-    border-left-width: var(--border-1);
-  }
-  .xs\:border-s-2, .xs\:border-x-2, .xs\:border-2 {
-    border-left-width: var(--border-2);
-  }
-  .xs\:border-s-3, .xs\:border-x-3, .xs\:border-3 {
-    border-left-width: var(--border-3);
-  }
-  .xs\:border-s-4, .xs\:border-x-4, .xs\:border-4 {
-    border-left-width: var(--border-4);
-  }
-  .xs\:border-s-5, .xs\:border-x-5, .xs\:border-5 {
-    border-left-width: var(--border-5);
-  }
-  .xs\:border-s-6, .xs\:border-x-6, .xs\:border-6 {
-    border-left-width: var(--border-6);
-  }
-  .xs\:border-s-7, .xs\:border-x-7, .xs\:border-7 {
-    border-left-width: var(--border-7);
-  }
-  .xs\:border-s-8, .xs\:border-x-8, .xs\:border-8 {
-    border-left-width: var(--border-8);
-  }
+
+.border-primary-100, .last\:border-primary-100:last-child, .first\:border-primary-100:first-child, .focus-within\:border-primary-100:focus-within, .read-only\:border-primary-100:read-only, .disabled\:border-primary-100:disabled, .active\:border-primary-100:active, .focus\:border-primary-100:focus, .hover\:border-primary-100:hover {
+  border-color: var(--color-primary-100);
 }
-@media (min-width: 48rem) {
-  .sm\:border-t-0, .sm\:border-y-0, .sm\:border-0 {
-    border-top-width: 0;
-  }
-  .sm\:border-t-1, .sm\:border, .sm\:border-y-1, .sm\:border-1 {
-    border-top-width: var(--border-1);
-  }
-  .sm\:border-t-2, .sm\:border-y-2, .sm\:border-2 {
-    border-top-width: var(--border-2);
-  }
-  .sm\:border-t-3, .sm\:border-y-3, .sm\:border-3 {
-    border-top-width: var(--border-3);
-  }
-  .sm\:border-t-4, .sm\:border-y-4, .sm\:border-4 {
-    border-top-width: var(--border-4);
-  }
-  .sm\:border-t-5, .sm\:border-y-5, .sm\:border-5 {
-    border-top-width: var(--border-5);
-  }
-  .sm\:border-t-6, .sm\:border-y-6, .sm\:border-6 {
-    border-top-width: var(--border-6);
-  }
-  .sm\:border-t-7, .sm\:border-y-7, .sm\:border-7 {
-    border-top-width: var(--border-7);
-  }
-  .sm\:border-t-8, .sm\:border-y-8, .sm\:border-8 {
-    border-top-width: var(--border-8);
-  }
-  .sm\:border-e-0, .sm\:border-x-0, .sm\:border-0 {
-    border-right-width: 0;
-  }
-  .sm\:border-e-1, .sm\:border, .sm\:border-x-1, .sm\:border-1 {
-    border-right-width: var(--border-1);
-  }
-  .sm\:border-e-2, .sm\:border-x-2, .sm\:border-2 {
-    border-right-width: var(--border-2);
-  }
-  .sm\:border-e-3, .sm\:border-x-3, .sm\:border-3 {
-    border-right-width: var(--border-3);
-  }
-  .sm\:border-e-4, .sm\:border-x-4, .sm\:border-4 {
-    border-right-width: var(--border-4);
-  }
-  .sm\:border-e-5, .sm\:border-x-5, .sm\:border-5 {
-    border-right-width: var(--border-5);
-  }
-  .sm\:border-e-6, .sm\:border-x-6, .sm\:border-6 {
-    border-right-width: var(--border-6);
-  }
-  .sm\:border-e-7, .sm\:border-x-7, .sm\:border-7 {
-    border-right-width: var(--border-7);
-  }
-  .sm\:border-e-8, .sm\:border-x-8, .sm\:border-8 {
-    border-right-width: var(--border-8);
-  }
-  .sm\:border-b-0, .sm\:border-y-0, .sm\:border-0 {
-    border-bottom-width: 0;
-  }
-  .sm\:border-b-1, .sm\:border, .sm\:border-y-1, .sm\:border-1 {
-    border-bottom-width: var(--border-1);
-  }
-  .sm\:border-b-2, .sm\:border-y-2, .sm\:border-2 {
-    border-bottom-width: var(--border-2);
-  }
-  .sm\:border-b-3, .sm\:border-y-3, .sm\:border-3 {
-    border-bottom-width: var(--border-3);
-  }
-  .sm\:border-b-4, .sm\:border-y-4, .sm\:border-4 {
-    border-bottom-width: var(--border-4);
-  }
-  .sm\:border-b-5, .sm\:border-y-5, .sm\:border-5 {
-    border-bottom-width: var(--border-5);
-  }
-  .sm\:border-b-6, .sm\:border-y-6, .sm\:border-6 {
-    border-bottom-width: var(--border-6);
-  }
-  .sm\:border-b-7, .sm\:border-y-7, .sm\:border-7 {
-    border-bottom-width: var(--border-7);
-  }
-  .sm\:border-b-8, .sm\:border-y-8, .sm\:border-8 {
-    border-bottom-width: var(--border-8);
-  }
-  .sm\:border-s-0, .sm\:border-x-0, .sm\:border-0 {
-    border-left-width: 0;
-  }
-  .sm\:border-s-1, .sm\:border, .sm\:border-x-1, .sm\:border-1 {
-    border-left-width: var(--border-1);
-  }
-  .sm\:border-s-2, .sm\:border-x-2, .sm\:border-2 {
-    border-left-width: var(--border-2);
-  }
-  .sm\:border-s-3, .sm\:border-x-3, .sm\:border-3 {
-    border-left-width: var(--border-3);
-  }
-  .sm\:border-s-4, .sm\:border-x-4, .sm\:border-4 {
-    border-left-width: var(--border-4);
-  }
-  .sm\:border-s-5, .sm\:border-x-5, .sm\:border-5 {
-    border-left-width: var(--border-5);
-  }
-  .sm\:border-s-6, .sm\:border-x-6, .sm\:border-6 {
-    border-left-width: var(--border-6);
-  }
-  .sm\:border-s-7, .sm\:border-x-7, .sm\:border-7 {
-    border-left-width: var(--border-7);
-  }
-  .sm\:border-s-8, .sm\:border-x-8, .sm\:border-8 {
-    border-left-width: var(--border-8);
-  }
+
+.border-primary-200, .last\:border-primary-200:last-child, .first\:border-primary-200:first-child, .focus-within\:border-primary-200:focus-within, .read-only\:border-primary-200:read-only, .disabled\:border-primary-200:disabled, .active\:border-primary-200:active, .focus\:border-primary-200:focus, .hover\:border-primary-200:hover {
+  border-color: var(--color-primary-200);
 }
-@media (min-width: 68rem) {
-  .md\:border-t-0, .md\:border-y-0, .md\:border-0 {
-    border-top-width: 0;
-  }
-  .md\:border-t-1, .md\:border, .md\:border-y-1, .md\:border-1 {
-    border-top-width: var(--border-1);
-  }
-  .md\:border-t-2, .md\:border-y-2, .md\:border-2 {
-    border-top-width: var(--border-2);
-  }
-  .md\:border-t-3, .md\:border-y-3, .md\:border-3 {
-    border-top-width: var(--border-3);
-  }
-  .md\:border-t-4, .md\:border-y-4, .md\:border-4 {
-    border-top-width: var(--border-4);
-  }
-  .md\:border-t-5, .md\:border-y-5, .md\:border-5 {
-    border-top-width: var(--border-5);
-  }
-  .md\:border-t-6, .md\:border-y-6, .md\:border-6 {
-    border-top-width: var(--border-6);
-  }
-  .md\:border-t-7, .md\:border-y-7, .md\:border-7 {
-    border-top-width: var(--border-7);
-  }
-  .md\:border-t-8, .md\:border-y-8, .md\:border-8 {
-    border-top-width: var(--border-8);
-  }
-  .md\:border-e-0, .md\:border-x-0, .md\:border-0 {
-    border-right-width: 0;
-  }
-  .md\:border-e-1, .md\:border, .md\:border-x-1, .md\:border-1 {
-    border-right-width: var(--border-1);
-  }
-  .md\:border-e-2, .md\:border-x-2, .md\:border-2 {
-    border-right-width: var(--border-2);
-  }
-  .md\:border-e-3, .md\:border-x-3, .md\:border-3 {
-    border-right-width: var(--border-3);
-  }
-  .md\:border-e-4, .md\:border-x-4, .md\:border-4 {
-    border-right-width: var(--border-4);
-  }
-  .md\:border-e-5, .md\:border-x-5, .md\:border-5 {
-    border-right-width: var(--border-5);
-  }
-  .md\:border-e-6, .md\:border-x-6, .md\:border-6 {
-    border-right-width: var(--border-6);
-  }
-  .md\:border-e-7, .md\:border-x-7, .md\:border-7 {
-    border-right-width: var(--border-7);
-  }
-  .md\:border-e-8, .md\:border-x-8, .md\:border-8 {
-    border-right-width: var(--border-8);
-  }
-  .md\:border-b-0, .md\:border-y-0, .md\:border-0 {
-    border-bottom-width: 0;
-  }
-  .md\:border-b-1, .md\:border, .md\:border-y-1, .md\:border-1 {
-    border-bottom-width: var(--border-1);
-  }
-  .md\:border-b-2, .md\:border-y-2, .md\:border-2 {
-    border-bottom-width: var(--border-2);
-  }
-  .md\:border-b-3, .md\:border-y-3, .md\:border-3 {
-    border-bottom-width: var(--border-3);
-  }
-  .md\:border-b-4, .md\:border-y-4, .md\:border-4 {
-    border-bottom-width: var(--border-4);
-  }
-  .md\:border-b-5, .md\:border-y-5, .md\:border-5 {
-    border-bottom-width: var(--border-5);
-  }
-  .md\:border-b-6, .md\:border-y-6, .md\:border-6 {
-    border-bottom-width: var(--border-6);
-  }
-  .md\:border-b-7, .md\:border-y-7, .md\:border-7 {
-    border-bottom-width: var(--border-7);
-  }
-  .md\:border-b-8, .md\:border-y-8, .md\:border-8 {
-    border-bottom-width: var(--border-8);
-  }
-  .md\:border-s-0, .md\:border-x-0, .md\:border-0 {
-    border-left-width: 0;
-  }
-  .md\:border-s-1, .md\:border, .md\:border-x-1, .md\:border-1 {
-    border-left-width: var(--border-1);
-  }
-  .md\:border-s-2, .md\:border-x-2, .md\:border-2 {
-    border-left-width: var(--border-2);
-  }
-  .md\:border-s-3, .md\:border-x-3, .md\:border-3 {
-    border-left-width: var(--border-3);
-  }
-  .md\:border-s-4, .md\:border-x-4, .md\:border-4 {
-    border-left-width: var(--border-4);
-  }
-  .md\:border-s-5, .md\:border-x-5, .md\:border-5 {
-    border-left-width: var(--border-5);
-  }
-  .md\:border-s-6, .md\:border-x-6, .md\:border-6 {
-    border-left-width: var(--border-6);
-  }
-  .md\:border-s-7, .md\:border-x-7, .md\:border-7 {
-    border-left-width: var(--border-7);
-  }
-  .md\:border-s-8, .md\:border-x-8, .md\:border-8 {
-    border-left-width: var(--border-8);
-  }
+
+.border-primary-300, .last\:border-primary-300:last-child, .first\:border-primary-300:first-child, .focus-within\:border-primary-300:focus-within, .read-only\:border-primary-300:read-only, .disabled\:border-primary-300:disabled, .active\:border-primary-300:active, .focus\:border-primary-300:focus, .hover\:border-primary-300:hover {
+  border-color: var(--color-primary-300);
 }
-@media (min-width: 90rem) {
-  .lg\:border-t-0, .lg\:border-y-0, .lg\:border-0 {
-    border-top-width: 0;
-  }
-  .lg\:border-t-1, .lg\:border, .lg\:border-y-1, .lg\:border-1 {
-    border-top-width: var(--border-1);
-  }
-  .lg\:border-t-2, .lg\:border-y-2, .lg\:border-2 {
-    border-top-width: var(--border-2);
-  }
-  .lg\:border-t-3, .lg\:border-y-3, .lg\:border-3 {
-    border-top-width: var(--border-3);
-  }
-  .lg\:border-t-4, .lg\:border-y-4, .lg\:border-4 {
-    border-top-width: var(--border-4);
-  }
-  .lg\:border-t-5, .lg\:border-y-5, .lg\:border-5 {
-    border-top-width: var(--border-5);
-  }
-  .lg\:border-t-6, .lg\:border-y-6, .lg\:border-6 {
-    border-top-width: var(--border-6);
-  }
-  .lg\:border-t-7, .lg\:border-y-7, .lg\:border-7 {
-    border-top-width: var(--border-7);
-  }
-  .lg\:border-t-8, .lg\:border-y-8, .lg\:border-8 {
-    border-top-width: var(--border-8);
-  }
-  .lg\:border-e-0, .lg\:border-x-0, .lg\:border-0 {
-    border-right-width: 0;
-  }
-  .lg\:border-e-1, .lg\:border, .lg\:border-x-1, .lg\:border-1 {
-    border-right-width: var(--border-1);
-  }
-  .lg\:border-e-2, .lg\:border-x-2, .lg\:border-2 {
-    border-right-width: var(--border-2);
-  }
-  .lg\:border-e-3, .lg\:border-x-3, .lg\:border-3 {
-    border-right-width: var(--border-3);
-  }
-  .lg\:border-e-4, .lg\:border-x-4, .lg\:border-4 {
-    border-right-width: var(--border-4);
-  }
-  .lg\:border-e-5, .lg\:border-x-5, .lg\:border-5 {
-    border-right-width: var(--border-5);
-  }
-  .lg\:border-e-6, .lg\:border-x-6, .lg\:border-6 {
-    border-right-width: var(--border-6);
-  }
-  .lg\:border-e-7, .lg\:border-x-7, .lg\:border-7 {
-    border-right-width: var(--border-7);
-  }
-  .lg\:border-e-8, .lg\:border-x-8, .lg\:border-8 {
-    border-right-width: var(--border-8);
-  }
-  .lg\:border-b-0, .lg\:border-y-0, .lg\:border-0 {
-    border-bottom-width: 0;
-  }
-  .lg\:border-b-1, .lg\:border, .lg\:border-y-1, .lg\:border-1 {
-    border-bottom-width: var(--border-1);
-  }
-  .lg\:border-b-2, .lg\:border-y-2, .lg\:border-2 {
-    border-bottom-width: var(--border-2);
-  }
-  .lg\:border-b-3, .lg\:border-y-3, .lg\:border-3 {
-    border-bottom-width: var(--border-3);
-  }
-  .lg\:border-b-4, .lg\:border-y-4, .lg\:border-4 {
-    border-bottom-width: var(--border-4);
-  }
-  .lg\:border-b-5, .lg\:border-y-5, .lg\:border-5 {
-    border-bottom-width: var(--border-5);
-  }
-  .lg\:border-b-6, .lg\:border-y-6, .lg\:border-6 {
-    border-bottom-width: var(--border-6);
-  }
-  .lg\:border-b-7, .lg\:border-y-7, .lg\:border-7 {
-    border-bottom-width: var(--border-7);
-  }
-  .lg\:border-b-8, .lg\:border-y-8, .lg\:border-8 {
-    border-bottom-width: var(--border-8);
-  }
-  .lg\:border-s-0, .lg\:border-x-0, .lg\:border-0 {
-    border-left-width: 0;
-  }
-  .lg\:border-s-1, .lg\:border, .lg\:border-x-1, .lg\:border-1 {
-    border-left-width: var(--border-1);
-  }
-  .lg\:border-s-2, .lg\:border-x-2, .lg\:border-2 {
-    border-left-width: var(--border-2);
-  }
-  .lg\:border-s-3, .lg\:border-x-3, .lg\:border-3 {
-    border-left-width: var(--border-3);
-  }
-  .lg\:border-s-4, .lg\:border-x-4, .lg\:border-4 {
-    border-left-width: var(--border-4);
-  }
-  .lg\:border-s-5, .lg\:border-x-5, .lg\:border-5 {
-    border-left-width: var(--border-5);
-  }
-  .lg\:border-s-6, .lg\:border-x-6, .lg\:border-6 {
-    border-left-width: var(--border-6);
-  }
-  .lg\:border-s-7, .lg\:border-x-7, .lg\:border-7 {
-    border-left-width: var(--border-7);
-  }
-  .lg\:border-s-8, .lg\:border-x-8, .lg\:border-8 {
-    border-left-width: var(--border-8);
-  }
+
+.border-primary-400, .last\:border-primary-400:last-child, .first\:border-primary-400:first-child, .focus-within\:border-primary-400:focus-within, .read-only\:border-primary-400:read-only, .disabled\:border-primary-400:disabled, .active\:border-primary-400:active, .focus\:border-primary-400:focus, .hover\:border-primary-400:hover {
+  border-color: var(--color-primary-400);
 }
-@media (min-width: 116rem) {
-  .xl\:border-t-0, .xl\:border-y-0, .xl\:border-0 {
-    border-top-width: 0;
-  }
-  .xl\:border-t-1, .xl\:border, .xl\:border-y-1, .xl\:border-1 {
-    border-top-width: var(--border-1);
-  }
-  .xl\:border-t-2, .xl\:border-y-2, .xl\:border-2 {
-    border-top-width: var(--border-2);
-  }
-  .xl\:border-t-3, .xl\:border-y-3, .xl\:border-3 {
-    border-top-width: var(--border-3);
-  }
-  .xl\:border-t-4, .xl\:border-y-4, .xl\:border-4 {
-    border-top-width: var(--border-4);
-  }
-  .xl\:border-t-5, .xl\:border-y-5, .xl\:border-5 {
-    border-top-width: var(--border-5);
-  }
-  .xl\:border-t-6, .xl\:border-y-6, .xl\:border-6 {
-    border-top-width: var(--border-6);
-  }
-  .xl\:border-t-7, .xl\:border-y-7, .xl\:border-7 {
-    border-top-width: var(--border-7);
-  }
-  .xl\:border-t-8, .xl\:border-y-8, .xl\:border-8 {
-    border-top-width: var(--border-8);
-  }
-  .xl\:border-e-0, .xl\:border-x-0, .xl\:border-0 {
-    border-right-width: 0;
-  }
-  .xl\:border-e-1, .xl\:border, .xl\:border-x-1, .xl\:border-1 {
-    border-right-width: var(--border-1);
-  }
-  .xl\:border-e-2, .xl\:border-x-2, .xl\:border-2 {
-    border-right-width: var(--border-2);
-  }
-  .xl\:border-e-3, .xl\:border-x-3, .xl\:border-3 {
-    border-right-width: var(--border-3);
-  }
-  .xl\:border-e-4, .xl\:border-x-4, .xl\:border-4 {
-    border-right-width: var(--border-4);
-  }
-  .xl\:border-e-5, .xl\:border-x-5, .xl\:border-5 {
-    border-right-width: var(--border-5);
-  }
-  .xl\:border-e-6, .xl\:border-x-6, .xl\:border-6 {
-    border-right-width: var(--border-6);
-  }
-  .xl\:border-e-7, .xl\:border-x-7, .xl\:border-7 {
-    border-right-width: var(--border-7);
-  }
-  .xl\:border-e-8, .xl\:border-x-8, .xl\:border-8 {
-    border-right-width: var(--border-8);
-  }
-  .xl\:border-b-0, .xl\:border-y-0, .xl\:border-0 {
-    border-bottom-width: 0;
-  }
-  .xl\:border-b-1, .xl\:border, .xl\:border-y-1, .xl\:border-1 {
-    border-bottom-width: var(--border-1);
-  }
-  .xl\:border-b-2, .xl\:border-y-2, .xl\:border-2 {
-    border-bottom-width: var(--border-2);
-  }
-  .xl\:border-b-3, .xl\:border-y-3, .xl\:border-3 {
-    border-bottom-width: var(--border-3);
-  }
-  .xl\:border-b-4, .xl\:border-y-4, .xl\:border-4 {
-    border-bottom-width: var(--border-4);
-  }
-  .xl\:border-b-5, .xl\:border-y-5, .xl\:border-5 {
-    border-bottom-width: var(--border-5);
-  }
-  .xl\:border-b-6, .xl\:border-y-6, .xl\:border-6 {
-    border-bottom-width: var(--border-6);
-  }
-  .xl\:border-b-7, .xl\:border-y-7, .xl\:border-7 {
-    border-bottom-width: var(--border-7);
-  }
-  .xl\:border-b-8, .xl\:border-y-8, .xl\:border-8 {
-    border-bottom-width: var(--border-8);
-  }
-  .xl\:border-s-0, .xl\:border-x-0, .xl\:border-0 {
-    border-left-width: 0;
-  }
-  .xl\:border-s-1, .xl\:border, .xl\:border-x-1, .xl\:border-1 {
-    border-left-width: var(--border-1);
-  }
-  .xl\:border-s-2, .xl\:border-x-2, .xl\:border-2 {
-    border-left-width: var(--border-2);
-  }
-  .xl\:border-s-3, .xl\:border-x-3, .xl\:border-3 {
-    border-left-width: var(--border-3);
-  }
-  .xl\:border-s-4, .xl\:border-x-4, .xl\:border-4 {
-    border-left-width: var(--border-4);
-  }
-  .xl\:border-s-5, .xl\:border-x-5, .xl\:border-5 {
-    border-left-width: var(--border-5);
-  }
-  .xl\:border-s-6, .xl\:border-x-6, .xl\:border-6 {
-    border-left-width: var(--border-6);
-  }
-  .xl\:border-s-7, .xl\:border-x-7, .xl\:border-7 {
-    border-left-width: var(--border-7);
-  }
-  .xl\:border-s-8, .xl\:border-x-8, .xl\:border-8 {
-    border-left-width: var(--border-8);
-  }
+
+.border-primary-500, .last\:border-primary-500:last-child, .first\:border-primary-500:first-child, .focus-within\:border-primary-500:focus-within, .read-only\:border-primary-500:read-only, .disabled\:border-primary-500:disabled, .active\:border-primary-500:active, .focus\:border-primary-500:focus, .hover\:border-primary-500:hover {
+  border-color: var(--color-primary-500);
 }
-@media (min-width: 160rem) {
-  .xxl\:border-t-0, .xxl\:border-y-0, .xxl\:border-0 {
-    border-top-width: 0;
-  }
-  .xxl\:border-t-1, .xxl\:border, .xxl\:border-y-1, .xxl\:border-1 {
-    border-top-width: var(--border-1);
-  }
-  .xxl\:border-t-2, .xxl\:border-y-2, .xxl\:border-2 {
-    border-top-width: var(--border-2);
-  }
-  .xxl\:border-t-3, .xxl\:border-y-3, .xxl\:border-3 {
-    border-top-width: var(--border-3);
-  }
-  .xxl\:border-t-4, .xxl\:border-y-4, .xxl\:border-4 {
-    border-top-width: var(--border-4);
-  }
-  .xxl\:border-t-5, .xxl\:border-y-5, .xxl\:border-5 {
-    border-top-width: var(--border-5);
-  }
-  .xxl\:border-t-6, .xxl\:border-y-6, .xxl\:border-6 {
-    border-top-width: var(--border-6);
-  }
-  .xxl\:border-t-7, .xxl\:border-y-7, .xxl\:border-7 {
-    border-top-width: var(--border-7);
-  }
-  .xxl\:border-t-8, .xxl\:border-y-8, .xxl\:border-8 {
-    border-top-width: var(--border-8);
-  }
-  .xxl\:border-e-0, .xxl\:border-x-0, .xxl\:border-0 {
-    border-right-width: 0;
-  }
-  .xxl\:border-e-1, .xxl\:border, .xxl\:border-x-1, .xxl\:border-1 {
-    border-right-width: var(--border-1);
-  }
-  .xxl\:border-e-2, .xxl\:border-x-2, .xxl\:border-2 {
-    border-right-width: var(--border-2);
-  }
-  .xxl\:border-e-3, .xxl\:border-x-3, .xxl\:border-3 {
-    border-right-width: var(--border-3);
-  }
-  .xxl\:border-e-4, .xxl\:border-x-4, .xxl\:border-4 {
-    border-right-width: var(--border-4);
-  }
-  .xxl\:border-e-5, .xxl\:border-x-5, .xxl\:border-5 {
-    border-right-width: var(--border-5);
-  }
-  .xxl\:border-e-6, .xxl\:border-x-6, .xxl\:border-6 {
-    border-right-width: var(--border-6);
-  }
-  .xxl\:border-e-7, .xxl\:border-x-7, .xxl\:border-7 {
-    border-right-width: var(--border-7);
-  }
-  .xxl\:border-e-8, .xxl\:border-x-8, .xxl\:border-8 {
-    border-right-width: var(--border-8);
-  }
-  .xxl\:border-b-0, .xxl\:border-y-0, .xxl\:border-0 {
-    border-bottom-width: 0;
-  }
-  .xxl\:border-b-1, .xxl\:border, .xxl\:border-y-1, .xxl\:border-1 {
-    border-bottom-width: var(--border-1);
-  }
-  .xxl\:border-b-2, .xxl\:border-y-2, .xxl\:border-2 {
-    border-bottom-width: var(--border-2);
-  }
-  .xxl\:border-b-3, .xxl\:border-y-3, .xxl\:border-3 {
-    border-bottom-width: var(--border-3);
-  }
-  .xxl\:border-b-4, .xxl\:border-y-4, .xxl\:border-4 {
-    border-bottom-width: var(--border-4);
-  }
-  .xxl\:border-b-5, .xxl\:border-y-5, .xxl\:border-5 {
-    border-bottom-width: var(--border-5);
-  }
-  .xxl\:border-b-6, .xxl\:border-y-6, .xxl\:border-6 {
-    border-bottom-width: var(--border-6);
-  }
-  .xxl\:border-b-7, .xxl\:border-y-7, .xxl\:border-7 {
-    border-bottom-width: var(--border-7);
-  }
-  .xxl\:border-b-8, .xxl\:border-y-8, .xxl\:border-8 {
-    border-bottom-width: var(--border-8);
-  }
-  .xxl\:border-s-0, .xxl\:border-x-0, .xxl\:border-0 {
-    border-left-width: 0;
-  }
-  .xxl\:border-s-1, .xxl\:border, .xxl\:border-x-1, .xxl\:border-1 {
-    border-left-width: var(--border-1);
-  }
-  .xxl\:border-s-2, .xxl\:border-x-2, .xxl\:border-2 {
-    border-left-width: var(--border-2);
-  }
-  .xxl\:border-s-3, .xxl\:border-x-3, .xxl\:border-3 {
-    border-left-width: var(--border-3);
-  }
-  .xxl\:border-s-4, .xxl\:border-x-4, .xxl\:border-4 {
-    border-left-width: var(--border-4);
-  }
-  .xxl\:border-s-5, .xxl\:border-x-5, .xxl\:border-5 {
-    border-left-width: var(--border-5);
-  }
-  .xxl\:border-s-6, .xxl\:border-x-6, .xxl\:border-6 {
-    border-left-width: var(--border-6);
-  }
-  .xxl\:border-s-7, .xxl\:border-x-7, .xxl\:border-7 {
-    border-left-width: var(--border-7);
-  }
-  .xxl\:border-s-8, .xxl\:border-x-8, .xxl\:border-8 {
-    border-left-width: var(--border-8);
-  }
+
+.border-primary-600, .last\:border-primary-600:last-child, .first\:border-primary-600:first-child, .focus-within\:border-primary-600:focus-within, .read-only\:border-primary-600:read-only, .disabled\:border-primary-600:disabled, .active\:border-primary-600:active, .focus\:border-primary-600:focus, .hover\:border-primary-600:hover {
+  border-color: var(--color-primary-600);
+}
+
+.border-primary-700, .last\:border-primary-700:last-child, .first\:border-primary-700:first-child, .focus-within\:border-primary-700:focus-within, .read-only\:border-primary-700:read-only, .disabled\:border-primary-700:disabled, .active\:border-primary-700:active, .focus\:border-primary-700:focus, .hover\:border-primary-700:hover {
+  border-color: var(--color-primary-700);
+}
+
+.border-primary-800, .last\:border-primary-800:last-child, .first\:border-primary-800:first-child, .focus-within\:border-primary-800:focus-within, .read-only\:border-primary-800:read-only, .disabled\:border-primary-800:disabled, .active\:border-primary-800:active, .focus\:border-primary-800:focus, .hover\:border-primary-800:hover {
+  border-color: var(--color-primary-800);
+}
+
+.border-primary-900, .last\:border-primary-900:last-child, .first\:border-primary-900:first-child, .focus-within\:border-primary-900:focus-within, .read-only\:border-primary-900:read-only, .disabled\:border-primary-900:disabled, .active\:border-primary-900:active, .focus\:border-primary-900:focus, .hover\:border-primary-900:hover {
+  border-color: var(--color-primary-900);
+}
+
+.border-secondary, .last\:border:last-child, .first\:border:first-child, .focus-within\:border:focus-within, .read-only\:border:read-only, .disabled\:border:disabled, .active\:border:active, .focus\:border:focus, .hover\:border:hover, .border, .last\:border-secondary:last-child, .first\:border-secondary:first-child, .focus-within\:border-secondary:focus-within, .read-only\:border-secondary:read-only, .disabled\:border-secondary:disabled, .active\:border-secondary:active, .focus\:border-secondary:focus, .hover\:border-secondary:hover {
+  border-color: var(--color-secondary);
+}
+
+.border-secondary-100, .last\:border-secondary-100:last-child, .first\:border-secondary-100:first-child, .focus-within\:border-secondary-100:focus-within, .read-only\:border-secondary-100:read-only, .disabled\:border-secondary-100:disabled, .active\:border-secondary-100:active, .focus\:border-secondary-100:focus, .hover\:border-secondary-100:hover {
+  border-color: var(--color-secondary-100);
+}
+
+.border-secondary-200, .last\:border-secondary-200:last-child, .first\:border-secondary-200:first-child, .focus-within\:border-secondary-200:focus-within, .read-only\:border-secondary-200:read-only, .disabled\:border-secondary-200:disabled, .active\:border-secondary-200:active, .focus\:border-secondary-200:focus, .hover\:border-secondary-200:hover {
+  border-color: var(--color-secondary-200);
+}
+
+.border-secondary-300, .last\:border-secondary-300:last-child, .first\:border-secondary-300:first-child, .focus-within\:border-secondary-300:focus-within, .read-only\:border-secondary-300:read-only, .disabled\:border-secondary-300:disabled, .active\:border-secondary-300:active, .focus\:border-secondary-300:focus, .hover\:border-secondary-300:hover {
+  border-color: var(--color-secondary-300);
+}
+
+.border-secondary-400, .last\:border-secondary-400:last-child, .first\:border-secondary-400:first-child, .focus-within\:border-secondary-400:focus-within, .read-only\:border-secondary-400:read-only, .disabled\:border-secondary-400:disabled, .active\:border-secondary-400:active, .focus\:border-secondary-400:focus, .hover\:border-secondary-400:hover {
+  border-color: var(--color-secondary-400);
+}
+
+.border-secondary-500, .last\:border-secondary-500:last-child, .first\:border-secondary-500:first-child, .focus-within\:border-secondary-500:focus-within, .read-only\:border-secondary-500:read-only, .disabled\:border-secondary-500:disabled, .active\:border-secondary-500:active, .focus\:border-secondary-500:focus, .hover\:border-secondary-500:hover {
+  border-color: var(--color-secondary-500);
+}
+
+.border-secondary-600, .last\:border-secondary-600:last-child, .first\:border-secondary-600:first-child, .focus-within\:border-secondary-600:focus-within, .read-only\:border-secondary-600:read-only, .disabled\:border-secondary-600:disabled, .active\:border-secondary-600:active, .focus\:border-secondary-600:focus, .hover\:border-secondary-600:hover {
+  border-color: var(--color-secondary-600);
+}
+
+.border-secondary-700, .last\:border-secondary-700:last-child, .first\:border-secondary-700:first-child, .focus-within\:border-secondary-700:focus-within, .read-only\:border-secondary-700:read-only, .disabled\:border-secondary-700:disabled, .active\:border-secondary-700:active, .focus\:border-secondary-700:focus, .hover\:border-secondary-700:hover {
+  border-color: var(--color-secondary-700);
+}
+
+.border-secondary-800, .last\:border-secondary-800:last-child, .first\:border-secondary-800:first-child, .focus-within\:border-secondary-800:focus-within, .read-only\:border-secondary-800:read-only, .disabled\:border-secondary-800:disabled, .active\:border-secondary-800:active, .focus\:border-secondary-800:focus, .hover\:border-secondary-800:hover {
+  border-color: var(--color-secondary-800);
+}
+
+.border-secondary-900, .last\:border-secondary-900:last-child, .first\:border-secondary-900:first-child, .focus-within\:border-secondary-900:focus-within, .read-only\:border-secondary-900:read-only, .disabled\:border-secondary-900:disabled, .active\:border-secondary-900:active, .focus\:border-secondary-900:focus, .hover\:border-secondary-900:hover {
+  border-color: var(--color-secondary-900);
+}
+
+.border-tertiary, .last\:border-tertiary:last-child, .first\:border-tertiary:first-child, .focus-within\:border-tertiary:focus-within, .read-only\:border-tertiary:read-only, .disabled\:border-tertiary:disabled, .active\:border-tertiary:active, .focus\:border-tertiary:focus, .hover\:border-tertiary:hover {
+  border-color: var(--color-tertiary);
+}
+
+.border-tertiary-100, .last\:border-tertiary-100:last-child, .first\:border-tertiary-100:first-child, .focus-within\:border-tertiary-100:focus-within, .read-only\:border-tertiary-100:read-only, .disabled\:border-tertiary-100:disabled, .active\:border-tertiary-100:active, .focus\:border-tertiary-100:focus, .hover\:border-tertiary-100:hover {
+  border-color: var(--color-tertiary-100);
+}
+
+.border-tertiary-200, .last\:border-tertiary-200:last-child, .first\:border-tertiary-200:first-child, .focus-within\:border-tertiary-200:focus-within, .read-only\:border-tertiary-200:read-only, .disabled\:border-tertiary-200:disabled, .active\:border-tertiary-200:active, .focus\:border-tertiary-200:focus, .hover\:border-tertiary-200:hover {
+  border-color: var(--color-tertiary-200);
+}
+
+.border-tertiary-300, .last\:border-tertiary-300:last-child, .first\:border-tertiary-300:first-child, .focus-within\:border-tertiary-300:focus-within, .read-only\:border-tertiary-300:read-only, .disabled\:border-tertiary-300:disabled, .active\:border-tertiary-300:active, .focus\:border-tertiary-300:focus, .hover\:border-tertiary-300:hover {
+  border-color: var(--color-tertiary-300);
+}
+
+.border-tertiary-400, .last\:border-tertiary-400:last-child, .first\:border-tertiary-400:first-child, .focus-within\:border-tertiary-400:focus-within, .read-only\:border-tertiary-400:read-only, .disabled\:border-tertiary-400:disabled, .active\:border-tertiary-400:active, .focus\:border-tertiary-400:focus, .hover\:border-tertiary-400:hover {
+  border-color: var(--color-tertiary-400);
+}
+
+.border-tertiary-500, .last\:border-tertiary-500:last-child, .first\:border-tertiary-500:first-child, .focus-within\:border-tertiary-500:focus-within, .read-only\:border-tertiary-500:read-only, .disabled\:border-tertiary-500:disabled, .active\:border-tertiary-500:active, .focus\:border-tertiary-500:focus, .hover\:border-tertiary-500:hover {
+  border-color: var(--color-tertiary-500);
+}
+
+.border-tertiary-600, .last\:border-tertiary-600:last-child, .first\:border-tertiary-600:first-child, .focus-within\:border-tertiary-600:focus-within, .read-only\:border-tertiary-600:read-only, .disabled\:border-tertiary-600:disabled, .active\:border-tertiary-600:active, .focus\:border-tertiary-600:focus, .hover\:border-tertiary-600:hover {
+  border-color: var(--color-tertiary-600);
+}
+
+.border-tertiary-700, .last\:border-tertiary-700:last-child, .first\:border-tertiary-700:first-child, .focus-within\:border-tertiary-700:focus-within, .read-only\:border-tertiary-700:read-only, .disabled\:border-tertiary-700:disabled, .active\:border-tertiary-700:active, .focus\:border-tertiary-700:focus, .hover\:border-tertiary-700:hover {
+  border-color: var(--color-tertiary-700);
+}
+
+.border-tertiary-800, .last\:border-tertiary-800:last-child, .first\:border-tertiary-800:first-child, .focus-within\:border-tertiary-800:focus-within, .read-only\:border-tertiary-800:read-only, .disabled\:border-tertiary-800:disabled, .active\:border-tertiary-800:active, .focus\:border-tertiary-800:focus, .hover\:border-tertiary-800:hover {
+  border-color: var(--color-tertiary-800);
+}
+
+.border-tertiary-900, .last\:border-tertiary-900:last-child, .first\:border-tertiary-900:first-child, .focus-within\:border-tertiary-900:focus-within, .read-only\:border-tertiary-900:read-only, .disabled\:border-tertiary-900:disabled, .active\:border-tertiary-900:active, .focus\:border-tertiary-900:focus, .hover\:border-tertiary-900:hover {
+  border-color: var(--color-tertiary-900);
+}
+
+.border-info, .last\:border-info:last-child, .first\:border-info:first-child, .focus-within\:border-info:focus-within, .read-only\:border-info:read-only, .disabled\:border-info:disabled, .active\:border-info:active, .focus\:border-info:focus, .hover\:border-info:hover {
+  border-color: var(--color-info);
+}
+
+.border-info-100, .last\:border-info-100:last-child, .first\:border-info-100:first-child, .focus-within\:border-info-100:focus-within, .read-only\:border-info-100:read-only, .disabled\:border-info-100:disabled, .active\:border-info-100:active, .focus\:border-info-100:focus, .hover\:border-info-100:hover {
+  border-color: var(--color-info-100);
+}
+
+.border-info-200, .last\:border-info-200:last-child, .first\:border-info-200:first-child, .focus-within\:border-info-200:focus-within, .read-only\:border-info-200:read-only, .disabled\:border-info-200:disabled, .active\:border-info-200:active, .focus\:border-info-200:focus, .hover\:border-info-200:hover {
+  border-color: var(--color-info-200);
+}
+
+.border-info-300, .last\:border-info-300:last-child, .first\:border-info-300:first-child, .focus-within\:border-info-300:focus-within, .read-only\:border-info-300:read-only, .disabled\:border-info-300:disabled, .active\:border-info-300:active, .focus\:border-info-300:focus, .hover\:border-info-300:hover {
+  border-color: var(--color-info-300);
+}
+
+.border-info-400, .last\:border-info-400:last-child, .first\:border-info-400:first-child, .focus-within\:border-info-400:focus-within, .read-only\:border-info-400:read-only, .disabled\:border-info-400:disabled, .active\:border-info-400:active, .focus\:border-info-400:focus, .hover\:border-info-400:hover {
+  border-color: var(--color-info-400);
+}
+
+.border-info-500, .last\:border-info-500:last-child, .first\:border-info-500:first-child, .focus-within\:border-info-500:focus-within, .read-only\:border-info-500:read-only, .disabled\:border-info-500:disabled, .active\:border-info-500:active, .focus\:border-info-500:focus, .hover\:border-info-500:hover {
+  border-color: var(--color-info-500);
+}
+
+.border-info-600, .last\:border-info-600:last-child, .first\:border-info-600:first-child, .focus-within\:border-info-600:focus-within, .read-only\:border-info-600:read-only, .disabled\:border-info-600:disabled, .active\:border-info-600:active, .focus\:border-info-600:focus, .hover\:border-info-600:hover {
+  border-color: var(--color-info-600);
+}
+
+.border-info-700, .last\:border-info-700:last-child, .first\:border-info-700:first-child, .focus-within\:border-info-700:focus-within, .read-only\:border-info-700:read-only, .disabled\:border-info-700:disabled, .active\:border-info-700:active, .focus\:border-info-700:focus, .hover\:border-info-700:hover {
+  border-color: var(--color-info-700);
+}
+
+.border-info-800, .last\:border-info-800:last-child, .first\:border-info-800:first-child, .focus-within\:border-info-800:focus-within, .read-only\:border-info-800:read-only, .disabled\:border-info-800:disabled, .active\:border-info-800:active, .focus\:border-info-800:focus, .hover\:border-info-800:hover {
+  border-color: var(--color-info-800);
+}
+
+.border-info-900, .last\:border-info-900:last-child, .first\:border-info-900:first-child, .focus-within\:border-info-900:focus-within, .read-only\:border-info-900:read-only, .disabled\:border-info-900:disabled, .active\:border-info-900:active, .focus\:border-info-900:focus, .hover\:border-info-900:hover {
+  border-color: var(--color-info-900);
+}
+
+.border-highlight, .last\:border-highlight:last-child, .first\:border-highlight:first-child, .focus-within\:border-highlight:focus-within, .read-only\:border-highlight:read-only, .disabled\:border-highlight:disabled, .active\:border-highlight:active, .focus\:border-highlight:focus, .hover\:border-highlight:hover {
+  border-color: var(--color-highlight);
+}
+
+.border-highlight-100, .last\:border-highlight-100:last-child, .first\:border-highlight-100:first-child, .focus-within\:border-highlight-100:focus-within, .read-only\:border-highlight-100:read-only, .disabled\:border-highlight-100:disabled, .active\:border-highlight-100:active, .focus\:border-highlight-100:focus, .hover\:border-highlight-100:hover {
+  border-color: var(--color-highlight-100);
+}
+
+.border-highlight-200, .last\:border-highlight-200:last-child, .first\:border-highlight-200:first-child, .focus-within\:border-highlight-200:focus-within, .read-only\:border-highlight-200:read-only, .disabled\:border-highlight-200:disabled, .active\:border-highlight-200:active, .focus\:border-highlight-200:focus, .hover\:border-highlight-200:hover {
+  border-color: var(--color-highlight-200);
+}
+
+.border-highlight-300, .last\:border-highlight-300:last-child, .first\:border-highlight-300:first-child, .focus-within\:border-highlight-300:focus-within, .read-only\:border-highlight-300:read-only, .disabled\:border-highlight-300:disabled, .active\:border-highlight-300:active, .focus\:border-highlight-300:focus, .hover\:border-highlight-300:hover {
+  border-color: var(--color-highlight-300);
+}
+
+.border-highlight-400, .last\:border-highlight-400:last-child, .first\:border-highlight-400:first-child, .focus-within\:border-highlight-400:focus-within, .read-only\:border-highlight-400:read-only, .disabled\:border-highlight-400:disabled, .active\:border-highlight-400:active, .focus\:border-highlight-400:focus, .hover\:border-highlight-400:hover {
+  border-color: var(--color-highlight-400);
+}
+
+.border-highlight-500, .last\:border-highlight-500:last-child, .first\:border-highlight-500:first-child, .focus-within\:border-highlight-500:focus-within, .read-only\:border-highlight-500:read-only, .disabled\:border-highlight-500:disabled, .active\:border-highlight-500:active, .focus\:border-highlight-500:focus, .hover\:border-highlight-500:hover {
+  border-color: var(--color-highlight-500);
+}
+
+.border-highlight-600, .last\:border-highlight-600:last-child, .first\:border-highlight-600:first-child, .focus-within\:border-highlight-600:focus-within, .read-only\:border-highlight-600:read-only, .disabled\:border-highlight-600:disabled, .active\:border-highlight-600:active, .focus\:border-highlight-600:focus, .hover\:border-highlight-600:hover {
+  border-color: var(--color-highlight-600);
+}
+
+.border-highlight-700, .last\:border-highlight-700:last-child, .first\:border-highlight-700:first-child, .focus-within\:border-highlight-700:focus-within, .read-only\:border-highlight-700:read-only, .disabled\:border-highlight-700:disabled, .active\:border-highlight-700:active, .focus\:border-highlight-700:focus, .hover\:border-highlight-700:hover {
+  border-color: var(--color-highlight-700);
+}
+
+.border-highlight-800, .last\:border-highlight-800:last-child, .first\:border-highlight-800:first-child, .focus-within\:border-highlight-800:focus-within, .read-only\:border-highlight-800:read-only, .disabled\:border-highlight-800:disabled, .active\:border-highlight-800:active, .focus\:border-highlight-800:focus, .hover\:border-highlight-800:hover {
+  border-color: var(--color-highlight-800);
+}
+
+.border-highlight-900, .last\:border-highlight-900:last-child, .first\:border-highlight-900:first-child, .focus-within\:border-highlight-900:focus-within, .read-only\:border-highlight-900:read-only, .disabled\:border-highlight-900:disabled, .active\:border-highlight-900:active, .focus\:border-highlight-900:focus, .hover\:border-highlight-900:hover {
+  border-color: var(--color-highlight-900);
+}
+
+.border-success, .last\:border-success:last-child, .first\:border-success:first-child, .focus-within\:border-success:focus-within, .read-only\:border-success:read-only, .disabled\:border-success:disabled, .active\:border-success:active, .focus\:border-success:focus, .hover\:border-success:hover {
+  border-color: var(--color-success);
+}
+
+.border-success-100, .last\:border-success-100:last-child, .first\:border-success-100:first-child, .focus-within\:border-success-100:focus-within, .read-only\:border-success-100:read-only, .disabled\:border-success-100:disabled, .active\:border-success-100:active, .focus\:border-success-100:focus, .hover\:border-success-100:hover {
+  border-color: var(--color-success-100);
+}
+
+.border-success-200, .last\:border-success-200:last-child, .first\:border-success-200:first-child, .focus-within\:border-success-200:focus-within, .read-only\:border-success-200:read-only, .disabled\:border-success-200:disabled, .active\:border-success-200:active, .focus\:border-success-200:focus, .hover\:border-success-200:hover {
+  border-color: var(--color-success-200);
+}
+
+.border-success-300, .last\:border-success-300:last-child, .first\:border-success-300:first-child, .focus-within\:border-success-300:focus-within, .read-only\:border-success-300:read-only, .disabled\:border-success-300:disabled, .active\:border-success-300:active, .focus\:border-success-300:focus, .hover\:border-success-300:hover {
+  border-color: var(--color-success-300);
+}
+
+.border-success-400, .last\:border-success-400:last-child, .first\:border-success-400:first-child, .focus-within\:border-success-400:focus-within, .read-only\:border-success-400:read-only, .disabled\:border-success-400:disabled, .active\:border-success-400:active, .focus\:border-success-400:focus, .hover\:border-success-400:hover {
+  border-color: var(--color-success-400);
+}
+
+.border-success-500, .last\:border-success-500:last-child, .first\:border-success-500:first-child, .focus-within\:border-success-500:focus-within, .read-only\:border-success-500:read-only, .disabled\:border-success-500:disabled, .active\:border-success-500:active, .focus\:border-success-500:focus, .hover\:border-success-500:hover {
+  border-color: var(--color-success-500);
+}
+
+.border-success-600, .last\:border-success-600:last-child, .first\:border-success-600:first-child, .focus-within\:border-success-600:focus-within, .read-only\:border-success-600:read-only, .disabled\:border-success-600:disabled, .active\:border-success-600:active, .focus\:border-success-600:focus, .hover\:border-success-600:hover {
+  border-color: var(--color-success-600);
+}
+
+.border-success-700, .last\:border-success-700:last-child, .first\:border-success-700:first-child, .focus-within\:border-success-700:focus-within, .read-only\:border-success-700:read-only, .disabled\:border-success-700:disabled, .active\:border-success-700:active, .focus\:border-success-700:focus, .hover\:border-success-700:hover {
+  border-color: var(--color-success-700);
+}
+
+.border-success-800, .last\:border-success-800:last-child, .first\:border-success-800:first-child, .focus-within\:border-success-800:focus-within, .read-only\:border-success-800:read-only, .disabled\:border-success-800:disabled, .active\:border-success-800:active, .focus\:border-success-800:focus, .hover\:border-success-800:hover {
+  border-color: var(--color-success-800);
+}
+
+.border-success-900, .last\:border-success-900:last-child, .first\:border-success-900:first-child, .focus-within\:border-success-900:focus-within, .read-only\:border-success-900:read-only, .disabled\:border-success-900:disabled, .active\:border-success-900:active, .focus\:border-success-900:focus, .hover\:border-success-900:hover {
+  border-color: var(--color-success-900);
+}
+
+.border-warning, .last\:border-warning:last-child, .first\:border-warning:first-child, .focus-within\:border-warning:focus-within, .read-only\:border-warning:read-only, .disabled\:border-warning:disabled, .active\:border-warning:active, .focus\:border-warning:focus, .hover\:border-warning:hover {
+  border-color: var(--color-warning);
+}
+
+.border-warning-100, .last\:border-warning-100:last-child, .first\:border-warning-100:first-child, .focus-within\:border-warning-100:focus-within, .read-only\:border-warning-100:read-only, .disabled\:border-warning-100:disabled, .active\:border-warning-100:active, .focus\:border-warning-100:focus, .hover\:border-warning-100:hover {
+  border-color: var(--color-warning-100);
+}
+
+.border-warning-200, .last\:border-warning-200:last-child, .first\:border-warning-200:first-child, .focus-within\:border-warning-200:focus-within, .read-only\:border-warning-200:read-only, .disabled\:border-warning-200:disabled, .active\:border-warning-200:active, .focus\:border-warning-200:focus, .hover\:border-warning-200:hover {
+  border-color: var(--color-warning-200);
+}
+
+.border-warning-300, .last\:border-warning-300:last-child, .first\:border-warning-300:first-child, .focus-within\:border-warning-300:focus-within, .read-only\:border-warning-300:read-only, .disabled\:border-warning-300:disabled, .active\:border-warning-300:active, .focus\:border-warning-300:focus, .hover\:border-warning-300:hover {
+  border-color: var(--color-warning-300);
+}
+
+.border-warning-400, .last\:border-warning-400:last-child, .first\:border-warning-400:first-child, .focus-within\:border-warning-400:focus-within, .read-only\:border-warning-400:read-only, .disabled\:border-warning-400:disabled, .active\:border-warning-400:active, .focus\:border-warning-400:focus, .hover\:border-warning-400:hover {
+  border-color: var(--color-warning-400);
+}
+
+.border-warning-500, .last\:border-warning-500:last-child, .first\:border-warning-500:first-child, .focus-within\:border-warning-500:focus-within, .read-only\:border-warning-500:read-only, .disabled\:border-warning-500:disabled, .active\:border-warning-500:active, .focus\:border-warning-500:focus, .hover\:border-warning-500:hover {
+  border-color: var(--color-warning-500);
+}
+
+.border-warning-600, .last\:border-warning-600:last-child, .first\:border-warning-600:first-child, .focus-within\:border-warning-600:focus-within, .read-only\:border-warning-600:read-only, .disabled\:border-warning-600:disabled, .active\:border-warning-600:active, .focus\:border-warning-600:focus, .hover\:border-warning-600:hover {
+  border-color: var(--color-warning-600);
+}
+
+.border-warning-700, .last\:border-warning-700:last-child, .first\:border-warning-700:first-child, .focus-within\:border-warning-700:focus-within, .read-only\:border-warning-700:read-only, .disabled\:border-warning-700:disabled, .active\:border-warning-700:active, .focus\:border-warning-700:focus, .hover\:border-warning-700:hover {
+  border-color: var(--color-warning-700);
+}
+
+.border-warning-800, .last\:border-warning-800:last-child, .first\:border-warning-800:first-child, .focus-within\:border-warning-800:focus-within, .read-only\:border-warning-800:read-only, .disabled\:border-warning-800:disabled, .active\:border-warning-800:active, .focus\:border-warning-800:focus, .hover\:border-warning-800:hover {
+  border-color: var(--color-warning-800);
+}
+
+.border-warning-900, .last\:border-warning-900:last-child, .first\:border-warning-900:first-child, .focus-within\:border-warning-900:focus-within, .read-only\:border-warning-900:read-only, .disabled\:border-warning-900:disabled, .active\:border-warning-900:active, .focus\:border-warning-900:focus, .hover\:border-warning-900:hover {
+  border-color: var(--color-warning-900);
+}
+
+.border-alert, .last\:border-alert:last-child, .first\:border-alert:first-child, .focus-within\:border-alert:focus-within, .read-only\:border-alert:read-only, .disabled\:border-alert:disabled, .active\:border-alert:active, .focus\:border-alert:focus, .hover\:border-alert:hover {
+  border-color: var(--color-alert);
+}
+
+.border-alert-100, .last\:border-alert-100:last-child, .first\:border-alert-100:first-child, .focus-within\:border-alert-100:focus-within, .read-only\:border-alert-100:read-only, .disabled\:border-alert-100:disabled, .active\:border-alert-100:active, .focus\:border-alert-100:focus, .hover\:border-alert-100:hover {
+  border-color: var(--color-alert-100);
+}
+
+.border-alert-200, .last\:border-alert-200:last-child, .first\:border-alert-200:first-child, .focus-within\:border-alert-200:focus-within, .read-only\:border-alert-200:read-only, .disabled\:border-alert-200:disabled, .active\:border-alert-200:active, .focus\:border-alert-200:focus, .hover\:border-alert-200:hover {
+  border-color: var(--color-alert-200);
+}
+
+.border-alert-300, .last\:border-alert-300:last-child, .first\:border-alert-300:first-child, .focus-within\:border-alert-300:focus-within, .read-only\:border-alert-300:read-only, .disabled\:border-alert-300:disabled, .active\:border-alert-300:active, .focus\:border-alert-300:focus, .hover\:border-alert-300:hover {
+  border-color: var(--color-alert-300);
+}
+
+.border-alert-400, .last\:border-alert-400:last-child, .first\:border-alert-400:first-child, .focus-within\:border-alert-400:focus-within, .read-only\:border-alert-400:read-only, .disabled\:border-alert-400:disabled, .active\:border-alert-400:active, .focus\:border-alert-400:focus, .hover\:border-alert-400:hover {
+  border-color: var(--color-alert-400);
+}
+
+.border-alert-500, .last\:border-alert-500:last-child, .first\:border-alert-500:first-child, .focus-within\:border-alert-500:focus-within, .read-only\:border-alert-500:read-only, .disabled\:border-alert-500:disabled, .active\:border-alert-500:active, .focus\:border-alert-500:focus, .hover\:border-alert-500:hover {
+  border-color: var(--color-alert-500);
+}
+
+.border-alert-600, .last\:border-alert-600:last-child, .first\:border-alert-600:first-child, .focus-within\:border-alert-600:focus-within, .read-only\:border-alert-600:read-only, .disabled\:border-alert-600:disabled, .active\:border-alert-600:active, .focus\:border-alert-600:focus, .hover\:border-alert-600:hover {
+  border-color: var(--color-alert-600);
+}
+
+.border-alert-700, .last\:border-alert-700:last-child, .first\:border-alert-700:first-child, .focus-within\:border-alert-700:focus-within, .read-only\:border-alert-700:read-only, .disabled\:border-alert-700:disabled, .active\:border-alert-700:active, .focus\:border-alert-700:focus, .hover\:border-alert-700:hover {
+  border-color: var(--color-alert-700);
+}
+
+.border-alert-800, .last\:border-alert-800:last-child, .first\:border-alert-800:first-child, .focus-within\:border-alert-800:focus-within, .read-only\:border-alert-800:read-only, .disabled\:border-alert-800:disabled, .active\:border-alert-800:active, .focus\:border-alert-800:focus, .hover\:border-alert-800:hover {
+  border-color: var(--color-alert-800);
+}
+
+.border-alert-900, .last\:border-alert-900:last-child, .first\:border-alert-900:first-child, .focus-within\:border-alert-900:focus-within, .read-only\:border-alert-900:read-only, .disabled\:border-alert-900:disabled, .active\:border-alert-900:active, .focus\:border-alert-900:focus, .hover\:border-alert-900:hover {
+  border-color: var(--color-alert-900);
+}
+
+.border-danger, .last\:border-danger:last-child, .first\:border-danger:first-child, .focus-within\:border-danger:focus-within, .read-only\:border-danger:read-only, .disabled\:border-danger:disabled, .active\:border-danger:active, .focus\:border-danger:focus, .hover\:border-danger:hover {
+  border-color: var(--color-danger);
+}
+
+.border-danger-100, .last\:border-danger-100:last-child, .first\:border-danger-100:first-child, .focus-within\:border-danger-100:focus-within, .read-only\:border-danger-100:read-only, .disabled\:border-danger-100:disabled, .active\:border-danger-100:active, .focus\:border-danger-100:focus, .hover\:border-danger-100:hover {
+  border-color: var(--color-danger-100);
+}
+
+.border-danger-200, .last\:border-danger-200:last-child, .first\:border-danger-200:first-child, .focus-within\:border-danger-200:focus-within, .read-only\:border-danger-200:read-only, .disabled\:border-danger-200:disabled, .active\:border-danger-200:active, .focus\:border-danger-200:focus, .hover\:border-danger-200:hover {
+  border-color: var(--color-danger-200);
+}
+
+.border-danger-300, .last\:border-danger-300:last-child, .first\:border-danger-300:first-child, .focus-within\:border-danger-300:focus-within, .read-only\:border-danger-300:read-only, .disabled\:border-danger-300:disabled, .active\:border-danger-300:active, .focus\:border-danger-300:focus, .hover\:border-danger-300:hover {
+  border-color: var(--color-danger-300);
+}
+
+.border-danger-400, .last\:border-danger-400:last-child, .first\:border-danger-400:first-child, .focus-within\:border-danger-400:focus-within, .read-only\:border-danger-400:read-only, .disabled\:border-danger-400:disabled, .active\:border-danger-400:active, .focus\:border-danger-400:focus, .hover\:border-danger-400:hover {
+  border-color: var(--color-danger-400);
+}
+
+.border-danger-500, .last\:border-danger-500:last-child, .first\:border-danger-500:first-child, .focus-within\:border-danger-500:focus-within, .read-only\:border-danger-500:read-only, .disabled\:border-danger-500:disabled, .active\:border-danger-500:active, .focus\:border-danger-500:focus, .hover\:border-danger-500:hover {
+  border-color: var(--color-danger-500);
+}
+
+.border-danger-600, .last\:border-danger-600:last-child, .first\:border-danger-600:first-child, .focus-within\:border-danger-600:focus-within, .read-only\:border-danger-600:read-only, .disabled\:border-danger-600:disabled, .active\:border-danger-600:active, .focus\:border-danger-600:focus, .hover\:border-danger-600:hover {
+  border-color: var(--color-danger-600);
+}
+
+.border-danger-700, .last\:border-danger-700:last-child, .first\:border-danger-700:first-child, .focus-within\:border-danger-700:focus-within, .read-only\:border-danger-700:read-only, .disabled\:border-danger-700:disabled, .active\:border-danger-700:active, .focus\:border-danger-700:focus, .hover\:border-danger-700:hover {
+  border-color: var(--color-danger-700);
+}
+
+.border-danger-800, .last\:border-danger-800:last-child, .first\:border-danger-800:first-child, .focus-within\:border-danger-800:focus-within, .read-only\:border-danger-800:read-only, .disabled\:border-danger-800:disabled, .active\:border-danger-800:active, .focus\:border-danger-800:focus, .hover\:border-danger-800:hover {
+  border-color: var(--color-danger-800);
+}
+
+.border-danger-900, .last\:border-danger-900:last-child, .first\:border-danger-900:first-child, .focus-within\:border-danger-900:focus-within, .read-only\:border-danger-900:read-only, .disabled\:border-danger-900:disabled, .active\:border-danger-900:active, .focus\:border-danger-900:focus, .hover\:border-danger-900:hover {
+  border-color: var(--color-danger-900);
+}
+
+.border-light, .last\:border-light:last-child, .first\:border-light:first-child, .focus-within\:border-light:focus-within, .read-only\:border-light:read-only, .disabled\:border-light:disabled, .active\:border-light:active, .focus\:border-light:focus, .hover\:border-light:hover {
+  border-color: var(--color-light);
+}
+
+.border-light-100, .last\:border-light-100:last-child, .first\:border-light-100:first-child, .focus-within\:border-light-100:focus-within, .read-only\:border-light-100:read-only, .disabled\:border-light-100:disabled, .active\:border-light-100:active, .focus\:border-light-100:focus, .hover\:border-light-100:hover {
+  border-color: var(--color-light-100);
+}
+
+.border-light-200, .last\:border-light-200:last-child, .first\:border-light-200:first-child, .focus-within\:border-light-200:focus-within, .read-only\:border-light-200:read-only, .disabled\:border-light-200:disabled, .active\:border-light-200:active, .focus\:border-light-200:focus, .hover\:border-light-200:hover {
+  border-color: var(--color-light-200);
+}
+
+.border-light-300, .last\:border-light-300:last-child, .first\:border-light-300:first-child, .focus-within\:border-light-300:focus-within, .read-only\:border-light-300:read-only, .disabled\:border-light-300:disabled, .active\:border-light-300:active, .focus\:border-light-300:focus, .hover\:border-light-300:hover {
+  border-color: var(--color-light-300);
+}
+
+.border-light-400, .last\:border-light-400:last-child, .first\:border-light-400:first-child, .focus-within\:border-light-400:focus-within, .read-only\:border-light-400:read-only, .disabled\:border-light-400:disabled, .active\:border-light-400:active, .focus\:border-light-400:focus, .hover\:border-light-400:hover {
+  border-color: var(--color-light-400);
+}
+
+.border-light-500, .last\:border-light-500:last-child, .first\:border-light-500:first-child, .focus-within\:border-light-500:focus-within, .read-only\:border-light-500:read-only, .disabled\:border-light-500:disabled, .active\:border-light-500:active, .focus\:border-light-500:focus, .hover\:border-light-500:hover {
+  border-color: var(--color-light-500);
+}
+
+.border-light-600, .last\:border-light-600:last-child, .first\:border-light-600:first-child, .focus-within\:border-light-600:focus-within, .read-only\:border-light-600:read-only, .disabled\:border-light-600:disabled, .active\:border-light-600:active, .focus\:border-light-600:focus, .hover\:border-light-600:hover {
+  border-color: var(--color-light-600);
+}
+
+.border-light-700, .last\:border-light-700:last-child, .first\:border-light-700:first-child, .focus-within\:border-light-700:focus-within, .read-only\:border-light-700:read-only, .disabled\:border-light-700:disabled, .active\:border-light-700:active, .focus\:border-light-700:focus, .hover\:border-light-700:hover {
+  border-color: var(--color-light-700);
+}
+
+.border-light-800, .last\:border-light-800:last-child, .first\:border-light-800:first-child, .focus-within\:border-light-800:focus-within, .read-only\:border-light-800:read-only, .disabled\:border-light-800:disabled, .active\:border-light-800:active, .focus\:border-light-800:focus, .hover\:border-light-800:hover {
+  border-color: var(--color-light-800);
+}
+
+.border-light-900, .last\:border-light-900:last-child, .first\:border-light-900:first-child, .focus-within\:border-light-900:focus-within, .read-only\:border-light-900:read-only, .disabled\:border-light-900:disabled, .active\:border-light-900:active, .focus\:border-light-900:focus, .hover\:border-light-900:hover {
+  border-color: var(--color-light-900);
+}
+
+.border-dark, .last\:border-dark:last-child, .first\:border-dark:first-child, .focus-within\:border-dark:focus-within, .read-only\:border-dark:read-only, .disabled\:border-dark:disabled, .active\:border-dark:active, .focus\:border-dark:focus, .hover\:border-dark:hover {
+  border-color: var(--color-dark);
+}
+
+.border-dark-100, .last\:border-dark-100:last-child, .first\:border-dark-100:first-child, .focus-within\:border-dark-100:focus-within, .read-only\:border-dark-100:read-only, .disabled\:border-dark-100:disabled, .active\:border-dark-100:active, .focus\:border-dark-100:focus, .hover\:border-dark-100:hover {
+  border-color: var(--color-dark-100);
+}
+
+.border-dark-200, .last\:border-dark-200:last-child, .first\:border-dark-200:first-child, .focus-within\:border-dark-200:focus-within, .read-only\:border-dark-200:read-only, .disabled\:border-dark-200:disabled, .active\:border-dark-200:active, .focus\:border-dark-200:focus, .hover\:border-dark-200:hover {
+  border-color: var(--color-dark-200);
+}
+
+.border-dark-300, .last\:border-dark-300:last-child, .first\:border-dark-300:first-child, .focus-within\:border-dark-300:focus-within, .read-only\:border-dark-300:read-only, .disabled\:border-dark-300:disabled, .active\:border-dark-300:active, .focus\:border-dark-300:focus, .hover\:border-dark-300:hover {
+  border-color: var(--color-dark-300);
+}
+
+.border-dark-400, .last\:border-dark-400:last-child, .first\:border-dark-400:first-child, .focus-within\:border-dark-400:focus-within, .read-only\:border-dark-400:read-only, .disabled\:border-dark-400:disabled, .active\:border-dark-400:active, .focus\:border-dark-400:focus, .hover\:border-dark-400:hover {
+  border-color: var(--color-dark-400);
+}
+
+.border-dark-500, .last\:border-dark-500:last-child, .first\:border-dark-500:first-child, .focus-within\:border-dark-500:focus-within, .read-only\:border-dark-500:read-only, .disabled\:border-dark-500:disabled, .active\:border-dark-500:active, .focus\:border-dark-500:focus, .hover\:border-dark-500:hover {
+  border-color: var(--color-dark-500);
+}
+
+.border-dark-600, .last\:border-dark-600:last-child, .first\:border-dark-600:first-child, .focus-within\:border-dark-600:focus-within, .read-only\:border-dark-600:read-only, .disabled\:border-dark-600:disabled, .active\:border-dark-600:active, .focus\:border-dark-600:focus, .hover\:border-dark-600:hover {
+  border-color: var(--color-dark-600);
+}
+
+.border-dark-700, .last\:border-dark-700:last-child, .first\:border-dark-700:first-child, .focus-within\:border-dark-700:focus-within, .read-only\:border-dark-700:read-only, .disabled\:border-dark-700:disabled, .active\:border-dark-700:active, .focus\:border-dark-700:focus, .hover\:border-dark-700:hover {
+  border-color: var(--color-dark-700);
+}
+
+.border-dark-800, .last\:border-dark-800:last-child, .first\:border-dark-800:first-child, .focus-within\:border-dark-800:focus-within, .read-only\:border-dark-800:read-only, .disabled\:border-dark-800:disabled, .active\:border-dark-800:active, .focus\:border-dark-800:focus, .hover\:border-dark-800:hover {
+  border-color: var(--color-dark-800);
+}
+
+.border-dark-900, .last\:border-dark-900:last-child, .first\:border-dark-900:first-child, .focus-within\:border-dark-900:focus-within, .read-only\:border-dark-900:read-only, .disabled\:border-dark-900:disabled, .active\:border-dark-900:active, .focus\:border-dark-900:focus, .hover\:border-dark-900:hover {
+  border-color: var(--color-dark-900);
+}
+
+.border-solid, .last\:border:last-child, .first\:border:first-child, .focus-within\:border:focus-within, .read-only\:border:read-only, .disabled\:border:disabled, .active\:border:active, .focus\:border:focus, .hover\:border:hover, .border, .last\:border-solid:last-child, .first\:border-solid:first-child, .focus-within\:border-solid:focus-within, .read-only\:border-solid:read-only, .disabled\:border-solid:disabled, .active\:border-solid:active, .focus\:border-solid:focus, .hover\:border-solid:hover {
+  border-style: solid;
+}
+
+.border-dashed, .last\:border-dashed:last-child, .first\:border-dashed:first-child, .focus-within\:border-dashed:focus-within, .read-only\:border-dashed:read-only, .disabled\:border-dashed:disabled, .active\:border-dashed:active, .focus\:border-dashed:focus, .hover\:border-dashed:hover {
+  border-style: dashed;
+}
+
+.border-dotted, .last\:border-dotted:last-child, .first\:border-dotted:first-child, .focus-within\:border-dotted:focus-within, .read-only\:border-dotted:read-only, .disabled\:border-dotted:disabled, .active\:border-dotted:active, .focus\:border-dotted:focus, .hover\:border-dotted:hover {
+  border-style: dotted;
+}
+
+.border-double, .last\:border-double:last-child, .first\:border-double:first-child, .focus-within\:border-double:focus-within, .read-only\:border-double:read-only, .disabled\:border-double:disabled, .active\:border-double:active, .focus\:border-double:focus, .hover\:border-double:hover {
+  border-style: double;
+}
+
+.border-groove, .last\:border-groove:last-child, .first\:border-groove:first-child, .focus-within\:border-groove:focus-within, .read-only\:border-groove:read-only, .disabled\:border-groove:disabled, .active\:border-groove:active, .focus\:border-groove:focus, .hover\:border-groove:hover {
+  border-style: groove;
+}
+
+.border-ridge, .last\:border-ridge:last-child, .first\:border-ridge:first-child, .focus-within\:border-ridge:focus-within, .read-only\:border-ridge:read-only, .disabled\:border-ridge:disabled, .active\:border-ridge:active, .focus\:border-ridge:focus, .hover\:border-ridge:hover {
+  border-style: ridge;
+}
+
+.border-inset, .last\:border-inset:last-child, .first\:border-inset:first-child, .focus-within\:border-inset:focus-within, .read-only\:border-inset:read-only, .disabled\:border-inset:disabled, .active\:border-inset:active, .focus\:border-inset:focus, .hover\:border-inset:hover {
+  border-style: inset;
+}
+
+.border-outset, .last\:border-outset:last-child, .first\:border-outset:first-child, .focus-within\:border-outset:focus-within, .read-only\:border-outset:read-only, .disabled\:border-outset:disabled, .active\:border-outset:active, .focus\:border-outset:focus, .hover\:border-outset:hover {
+  border-style: outset;
 }
 
 /*# sourceMappingURL=main.css.map */

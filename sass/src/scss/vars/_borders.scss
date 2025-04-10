@@ -49,3 +49,26 @@ $border-sides: (
     b: bottom,
     s: left,
 );
+
+$border-states: (
+  hover: hover,
+  focus: focus,
+  active: active,
+  disabled: disabled,
+  read-only: read-only,
+  focus-within: focus-within,
+  first: first-child,
+  last: last-child
+);
+
+$border-styles: (
+  solid: solid,
+  dashed: dashed,
+  dotted: dotted,
+  double: double,
+  groove: groove,
+  ridge: ridge,
+  inset: inset,
+  outset: outset
+);
+

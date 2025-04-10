@@ -9,7 +9,7 @@
   }
 }
 
-@mixin generate-borders-sizes() {
+@mixin generate-borders() {
 
     $sizes: (0: 0);
     $sizes: map.merge($sizes, $var-borders);
@@ -32,34 +32,85 @@
                     @extend .border-#{$key}-#{$size};
                 }
             }
+            @each $s-name, $state in $border-states {
+                .#{$s-name}\:border-#{$key}-#{$size}:#{$state} {
+                    @extend .border-#{$key}-#{$size};
+                }
+                .#{$s-name}\:border-#{$size}:#{$state} {
+                    @extend .border-#{$key}-#{$size};
+                }
+                @if ($key == s or $key == e) {
+                    .#{$s-name}\:border-x-#{$size}:#{$state} {
+                        @extend .border-#{$key}-#{$size};
+                    }
+                }
+                @else {
+                    .#{$s-name}\:border-y-#{$size}:#{$state} {
+                        @extend .border-#{$key}-#{$size};
+                    }
+                }
+            }
         }
         .border {
             @extend .border-#{$key}-1;
         }
+        @each $s-name, $state in $border-states {
+            .#{$s-name}\:border:#{$state} {
+                @extend .border-#{$key}-1;
+            }
+        }
     }
-    @include media-breakpoints() using($breakpoint) {
-        @each $key, $variant in $border-sides {
-            @each $size, $value in $sizes {
-                .#{$breakpoint}\:border-#{$key}-#{$size} {
-                    border-#{$variant}-width: #{$value};
-                }
-                .#{$breakpoint}\:border-#{$size} {
-                    @extend .#{$breakpoint}\:border-#{$key}-#{$size};
-                }
-                @if ($key == s or $key == e) {
-                    .#{$breakpoint}\:border-x-#{$size} {
-                        @extend .#{$breakpoint}\:border-#{$key}-#{$size};
-                    }
-                }
-                @else {
-                    .#{$breakpoint}\:border-y-#{$size} {
-                        @extend .#{$breakpoint}\:border-#{$key}-#{$size};
-                    }
+    // cores
+    @each $color-name, $scale in $var-colors-scales {
+        // Criando a classe principal border-{color} (ex: border-primary → border-primary-500)
+        .border-#{$color-name} {
+            border-color: map.get($var-colors, $color-name);
+        }
+        @each $s-name, $state in $border-states {
+            .#{$s-name}\:border-#{$color-name}:#{$state} {
+                @extend .border-#{$color-name};
+            }
+        }
+        // Criando classes border-{color}-{step} (ex: border-primary-100, border-primary-900)
+        @each $step, $color in $scale {
+            .border-#{$color-name}-#{$step} {
+                border-color: $color;
+            }
+            @each $s-name, $state in $border-states {
+                .#{$s-name}\:border-#{$color-name}-#{$step}:#{$state} {
+                    @extend .border-#{$color-name}-#{$step};
                 }
             }
-            .#{$breakpoint}\:border {
-                @extend .#{$breakpoint}\:border-#{$key}-1;
+        }
+    }
+
+    .border {
+        @extend .border-secondary;
+    }
+    @each $s-name, $state in $border-states {
+        .#{$s-name}\:border:#{$state} {
+            @extend .border-secondary;
+        }
+    }
+
+    // styles
+    @each $key, $style in $border-styles {
+        .border-#{$key} {
+            border-style: #{$style};
+        }
+        @each $s-name, $state in $border-states {
+            .#{$s-name}\:border-#{$key}:#{$state} {
+                @extend .border-#{$key};
             }
+        }
+    }
+
+    .border {
+        @extend .border-solid
+    }
+    @each $s-name, $state in $border-states {
+        .#{$s-name}\:border:#{$state} {
+            @extend .border-solid;
         }
     }
 }

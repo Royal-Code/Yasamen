@@ -150,3 +150,16 @@ $color-scales: generate-color-scale();
 
 $var-colors: generate-css-color-variables();
 $var-colors-scales: generate-css-color-scales-variables();
+
+$colors-states: (
+  hover: hover,
+  focus: focus,
+  active: active,
+  disabled: disabled,
+  read-only: read-only,
+  focus-within: focus-within,
+  first: first-child,
+  last: last-child,
+  odd: nth-child(odd),
+  even: nth-child(even),
+);

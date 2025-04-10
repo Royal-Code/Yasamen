@@ -13,19 +13,6 @@
   }
 }
 
-$states: (
-  hover: hover,
-  focus: focus,
-  active: active,
-  disabled: disabled,
-  read-only: read-only,
-  focus-within: focus-within,
-  first: first-child,
-  last: last-child,
-  odd: nth-child(odd),
-  even: nth-child(even),
-);
-
 // Mixin para gerar classes de background color
 @mixin generate-bg-classes() {
   @each $color-name, $scale in $var-colors-scales {
@@ -33,7 +20,7 @@ $states: (
     .bg-#{$color-name} {
       background-color: map.get($var-colors, $color-name);
     }
-    @each $s-name, $state in $states {
+    @each $s-name, $state in $colors-states {
       .#{$s-name}\:bg-#{$color-name}:#{$state} {
         @extend .bg-#{$color-name};
       }
@@ -44,7 +31,7 @@ $states: (
       .bg-#{$color-name}-#{$step} {
         background-color: $color;
       }
-      @each $s-name, $state in $states {
+      @each $s-name, $state in $colors-states {
         .#{$s-name}\:bg-#{$color-name}-#{$step}:#{$state} {
           @extend .bg-#{$color-name}-#{$step};
         }
@@ -74,7 +61,7 @@ $states: (
     .text-#{$color-name} {
       color: map.get($var-colors, $color-name);
     }
-    @each $s-name, $state in $states {
+    @each $s-name, $state in $colors-states {
       .#{$s-name}\:text-#{$color-name}:#{$state} {
         @extend .text-#{$color-name};
       }
@@ -84,7 +71,7 @@ $states: (
       .text-#{$color-name}-#{$step} {
         color: $color;
       }
-      @each $s-name, $state in $states {
+      @each $s-name, $state in $colors-states {
         .#{$s-name}\:text-#{$color-name}-#{$step}:#{$state} {
           @extend .text-#{$color-name}-#{$step};
         }
