@@ -9337,6 +9337,111 @@
     padding-left: var(--space-12);
   }
 }
+.m-auto {
+  margin: auto;
+}
+
+.m-x-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.m-y-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+@media (max-width: 24rem) {
+  .xxs\:.m-auto {
+    margin: auto;
+  }
+  .xxs\:.m-x-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .xxs\:.m-y-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+@media (min-width: 36rem) {
+  .xs\:.m-auto {
+    margin: auto;
+  }
+  .xs\:.m-x-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .xs\:.m-y-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+@media (min-width: 48rem) {
+  .sm\:.m-auto {
+    margin: auto;
+  }
+  .sm\:.m-x-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .sm\:.m-y-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+@media (min-width: 68rem) {
+  .md\:.m-auto {
+    margin: auto;
+  }
+  .md\:.m-x-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .md\:.m-y-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+@media (min-width: 90rem) {
+  .lg\:.m-auto {
+    margin: auto;
+  }
+  .lg\:.m-x-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .lg\:.m-y-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+@media (min-width: 116rem) {
+  .xl\:.m-auto {
+    margin: auto;
+  }
+  .xl\:.m-x-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .xl\:.m-y-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+@media (min-width: 160rem) {
+  .xxl\:.m-auto {
+    margin: auto;
+  }
+  .xxl\:.m-x-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .xxl\:.m-y-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
 .border-t-0, .last\:border-y-0:last-child, .last\:border-0:last-child, .last\:border-t-0:last-child, .first\:border-y-0:first-child, .first\:border-0:first-child, .first\:border-t-0:first-child, .focus-within\:border-y-0:focus-within, .focus-within\:border-0:focus-within, .focus-within\:border-t-0:focus-within, .read-only\:border-y-0:read-only, .read-only\:border-0:read-only, .read-only\:border-t-0:read-only, .disabled\:border-y-0:disabled, .disabled\:border-0:disabled, .disabled\:border-t-0:disabled, .active\:border-y-0:active, .active\:border-0:active, .active\:border-t-0:active, .focus\:border-y-0:focus, .focus\:border-0:focus, .focus\:border-t-0:focus, .hover\:border-y-0:hover, .hover\:border-0:hover, .hover\:border-t-0:hover, .border-y-0, .border-0 {
   border-top-width: 0;
 }

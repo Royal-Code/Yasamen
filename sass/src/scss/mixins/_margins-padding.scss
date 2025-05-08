@@ -47,4 +47,28 @@
             }
         }
     }
+    .m-auto {
+        margin: auto;
+    }
+    .m-x-auto {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .m-y-auto {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    @include media-breakpoints() using($breakpoint) {
+        .#{$breakpoint}\:.m-auto {
+            margin: auto;
+        }
+        .#{$breakpoint}\:.m-x-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .#{$breakpoint}\:.m-y-auto {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+    }
 }

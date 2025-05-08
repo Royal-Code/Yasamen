@@ -58,6 +58,13 @@
             flex-wrap: wrap;
             width: 100%;
         }
+
+        .demo-margins {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -724,20 +731,6 @@
         </div>
     </section>
     <section>
-        <h2>Buttons</h2>
-        <button class="btn-primary">Primary Button</button>
-        <button class="btn-secondary">Secondary Button</button>
-    </section>
-    <section>
-        <h2>Grid</h2>
-        <div class="grid-container">
-            <div class="grid-item">Item 1</div>
-            <div class="grid-item">Item 2</div>
-            <div class="grid-item">Item 3</div>
-            <div class="grid-item">Item 4</div>
-        </div>
-    </section>
-    <section>
         <h2>Background</h2>
         <div class="demo-colors">
             <div class="w-1/3">
@@ -974,6 +967,136 @@
                 <br />
                 hover:bg-dark-900 hover:text-dark-100
             </div>
+        </div>
+    </section>
+    <section>
+        <h2>Margin & Padding</h2>
+        <p>Estes são os tamanhos disponíveis</p>
+        <p> m-{n} onde n vai de 0 até 12 </p>
+        <p> p-{n} onde n vai de 0 até 12 </p>
+        <p>Estas são as variações</p>
+        <p> m-{t|r|b|l}-{n} onde n vai de 0 até 12 </p>
+        <p> p-{t|r|b|l}-{n} onde n vai de 0 até 12 </p>
+        <p> m-{x|y}-{n} onde n vai de 0 até 12 </p>
+        <p> p-{x|y}-{n} onde n vai de 0 até 12 </p>
+        <p> m-auto m-x-auto m-y-auto</p>
+        <p>Estes são os filtros de mídia disponíveis</p>
+        <p> {media}:m-{n} {media}:m-{variant}-{n} onde media pode ser sm, md, lg, xl, xxl e n vai de 0 até 12 </p>
+        <p> {media}:p-{n} {media}:p-{variant}-{n} onde media pode ser sm, md, lg, xl, xxl e n vai de 0 até 12 </p>
+        <p> {media}:m-auto {media}:m-x-auto {media}:m-y-auto</p>
+        <h3>Margins</h3>
+        <div class="demo-margins pink-100">
+            <div class="pink-300">
+                <div class="m-0 pink-200">m-0</div>
+            </div>
+            <div class="pink-300">
+                <div class="m-1 pink-200">m-1</div>
+            </div>
+            <div class="pink-300">
+                <div class="m-2 pink-200">m-2</div>
+            </div>
+            <div class="pink-300">
+                <div class="m-3 pink-200">m-3</div>
+            </div>
+            <div class="pink-300">
+                <div class="m-4 pink-200">m-4</div>
+            </div>
+            <div class="pink-300">
+                <div class="m-5 pink-200">m-5</div>
+            </div>
+            <div class="pink-300">
+                <div class="m-6 pink-200">m-6</div>
+            </div>
+            <div class="pink-300">
+                <div class="m-7 pink-200">m-7</div>
+            </div>
+            <div class="pink-300">
+                <div class="m-8 pink-200">m-8</div>
+            </div>
+            <div class="pink-300">
+                <div class="m-9 pink-200">m-9</div>
+            </div>
+            <div class="pink-300">
+                <div class="m-10 pink-200">m-10</div>
+            </div>
+            <div class="pink-300">
+                <div class="m-11 pink-200">m-11</div>
+            </div>
+            <div class="pink-300">
+                <div class="m-12 pink-200">m-12</div>
+            </div>
+            <div class="pink-300 w-full h-12">
+                <div class="m-auto pink-200">
+                    <div class="w-12 h-6 pink-400">m-auto</div>
+                </div>
+            </div>
+        </div>
+        <h3>Paddings</h3>
+        <div class="demo-margins pink-100">
+            <div class="pink-300 p-0">
+                <div class="pink-200">p-0</div>
+            </div>
+            <div class="pink-300 p-1">
+                <div class="pink-200">p-1</div>
+            </div>
+            <div class="pink-300 p-2">
+                <div class="pink-200">p-2</div>
+            </div>
+            <div class="pink-300 p-3">
+                <div class="pink-200">p-3</div>
+            </div>
+            <div class="pink-300 p-4">
+                <div class="pink-200">p-4</div>
+            </div>
+            <div class="pink-300 p-5">
+                <div class="pink-200">p-5</div>
+            </div>
+            <div class="pink-300 p-6">
+                <div class="pink-200">p-6</div>
+            </div>
+            <div class="pink-300 p-7">
+                <div class="pink-200">p-7</div>
+            </div>
+            <div class="pink-300 p-8">
+                <div class="pink-200">p-8</div>
+            </div>
+            <div class="pink-300 p-9">
+                <div class="pink-200">p-9</div>
+            </div>
+            <div class="pink-300 p-10">
+                <div class="pink-200">p-10</div>
+            </div>
+            <div class="pink-300 p-11">
+                <div class="pink-200">p-11</div>
+            </div>
+            <div class="pink-300 p-12">
+                <div class="pink-200">p-12</div>
+            </div>
+    </section>
+    <section>
+        <h2>Border</h2>
+        <p>Estes são os tamanhos disponíveis</p>
+        <p> border-{n} onde n vai de 0 até 8 </p>
+        <p>Estas são as variações</p>
+        <p> border-{t|r|b|l}-{n} onde n vai de 0 até 8 </p>
+        <p> border-{x|y}-{n} onde n vai de 0 até 8 </p>
+        <p> border-{color} onde color pode ser primary, secondary, tertiary, info, highlight, success, warning, alert, danger, light e dark</p>
+        <p> border-{color}-{n} onde n vai de 100 até 900</p>
+        <p>Estas os estados</p>
+        <p> {state}:border-{variant}-{n} onde state pode ser hover, focus, active, disabled, read-only, focus-within, first-child e last-child</p>
+        <p> {state}:border-{color} onde state pode ser hover, focus, active, disabled, read-only, focus-within, first-child e last-child</p>
+        <p>Estes são os estilos</p>
+        <p> border-{style} onde style pode ser solid, dashed, dotted, double, groove, ridge, inset e outset</p>
+        <h3>Border sizes</h3>
+        <div class="demo-borders">
+            <div class="border">border</div>
+            <div class="border-0">border-0</div>
+            <div class="border-1">border-1</div>
+            <div class="border-2">border-2</div>
+            <div class="border-3">border-3</div>
+            <div class="border-4">border-4</div>
+            
+
         </div>
     </section>
 </main>
