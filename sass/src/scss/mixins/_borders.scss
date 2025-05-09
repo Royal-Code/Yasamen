@@ -14,52 +14,6 @@
     $sizes: (0: 0);
     $sizes: map.merge($sizes, $var-borders);
 
-    @each $key, $variant in $border-sides {
-        @each $size, $value in $sizes {
-            .border-#{$key}-#{$size} {
-                border-#{$variant}-width: #{$value};
-            }
-            .border-#{$size} {
-                @extend .border-#{$key}-#{$size};
-            }
-            @if ($key == s or $key == e) {
-                .border-x-#{$size} {
-                    @extend .border-#{$key}-#{$size};
-                }
-            }
-            @else {
-                .border-y-#{$size} {
-                    @extend .border-#{$key}-#{$size};
-                }
-            }
-            @each $s-name, $state in $border-states {
-                .#{$s-name}\:border-#{$key}-#{$size}:#{$state} {
-                    @extend .border-#{$key}-#{$size};
-                }
-                .#{$s-name}\:border-#{$size}:#{$state} {
-                    @extend .border-#{$key}-#{$size};
-                }
-                @if ($key == s or $key == e) {
-                    .#{$s-name}\:border-x-#{$size}:#{$state} {
-                        @extend .border-#{$key}-#{$size};
-                    }
-                }
-                @else {
-                    .#{$s-name}\:border-y-#{$size}:#{$state} {
-                        @extend .border-#{$key}-#{$size};
-                    }
-                }
-            }
-        }
-        .border {
-            @extend .border-#{$key}-1;
-        }
-        @each $s-name, $state in $border-states {
-            .#{$s-name}\:border:#{$state} {
-                @extend .border-#{$key}-1;
-            }
-        }
-    }
     // cores
     @each $color-name, $scale in $var-colors-scales {
         // Criando a classe principal border-{color} (ex: border-primary → border-primary-500)
@@ -113,4 +67,52 @@
             @extend .border-solid;
         }
     }
+    
+    @each $key, $variant in $border-sides {
+        @each $size, $value in $sizes {
+            .border-#{$key}-#{$size} {
+                border-#{$variant}-width: #{$value};
+            }
+            .border-#{$size} {
+                @extend .border-#{$key}-#{$size};
+            }
+            @if ($key == s or $key == e) {
+                .border-x-#{$size} {
+                    @extend .border-#{$key}-#{$size};
+                }
+            }
+            @else {
+                .border-y-#{$size} {
+                    @extend .border-#{$key}-#{$size};
+                }
+            }
+            @each $s-name, $state in $border-states {
+                .#{$s-name}\:border-#{$key}-#{$size}:#{$state} {
+                    @extend .border-#{$key}-#{$size};
+                }
+                .#{$s-name}\:border-#{$size}:#{$state} {
+                    @extend .border-#{$key}-#{$size};
+                }
+                @if ($key == s or $key == e) {
+                    .#{$s-name}\:border-x-#{$size}:#{$state} {
+                        @extend .border-#{$key}-#{$size};
+                    }
+                }
+                @else {
+                    .#{$s-name}\:border-y-#{$size}:#{$state} {
+                        @extend .border-#{$key}-#{$size};
+                    }
+                }
+            }
+        }
+        .border {
+            @extend .border-#{$key}-1;
+        }
+        @each $s-name, $state in $border-states {
+            .#{$s-name}\:border:#{$state} {
+                @extend .border-#{$key}-1;
+            }
+        }
+    }
+    
 }
