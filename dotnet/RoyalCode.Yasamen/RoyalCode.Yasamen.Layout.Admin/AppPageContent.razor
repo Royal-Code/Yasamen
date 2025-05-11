@@ -19,7 +19,7 @@
 @code {
     private static readonly CssMap<AppPageContent> panelClasses = Css.Map<AppPageContent>()
         .Add("app-page-content")
-        .Add(static a => a.PanelBorder.CssClasses)
+        .Add(static a => a.PanelBorder)
         .Add(static a => a.PanelAdditionalClasses)
         .Build();
 
@@ -30,15 +30,15 @@
 
     private static readonly CssMap<AppPageContent> headerClasses = Css.Map<AppPageContent>()
         .Add("app-page-content-header d-flex justify-content-between px-2 m-2")
-        .Add(static a => a.HeaderBorder.CssClasses)
+        .Add(static a => a.HeaderBorder)
         .Add(static a => a.HeaderAdditionalClasses)
         .Build();
 
     [Parameter]
-    public Borders PanelBorder { get; set; } = AppDefaults.PageContentPanelBorder;
+    public BorderClasses PanelBorder { get; set; } = AppDefaults.PageContentPanelBorder;
 
     [Parameter]
-    public Borders HeaderBorder { get; set; } = AppDefaults.PageContentHeaderBorder;
+    public BorderClasses HeaderBorder { get; set; } = AppDefaults.PageContentHeaderBorder;
 
     [Parameter]
     public string? PanelAdditionalClasses { get; set; }

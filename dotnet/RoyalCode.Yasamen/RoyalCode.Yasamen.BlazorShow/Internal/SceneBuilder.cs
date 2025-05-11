@@ -33,7 +33,7 @@ public class SceneBuilder<TComponent> : ISceneBuilder<TComponent>
         return this;
     }
 
-    public ISceneBuilder<TComponent> Align(Align align)
+    public ISceneBuilder<TComponent> Align(TextAlign align)
     {
         scene.Align = align;
         return this;

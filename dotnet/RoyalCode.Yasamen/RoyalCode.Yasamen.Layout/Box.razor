@@ -6,11 +6,11 @@
 
 @code {
 
-    private string Classes => "d-flex"
+    private string Classes => Layouts.Flex.ToCssClass()
         .AddClass(Border)
         .AddClass(MinHeight.ToAbbrCssClass())
-        .AddClass(Align.ToItemsCssClass())
-        .AddClass(Justify.ToContentCssClass())
+        .AddClass(Align.ToCssClass())
+        .AddClass(Justify.ToCssClass())
         .AddClass(Style.ToCssClass())
         .AddClass(AdditionalClasses);
 }

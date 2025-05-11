@@ -2,5 +2,10 @@
   "dependencies": {
     "@tailwindcss/cli": "^4.1.6",
     "tailwindcss": "^4.1.6"
+  },
+  "scripts": {
+    "build:css": "bunx @tailwindcss/cli -i ./wwwroot/yasamen.css -o ./wwwroot/yasamen.dist.css",
+    "build:css:min": "bunx @tailwindcss/cli -i ./wwwroot/yasamen.css -o ./wwwroot/yasamen.min.css --minify",
+    "watch:css": "bunx @tailwindcss/cli -i ./wwwroot/yasamen.css -o ./wwwroot/yasamen.dist.css --watch"
   }
 }

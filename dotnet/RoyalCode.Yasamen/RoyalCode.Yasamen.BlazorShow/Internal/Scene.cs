@@ -22,7 +22,7 @@ public class Scene<TComponent> : IScene<TComponent>
     
     public string? Description { get; set; }
     
-    public Align Align { get; set; } = Align.Center;
+    public TextAlign Align { get; set; } = TextAlign.Middle;
 
     public IShowDescription Show { get; }
     

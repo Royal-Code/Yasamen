@@ -22,7 +22,7 @@ public class WorkingAlertShow : IShow<WorkingAlert>
             .AddScene(s =>
             {
                 s.Default()
-                    .Align(Align.Start)
+                    .Align(TextAlign.Top)
                     .Properties(ps =>
                     {
                         ps.Property(p => p.Text).DefaultValue("Your request is being processed.");

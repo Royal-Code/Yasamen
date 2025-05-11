@@ -15,10 +15,10 @@ public partial class Box : YasamenBase
     public Sizes MinHeight { get; set; }
 
     [Parameter]
-    public Align Align { get; set; } = Align.Center;
+    public ItemAlign Align { get; set; } = ItemAlign.Center;
 
     [Parameter]
-    public Justify Justify { get; set; } = Justify.Start;
+    public ContentJustify Justify { get; set; } = ContentJustify.Start;
 
     [Parameter]
     public BoxStyles Style { get; set; }

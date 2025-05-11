@@ -36,7 +36,7 @@
 @code {
     private SceneContext? context;
 
-    private string AlignClass => (Scene?.Align ?? Align.Center).ToTextCssClass();
+    private string AlignClass => (Scene?.Align ?? TextAlign.Middle).ToCssClass();
 
     [Parameter, EditorRequired]
     public IScene Scene { get; set; }

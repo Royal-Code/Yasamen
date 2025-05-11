@@ -12,7 +12,7 @@ public interface ISceneBuilder<TComponent>
 
     ISceneBuilder<TComponent> Description(string description);
 
-    ISceneBuilder<TComponent> Align(Align align);
+    ISceneBuilder<TComponent> Align(TextAlign align);
 
     ISceneBuilder<TComponent> RenderInFrame(Action<FrameOptions>? configure = null);
 

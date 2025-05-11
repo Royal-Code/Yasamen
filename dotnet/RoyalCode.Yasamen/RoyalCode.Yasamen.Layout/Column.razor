@@ -10,7 +10,7 @@
 
 @code {
     private static readonly CssMap<Column> classes = Css.Map<Column>()
-        .Add(static c => c.Align.ToSelfCssClass())
+        .Add(static c => c.Align.ToCssClass())
         .Add(static c => c.AdditionalClasses)
         .Add(static c => c.ContainerContext?.Resize is false, "defined-size")
         .Build();
@@ -25,7 +25,7 @@
     public string? AdditionalClasses { get; set; }
 
     [Parameter]
-    public Align Align { get; set; }
+    public SelfAlign Align { get; set; }
 
     [Parameter]
     public RenderFragment? ChildContent { get; set; }

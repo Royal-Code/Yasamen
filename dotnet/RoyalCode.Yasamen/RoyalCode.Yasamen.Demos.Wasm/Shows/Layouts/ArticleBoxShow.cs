@@ -31,9 +31,9 @@ public class ArticleBoxShow : IShow<ArticleBox>
                     ps.Property(p => p.FooterContent)
                         .RenderComponent<RawText>(d => d.Property(r => r.Text).SetValue("Footer content"));
 
-                    ps.Property(b => b.ArticleBorder).DefaultValue(Borders.DefaultNone);
-                    ps.Property(b => b.HeaderBorder).DefaultValue(Borders.DefaultForHeaders with { Shadow = Shadows.Small });
-                    ps.Property(b => b.FooterBorder).DefaultValue(Borders.DefaultForFooters);
+                    ps.Property(b => b.ArticleBorder).DefaultValue(Css.Border.None());
+                    ps.Property(b => b.HeaderBorder).DefaultValue(Css.Border.HeaderWithShadow());
+                    ps.Property(b => b.FooterBorder).DefaultValue(Css.Border.Footer());
 
                     ps.Property(b => b.HeaderAdditionalClasses).DefaultValue(new List<string>() { "p-3", "mb-4" });
                     ps.Property(b => b.FooterAdditionalClasses).DefaultValue(new List<string>() { "p-3", "mt-4" });

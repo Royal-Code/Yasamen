@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<Import Project="..\version.targets" />
 
@@ -6,4 +6,9 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(WasmVer)" />
 	</ItemGroup>
 
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+		<Exec Command="bun run build:css" />
+		<Exec Command="bun run build:css:min" />
+	</Target>
+	
 </Project>

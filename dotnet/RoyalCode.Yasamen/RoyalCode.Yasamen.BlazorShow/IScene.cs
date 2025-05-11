@@ -12,7 +12,7 @@ public interface IScene
 
     string? Description { get; }
 
-    Align Align { get; }
+    TextAlign Align { get; }
 
     ShowRenderKind? RenderKind { get; set; }
 

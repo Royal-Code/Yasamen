@@ -10,8 +10,8 @@
 @code {
     private static readonly CssMap<Container> classes = Css.Map<Container>()
         .Add("layout-container")
-        .Add(static c => c.Align.ToItemsCssClass())
-        .Add(static c => c.Justify.ToContentCssClass())
+        .Add(static c => c.Align.ToCssClass())
+        .Add(static c => c.Justify.ToCssClass())
         .Add(static c => c.AdditionalClasses)
         .Build();
 
@@ -31,10 +31,10 @@
     public bool Resize { get; set; } = true;
 
     [Parameter]
-    public Align Align { get; set; }
+    public ItemAlign Align { get; set; }
 
     [Parameter]
-    public Justify Justify { get; set; }
+    public ContentJustify Justify { get; set; }
 
     [Parameter]
     public string? AdditionalClasses { get; set; }

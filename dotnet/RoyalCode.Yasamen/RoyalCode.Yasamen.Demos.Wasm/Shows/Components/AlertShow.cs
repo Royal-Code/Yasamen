@@ -27,7 +27,7 @@ public class AlertShow : IShow<Alert>
             .AddScene(s =>
             {
                 s.Default()
-                    .Align(Align.Start)
+                    .Align(TextAlign.Top)
                     .Properties(ps =>
                     {
                         ps.Property(p => p.Text).DefaultValue("This is a simple alert.");
@@ -37,7 +37,7 @@ public class AlertShow : IShow<Alert>
             .AddScene(s =>
             {
                 s.Name("With Title")
-                    .Align(Align.Start)
+                    .Align(TextAlign.Top)
                     .Properties(ps =>
                     {
                         ps.Property(p => p.Text).DefaultValue("This is a simple alert.");
@@ -47,7 +47,7 @@ public class AlertShow : IShow<Alert>
             .AddScene(s =>
             {
                 s.Name("Custom content")
-                    .Align(Align.Start)
+                    .Align(TextAlign.Top)
                     .Properties(ps =>
                     {
                         ps.Property(p => p.Title).DefaultValue(string.Empty);
