@@ -13,15 +13,15 @@ interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = (
-    {
-        label,
-        theme = Themes.Primary,
-        size = Sizes.Medium,
-        outline = false,
-        onClick,
-        disabled = false,
-        className = ''
-    }) => {
+{
+    label,
+    theme = Themes.Primary,
+    size = Sizes.Medium,
+    outline = false,
+    onClick,
+    disabled = false,
+    className = ''
+}) => {
 
     const themeClass = outline ? ThemeClasses.Button.Outline[theme] : ThemeClasses.Button[theme];
     const sizeClass = ThemeClasses.Button.Sizes[size];
