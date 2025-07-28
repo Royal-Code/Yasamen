@@ -27,12 +27,13 @@ const Button: React.FC<ButtonProps> = (
     const sizeClass = ThemeClasses.Button.Sizes[size];
     const baseClass = ThemeClasses.Button.Base;
     const disabledClass = disabled ? ThemeClasses.Button.Disabled : '';
+    const classes = [className, themeClass, sizeClass, baseClass, disabledClass].filter(Boolean).join(' ');
     
     return (
         <button
             onClick={onClick}
             disabled={disabled}
-            className={`${className} ${themeClass} ${baseClass} ${sizeClass} ${disabledClass}`}
+            className={classes}
         >
             {label}
         </button>

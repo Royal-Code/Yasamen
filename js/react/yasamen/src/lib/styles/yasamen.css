@@ -112,3 +112,22 @@
   --color-dark-800: #221f24;
   --color-dark-900: #1a181c;
 }
+
+.btn {
+  @apply 'rounded border transition duration-200 ease-in-out';
+  &:readonly {
+    @apply 'opacity-50 cursor-not-allowed';
+  }
+  &:disabled {
+    @apply 'opacity-50 cursor-not-allowed';
+  }
+}
+.btn-primary {
+  @apply 'bg-color-primary text-white border-color-primary';
+  &:hover {
+    @apply 'bg-color-primary-600 border-color-primary-600';
+  }
+  &:active {
+    @apply 'bg-color-primary-700 border-color-primary-700';
+  }
+}
