@@ -1,0 +1,16 @@
+{
+  "dependencies": {},
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.11",
+    "gulp": "^5.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "tailwindcss": "^4.1.11"
+  },
+  "scripts": {
+    "build:tw:css": "bunx @tailwindcss/cli -i ./wwwroot/yasamen.css -o ./wwwroot/yasamen.dist.css",
+    "build:tw:css:min": "bunx @tailwindcss/cli -i ./wwwroot/yasamen.css -o ./wwwroot/yasamen.min.css --minify",
+    "watch:css": "bunx @tailwindcss/cli -i ./wwwroot/yasamen.css -o ./wwwroot/yasamen.dist.css --watch",
+    "bundle:css": "bunx gulp bundle-css"
+  }
+}

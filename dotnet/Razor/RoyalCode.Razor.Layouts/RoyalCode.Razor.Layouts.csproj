@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<Import Project="..\pack.targets" />
 
@@ -14,10 +14,12 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(AspNetVer)" />
 	</ItemGroup>
 
-	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-		<Exec Command="bun run build:tw:css" />
-		<Exec Command="bun run build:tw:css:min" />
-		<Exec Command="bun run bundle:css" />
-	</Target>
+	<ItemGroup>
+	  <ProjectReference Include="..\RoyalCode.Razor.Commons\RoyalCode.Razor.Commons.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="wwwroot\" />
+	</ItemGroup>
 
 </Project>

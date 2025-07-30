@@ -14,10 +14,12 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(AspNetVer)" />
 	</ItemGroup>
 
-	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-		<Exec Command="bun run build:tw:css" />
-		<Exec Command="bun run build:tw:css:min" />
-		<Exec Command="bun run bundle:css" />
-	</Target>
+	<ItemGroup>
+	  <Folder Include="wwwroot\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\RoyalCode.Razor.Styles\RoyalCode.Razor.Styles.csproj" />
+	</ItemGroup>
 
 </Project>
