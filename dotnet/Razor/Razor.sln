@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{58AC2173-5D68-4A43-8F25-F0E9A3284E45}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CECD2B3A-8036-4A1C-B9E1-E74E6E8691E2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Commons", "Commons", "{C3833F36-F30D-4E1B-9097-21E555ECD539}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Razor.Styles", "RoyalCode.Razor.Styles\RoyalCode.Razor.Styles.csproj", "{71E3CEF4-9446-4FAD-B80A-65B97F47DDB0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".items", ".items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		icon.png = icon.png
+		pack.targets = pack.targets
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71E3CEF4-9446-4FAD-B80A-65B97F47DDB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71E3CEF4-9446-4FAD-B80A-65B97F47DDB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71E3CEF4-9446-4FAD-B80A-65B97F47DDB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71E3CEF4-9446-4FAD-B80A-65B97F47DDB0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C3833F36-F30D-4E1B-9097-21E555ECD539} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{71E3CEF4-9446-4FAD-B80A-65B97F47DDB0} = {C3833F36-F30D-4E1B-9097-21E555ECD539}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A8E24AFE-4B8F-4D0B-BB8C-FD23CE44D40C}
+	EndGlobalSection
+EndGlobal

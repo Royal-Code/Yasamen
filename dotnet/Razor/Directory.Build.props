@@ -1,0 +1,19 @@
+<Project>
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<RuntimeVer>net9.0</RuntimeVer>
+	</PropertyGroup>
+	<PropertyGroup>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
+	<PropertyGroup>
+		<LibVer>0.0.0.1</LibVer>
+		<LibPrev></LibPrev>
+	</PropertyGroup>
+	<PropertyGroup>
+		<AspNetVer>9.0.7</AspNetVer>
+		<ExtVer>9.0.0</ExtVer>
+	</PropertyGroup>
+</Project>

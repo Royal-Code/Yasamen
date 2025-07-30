@@ -1,0 +1,24 @@
+<Project>
+	<PropertyGroup>
+		<DocumentationFile Condition="'$(Configuration)' != 'Release'">$(BaseOutputPath)/$(Configuration)/$(TargetFramework)/$(AssemblyName).xml</DocumentationFile>
+		<DocumentationFile Condition="'$(Configuration)' == 'Release'">bin/Release/$(TargetFramework)/$(AssemblyName).xml</DocumentationFile>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Authors>Royal Code</Authors>
+		<Copyright>Royal Code Copyright © $([System.DateTime]::UtcNow.ToString("yyyy"))</Copyright>
+		<RepositoryUrl>https://github.com/Royal-Code/Yasamen</RepositoryUrl>
+		<RepositoryType>Git</RepositoryType>
+		<Configurations>Debug;Release</Configurations>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageLicenseExpression>AGPL-3.0-only</PackageLicenseExpression>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+	<PropertyGroup>
+		<Version>$(LibVer)</Version>
+		<AssemblyVersion>$(LibVer)</AssemblyVersion>
+		<FileVersion>$(LibVer)</FileVersion>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Include="../icon.png" Pack="true" PackagePath="/"/>
+		<None Include="../README.md" Pack="true" PackagePath="/"/>
+	</ItemGroup>
+</Project>
