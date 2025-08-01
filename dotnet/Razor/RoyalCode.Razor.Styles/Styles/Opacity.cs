@@ -33,4 +33,22 @@ public static class OpacityExtensions
             _ => throw new ArgumentOutOfRangeException(nameof(opacity), opacity, null)
         };
     }
+
+    public static string ToBackdropCssClass(this Opacity opacity)
+    {
+        return opacity switch
+        {
+            Opacity.Default => string.Empty,
+            Opacity.Ten => "backdrop-opacity-10",
+            Opacity.Twenty => "backdrop-opacity-20",
+            Opacity.TwentyFive => "backdrop-opacity-25",
+            Opacity.Fifty => "backdrop-opacity-50",
+            Opacity.SeventyFive => "backdrop-opacity-75",
+            Opacity.Eighty => "backdrop-opacity-80",
+            Opacity.Ninety => "backdrop-opacity-90",
+            Opacity.None => "backdrop-opacity-100",
+            Opacity.Full => "backdrop-opacity-0",
+            _ => throw new ArgumentOutOfRangeException(nameof(opacity), opacity, null)
+        };
+    }
 }

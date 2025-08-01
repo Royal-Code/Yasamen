@@ -2,13 +2,15 @@
 
 public enum Layouts
 {
-    Flex,
-    Grid,
-    Block,
     Inline,
-    InlineFlex,
-    InlineGrid,
+    Block,
     InlineBlock,
+    FlowRoot,
+    Flex,
+    InlineFlex,
+    Grid,
+    InlineGrid,
+    Hidden
 }
 
 public static class LayoutsExtensions
@@ -17,13 +19,15 @@ public static class LayoutsExtensions
     {
         return layout switch
         {
-            Layouts.Flex => "flex",
-            Layouts.Grid => "grid",
-            Layouts.Block => "block",
             Layouts.Inline => "inline",
-            Layouts.InlineFlex => "inline-flex",
-            Layouts.InlineGrid => "inline-grid",
+            Layouts.Block => "block",
             Layouts.InlineBlock => "inline-block",
+            Layouts.FlowRoot => "flow-root",
+            Layouts.Flex => "flex",
+            Layouts.InlineFlex => "inline-flex",
+            Layouts.Grid => "grid",
+            Layouts.InlineGrid => "inline-grid",
+            Layouts.Hidden => "hidden",
             _ => throw new NotSupportedException()
         };
     }

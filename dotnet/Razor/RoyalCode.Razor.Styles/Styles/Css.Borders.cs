@@ -299,7 +299,7 @@ public readonly struct BorderBuilder
         yield return style.ToCssClass();
         yield return round.ToCssClass();
         yield return radius.ToCssClass();
-        yield return shadow.ToCssClass();
+        yield return shadow.ToBoxCssClass();
     }
 }
 
@@ -882,6 +882,56 @@ public readonly struct BorderShadowsBuilder
     public BorderBuilder Nine()
     {
         return builder.With(Shadows.Nine);
+    }
+
+    public BorderBuilder Ten()
+    {
+        return builder.With(Shadows.Ten);
+    }
+
+    public BorderBuilder Eleven()
+    {
+        return builder.With(Shadows.Eleven);
+    }
+
+    public BorderBuilder Twelve()
+    {
+        return builder.With(Shadows.Twelve);
+    }
+
+    public BorderBuilder Smallest()
+    {
+        return builder.With(Shadows.Smallest);
+    }
+
+    public BorderBuilder Smaller()
+    {
+        return builder.With(Shadows.Smaller);
+    }
+
+    public BorderBuilder Small()
+    {
+        return builder.With(Shadows.Small);
+    }
+
+    public BorderBuilder Medium()
+    {
+        return builder.With(Shadows.Medium);
+    }
+
+    public BorderBuilder Large()
+    {
+        return builder.With(Shadows.Large);
+    }
+
+    public BorderBuilder Larger()
+    {
+        return builder.With(Shadows.Larger);
+    }
+
+    public BorderBuilder Largest()
+    {
+        return builder.With(Shadows.Largest);
     }
 
     public BorderBuilder Default()
