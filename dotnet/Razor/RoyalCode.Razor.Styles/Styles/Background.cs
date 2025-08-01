@@ -11,7 +11,7 @@ public enum BgClip
 
 public static class BackgroundExtensions
 {
-    public static string ToCssClass(BgClip clip)
+    public static string ToCssClass(this BgClip clip)
     {
         return clip switch
         {

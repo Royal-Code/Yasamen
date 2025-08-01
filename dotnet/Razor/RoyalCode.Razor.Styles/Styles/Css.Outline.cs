@@ -2,7 +2,10 @@
 
 namespace RoyalCode.Razor.Styles;
 
-public partial class Css
+/// <summary>
+/// Utility to create CSS classes for components.
+/// </summary>
+public static partial class Css
 {
     public static OutlineBuilder Outline => OutlineBuilder.Default;
 }
