@@ -1,6 +1,4 @@
-﻿using RoyalCode.Razor.Commons;
-
-namespace RoyalCode.Yasamen.Commons;
+﻿namespace RoyalCode.Razor.Commons;
 
 /// <summary>
 /// Extensions for CSS classes.

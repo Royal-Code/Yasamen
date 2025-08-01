@@ -48,6 +48,7 @@ public enum SelfAlign
 
 public enum TextAlign
 {
+    Default,
     Baseline,
     Top,
     Middle,
@@ -116,14 +117,15 @@ public static class AlignExtensions
     {
         return align switch
         {
-            TextAlign.Baseline => "text-baseline",
-            TextAlign.Top => "text-top",
-            TextAlign.Middle => "text-middle",
-            TextAlign.Bottom => "text-bottom",
-            TextAlign.TextTop => "text-text-top",
-            TextAlign.TextBottom => "text-text-bottom",
-            TextAlign.Sub => "text-sub",
-            TextAlign.Super => "text-super",
+            TextAlign.Default => string.Empty,
+            TextAlign.Baseline => "align-baseline",
+            TextAlign.Top => "align-top",
+            TextAlign.Middle => "align-middle",
+            TextAlign.Bottom => "align-bottom",
+            TextAlign.TextTop => "align-text-top",
+            TextAlign.TextBottom => "align-text-bottom",
+            TextAlign.Sub => "align-sub",
+            TextAlign.Super => "align-super",
             _ => throw new NotSupportedException($"The current align ({align}) is not supported for text alignment.")
         };
     }

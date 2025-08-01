@@ -12,8 +12,9 @@ public enum BorderRound
     Circle = 16,
     Pill = 32,
     Ellipse = 64,
+    Default = 128,
 
-    Default = 15,
+    All = Top | End | Bottom | Start,
 
     TopStart = Top | Start,
     TopEnd = Top | End,

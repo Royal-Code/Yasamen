@@ -1,7 +1,7 @@
 ﻿using RoyalCode.Razor.Commons.Styles;
 using System.Diagnostics.CodeAnalysis;
 
-namespace RoyalCode.Yasamen.Commons;
+namespace RoyalCode.Razor.Commons;
 
 #pragma warning disable S2325 // make methods and properties static (CssBorders)
 
@@ -12,96 +12,22 @@ public partial class Css
 
 public readonly struct DefaultBorders
 {
-    public BorderBuilder None() => BorderBuilder.None();
-    public BorderBuilder Box() => BorderBuilder.Box();
-    public BorderBuilder BoxRounded() => BorderBuilder.BoxRounded();
-    public BorderBuilder BoxWithShadow() => BorderBuilder.BoxWithShadow();
-    public BorderBuilder BoxRoundedWithShadow() => BorderBuilder.BoxRoundedWithShadow();
-    public BorderBuilder Header() => BorderBuilder.Header();
-    public BorderBuilder HeaderWithShadow() => BorderBuilder.HeaderWithShadow();
-    public BorderBuilder Footer() => BorderBuilder.Footer();
-    public BorderBuilder FooterWithShadow() => BorderBuilder.FooterWithShadow();
-}
-
-public readonly struct BorderClasses
-{
-    private readonly BorderPositions positions;
-    private readonly Themes theme;
-    private readonly BorderWidth width;
-    private readonly BorderStyles style;
-    private readonly BorderRound round;
-    private readonly BorderRadius radius;
-    private readonly Shadows shadow;
-
-    public BorderClasses(
-        BorderPositions positions,
-        Themes theme,
-        BorderWidth width,
-        BorderStyles style,
-        BorderRound round,
-        BorderRadius radius,
-        Shadows shadow)
-    {
-        this.positions = positions;
-        this.theme = theme;
-        this.width = width;
-        this.style = style;
-        this.round = round;
-        this.radius = radius;
-        this.shadow = shadow;
-    }
-
-    public override string ToString()
-    {
-        return positions == BorderPositions.None
-            ? string.Empty
-            : string.Join(' ', AllCssClasses().Where(s => s != string.Empty));
-    }
-
-    public override bool Equals([NotNullWhen(true)] object? obj)
-    {
-        return obj is BorderClasses border && this == border;
-    }
-
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(positions, theme, width, style, round, radius, shadow);
-    }
-
-    public static bool operator ==(BorderClasses left, BorderClasses right)
-    {
-        return left.positions == right.positions
-            && left.theme == right.theme
-            && left.width == right.width
-            && left.style == right.style
-            && left.round == right.round
-            && left.radius == right.radius
-            && left.shadow == right.shadow;
-    }
-
-    public static bool operator !=(BorderClasses left, BorderClasses right)
-    {
-        return !(left == right);
-    }
-
-    public static implicit operator string(BorderClasses builder) => builder.ToString();
-
-    private IEnumerable<string> AllCssClasses()
-    {
-        yield return positions.ToBorderCssClasses();
-        yield return theme.ToBorderCssClasses();
-        yield return width.ToBorderCssClasses();
-        yield return style.ToBorderCssClasses();
-        yield return round.ToBorderCssClasses();
-        yield return radius.ToBorderCssClasses();
-        yield return shadow.ToCssClass();
-    }
+    public BorderBuilder Default() => BorderBuilder.Default;
+    public BorderBuilder None() => BorderBuilder.None;
+    public BorderBuilder Box() => BorderBuilder.Box;
+    public BorderBuilder BoxRounded() => BorderBuilder.BoxRounded;
+    public BorderBuilder BoxWithShadow() => BorderBuilder.BoxWithShadow;
+    public BorderBuilder BoxRoundedWithShadow() => BorderBuilder.BoxRoundedWithShadow;
+    public BorderBuilder Header() => BorderBuilder.Header;
+    public BorderBuilder HeaderWithShadow() => BorderBuilder.HeaderWithShadow;
+    public BorderBuilder Footer() => BorderBuilder.Footer;
+    public BorderBuilder FooterWithShadow() => BorderBuilder.FooterWithShadow;
 }
 
 public readonly struct BorderBuilder
 {
-    private readonly BorderPositions positions;
-    private readonly Themes theme;
+    private readonly BorderSide side;
+    private readonly BorderColor color;
     private readonly BorderWidth width;
     private readonly BorderStyles style;
     private readonly BorderRound round;
@@ -111,16 +37,16 @@ public readonly struct BorderBuilder
     public BorderBuilder() { }
 
     public BorderBuilder(
-        BorderPositions positions,
-        Themes theme,
+        BorderSide side,
+        BorderColor color,
         BorderWidth width,
         BorderStyles style,
         BorderRound round,
         BorderRadius radius,
         Shadows shadow)
     {
-        this.positions = positions;
-        this.theme = theme;
+        this.side = side;
+        this.color = color;
         this.width = width;
         this.style = style;
         this.round = round;
@@ -128,142 +54,122 @@ public readonly struct BorderBuilder
         this.shadow = shadow;
     }
 
-    public static BorderBuilder None()
-    {
-        return new BorderBuilder(
-            BorderPositions.None,
-            Themes.Default,
-            BorderWidth.One,
-            BorderStyles.Default,
-            BorderRound.None,
-            BorderRadius.Default,
-            Shadows.Default
-        );
-    }
+    public static BorderBuilder Default { get; } = new BorderBuilder(
+        BorderSide.Default,
+        BorderColor.Default,
+        BorderWidth.Default,
+        BorderStyles.Default,
+        BorderRound.Default,
+        BorderRadius.Default,
+        Shadows.Default);
 
-    public static BorderBuilder Box()
-    {
-        return new BorderBuilder(
-            BorderPositions.Default,
-            Themes.Default,
-            BorderWidth.One,
-            BorderStyles.Default,
-            BorderRound.None,
-            BorderRadius.Default,
-            Shadows.Default
-        );
-    }
+    public static BorderBuilder None { get; } = new BorderBuilder(
+        BorderSide.None,
+        BorderColor.Default,
+        BorderWidth.Default,
+        BorderStyles.Default,
+        BorderRound.Default,
+        BorderRadius.Default,
+        Shadows.Default);
 
-    public static BorderBuilder BoxRounded()
-    {
-        return new BorderBuilder(
-            BorderPositions.Default,
-            Themes.Default,
-            BorderWidth.One,
-            BorderStyles.Default,
-            BorderRound.Default,
-            BorderRadius.Default,
-            Shadows.Default
-        );
-    }
+    public static BorderBuilder Box { get; } = new BorderBuilder(
+        BorderSide.All,
+        BorderColor.Default,
+        BorderWidth.One,
+        BorderStyles.Default,
+        BorderRound.None,
+        BorderRadius.Default,
+        Shadows.Default);
 
-    public static BorderBuilder BoxWithShadow()
-    {
-        return new BorderBuilder(
-            BorderPositions.Default,
-            Themes.Default,
-            BorderWidth.One,
-            BorderStyles.Default,
-            BorderRound.None,
-            BorderRadius.Default,
-            Shadows.Three
-        );
-    }
+    public static BorderBuilder BoxRounded { get; } = new BorderBuilder(
+        BorderSide.All,
+        BorderColor.Default,
+        BorderWidth.One,
+        BorderStyles.Default,
+        BorderRound.All,
+        BorderRadius.Default,
+        Shadows.Default
+    );
 
-    public static BorderBuilder BoxRoundedWithShadow()
-    {
-        return new BorderBuilder(
-            BorderPositions.Default,
-            Themes.Default,
-            BorderWidth.One,
-            BorderStyles.Default,
-            BorderRound.Default,
-            BorderRadius.Default,
-            Shadows.Three
-        );
-    }
-
-    public static BorderBuilder Header()
-    {
-        return new BorderBuilder(
-            BorderPositions.Bottom,
-            Themes.Default,
-            BorderWidth.One,
-            BorderStyles.Default,
-            BorderRound.None,
-            BorderRadius.Default,
-            Shadows.Default
-        );
-    }
-
-    public static BorderBuilder HeaderWithShadow()
-    {
-        return new BorderBuilder(
-            BorderPositions.Bottom,
-            Themes.Default,
+    public static BorderBuilder BoxWithShadow { get; } = new BorderBuilder(
+            BorderSide.All,
+            BorderColor.Default,
             BorderWidth.One,
             BorderStyles.Default,
             BorderRound.None,
             BorderRadius.Default,
             Shadows.Three
         );
-    }
 
-    public static BorderBuilder Footer()
-    {
-        return new BorderBuilder(
-            BorderPositions.Top,
-            Themes.Default,
+    public static BorderBuilder BoxRoundedWithShadow { get; } = new BorderBuilder(
+            BorderSide.All,
+            BorderColor.Default,
+            BorderWidth.One,
+            BorderStyles.Default,
+            BorderRound.All,
+            BorderRadius.Default,
+            Shadows.Three
+        );
+
+    public static BorderBuilder Header { get; } = new BorderBuilder(
+            BorderSide.Bottom,
+            BorderColor.Default,
             BorderWidth.One,
             BorderStyles.Default,
             BorderRound.None,
             BorderRadius.Default,
             Shadows.Default
         );
-    }
 
-    public static BorderBuilder FooterWithShadow()
-    {
-        return new BorderBuilder(
-            BorderPositions.Top,
-            Themes.Default,
+    public static BorderBuilder HeaderWithShadow { get; } = new BorderBuilder(
+            BorderSide.Bottom,
+            BorderColor.Default,
             BorderWidth.One,
             BorderStyles.Default,
             BorderRound.None,
             BorderRadius.Default,
             Shadows.Three
         );
-    }
 
-    public BorderPositionsBuilder Position => new BorderPositionsBuilder(this);
+    public static BorderBuilder Footer { get; } = new BorderBuilder(
+            BorderSide.Top,
+            BorderColor.Default,
+            BorderWidth.One,
+            BorderStyles.Default,
+            BorderRound.None,
+            BorderRadius.Default,
+            Shadows.Default
+        );
 
-    public BorderThemesBuilder Theme => new BorderThemesBuilder(this);
+    public static BorderBuilder FooterWithShadow { get; } = new BorderBuilder(
+            BorderSide.Top,
+            BorderColor.Default,
+            BorderWidth.One,
+            BorderStyles.Default,
+            BorderRound.None,
+            BorderRadius.Default,
+            Shadows.Three
+        );
 
-    public BorderWidthBuilder Width => new BorderWidthBuilder(this);
+    public BorderSideBuilder Sides => new(this);
 
-    public BorderStylesBuilder Style => new BorderStylesBuilder(this);
+    public BorderThemeBuilder Color => new(this);
 
-    public BorderRoundBuilder Round => new BorderRoundBuilder(this);
+    public BorderWidthBuilder Width => new(this);
 
-    public BorderRadiusBuilder Radius => new BorderRadiusBuilder(this);
+    public BorderStylesBuilder Style => new(this);
 
-    public BorderShadowsBuilder Shadow => new BorderShadowsBuilder(this);
+    public BorderRoundBuilder Round => new(this);
 
-    public BorderBuilder With(BorderPositions positions)
+    public BorderRadiusBuilder Radius => new(this);
+
+    public BorderShadowsBuilder Shadow => new(this);
+
+    public BorderBuilder With(BorderSide side)
     {
         return new BorderBuilder(
-            positions,
-            theme,
+            side,
+            color,
             width,
             style,
             round,
@@ -272,11 +178,11 @@ public readonly struct BorderBuilder
         );
     }
 
-    public BorderBuilder With(Themes theme)
+    public BorderBuilder With(BorderColor color)
     {
         return new BorderBuilder(
-            positions,
-            theme,
+            side,
+            color,
             width,
             style,
             round,
@@ -288,8 +194,8 @@ public readonly struct BorderBuilder
     public BorderBuilder With(BorderWidth width)
     {
         return new BorderBuilder(
-            positions,
-            theme,
+            side,
+            color,
             width,
             style,
             round,
@@ -301,8 +207,8 @@ public readonly struct BorderBuilder
     public BorderBuilder With(BorderStyles style)
     {
         return new BorderBuilder(
-            positions,
-            theme,
+            side,
+            color,
             width,
             style,
             round,
@@ -314,8 +220,8 @@ public readonly struct BorderBuilder
     public BorderBuilder With(BorderRound round)
     {
         return new BorderBuilder(
-            positions,
-            theme,
+            side,
+            color,
             width,
             style,
             round,
@@ -327,8 +233,8 @@ public readonly struct BorderBuilder
     public BorderBuilder With(BorderRadius radius)
     {
         return new BorderBuilder(
-            positions,
-            theme,
+            side,
+            color,
             width,
             style,
             round,
@@ -340,8 +246,8 @@ public readonly struct BorderBuilder
     public BorderBuilder With(Shadows shadow)
     {
         return new BorderBuilder(
-            positions,
-            theme,
+            side,
+            color,
             width,
             style,
             round,
@@ -350,9 +256,12 @@ public readonly struct BorderBuilder
         );
     }
 
-    public BorderClasses Build() => new(positions, theme, width, style, round, radius, shadow);
+    public static implicit operator string(BorderBuilder builder) => builder.ToString();
 
-    public override string ToString() => Build();
+    public override string ToString()
+        => side == BorderSide.Default
+            ? string.Empty
+            : string.Join(' ', AllCssClasses().Where(s => s != string.Empty));
 
     public override bool Equals([NotNullWhen(true)] object? obj)
     {
@@ -361,13 +270,13 @@ public readonly struct BorderBuilder
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(positions, theme, width, style, round, radius, shadow);
+        return HashCode.Combine(side, color, width, style, round, radius, shadow);
     }
 
     public static bool operator ==(BorderBuilder left, BorderBuilder right)
     {
-        return left.positions == right.positions
-            && left.theme == right.theme
+        return left.side == right.side
+            && left.color == right.color
             && left.width == right.width
             && left.style == right.style
             && left.round == right.round
@@ -380,168 +289,237 @@ public readonly struct BorderBuilder
         return !(left == right);
     }
 
-    public static implicit operator string(BorderBuilder builder) => builder.ToString();
-
-    public static implicit operator BorderClasses(BorderBuilder builder) => builder.Build();
+    private IEnumerable<string> AllCssClasses()
+    {
+        yield return side.ToCssClass();
+        yield return color;
+        yield return width.ToCssClass();
+        yield return style.ToCssClass();
+        yield return round.ToCssClass();
+        yield return radius.ToCssClass();
+        yield return shadow.ToCssClass();
+    }
 }
 
-public readonly struct BorderPositionsBuilder
+public readonly struct BorderSideBuilder
 {
     private readonly BorderBuilder builder;
 
-    public BorderPositionsBuilder(BorderBuilder builder)
+    public BorderSideBuilder(BorderBuilder builder)
     {
         this.builder = builder;
     }
 
     public BorderBuilder Top()
     {
-        return builder.With(BorderPositions.Top);
+        return builder.With(BorderSide.Top);
     }
 
     public BorderBuilder End()
     {
-        return builder.With(BorderPositions.End);
+        return builder.With(BorderSide.End);
     }
 
     public BorderBuilder Bottom()
     {
-        return builder.With(BorderPositions.Bottom);
+        return builder.With(BorderSide.Bottom);
     }
 
     public BorderBuilder Start()
     {
-        return builder.With(BorderPositions.Start);
+        return builder.With(BorderSide.Start);
     }
 
     public BorderBuilder TopEnd()
     {
-        return builder.With(BorderPositions.TopEnd);
+        return builder.With(BorderSide.TopEnd);
     }
 
     public BorderBuilder TopBottom()
     {
-        return builder.With(BorderPositions.TopBottom);
+        return builder.With(BorderSide.TopBottom);
     }
 
     public BorderBuilder TopStart()
     {
-        return builder.With(BorderPositions.TopStart);
+        return builder.With(BorderSide.TopStart);
     }
 
     public BorderBuilder EndBottom()
     {
-        return builder.With(BorderPositions.EndBottom);
+        return builder.With(BorderSide.EndBottom);
     }
 
     public BorderBuilder EndStart()
     {
-        return builder.With(BorderPositions.EndStart);
+        return builder.With(BorderSide.EndStart);
     }
 
     public BorderBuilder BottomStart()
     {
-        return builder.With(BorderPositions.BottomStart);
+        return builder.With(BorderSide.BottomStart);
     }
 
     public BorderBuilder NotAtTop()
     {
-        return builder.With(BorderPositions.NotAtTop);
+        return builder.With(BorderSide.NotAtTop);
     }
 
     public BorderBuilder NotAtEnd()
     {
-        return builder.With(BorderPositions.NotAtEnd);
+        return builder.With(BorderSide.NotAtEnd);
     }
 
     public BorderBuilder NotAtBottom()
     {
-        return builder.With(BorderPositions.NotAtBottom);
+        return builder.With(BorderSide.NotAtBottom);
     }
 
     public BorderBuilder NotAtStart()
     {
-        return builder.With(BorderPositions.NotAtStart);
+        return builder.With(BorderSide.NotAtStart);
+    }
+
+    public BorderBuilder All()
+    {
+        return builder.With(BorderSide.All);
     }
 
     public BorderBuilder Default()
     {
-        return builder.With(BorderPositions.Default);
+        return builder.With(BorderSide.Default);
     }
 
     public BorderBuilder None()
     {
-        return builder.With(BorderPositions.None);
+        return builder.With(BorderSide.None);
     }
 }
 
-public readonly struct BorderThemesBuilder
+public readonly struct BorderThemeBuilder
 {
     private readonly BorderBuilder builder;
 
-    public BorderThemesBuilder(BorderBuilder builder)
+    public BorderThemeBuilder(BorderBuilder builder)
     {
         this.builder = builder;
     }
 
-    public BorderBuilder Primary()
+    public BorderColorBuilder Primary()
     {
-        return builder.With(Themes.Primary);
+        return new BorderColorBuilder(builder, Themes.Primary);
     }
 
-    public BorderBuilder Secondary()
+    public BorderColorBuilder Secondary()
     {
-        return builder.With(Themes.Secondary);
+        return new BorderColorBuilder(builder, Themes.Secondary);
     }
 
-    public BorderBuilder Tertiary()
+    public BorderColorBuilder Tertiary()
     {
-        return builder.With(Themes.Tertiary);
+        return new BorderColorBuilder(builder, Themes.Tertiary);
     }
 
-    public BorderBuilder Info()
+    public BorderColorBuilder Info()
     {
-        return builder.With(Themes.Info);
+        return new BorderColorBuilder(builder, Themes.Info);
     }
 
-    public BorderBuilder Highlight()
+    public BorderColorBuilder Highlight()
     {
-        return builder.With(Themes.Highlight);
+        return new BorderColorBuilder(builder, Themes.Highlight);
     }
 
-    public BorderBuilder Success()
+    public BorderColorBuilder Success()
     {
-        return builder.With(Themes.Success);
+        return new BorderColorBuilder(builder, Themes.Success);
     }
 
-    public BorderBuilder Warning()
+    public BorderColorBuilder Warning()
     {
-        return builder.With(Themes.Warning);
+        return new BorderColorBuilder(builder, Themes.Warning);
     }
 
-    public BorderBuilder Alert()
+    public BorderColorBuilder Alert()
     {
-        return builder.With(Themes.Alert);
+        return new BorderColorBuilder(builder, Themes.Alert);
     }
 
-    public BorderBuilder Danger()
+    public BorderColorBuilder Danger()
     {
-        return builder.With(Themes.Danger);
+        return new BorderColorBuilder(builder, Themes.Danger);
+    }
+
+    public BorderColorBuilder Light()
+    {
+        return new BorderColorBuilder(builder, Themes.Light);
+    }
+
+    public BorderColorBuilder Dark()
+    {
+        return new BorderColorBuilder(builder, Themes.Dark);
+    }
+}
+
+public readonly struct BorderColorBuilder
+{
+    private readonly BorderBuilder builder;
+    private readonly Themes theme;
+
+    public BorderColorBuilder(BorderBuilder builder, Themes theme)
+    {
+        this.builder = builder;
+        this.theme = theme;
+    }
+
+    public BorderBuilder With(Gradients gradients)
+    {
+        return builder.With(new BorderColor(theme, gradients));
+    }
+
+    public BorderBuilder White()
+    {
+        return builder.With(new BorderColor(theme, Gradients.White));
+    }
+
+    public BorderBuilder Lightest()
+    {
+        return builder.With(new BorderColor(theme, Gradients.Lightest));
+    }
+
+    public BorderBuilder Lighter()
+    {
+        return builder.With(new BorderColor(theme, Gradients.Lighter));
     }
 
     public BorderBuilder Light()
     {
-        return builder.With(Themes.Light);
+        return builder.With(new BorderColor(theme, Gradients.Light));
+    }
+
+    public BorderBuilder Normal()
+    {
+        return builder.With(new BorderColor(theme, Gradients.Normal));
     }
 
     public BorderBuilder Dark()
     {
-        return builder.With(Themes.Dark);
+        return builder.With(new BorderColor(theme, Gradients.Dark));
     }
 
-    public BorderBuilder Default()
+    public BorderBuilder Darker()
     {
-        return builder.With(Themes.Default);
+        return builder.With(new BorderColor(theme, Gradients.Darker));
+    }
+
+    public BorderBuilder Darkest()
+    {
+        return builder.With(new BorderColor(theme, Gradients.Darkest));
+    }
+
+    public BorderBuilder Black()
+    {
+        return builder.With(new BorderColor(theme, Gradients.Black));
     }
 }
 
@@ -552,6 +530,11 @@ public readonly struct BorderWidthBuilder
     public BorderWidthBuilder(BorderBuilder builder)
     {
         this.builder = builder;
+    }
+
+    public BorderBuilder Default()
+    {
+        return builder.With(BorderWidth.Default);
     }
 
     public BorderBuilder One()
@@ -677,6 +660,11 @@ public readonly struct BorderRoundBuilder
     public BorderBuilder None()
     {
         return builder.With(BorderRound.None);
+    }
+
+    public BorderBuilder All()
+    {
+        return builder.With(BorderRound.All);
     }
 
     public BorderBuilder Default()
@@ -857,5 +845,10 @@ public readonly struct BorderShadowsBuilder
     public BorderBuilder Nine()
     {
         return builder.With(Shadows.Nine);
+    }
+
+    public BorderBuilder Default()
+    {
+        return builder.With(Shadows.Default);
     }
 }

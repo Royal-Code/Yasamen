@@ -2,15 +2,16 @@
 namespace RoyalCode.Razor.Commons.Styles;
 
 [Flags]
-public enum BorderPositions
+public enum BorderSide
 {
     None = 0,
     Top = 1,
     End = 2,
     Bottom = 4,
     Start = 8,
+    Default = 16,
 
-    Default = Top | End | Bottom | Start,
+    All = Top | End | Bottom | Start,
 
     NotAtTop = End | Bottom | Start,
     NotAtEnd = Top | Bottom | Start,

@@ -3,31 +3,32 @@ namespace RoyalCode.Razor.Commons.Styles;
 
 public static class BordersExtensions
 {
-    public static string ToBorderCssClasses(this BorderPositions style)
+    public static string ToCssClass(this BorderSide style)
     {
         return style switch
         {
-            BorderPositions.None => "border-0",
-            BorderPositions.Default => "border",
-            BorderPositions.Top => "border-top",
-            BorderPositions.End => "border-end",
-            BorderPositions.Bottom => "border-bottom",
-            BorderPositions.Start => "border-start",
-            BorderPositions.NotAtTop => "border border-top-0",
-            BorderPositions.NotAtEnd => "border border-end-0",
-            BorderPositions.NotAtBottom => "border border-bottom-0",
-            BorderPositions.NotAtStart => "border border-start-0",
-            BorderPositions.TopEnd => "border-top border-end",
-            BorderPositions.TopBottom => "border-top border-bottom",
-            BorderPositions.TopStart => "border-top border-start",
-            BorderPositions.EndBottom => "border-end border-bottom",
-            BorderPositions.EndStart => "border-end border-start",
-            BorderPositions.BottomStart => "border-bottom border-start",
+            BorderSide.Default => string.Empty,
+            BorderSide.None => "border-0",
+            BorderSide.All => "border",
+            BorderSide.Top => "border-top",
+            BorderSide.End => "border-end",
+            BorderSide.Bottom => "border-bottom",
+            BorderSide.Start => "border-start",
+            BorderSide.NotAtTop => "border border-top-0",
+            BorderSide.NotAtEnd => "border border-end-0",
+            BorderSide.NotAtBottom => "border border-bottom-0",
+            BorderSide.NotAtStart => "border border-start-0",
+            BorderSide.TopEnd => "border-top border-end",
+            BorderSide.TopBottom => "border-top border-bottom",
+            BorderSide.TopStart => "border-top border-start",
+            BorderSide.EndBottom => "border-end border-bottom",
+            BorderSide.EndStart => "border-end border-start",
+            BorderSide.BottomStart => "border-bottom border-start",
             _ => string.Empty
         };
     }
 
-    public static string ToBorderCssClasses(this Themes color)
+    public static string ToBorderCssClass(this Themes color)
     {
         return color switch
         {
@@ -47,10 +48,11 @@ public static class BordersExtensions
         };
     }
 
-    public static string ToBorderCssClasses(this BorderWidth width)
+    public static string ToCssClass(this BorderWidth width)
     {
         return width switch
         {
+            BorderWidth.Default => string.Empty,
             BorderWidth.One => "border-1",
             BorderWidth.Two => "border-2",
             BorderWidth.Three => "border-3",
@@ -64,10 +66,11 @@ public static class BordersExtensions
         };
     }
 
-    public static string ToBorderCssClasses(this BorderStyles style)
+    public static string ToCssClass(this BorderStyles style)
     {
         return style switch
         {
+            BorderStyles.Default => string.Empty,
             BorderStyles.Solid => "border-solid",
             BorderStyles.Dashed => "border-dashed",
             BorderStyles.DotDashed => "border-dot-dashed",
@@ -86,12 +89,13 @@ public static class BordersExtensions
         };
     }
 
-    public static string ToBorderCssClasses(this BorderRound round)
+    public static string ToCssClass(this BorderRound round)
     {
         return round switch
         {
+            BorderRound.Default => string.Empty,
             BorderRound.None => "round-0",
-            BorderRound.Default => "round",
+            BorderRound.All => "round",
             BorderRound.Top => "round-top",
             BorderRound.End => "round-end",
             BorderRound.Bottom => "round-bottom",
@@ -107,10 +111,11 @@ public static class BordersExtensions
         };
     }
 
-    public static string ToBorderCssClasses(this BorderRadius radius)
+    public static string ToCssClass(this BorderRadius radius)
     {
         return radius switch
         {
+            BorderRadius.Default => string.Empty,
             BorderRadius.One => "round-1",
             BorderRadius.Two => "round-2",
             BorderRadius.Three => "round-3",

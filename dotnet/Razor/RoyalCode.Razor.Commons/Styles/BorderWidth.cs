@@ -3,6 +3,7 @@ namespace RoyalCode.Razor.Commons.Styles;
 
 public enum BorderWidth
 {
+    Default,
     One,
     Two,
     Three,
