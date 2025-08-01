@@ -94,64 +94,64 @@ public readonly struct BorderBuilder
     );
 
     public static BorderBuilder BoxWithShadow { get; } = new BorderBuilder(
-            BorderSide.All,
-            BorderColor.Default,
-            BorderWidth.One,
-            BorderStyles.Default,
-            BorderRound.None,
-            BorderRadius.Default,
-            Shadows.Three
-        );
+        BorderSide.All,
+        BorderColor.Default,
+        BorderWidth.One,
+        BorderStyles.Default,
+        BorderRound.None,
+        BorderRadius.Default,
+        Shadows.Three
+    );
 
     public static BorderBuilder BoxRoundedWithShadow { get; } = new BorderBuilder(
-            BorderSide.All,
-            BorderColor.Default,
-            BorderWidth.One,
-            BorderStyles.Default,
-            BorderRound.All,
-            BorderRadius.Default,
-            Shadows.Three
-        );
+        BorderSide.All,
+        BorderColor.Default,
+        BorderWidth.One,
+        BorderStyles.Default,
+        BorderRound.All,
+        BorderRadius.Default,
+        Shadows.Three
+    );
 
     public static BorderBuilder Header { get; } = new BorderBuilder(
-            BorderSide.Bottom,
-            BorderColor.Default,
-            BorderWidth.One,
-            BorderStyles.Default,
-            BorderRound.None,
-            BorderRadius.Default,
-            Shadows.Default
-        );
+        BorderSide.Bottom,
+        BorderColor.Default,
+        BorderWidth.One,
+        BorderStyles.Default,
+        BorderRound.None,
+        BorderRadius.Default,
+        Shadows.Default
+    );
 
     public static BorderBuilder HeaderWithShadow { get; } = new BorderBuilder(
-            BorderSide.Bottom,
-            BorderColor.Default,
-            BorderWidth.One,
-            BorderStyles.Default,
-            BorderRound.None,
-            BorderRadius.Default,
-            Shadows.Three
-        );
+        BorderSide.Bottom,
+        BorderColor.Default,
+        BorderWidth.One,
+        BorderStyles.Default,
+        BorderRound.None,
+        BorderRadius.Default,
+        Shadows.Three
+    );
 
     public static BorderBuilder Footer { get; } = new BorderBuilder(
-            BorderSide.Top,
-            BorderColor.Default,
-            BorderWidth.One,
-            BorderStyles.Default,
-            BorderRound.None,
-            BorderRadius.Default,
-            Shadows.Default
-        );
+        BorderSide.Top,
+        BorderColor.Default,
+        BorderWidth.One,
+        BorderStyles.Default,
+        BorderRound.None,
+        BorderRadius.Default,
+        Shadows.Default
+    );
 
     public static BorderBuilder FooterWithShadow { get; } = new BorderBuilder(
-            BorderSide.Top,
-            BorderColor.Default,
-            BorderWidth.One,
-            BorderStyles.Default,
-            BorderRound.None,
-            BorderRadius.Default,
-            Shadows.Three
-        );
+        BorderSide.Top,
+        BorderColor.Default,
+        BorderWidth.One,
+        BorderStyles.Default,
+        BorderRound.None,
+        BorderRadius.Default,
+        Shadows.Three
+    );
 
     public BorderSideBuilder Sides => new(this);
 
@@ -405,6 +405,36 @@ public readonly struct BorderThemeBuilder
     public BorderThemeBuilder(BorderBuilder builder)
     {
         this.builder = builder;
+    }
+
+    public BorderBuilder Default()
+    {
+        return new BorderColorBuilder(builder, Themes.Default);
+    }
+
+    public BorderBuilder White()
+    {
+        return builder.With(BorderColor.White);
+    }
+
+    public BorderBuilder Black()
+    {
+        return builder.With(BorderColor.Black);
+    }
+
+    public BorderBuilder Transparent()
+    {
+        return builder.With(BorderColor.Transparent);
+    }
+
+    public BorderBuilder Current()
+    {
+        return builder.With(BorderColor.Current);
+    }
+
+    public BorderBuilder Inherit()
+    {
+        return builder.With(BorderColor.Inherit);
     }
 
     public BorderColorBuilder Primary()

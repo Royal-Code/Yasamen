@@ -314,6 +314,31 @@ public readonly struct TextBuilder
             return builder.WithColor(TextColor.Default);
         }
 
+        public TextBuilder White()
+        {
+            return builder.WithColor(TextColor.White);
+        }
+
+        public TextBuilder Black()
+        {
+            return builder.WithColor(TextColor.Black);
+        }
+
+        public TextBuilder Transparent()
+        {
+            return builder.WithColor(TextColor.Transparent);
+        }
+
+        public TextBuilder Current()
+        {
+            return builder.WithColor(TextColor.Current);
+        }
+
+        public TextBuilder Inherit()
+        {
+            return builder.WithColor(TextColor.Inherit);
+        }
+
         public TextColorGradientBuilder Primary()
         {
             return new(builder, Themes.Primary);

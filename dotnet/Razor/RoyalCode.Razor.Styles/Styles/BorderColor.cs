@@ -9,74 +9,50 @@ public readonly struct BorderColor
         className = Map.GetClassName(theme, gradients);
     }
 
-    public static BorderColor Default { get; } = new BorderColor(Themes.Default, Gradients.Default);
-
-    public override string ToString()
+    private BorderColor(string className)
     {
-        return className;
+        this.className = className;
     }
+
+    public static BorderColor Default => new BorderColor(Themes.Default, Gradients.Default);
+
+    public static BorderColor White => new BorderColor(Themes.Light, Gradients.White);
+
+    public static BorderColor Black => new BorderColor(Themes.Dark, Gradients.Black);
+
+    public static BorderColor Transparent => new BorderColor("border-transparent");
+
+    public static BorderColor Current => new BorderColor("border-current");
+
+    public static BorderColor Inherit => new BorderColor("border-inherit");
+
+    public static Builder Primary => new Builder(Themes.Primary);
+
+    public static Builder Secondary => new Builder(Themes.Secondary);
+    
+    public static Builder Tertiary => new Builder(Themes.Tertiary);
+    
+    public static Builder Info => new Builder(Themes.Info);
+    
+    public static Builder Highlight => new Builder(Themes.Highlight);
+    
+    public static Builder Success => new Builder(Themes.Success);
+    
+    public static Builder Warning => new Builder(Themes.Warning);
+    
+    public static Builder Alert => new Builder(Themes.Alert);
+    
+    public static Builder Danger => new Builder(Themes.Danger);
+    
+    public static Builder Light => new Builder(Themes.Light);
+    
+    public static Builder Dark => new Builder(Themes.Dark);
+    
+    public static Builder With(Themes theme) => new Builder(theme);
+
+    public override string ToString() => className;
 
     public static implicit operator string(BorderColor borderColor) => borderColor.className;
-
-    public static Builder With(Themes theme)
-    {
-        return new Builder(theme);
-    }
-
-    public static Builder Primary()
-    {
-        return new Builder(Themes.Primary);
-    }
-
-    public static Builder Secondary()
-    {
-        return new Builder(Themes.Secondary);
-    }
-
-    public static Builder Tertiary()
-    {
-        return new Builder(Themes.Tertiary);
-    }
-
-    public static Builder Info()
-    {
-        return new Builder(Themes.Info);
-    }
-
-    public static Builder Highlight()
-    {
-        return new Builder(Themes.Highlight);
-    }
-
-    public static Builder Success()
-    {
-        return new Builder(Themes.Success);
-    }
-
-    public static Builder Warning()
-    {
-        return new Builder(Themes.Warning);
-    }
-
-    public static Builder Alert()
-    {
-        return new Builder(Themes.Alert);
-    }
-
-    public static Builder Danger()
-    {
-        return new Builder(Themes.Danger);
-    }
-
-    public static Builder Light()
-    {
-        return new Builder(Themes.Light);
-    }
-
-    public static Builder Dark()
-    {
-        return new Builder(Themes.Dark);
-    }
 
     public readonly struct Builder
     {
@@ -94,12 +70,17 @@ public readonly struct BorderColor
 
         public static implicit operator string(Builder builder)
         {
-            return new BorderColor(builder.theme, Gradients.Default).className;
+            return Map.GetClassName(builder.theme, Gradients.Default);
         }
 
         public BorderColor With(Gradients gradients)
         {
             return new BorderColor(theme, gradients);
+        }
+
+        public BorderColor Default()
+        {
+            return new BorderColor(theme, Gradients.Default);
         }
 
         public BorderColor White()
@@ -151,7 +132,7 @@ public readonly struct BorderColor
     /// <summary>
     /// Maps the theme and gradient to a CSS class name.
     /// </summary>
-    private sealed class Map
+    private static class Map
     {
         public static string GetClassName(Themes theme, Gradients gradients)
         {

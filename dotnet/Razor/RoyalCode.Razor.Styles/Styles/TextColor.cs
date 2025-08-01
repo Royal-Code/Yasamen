@@ -9,69 +9,50 @@ public readonly struct TextColor
         className = Map.GetClassName(theme, gradients);
     }
 
-    public override string ToString()
+    private TextColor(string className)
     {
-        return className;
+        this.className = className;
     }
+
+    public static TextColor Default => new TextColor(Themes.Default, Gradients.Default);
+
+    public static TextColor White => new TextColor(Themes.Light, Gradients.White);
+
+    public static TextColor Black => new TextColor(Themes.Dark, Gradients.Black);
+
+    public static TextColor Transparent => new TextColor("text-transparent");
+
+    public static TextColor Current => new TextColor("text-current");
+
+    public static TextColor Inherit => new TextColor("text-inherit");
+
+    public static Builder Primary => new Builder(Themes.Primary);
+
+    public static Builder Secondary => new Builder(Themes.Secondary);
+
+    public static Builder Tertiary => new Builder(Themes.Tertiary);
+
+    public static Builder Info => new Builder(Themes.Info);
+
+    public static Builder Highlight => new Builder(Themes.Highlight);
+
+    public static Builder Success => new Builder(Themes.Success);
+
+    public static Builder Warning => new Builder(Themes.Warning);
+    
+    public static Builder Alert => new Builder(Themes.Alert);
+    
+    public static Builder Danger => new Builder(Themes.Danger);
+    
+    public static Builder Light => new Builder(Themes.Light);
+    
+    public static Builder Dark => new Builder(Themes.Dark);
+    
+    public static Builder With(Themes theme) => new Builder(theme);
+
+    public override string ToString() => className;
 
     public static implicit operator string(TextColor textColor) => textColor.className;
-
-    public static Builder Primary()
-    {
-        return new Builder(Themes.Primary);
-    }
-
-    public static Builder Secondary()
-    {
-        return new Builder(Themes.Secondary);
-    }
-
-    public static Builder Tertiary()
-    {
-        return new Builder(Themes.Tertiary);
-    }
-
-    public static Builder Info()
-    {
-        return new Builder(Themes.Info);
-    }
-
-    public static Builder Highlight()
-    {
-        return new Builder(Themes.Highlight);
-    }
-
-    public static Builder Success()
-    {
-        return new Builder(Themes.Success);
-    }
-
-    public static Builder Warning()
-    {
-        return new Builder(Themes.Warning);
-    }
-
-    public static Builder Alert()
-    {
-        return new Builder(Themes.Alert);
-    }
-
-    public static Builder Danger()
-    {
-        return new Builder(Themes.Danger);
-    }
-
-    public static Builder Light()
-    {
-        return new Builder(Themes.Light);
-    }
-
-    public static Builder Dark()
-    {
-        return new Builder(Themes.Dark);
-    }
-
-    public static TextColor Default { get; } = new TextColor(Themes.Default, Gradients.Default);
 
     public readonly struct Builder
     {
@@ -89,7 +70,7 @@ public readonly struct TextColor
 
         public static implicit operator string(Builder builder)
         {
-            return new TextColor(builder.theme, Gradients.Default).className;
+            return Map.GetClassName(builder.theme, Gradients.Default);
         }
 
         public TextColor With(Gradients gradients)
@@ -97,61 +78,61 @@ public readonly struct TextColor
             return new TextColor(theme, gradients);
         }
         
-        public static TextColor Default()
+        public TextColor Default()
         {
-            return new TextColor(Themes.Default, Gradients.Default);
+            return new TextColor(theme, Gradients.Default);
         }
 
-        public static TextColor Normal()
+        public TextColor White()
         {
-            return new TextColor(Themes.Primary, Gradients.Normal);
+            return new TextColor(theme, Gradients.White);
         }
 
-        public static TextColor White()
+        public TextColor Lightest()
         {
-            return new TextColor(Themes.Primary, Gradients.White);
+            return new TextColor(theme, Gradients.Lightest);
         }
 
-        public static TextColor Lightest()
+        public TextColor Lighter()
         {
-            return new TextColor(Themes.Primary, Gradients.Lightest);
+            return new TextColor(theme, Gradients.Lighter);
         }
 
-        public static TextColor Lighter()
+        public TextColor Light()
         {
-            return new TextColor(Themes.Primary, Gradients.Lighter);
+            return new TextColor(theme, Gradients.Light);
         }
 
-        public static TextColor Light()
+        public TextColor Normal()
         {
-            return new TextColor(Themes.Primary, Gradients.Light);
+            return new TextColor(theme, Gradients.Normal);
         }
 
-        public static TextColor Dark()
+        public TextColor Dark()
         {
-            return new TextColor(Themes.Primary, Gradients.Dark);
+            return new TextColor(theme, Gradients.Dark);
         }
 
-        public static TextColor Darker()
+        public TextColor Darker()
         {
-            return new TextColor(Themes.Primary, Gradients.Darker);
+            return new TextColor(theme, Gradients.Darker);
         }
 
-        public static TextColor Darkest()
+        public TextColor Darkest()
         {
-            return new TextColor(Themes.Primary, Gradients.Darkest);
+            return new TextColor(theme, Gradients.Darkest);
         }
 
-        public static TextColor Black()
+        public TextColor Black()
         {
-            return new TextColor(Themes.Primary, Gradients.Black);
+            return new TextColor(theme, Gradients.Black);
         }
     }
 
     /// <summary>
     /// Maps the theme and gradient to a CSS class name.
     /// </summary>
-    private sealed class Map
+    private static class Map
     {
         public static string GetClassName(Themes theme, Gradients gradients)
         {
