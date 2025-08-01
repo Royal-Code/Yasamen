@@ -1,10 +1,26 @@
-﻿namespace RoyalCode.Razor.Commons;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace RoyalCode.Razor.Styles;
 
 /// <summary>
 /// Extensions for CSS classes.
 /// </summary>
 public static partial class Css
 {
+    /// <summary>
+    /// Checks that the value is present; it must not be null or blank.
+    /// </summary>
+    /// <param name="s">The string to check.</param>
+    /// <returns><c>true</c> if the string is not null or whitespace; otherwise, <c>false</c>.</returns>
+    public static bool IsPresent([NotNullWhen(true)] this string? s) => !string.IsNullOrWhiteSpace(s);
+
+    /// <summary>
+    /// Checks if the value is missing, null, or blank.
+    /// </summary>
+    /// <param name="s">The string to check.</param>
+    /// <returns><c>true</c> if the string is null or whitespace; otherwise, <c>false</c>.</returns>
+    public static bool IsMissing([NotNullWhen(false)] this string? s) => string.IsNullOrWhiteSpace(s);
+
     /// <summary>
     /// Adds a class to the class string if the value other is present.
     /// </summary>

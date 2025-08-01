@@ -1,4 +1,4 @@
-﻿namespace RoyalCode.Razor.Commons.Styles;
+﻿namespace RoyalCode.Razor.Styles;
 
 /// <summary>
 /// Values for align content inside a container.

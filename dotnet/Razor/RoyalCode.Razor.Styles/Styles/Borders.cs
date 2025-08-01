@@ -1,5 +1,97 @@
+namespace RoyalCode.Razor.Styles;
 
-namespace RoyalCode.Razor.Commons.Styles;
+public enum BorderRadius
+{
+    Default,
+    One,
+    Two,
+    Three,
+    Four,
+    Five,
+    Six,
+    Seven,
+    Eight,
+    Nine
+}
+
+[Flags]
+public enum BorderRound
+{
+    None = 0,
+    Top = 1,
+    End = 2,
+    Bottom = 4,
+    Start = 8,
+    Circle = 16,
+    Pill = 32,
+    Ellipse = 64,
+    Default = 128,
+
+    All = Top | End | Bottom | Start,
+
+    TopStart = Top | Start,
+    TopEnd = Top | End,
+    BottomStart = Bottom | Start,
+    BottomEnd = Bottom | End
+}
+
+[Flags]
+public enum BorderSide
+{
+    None = 0,
+    Top = 1,
+    End = 2,
+    Bottom = 4,
+    Start = 8,
+    Default = 16,
+
+    All = Top | End | Bottom | Start,
+
+    NotAtTop = End | Bottom | Start,
+    NotAtEnd = Top | Bottom | Start,
+    NotAtBottom = Top | End | Start,
+    NotAtStart = Top | End | Bottom,
+
+    TopEnd = Top | End,
+    TopBottom = Top | Bottom,
+    TopStart = Top | Start,
+    EndBottom = End | Bottom,
+    EndStart = End | Start,
+    BottomStart = Bottom | Start,
+}
+
+public enum BorderStyles
+{
+    Default,
+    Solid,
+    Dashed,
+    DotDashed,
+    DotDotDashed,
+    Dotted,
+    Double,
+    Groove,
+    Hidden,
+    Inset,
+    Outset,
+    Ridge,
+    Wave,
+    Revert,
+    None
+}
+
+public enum BorderWidth
+{
+    Default,
+    One,
+    Two,
+    Three,
+    Four,
+    Five,
+    Six,
+    Seven,
+    Eight,
+    Nine
+}
 
 public static class BordersExtensions
 {
@@ -24,26 +116,6 @@ public static class BordersExtensions
             BorderSide.EndBottom => "border-end border-bottom",
             BorderSide.EndStart => "border-end border-start",
             BorderSide.BottomStart => "border-bottom border-start",
-            _ => string.Empty
-        };
-    }
-
-    public static string ToBorderCssClass(this Themes color)
-    {
-        return color switch
-        {
-            Themes.Default => string.Empty,
-            Themes.Primary => "border-primary",
-            Themes.Secondary => "border-secondary",
-            Themes.Tertiary => "border-tertiary",
-            Themes.Info => "border-info",
-            Themes.Highlight => "border-highlight",
-            Themes.Success => "border-success",
-            Themes.Warning => "border-warning",
-            Themes.Alert => "border-alert",
-            Themes.Danger => "border-danger",
-            Themes.Light => "border-light",
-            Themes.Dark => "border-dark",
             _ => string.Empty
         };
     }

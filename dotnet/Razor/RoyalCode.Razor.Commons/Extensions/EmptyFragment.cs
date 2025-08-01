@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Components.Rendering;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Microsoft.AspNetCore.Components;
 
@@ -51,20 +50,6 @@ public static class EmptyFragment
     {
         return fragment is not null && !ReferenceEquals(fragment, TypedEmptyFragment<T>.TypedDelegate);
     }
-
-    /// <summary>
-    /// Checks that the value is present; it must not be null or blank.
-    /// </summary>
-    /// <param name="s">The string to check.</param>
-    /// <returns><c>true</c> if the string is not null or whitespace; otherwise, <c>false</c>.</returns>
-    public static bool IsPresent([NotNullWhen(true)] this string? s) => !string.IsNullOrWhiteSpace(s);
-
-    /// <summary>
-    /// Checks if the value is missing, null, or blank.
-    /// </summary>
-    /// <param name="s">The string to check.</param>
-    /// <returns><c>true</c> if the string is null or whitespace; otherwise, <c>false</c>.</returns>
-    public static bool IsMissing([NotNullWhen(false)] this string? s) => string.IsNullOrWhiteSpace(s);
 
     /// <summary>
     /// Provides a typed empty <see cref="RenderFragment{T}"/> delegate.

@@ -1,4 +1,4 @@
-﻿namespace RoyalCode.Razor.Commons.Styles;
+﻿namespace RoyalCode.Razor.Styles;
 
 public enum FontFamily
 {
@@ -203,6 +203,14 @@ public enum TextWordBreak
     Normal,
     All,
     Keep
+}
+
+public enum TextOverflowWrap
+{
+    Default,
+    BreakWord,
+    Anywhere,
+    Normal
 }
 
 public enum TextHyphens
@@ -500,6 +508,18 @@ public static class TypographyExtensions
             TextWordBreak.All => "break-all",
             TextWordBreak.Keep => "break-keep",
             _ => throw new ArgumentOutOfRangeException(nameof(wordBreak), wordBreak, null)
+        };
+    }
+
+    public static string ToCssClass(this TextOverflowWrap overflowWrap)
+    {
+        return overflowWrap switch
+        {
+            TextOverflowWrap.Default => string.Empty,
+            TextOverflowWrap.BreakWord => "wrap-break-word",
+            TextOverflowWrap.Anywhere => "wrap-anywhere",
+            TextOverflowWrap.Normal => "wrap-normal",
+            _ => throw new ArgumentOutOfRangeException(nameof(overflowWrap), overflowWrap, null)
         };
     }
 

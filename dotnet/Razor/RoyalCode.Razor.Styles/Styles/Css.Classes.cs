@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
-using System.Text;
+﻿using System.Text;
 
-namespace RoyalCode.Razor.Commons;
+namespace RoyalCode.Razor.Styles;
 
 /// <summary>
 /// Structure for creating CSS classes.

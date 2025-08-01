@@ -1,8 +1,10 @@
-﻿using RoyalCode.Razor.Commons.Styles;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 
-namespace RoyalCode.Razor.Commons;
+namespace RoyalCode.Razor.Styles;
 
+/// <summary>
+/// Utility to create CSS classes for components.
+/// </summary>
 public static partial class Css
 {
     public static FontBuilder Font => FontBuilder.Default;

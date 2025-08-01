@@ -1,8 +1,10 @@
-﻿using RoyalCode.Razor.Commons.Styles;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 
-namespace RoyalCode.Yasamen.Commons;
+namespace RoyalCode.Razor.Styles;
 
+/// <summary>
+/// Utility to create CSS classes for components.
+/// </summary>
 public static partial class Css
 {
     public static TextBuilder Text => TextBuilder.Default();
@@ -377,6 +379,11 @@ public readonly struct TextBuilder
         {
             this.builder = builder;
             this.themes = themes;
+        }
+
+        public static implicit operator TextBuilder(TextColorGradientBuilder builder)
+        {
+            return builder.builder.WithColor(new TextColor(builder.themes, Gradients.Default));
         }
 
         public TextBuilder Default()

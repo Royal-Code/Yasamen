@@ -1,4 +1,4 @@
-﻿namespace RoyalCode.Razor.Commons.Styles;
+﻿namespace RoyalCode.Razor.Styles;
 
 public readonly struct BorderColor
 {
@@ -81,9 +81,20 @@ public readonly struct BorderColor
     public readonly struct Builder
     {
         private readonly Themes theme;
+
         public Builder(Themes theme)
         {
             this.theme = theme;
+        }
+
+        public static implicit operator BorderColor(Builder builder)
+        {
+            return new BorderColor(builder.theme, Gradients.Default);
+        }
+
+        public static implicit operator string(Builder builder)
+        {
+            return new BorderColor(builder.theme, Gradients.Default).className;
         }
 
         public BorderColor With(Gradients gradients)

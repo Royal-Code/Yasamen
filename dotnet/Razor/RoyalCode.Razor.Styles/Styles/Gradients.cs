@@ -1,4 +1,4 @@
-﻿namespace RoyalCode.Razor.Commons.Styles;
+﻿namespace RoyalCode.Razor.Styles;
 
 public enum Gradients
 {

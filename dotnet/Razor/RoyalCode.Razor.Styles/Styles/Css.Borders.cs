@@ -1,10 +1,12 @@
-﻿using RoyalCode.Razor.Commons.Styles;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 
-namespace RoyalCode.Razor.Commons;
+namespace RoyalCode.Razor.Styles;
 
 #pragma warning disable S2325 // make methods and properties static (CssBorders)
 
+/// <summary>
+/// Utility to create CSS classes for components.
+/// </summary>
 public partial class Css
 {
     public static DefaultBorders Border => new();
@@ -470,6 +472,11 @@ public readonly struct BorderColorBuilder
     {
         this.builder = builder;
         this.theme = theme;
+    }
+
+    public static implicit operator BorderBuilder(BorderColorBuilder builder)
+    {
+        return builder.builder.With(new BorderColor(builder.theme, Gradients.Default));
     }
 
     public BorderBuilder With(Gradients gradients)

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace RoyalCode.Razor.Commons.Styles;
+namespace RoyalCode.Razor.Styles;
 
 public readonly struct TextDecoration
 {

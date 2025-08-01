@@ -1,4 +1,4 @@
-﻿namespace RoyalCode.Razor.Commons.Styles;
+﻿namespace RoyalCode.Razor.Styles;
 
 public readonly struct TextColor
 {
@@ -82,6 +82,16 @@ public readonly struct TextColor
             this.theme = theme;
         }
         
+        public static implicit operator TextColor(Builder builder)
+        {
+            return new TextColor(builder.theme, Gradients.Default);
+        }
+
+        public static implicit operator string(Builder builder)
+        {
+            return new TextColor(builder.theme, Gradients.Default).className;
+        }
+
         public TextColor With(Gradients gradients)
         {
             return new TextColor(theme, gradients);

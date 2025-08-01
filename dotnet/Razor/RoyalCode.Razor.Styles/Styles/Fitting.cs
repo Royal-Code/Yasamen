@@ -1,4 +1,4 @@
-namespace RoyalCode.Razor.Commons.Styles;
+namespace RoyalCode.Razor.Styles;
 
 /// <summary>
 /// Fitting of some component, for example a side menu. 
