@@ -120,4 +120,20 @@
     --text-4xs--line-height: calc(0.75 / 0.5);
     --text-3xs--line-height: calc(0.8125 / 0.5625);
     --text-2xs--line-height: calc(0.875 / 0.625);
+    --spacing-1: .0625rem;
+    --spacing-2: .125rem;
+    --spacing-3: .25rem;
+    --spacing-4: .5rem;
+    --spacing-5: 0.75rem;
+    --spacing-6: 1rem;
+    --spacing-7: 1.5rem;
+    --spacing-8: 2rem;
+    --spacing-9: 3rem;
+    --spacing-10: 4rem;
+    --spacing-11: 5rem;
+    --spacing-12: 6rem;
+    --spacing-13: 8rem;
+    --spacing-14: 12rem;
+    --spacing-15: 16rem;
+    --spacing-16: 32rem;
 }

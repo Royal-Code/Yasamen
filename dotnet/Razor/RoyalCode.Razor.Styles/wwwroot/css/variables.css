@@ -1,0 +1,9 @@
+﻿:root {
+    --durantion-slowest: 0.9s;
+    --durantion-slower: 0.6s;
+    --durantion-slow: 0.4s;
+    --durantion-normal: 0.3s;
+    --durantion-fast: 0.2s;
+    --durantion-faster: 0.15s;
+    --durantion-fastest: 0.1s;
+}
