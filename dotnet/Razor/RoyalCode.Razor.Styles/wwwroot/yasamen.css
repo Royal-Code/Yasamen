@@ -111,15 +111,16 @@
     --color-dark-700: #29252c;
     --color-dark-800: #221f24;
     --color-dark-900: #1a181c;
-    --font-family-sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif, Arial, "Noto Sans", "Liberation Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
-    --font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-serif: "Georgia", "Times New Roman", Times, serif;
+    --font-mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
     --text-4xs: 0.5rem;
     --text-3xs: 0.5625rem;
     --text-2xs: 0.625rem;
     --text-4xs--line-height: calc(0.75 / 0.5);
     --text-3xs--line-height: calc(0.8125 / 0.5625);
     --text-2xs--line-height: calc(0.875 / 0.625);
+    --spacing-0: 0;
     --spacing-1: .0625rem;
     --spacing-2: .125rem;
     --spacing-3: .25rem;
@@ -136,4 +137,10 @@
     --spacing-14: 12rem;
     --spacing-15: 16rem;
     --spacing-16: 32rem;
+    --leading-none: 1;
+    --leading-xs: 1.125;
+    --leading-sm: 1.25;
+    --leading-base: 1.5;
+    --leading-lg: 1.75;
+    --leading-xl: 2;
 }

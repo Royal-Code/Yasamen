@@ -1,0 +1,19 @@
+﻿
+<div @attributes="AdditionalAttributes" class="@Classes">
+    @ChildContent
+</div>
+
+@code {
+
+    private string Classes => "ya-stack flex flex-col w-100"
+        .AddClass(AdditionalClasses);
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IDictionary<string, object>? AdditionalAttributes { get; set; }
+}

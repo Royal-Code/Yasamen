@@ -12,7 +12,7 @@ public partial class Css
     public static DefaultBorders Border => new();
 }
 
-public readonly struct DefaultBorders
+public readonly ref struct DefaultBorders
 {
     public BorderBuilder Default() => BorderBuilder.Default;
     public BorderBuilder None() => BorderBuilder.None;

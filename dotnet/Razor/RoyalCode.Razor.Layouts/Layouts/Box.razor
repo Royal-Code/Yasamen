@@ -1,0 +1,31 @@
+
+<div @attributes="AdditionalAttributes" class="@ClassName">
+    @ChildContent
+</div>
+
+@code {
+
+    private string ClassName => "ya-box"
+        .AddClass(Border)
+        .AddClass(Padding)
+        .AddClass(Margin)
+        .AddClass(AdditionalClasses);
+
+    [Parameter]
+    public BorderBuilder Border { get; set; } = BorderBuilder.Box;
+
+    [Parameter]
+    public PaddingBuilder Padding { get; set; } = PaddingBuilder.None;
+
+    [Parameter]
+    public MarginBuilder Margin { get; set; } = MarginBuilder.None;
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public string AdditionalClasses { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IDictionary<string, object> AdditionalAttributes { get; set; }
+}

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <NoDefaultLaunchSettingsFile>true</NoDefaultLaunchSettingsFile>
+    <StaticWebAssetProjectMode>Default</StaticWebAssetProjectMode>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="$(AspNetVer)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\RoyalCode.Razor.Commons\RoyalCode.Razor.Commons.csproj" />
+    <ProjectReference Include="..\..\RoyalCode.Razor.Layouts\RoyalCode.Razor.Layouts.csproj" />
+    <ProjectReference Include="..\..\RoyalCode.Razor.Show\RoyalCode.Razor.Show.csproj" />
+    <ProjectReference Include="..\..\RoyalCode.Razor.Styles\RoyalCode.Razor.Styles.csproj" />
+  </ItemGroup>
+
+</Project>

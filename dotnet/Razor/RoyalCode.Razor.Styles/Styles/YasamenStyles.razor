@@ -1,0 +1,14 @@
+﻿@using System.Diagnostics
+
+@if (Debugger.IsAttached)
+{
+    @* yasamen styles css *@
+    <link href="/_content/RoyalCode.Razor.Styles/styles.css" rel="stylesheet" />
+    @* tailwind css *@
+    <link href="/_content/RoyalCode.Razor.Styles/yasamen.dist.css" rel="stylesheet" />
+}
+else
+{
+    @* yasamen styles css + tailwind bundle *@
+    <link href="@Assets["/_content/RoyalCode.Razor.Styles/styles.bundle.css"]" rel="stylesheet" />
+}

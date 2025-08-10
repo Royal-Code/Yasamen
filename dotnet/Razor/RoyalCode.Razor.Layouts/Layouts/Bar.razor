@@ -1,0 +1,32 @@
+
+<div @attributes="@AdditionalAttributes" class="@Classes">
+    <div class="d-flex justify-content-start">
+        @Start
+    </div>
+    <div class="d-flex justify-content-center">
+        @Middle
+    </div>
+    <div class="d-flex justify-content-end">
+        @End
+    </div>
+</div>
+
+@code {
+    private string Classes => "ya-bar flex justify-between w-100"
+        .AddClass(AdditionalClasses);
+
+    [Parameter]
+    public RenderFragment? Start { get; set; }
+
+    [Parameter]
+    public RenderFragment? Middle { get; set; }
+
+    [Parameter]
+    public RenderFragment? End { get; set; }
+
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IDictionary<string, object>? AdditionalAttributes { get; set; }
+}

@@ -5,7 +5,7 @@
 /// </summary>
 public static partial class Css
 {
-    public static PaddingBuilder Padding => PaddingBuilder.Default;
+    public static PaddingBuilder Padding => PaddingBuilder.None;
 }
 
 public readonly struct PaddingBuilder
@@ -19,7 +19,7 @@ public readonly struct PaddingBuilder
         this.size = size;
     }
 
-    public static PaddingBuilder Default => new(SpacingSide.None, SpacingSize.None);
+    public static PaddingBuilder None => new(SpacingSide.None, SpacingSize.None);
 
     public PaddingSideBuilder Side => new PaddingSideBuilder(this);
 
@@ -42,6 +42,8 @@ public readonly struct PaddingBuilder
 
         return SpacingMap.GetPaddingCssClass(side, size);
     }
+
+    public static implicit operator string(PaddingBuilder builder) => builder.ToString();
 }
 
 public readonly struct PaddingSideBuilder

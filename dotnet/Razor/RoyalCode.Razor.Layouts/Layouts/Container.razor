@@ -1,0 +1,51 @@
+﻿
+<div @attributes="AdditionalAttributes" class="@Classes">
+    <CascadingValue Value="context" IsFixed="true">
+        @ChildContent
+    </CascadingValue>
+</div>
+
+@code {
+    private readonly ContainerContext context = new();
+
+    private string Classes => "ya-container"
+        .AddClass(Type == LayoutTypes.Flex, "flex flex-wrap grow justify-start")
+        .AddClass(Type == LayoutTypes.Grid, Size.ToGridCssClass())
+        .AddClass(AdditionalClasses);
+
+    [Parameter]
+    public LayoutTypes Type { get; set; } = LayoutTypes.Grid;
+
+    [Parameter]
+    public LayoutSizes Size { get; set; } = LayoutSizes.Default;
+
+    [Parameter]
+    public int? Height { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = default!;
+
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IDictionary<string, object>? AdditionalAttributes { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        context.Type = Type;
+        context.Sizes = Size;
+        context.Height = Height;
+
+        base.OnParametersSet();
+    }
+
+    public sealed class ContainerContext
+    {
+        public LayoutTypes Type { get; set; }
+
+        public LayoutSizes Sizes { get; set; }
+
+        public SpacingSize? Height { get; set; }
+    }
+}

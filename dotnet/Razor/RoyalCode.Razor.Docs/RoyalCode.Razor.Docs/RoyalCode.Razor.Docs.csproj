@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\RoyalCode.Razor.Layouts\RoyalCode.Razor.Layouts.csproj" />
+    <ProjectReference Include="..\..\RoyalCode.Razor.Show\RoyalCode.Razor.Show.csproj" />
+    <ProjectReference Include="..\RoyalCode.Razor.Docs.Client\RoyalCode.Razor.Docs.Client.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="$(AspNetVer)" />
+  </ItemGroup>
+
+</Project>

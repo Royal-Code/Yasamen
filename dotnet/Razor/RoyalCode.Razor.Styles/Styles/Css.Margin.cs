@@ -5,7 +5,7 @@
 /// </summary>
 public static partial class Css
 {
-    public static MarginBuilder Margin => MarginBuilder.Default;
+    public static MarginBuilder Margin => MarginBuilder.None;
 }
 
 public readonly struct MarginBuilder
@@ -18,7 +18,7 @@ public readonly struct MarginBuilder
         this.size = size;
     }
 
-    public static MarginBuilder Default => new(SpacingSide.None, SpacingSize.None);
+    public static MarginBuilder None => new(SpacingSide.None, SpacingSize.None);
 
     public MarginSideBuilder Side => new MarginSideBuilder(this);
 
@@ -39,6 +39,8 @@ public readonly struct MarginBuilder
 
         return SpacingMap.GetMarginCssClass(side, size);
     }
+
+    public static implicit operator string(MarginBuilder builder) => builder.ToString();
 }
 
 public readonly struct MarginSideBuilder
