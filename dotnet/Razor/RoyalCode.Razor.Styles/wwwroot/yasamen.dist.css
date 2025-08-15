@@ -1,4 +1,4 @@
-/*! tailwindcss v4.1.11 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.1.12 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -1540,17 +1540,26 @@
   .w-1 {
     width: var(--spacing-1);
   }
+  .w-1\/4 {
+    width: calc(1/4 * 100%);
+  }
   .w-1\/12 {
     width: calc(1/12 * 100%);
   }
   .w-2 {
     width: var(--spacing-2);
   }
+  .w-2\/4 {
+    width: calc(2/4 * 100%);
+  }
   .w-2\/12 {
     width: calc(2/12 * 100%);
   }
   .w-3 {
     width: var(--spacing-3);
+  }
+  .w-3\/4 {
+    width: calc(3/4 * 100%);
   }
   .w-3\/12 {
     width: calc(3/12 * 100%);
@@ -1821,6 +1830,9 @@
   }
   .min-w-screen {
     min-width: 100vw;
+  }
+  .flex-initial {
+    flex: 0 auto;
   }
   .flex-shrink {
     flex-shrink: 1;
@@ -2360,6 +2372,12 @@
   .columns-auto {
     columns: auto;
   }
+  .grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .flex-col {
+    flex-direction: column;
+  }
   .flex-row {
     flex-direction: row;
   }
@@ -2494,6 +2512,9 @@
   }
   .gap-5 {
     gap: var(--spacing-5);
+  }
+  .gap-8 {
+    gap: var(--spacing-8);
   }
   .self-auto {
     align-self: auto;
@@ -6516,6 +6537,451 @@
   }
   .text-shadow-xs {
     text-shadow: 0px 1px 1px var(--tw-text-shadow-color, rgb(0 0 0 / 0.2));
+  }
+  .sm\:col-span-1 {
+    @media (width >= 40rem) {
+      grid-column: span 1 / span 1;
+    }
+  }
+  .sm\:col-span-2 {
+    @media (width >= 40rem) {
+      grid-column: span 2 / span 2;
+    }
+  }
+  .sm\:col-span-3 {
+    @media (width >= 40rem) {
+      grid-column: span 3 / span 3;
+    }
+  }
+  .sm\:col-span-4 {
+    @media (width >= 40rem) {
+      grid-column: span 4 / span 4;
+    }
+  }
+  .sm\:col-span-5 {
+    @media (width >= 40rem) {
+      grid-column: span 5 / span 5;
+    }
+  }
+  .sm\:col-span-6 {
+    @media (width >= 40rem) {
+      grid-column: span 6 / span 6;
+    }
+  }
+  .sm\:col-span-7 {
+    @media (width >= 40rem) {
+      grid-column: span 7 / span 7;
+    }
+  }
+  .sm\:col-span-8 {
+    @media (width >= 40rem) {
+      grid-column: span 8 / span 8;
+    }
+  }
+  .sm\:col-span-9 {
+    @media (width >= 40rem) {
+      grid-column: span 9 / span 9;
+    }
+  }
+  .sm\:col-span-10 {
+    @media (width >= 40rem) {
+      grid-column: span 10 / span 10;
+    }
+  }
+  .sm\:col-span-11 {
+    @media (width >= 40rem) {
+      grid-column: span 11 / span 11;
+    }
+  }
+  .sm\:col-span-12 {
+    @media (width >= 40rem) {
+      grid-column: span 12 / span 12;
+    }
+  }
+  .sm\:col-span-13 {
+    @media (width >= 40rem) {
+      grid-column: span 13 / span 13;
+    }
+  }
+  .sm\:col-span-14 {
+    @media (width >= 40rem) {
+      grid-column: span 14 / span 14;
+    }
+  }
+  .sm\:col-span-15 {
+    @media (width >= 40rem) {
+      grid-column: span 15 / span 15;
+    }
+  }
+  .sm\:col-span-16 {
+    @media (width >= 40rem) {
+      grid-column: span 16 / span 16;
+    }
+  }
+  .sm\:grid-cols-4 {
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .md\:col-span-1 {
+    @media (width >= 48rem) {
+      grid-column: span 1 / span 1;
+    }
+  }
+  .md\:col-span-2 {
+    @media (width >= 48rem) {
+      grid-column: span 2 / span 2;
+    }
+  }
+  .md\:col-span-3 {
+    @media (width >= 48rem) {
+      grid-column: span 3 / span 3;
+    }
+  }
+  .md\:col-span-4 {
+    @media (width >= 48rem) {
+      grid-column: span 4 / span 4;
+    }
+  }
+  .md\:col-span-5 {
+    @media (width >= 48rem) {
+      grid-column: span 5 / span 5;
+    }
+  }
+  .md\:col-span-6 {
+    @media (width >= 48rem) {
+      grid-column: span 6 / span 6;
+    }
+  }
+  .md\:col-span-7 {
+    @media (width >= 48rem) {
+      grid-column: span 7 / span 7;
+    }
+  }
+  .md\:col-span-8 {
+    @media (width >= 48rem) {
+      grid-column: span 8 / span 8;
+    }
+  }
+  .md\:w-1\/8 {
+    @media (width >= 48rem) {
+      width: calc(1/8 * 100%);
+    }
+  }
+  .md\:w-2\/8 {
+    @media (width >= 48rem) {
+      width: calc(2/8 * 100%);
+    }
+  }
+  .md\:w-3\/8 {
+    @media (width >= 48rem) {
+      width: calc(3/8 * 100%);
+    }
+  }
+  .md\:w-4\/8 {
+    @media (width >= 48rem) {
+      width: calc(4/8 * 100%);
+    }
+  }
+  .md\:w-5\/8 {
+    @media (width >= 48rem) {
+      width: calc(5/8 * 100%);
+    }
+  }
+  .md\:w-6\/8 {
+    @media (width >= 48rem) {
+      width: calc(6/8 * 100%);
+    }
+  }
+  .md\:w-7\/8 {
+    @media (width >= 48rem) {
+      width: calc(7/8 * 100%);
+    }
+  }
+  .md\:grid-cols-8 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+    }
+  }
+  .lg\:col-span-1 {
+    @media (width >= 64rem) {
+      grid-column: span 1 / span 1;
+    }
+  }
+  .lg\:col-span-2 {
+    @media (width >= 64rem) {
+      grid-column: span 2 / span 2;
+    }
+  }
+  .lg\:col-span-3 {
+    @media (width >= 64rem) {
+      grid-column: span 3 / span 3;
+    }
+  }
+  .lg\:col-span-4 {
+    @media (width >= 64rem) {
+      grid-column: span 4 / span 4;
+    }
+  }
+  .lg\:col-span-5 {
+    @media (width >= 64rem) {
+      grid-column: span 5 / span 5;
+    }
+  }
+  .lg\:col-span-6 {
+    @media (width >= 64rem) {
+      grid-column: span 6 / span 6;
+    }
+  }
+  .lg\:col-span-7 {
+    @media (width >= 64rem) {
+      grid-column: span 7 / span 7;
+    }
+  }
+  .lg\:col-span-8 {
+    @media (width >= 64rem) {
+      grid-column: span 8 / span 8;
+    }
+  }
+  .lg\:col-span-9 {
+    @media (width >= 64rem) {
+      grid-column: span 9 / span 9;
+    }
+  }
+  .lg\:col-span-10 {
+    @media (width >= 64rem) {
+      grid-column: span 10 / span 10;
+    }
+  }
+  .lg\:col-span-11 {
+    @media (width >= 64rem) {
+      grid-column: span 11 / span 11;
+    }
+  }
+  .lg\:col-span-12 {
+    @media (width >= 64rem) {
+      grid-column: span 12 / span 12;
+    }
+  }
+  .lg\:w-1\/12 {
+    @media (width >= 64rem) {
+      width: calc(1/12 * 100%);
+    }
+  }
+  .lg\:w-2\/12 {
+    @media (width >= 64rem) {
+      width: calc(2/12 * 100%);
+    }
+  }
+  .lg\:w-3\/12 {
+    @media (width >= 64rem) {
+      width: calc(3/12 * 100%);
+    }
+  }
+  .lg\:w-4\/12 {
+    @media (width >= 64rem) {
+      width: calc(4/12 * 100%);
+    }
+  }
+  .lg\:w-5\/12 {
+    @media (width >= 64rem) {
+      width: calc(5/12 * 100%);
+    }
+  }
+  .lg\:w-6\/12 {
+    @media (width >= 64rem) {
+      width: calc(6/12 * 100%);
+    }
+  }
+  .lg\:w-7\/12 {
+    @media (width >= 64rem) {
+      width: calc(7/12 * 100%);
+    }
+  }
+  .lg\:w-8\/12 {
+    @media (width >= 64rem) {
+      width: calc(8/12 * 100%);
+    }
+  }
+  .lg\:w-9\/12 {
+    @media (width >= 64rem) {
+      width: calc(9/12 * 100%);
+    }
+  }
+  .lg\:w-10\/12 {
+    @media (width >= 64rem) {
+      width: calc(10/12 * 100%);
+    }
+  }
+  .lg\:w-11\/12 {
+    @media (width >= 64rem) {
+      width: calc(11/12 * 100%);
+    }
+  }
+  .lg\:grid-cols-12 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+  }
+  .\32 xl\:col-span-1 {
+    @media (width >= 96rem) {
+      grid-column: span 1 / span 1;
+    }
+  }
+  .\32 xl\:col-span-2 {
+    @media (width >= 96rem) {
+      grid-column: span 2 / span 2;
+    }
+  }
+  .\32 xl\:col-span-3 {
+    @media (width >= 96rem) {
+      grid-column: span 3 / span 3;
+    }
+  }
+  .\32 xl\:col-span-4 {
+    @media (width >= 96rem) {
+      grid-column: span 4 / span 4;
+    }
+  }
+  .\32 xl\:col-span-5 {
+    @media (width >= 96rem) {
+      grid-column: span 5 / span 5;
+    }
+  }
+  .\32 xl\:col-span-6 {
+    @media (width >= 96rem) {
+      grid-column: span 6 / span 6;
+    }
+  }
+  .\32 xl\:col-span-7 {
+    @media (width >= 96rem) {
+      grid-column: span 7 / span 7;
+    }
+  }
+  .\32 xl\:col-span-8 {
+    @media (width >= 96rem) {
+      grid-column: span 8 / span 8;
+    }
+  }
+  .\32 xl\:col-span-9 {
+    @media (width >= 96rem) {
+      grid-column: span 9 / span 9;
+    }
+  }
+  .\32 xl\:col-span-10 {
+    @media (width >= 96rem) {
+      grid-column: span 10 / span 10;
+    }
+  }
+  .\32 xl\:col-span-11 {
+    @media (width >= 96rem) {
+      grid-column: span 11 / span 11;
+    }
+  }
+  .\32 xl\:col-span-12 {
+    @media (width >= 96rem) {
+      grid-column: span 12 / span 12;
+    }
+  }
+  .\32 xl\:col-span-13 {
+    @media (width >= 96rem) {
+      grid-column: span 13 / span 13;
+    }
+  }
+  .\32 xl\:col-span-14 {
+    @media (width >= 96rem) {
+      grid-column: span 14 / span 14;
+    }
+  }
+  .\32 xl\:col-span-15 {
+    @media (width >= 96rem) {
+      grid-column: span 15 / span 15;
+    }
+  }
+  .\32 xl\:col-span-16 {
+    @media (width >= 96rem) {
+      grid-column: span 16 / span 16;
+    }
+  }
+  .\32 xl\:w-1\/16 {
+    @media (width >= 96rem) {
+      width: calc(1/16 * 100%);
+    }
+  }
+  .\32 xl\:w-2\/16 {
+    @media (width >= 96rem) {
+      width: calc(2/16 * 100%);
+    }
+  }
+  .\32 xl\:w-3\/16 {
+    @media (width >= 96rem) {
+      width: calc(3/16 * 100%);
+    }
+  }
+  .\32 xl\:w-4\/16 {
+    @media (width >= 96rem) {
+      width: calc(4/16 * 100%);
+    }
+  }
+  .\32 xl\:w-5\/16 {
+    @media (width >= 96rem) {
+      width: calc(5/16 * 100%);
+    }
+  }
+  .\32 xl\:w-6\/16 {
+    @media (width >= 96rem) {
+      width: calc(6/16 * 100%);
+    }
+  }
+  .\32 xl\:w-7\/16 {
+    @media (width >= 96rem) {
+      width: calc(7/16 * 100%);
+    }
+  }
+  .\32 xl\:w-8\/16 {
+    @media (width >= 96rem) {
+      width: calc(8/16 * 100%);
+    }
+  }
+  .\32 xl\:w-9\/16 {
+    @media (width >= 96rem) {
+      width: calc(9/16 * 100%);
+    }
+  }
+  .\32 xl\:w-10\/16 {
+    @media (width >= 96rem) {
+      width: calc(10/16 * 100%);
+    }
+  }
+  .\32 xl\:w-11\/16 {
+    @media (width >= 96rem) {
+      width: calc(11/16 * 100%);
+    }
+  }
+  .\32 xl\:w-12\/16 {
+    @media (width >= 96rem) {
+      width: calc(12/16 * 100%);
+    }
+  }
+  .\32 xl\:w-13\/16 {
+    @media (width >= 96rem) {
+      width: calc(13/16 * 100%);
+    }
+  }
+  .\32 xl\:w-14\/16 {
+    @media (width >= 96rem) {
+      width: calc(14/16 * 100%);
+    }
+  }
+  .\32 xl\:w-15\/16 {
+    @media (width >= 96rem) {
+      width: calc(15/16 * 100%);
+    }
+  }
+  .\32 xl\:grid-cols-16 {
+    @media (width >= 96rem) {
+      grid-template-columns: repeat(16, minmax(0, 1fr));
+    }
   }
 }
 @property --tw-translate-x {

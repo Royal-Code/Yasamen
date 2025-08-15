@@ -1,0 +1,40 @@
+﻿
+<div @attributes="AdditionalAttributes" class="@Classes">
+    <header>
+        <AppBar>
+            <StartContent>
+                Start
+            </StartContent>
+            <CenterContent>
+                Center
+            </CenterContent>
+            <EndContent>
+                End
+            </EndContent>
+        </AppBar>
+    </header>
+    <main>
+        @Main
+    </main>
+</div>
+
+@code {
+
+    public string Classes => "ya-app-layout w-full min-h-screen"
+        .AddClass(AdditionalClasses);
+
+    [Parameter]
+    public RenderFragment Main { get; set; }
+
+    /// <summary>
+    /// Additional CSS classes to apply to the container for custom styling.
+    /// </summary>
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
+
+    /// <summary>
+    /// Additional attributes that will be applied to the container's outermost HTML element.
+    /// </summary>
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IDictionary<string, object>? AdditionalAttributes { get; set; }
+}

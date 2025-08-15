@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
 using RoyalCode.Razor.Styles;
-using System.Drawing;
 using static RoyalCode.Razor.Layouts.Container;
 
 namespace RoyalCode.Razor.Layouts;

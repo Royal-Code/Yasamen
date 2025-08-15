@@ -1,0 +1,28 @@
+﻿
+<div @attributes="AdditionalAttributes" class="@Classes">
+    @if (StartContent.IsNotEmptyFragment())
+    {
+        <div class="ya-app-bar--start">
+            @StartContent
+        </div>
+    }
+    @if (CenterContent.IsNotEmptyFragment())
+    {
+        <div class="ya-app-bar--center">
+            @CenterContent
+        </div>
+    }
+    @if (EndContent.IsNotEmptyFragment())
+    {
+        <div class="ya-app-bar--end">
+            @EndContent
+        </div>
+    }
+</div>
+
+@code {
+
+    public string Classes => "ya-app-bar flex justify-between w-full"
+            .AddClass(Size.ToHeightCssClass())
+            .AddClass(AdditionalClasses);
+}
