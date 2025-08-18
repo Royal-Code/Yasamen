@@ -1,0 +1,26 @@
+﻿
+<div @attributes="AdditionalAttributes" class="@Classes">
+    MM
+</div>
+
+@code {
+    public string Classes => "ya-app-menu overflow-hidden max-sm:hidden sm:fixed top-0 bottom-0 bg-white"
+        .AddClass(Size.ToWidthCssClass())
+        .AddClass(Size.ToMinWidthCssClass())
+        .AddClass(AdditionalClasses);
+
+    [Parameter]
+    public SpacingSize Size { get; set; } = SpacingSize.LargerX2;
+
+    /// <summary>
+    /// Additional CSS classes to apply to the container for custom styling.
+    /// </summary>
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
+
+    /// <summary>
+    /// Additional attributes that will be applied to the container's outermost HTML element.
+    /// </summary>
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IDictionary<string, object>? AdditionalAttributes { get; set; }
+}

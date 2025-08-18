@@ -8,6 +8,7 @@ public partial class AppBar
     /// <summary>
     /// The height of the app bar. Defaults to LargerX2 (48px).
     /// </summary>
+    [Parameter]
     public SpacingSize Size { get; set; } = SpacingSize.LargerX2;
 
     /// <summary>

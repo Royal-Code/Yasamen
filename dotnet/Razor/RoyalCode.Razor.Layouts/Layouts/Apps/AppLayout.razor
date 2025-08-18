@@ -1,30 +1,93 @@
 ﻿
-<div @attributes="AdditionalAttributes" class="@Classes">
-    <header>
-        <AppBar>
+@PreContent
+<div @attributes="AdditionalAttributes" class="@Classes" @ref="LayoutReference">
+    <header class="@HeaderClasses" @ref="MenuReference">
+        <AppBar Size="@TopSize">
             <StartContent>
-                Start
+                @TopStart
             </StartContent>
             <CenterContent>
-                Center
+                @TopCenter
             </CenterContent>
             <EndContent>
-                End
+                @TopEnd
             </EndContent>
         </AppBar>
     </header>
-    <main>
-        @Main
-    </main>
+    <div class="@PageClasses">
+        <AppMenu Size="MenuSize" AdditionalClasses="@Css.Margin.Side.Top().WithSize(TopSize)">
+
+        </AppMenu>
+        <div class="@ContentClasses">
+            <main class="@MainClasses" @ref="MainReference">
+                @Main
+            </main>
+            <footer class="@FooterClasses" @ref="FooterReference">
+                @Footer
+            </footer>
+        </div>
+    </div>
+    
 </div>
 
 @code {
 
-    public string Classes => "ya-app-layout w-full min-h-screen"
+    public string Classes => "ya-app-layout grid w-full min-h-screen"
         .AddClass(AdditionalClasses);
+
+    public string HeaderClasses => "ya-app-header fixed top-0 right-0 left-0";
+
+    public string PageClasses => "ya-app-page flex w-full h-full"
+        .AddClass(Css.Padding.Side.Top().WithSize(TopSize));
+
+    public string ContentClasses => "ya-app-content grid w-full self-stretch"
+        .AddClass(Css.Margin.Side.Left().WithSize(TopSize))
+        .AddClass("max-sm:ml-0");
+
+    public string MainClasses => "ya-app-main";
+
+    public string FooterClasses => "ya-app-footer flex w-full self-end items-center bg-white"
+        .AddClass(SpacingSize.LargerX2.ToHeightCssClass());
+
+    public ElementReference LayoutReference { get; private set; }
+
+    public ElementReference HeaderReference { get; private set; }
+
+    public ElementReference MenuReference { get; private set; }
+
+    public ElementReference MainReference { get; private set; }
+
+    public ElementReference FooterReference { get; private set; }
+
+    [Parameter]
+    public RenderFragment PreContent { get; set; }
+
+    [Parameter]
+    public SpacingSize TopSize { get; set; } = SpacingSize.LargerX2;
+
+    [Parameter]
+    public RenderFragment TopStart { get; set; }
+
+    [Parameter]
+    public RenderFragment TopCenter { get; set; }
+
+    [Parameter]
+    public RenderFragment TopEnd { get; set; }
+
+    [Parameter]
+    public RenderFragment Menu { get; set; }
+
+    [Parameter]
+    public SpacingSize MenuSize { get; set; } = SpacingSize.LargerX2;
 
     [Parameter]
     public RenderFragment Main { get; set; }
+
+    [Parameter]
+    public RenderFragment Footer { get; set; }
+
+    [Parameter]
+    public SpacingSize FooterSize { get; set; } = SpacingSize.LargerX2;
 
     /// <summary>
     /// Additional CSS classes to apply to the container for custom styling.
