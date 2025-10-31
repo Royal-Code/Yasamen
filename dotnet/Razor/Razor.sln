@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11121.172 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
@@ -33,6 +33,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Razor.Docs", "Roy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Razor.Docs.Client", "RoyalCode.Razor.Docs\RoyalCode.Razor.Docs.Client\RoyalCode.Razor.Docs.Client.csproj", "{A885FFDF-A626-4F82-896B-CCF2ED204C62}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{947DDA3F-95F0-4F01-9AC1-43C874779423}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Razor.Icons", "RoyalCode.Razor.Icons\RoyalCode.Razor.Icons.csproj", "{40875B65-8424-47E7-AA58-D718EA6A9D1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Razor.Icons.Bootstrap", "RoyalCode.Razor.Icons.Bootstrap\RoyalCode.Razor.Icons.Bootstrap.csproj", "{D0CFC105-690C-42D6-B442-96A5F81D7347}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +69,14 @@ Global
 		{A885FFDF-A626-4F82-896B-CCF2ED204C62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A885FFDF-A626-4F82-896B-CCF2ED204C62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A885FFDF-A626-4F82-896B-CCF2ED204C62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40875B65-8424-47E7-AA58-D718EA6A9D1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40875B65-8424-47E7-AA58-D718EA6A9D1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40875B65-8424-47E7-AA58-D718EA6A9D1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40875B65-8424-47E7-AA58-D718EA6A9D1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0CFC105-690C-42D6-B442-96A5F81D7347}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0CFC105-690C-42D6-B442-96A5F81D7347}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0CFC105-690C-42D6-B442-96A5F81D7347}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0CFC105-690C-42D6-B442-96A5F81D7347}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +90,9 @@ Global
 		{20F18FEC-ED2B-4E8E-9364-778F87A841D3} = {7CA7075F-4D75-4978-BD94-B43A04533E08}
 		{81DD8F7D-6D03-4C33-A74B-6471259A7352} = {58AC2173-5D68-4A43-8F25-F0E9A3284E45}
 		{A885FFDF-A626-4F82-896B-CCF2ED204C62} = {58AC2173-5D68-4A43-8F25-F0E9A3284E45}
+		{947DDA3F-95F0-4F01-9AC1-43C874779423} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{40875B65-8424-47E7-AA58-D718EA6A9D1E} = {947DDA3F-95F0-4F01-9AC1-43C874779423}
+		{D0CFC105-690C-42D6-B442-96A5F81D7347} = {947DDA3F-95F0-4F01-9AC1-43C874779423}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8E24AFE-4B8F-4D0B-BB8C-FD23CE44D40C}

@@ -29,6 +29,7 @@
     </div>
     
 </div>
+@PostContent
 
 @code {
 
@@ -61,6 +62,9 @@
 
     [Parameter]
     public RenderFragment PreContent { get; set; }
+
+    [Parameter]
+    public RenderFragment PostContent { get; set; }
 
     [Parameter]
     public SpacingSize TopSize { get; set; } = SpacingSize.LargerX2;

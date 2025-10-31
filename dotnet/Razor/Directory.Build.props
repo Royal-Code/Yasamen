@@ -13,7 +13,7 @@
 		<LibPrev></LibPrev>
 	</PropertyGroup>
 	<PropertyGroup>
-		<AspNetVer>9.0.8</AspNetVer>
-		<ExtVer>9.0.0</ExtVer>
+		<AspNetVer>9.0.10</AspNetVer>
+		<ExtVer>9.0.10</ExtVer>
 	</PropertyGroup>
 </Project>
