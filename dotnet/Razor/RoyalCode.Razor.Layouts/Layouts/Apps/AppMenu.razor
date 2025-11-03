@@ -1,10 +1,15 @@
 ﻿
 <div @attributes="AdditionalAttributes" class="@Classes">
-    MM
+    <div class="my-2 flex justify-center">
+        @WellKnownIcons.Menu()
+    </div>
+    <div class="my-2 flex justify-center">
+        @WellKnownIcons.Menu()
+    </div>
 </div>
 
 @code {
-    public string Classes => "ya-app-menu overflow-hidden max-sm:hidden sm:fixed top-0 bottom-0 bg-white"
+    public string Classes => "ya-app-menu overflow-hidden max-sm:hidden sm:fixed top-0 bottom-0 bg-white flex-col justify-start"
         .AddClass(Size.ToWidthCssClass())
         .AddClass(Size.ToMinWidthCssClass())
         .AddClass(AdditionalClasses);

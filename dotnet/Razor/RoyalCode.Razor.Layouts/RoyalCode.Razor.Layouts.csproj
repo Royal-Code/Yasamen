@@ -17,6 +17,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\RoyalCode.Razor.Commons\RoyalCode.Razor.Commons.csproj" />
+	  <ProjectReference Include="..\RoyalCode.Razor.Icons\RoyalCode.Razor.Icons.csproj" />
 	  <ProjectReference Include="..\RoyalCode.Razor.Styles\RoyalCode.Razor.Styles.csproj" />
 	</ItemGroup>
 
