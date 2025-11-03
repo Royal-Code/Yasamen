@@ -1,0 +1,131 @@
+﻿@page "/buttons"
+
+@rendermode InteractiveAuto
+@layout AppMainLayout
+
+<Box AdditionalClasses="p-8 bg-white border-none">
+
+    <h1>Buttons</h1>
+
+    <EditForm Model="this">
+        <div>
+            <InputCheckbox @bind-Value="_isActive" />
+            <label>Active (@(_isActive ? "true" : "false"))</label>
+        </div>
+        <div>
+            <InputCheckbox @bind-Value="_isDisabled" />
+            <label>Disabled (@(_isDisabled ? "true" : "false"))</label>
+        </div>
+    </EditForm>
+
+    <h2>Normal Buttons</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                @foreach (var theme in _themes)
+                {
+                    <th>@theme</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var size in _sizes)
+            {
+                <tr>
+                    <td>@SizeDisplay(size)</td>
+                    @foreach (var theme in _themes)
+                    {
+                        <td><Button Label="Hello" Size="@size" Style="@theme" Active="_isActive" Disabled="_isDisabled" /></td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h2>Outline Buttons</h2>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                @foreach (var theme in _themes)
+                {
+                    <th>@theme</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var size in _sizes)
+            {
+                <tr>
+                    <td>@SizeDisplay(size)</td>
+                    @foreach (var theme in _themes)
+                    {
+                        <td><Button Label="Hello" Size="@size" Style="@theme" Outline="true" Active="_isActive" Disabled="_isDisabled" /></td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h2>Block Buttons</h2>
+    <table class="w-6/12">
+        <thead>
+            <tr>
+                <th>Block</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var theme in _themes)
+            {
+                <tr>
+                    <td><Button Label="Hello" Style="@theme" Block="true" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</Box>
+
+@code {
+    private bool _isActive = false;
+    private bool _isDisabled = false;
+
+    private readonly Themes[] _themes =
+    [
+        Themes.Primary,
+        Themes.Secondary,
+        Themes.Tertiary,
+        Themes.Info,
+        Themes.Highlight,
+        Themes.Success,
+        Themes.Warning,
+        Themes.Alert,
+        Themes.Danger,
+        Themes.Light,
+        Themes.Dark
+    ];
+
+    private readonly Sizes[] _sizes =
+    [
+        Sizes.Smallest,
+        Sizes.Smaller,
+        Sizes.Small,
+        Sizes.Medium,
+        Sizes.Large,
+        Sizes.Larger,
+        Sizes.Largest
+    ];
+
+    private static string SizeDisplay(Sizes size) => size.ToString();
+
+    protected override void OnInitialized()
+    {
+        Tracer.Write<ButtonsPage>("Initialized", "");
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Tracer.Write<ButtonsPage>("AfterRender", "FirstRender: {0}", firstRender);
+    }
+}

@@ -1,0 +1,25 @@
+﻿
+[ya-rotation], [ya-rotation-clockwise] {
+    display: flex;
+    padding-top: .25rem;
+}
+
+    [ya-rotation] ::deep > * {
+        animation: infinite-rotate 2s linear infinite;
+        display: inline-flex;
+    }
+
+    [ya-rotation-clockwise] ::deep > * {
+        animation: infinite-rotate-counter-clockwise 2s linear infinite;
+        display: inline-flex;
+    }
+
+@keyframes infinite-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes infinite-rotate-counter-clockwise {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}

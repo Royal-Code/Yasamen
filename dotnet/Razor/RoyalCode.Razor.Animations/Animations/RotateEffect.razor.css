@@ -1,0 +1,8 @@
+﻿div {
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+    div ::deep > * {
+        transform: rotate(var(--rotate-effect-deg));
+    }

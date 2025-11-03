@@ -1,0 +1,32 @@
+﻿
+@Render
+
+@code {
+
+    /// <summary>
+    /// The content to be rendered inside the rotation motion container.
+    /// </summary>
+    [Parameter]
+	public RenderFragment ChildContent { get; set; } = null!;
+
+    /// <summary>
+    /// Indicates whether the rotation should be counter-clockwise.
+    /// </summary>
+    [Parameter]
+    public bool CounterClockwise { get; set; }
+
+    /// <summary>
+	/// Additional attributes that will be applied to the rotation motion container.
+    /// </summary>
+    [Parameter(CaptureUnmatchedValues = true)]
+	public Dictionary<string, object> AdditionalAttributes { get; set; } = null!;
+
+    private RenderFragment Render => builder => {
+
+        builder.OpenElement(0, "div");
+        builder.AddMultipleAttributes(1, AdditionalAttributes);
+        builder.AddAttribute(2, CounterClockwise ? "ya-rotation-clockwise" : "ya-rotation");
+        builder.AddContent(3, ChildContent);
+        builder.CloseElement();
+    };
+}

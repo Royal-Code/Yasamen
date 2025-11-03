@@ -1,0 +1,27 @@
+﻿
+<div @attributes=AdditionalAttributes style="--rotate-effect-deg: @Deg">
+    @ChildContent
+</div>
+
+@code {
+
+    private string Deg => $"{Degrees}deg";
+
+    /// <summary>
+    /// The degrees to rotate the content.
+    /// </summary>
+    [Parameter, EditorRequired]
+    public int Degrees { get; set; }
+
+    /// <summary>
+    /// The content to be rotated.
+    /// </summary>
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = null!;
+
+    /// <summary>
+	/// The additional attributes to be splatted onto the underlying div.
+    /// </summary>
+    [Parameter(CaptureUnmatchedValues = true)]
+	public Dictionary<string, object> AdditionalAttributes { get; set; } = null!;
+}

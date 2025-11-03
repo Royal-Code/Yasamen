@@ -1,4 +1,4 @@
-import { Sizes } from "./size";
+import { Sizes } from "./sizes";
 
 export const Themes = {
     Primary: 'primary',
@@ -53,7 +53,7 @@ export const ThemeClasses = {
             [Sizes.Larger]: 'px-7 py-3.5 text-lg',
             [Sizes.Largest]: 'px-9 py-4.5 text-xl',
         },
-        Base: 'rounded border transition duration-200 ease-in-out',
+        Base: 'round border transition duration-200 ease-in-out',
         Disabled: 'opacity-50 cursor-not-allowed',
         ReadOnly: 'opacity-50 cursor-not-allowed',
         [Themes.Primary]: 'text-light bg-primary-500 border-primary-600 outline-primary-500/50 hover:bg-primary-600 focus:border-primary-500/50 focus:outline-3',

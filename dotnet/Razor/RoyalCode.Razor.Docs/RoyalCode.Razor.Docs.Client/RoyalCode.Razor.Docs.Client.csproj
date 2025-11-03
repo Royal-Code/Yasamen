@@ -13,7 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\RoyalCode.Razor.Animations\RoyalCode.Razor.Animations.csproj" />
+    <ProjectReference Include="..\..\RoyalCode.Razor.Buttons\RoyalCode.Razor.Buttons.csproj" />
     <ProjectReference Include="..\..\RoyalCode.Razor.Commons\RoyalCode.Razor.Commons.csproj" />
+    <ProjectReference Include="..\..\RoyalCode.Razor.Icons.Bootstrap\RoyalCode.Razor.Icons.Bootstrap.csproj" />
+    <ProjectReference Include="..\..\RoyalCode.Razor.Icons\RoyalCode.Razor.Icons.csproj" />
     <ProjectReference Include="..\..\RoyalCode.Razor.Layouts\RoyalCode.Razor.Layouts.csproj" />
     <ProjectReference Include="..\..\RoyalCode.Razor.Show\RoyalCode.Razor.Show.csproj" />
     <ProjectReference Include="..\..\RoyalCode.Razor.Styles\RoyalCode.Razor.Styles.csproj" />

@@ -779,49 +779,39 @@ public readonly struct BorderRadiusBuilder
         return builder.With(BorderRadius.Default);
     }
 
-    public BorderBuilder One()
+    public BorderBuilder Smallest()
     {
-        return builder.With(BorderRadius.One);
+        return builder.With(BorderRadius.Smallest);
     }
 
-    public BorderBuilder Two()
+    public BorderBuilder Smaller()
     {
-        return builder.With(BorderRadius.Two);
+        return builder.With(BorderRadius.Smaller);
     }
 
-    public BorderBuilder Three()
+    public BorderBuilder Small()
     {
-        return builder.With(BorderRadius.Three);
+        return builder.With(BorderRadius.Small);
     }
 
-    public BorderBuilder Four()
+    public BorderBuilder Medium()
     {
-        return builder.With(BorderRadius.Four);
+        return builder.With(BorderRadius.Medium);
     }
 
-    public BorderBuilder Five()
+    public BorderBuilder Large()
     {
-        return builder.With(BorderRadius.Five);
+        return builder.With(BorderRadius.Large);
     }
 
-    public BorderBuilder Six()
+    public BorderBuilder Larger()
     {
-        return builder.With(BorderRadius.Six);
+        return builder.With(BorderRadius.Larger);
     }
 
-    public BorderBuilder Seven()
+    public BorderBuilder Largest()
     {
-        return builder.With(BorderRadius.Seven);
-    }
-
-    public BorderBuilder Eight()
-    {
-        return builder.With(BorderRadius.Eight);
-    }
-
-    public BorderBuilder Nine()
-    {
-        return builder.With(BorderRadius.Nine);
+        return builder.With(BorderRadius.Largest);
     }
 }
 

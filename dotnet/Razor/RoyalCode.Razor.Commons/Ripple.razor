@@ -1,0 +1,26 @@
+﻿@using RoyalCode.Razor.Commons.Modules
+@using RoyalCode.Razor.Styles
+
+@inject RippleJsModule Js;
+
+<span class="@Classes" @ref="rippleSpan"></span>
+
+@code {
+    private string Classes => "ripple"
+        .AddClass(Dark, "bg-black/30", "bg-white/50");
+
+    private ElementReference rippleSpan;
+
+    [Parameter]
+    public bool Dark { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Js.RippleAsync(rippleSpan);
+        }
+
+        await base.OnAfterRenderAsync(firstRender);
+    }
+}

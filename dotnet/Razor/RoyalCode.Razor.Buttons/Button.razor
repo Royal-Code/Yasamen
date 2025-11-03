@@ -1,0 +1,41 @@
+
+<button type="@Type.ToHtmlAttr()"
+        class="@Classes"
+        disabled="@Disabled"
+        @onclick="ClickHandler"
+        @attributes="AdditionalAttributes"
+        @ref="Reference">
+
+    @if (Icon is not null && !UseIconAtEnd)
+    {
+        @RenderIcon
+    }
+
+    @Label
+
+    @if (Icon is not null && UseIconAtEnd)
+    {
+        @RenderIcon
+    }
+
+    @ChildContent
+
+    <Ripple Dark="DarkRipple" />
+</button>
+
+@code{
+
+    private string Classes => "ya-btn relative overflow-hidden border-1 transition-all duration-150 focus:outline-none"
+		.AddClass(Style.ToButtonTheme(Active, Outline))
+		.AddClass(Size.ToButtonSize())
+		.AddClass(Block, "w-full")
+        .AddClass(Active, "active")
+		.AddClass(Disabled, "cursor-not-allowed opacity-50")
+		.AddClass(AdditionalClasses);
+
+    private RenderFragment RenderIcon => IconAnimation is not null
+        ? IconAnimation(IconRender.Fragment(Icon!))
+		: IconRender.Fragment(Icon!);
+
+    private bool DarkRipple => Outline || Style is Themes.Light;
+}

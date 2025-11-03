@@ -1,4 +1,5 @@
 ﻿
+
 :not(.icon-at-end) ::deep > i {
     margin-right: var(--b-button-icon--margin);
 }

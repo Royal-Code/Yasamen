@@ -7,6 +7,8 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
+builder.Services.AddYasamenCommons();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

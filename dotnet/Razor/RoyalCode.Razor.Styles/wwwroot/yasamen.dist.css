@@ -6,6 +6,7 @@
     --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --font-serif: "Georgia", "Times New Roman", Times, serif;
     --font-mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+    --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
     --text-xs: 0.75rem;
@@ -49,6 +50,9 @@
     --tracking-wide: 0.025em;
     --tracking-wider: 0.05em;
     --tracking-widest: 0.1em;
+    --radius-sm: 0.25rem;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
     --drop-shadow-xs: 0 1px 1px rgb(0 0 0 / 0.05);
     --drop-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.15);
     --drop-shadow-md: 0 3px 3px rgb(0 0 0 / 0.12);
@@ -2376,6 +2380,18 @@
   .scroll-smooth {
     scroll-behavior: smooth;
   }
+  .rounded {
+    border-radius: 0.25rem;
+  }
+  .rounded-lg {
+    border-radius: var(--radius-lg);
+  }
+  .rounded-md {
+    border-radius: var(--radius-md);
+  }
+  .rounded-sm {
+    border-radius: var(--radius-sm);
+  }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
@@ -2813,6 +2829,12 @@
   .bg-alert-900 {
     background-color: var(--color-alert-900);
   }
+  .bg-black\/30 {
+    background-color: color-mix(in srgb, #000 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-black) 30%, transparent);
+    }
+  }
   .bg-current {
     background-color: currentcolor;
   }
@@ -3124,6 +3146,12 @@
   }
   .bg-white {
     background-color: var(--color-white);
+  }
+  .bg-white\/50 {
+    background-color: color-mix(in srgb, #fff 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-white) 50%, transparent);
+    }
   }
   .bg-clip-border {
     background-clip: border-box;
@@ -4294,6 +4322,9 @@
   .text-warning-900 {
     color: var(--color-warning-900);
   }
+  .text-white {
+    color: var(--color-white);
+  }
   .capitalize {
     text-transform: capitalize;
   }
@@ -4834,6 +4865,10 @@
     --tw-shadow: 0 1px 2px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.05));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
+  .ring {
+    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
   .outline-hidden {
     --tw-outline-style: none;
     outline-style: none;
@@ -4841,6 +4876,10 @@
       outline: 2px solid transparent;
       outline-offset: 2px;
     }
+  }
+  .outline {
+    outline-style: var(--tw-outline-style);
+    outline-width: 1px;
   }
   .outline-1 {
     outline-style: var(--tw-outline-style);
@@ -6169,6 +6208,10 @@
     --tw-duration: var(--duration-slowest);
     transition-duration: var(--duration-slowest);
   }
+  .duration-150 {
+    --tw-duration: 150ms;
+    transition-duration: 150ms;
+  }
   .ease-in {
     --tw-ease: var(--ease-in);
     transition-timing-function: var(--ease-in);
@@ -6225,6 +6268,537 @@
   }
   .text-shadow-xs {
     text-shadow: 0px 1px 1px var(--tw-text-shadow-color, rgb(0 0 0 / 0.2));
+  }
+  .focus-within\:bg-alert-100 {
+    &:focus-within {
+      background-color: var(--color-alert-100);
+    }
+  }
+  .focus-within\:bg-danger-100 {
+    &:focus-within {
+      background-color: var(--color-danger-100);
+    }
+  }
+  .focus-within\:bg-dark-100 {
+    &:focus-within {
+      background-color: var(--color-dark-100);
+    }
+  }
+  .focus-within\:bg-highlight-100 {
+    &:focus-within {
+      background-color: var(--color-highlight-100);
+    }
+  }
+  .focus-within\:bg-info-100 {
+    &:focus-within {
+      background-color: var(--color-info-100);
+    }
+  }
+  .focus-within\:bg-light-100 {
+    &:focus-within {
+      background-color: var(--color-light-100);
+    }
+  }
+  .focus-within\:bg-primary-100 {
+    &:focus-within {
+      background-color: var(--color-primary-100);
+    }
+  }
+  .focus-within\:bg-secondary-100 {
+    &:focus-within {
+      background-color: var(--color-secondary-100);
+    }
+  }
+  .focus-within\:bg-success-100 {
+    &:focus-within {
+      background-color: var(--color-success-100);
+    }
+  }
+  .focus-within\:bg-tertiary-100 {
+    &:focus-within {
+      background-color: var(--color-tertiary-100);
+    }
+  }
+  .focus-within\:bg-warning-100 {
+    &:focus-within {
+      background-color: var(--color-warning-100);
+    }
+  }
+  .focus-within\:ring-2 {
+    &:focus-within {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .focus-within\:ring-3 {
+    &:focus-within {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .focus-within\:ring-4 {
+    &:focus-within {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .focus-within\:ring-5 {
+    &:focus-within {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(5px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .focus-within\:ring-6 {
+    &:focus-within {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(6px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .focus-within\:ring-alert-300\/50 {
+    &:focus-within {
+      --tw-ring-color: color-mix(in srgb, #fbab73 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-alert-300) 50%, transparent);
+      }
+    }
+  }
+  .focus-within\:ring-alert-600\/50 {
+    &:focus-within {
+      --tw-ring-color: color-mix(in srgb, #d35a05 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-alert-600) 50%, transparent);
+      }
+    }
+  }
+  .focus-within\:ring-danger-300\/50 {
+    &:focus-within {
+      --tw-ring-color: color-mix(in srgb, #ea868f 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-danger-300) 50%, transparent);
+      }
+    }
+  }
+  .focus-within\:ring-danger-600\/50 {
+    &:focus-within {
+      --tw-ring-color: color-mix(in srgb, #ba202f 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-danger-600) 50%, transparent);
+      }
+    }
+  }
+  .focus-within\:ring-dark-300\/50 {
+    &:focus-within {
+      --tw-ring-color: color-mix(in srgb, #6e6476 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-dark-300) 50%, transparent);
+      }
+    }
+  }
+  .focus-within\:ring-dark-700\/50 {
+    &:focus-within {
+      --tw-ring-color: color-mix(in srgb, #29252c 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-dark-700) 50%, transparent);
+      }
+    }
+  }
+  .focus-within\:ring-highlight-300\/50 {
+    &:focus-within {
+      --tw-ring-color: color-mix(in srgb, #8da5ed 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-highlight-300) 50%, transparent);
+      }
+    }
+  }
+  .focus-within\:ring-highlight-600\/50 {
+    &:focus-within {
+      --tw-ring-color: color-mix(in srgb, #204ac8 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-highlight-600) 50%, transparent);
+      }
+    }
+  }
+  .focus-within\:ring-info-300\/50 {
+    &:focus-within {
+      --tw-ring-color: color-mix(in srgb, #b1d4f6 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-info-300) 50%, transparent);
+      }
+    }
+  }
+  .focus-within\:ring-info-600\/50 {
+    &:focus-within {
+      --tw-ring-color: color-mix(in srgb, #3c94e8 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-info-600) 50%, transparent);
+      }
+    }
+  }
+  .focus-within\:ring-light-300\/50 {
+    &:focus-within {
+      --tw-ring-color: color-mix(in srgb, #dad7dd 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-light-300) 50%, transparent);
+      }
+    }
+  }
+  .focus-within\:ring-light-700\/50 {
+    &:focus-within {
+      --tw-ring-color: color-mix(in srgb, #a9a3b0 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-light-700) 50%, transparent);
+      }
+    }
+  }
+  .focus-within\:ring-primary-300\/50 {
+    &:focus-within {
+      --tw-ring-color: color-mix(in srgb, #6ea7fe 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-primary-300) 50%, transparent);
+      }
+    }
+  }
+  .focus-within\:ring-primary-600\/50 {
+    &:focus-within {
+      --tw-ring-color: color-mix(in srgb, #0255d3 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-primary-600) 50%, transparent);
+      }
+    }
+  }
+  .focus-within\:ring-secondary-300\/50 {
+    &:focus-within {
+      --tw-ring-color: color-mix(in srgb, #a6acb2 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-secondary-300) 50%, transparent);
+      }
+    }
+  }
+  .focus-within\:ring-secondary-600\/50 {
+    &:focus-within {
+      --tw-ring-color: color-mix(in srgb, #565e64 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-secondary-600) 50%, transparent);
+      }
+    }
+  }
+  .focus-within\:ring-success-300\/50 {
+    &:focus-within {
+      --tw-ring-color: color-mix(in srgb, #54f0bd 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-success-300) 50%, transparent);
+      }
+    }
+  }
+  .focus-within\:ring-success-600\/50 {
+    &:focus-within {
+      --tw-ring-color: color-mix(in srgb, #0d9467 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-success-600) 50%, transparent);
+      }
+    }
+  }
+  .focus-within\:ring-tertiary-300\/50 {
+    &:focus-within {
+      --tw-ring-color: color-mix(in srgb, #b089f4 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-tertiary-300) 50%, transparent);
+      }
+    }
+  }
+  .focus-within\:ring-tertiary-600\/50 {
+    &:focus-within {
+      --tw-ring-color: color-mix(in srgb, #5c14d8 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-tertiary-600) 50%, transparent);
+      }
+    }
+  }
+  .focus-within\:ring-warning-300\/50 {
+    &:focus-within {
+      --tw-ring-color: color-mix(in srgb, #fdd97c 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-warning-300) 50%, transparent);
+      }
+    }
+  }
+  .focus-within\:ring-warning-600\/50 {
+    &:focus-within {
+      --tw-ring-color: color-mix(in srgb, #e1a404 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-warning-600) 50%, transparent);
+      }
+    }
+  }
+  .hover\:bg-alert-100 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-alert-100);
+      }
+    }
+  }
+  .hover\:bg-alert-600 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-alert-600);
+      }
+    }
+  }
+  .hover\:bg-danger-100 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-danger-100);
+      }
+    }
+  }
+  .hover\:bg-danger-600 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-danger-600);
+      }
+    }
+  }
+  .hover\:bg-dark-100 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-dark-100);
+      }
+    }
+  }
+  .hover\:bg-dark-600 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-dark-600);
+      }
+    }
+  }
+  .hover\:bg-highlight-100 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-highlight-100);
+      }
+    }
+  }
+  .hover\:bg-highlight-600 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-highlight-600);
+      }
+    }
+  }
+  .hover\:bg-info-100 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-info-100);
+      }
+    }
+  }
+  .hover\:bg-info-600 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-info-600);
+      }
+    }
+  }
+  .hover\:bg-light-100 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-light-100);
+      }
+    }
+  }
+  .hover\:bg-light-200 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-light-200);
+      }
+    }
+  }
+  .hover\:bg-primary-100 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-primary-100);
+      }
+    }
+  }
+  .hover\:bg-primary-600 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-primary-600);
+      }
+    }
+  }
+  .hover\:bg-secondary-100 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-secondary-100);
+      }
+    }
+  }
+  .hover\:bg-secondary-600 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-secondary-600);
+      }
+    }
+  }
+  .hover\:bg-success-100 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-success-100);
+      }
+    }
+  }
+  .hover\:bg-success-600 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-success-600);
+      }
+    }
+  }
+  .hover\:bg-tertiary-100 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-tertiary-100);
+      }
+    }
+  }
+  .hover\:bg-tertiary-600 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-tertiary-600);
+      }
+    }
+  }
+  .hover\:bg-warning-100 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-warning-100);
+      }
+    }
+  }
+  .hover\:bg-warning-600 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-warning-600);
+      }
+    }
+  }
+  .focus\:outline-none {
+    &:focus {
+      --tw-outline-style: none;
+      outline-style: none;
+    }
+  }
+  .active\:bg-alert-200 {
+    &:active {
+      background-color: var(--color-alert-200);
+    }
+  }
+  .active\:bg-alert-700 {
+    &:active {
+      background-color: var(--color-alert-700);
+    }
+  }
+  .active\:bg-danger-200 {
+    &:active {
+      background-color: var(--color-danger-200);
+    }
+  }
+  .active\:bg-danger-700 {
+    &:active {
+      background-color: var(--color-danger-700);
+    }
+  }
+  .active\:bg-dark-200 {
+    &:active {
+      background-color: var(--color-dark-200);
+    }
+  }
+  .active\:bg-dark-700 {
+    &:active {
+      background-color: var(--color-dark-700);
+    }
+  }
+  .active\:bg-highlight-200 {
+    &:active {
+      background-color: var(--color-highlight-200);
+    }
+  }
+  .active\:bg-highlight-700 {
+    &:active {
+      background-color: var(--color-highlight-700);
+    }
+  }
+  .active\:bg-info-200 {
+    &:active {
+      background-color: var(--color-info-200);
+    }
+  }
+  .active\:bg-info-700 {
+    &:active {
+      background-color: var(--color-info-700);
+    }
+  }
+  .active\:bg-light-200 {
+    &:active {
+      background-color: var(--color-light-200);
+    }
+  }
+  .active\:bg-light-300 {
+    &:active {
+      background-color: var(--color-light-300);
+    }
+  }
+  .active\:bg-primary-200 {
+    &:active {
+      background-color: var(--color-primary-200);
+    }
+  }
+  .active\:bg-primary-700 {
+    &:active {
+      background-color: var(--color-primary-700);
+    }
+  }
+  .active\:bg-secondary-200 {
+    &:active {
+      background-color: var(--color-secondary-200);
+    }
+  }
+  .active\:bg-secondary-700 {
+    &:active {
+      background-color: var(--color-secondary-700);
+    }
+  }
+  .active\:bg-success-200 {
+    &:active {
+      background-color: var(--color-success-200);
+    }
+  }
+  .active\:bg-success-700 {
+    &:active {
+      background-color: var(--color-success-700);
+    }
+  }
+  .active\:bg-tertiary-200 {
+    &:active {
+      background-color: var(--color-tertiary-200);
+    }
+  }
+  .active\:bg-tertiary-700 {
+    &:active {
+      background-color: var(--color-tertiary-700);
+    }
+  }
+  .active\:bg-warning-200 {
+    &:active {
+      background-color: var(--color-warning-200);
+    }
+  }
+  .active\:bg-warning-700 {
+    &:active {
+      background-color: var(--color-warning-700);
+    }
   }
   .max-sm\:ml-0 {
     @media (width < 40rem) {

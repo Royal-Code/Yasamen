@@ -3,15 +3,13 @@ namespace RoyalCode.Razor.Styles;
 public enum BorderRadius
 {
     Default,
-    One,
-    Two,
-    Three,
-    Four,
-    Five,
-    Six,
-    Seven,
-    Eight,
-    Nine
+    Smallest,
+    Smaller,
+    Small,
+    Medium,
+    Large,
+    Larger,
+    Largest,
 }
 
 [Flags]
@@ -188,15 +186,13 @@ public static class BordersExtensions
         return radius switch
         {
             BorderRadius.Default => string.Empty,
-            BorderRadius.One => "round-1",
-            BorderRadius.Two => "round-2",
-            BorderRadius.Three => "round-3",
-            BorderRadius.Four => "round-4",
-            BorderRadius.Five => "round-5",
-            BorderRadius.Six => "round-6",
-            BorderRadius.Seven => "round-7",
-            BorderRadius.Eight => "round-8",
-            BorderRadius.Nine => "round-9",
+            BorderRadius.Smallest => "round-xs",
+            BorderRadius.Smaller => "round-sm",
+            BorderRadius.Small => "round-md",
+            BorderRadius.Medium => "round-lg",
+            BorderRadius.Large => "round-xl",
+            BorderRadius.Larger => "round-2xl",
+            BorderRadius.Largest => "round-3xl",
             _ => string.Empty
         };
     }

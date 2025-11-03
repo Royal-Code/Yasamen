@@ -1,6 +1,6 @@
 import React from 'react';
 import { Themes, ThemeClasses } from '../commons/themes';
-import { Sizes } from '../commons/size';
+import { Sizes } from '../commons/sizes';
 
 interface ButtonProps {
     label: string;

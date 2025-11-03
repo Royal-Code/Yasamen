@@ -2,7 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import Button from '../lib/components/button/button'
-import { Sizes } from '../lib/components/commons/size'
+import { Sizes } from '../lib/components/commons/sizes'
 import './App.css'
 
 function App() {
