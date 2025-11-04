@@ -1,6 +1,6 @@
 ﻿using RoyalCode.Razor.Styles;
 
-namespace RoyalCode.Razor;
+namespace RoyalCode.Razor.Components;
 
 /// <summary>
 /// Extension methods for button-related functionality.

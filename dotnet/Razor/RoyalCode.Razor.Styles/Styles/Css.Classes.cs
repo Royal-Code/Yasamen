@@ -85,9 +85,9 @@ public struct CssClasses
     /// <summary>
     /// Adds a class from a function if the value is present.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="value"></param>
-    /// <param name="function"></param>
+    /// <typeparam name="T">Type of the value.</typeparam>
+    /// <param name="value">The value.</param>
+    /// <param name="function">The function to get the class from the value.</param>
     /// <returns></returns>
     public CssClasses AddClass<T>(T? value, Func<T, string?> function)
     {
@@ -96,6 +96,21 @@ public struct CssClasses
             return AddClass(function(value));
         }
         return this;
+    }
+
+    /// <summary>
+    /// Adds a class from a function if the condition is met and the value is present.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="condition"></param>
+    /// <param name="value"></param>
+    /// <param name="function"></param>
+    /// <returns></returns>
+    public CssClasses AddClass<T>(bool condition, T? value, Func<T, string?> function)
+    {
+        return condition
+            ? AddClass(value, function)
+            : this;
     }
 
     /// <summary>
@@ -116,6 +131,13 @@ public struct CssClasses
         return this;
     }
 
+    public CssClasses AddSwitch<T>(T value, Action<CssClassesSwitch<T>> switchAction)
+    {
+        var cssClassesSwitch = new CssClassesSwitch<T>(value);
+        switchAction(cssClassesSwitch);
+        return AddClass(cssClassesSwitch.ToString());
+    }
+
     /// <summary>
     /// Gets the string that represents the classes.
     /// </summary>
@@ -123,5 +145,30 @@ public struct CssClasses
     public override readonly string ToString()
     {
         return builder?.ToString() ?? first ?? string.Empty;
+    }
+}
+
+public struct CssClassesSwitch<T>
+{
+    private readonly T value;
+    private string? result;
+
+    public CssClassesSwitch(T value)
+    {
+        this.value = value;
+    }
+
+    public CssClassesSwitch<T> Case(T caseValue, string? className)
+    {
+        if (EqualityComparer<T>.Default.Equals(value, caseValue))
+        {
+            result = className;
+        }
+        return this;
+    }
+
+    public override string ToString()
+    {
+        return result ?? string.Empty;
     }
 }

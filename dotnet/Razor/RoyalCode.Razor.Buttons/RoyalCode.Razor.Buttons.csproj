@@ -4,7 +4,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>$(RuntimeVer)</TargetFramework>
-		<RootNamespace>RoyalCode.Razor</RootNamespace>
+		<RootNamespace>RoyalCode.Razor.Components</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>

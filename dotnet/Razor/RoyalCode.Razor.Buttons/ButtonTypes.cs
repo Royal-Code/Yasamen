@@ -1,5 +1,5 @@
 ﻿
-namespace RoyalCode.Razor;
+namespace RoyalCode.Razor.Components;
 
 /// <summary>
 /// Button types, referring to the 'button' tag.

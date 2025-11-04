@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components.Web;
 using RoyalCode.Razor.Animations;
 using RoyalCode.Razor.Styles;
 
-namespace RoyalCode.Razor;
+namespace RoyalCode.Razor.Components;
 
 /// <summary>
 /// <para>

@@ -577,7 +577,6 @@ span.ripple {
 span.ripple.ripple-animation {
     visibility: visible;
     animation: ripple-animation .45s linear;
-    /*background-color: #FFF;*/
 }
 
 @keyframes ripple-animation {
