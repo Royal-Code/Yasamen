@@ -6,14 +6,21 @@
         @attributes="AdditionalAttributes"
         @ref="Reference">
 
-    @RenderIcon
+    @if (IconFragment is not null)
+    {
+        @IconFragment()
+    }
+    else
+    {
+        @RenderIcon
+    }
 
     <Ripple Dark="true" />
 </button>
 
 @code {
 
-    private string Classes => "ya-btn relative overflow-hidden border-1 rounded-full transition-all duration-150"
+    private string Classes => "ya-i-btn"
         .AddClass(Style.ToIconButtonTheme(Active, Outline))
         .AddClass(Size.ToIconButtonSize())
         .AddClass(Active, "active")

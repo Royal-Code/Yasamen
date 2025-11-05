@@ -3,7 +3,7 @@ using RoyalCode.Razor.Styles;
 
 namespace RoyalCode.Razor.Layouts.Apps;
 
-public partial class AppBar
+public partial class AppTopBar
 {
     /// <summary>
     /// The height of the app bar. Defaults to LargerX2 (48px).

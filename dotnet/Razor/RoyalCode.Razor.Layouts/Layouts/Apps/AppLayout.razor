@@ -2,7 +2,7 @@
 @PreContent
 <div @attributes="AdditionalAttributes" class="@Classes" @ref="LayoutReference">
     <header class="@HeaderClasses" @ref="MenuReference">
-        <AppBar Size="@TopSize">
+        <AppTopBar Size="@TopSize">
             <StartContent>
                 @TopStart
             </StartContent>
@@ -12,12 +12,12 @@
             <EndContent>
                 @TopEnd
             </EndContent>
-        </AppBar>
+        </AppTopBar>
     </header>
     <div class="@PageClasses">
-        <AppMenu Size="MenuSize" AdditionalClasses="@Css.Margin.Side.Top().WithSize(TopSize)">
-
-        </AppMenu>
+        <AppSideBar Size="MenuSize" AdditionalClasses="@Css.Margin.Side.Top().WithSize(TopSize)">
+            @Menu
+        </AppSideBar>
         <div class="@ContentClasses">
             <main class="@MainClasses" @ref="MainReference">
                 @Main
@@ -27,28 +27,34 @@
             </footer>
         </div>
     </div>
-    
 </div>
 @PostContent
 
 @code {
 
-    public string Classes => "ya-app-layout grid w-full min-h-screen"
+    private const string LayoutBarZIndex = "z-10";
+
+    private string Classes => "ya-app-layout grid w-full min-h-screen"
         .AddClass(AdditionalClasses);
 
-    public string HeaderClasses => "ya-app-header fixed top-0 right-0 left-0";
+    private string HeaderClasses => "ya-app-header fixed top-0 right-0 left-0"
+        .AddClass(LayoutBarZIndex)
+        .AddClass(AdditionalHeaderClasses);
 
-    public string PageClasses => "ya-app-page flex w-full h-full"
-        .AddClass(Css.Padding.Side.Top().WithSize(TopSize));
+    private string PageClasses => "ya-app-page flex w-full h-full"
+        .AddClass(Css.Padding.Side.Top().WithSize(TopSize))
+        .AddClass(AdditionalPageClasses);
 
-    public string ContentClasses => "ya-app-content grid w-full self-stretch"
-        .AddClass(Css.Margin.Side.Left().WithSize(TopSize))
-        .AddClass("max-sm:ml-0");
+    private string ContentClasses => "ya-app-content grid w-full self-stretch"
+        .AddClass(Css.Margin.Side.Left().WithSize(MenuSize))
+        .AddClass("max-sm:ml-0")
+        .AddClass(AdditionalContentClasses);
 
-    public string MainClasses => "ya-app-main";
+    private string MainClasses => "ya-app-main".AddClass(AdditionalMainClasses);
 
-    public string FooterClasses => "ya-app-footer flex w-full self-end items-center bg-white"
-        .AddClass(SpacingSize.LargerX2.ToHeightCssClass());
+    private string FooterClasses => "ya-app-footer flex w-full self-end items-center bg-white"
+        .AddClass(SpacingSize.LargerX2.ToHeightCssClass())
+		.AddClass(AdditionalFooterClasses);
 
     public ElementReference LayoutReference { get; private set; }
 
@@ -98,6 +104,36 @@
     /// </summary>
     [Parameter]
     public string? AdditionalClasses { get; set; }
+
+    /// <summary>
+    /// Additional CSS classes to apply to the header for custom styling.
+    /// </summary>
+    [Parameter]
+    public string? AdditionalHeaderClasses { get; set; }
+
+    /// <summary>
+    /// Additional CSS classes to apply to the app-page for custom styling.
+    /// </summary>
+    [Parameter]
+    public string? AdditionalPageClasses { get; set; }
+
+    /// <summary>
+    /// Additional CSS classes to apply to the page content for custom styling.
+    /// </summary>
+    [Parameter]
+    public string? AdditionalContentClasses { get; set; }
+
+    /// <summary>
+    /// Additional CSS classes to apply to the main content for custom styling.
+    /// </summary>
+    [Parameter]
+    public string? AdditionalMainClasses { get; set; }
+
+    /// <summary>
+    /// Additional CSS classes to apply to the footer for custom styling.
+    /// </summary>
+    [Parameter]
+    public string? AdditionalFooterClasses { get; set; }
 
     /// <summary>
     /// Additional attributes that will be applied to the container's outermost HTML element.

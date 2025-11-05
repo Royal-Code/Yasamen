@@ -1,12 +1,12 @@
 ﻿
-<div @attributes="AdditionalAttributes" class="@Classes">
+<aside @attributes="AdditionalAttributes" class="@Classes">
     <div class="my-2 flex justify-center">
-        @WellKnownIcons.Menu()
+        <IconButton IconFragment="@WellKnownIcons.Menu" />
     </div>
     <div class="my-2 flex justify-center">
         @WellKnownIcons.Menu()
     </div>
-</div>
+</aside>
 
 @code {
     public string Classes => "ya-app-menu overflow-hidden max-sm:hidden sm:fixed top-0 bottom-0 bg-white flex-col justify-start"

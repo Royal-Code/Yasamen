@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using RoyalCode.Razor.Animations;
+using RoyalCode.Razor.Icons.Factory;
 using RoyalCode.Razor.Styles;
 
 namespace RoyalCode.Razor.Components;
@@ -39,7 +40,7 @@ public partial class IconButton
     /// <summary>
     /// Optional icon enumeration value to render an icon alongside the label/content.
     /// </summary>
-    [Parameter, EditorRequired]
+    [Parameter]
     public Enum Icon { get; set; } = null!;
 
     /// <summary>
@@ -47,6 +48,12 @@ public partial class IconButton
     /// </summary>
     [Parameter]
     public AnimationFragment? IconAnimation { get; set; }
+
+    /// <summary>
+    /// Optional icon fragment to render custom icon content within the button.
+    /// </summary>
+    [Parameter]
+    public IconFragment? IconFragment { get; set; }
 
     /// <summary>
     /// When true, renders the button using outline style rather than filled background.
@@ -104,5 +111,14 @@ public partial class IconButton
 
         if (!string.IsNullOrEmpty(NavigateTo))
             Navigator.NavigateTo(NavigateTo);
+    }
+
+    protected override void OnParametersSet()
+    {
+        // Validate that either Icon or IconFragment is set, but not both.
+        if (Icon is null && IconFragment is null)
+        {
+            throw new InvalidOperationException("IconButton requires either 'Icon' or 'IconFragment' to be set.");
+        }
     }
 }

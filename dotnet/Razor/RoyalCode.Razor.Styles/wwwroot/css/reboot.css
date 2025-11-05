@@ -144,6 +144,11 @@
         -webkit-tap-highlight-color: transparent;
     }
 
+    body:has(.ya-modal-show) {
+        overflow: hidden;
+        padding-right: 15px;
+    }
+
     *, *::before, *::after {
         box-sizing: var(--box-sizing);
     }

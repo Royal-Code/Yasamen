@@ -30,6 +30,16 @@ public struct CssClasses
     }
 
     /// <summary>
+    /// Creates a new instance of <see cref="CssClasses"/> if the condition is met.
+    /// </summary>
+    /// <param name="condition">The condition to check.</param>
+    /// <param name="first">The first class to add.</param>
+    public CssClasses(bool condition, string? first)
+    {
+        this.first = condition ? first : null;
+    }
+
+    /// <summary>
     /// Adds a class to the class string if the other value is present.
     /// </summary>
     /// <param name="other"></param>
@@ -131,13 +141,6 @@ public struct CssClasses
         return this;
     }
 
-    public CssClasses AddSwitch<T>(T value, Action<CssClassesSwitch<T>> switchAction)
-    {
-        var cssClassesSwitch = new CssClassesSwitch<T>(value);
-        switchAction(cssClassesSwitch);
-        return AddClass(cssClassesSwitch.ToString());
-    }
-
     /// <summary>
     /// Gets the string that represents the classes.
     /// </summary>
@@ -145,30 +148,5 @@ public struct CssClasses
     public override readonly string ToString()
     {
         return builder?.ToString() ?? first ?? string.Empty;
-    }
-}
-
-public struct CssClassesSwitch<T>
-{
-    private readonly T value;
-    private string? result;
-
-    public CssClassesSwitch(T value)
-    {
-        this.value = value;
-    }
-
-    public CssClassesSwitch<T> Case(T caseValue, string? className)
-    {
-        if (EqualityComparer<T>.Default.Equals(value, caseValue))
-        {
-            result = className;
-        }
-        return this;
-    }
-
-    public override string ToString()
-    {
-        return result ?? string.Empty;
     }
 }

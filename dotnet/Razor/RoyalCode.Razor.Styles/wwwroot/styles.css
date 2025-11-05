@@ -1,6 +1,3 @@
 ﻿@import url(css/variables.css);
 @import url(css/reboot.css);
-
-/* Components Styles */
-
-@import url(css/components/ripple.css);
+@import url(css/ripple.css);

@@ -1,5 +1,8 @@
 ﻿@import 'tailwindcss' source('../../../Razor');
 
+@import './css/components/btn.css';
+@import './css/components/ibtn.css';
+
 @theme {
     --color-primary: #0d6dfd;
     --color-primary-100: #cfe2ff;

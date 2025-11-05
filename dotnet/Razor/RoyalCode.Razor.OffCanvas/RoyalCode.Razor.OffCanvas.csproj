@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<Import Project="..\pack.targets" />
 
@@ -16,14 +16,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\RoyalCode.Razor.Buttons\RoyalCode.Razor.Buttons.csproj" />
-	  <ProjectReference Include="..\RoyalCode.Razor.Commons\RoyalCode.Razor.Commons.csproj" />
-	  <ProjectReference Include="..\RoyalCode.Razor.Icons\RoyalCode.Razor.Icons.csproj" />
 	  <ProjectReference Include="..\RoyalCode.Razor.Styles\RoyalCode.Razor.Styles.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="wwwroot\" />
 	</ItemGroup>
 
 </Project>
