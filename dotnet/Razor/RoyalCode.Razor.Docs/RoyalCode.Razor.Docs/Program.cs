@@ -1,6 +1,9 @@
 using RoyalCode.Razor.Docs.Components;
+using RoyalCode.Razor.Icons.Bootstrap;
 
 var builder = WebApplication.CreateBuilder(args);
+
+BootstrapIcons.Include();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

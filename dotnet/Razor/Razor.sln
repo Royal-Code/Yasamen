@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36616.10 d17.14
+VisualStudioVersion = 17.14.36616.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
@@ -19,6 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".items", ".items", "{8EC462
 		icon.png = icon.png
 		pack.targets = pack.targets
 		README.md = README.md
+		test.targets = test.targets
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Razor.Commons", "RoyalCode.Razor.Commons\RoyalCode.Razor.Commons.csproj", "{143BDEEA-FD5B-4B80-9ACC-B3B0118C12D5}"
@@ -42,6 +43,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Razor.Buttons", "RoyalCode.Razor.Buttons\RoyalCode.Razor.Buttons.csproj", "{82C2A91A-119B-4F6A-B3E2-665CA99B114B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Razor.Animations", "RoyalCode.Razor.Animations\RoyalCode.Razor.Animations.csproj", "{8FAA1281-8795-44A7-9452-A3C5A8F30E2C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{04AE9F5D-9F72-4AAC-BA1D-E09219904E66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Razor.Buttons.Tests", "RoyalCode.Razor.Buttons.Tests\RoyalCode.Razor.Buttons.Tests.csproj", "{59EBB488-3043-439C-9159-7E6870F6E204}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +94,10 @@ Global
 		{8FAA1281-8795-44A7-9452-A3C5A8F30E2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FAA1281-8795-44A7-9452-A3C5A8F30E2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FAA1281-8795-44A7-9452-A3C5A8F30E2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59EBB488-3043-439C-9159-7E6870F6E204}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59EBB488-3043-439C-9159-7E6870F6E204}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59EBB488-3043-439C-9159-7E6870F6E204}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59EBB488-3043-439C-9159-7E6870F6E204}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -107,6 +116,8 @@ Global
 		{D0CFC105-690C-42D6-B442-96A5F81D7347} = {C3833F36-F30D-4E1B-9097-21E555ECD539}
 		{82C2A91A-119B-4F6A-B3E2-665CA99B114B} = {947DDA3F-95F0-4F01-9AC1-43C874779423}
 		{8FAA1281-8795-44A7-9452-A3C5A8F30E2C} = {C3833F36-F30D-4E1B-9097-21E555ECD539}
+		{04AE9F5D-9F72-4AAC-BA1D-E09219904E66} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{59EBB488-3043-439C-9159-7E6870F6E204} = {04AE9F5D-9F72-4AAC-BA1D-E09219904E66}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8E24AFE-4B8F-4D0B-BB8C-FD23CE44D40C}

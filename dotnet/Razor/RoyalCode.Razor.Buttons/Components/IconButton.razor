@@ -1,0 +1,26 @@
+﻿
+<button type="@Type.ToHtmlAttr()"
+        class="@Classes"
+        disabled="@Disabled"
+        @onclick="ClickHandler"
+        @attributes="AdditionalAttributes"
+        @ref="Reference">
+
+    @RenderIcon
+
+    <Ripple Dark="true" />
+</button>
+
+@code {
+
+    private string Classes => "ya-btn relative overflow-hidden border-1 rounded-full transition-all duration-150"
+        .AddClass(Style.ToIconButtonTheme(Active, Outline))
+        .AddClass(Size.ToIconButtonSize())
+        .AddClass(Active, "active")
+        .AddClass(Disabled, "cursor-not-allowed opacity-50")
+        .AddClass(AdditionalClasses);
+
+    private RenderFragment RenderIcon => IconAnimation is not null
+        ? IconAnimation(IconRender.Fragment(Icon!))
+        : IconRender.Fragment(Icon!);
+}

@@ -1,0 +1,149 @@
+﻿<h3>IconButton</h3>
+
+@page "/icon-buttons"
+
+@rendermode InteractiveAuto
+@layout AppMainLayout
+@using RoyalCode.Razor.Icons.Bootstrap
+
+<Box AdditionalClasses="p-8 bg-white border-none">
+
+    <h1>Icon Buttons</h1>
+
+    <EditForm Model="this">
+        <div class="flex gap-6 mb-4">
+            <div class="flex items-center gap-2">
+                <InputCheckbox @bind-Value="_isActive" />
+                <label>Active (@(_isActive ? "true" : "false"))</label>
+            </div>
+            <div class="flex items-center gap-2">
+                <InputCheckbox @bind-Value="_isDisabled" />
+                <label>Disabled (@(_isDisabled ? "true" : "false"))</label>
+            </div>
+        </div>
+    </EditForm>
+
+    <h2>Normal Icon Buttons</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                @foreach (var theme in _themes)
+                {
+                    <th>@theme</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var size in _sizes)
+            {
+                <tr>
+                    <td>@SizeDisplay(size)</td>
+                    @foreach (var theme in _themes)
+                    {
+                        <td>
+                            <IconButton Icon="BsIconNames.PlusCircle"
+                                        Size="@size"
+                                        Style="@theme"
+                                        Active="_isActive"
+                                        Disabled="_isDisabled" />
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h2>Outline Icon Buttons</h2>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                @foreach (var theme in _themes)
+                {
+                    <th>@theme</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var size in _sizes)
+            {
+                <tr>
+                    <td>@SizeDisplay(size)</td>
+                    @foreach (var theme in _themes)
+                    {
+                        <td>
+                            <IconButton Icon="BsIconNames.Plus"
+                                        Size="@size"
+                                        Style="@theme"
+                                        Outline="true"
+                                        Active="_isActive"
+                                        Disabled="_isDisabled" />
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h2>Vários Ícones</h2>
+    <div class="flex flex-wrap gap-3">
+        <IconButton Icon="BsIconNames.Search" Style="Themes.Info" />
+        <IconButton Icon="BsIconNames.Gear" Style="Themes.Secondary" />
+        <IconButton Icon="BsIconNames.Person" Style="Themes.Primary" />
+        <IconButton Icon="BsIconNames.Plus" Style="Themes.Success" />
+        <IconButton Icon="BsIconNames.Dash" Style="Themes.Alert" />
+        <IconButton Icon="BsIconNames.XCircle" Style="Themes.Danger" />
+        <IconButton Icon="BsIconNames.CheckCircle" Style="Themes.Success" Active="true" />
+        <IconButton Icon="BsIconNames.ExclamationCircle" Style="Themes.Warning" />
+        <IconButton Icon="BsIconNames.InfoCircle" Style="Themes.Info" />
+        <IconButton Icon="BsIconNames.Eye" Style="Themes.Highlight" />
+        <IconButton Icon="BsIconNames.EyeSlash" Style="Themes.Tertiary" />
+        <IconButton Icon="BsIconNames.List" Style="Themes.Dark" Outline="true" />
+    </div>
+
+</Box>
+
+@code {
+    private bool _isActive = false;
+    private bool _isDisabled = false;
+
+    private readonly Themes[] _themes =
+    [
+        Themes.Primary,
+        Themes.Secondary,
+        Themes.Tertiary,
+        Themes.Info,
+        Themes.Highlight,
+        Themes.Success,
+        Themes.Warning,
+        Themes.Alert,
+        Themes.Danger,
+        Themes.Light,
+        Themes.Dark
+    ];
+
+    private readonly Sizes[] _sizes =
+    [
+        Sizes.Smallest,
+        Sizes.Smaller,
+        Sizes.Small,
+        Sizes.Medium,
+        Sizes.Large,
+        Sizes.Larger,
+        Sizes.Largest
+    ];
+
+    private static string SizeDisplay(Sizes size) => size.ToString();
+
+    protected override void OnInitialized()
+    {
+        Tracer.Write<IconButtonPage>("Initialized", "");
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Tracer.Write<IconButtonPage>("AfterRender", "FirstRender: {0}", firstRender);
+    }
+}

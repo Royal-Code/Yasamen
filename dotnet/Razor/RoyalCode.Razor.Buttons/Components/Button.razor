@@ -6,14 +6,14 @@
         @attributes="AdditionalAttributes"
         @ref="Reference">
 
-    @if (Icon is not null && !UseIconAtEnd)
+    @if (Icon is not null && IconPosition == Positions.Start)
     {
         @RenderIcon
     }
 
     @Label
 
-    @if (Icon is not null && UseIconAtEnd)
+    @if (Icon is not null && IconPosition == Positions.End)
     {
         @RenderIcon
     }

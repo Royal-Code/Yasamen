@@ -1,33 +1,24 @@
 namespace RoyalCode.Razor.Styles;
 
+/// <summary>
+/// Sizes enum for specifying sizes.
+/// </summary>
 public enum Sizes
 {
+    /// <summary>Default, It will not usually have an associated class or Medium size.</summary>
     Default,
-    
+    /// <summary>Smallest size.</summary>
     Smallest,
+    /// <summary>Smaller size.</summary>
     Smaller,
+    /// <summary>Small size.</summary>
     Small,
+    /// <summary>Medium size.</summary>
     Medium,
+    /// <summary>Large size.</summary>
     Large,
+    /// <summary>Larger size.</summary>
     Larger,
+    /// <summary>Largest size.</summary>
     Largest,
-}
-
-public static class SizesExtensions
-{
-    public static string ToAbbrCssClass(this Sizes size)
-    {
-        return size switch
-        {
-            Sizes.Default => string.Empty,
-            Sizes.Smallest => "xxs",
-            Sizes.Smaller => "xs",
-            Sizes.Small => "sm",
-            Sizes.Medium => "md",
-            Sizes.Large => "lg",
-            Sizes.Larger => "xl",
-            Sizes.Largest => "xxl",
-            _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
-        };
-    }
 }
