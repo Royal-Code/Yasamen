@@ -147,3 +147,16 @@
     --leading-lg: 1.75;
     --leading-xl: 2;
 }
+
+@utility fit-top-* {
+    --ya-fit-top: --value(--spacing-*);
+}
+@utility fit-left-* {
+    --ya-fit-left: --value(--spacing-*);
+}
+@utility fit-right-* {
+    --ya-fit-right: --value(--spacing-*);
+}
+@utility fit-bottom-* {
+    --ya-fit-bottom: --value(--spacing-*);
+}

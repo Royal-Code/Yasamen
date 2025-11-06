@@ -6247,6 +6247,210 @@
   .ease-initial {
     --tw-ease: initial;
   }
+  .fit-bottom-0 {
+    --ya-fit-bottom: var(--spacing-0);
+  }
+  .fit-bottom-1 {
+    --ya-fit-bottom: var(--spacing-1);
+  }
+  .fit-bottom-2 {
+    --ya-fit-bottom: var(--spacing-2);
+  }
+  .fit-bottom-3 {
+    --ya-fit-bottom: var(--spacing-3);
+  }
+  .fit-bottom-4 {
+    --ya-fit-bottom: var(--spacing-4);
+  }
+  .fit-bottom-5 {
+    --ya-fit-bottom: var(--spacing-5);
+  }
+  .fit-bottom-6 {
+    --ya-fit-bottom: var(--spacing-6);
+  }
+  .fit-bottom-7 {
+    --ya-fit-bottom: var(--spacing-7);
+  }
+  .fit-bottom-8 {
+    --ya-fit-bottom: var(--spacing-8);
+  }
+  .fit-bottom-9 {
+    --ya-fit-bottom: var(--spacing-9);
+  }
+  .fit-bottom-10 {
+    --ya-fit-bottom: var(--spacing-10);
+  }
+  .fit-bottom-11 {
+    --ya-fit-bottom: var(--spacing-11);
+  }
+  .fit-bottom-12 {
+    --ya-fit-bottom: var(--spacing-12);
+  }
+  .fit-bottom-13 {
+    --ya-fit-bottom: var(--spacing-13);
+  }
+  .fit-bottom-14 {
+    --ya-fit-bottom: var(--spacing-14);
+  }
+  .fit-bottom-15 {
+    --ya-fit-bottom: var(--spacing-15);
+  }
+  .fit-bottom-16 {
+    --ya-fit-bottom: var(--spacing-16);
+  }
+  .fit-left-0 {
+    --ya-fit-left: var(--spacing-0);
+  }
+  .fit-left-1 {
+    --ya-fit-left: var(--spacing-1);
+  }
+  .fit-left-2 {
+    --ya-fit-left: var(--spacing-2);
+  }
+  .fit-left-3 {
+    --ya-fit-left: var(--spacing-3);
+  }
+  .fit-left-4 {
+    --ya-fit-left: var(--spacing-4);
+  }
+  .fit-left-5 {
+    --ya-fit-left: var(--spacing-5);
+  }
+  .fit-left-6 {
+    --ya-fit-left: var(--spacing-6);
+  }
+  .fit-left-7 {
+    --ya-fit-left: var(--spacing-7);
+  }
+  .fit-left-8 {
+    --ya-fit-left: var(--spacing-8);
+  }
+  .fit-left-9 {
+    --ya-fit-left: var(--spacing-9);
+  }
+  .fit-left-10 {
+    --ya-fit-left: var(--spacing-10);
+  }
+  .fit-left-11 {
+    --ya-fit-left: var(--spacing-11);
+  }
+  .fit-left-12 {
+    --ya-fit-left: var(--spacing-12);
+  }
+  .fit-left-13 {
+    --ya-fit-left: var(--spacing-13);
+  }
+  .fit-left-14 {
+    --ya-fit-left: var(--spacing-14);
+  }
+  .fit-left-15 {
+    --ya-fit-left: var(--spacing-15);
+  }
+  .fit-left-16 {
+    --ya-fit-left: var(--spacing-16);
+  }
+  .fit-right-0 {
+    --ya-fit-right: var(--spacing-0);
+  }
+  .fit-right-1 {
+    --ya-fit-right: var(--spacing-1);
+  }
+  .fit-right-2 {
+    --ya-fit-right: var(--spacing-2);
+  }
+  .fit-right-3 {
+    --ya-fit-right: var(--spacing-3);
+  }
+  .fit-right-4 {
+    --ya-fit-right: var(--spacing-4);
+  }
+  .fit-right-5 {
+    --ya-fit-right: var(--spacing-5);
+  }
+  .fit-right-6 {
+    --ya-fit-right: var(--spacing-6);
+  }
+  .fit-right-7 {
+    --ya-fit-right: var(--spacing-7);
+  }
+  .fit-right-8 {
+    --ya-fit-right: var(--spacing-8);
+  }
+  .fit-right-9 {
+    --ya-fit-right: var(--spacing-9);
+  }
+  .fit-right-10 {
+    --ya-fit-right: var(--spacing-10);
+  }
+  .fit-right-11 {
+    --ya-fit-right: var(--spacing-11);
+  }
+  .fit-right-12 {
+    --ya-fit-right: var(--spacing-12);
+  }
+  .fit-right-13 {
+    --ya-fit-right: var(--spacing-13);
+  }
+  .fit-right-14 {
+    --ya-fit-right: var(--spacing-14);
+  }
+  .fit-right-15 {
+    --ya-fit-right: var(--spacing-15);
+  }
+  .fit-right-16 {
+    --ya-fit-right: var(--spacing-16);
+  }
+  .fit-top-0 {
+    --ya-fit-top: var(--spacing-0);
+  }
+  .fit-top-1 {
+    --ya-fit-top: var(--spacing-1);
+  }
+  .fit-top-2 {
+    --ya-fit-top: var(--spacing-2);
+  }
+  .fit-top-3 {
+    --ya-fit-top: var(--spacing-3);
+  }
+  .fit-top-4 {
+    --ya-fit-top: var(--spacing-4);
+  }
+  .fit-top-5 {
+    --ya-fit-top: var(--spacing-5);
+  }
+  .fit-top-6 {
+    --ya-fit-top: var(--spacing-6);
+  }
+  .fit-top-7 {
+    --ya-fit-top: var(--spacing-7);
+  }
+  .fit-top-8 {
+    --ya-fit-top: var(--spacing-8);
+  }
+  .fit-top-9 {
+    --ya-fit-top: var(--spacing-9);
+  }
+  .fit-top-10 {
+    --ya-fit-top: var(--spacing-10);
+  }
+  .fit-top-11 {
+    --ya-fit-top: var(--spacing-11);
+  }
+  .fit-top-12 {
+    --ya-fit-top: var(--spacing-12);
+  }
+  .fit-top-13 {
+    --ya-fit-top: var(--spacing-13);
+  }
+  .fit-top-14 {
+    --ya-fit-top: var(--spacing-14);
+  }
+  .fit-top-15 {
+    --ya-fit-top: var(--spacing-15);
+  }
+  .fit-top-16 {
+    --ya-fit-top: var(--spacing-16);
+  }
   .text-shadow-2xs {
     text-shadow: 0px 1px 0px var(--tw-text-shadow-color, rgb(0 0 0 / 0.15));
   }

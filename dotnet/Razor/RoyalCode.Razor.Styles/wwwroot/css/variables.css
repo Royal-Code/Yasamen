@@ -7,4 +7,9 @@
     --durantion-fast: 0.2s;
     --durantion-faster: 0.15s;
     --durantion-fastest: 0.1s;
+    /* fit for aside offcanvas */
+    --ya-fit-top: 0px;
+    --ya-fit-left: 0px;
+    --ya-fit-right: 0px;
+    --ya-fit-bottom: 0px;
 }

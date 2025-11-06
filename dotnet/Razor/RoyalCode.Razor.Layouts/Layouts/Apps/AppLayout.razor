@@ -15,7 +15,7 @@
         </AppTopBar>
     </header>
     <div class="@PageClasses">
-        <AppSideBar Size="MenuSize" AdditionalClasses="@Css.Margin.Side.Top().WithSize(TopSize)">
+        <AppSideBar Size="MenuSize" Position="Positions.Start" AdditionalClasses="@AppSideBarClasses">
             @Menu
         </AppSideBar>
         <div class="@ContentClasses">
@@ -44,6 +44,8 @@
     private string PageClasses => "ya-app-page flex w-full h-full"
         .AddClass(Css.Padding.Side.Top().WithSize(TopSize))
         .AddClass(AdditionalPageClasses);
+
+    private string AppSideBarClasses => TopSize.ToFitTopSpacing().AddClass(Css.Margin.Side.Top().WithSize(TopSize));
 
     private string ContentClasses => "ya-app-content grid w-full self-stretch"
         .AddClass(Css.Margin.Side.Left().WithSize(MenuSize))
