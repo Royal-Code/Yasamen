@@ -1,14 +1,16 @@
 ﻿<div @attributes="AdditionalAttributes" class="@Classes">
     @if (Title is not null || Closeable)
     {
-        <header>
+        <header class="@HeaderClasses">
             @if (Title is not null)
             {
                 <h5>@Title</h5>
             }
             @if (Handler != null && Closeable)
             {
-                <button type="button" class="btn-close" aria-label="Close" @onclick="CloseHandler"></button>
+                <button type="button" class="ya-btn-close" aria-label="Close" @onclick="CloseHandler">
+                    @WellKnownIcons.Close("text-sm")
+                </button>
             }
         </header>
     }
@@ -18,8 +20,11 @@
 @code {
 
     private string Classes => "ya-aside-box"
-        .AddClass(Size.ToWidthCssClass())
+        .AddClass("max-w-full p-6 h-auto flex bg-primary-light-100 overflow-y-auto")
+        .AddClass(Size.ToContentCssClass())
         .AddClass(AdditionalClasses);
+
+    private string HeaderClasses => "flex space-between center mb-5";
 
     [CascadingParameter]
     public OffCanvasHandler? Handler { get; set; }
@@ -31,7 +36,7 @@
     public bool Closeable { get; set; }
 
     [Parameter]
-    public SpacingSize Size { get; set; }
+    public Sizes Size { get; set; } = Sizes.Medium;
 
     [Parameter]
     public RenderFragment ChildContent { get; set; } = null!;

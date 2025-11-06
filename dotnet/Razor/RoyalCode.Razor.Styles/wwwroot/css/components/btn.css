@@ -81,3 +81,7 @@
 .ya-btn-danger-outline-active { @apply text-danger-600 bg-danger-200 focus-within:ring-danger-600/50; }
 .ya-btn-light-outline-active { @apply text-light-700 bg-light-200 focus-within:ring-light-700/50; }
 .ya-btn-dark-outline-active { @apply text-dark-700 bg-dark-200 focus-within:ring-dark-700/50; }
+
+.ya-btn-close {
+    @apply absolute top-4 right-4 w-7 h-7 flex items-center justify-center rounded-full text-dark-300 hover:not-disabled:text-white hover:not-disabled:bg-dark-200 active:not-disabled:bg-dark-200 focus-within:ring-4 focus-within:ring-dark-100/50;
+}

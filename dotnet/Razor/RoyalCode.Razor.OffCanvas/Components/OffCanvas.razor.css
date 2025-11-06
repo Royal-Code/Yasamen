@@ -1,20 +1,28 @@
 
-aside {
+/*.ya-offcanvas {
     visibility: hidden;
     position: fixed;
-    z-index: var(--b-aside-offcanvas--z-index);
+    z-index: 20;
     max-width: 100%;
     display: flex;
     flex-direction: column;
     background-clip: padding-box;
     outline: 0;
-    transform: translateX(100%);
-    top: var(--b-aside-offcanvas--top);
-    right: var(--b-aside-offcanvas--right);
-    bottom: var(--b-aside-offcanvas--bottom);
-    background-color: var(--b-aside-offcanvas--bg-color);
-    transition: var(--b-theme-transition);
+    transform: translateX(-100%);
+    top: var(--ya-fit-top);
+    left: var(--ya-fit-left);
+    bottom: var(--ya-fit-bottom);
+    background-color: #FFF;
+    transition-property: all;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: 150ms;
 }
+
+.ya-offcanvas-show {
+    transform: none;
+    visibility: visible;
+    box-shadow: -3px 0 3px 0 #00000020;
+}*/
 
     aside.offcanvas-overlaying {
         top: 0;
@@ -31,16 +39,12 @@ aside {
             border-radius: var(--b-border--radius-3);
         }
 
-    aside.offcanvas-show {
-        transform: none;
-        visibility: visible;
-        box-shadow: -3px 0 3px 0 #00000020;
-    }
+    
 
-        aside.offcanvas-show.offcanvas-float {
+        aside.ya-offcanvas-show.offcanvas-float {
             box-shadow: var(--b-shadow-2);
         }
-
+/*
 div {
     display: none;
     background-color: black;
@@ -48,7 +52,7 @@ div {
     transition: var(--b-theme-transition);
 }
 
-    div.offcanvas-modal.offcanvas-show {
+    div.offcanvas-modal.ya-offcanvas-show {
         display: block;
         position: fixed;
         top: var(--b-aside-offcanvas--top);
@@ -58,7 +62,7 @@ div {
         z-index: 1040;
         opacity: .2;
     }
-
-        div.offcanvas-modal.offcanvas-show.offcanvas-overlaying {
+*/
+        div.offcanvas-modal.ya-offcanvas-show.offcanvas-overlaying {
             top: 0;
         }

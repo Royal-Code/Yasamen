@@ -16,6 +16,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\RoyalCode.Razor.Buttons\RoyalCode.Razor.Buttons.csproj" />
 	  <ProjectReference Include="..\RoyalCode.Razor.Styles\RoyalCode.Razor.Styles.csproj" />
 	</ItemGroup>
 

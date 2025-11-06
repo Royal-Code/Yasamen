@@ -21,13 +21,12 @@
 
     private string Classes => "ya-offcanvas"
         .AddClass(IsVisible, "ya-offcanvas-show")
+        .AddClass(Position is Positions.Start, "ya-offcanvas-start", "ya-offcanvas-end")
         .AddClass(Fitting is Fitting.Overlaying, "ya-offcanvas-overlaying")
         .AddClass(Fitting is Fitting.Float, "ya-offcanvas-float")
         .AddClass(AdditionalClasses);
 
-    private string BackdropClasses => "ya-offcanvas-backdrop ya-backdrop"
-        .AddClass(IsVisible, "ya-offcanvas-show")
-        .AddClass(Fitting is Fitting.Overlaying, "ya-offcanvas-overlaying")
-        .AddClass(Modal, "ya-offcanvas-modal")
-        .AddClass(Modal && IsVisible, "ya-modal-show");
+    private string BackdropClasses => "ya-offcanvas-backdrop"
+        .AddClass(IsVisible && Modal, "ya-offcanvas-backdrop-show")
+        .AddClass(Fitting is Fitting.Overlaying, "ya-offcanvas-backdrop-overlaying");
 }

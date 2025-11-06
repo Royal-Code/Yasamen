@@ -34,7 +34,7 @@ public partial class OffCanvas
     public bool UseBox { get; set; }
 
     [Parameter]
-    public SpacingSize BoxSize { get; set; }
+    public Sizes BoxSize { get; set; } = Sizes.Medium;
 
     [Parameter]
     public string? Title { get; set; }
@@ -83,13 +83,10 @@ public partial class OffCanvas
 
     private async ValueTask Toogle()
     {
-        if (asideRef is null)
-            return;
-
         if (OnVisibilityChanged.HasDelegate)
             await OnVisibilityChanged.InvokeAsync(IsVisible);
 
-        StateHasChanged();
+        await InvokeAsync(StateHasChanged);
     }
 
     private async Task BackdropClickHandler()

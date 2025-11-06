@@ -1,11 +1,6 @@
 ﻿
 <aside @attributes="AdditionalAttributes" class="@Classes">
-    <div class="my-2 flex justify-center">
-        <IconButton IconFragment="@WellKnownIcons.Menu" />
-    </div>
-    <div class="my-2 flex justify-center">
-        @WellKnownIcons.Menu()
-    </div>
+    @ChildContent
 </aside>
 
 @code {
@@ -20,6 +15,9 @@
 
     [Parameter, EditorRequired]
     public Positions Position { get; set; } = Positions.End;
+
+    [Parameter]
+	public RenderFragment ChildContent { get; set; } = null!;
 
     /// <summary>
     /// Additional CSS classes to apply to the container for custom styling.

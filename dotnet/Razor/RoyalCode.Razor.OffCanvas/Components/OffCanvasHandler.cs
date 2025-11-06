@@ -27,7 +27,7 @@ public class OffCanvasHandler
         if (offCanvas is null)
             return;
 
-        await offCanvas!.Hide();
+        await offCanvas.Hide();
     }
 
     internal void Init(OffCanvas offCanvas)

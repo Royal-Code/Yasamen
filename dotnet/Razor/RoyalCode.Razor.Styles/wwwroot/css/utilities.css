@@ -1,0 +1,33 @@
+﻿
+/* Z-index Utilities */
+
+@utility z-app-bar {
+    z-index: 1010;
+}
+@utility z-offcanvas-backdrop {
+    z-index: 1020;
+}
+@utility z-offcanvas {
+    z-index: 1030;
+}
+@utility z-backdrop {
+    z-index: 1040;
+}
+@utility z-modal {
+    z-index: 1050;
+}
+
+/* Fit Utilities */
+
+@utility fit-top-* {
+    --ya-fit-top: --value(--spacing-*);
+}
+@utility fit-left-* {
+    --ya-fit-left: --value(--spacing-*);
+}
+@utility fit-right-* {
+    --ya-fit-right: --value(--spacing-*);
+}
+@utility fit-bottom-* {
+    --ya-fit-bottom: --value(--spacing-*);
+}

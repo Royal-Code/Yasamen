@@ -1,7 +1,7 @@
 ﻿
 @PreContent
 <div @attributes="AdditionalAttributes" class="@Classes" @ref="LayoutReference">
-    <header class="@HeaderClasses" @ref="MenuReference">
+    <header class="@HeaderClasses" @ref="HeaderReference">
         <AppTopBar Size="@TopSize">
             <StartContent>
                 @TopStart
@@ -15,9 +15,12 @@
         </AppTopBar>
     </header>
     <div class="@PageClasses">
-        <AppSideBar Size="MenuSize" Position="Positions.Start" AdditionalClasses="@AppSideBarClasses">
-            @Menu
-        </AppSideBar>
+        @if (LeftMenu.IsNotEmptyFragment())
+        {
+            <AppSideBar Size="MenuSize" Position="Positions.Start" AdditionalClasses="@AppSideBarClasses">
+                @LeftMenu
+            </AppSideBar>
+        }
         <div class="@ContentClasses">
             <main class="@MainClasses" @ref="MainReference">
                 @Main
@@ -26,26 +29,30 @@
                 @Footer
             </footer>
         </div>
+        @if (RightMenu.IsNotEmptyFragment())
+        {
+            <AppSideBar Size="MenuSize" Position="Positions.End" AdditionalClasses="@AppSideBarClasses">
+                @RightMenu
+            </AppSideBar>
+		}
     </div>
 </div>
 @PostContent
 
 @code {
 
-    private const string LayoutBarZIndex = "z-10";
-
     private string Classes => "ya-app-layout grid w-full min-h-screen"
+        .AddClass(TopSize.ToFitTopSpacing())
         .AddClass(AdditionalClasses);
 
-    private string HeaderClasses => "ya-app-header fixed top-0 right-0 left-0"
-        .AddClass(LayoutBarZIndex)
+    private string HeaderClasses => "ya-app-header fixed top-0 right-0 left-0 z-app-bar"
         .AddClass(AdditionalHeaderClasses);
 
     private string PageClasses => "ya-app-page flex w-full h-full"
         .AddClass(Css.Padding.Side.Top().WithSize(TopSize))
         .AddClass(AdditionalPageClasses);
 
-    private string AppSideBarClasses => TopSize.ToFitTopSpacing().AddClass(Css.Margin.Side.Top().WithSize(TopSize));
+    private string AppSideBarClasses => Css.Margin.Side.Top().WithSize(TopSize);
 
     private string ContentClasses => "ya-app-content grid w-full self-stretch"
         .AddClass(Css.Margin.Side.Left().WithSize(MenuSize))
@@ -56,13 +63,11 @@
 
     private string FooterClasses => "ya-app-footer flex w-full self-end items-center bg-white"
         .AddClass(SpacingSize.LargerX2.ToHeightCssClass())
-		.AddClass(AdditionalFooterClasses);
+        .AddClass(AdditionalFooterClasses);
 
     public ElementReference LayoutReference { get; private set; }
 
     public ElementReference HeaderReference { get; private set; }
-
-    public ElementReference MenuReference { get; private set; }
 
     public ElementReference MainReference { get; private set; }
 
@@ -87,7 +92,10 @@
     public RenderFragment TopEnd { get; set; }
 
     [Parameter]
-    public RenderFragment Menu { get; set; }
+    public RenderFragment LeftMenu { get; set; } = EmptyFragment.Delegate;
+
+    [Parameter]
+    public RenderFragment RightMenu { get; set; } = EmptyFragment.Delegate;
 
     [Parameter]
     public SpacingSize MenuSize { get; set; } = SpacingSize.LargerX2;

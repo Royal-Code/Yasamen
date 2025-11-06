@@ -1,12 +1,12 @@
 ﻿div {
-    max-width: var(--b-asidebox--max-width);
+    /*max-width: var(--b-asidebox--max-width);
     padding: var(--b-asidebox--padding);
     height: auto;
     flex: 1 1 auto;
     background-color: var(--b-asidebox--bg-color);
-    overflow-y: auto;
+    overflow-y: auto;*/
     scrollbar-width: thin;
-    scrollbar-color: var(--b-color-light-d7) var(--b-color-light);
+    scrollbar-color: var(--color-light-700) var(--color-light-300);
 }
 
     div::-webkit-scrollbar {
@@ -14,19 +14,19 @@
     }
 
     div::-webkit-scrollbar-thumb {
-        background-color: var(--b-color-light-d7);
-        border-radius: var(--b-border--radius-3);
+        background-color: var(--color-light-700);
+        border-radius: 3px;
     }
 
     div::-webkit-scrollbar-track {
-        background-color: var(--b-color-light);
+        background-color: var(--color-light-300);
     }
 
 header {
-    display: flex;
+    /*display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem;*/
 }
 
 h5 {
