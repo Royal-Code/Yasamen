@@ -26,11 +26,11 @@
 
 		Tracer.Write<Backdrop>("OpenAsync", "OpenAsync called");
 
-		animation = new AnimationCompletion();
 		showing = true;
 		hiding = false;
 
 		StateHasChanged();
+		animation = new AnimationCompletion();
 		return animation.Task;
 	}
 
@@ -43,11 +43,11 @@
 
 		Tracer.Write<Backdrop>("CloseAsync", "CloseAsync called");
 
-		animation = new AnimationCompletion();
 		hideRequest = true;
 		showing = false;
 
 		StateHasChanged();
+		animation = new AnimationCompletion();
 		return animation.Task;
 	}
 

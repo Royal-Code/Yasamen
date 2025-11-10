@@ -66,35 +66,36 @@ public sealed class ModalService
     /// <returns>A task that represents the asynchronous operation, finishing when the modal is opened.</returns>
     public async Task OpenAsync(ModalItem item)
     {
+        if (Outlet is null)
+            return;
+
+        var requireOpen = !IsOpen;
         IsOpen = true;
 
-        if (Outlet is not null)
-            await Outlet.StateHasChangedAsync();
+        if (requireOpen)
+            await Outlet.OpenAsync();
 
         var openedItem = openedItems.LastOrDefault();
         if (openedItem is not null)
         {
-            if (Outlet is not null)
+            await Outlet.RunAsync(async () =>
             {
+                openedItem.IsOpen = false;
+                await openedItem.StateHasChangedAsync();
+
                 await Outlet.RunAsync(async () =>
                 {
-                    openedItem.IsOpen = false;
-                    await openedItem.StateHasChangedAsync();
-                    Outlet.StateHasChanged();
-
                     openedItems.Add(item);
                     item.IsOpen = true;
                     await item.StateHasChangedAsync();
-                    Outlet.StateHasChanged();
                 });
-            }
+            });
         }
         else
         {
             openedItems.Add(item);
             item.IsOpen = true;
             await item.StateHasChangedAsync();
-            Outlet?.StateHasChanged();
         }
     }
 
@@ -119,7 +120,7 @@ public sealed class ModalService
     public async Task CloseAsync(ModalItem item)
     {
         var openedItem = openedItems.LastOrDefault();
-        if (openedItem is null)
+        if (openedItem is null || Outlet is null)
             return;
 
         openedItems.Remove(item);
@@ -130,29 +131,27 @@ public sealed class ModalService
 
         if (nextOpenedItem is not null)
         {
-            if (Outlet is not null)
+
+            await Outlet.RunAsync(async () =>
             {
+                openedItem.IsOpen = false;
+                await openedItem.StateHasChangedAsync();
+
                 await Outlet.RunAsync(async () =>
                 {
-                    openedItem.IsOpen = false;
-                    await openedItem.StateHasChangedAsync();
-                    Outlet.StateHasChanged();
-
                     nextOpenedItem.IsOpen = true;
                     await nextOpenedItem.StateHasChangedAsync();
-                    Outlet.StateHasChanged();
                 });
-            }
+            });
         }
         else
         {
             openedItem.IsOpen = false;
             await openedItem.StateHasChangedAsync();
-            Outlet?.StateHasChanged();
+            Outlet.StateHasChanged();
 
             IsOpen = false;
-            if (Outlet is not null)
-                await Outlet.StateHasChangedAsync();
+            await Outlet.CloseAsync();
         }
     }
 

@@ -62,39 +62,44 @@
     [Parameter]
     public EventCallback<ModalEventArgs> OnOpenClose { get; set; }
 
-    private async Task StateHasChangedAsync()
+    private Task StateHasChangedAsync()
     {
         if (disposed || isOpen == item.IsOpen)
-            return;
+			return Task.CompletedTask;
 
         // end the old task
         animation?.Complete();
 
-        Tracer.Write<Modal>(
-            "StateHasChangedAsync",
-            "StateHasChangedAsync called, isOpen: {0}, item.IsOpen: {1}",
-            isOpen,
-            item.IsOpen);
-
         if (item.IsOpen)
-            opening = true;
+            return InternalOpenAsync();
         else
-            closeRequested = true;
+			return InternalCloseAsync();
+    }
 
-        // atualiza dom do componente
+    private Task InternalOpenAsync()
+    {
+		opening = true;
+        closing = false;
+        closeRequested = false;
+
         StateHasChanged();
+		animation = new AnimationCompletion(ModalMaxTransitionTime);
+		return animation.Task;
+    }
 
-        // source completition
-        animation = new AnimationCompletion();
-        await animation.Task;
+    private Task InternalCloseAsync()
+    {
+		opening = false;
+        closing = false;
+		closeRequested = true;
+
+		StateHasChanged();
+        animation = new AnimationCompletion(ModalMaxTransitionTime);
+		return animation.Task;
     }
 
     private async Task CompleteTransitionEndTask()
     {
-        Tracer.Write<Modal>(
-            "CompleteTransitionEndTask",
-            "CompleteTransitionEndTask called, isOpen: {0}, opening: {1}, closing: {2}", isOpen, opening, closing);
-
         animation?.Complete();
         animation = null;
 
@@ -167,11 +172,7 @@
         {
             await InvokeAsync(async () =>
             {
-                await Task.Delay(20);
-
-                Tracer.Write<Modal>(
-                    "OnAfterRenderAsync.InvokeAsync",
-                    "OnAfterRenderAsync.InvokeAsync called for opening");
+                await Task.Delay(10);
 
 				isOpen = true;
                 opening = false;
@@ -182,11 +183,7 @@
         {
             await InvokeAsync(async () =>
             {
-                await Task.Delay(20);
-
-                Tracer.Write<Modal>(
-                    "OnAfterRenderAsync.InvokeAsync",
-                    "OnAfterRenderAsync.InvokeAsync called for closing");
+                await Task.Delay(10);
 
 				isOpen = false;
 				closeRequested = false;

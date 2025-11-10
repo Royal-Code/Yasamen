@@ -48,40 +48,38 @@
 	/// </summary>
 	internal new void StateHasChanged() => base.StateHasChanged();
 
-	/// <summary>
-	/// Notifies the component that the state has changed.
-	/// </summary>
-	internal Task StateHasChangedAsync()
+	internal Task OpenAsync()
 	{
-		if (isOpen != ModalService.IsOpen)
-		{
-			Tracer.Write<ModalOutlet>(
-				"StateHasChangedAsync",
-				"StateHasChangedAsync called, isOpen: {0}, ModalService.IsOpen: {1}",
-				isOpen,
-				ModalService.IsOpen);
+		if (isOpen)
+			return Task.CompletedTask;
 
-			taskCompletionSource?.SetResult();
+		taskCompletionSource?.SetResult();
+		taskCompletionSource = new TaskCompletionSource();
 
-			if (ModalService.IsOpen)
-			{
-				isOpening = true;
-				isClosing = false;
-			}
-			else
-			{
-				isClosing = true;
-				isOpening = false;
-			}
+		isOpening = true;
+		isClosing = false;
+		isOpen = true;
 
-			isOpen = ModalService.IsOpen;
-			StateHasChanged();
+		StateHasChanged();
 
-			taskCompletionSource = new TaskCompletionSource();
-			return taskCompletionSource.Task;
-		}
+		return taskCompletionSource.Task;
+	}
 
-		return Task.CompletedTask;
+	internal Task CloseAsync()
+	{
+		if (!isOpen)
+			return Task.CompletedTask;
+
+		taskCompletionSource?.SetResult();
+		taskCompletionSource = new TaskCompletionSource();
+
+		isClosing = true;
+		isOpening = false;
+		isOpen = false;
+
+		StateHasChanged();
+
+		return taskCompletionSource.Task;
 	}
 
 	internal Task RunAsync(Func<Task> action)
@@ -91,12 +89,6 @@
 
 	protected override async Task OnAfterRenderAsync(bool firstRender)
 	{
-		Tracer.Write<ModalOutlet>(
-			"OnAfterRenderAsync",
-			"OnAfterRenderAsync called, isOpening: {0}, isClosing: {1}",
-			isOpening,
-			isClosing);
-
 		if (isOpening)
 		{
 			await InvokeAsync(async () =>
@@ -113,6 +105,7 @@
 
 				taskCompletionSource?.SetResult();
 				taskCompletionSource = null;
+
 				StateHasChanged();
 			});
 		}
@@ -132,6 +125,7 @@
 				isClosing = false;
 				taskCompletionSource?.SetResult();
 				taskCompletionSource = null;
+
 				StateHasChanged();
 			});
 		}
