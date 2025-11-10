@@ -1,6 +1,8 @@
 import React from 'react';
 import { Themes, ThemeClasses } from '../commons/themes';
 import { Sizes } from '../commons/sizes';
+import { Positions } from '../commons/positions';
+import Icon from '../icon/icon';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     label: string;
@@ -8,6 +10,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     size?: Sizes;
     outline?: boolean;
     active?: boolean;
+    icon?: string;
+    iconPosition?: Positions;
     block?: boolean;
     disabled?: boolean;
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
@@ -20,12 +24,19 @@ const Button: React.FC<ButtonProps> = ({
     size = Sizes.Medium,
     outline = false,
     active = false,
+    icon,
+    iconPosition = Positions.Start,
     block = false,
     onClick,
     disabled = false,
     className = '',
     ...rest
 }) => {
+
+    // validate position, must be start or end, center is not valid for button icon position
+    if (iconPosition === Positions.Center) {
+        throw new Error('Invalid iconPosition "center" for Button component. Use "start" or "end".');
+    }
 
     const themeClass = outline
         ? active
@@ -49,7 +60,9 @@ const Button: React.FC<ButtonProps> = ({
             className={classes}
             {...rest}
         >
+            {icon && iconPosition === Positions.Start && <Icon name={icon} className='mr-3' aria-hidden="true"></Icon>}
             {label}
+            {icon && iconPosition === Positions.End && <Icon name={icon} className='ml-3' aria-hidden="true"></Icon>}
         </button>
     );
 };
