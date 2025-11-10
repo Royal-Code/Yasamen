@@ -1,0 +1,95 @@
+﻿.ya-btn {
+    @apply relative overflow-hidden border-1 transition-all duration-150 focus:outline-none;
+}
+
+.ya-btn-disabled {
+    @apply opacity-50 cursor-not-allowed;
+}
+
+.ya-btn-block {
+    @apply w-full;
+}
+
+.ya-btn-2xs {
+    @apply text-xs px-3 py-1 focus-within:ring-2 rounded-sm;
+}
+
+.ya-btn-xs {
+    @apply text-sm px-4 py-2 focus-within:ring-3 rounded-sm;
+}
+
+.ya-btn-sm {
+    @apply text-base px-4 py-2 focus-within:ring-4 rounded-md;
+}
+
+.ya-btn-md {
+    @apply text-base px-5 py-3 focus-within:ring-4 rounded-md;
+}
+
+.ya-btn-lg {
+    @apply text-base px-6 py-4 focus-within:ring-4 rounded-md;
+}
+
+.ya-btn-xl {
+    @apply text-xl px-6 py-4 focus-within:ring-5 rounded-lg;
+}
+
+.ya-btn-2xl {
+    @apply text-2xl px-7 py-4 focus-within:ring-6 rounded-lg;
+}
+
+/* Filled (default) */
+.ya-btn-primary { @apply bg-primary-400 text-white hover:not-disabled:bg-primary-600 active:not-disabled:bg-primary-700 border-primary-400 focus-within:ring-primary-300/50; }
+.ya-btn-secondary { @apply bg-secondary-400 text-white hover:not-disabled:bg-secondary-600 active:not-disabled:bg-secondary-700 border-secondary-400 focus-within:ring-secondary-300/50; }
+.ya-btn-tertiary { @apply bg-tertiary-400 text-white hover:not-disabled:bg-tertiary-600 active:not-disabled:bg-tertiary-700 border-tertiary-400 focus-within:ring-tertiary-300/50; }
+.ya-btn-info { @apply bg-info-400 text-white hover:not-disabled:bg-info-600 active:not-disabled:bg-info-700 border-info-400 focus-within:ring-info-300/50; }
+.ya-btn-highlight { @apply bg-highlight-400 text-white hover:not-disabled:bg-highlight-600 active:not-disabled:bg-highlight-700 border-highlight-400 focus-within:ring-highlight-300/50; }
+.ya-btn-success { @apply bg-success-400 text-dark-900 hover:not-disabled:bg-success-600 active:not-disabled:bg-success-700 border-success-400 focus-within:ring-success-300/50; }
+.ya-btn-warning { @apply bg-warning-400 text-dark-900 hover:not-disabled:bg-warning-600 active:not-disabled:bg-warning-700 border-warning-400 focus-within:ring-warning-300/50; }
+.ya-btn-alert { @apply bg-alert-400 text-dark-900 hover:not-disabled:bg-alert-600 active:not-disabled:bg-alert-700 border-alert-400 focus-within:ring-alert-300/50; }
+.ya-btn-danger { @apply bg-danger-400 text-white hover:not-disabled:bg-danger-600 active:not-disabled:bg-danger-700 border-danger-400 focus-within:ring-danger-300/50; }
+.ya-btn-light { @apply bg-light-100 text-dark-500 hover:not-disabled:bg-light-200 active:not-disabled:bg-light-300 border-light-400 focus-within:ring-light-300/50; }
+.ya-btn-dark { @apply bg-dark-400 text-white hover:not-disabled:bg-dark-600 active:not-disabled:bg-dark-700 border-dark-400 focus-within:ring-dark-300/50; }
+
+/* Filled Active */
+.ya-btn-primary-active { @apply text-white bg-primary-700 border-primary-400 focus-within:ring-primary-300/50; }
+.ya-btn-secondary-active { @apply text-white bg-secondary-700 border-secondary-400 focus-within:ring-secondary-300/50; }
+.ya-btn-tertiary-active { @apply text-white bg-tertiary-700 border-tertiary-400 focus-within:ring-tertiary-300/50; }
+.ya-btn-info-active { @apply text-white bg-info-700 border-info-400 focus-within:ring-info-300/50; }
+.ya-btn-highlight-active { @apply text-white bg-highlight-700 border-highlight-400 focus-within:ring-highlight-300/50; }
+.ya-btn-success-active { @apply text-dark-900 bg-success-700 border-success-400 focus-within:ring-success-300/50; }
+.ya-btn-warning-active { @apply text-dark-900 bg-warning-700 border-warning-400 focus-within:ring-warning-300/50; }
+.ya-btn-alert-active { @apply text-dark-900 bg-alert-700 border-alert-400 focus-within:ring-alert-300/50; }
+.ya-btn-danger-active { @apply text-white bg-danger-700 border-danger-400 focus-within:ring-danger-300/50; }
+.ya-btn-light-active { @apply text-dark-500 bg-light-300 border-light-400 focus-within:ring-light-300/50; }
+.ya-btn-dark-active { @apply text-white bg-dark-700 border-dark-400 focus-within:ring-dark-300/50; }
+
+/* Outline */
+.ya-btn-primary-outline { @apply text-primary-600 border-primary-600 bg-white hover:not-disabled:bg-primary-100 active:not-disabled:bg-primary-200 focus-within:bg-primary-100 focus-within:ring-primary-600/50; }
+.ya-btn-secondary-outline { @apply text-secondary-600 border-secondary-600 bg-white hover:not-disabled:bg-secondary-100 active:not-disabled:bg-secondary-200 focus-within:bg-secondary-100 focus-within:ring-secondary-600/50; }
+.ya-btn-tertiary-outline { @apply text-tertiary-600 border-tertiary-600 bg-white hover:not-disabled:bg-tertiary-100 active:not-disabled:bg-tertiary-200 focus-within:bg-tertiary-100 focus-within:ring-tertiary-600/50; }
+.ya-btn-info-outline { @apply text-info-600 border-info-600 bg-white hover:not-disabled:bg-info-100 active:not-disabled:bg-info-200 focus-within:bg-info-100 focus-within:ring-info-600/50; }
+.ya-btn-highlight-outline { @apply text-highlight-600 border-highlight-600 bg-white hover:not-disabled:bg-highlight-100 active:not-disabled:bg-highlight-200 focus-within:bg-highlight-100 focus-within:ring-highlight-600/50; }
+.ya-btn-success-outline { @apply text-success-600 border-success-600 bg-white hover:not-disabled:bg-success-100 active:not-disabled:bg-success-200 focus-within:bg-success-100 focus-within:ring-success-600/50; }
+.ya-btn-warning-outline { @apply text-warning-600 border-warning-600 bg-white hover:not-disabled:bg-warning-100 active:not-disabled:bg-warning-200 focus-within:bg-warning-100 focus-within:ring-warning-600/50; }
+.ya-btn-alert-outline { @apply text-alert-600 border-alert-600 bg-white hover:not-disabled:bg-alert-100 active:not-disabled:bg-alert-200 focus-within:bg-alert-100 focus-within:ring-alert-600/50; }
+.ya-btn-danger-outline { @apply text-danger-600 border-danger-600 bg-white hover:not-disabled:bg-danger-100 active:not-disabled:bg-danger-200 focus-within:bg-danger-100 focus-within:ring-danger-600/50; }
+.ya-btn-light-outline { @apply text-light-700 border-light-700 bg-white hover:not-disabled:bg-light-100 active:not-disabled:bg-light-200 focus-within:bg-light-100 focus-within:ring-light-700/50; }
+.ya-btn-dark-outline { @apply text-dark-700 border-dark-700 bg-white hover:not-disabled:bg-dark-100 active:not-disabled:bg-dark-200 focus-within:bg-dark-100 focus-within:ring-dark-700/50; }
+
+/* Outline Active */
+.ya-btn-primary-outline-active { @apply text-primary-600 bg-primary-200 focus-within:ring-primary-600/50; }
+.ya-btn-secondary-outline-active { @apply text-secondary-600 bg-secondary-200 focus-within:ring-secondary-600/50; }
+.ya-btn-tertiary-outline-active { @apply text-tertiary-600 bg-tertiary-200 focus-within:ring-tertiary-600/50; }
+.ya-btn-info-outline-active { @apply text-info-600 bg-info-200 focus-within:ring-info-600/50; }
+.ya-btn-highlight-outline-active { @apply text-highlight-600 bg-highlight-200 focus-within:ring-highlight-600/50; }
+.ya-btn-success-outline-active { @apply text-success-600 bg-success-200 focus-within:ring-success-600/50; }
+.ya-btn-warning-outline-active { @apply text-warning-600 bg-warning-200 focus-within:ring-warning-600/50; }
+.ya-btn-alert-outline-active { @apply text-alert-600 bg-alert-200 focus-within:ring-alert-600/50; }
+.ya-btn-danger-outline-active { @apply text-danger-600 bg-danger-200 focus-within:ring-danger-600/50; }
+.ya-btn-light-outline-active { @apply text-light-700 bg-light-200 focus-within:ring-light-700/50; }
+.ya-btn-dark-outline-active { @apply text-dark-700 bg-dark-200 focus-within:ring-dark-700/50; }
+
+.ya-btn-close {
+    @apply absolute top-4 right-4 w-7 h-7 flex items-center justify-center rounded-full text-dark-300 hover:not-disabled:text-white hover:not-disabled:bg-dark-200 active:not-disabled:bg-dark-200 focus-within:ring-4 focus-within:ring-dark-100/50;
+}

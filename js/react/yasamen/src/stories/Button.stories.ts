@@ -40,19 +40,20 @@ export const Primary: Story = {
 export const Secondary: Story = {
   args: {
     label: 'Button',
+    theme: Themes.Secondary,
   },
 };
 
 export const Large: Story = {
   args: {
-    size: 'large',
+    size: Sizes.Large,
     label: 'Button',
   },
 };
 
 export const Small: Story = {
   args: {
-    size: 'small',
+    size: Sizes.Small,
     label: 'Button',
   },
 };

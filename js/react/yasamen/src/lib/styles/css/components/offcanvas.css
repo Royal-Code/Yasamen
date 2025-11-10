@@ -1,0 +1,39 @@
+﻿.ya-offcanvas {
+    max-width: calc(100% - var(--ya-fit-left) - var(--ya-fit-right));
+    @apply invisible fixed flex flex-col bg-clip-padding outline-0 transform;
+    @apply top-[var(--ya-fit-top)] bottom-[var(--ya-fit-bottom)] bg-white transition-all duration-150;
+}
+
+.ya-offcanvas-start {
+    @apply left-[var(--ya-fit-left)] translate-x-[calc(-100%_-_var(--ya-fit-left))];
+}
+
+.ya-offcanvas-end {
+    @apply right-[var(--ya-fit-right)] translate-x-full;
+}
+
+.ya-offcanvas-show {
+    @apply translate-x-0 visible;
+}
+
+    .ya-offcanvas-show.ya-offcanvas-start {
+        @apply shadow-[3px_0_3px_0_#00000020];
+    }
+
+    .ya-offcanvas-show.ya-offcanvas-end {
+        @apply shadow-[-3px_0_3px_0_#00000020];
+    }
+
+.ya-offcanvas-backdrop {
+    display: none;
+    @apply hidden opacity-0 bg-black/20 transition-opacity duration-150;
+}
+
+.ya-offcanvas-backdrop-show {
+    @apply z-offcanvas-backdrop;
+    @apply block fixed opacity-100 left-[var(--ya-fit-left)] right-[var(--ya-fit-right)] bottom-[var(--ya-fit-bottom)] top-[var(--ya-fit-top)];
+}
+
+.ya-offcanvas-backdrop-overlaying {
+    @apply top-0;
+}

@@ -1,0 +1,57 @@
+/* Stories CSS for Icon component showcase */
+.ya-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 12px;
+  padding: 8px;
+}
+
+.ya-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: var(--ya-color-surface, #fff);
+  border: 1px solid var(--ya-color-border, #ddd);
+  border-radius: 6px;
+  padding: 6px 4px;
+  font-size: 11px;
+  line-height: 1.2;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+
+.ya-icon-item__glyph {
+  font-size: 24px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ya-icon-size-demo {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.ya-icon-size-demo__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 60px;
+}
+
+/* Predefined size utility classes for size showcase */
+.ya-icon-sz-12 { font-size: 12px; }
+.ya-icon-sz-16 { font-size: 16px; }
+.ya-icon-sz-20 { font-size: 20px; }
+.ya-icon-sz-24 { font-size: 24px; }
+.ya-icon-sz-32 { font-size: 32px; }
+.ya-icon-sz-40 { font-size: 40px; }
+.ya-icon-sz-48 { font-size: 48px; }
+
+.ya-icon-invalid-wrapper { max-width: 420px; }
+.ya-icon-small-text { font-size: 12px; }

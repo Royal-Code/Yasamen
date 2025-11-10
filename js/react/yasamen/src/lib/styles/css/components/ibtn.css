@@ -1,0 +1,64 @@
+﻿.ya-i-btn {
+    @apply relative overflow-hidden border-1 rounded-full transition-all duration-150 leading-none flex items-center justify-center;
+}
+
+/* Sizes */
+.ya-i-btn-2xs { @apply text-2xs size-6; }
+.ya-i-btn-xs { @apply text-xs size-[1.25rem]; }
+.ya-i-btn-sm { @apply text-sm size-7 [&_i]:mt-[1px]; }
+.ya-i-btn-md { @apply text-base size-8; }
+.ya-i-btn-lg { @apply text-2xl size-9; }
+.ya-i-btn-xl { @apply text-3xl size-10; }
+.ya-i-btn-2xl { @apply text-5xl size-11; }
+
+/* Filled (default) */
+.ya-i-btn-primary { @apply bg-transparent border-transparent text-primary-500 hover:not-disabled:bg-primary-100 hover:not-disabled:border-primary-100 active:not-disabled:bg-primary-300 active:not-disabled:border-primary-300; }
+.ya-i-btn-secondary { @apply bg-transparent border-transparent text-secondary-600 hover:not-disabled:bg-secondary-100 hover:not-disabled:border-secondary-100 active:not-disabled:bg-secondary-300 active:not-disabled:border-secondary-300; }
+.ya-i-btn-tertiary { @apply bg-transparent border-transparent text-tertiary-500 hover:not-disabled:bg-tertiary-100 hover:not-disabled:border-tertiary-100 active:not-disabled:bg-tertiary-300 active:not-disabled:border-tertiary-300; }
+.ya-i-btn-info { @apply bg-transparent border-transparent text-info-500 hover:not-disabled:bg-info-100 hover:not-disabled:border-info-100 active:not-disabled:bg-info-300 active:not-disabled:border-info-300; }
+.ya-i-btn-highlight { @apply bg-transparent border-transparent text-highlight-500 hover:not-disabled:bg-highlight-100 hover:not-disabled:border-highlight-100 active:not-disabled:bg-highlight-300 active:not-disabled:border-highlight-300; }
+.ya-i-btn-success { @apply bg-transparent border-transparent text-success-500 hover:not-disabled:bg-success-100 hover:not-disabled:border-success-100 active:not-disabled:bg-success-300 active:not-disabled:border-success-300; }
+.ya-i-btn-warning { @apply bg-transparent border-transparent text-warning-500 hover:not-disabled:bg-warning-100 hover:not-disabled:border-warning-100 active:not-disabled:bg-warning-300 active:not-disabled:border-warning-300; }
+.ya-i-btn-alert { @apply bg-transparent border-transparent text-alert-500 hover:not-disabled:bg-alert-100 hover:not-disabled:border-alert-100 active:not-disabled:bg-alert-300 active:not-disabled:border-alert-300; }
+.ya-i-btn-danger { @apply bg-transparent border-transparent text-danger-500 hover:not-disabled:bg-danger-100 hover:not-disabled:border-danger-100 active:not-disabled:bg-danger-300 active:not-disabled:border-danger-300; }
+.ya-i-btn-light { @apply bg-transparent border-transparent text-light-500 hover:not-disabled:bg-light-100 hover:not-disabled:border-light-100 active:not-disabled:bg-light-300 active:not-disabled:border-light-300; }
+.ya-i-btn-dark { @apply bg-transparent border-transparent text-dark-600 hover:not-disabled:bg-dark-100 hover:not-disabled:border-dark-100 active:not-disabled:bg-dark-200 active:not-disabled:border-dark-200; }
+
+/* Filled Active */
+.ya-i-btn-primary-active { @apply text-primary-500 bg-primary-300 border-primary-300; }
+.ya-i-btn-secondary-active { @apply text-secondary-500 bg-secondary-300 border-secondary-300; }
+.ya-i-btn-tertiary-active { @apply text-tertiary-500 bg-tertiary-300 border-tertiary-300; }
+.ya-i-btn-info-active { @apply text-info-500 bg-info-300 border-info-300; }
+.ya-i-btn-highlight-active { @apply text-highlight-500 bg-highlight-300 border-highlight-300; }
+.ya-i-btn-success-active { @apply text-success-500 bg-success-300 border-success-300; }
+.ya-i-btn-warning-active { @apply text-warning-500 bg-warning-300 border-warning-300; }
+.ya-i-btn-alert-active { @apply text-alert-500 bg-alert-300 border-alert-300; }
+.ya-i-btn-danger-active { @apply text-danger-500 bg-danger-300 border-danger-300; }
+.ya-i-btn-light-active { @apply text-light-500 bg-light-300 border-light-300; }
+.ya-i-btn-dark-active { @apply text-dark-500 bg-dark-200 border-dark-200; }
+
+/* Outline */
+.ya-i-btn-primary-outline { @apply bg-white border-primary-500 text-primary-500 hover:not-disabled:bg-primary-100 active:not-disabled:bg-primary-500 active:not-disabled:text-primary-100; }
+.ya-i-btn-secondary-outline { @apply bg-white border-secondary-500 text-secondary-500 hover:not-disabled:bg-secondary-100 active:not-disabled:bg-secondary-500 active:not-disabled:text-secondary-100; }
+.ya-i-btn-tertiary-outline { @apply bg-white border-tertiary-500 text-tertiary-500 hover:not-disabled:bg-tertiary-100 active:not-disabled:bg-tertiary-500 active:not-disabled:text-tertiary-100; }
+.ya-i-btn-info-outline { @apply bg-white border-info-500 text-info-500 hover:not-disabled:bg-info-100 active:not-disabled:bg-info-500 active:not-disabled:text-info-100; }
+.ya-i-btn-highlight-outline { @apply bg-white border-highlight-500 text-highlight-500 hover:not-disabled:bg-highlight-100 active:not-disabled:bg-highlight-500 active:not-disabled:text-highlight-100; }
+.ya-i-btn-success-outline { @apply bg-white border-success-500 text-success-500 hover:not-disabled:bg-success-100 active:not-disabled:bg-success-500 active:not-disabled:text-success-100; }
+.ya-i-btn-warning-outline { @apply bg-white border-warning-500 text-warning-500 hover:not-disabled:bg-warning-100 active:not-disabled:bg-warning-500 active:not-disabled:text-warning-100; }
+.ya-i-btn-alert-outline { @apply bg-white border-alert-500 text-alert-500 hover:not-disabled:bg-alert-100 active:not-disabled:bg-alert-500 active:not-disabled:text-alert-100; }
+.ya-i-btn-danger-outline { @apply bg-white border-danger-500 text-danger-500 hover:not-disabled:bg-danger-100 active:not-disabled:bg-danger-500 active:not-disabled:text-danger-100; }
+.ya-i-btn-light-outline { @apply bg-white border-light-500 text-light-500 hover:not-disabled:bg-light-100 active:not-disabled:bg-light-500 active:not-disabled:text-light-100; }
+.ya-i-btn-dark-outline { @apply bg-white border-dark-500 text-dark-500 hover:not-disabled:bg-dark-100 active:not-disabled:bg-dark-500 active:not-disabled:text-dark-100; }
+
+/* Outline Active */
+.ya-i-btn-primary-outline-active { @apply border-primary-500 bg-primary-500 text-primary-100; }
+.ya-i-btn-secondary-outline-active { @apply border-secondary-500 bg-secondary-500 text-secondary-100; }
+.ya-i-btn-tertiary-outline-active { @apply border-tertiary-500 bg-tertiary-500 text-tertiary-100; }
+.ya-i-btn-info-outline-active { @apply border-info-500 bg-info-500 text-info-100; }
+.ya-i-btn-highlight-outline-active { @apply border-highlight-500 bg-highlight-500 text-highlight-100; }
+.ya-i-btn-success-outline-active { @apply border-success-500 bg-success-500 text-success-100; }
+.ya-i-btn-warning-outline-active { @apply border-warning-500 bg-warning-500 text-warning-100; }
+.ya-i-btn-alert-outline-active { @apply border-alert-500 bg-alert-500 text-alert-100; }
+.ya-i-btn-danger-outline-active { @apply border-danger-500 bg-danger-500 text-danger-100; }
+.ya-i-btn-light-outline-active { @apply border-light-500 bg-light-500 text-light-100; }
+.ya-i-btn-dark-outline-active { @apply border-dark-500 bg-dark-500 text-dark-100; }

@@ -1,0 +1,32 @@
+.ya-story-sizes-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+/* Grid layout to demonstrate block vs non-block buttons in fixed-width wrappers */
+.ya-story-grid {
+  display: grid;
+  gap: 1rem;
+}
+.ya-story-box {
+  width: 260px;
+  border: 1px dashed #ccc;
+  padding: 0.75rem;
+  border-radius: 6px;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.ya-story-box--wide {
+  max-width: 420px;
+  width: 100%;
+}
+.ya-story-box-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: #666;
+}
