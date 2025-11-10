@@ -1,32 +1,34 @@
 
-<aside class="@Classes" @attributes="Attributes" @ref="asideRef">
-    <CascadingValue Value="handler">
-        @if(UseBox)
-        {
-            <AsideBox Title="@Title" Size="@BoxSize" Closeable="@(Closeable ?? true)">
-                @ChildContent
-            </AsideBox>
-        }
-        else
-        {
-            @ChildContent
-        }
-    </CascadingValue>
-</aside>
+<div class="z-offcanvas">
+	<aside class="@Classes" @attributes="Attributes" @ref="asideRef">
+		<CascadingValue Value="handler">
+			@if (UseBox)
+			{
+				<AsideBox Title="@Title" Size="@BoxSize" Closeable="@(Closeable ?? true)">
+					@ChildContent
+				</AsideBox>
+			}
+			else
+			{
+				@ChildContent
+			}
+		</CascadingValue>
+	</aside>
+</div>
 <div class="@BackdropClasses" @onclick="BackdropClickHandler" @ref="backdropRef"></div>
 
 @code {
-    private ElementReference? asideRef;
-    private ElementReference? backdropRef;
+	private ElementReference? asideRef;
+	private ElementReference? backdropRef;
 
-    private string Classes => "ya-offcanvas"
-        .AddClass(IsVisible, "ya-offcanvas-show")
-        .AddClass(Position is Positions.Start, "ya-offcanvas-start", "ya-offcanvas-end")
-        .AddClass(Fitting is Fitting.Overlaying, "ya-offcanvas-overlaying")
-        .AddClass(Fitting is Fitting.Float, "ya-offcanvas-float")
-        .AddClass(AdditionalClasses);
+	private string Classes => "ya-offcanvas"
+		.AddClass(IsVisible, "ya-offcanvas-show")
+		.AddClass(Position is Positions.Start, "ya-offcanvas-start", "ya-offcanvas-end")
+		.AddClass(Fitting is Fitting.Overlaying, "ya-offcanvas-overlaying")
+		.AddClass(Fitting is Fitting.Float, "ya-offcanvas-float")
+		.AddClass(AdditionalClasses);
 
-    private string BackdropClasses => "ya-offcanvas-backdrop"
-        .AddClass(IsVisible && Modal, "ya-offcanvas-backdrop-show")
-        .AddClass(Fitting is Fitting.Overlaying, "ya-offcanvas-backdrop-overlaying");
+	private string BackdropClasses => "ya-offcanvas-backdrop"
+		.AddClass(IsVisible && Modal, "ya-offcanvas-backdrop-show ya-modal-visible")
+		.AddClass(Fitting is Fitting.Overlaying, "ya-offcanvas-backdrop-overlaying");
 }

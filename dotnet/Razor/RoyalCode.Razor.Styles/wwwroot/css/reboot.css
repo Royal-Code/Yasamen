@@ -11,6 +11,7 @@
         --body--line-height: var(--leading-base);
         --body--color: var(--color-dark);
         --body--bg: var(--color-light);
+        --body--modal--padding-right: 15px;
         /* box */
         --box-sizing: border-box;
         /* hr */
@@ -144,10 +145,10 @@
         -webkit-tap-highlight-color: transparent;
     }
 
-    body:has(.ya-modal-show) {
-        overflow: hidden;
-        padding-right: 15px;
-    }
+        body:has(.ya-modal-visible) {
+            overflow: hidden;
+            padding-right: var(--body--modal--padding-right);
+        }
 
     *, *::before, *::after {
         box-sizing: var(--box-sizing);

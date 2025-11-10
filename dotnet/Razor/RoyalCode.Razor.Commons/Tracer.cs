@@ -25,17 +25,52 @@ public static class Tracer
     /// <summary>
     /// Gets the collection of allowed component names for tracing.
     /// </summary>
-    public readonly static ICollection<string> AllowedComponents = new List<string>();
+    public readonly static ICollection<string> AllowedComponents = [];
 
     /// <summary>
     /// Gets the collection of denied component names for tracing.
     /// </summary>
-    public readonly static ICollection<string> DeniedComponents = new List<string>();
+    public readonly static ICollection<string> DeniedComponents = [];
 
     /// <summary>
     /// Gets or sets the output writer action for trace messages.
     /// </summary>
     public static Action<string> OutputWriter = Console.WriteLine;
+
+    public static void AllowComponent(string component)
+    {
+        IsActive = true;
+        UseAllowedList = true;
+        if (!AllowedComponents.Contains(component))
+            AllowedComponents.Add(component);
+    }
+
+    public static void AllowComponent<TComponent>()
+        => AllowComponent(typeof(TComponent).Name);
+
+    public static void AllowComponents<TComponent1, TComponent2>()
+    {
+        AllowComponent<TComponent1>();
+        AllowComponent<TComponent2>();
+    }
+
+    public static void AllowComponents<TComponent1, TComponent2, TComponent3>()
+    {
+        AllowComponent<TComponent1>();
+        AllowComponent<TComponent2>();
+        AllowComponent<TComponent3>();
+    }
+
+    public static void DenyComponent(string component)
+    {
+        IsActive = true;
+        UseDeniedList = true;
+        if (!DeniedComponents.Contains(component))
+            DeniedComponents.Add(component);
+    }
+
+    public static void DenyComponent<TComponent>()
+        => DenyComponent(typeof(TComponent).Name);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private static bool CanWrite(string component)

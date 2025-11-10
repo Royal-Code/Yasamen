@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.0.11201.2 d18.0
+VisualStudioVersion = 18.0.11201.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
@@ -49,6 +49,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Razor.Buttons.Tests", "RoyalCode.Razor.Buttons.Tests\RoyalCode.Razor.Buttons.Tests.csproj", "{59EBB488-3043-439C-9159-7E6870F6E204}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Razor.OffCanvas", "RoyalCode.Razor.OffCanvas\RoyalCode.Razor.OffCanvas.csproj", "{667C3378-1D69-416D-AB78-B8EF08ED361C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Razor.Modals", "RoyalCode.Razor.Modals\RoyalCode.Razor.Modals.csproj", "{D0DB57D2-093E-488A-956C-D83514B4861A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -104,6 +106,10 @@ Global
 		{667C3378-1D69-416D-AB78-B8EF08ED361C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{667C3378-1D69-416D-AB78-B8EF08ED361C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{667C3378-1D69-416D-AB78-B8EF08ED361C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0DB57D2-093E-488A-956C-D83514B4861A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0DB57D2-093E-488A-956C-D83514B4861A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0DB57D2-093E-488A-956C-D83514B4861A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0DB57D2-093E-488A-956C-D83514B4861A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -125,6 +131,7 @@ Global
 		{04AE9F5D-9F72-4AAC-BA1D-E09219904E66} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{59EBB488-3043-439C-9159-7E6870F6E204} = {04AE9F5D-9F72-4AAC-BA1D-E09219904E66}
 		{667C3378-1D69-416D-AB78-B8EF08ED361C} = {947DDA3F-95F0-4F01-9AC1-43C874779423}
+		{D0DB57D2-093E-488A-956C-D83514B4861A} = {947DDA3F-95F0-4F01-9AC1-43C874779423}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8E24AFE-4B8F-4D0B-BB8C-FD23CE44D40C}

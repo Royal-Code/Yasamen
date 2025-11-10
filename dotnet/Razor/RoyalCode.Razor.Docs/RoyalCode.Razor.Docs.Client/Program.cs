@@ -6,5 +6,6 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 BootstrapIcons.Include();
 
 builder.Services.AddYasamenCommons();
+builder.Services.AddYasamenModal();
 
 await builder.Build().RunAsync();

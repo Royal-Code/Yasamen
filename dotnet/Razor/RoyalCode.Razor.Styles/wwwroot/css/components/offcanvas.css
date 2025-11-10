@@ -1,6 +1,6 @@
 ﻿.ya-offcanvas {
     max-width: calc(100% - var(--ya-fit-left) - var(--ya-fit-right));
-    @apply invisible fixed z-offcanvas flex flex-col bg-clip-padding outline-0 transform;
+    @apply invisible fixed flex flex-col bg-clip-padding outline-0 transform;
     @apply top-[var(--ya-fit-top)] bottom-[var(--ya-fit-bottom)] bg-white transition-all duration-150;
 }
 

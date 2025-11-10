@@ -1,0 +1,28 @@
+﻿@page "/modals"
+
+@layout AppMainLayout
+
+<Box>
+	<div>
+		<Button Label="Abrir Modal" OnClick="@(async e => await modalHandler1.OpenAsync())" />
+	</div>
+
+	<Modal Id="modal-sample-1" Handler="modalHandler1" Center="false">
+		<div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center">
+			Olá! Este componente está dentro de um modal.
+			<Button Label="Abrir segundo modal" OnClick="@(async e => await modalHandler2.OpenAsync())" />
+		</div>
+	</Modal>
+
+	<Modal Id="modal-sample-2" Handler="modalHandler2" Closeable="false">
+		<div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center">
+			Olá! Este é um segundo modal !!
+			<Button Label="Fechar o segundo modal" OnClick="@(async e => await modalHandler2.CloseAsync())" />
+		</div>
+	</Modal>
+</Box>
+
+@code {
+	private ModalHandler modalHandler1 = new();
+	private ModalHandler modalHandler2 = new();
+}

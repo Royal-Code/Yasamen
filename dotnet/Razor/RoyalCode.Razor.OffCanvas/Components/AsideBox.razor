@@ -14,17 +14,20 @@
             }
         </header>
     }
-    @ChildContent
+    <div>
+        @ChildContent
+    </div>
 </div>
 
 @code {
 
     private string Classes => "ya-aside-box"
-        .AddClass("max-w-full p-6 h-auto flex bg-primary-light-100 overflow-y-auto")
+        .AddClass("max-w-full p-6 h-auto flex flex-col bg-primary-light-100 overflow-y-auto")
         .AddClass(Size.ToContentCssClass())
         .AddClass(AdditionalClasses);
 
-    private string HeaderClasses => "flex space-between center mb-5";
+    private string HeaderClasses => "flex space-between center mb-5 w-full"
+        .AddClass(Title is not null, "h-8", "h-3");
 
     [CascadingParameter]
     public OffCanvasHandler? Handler { get; set; }

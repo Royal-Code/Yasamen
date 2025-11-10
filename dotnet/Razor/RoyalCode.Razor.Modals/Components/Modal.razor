@@ -1,0 +1,234 @@
+﻿@using Microsoft.AspNetCore.Components.Sections
+
+@implements IAsyncDisposable
+@inject ModalService ModalService
+
+<SectionContent SectionId="item">
+    <div class="@Classes" id="@Id" @ref="element" @ontransitionend="@transitionEndHandler">
+        <CascadingValue Value="context" IsFixed="true">
+            @ChildContent
+        </CascadingValue>
+    </div>
+</SectionContent>
+
+@code {
+
+    public static int ModalMaxTransitionTime { get; set; } = 800;
+
+    private string Classes => "ya-modal"
+        .AddClass(isOpen || closing, "ya-modal-show")
+        .AddClass(opening, "ya-modal-opening")
+        .AddClass(closing, "ya-modal-closing")
+        .AddClass(Center, "ya-modal-center");
+
+    private readonly ModalContext context;
+    private readonly ModalItem item;
+    private readonly Func<Task> transitionEndHandler;
+
+    private ElementReference element;
+    private AnimationCompletion? animation;
+
+    private bool disposed;
+    private bool opening;
+    private bool closing;
+    private bool closeRequested;
+    private bool isOpen;
+
+    public Modal()
+    {
+        context = new()
+        {
+            Modal = this,
+        };
+        item = new ModalItem(StateHasChangedAsync);
+        transitionEndHandler = TransitionEndHandler;
+    }
+
+    [Parameter, EditorRequired]
+    public string Id { get; set; } = default!;
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = default!;
+
+    [Parameter]
+    public ModalHandler? Handler { get; set; }
+
+    [Parameter]
+    public bool Closeable { get; set; } = true;
+
+    [Parameter]
+    public bool Center { get; set; } = true;
+
+    [Parameter]
+    public EventCallback<ModalEventArgs> OnOpenClose { get; set; }
+
+    private async Task StateHasChangedAsync()
+    {
+        if (disposed || isOpen == item.IsOpen)
+            return;
+
+        // end the old task
+        animation?.Complete();
+
+        Tracer.Write<Modal>(
+            "StateHasChangedAsync",
+            "StateHasChangedAsync called, isOpen: {0}, item.IsOpen: {1}",
+            isOpen,
+            item.IsOpen);
+
+        if (item.IsOpen)
+            opening = true;
+        else
+            closeRequested = true;
+
+        // atualiza dom do componente
+        StateHasChanged();
+
+        // source completition
+        animation = new AnimationCompletion();
+        await animation.Task;
+    }
+
+    private async Task CompleteTransitionEndTask()
+    {
+        Tracer.Write<Modal>(
+            "CompleteTransitionEndTask",
+            "CompleteTransitionEndTask called, isOpen: {0}, opening: {1}, closing: {2}", isOpen, opening, closing);
+
+        animation?.Complete();
+        animation = null;
+
+        isOpen = item.IsOpen;
+        opening = false;
+        closing = false;
+        closeRequested = false;
+
+        var evt = new ModalEventArgs()
+        {
+            IsOpen = isOpen,
+            Modal = this
+        };
+
+        await OnOpenClose.InvokeAsync(evt);
+
+        if (context.Handler is not null)
+            await context.Handler.OnModalEventAsync(evt);
+
+        StateHasChanged();
+
+        if (isOpen && element.Id.IsPresent())
+            await element.FocusAsync();
+    }
+
+    public async Task TransitionEndHandler()
+    {
+        Tracer.Write<Modal>(
+            "TransitionEndHandler",
+            "TransitionEndHandler called, isOpen: {0}, opening: {1}, closing: {2}", isOpen, opening, closing);
+
+        await CompleteTransitionEndTask();
+    }
+
+    protected override Task OnInitializedAsync()
+    {
+        ModalService.Add(item);
+        return Task.CompletedTask;
+    }
+
+    protected override void OnParametersSet()
+    {
+        // id is required
+        if (string.IsNullOrWhiteSpace(Id))
+            throw new InvalidOperationException($"The type {GetType()} requires a value for the parameter {nameof(Id)}.");
+
+        if (context.Handler is null)
+        {
+            context.Handler = Handler ?? new ModalHandler();
+            context.Handler.Modal = this;
+        }
+        else if (Handler is not null && Handler != context.Handler)
+        {
+            throw new InvalidOperationException(
+                $"The parameter {nameof(Handler)} must be the same instance for the same modal.");
+        }
+
+        item.Closeable = Closeable;
+
+        base.OnParametersSet();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            context.Element = element;
+        }
+        if (opening)
+        {
+            await InvokeAsync(async () =>
+            {
+                await Task.Delay(20);
+
+                Tracer.Write<Modal>(
+                    "OnAfterRenderAsync.InvokeAsync",
+                    "OnAfterRenderAsync.InvokeAsync called for opening");
+
+				isOpen = true;
+                opening = false;
+                StateHasChanged();
+            });
+        }
+        if (closeRequested)
+        {
+            await InvokeAsync(async () =>
+            {
+                await Task.Delay(20);
+
+                Tracer.Write<Modal>(
+                    "OnAfterRenderAsync.InvokeAsync",
+                    "OnAfterRenderAsync.InvokeAsync called for closing");
+
+				isOpen = false;
+				closeRequested = false;
+                closing = true;
+                StateHasChanged();
+            });
+        }
+
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    public async Task OpenAsync()
+    {
+        if (disposed)
+            throw new ObjectDisposedException(GetType().Name, $"Modal [{Id}] was disposed");
+
+        if (isOpen)
+            return;
+
+        await ModalService.OpenAsync(item);
+    }
+
+    public async Task CloseAsync()
+    {
+        if (disposed)
+            throw new ObjectDisposedException(GetType().Name, $"Modal [{Id}] was disposed");
+
+        if (!isOpen)
+            return;
+
+        await ModalService.CloseAsync(item);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        disposed = true;
+
+        if (item.IsOpen)
+            await ModalService.CloseAsync(item);
+
+        await CompleteTransitionEndTask();
+
+        ModalService.Remove(item);
+    }
+}

@@ -1,0 +1,139 @@
+﻿@using Microsoft.AspNetCore.Components.Sections
+
+@inject ModalService ModalService
+
+<div class="@Classes" id="ya-modal-outlet" tabindex="-1" @onkeydown="KeyDownHandler" @attributes="Attributes">
+	@foreach (var item in ModalService.Items)
+	{
+		<SectionOutlet SectionId="item" @key="item" />
+	}
+	<Backdrop @ref="backdrop" />
+</div>
+
+@code {
+	private static readonly IReadOnlyDictionary<string, object> closedAttributes = new Dictionary<string, object>()
+	{
+		{ "aria-hidden", "true" }
+	};
+
+	private static readonly IReadOnlyDictionary<string, object> openedAttributes = new Dictionary<string, object>()
+	{
+		{ "aria-modal", "true" },
+		{ "role", "dialog" }
+	};
+
+	private bool isOpen = false;
+	private bool isOpening = false;
+	private bool isClosing = false;
+	private TaskCompletionSource? taskCompletionSource;
+	private Backdrop? backdrop;
+
+	private IReadOnlyDictionary<string, object> Attributes => ModalService.IsOpen ? openedAttributes : closedAttributes;
+
+	private string Classes => ModalService.IsOpen || isClosing ? "ya-modal-outlet ya-modal-outlet-show" : "ya-modal-outlet";
+
+	protected override void OnInitialized()
+	{
+		ModalService.Outlet = this;
+	}
+
+	private Task KeyDownHandler(KeyboardEventArgs args)
+	{
+		// if escape is pressed, then do same as click, otherwise return
+		return args.Key == "Escape" ? ModalService.BackdropActionAsync() : Task.CompletedTask;
+	}
+
+	/// <summary>
+	/// Notifies the component that the state has changed.
+	/// </summary>
+	internal new void StateHasChanged() => base.StateHasChanged();
+
+	/// <summary>
+	/// Notifies the component that the state has changed.
+	/// </summary>
+	internal Task StateHasChangedAsync()
+	{
+		if (isOpen != ModalService.IsOpen)
+		{
+			Tracer.Write<ModalOutlet>(
+				"StateHasChangedAsync",
+				"StateHasChangedAsync called, isOpen: {0}, ModalService.IsOpen: {1}",
+				isOpen,
+				ModalService.IsOpen);
+
+			taskCompletionSource?.SetResult();
+
+			if (ModalService.IsOpen)
+			{
+				isOpening = true;
+				isClosing = false;
+			}
+			else
+			{
+				isClosing = true;
+				isOpening = false;
+			}
+
+			isOpen = ModalService.IsOpen;
+			StateHasChanged();
+
+			taskCompletionSource = new TaskCompletionSource();
+			return taskCompletionSource.Task;
+		}
+
+		return Task.CompletedTask;
+	}
+
+	internal Task RunAsync(Func<Task> action)
+	{
+		return InvokeAsync(action);
+	}
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		Tracer.Write<ModalOutlet>(
+			"OnAfterRenderAsync",
+			"OnAfterRenderAsync called, isOpening: {0}, isClosing: {1}",
+			isOpening,
+			isClosing);
+
+		if (isOpening)
+		{
+			await InvokeAsync(async () =>
+			{
+				await Task.Delay(10);
+
+				Tracer.Write<ModalOutlet>(
+					"OnAfterRenderAsync.InvokeAsync",
+					"OnAfterRenderAsync.InvokeAsync called for opening");
+
+				isOpening = false;
+				if (backdrop is not null)
+					await backdrop.OpenAsync();
+
+				taskCompletionSource?.SetResult();
+				taskCompletionSource = null;
+				StateHasChanged();
+			});
+		}
+		if (isClosing)
+		{
+			await InvokeAsync(async () =>
+			{
+				await Task.Delay(10);
+
+				Tracer.Write<ModalOutlet>(
+					"OnAfterRenderAsync.InvokeAsync",
+					"OnAfterRenderAsync.InvokeAsync called for closing");
+				
+				if (backdrop is not null)
+					await backdrop.CloseAsync();
+
+				isClosing = false;
+				taskCompletionSource?.SetResult();
+				taskCompletionSource = null;
+				StateHasChanged();
+			});
+		}
+	}
+}

@@ -4,6 +4,7 @@
 
 @import './css/components/btn.css';
 @import './css/components/ibtn.css';
+@import './css/components/modal.css';
 @import './css/components/offcanvas.css';
 
 @theme {
@@ -126,7 +127,6 @@
     --text-4xs--line-height: calc(0.75 / 0.5);
     --text-3xs--line-height: calc(0.8125 / 0.5625);
     --text-2xs--line-height: calc(0.875 / 0.625);
-    /* evolutivo dinamizado */
     --spacing-0: 0;
     --spacing-1: .0625rem;
     --spacing-2: .125rem;
@@ -144,28 +144,6 @@
     --spacing-14: 12rem;
     --spacing-15: 16rem;
     --spacing-16: 32rem;
-    /* evolutivo padronizado em 4 */
- /*   --spacing-1: .0625rem;
-    --spacing-2: .125rem;
-    --spacing-3: .1875rem;
-    --spacing-4: .25rem;
-    --spacing-5: 0.375rem;
-    --spacing-6: 0.5rem;
-    --spacing-7: 0.625rem;
-    --spacing-8: 0.75rem;
-    --spacing-9: 1rem;
-    --spacing-10: 1.25rem;
-    --spacing-11: 1.5rem;
-    --spacing-12: 1.75rem;
-    --spacing-13: 2rem;
-    --spacing-14: 2.5rem;
-    --spacing-15: 3rem;
-    --spacing-16: 3.5rem;
-    --spacing-17: 4rem;
-    --spacing-18: 5rem;
-    --spacing-19: 6rem;
-    --spacing-20: 8rem;*/
-    /**/
     --leading-none: 1;
     --leading-xs: 1.125;
     --leading-sm: 1.25;

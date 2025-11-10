@@ -1,5 +1,8 @@
 ﻿
+<RoyalCode.Razor.Internal.Modals.ModalOutlet />
+
 @PreContent
+
 <div @attributes="AdditionalAttributes" class="@Classes" @ref="LayoutReference">
     <header class="@HeaderClasses" @ref="HeaderReference">
         <AppTopBar Size="@TopSize">
@@ -37,6 +40,7 @@
 		}
     </div>
 </div>
+
 @PostContent
 
 @code {

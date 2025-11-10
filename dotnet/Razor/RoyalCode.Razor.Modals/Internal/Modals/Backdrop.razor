@@ -1,0 +1,99 @@
+﻿@inject ModalService ModalService
+
+<div class="@Classes" id="ya-modal-backdrop" tabindex="-1" @onclick="BackdropClickHandler" @ontransitionend="TransitionEndHandler"></div>
+
+@code {
+	private string Classes => "ya-modal-backdrop"
+		.AddClass(shown, "ya-modal-backdrop-shown")
+		.AddClass(shown || showing || hiding, "ya-modal-visible")
+		.AddClass(showing, "ya-modal-backdrop-showing")
+		.AddClass(hiding, "ya-modal-backdrop-hiding");
+
+	private bool shown;
+	private bool showing;
+	private bool hiding;
+	private bool hideRequest;
+	private AnimationCompletion? animation;
+
+	private Task BackdropClickHandler(MouseEventArgs args) => ModalService.BackdropActionAsync();
+
+	internal Task OpenAsync()
+	{
+		if (shown || showing)
+			return Task.CompletedTask;
+
+		animation?.Complete();
+
+		Tracer.Write<Backdrop>("OpenAsync", "OpenAsync called");
+
+		animation = new AnimationCompletion();
+		showing = true;
+		hiding = false;
+
+		StateHasChanged();
+		return animation.Task;
+	}
+
+	internal Task CloseAsync()
+	{
+		if (!shown || hiding)
+			return Task.CompletedTask;
+
+		animation?.Complete();
+
+		Tracer.Write<Backdrop>("CloseAsync", "CloseAsync called");
+
+		animation = new AnimationCompletion();
+		hideRequest = true;
+		showing = false;
+
+		StateHasChanged();
+		return animation.Task;
+	}
+
+	private Task TransitionEndHandler()
+	{
+		Tracer.Write<Backdrop>(
+			"TransitionEndHandler", 
+			"TransitionEndHandler called, {0}, {1}, {2}", shown, showing, hiding);
+
+		if (showing)
+		{
+			shown = true;
+			showing = false;
+		}
+		if (hiding)
+		{
+			shown = false;
+			hiding = false;
+		}
+		animation?.Complete();
+		animation = null;
+		StateHasChanged();
+		return Task.CompletedTask;
+	}
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		if (showing)
+		{
+			await InvokeAsync(async () =>
+			{
+				await Task.Delay(10);
+				shown = true;
+				showing = false;
+				StateHasChanged();
+			});
+		}
+		if (hideRequest)
+		{
+			await InvokeAsync(async () =>
+			{
+				await Task.Delay(10);
+				hiding = true;
+				hideRequest = false;
+				StateHasChanged();
+			});
+		}
+	}
+}

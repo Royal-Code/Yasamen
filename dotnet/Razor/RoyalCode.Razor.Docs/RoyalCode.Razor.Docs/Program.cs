@@ -11,6 +11,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
 builder.Services.AddYasamenCommons();
+builder.Services.AddYasamenModal();
 
 var app = builder.Build();
 
