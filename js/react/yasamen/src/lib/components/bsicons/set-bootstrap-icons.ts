@@ -1,7 +1,7 @@
-import { setIconFactory } from "../icon/factory/iconRegistry";
-import { WellKnownIcons } from "../icon/wellKnownIcons";
-import { bsIconFactory } from "./bsIconFactory";
-import { BsIcons } from "./bsIcons";
+import { setIconFactory } from "../icon/factory/icon-registry";
+import { WellKnownIcons } from "../icon/well-known-icons";
+import { bsIconFactory } from "./bs-icon-factory";
+import { BsIcons } from "./bs-icons";
 import { useEffect } from 'react';
 
 export function setBootstrapIcons() {

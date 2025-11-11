@@ -1,7 +1,7 @@
 import React from 'react';
-import { Themes, ThemeClasses, Sizes, getNavigator } from '../commons';
+import { Themes, ThemeClasses, Sizes, getNavigator, Ripple } from '../commons';
 import { Icon } from '../icon';
-import { type IconRenderer } from '../icon/factory/iconRenderer';
+import { type IconRenderer } from '../icon/factory/icon-renderer';
 
 interface IconButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'> {
     /** Nome do ícone (valor de BsIcons ou WellKnownIcons). */
@@ -103,6 +103,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
             {...rest}
         >
             {iconElement}
+            <Ripple dark={true} />
         </button>
     );
 };

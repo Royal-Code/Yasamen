@@ -1,6 +1,6 @@
-import { type IconRenderer } from "./iconRenderer";
-import { NoIconRenderer } from "./noIconRenderer";
-import { type IconFactory } from "./iconFactory";
+import { type IconRenderer } from "./icon-renderer";
+import { NoIconRenderer } from "./NoIconRenderer";
+import { type IconFactory } from "./icon-factory";
 
 class CurrentIconFactory {
     Factory: IconFactory;

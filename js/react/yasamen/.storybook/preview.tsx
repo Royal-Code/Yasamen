@@ -6,7 +6,7 @@ import { ReactRouterNavigatorProvider } from '../src/lib/utils';
 // Global design system styles
 import '../src/lib/styles/yasamen.css';
 
-import { BootstrapIconsProvider } from '../src/lib/components/bsicons/setBootstrapIcons';
+import { BootstrapIconsProvider } from '../src/lib/components/bsicons/set-bootstrap-icons';
 
 const preview: Preview = {
   parameters: {

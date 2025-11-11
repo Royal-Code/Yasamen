@@ -46,7 +46,7 @@
 .ya-btn-highlight { @apply bg-highlight-400 text-white hover:not-disabled:bg-highlight-600 active:not-disabled:bg-highlight-700 border-highlight-400 focus-within:ring-highlight-300/50; }
 .ya-btn-success { @apply bg-success-400 text-dark-900 hover:not-disabled:bg-success-600 active:not-disabled:bg-success-700 border-success-400 focus-within:ring-success-300/50; }
 .ya-btn-warning { @apply bg-warning-400 text-dark-900 hover:not-disabled:bg-warning-600 active:not-disabled:bg-warning-700 border-warning-400 focus-within:ring-warning-300/50; }
-.ya-btn-alert { @apply bg-alert-400 text-dark-900 hover:not-disabled:bg-alert-600 active:not-disabled:bg-alert-700 border-alert-400 focus-within:ring-alert-300/50; }
+.ya-btn-alert { @apply bg-alert-400 text-white hover:not-disabled:bg-alert-600 active:not-disabled:bg-alert-700 border-alert-400 focus-within:ring-alert-300/50; }
 .ya-btn-danger { @apply bg-danger-400 text-white hover:not-disabled:bg-danger-600 active:not-disabled:bg-danger-700 border-danger-400 focus-within:ring-danger-300/50; }
 .ya-btn-light { @apply bg-light-100 text-dark-500 hover:not-disabled:bg-light-200 active:not-disabled:bg-light-300 border-light-400 focus-within:ring-light-300/50; }
 .ya-btn-dark { @apply bg-dark-400 text-white hover:not-disabled:bg-dark-600 active:not-disabled:bg-dark-700 border-dark-400 focus-within:ring-dark-300/50; }
@@ -59,7 +59,7 @@
 .ya-btn-highlight-active { @apply text-white bg-highlight-700 border-highlight-400 focus-within:ring-highlight-300/50; }
 .ya-btn-success-active { @apply text-dark-900 bg-success-700 border-success-400 focus-within:ring-success-300/50; }
 .ya-btn-warning-active { @apply text-dark-900 bg-warning-700 border-warning-400 focus-within:ring-warning-300/50; }
-.ya-btn-alert-active { @apply text-dark-900 bg-alert-700 border-alert-400 focus-within:ring-alert-300/50; }
+.ya-btn-alert-active { @apply text-white bg-alert-700 border-alert-400 focus-within:ring-alert-300/50; }
 .ya-btn-danger-active { @apply text-white bg-danger-700 border-danger-400 focus-within:ring-danger-300/50; }
 .ya-btn-light-active { @apply text-dark-500 bg-light-300 border-light-400 focus-within:ring-light-300/50; }
 .ya-btn-dark-active { @apply text-white bg-dark-700 border-dark-400 focus-within:ring-dark-300/50; }

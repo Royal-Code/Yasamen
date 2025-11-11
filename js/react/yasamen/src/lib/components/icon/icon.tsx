@@ -1,6 +1,6 @@
 import React from 'react';
-import { WellKnownIcons } from './wellKnownIcons';
-import { getIconRenderer } from './factory/iconRegistry';
+import { WellKnownIcons } from './well-known-icons';
+import { getIconRenderer } from './factory/icon-registry';
 
 interface IconProps extends React.HTMLAttributes<HTMLElement> {
 	/** Icon name (well known or custom). */

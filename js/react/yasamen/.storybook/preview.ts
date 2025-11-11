@@ -7,7 +7,7 @@ import { ReactRouterNavigatorProvider } from '../src/lib/utils';
 import '../src/lib/styles/yasamen.css';
 
 // Initialize icon system (Bootstrap Icons mapping)
-import { BootstrapIconsProvider } from '../src/lib/components/bsicons/setBootstrapIcons';
+import { BootstrapIconsProvider } from '../src/lib/components/bsicons/set-bootstrap-icons';
 
 const preview: Preview = {
   parameters: {

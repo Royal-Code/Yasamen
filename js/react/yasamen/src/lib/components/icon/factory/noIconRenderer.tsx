@@ -1,4 +1,4 @@
-import type { IconRenderer } from "./iconRenderer";
+import type { IconRenderer } from "./icon-renderer";
 
 
 export const NoIconRenderer: IconRenderer = (

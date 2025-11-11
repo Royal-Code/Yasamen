@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Button from '../lib/components/button/button';
+import Button from '../lib/components/button/Button';
 import { Themes } from '../lib/components/commons/themes';
 import { Sizes } from '../lib/components/commons/sizes';
 import { Positions } from '../lib/components/commons/positions';
-import { BsIcons } from '../lib/components/bsicons/bsIcons';
+import { BsIcons } from '../lib/components/bsicons/bs-icons';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {

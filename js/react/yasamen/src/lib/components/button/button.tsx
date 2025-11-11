@@ -1,6 +1,6 @@
 import React from 'react';
-import { Themes, ThemeClasses, Sizes, Positions, getNavigator } from '../commons';
-import Icon from '../icon/icon';
+import { Themes, ThemeClasses, Sizes, Positions, getNavigator, Ripple } from '../commons';
+import { Icon } from '../icon';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     label: string;
@@ -67,6 +67,8 @@ const Button: React.FC<ButtonProps> = ({
         }
     };
 
+    const darkRipple = theme === Themes.Light || outline;
+
     return (
         <button
             type={type}
@@ -78,6 +80,7 @@ const Button: React.FC<ButtonProps> = ({
             {icon && iconPosition === Positions.Start && <Icon name={icon} className='mr-3' aria-hidden="true"></Icon>}
             {label}
             {icon && iconPosition === Positions.End && <Icon name={icon} className='ml-3' aria-hidden="true"></Icon>}
+            <Ripple dark={darkRipple} />
         </button>
     );
 };

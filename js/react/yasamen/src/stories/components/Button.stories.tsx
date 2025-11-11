@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from '../../lib/components/button';
 import './ButtonStories.css';
 import { Themes, Sizes, Positions } from '../../lib/components/commons/';
-import { BsIcons } from '../../lib/components/bsicons/bsIcons';
+import { BsIcons } from '../../lib/components/bsicons/bs-icons';
 
 /*
   Centralized component stories pattern:

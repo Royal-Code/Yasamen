@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { IconButton } from '../../lib/components/button';
 import { Themes, Sizes } from '../../lib/components/commons';
-import { BsIcons } from '../../lib/components/bsicons/bsIcons';
+import { BsIcons } from '../../lib/components/bsicons/bs-icons';
 import './ButtonStories.css'; // reuse grid / layout helpers
 import './IconButtonStories.css';
 
