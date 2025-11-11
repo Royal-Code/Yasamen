@@ -15,6 +15,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     block?: boolean;
     disabled?: boolean;
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
+    navigateTo?: string;
     className?: string;
 }
 
@@ -27,8 +28,9 @@ const Button: React.FC<ButtonProps> = ({
     icon,
     iconPosition = Positions.Start,
     block = false,
-    onClick,
     disabled = false,
+    onClick,
+    navigateTo,
     className = '',
     ...rest
 }) => {
@@ -52,10 +54,24 @@ const Button: React.FC<ButtonProps> = ({
 
     const classes = [className, themeClass, sizeClass, baseClass, disabledClass, blockClass].filter(Boolean).join(' ');
 
+    const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+        if (disabled) {
+            e.preventDefault();
+            return;
+        }
+        if (onClick) {
+            onClick(e);
+        }
+        if (navigateTo) {
+            e.preventDefault();
+            window.location.href = navigateTo;
+        }
+    };
+
     return (
         <button
             type="button"
-            onClick={onClick}
+            onClick={handleClick}
             disabled={disabled}
             className={classes}
             {...rest}

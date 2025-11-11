@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
 
 import Button from '../../lib/components/button/button';
 import './ButtonStories.css';
@@ -47,7 +46,7 @@ const meta = {
     disabled: false,
     icon: '',
     iconPosition: Positions.Start,
-    onClick: fn(),
+  // onClick action handled via argTypes; no mock fn needed in SB9
   }
 } satisfies Meta<typeof Button>;
 

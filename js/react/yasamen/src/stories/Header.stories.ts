@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+// Removed deprecated '@storybook/test' import for SB9. Use action args instead.
 
 import { Header } from './Header';
 
@@ -12,11 +12,12 @@ const meta = {
     // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
     layout: 'fullscreen',
   },
-  args: {
-    onLogin: fn(),
-    onLogout: fn(),
-    onCreateAccount: fn(),
+  argTypes: {
+    onLogin: { action: 'login' },
+    onLogout: { action: 'logout' },
+    onCreateAccount: { action: 'createAccount' },
   },
+  args: {},
 } satisfies Meta<typeof Header>;
 
 export default meta;

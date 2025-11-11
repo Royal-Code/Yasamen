@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
 
 import Button from '../lib/components/button/button';
 import { Themes } from '../lib/components/commons/themes';
@@ -23,9 +22,9 @@ const meta = {
     size: { control: 'select', options: Object.values(Sizes) },
     icon: { control: 'select', options: ['', ...Object.values(BsIcons)], description: 'Nome de ícone (vazio para nenhum)' },
     iconPosition: { control: 'radio', options: [Positions.Start, Positions.End], description: 'Posição do ícone' },
+    onClick: { action: 'clicked' }
   },
-  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
-  args: { onClick: fn() },
+  args: {},
 } satisfies Meta<typeof Button>;
 
 export default meta;
