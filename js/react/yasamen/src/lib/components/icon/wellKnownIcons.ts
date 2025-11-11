@@ -23,12 +23,8 @@ export const WellKnownIcons = {
     UserSettings: 'user_settings',
     UserLogout: 'user_logout',
     UserLogin: 'user_login',
-    // Correct spelling
     ShowPassword: 'show_password',
     HidePassword: 'hide_password',
-    // Backwards compatibility aliases (deprecated)
-    ShowPassord: 'show_password',
-    HidePassord: 'hide_password',
     Menu: 'menu',
     MenuOpen: 'menu_open',
     MenuClose: 'menu_close',

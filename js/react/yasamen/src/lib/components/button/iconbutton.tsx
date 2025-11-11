@@ -1,14 +1,15 @@
 import React from 'react';
-import { Themes, ThemeClasses, Sizes } from '../commons';
+import { Themes, ThemeClasses, Sizes, getNavigator } from '../commons';
 import { Icon } from '../icon';
 import { type IconRenderer } from '../icon/factory/iconRenderer';
-import { useNavigate } from 'react-router-dom';
 
 interface IconButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'> {
     /** Nome do ícone (valor de BsIcons ou WellKnownIcons). */
     icon?: string;
     /** Renderer alternativo (IconRenderer) caso queira ícone custom inline. */
     renderer?: IconRenderer;
+    /** Classe extra para o ícone. */
+    iconClassName?: string;
     /** Tema visual. */
     theme?: Themes;
     /** Escala de tamanho. */
@@ -42,6 +43,7 @@ function resolveThemeClass(theme: Themes, outline: boolean, active: boolean): st
 export const IconButton: React.FC<IconButtonProps> = ({
     icon,
     renderer,
+    iconClassName,
     theme = Themes.Primary,
     size = Sizes.Medium,
     outline = false,
@@ -72,12 +74,11 @@ export const IconButton: React.FC<IconButtonProps> = ({
     let iconElement: React.ReactNode = null;
     if (renderer) {
         // Renderer recebe (className, restAttr). Para IconButton não precisamos passar attrs extras.
-        iconElement = renderer(className, rest as React.HTMLAttributes<HTMLElement>);
+        iconElement = renderer(iconClassName, rest as React.HTMLAttributes<HTMLElement>);
     } else if (icon) {
-        iconElement = <Icon name={icon} aria-hidden="true" />;
+        iconElement = <Icon name={icon} className={iconClassName} aria-hidden="true" />;
     }
 
-    const navigate = useNavigate();
     const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
         if (disabled) {
             e.preventDefault();
@@ -88,7 +89,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
         }
         if (navigateTo) {
             e.preventDefault();
-            navigate(navigateTo);
+            getNavigator().navigate(navigateTo);
         }
     };
 

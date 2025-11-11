@@ -1,13 +1,12 @@
 import React from 'react';
 import type { Preview } from '@storybook/react';
 import { MemoryRouter } from 'react-router-dom';
+import { ReactRouterNavigatorProvider } from '../src/lib/utils';
 
 // Global design system styles
 import '../src/lib/styles/yasamen.css';
 
-// Initialize icon system (Bootstrap Icons mapping)
-import { setBootstrapIcons } from '../src/lib/components/bsicons/setBootstrapIcons';
-setBootstrapIcons();
+import { BootstrapIconsProvider } from '../src/lib/components/bsicons/setBootstrapIcons';
 
 const preview: Preview = {
   parameters: {
@@ -22,6 +21,8 @@ const preview: Preview = {
   decorators: [
     (Story) => (
       <MemoryRouter initialEntries={['/']}>
+        <BootstrapIconsProvider />
+        <ReactRouterNavigatorProvider />
         <Story />
       </MemoryRouter>
     )

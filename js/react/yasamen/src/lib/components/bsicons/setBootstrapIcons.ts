@@ -2,6 +2,7 @@ import { setIconFactory } from "../icon/factory/iconRegistry";
 import { WellKnownIcons } from "../icon/wellKnownIcons";
 import { bsIconFactory } from "./bsIconFactory";
 import { BsIcons } from "./bsIcons";
+import { useEffect } from 'react';
 
 export function setBootstrapIcons() {
     setIconFactory(bsIconFactory);
@@ -38,4 +39,17 @@ export function setBootstrapIcons() {
     WellKnownIcons.MenuExpand = BsIcons.ChevronCompactDown;
     WellKnownIcons.MenuCollapseAll = BsIcons.ArrowsAngleContract;
     WellKnownIcons.MenuExpandAll = BsIcons.ArrowsAngleExpand;
+}
+
+// Hook para inicializar bootstrap icons em ambiente React
+export function useSetupBootstrapIcons() {
+    useEffect(() => {
+        setBootstrapIcons();
+    }, []);
+}
+
+// Componente provider opcional
+export function BootstrapIconsProvider() {
+    useSetupBootstrapIcons();
+    return null;
 }
