@@ -1,10 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Button from '../../lib/components/button/button';
+import { Button } from '../../lib/components/button';
 import './ButtonStories.css';
-import { Themes } from '../../lib/components/commons/themes';
-import { Sizes } from '../../lib/components/commons/sizes';
-import { Positions } from '../../lib/components/commons/positions';
+import { Themes, Sizes, Positions } from '../../lib/components/commons/';
 import { BsIcons } from '../../lib/components/bsicons/bsIcons';
 
 /*
@@ -22,19 +20,26 @@ const meta = {
   component: Button,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: 'Botão base do design system. Suporta tema, tamanho, ícone opcional (antes ou depois), variantes outline/active/disabled/block. Props adicionais: type (button|submit|reset) e navigateTo (navegação interna via react-router). Em Storybook navegação só funciona dentro de um MemoryRouter.'
+      }
+    }
   },
-  tags: ['autodocs'],
+  tags: ['autodocs', 'stable'],
   argTypes: {
-    label: { control: 'text', description: 'Text label shown inside the button' },
-    theme: { control: 'select', options: allThemes, description: 'Visual theme of the button' },
-    size: { control: 'select', options: allSizes, description: 'Size scale token' },
-    outline: { control: 'boolean', description: 'Use outline style variant' },
-    active: { control: 'boolean', description: 'Render in active state class' },
-    block: { control: 'boolean', description: 'Display full width block button' },
-    disabled: { control: 'boolean', description: 'Disable button interaction' },
-    icon: { control: 'select', options: ['', BsIcons.Plus, BsIcons.Dash, BsIcons.Gear, BsIcons.CheckCircle, BsIcons.XCircle, BsIcons.Eye], description: 'Icon glyph (vazio para nenhum)' },
-    iconPosition: { control: 'radio', options: [Positions.Start, Positions.End], description: 'Position of icon relative to label' },
-    onClick: { action: 'clicked' }
+    label: { control: 'text', description: 'Texto exibido no botão' },
+    theme: { control: 'select', options: allThemes, description: 'Tema visual (classe base + variantes)' },
+    size: { control: 'select', options: allSizes, description: 'Escala de tamanho (padding/font)' },
+    outline: { control: 'boolean', description: 'Aplica estilo outline em vez de sólido' },
+    active: { control: 'boolean', description: 'Força estado ativo (aria-pressed visual)' },
+    block: { control: 'boolean', description: 'Largura total do contêiner pai' },
+    disabled: { control: 'boolean', description: 'Desabilita interação e aplica estilo de disabled' },
+    icon: { control: 'select', options: ['', BsIcons.Plus, BsIcons.Dash, BsIcons.Gear, BsIcons.CheckCircle, BsIcons.XCircle, BsIcons.Eye], description: 'Nome do ícone (string de BsIcons) ou vazio para nenhum' },
+    iconPosition: { control: 'radio', options: [Positions.Start, Positions.End], description: 'Posição do ícone em relação ao texto' },
+    type: { control: 'select', options: ['button','submit','reset'], description: 'Atributo type do <button>' },
+    navigateTo: { control: 'text', description: 'Path para navegar via useNavigate (deixe vazio em Storybook se não envolver MemoryRouter)' },
+    onClick: { action: 'clicked', description: 'Handler de clique (Storybook action)' }
   },
   args: {
     label: 'Button',
@@ -46,7 +51,8 @@ const meta = {
     disabled: false,
     icon: '',
     iconPosition: Positions.Start,
-  // onClick action handled via argTypes; no mock fn needed in SB9
+    type: 'button',
+    navigateTo: ''
   }
 } satisfies Meta<typeof Button>;
 
@@ -139,6 +145,17 @@ export const SizesShowcase: Story = {
     </div>
   ),
   args: { outline: false }
+};
+
+// Navegação interna (usa MemoryRouter). Exemplo demonstrativo; submit/reset não relevantes.
+export const NavigateExample: Story = {
+  render: (args) => (
+    <div className="ya-story-nav-example">
+      <p className="ya-story-nav-example__hint">Clique para navegar para /dashboard (exemplo). Em ambiente real configure rotas.</p>
+      <Button {...args} label="Go to Dashboard" navigateTo="/dashboard" />
+    </div>
+  ),
+  args: { theme: Themes.Primary, size: Sizes.Medium }
 };
 
 /*

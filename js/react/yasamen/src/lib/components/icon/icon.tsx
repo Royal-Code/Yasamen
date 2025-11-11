@@ -1,8 +1,8 @@
 import React from 'react';
 import { WellKnownIcons } from './wellKnownIcons';
-import { getIconRenderer } from './iconRegistry';
+import { getIconRenderer } from './factory/iconRegistry';
 
-export interface IconProps extends React.HTMLAttributes<HTMLElement> {
+interface IconProps extends React.HTMLAttributes<HTMLElement> {
 	/** Icon name (well known or custom). */
 	name?: string;
 	/** Extra class names applied to underlying element */
@@ -10,7 +10,7 @@ export interface IconProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 /** Generic Icon component */
-export const Icon: React.FC<IconProps> = ({
+const Icon: React.FC<IconProps> = ({
      name = WellKnownIcons.NoIcon, 
      className, 
      ...rest 

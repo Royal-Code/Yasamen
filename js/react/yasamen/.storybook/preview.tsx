@@ -20,10 +20,10 @@ const preview: Preview = {
     },
   },
   decorators: [
-    (Story) => React.createElement(
-      MemoryRouter,
-      { initialEntries: ['/'] },
-      React.createElement(Story)
+    (Story) => (
+      <MemoryRouter initialEntries={['/']}>
+        <Story />
+      </MemoryRouter>
     )
   ]
 };

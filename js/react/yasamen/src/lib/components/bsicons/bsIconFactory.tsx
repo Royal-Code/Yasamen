@@ -1,5 +1,5 @@
-import type { IconFactory } from "../icon/iconFactory";
-import type { IconRenderer } from "../icon/iconRenderer";
+import type { IconFactory } from "../icon/factory/iconFactory";
+import type { IconRenderer } from "../icon/factory/iconRenderer";
 import { BsIcons, type BsIconsValues } from "./bsIcons";
 
 export const bsIconFactory: IconFactory = (name: string): IconRenderer | null => {

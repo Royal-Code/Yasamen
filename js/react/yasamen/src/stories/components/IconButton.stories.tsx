@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import IconButton from '../../lib/components/iconbutton/iconbutton';
-import { Themes } from '../../lib/components/commons/themes';
-import { Sizes } from '../../lib/components/commons/sizes';
+import { IconButton } from '../../lib/components/button';
+import { Themes, Sizes } from '../../lib/components/commons';
 import { BsIcons } from '../../lib/components/bsicons/bsIcons';
 import './ButtonStories.css'; // reuse grid / layout helpers
 import './IconButtonStories.css';
@@ -22,18 +21,27 @@ const iconOptions = ['', BsIcons.Plus, BsIcons.Dash, BsIcons.Gear, BsIcons.Check
 const meta = {
   title: 'Components/IconButton',
   component: IconButton,
-  parameters: { layout: 'centered' },
-  tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+    docs: {
+      description: {
+        component: 'Botão exclusivamente visual (ícone ou renderer). Contrato: exatamente uma das props icon OU renderer. Props adicionais: type (button|submit|reset) e navigateTo (navegação via react-router).'
+      }
+    }
+  },
+  tags: ['autodocs', 'stable'],
   argTypes: {
-    icon: { control: 'select', options: iconOptions, description: 'Ícone bootstrap (vazio para nenhum — exige renderer alternativo)' },
-    theme: { control: 'select', options: allThemes, description: 'Tema visual' },
-    size: { control: 'select', options: allSizes, description: 'Escala de tamanho' },
+    icon: { control: 'select', options: iconOptions, description: 'String do ícone bootstrap (vazio para usar renderer custom)' },
+    theme: { control: 'select', options: allThemes, description: 'Tema visual aplicado' },
+    size: { control: 'select', options: allSizes, description: 'Escala de tamanho (impacta dimensões do botão)' },
     outline: { control: 'boolean', description: 'Variante outline' },
-    active: { control: 'boolean', description: 'Estado ativo' },
+    active: { control: 'boolean', description: 'Estado ativo visual' },
     disabled: { control: 'boolean', description: 'Desabilita interação' },
     className: { control: 'text', description: 'Classes extras' },
-    onClick: { action: 'clicked' }
-    // renderer não exposto via controls; mostrado em story dedicada
+    type: { control: 'select', options: ['button','submit','reset'], description: 'Atributo type do <button>' },
+    navigateTo: { control: 'text', description: 'Path para navegação interna (usar MemoryRouter em Storybook)' },
+    onClick: { action: 'clicked', description: 'Callback de clique' }
+    // renderer: exposto via story dedicada
   },
   args: {
     icon: BsIcons.Plus,
@@ -43,7 +51,8 @@ const meta = {
     active: false,
     disabled: false,
     className: '',
-  // onClick action handled via argTypes; no mock fn needed in SB9
+    type: 'button',
+    navigateTo: ''
   }
 } satisfies Meta<typeof IconButton>;
 
@@ -82,6 +91,17 @@ export const SizesShowcase: Story = {
   args: { outline: false }
 };
 
+// Navegação demonstrativa (não navega sem provider real de rotas).
+export const NavigateExample: Story = {
+  render: (args) => (
+    <div className="ya-story-nav-example">
+      <p className="ya-story-nav-example__hint">Exemplo: clique para navegar (navigateTo) - requer MemoryRouter configurado.</p>
+      <IconButton {...args} icon={BsIcons.Gear} navigateTo="/settings" aria-label="Settings" />
+    </div>
+  ),
+  args: { theme: Themes.Primary }
+};
+
 // Vários temas em grid
 export const ThemeShowcase: Story = {
   render: (args) => (
@@ -112,6 +132,7 @@ export const IconVariants: Story = {
 
 // Uso de renderer custom sem usar ícone (ex: estrela decorativa)
 export const CustomRenderer: Story = {
+  tags: ['renderer'],
   render: (args) => (
     <IconButton
       {...args}

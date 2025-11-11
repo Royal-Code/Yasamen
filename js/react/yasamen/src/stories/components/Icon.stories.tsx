@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Icon from '../../lib/components/icon/icon';
-import { WellKnownIcons } from '../../lib/components/icon/wellKnownIcons';
-import { BsIcons } from '../../lib/components/bsicons/bsIcons';
+import { Icon, WellKnownIcons } from '../../lib/components/icon';
+import { BsIcons } from '../../lib/components/bsicons';
 import './IconStories.css';
 
 /*
@@ -24,20 +23,25 @@ const meta = {
   title: 'Components/Icon',
   component: Icon,
   parameters: {
-    layout: 'centered'
+    layout: 'centered',
+    docs: {
+      description: {
+        component: 'Wrapper de ícones Bootstrap (fonte ou svg). Usa nomes de BsIcons ou WellKnownIcons. Se inválido, lança erro facilitando detecção precoce.'
+      }
+    }
   },
-  tags: ['autodocs'],
+  tags: ['autodocs', 'stable'],
   argTypes: {
     name: {
       control: 'select',
       options: allBootstrapIconValues,
-      description: 'Bootstrap icon name (value from BsIcons)'
+      description: 'Nome do ícone (valor retornado por BsIcons).'
     },
-    className: { control: 'text', description: 'Extra CSS class names applied to the underlying <i> or <svg>' },
-    title: { control: 'text', description: 'Title attribute for accessibility tooltip' }
+    className: { control: 'text', description: 'Classes CSS extras aplicadas ao ícone.' },
+    title: { control: 'text', description: 'Atributo title para tooltip/acessibilidade.' }
   },
   args: {
-  name: allBootstrapIconValues[0],
+    name: allBootstrapIconValues[0],
     className: '',
     title: 'Icon'
   }
@@ -108,15 +112,18 @@ export const BootstrapCurated: Story = {
 
 // Story demonstrating invalid icon handling (will throw). We wrap in try/catch to show fallback guidance.
 export const InvalidExample: Story = {
+  tags: ['negative'],
   render: () => {
     try {
       return <Icon name="__invalid_icon_name__" />;
     } catch (err) {
-      return <div className="ya-icon-invalid-wrapper">
-        <strong>Invalid Icon Example:</strong>
-        <p className="ya-icon-small-text">Tentativa de renderizar um nome inexistente gerou erro: {(err as Error).message}</p>
-        <p className="ya-icon-small-text">Use sempre nomes de <code>WellKnownIcons</code> ou chaves existentes em <code>BsIcons</code>.</p>
-      </div>;
+      return (
+        <div className="ya-icon-invalid-wrapper">
+          <strong>Invalid Icon Example:</strong>
+          <p className="ya-icon-small-text">Tentativa de nome inexistente gerou erro: {(err as Error).message}</p>
+          <p className="ya-icon-small-text">Use nomes de <code>WellKnownIcons</code> ou chaves existentes em <code>BsIcons</code>.</p>
+        </div>
+      );
     }
   }
 };

@@ -1,4 +1,4 @@
-import { setIconFactory } from "../icon/iconRegistry";
+import { setIconFactory } from "../icon/factory/iconRegistry";
 import { WellKnownIcons } from "../icon/wellKnownIcons";
 import { bsIconFactory } from "./bsIconFactory";
 import { BsIcons } from "./bsIcons";

@@ -1,8 +1,7 @@
 import React from 'react';
-import { Themes, ThemeClasses } from '../commons/themes';
-import { Sizes } from '../commons/sizes';
-import { Positions } from '../commons/positions';
+import { Themes, ThemeClasses, Sizes, Positions } from '../commons';
 import Icon from '../icon/icon';
+import { useNavigate } from 'react-router-dom';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     label: string;
@@ -32,6 +31,7 @@ const Button: React.FC<ButtonProps> = ({
     onClick,
     navigateTo,
     className = '',
+    type = 'button',
     ...rest
 }) => {
 
@@ -54,6 +54,8 @@ const Button: React.FC<ButtonProps> = ({
 
     const classes = [className, themeClass, sizeClass, baseClass, disabledClass, blockClass].filter(Boolean).join(' ');
 
+    const navigate = useNavigate();
+
     const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
         if (disabled) {
             e.preventDefault();
@@ -64,13 +66,13 @@ const Button: React.FC<ButtonProps> = ({
         }
         if (navigateTo) {
             e.preventDefault();
-            window.location.href = navigateTo;
+            navigate(navigateTo);
         }
     };
 
     return (
         <button
-            type="button"
+            type={type}
             onClick={handleClick}
             disabled={disabled}
             className={classes}

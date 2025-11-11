@@ -1,10 +1,8 @@
-
-
 import React from 'react';
-import { Themes, ThemeClasses } from '../commons/themes';
-import { Sizes } from '../commons/sizes';
-import Icon from '../icon/icon';
-import { type IconRenderer } from '../icon/iconRenderer';
+import { Themes, ThemeClasses, Sizes } from '../commons';
+import { Icon } from '../icon';
+import { type IconRenderer } from '../icon/factory/iconRenderer';
+import { useNavigate } from 'react-router-dom';
 
 interface IconButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'> {
     /** Nome do ícone (valor de BsIcons ou WellKnownIcons). */
@@ -25,6 +23,8 @@ interface IconButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElem
     className?: string;
     /** onClick explícito (sobrescreve o herdado) */
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
+    /** Navegar para URL ao clicar */
+    navigateTo?: string;
 }
 
 // Resolve a classe de tema usando o mapeamento central ThemeClasses.IconButton
@@ -49,6 +49,8 @@ export const IconButton: React.FC<IconButtonProps> = ({
     disabled = false,
     className = '',
     onClick,
+    navigateTo,
+    type = 'button',
     ...rest
 }) => {
     // Validação: exigir exatamente UMA fonte de ícone.
@@ -75,13 +77,28 @@ export const IconButton: React.FC<IconButtonProps> = ({
         iconElement = <Icon name={icon} aria-hidden="true" />;
     }
 
+    const navigate = useNavigate();
+    const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+        if (disabled) {
+            e.preventDefault();
+            return;
+        }
+        if (onClick) {
+            onClick(e);
+        }
+        if (navigateTo) {
+            e.preventDefault();
+            navigate(navigateTo);
+        }
+    };
+
     return (
         <button
-            type="button"
+            type={type}
             disabled={disabled}
             className={classes}
             aria-label={rest['aria-label'] || icon || 'icon button'}
-            onClick={onClick}
+            onClick={handleClick}
             {...rest}
         >
             {iconElement}
