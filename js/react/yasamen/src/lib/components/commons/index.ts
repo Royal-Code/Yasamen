@@ -3,6 +3,8 @@ import { Sizes } from "./sizes";
 import { Themes, ThemeClasses } from "./themes";
 import { getNavigator, setNavigator, type Navigator } from "./navigator";
 import { Ripple } from "./Ripple";
+import { Orientations } from "./orientation";
+import { ContentJustify, ItemsJustify } from "./justify";
 
 export { 
     Positions, 
@@ -12,5 +14,8 @@ export {
     getNavigator, 
     setNavigator,
     type Navigator,
-    Ripple
+    Ripple,
+    Orientations,
+    ContentJustify,
+    ItemsJustify
 };

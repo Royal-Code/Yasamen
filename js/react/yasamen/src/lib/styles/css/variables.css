@@ -12,4 +12,6 @@
     --ya-fit-left: 0px;
     --ya-fit-right: 0px;
     --ya-fit-bottom: 0px;
+    /* gap for stack component */
+    --ya-stack-gap: 0.5rem;
 }

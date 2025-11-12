@@ -1,4 +1,6 @@
+import { Orientations } from "./orientation";
 import { Sizes } from "./sizes";
+import { ContentJustify, ItemsJustify } from "./justify";
 
 export const Themes = {
     Primary: 'primary',
@@ -42,6 +44,34 @@ export const ThemeClasses = {
         [Themes.Danger]: 'text-danger-500',
         [Themes.Light]: 'text-light-500',
         [Themes.Dark]: 'text-dark-500',
+    },
+    Justify: {
+        Content: {
+            [ContentJustify.Default]: '',
+            [ContentJustify.Start]: 'justify-start',
+            [ContentJustify.StartSafe]: 'justify-start-safe',
+            [ContentJustify.End]: 'justify-end',
+            [ContentJustify.EndSafe]: 'justify-end-safe',
+            [ContentJustify.Center]: 'justify-center',
+            [ContentJustify.CenterSafe]: 'justify-center-safe',
+            [ContentJustify.Between]: 'justify-between',
+            [ContentJustify.Around]: 'justify-around',
+            [ContentJustify.Evenly]: 'justify-evenly',
+            [ContentJustify.Stretch]: 'justify-stretch',
+            [ContentJustify.Baseline]: 'justify-baseline',
+            [ContentJustify.Normal]: 'justify-normal',
+        },
+        Items: {
+            [ItemsJustify.Default]: '',
+            [ItemsJustify.Start]: 'justify-items-start',
+            [ItemsJustify.StartSafe]: 'justify-items-start-safe',
+            [ItemsJustify.End]: 'justify-items-end',
+            [ItemsJustify.EndSafe]: 'justify-items-end-safe',
+            [ItemsJustify.Center]: 'justify-items-center',
+            [ItemsJustify.CenterSafe]: 'justify-items-center-safe',
+            [ItemsJustify.Stretch]: 'justify-items-stretch',
+            [ItemsJustify.Normal]: 'justify-items-normal',
+        }
     },
     Button: {
         Base: 'ya-btn',
@@ -171,4 +201,20 @@ export const ThemeClasses = {
         [Themes.Light]: 'ya-i-btn-light',
         [Themes.Dark]: 'ya-i-btn-dark',
     },
+    Stack: {
+        Base: 'ya-stack',
+        Orientation: {
+            [Orientations.Vertical]: 'ya-stack-vertical',
+            [Orientations.Horizontal]: 'ya-stack-horizontal',
+        },
+        Gap: {
+            [Sizes.Smallest]: 'ya-stack-gap-2xs',
+            [Sizes.Smaller]: 'ya-stack-gap-xs',
+            [Sizes.Small]: 'ya-stack-gap-sm',
+            [Sizes.Medium]: 'ya-stack-gap-md',
+            [Sizes.Large]: 'ya-stack-gap-lg',
+            [Sizes.Larger]: 'ya-stack-gap-xl',
+            [Sizes.Largest]: 'ya-stack-gap-2xl',
+        }
+    }
 };

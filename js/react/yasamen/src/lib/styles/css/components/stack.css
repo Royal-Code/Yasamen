@@ -1,0 +1,45 @@
+
+/* base */
+.ya-stack {
+    @apply relative flex;
+    gap: var(--ya-stack-gap, 0.5rem);
+}
+
+/* orientations */
+.ya-stack-vertical {
+    @apply flex-col h-full;
+}
+
+.ya-stack-horizontal {
+    @apply flex-row w-full;
+}
+
+/* gaps */
+
+.ya-stack-gap-2xs {
+    gap: 0.125rem;
+}
+
+.ya-stack-gap-xs {
+    gap: 0.25rem;
+}
+
+.ya-stack-gap-sm {
+    gap: 0.5rem;
+}
+
+.ya-stack-gap-md {
+    gap: 1rem;
+}
+
+.ya-stack-gap-lg {
+    gap: 1.5rem;
+}
+
+.ya-stack-gap-xl {
+    gap: 2rem;
+}
+
+.ya-stack-gap-2xl {
+    gap: 3rem;
+}
