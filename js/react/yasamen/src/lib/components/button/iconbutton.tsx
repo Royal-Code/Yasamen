@@ -3,7 +3,7 @@ import { Themes, ThemeClasses, Sizes, getNavigator, Ripple } from '../commons';
 import { Icon } from '../icon';
 import { type IconRenderer } from '../icon/factory/icon-renderer';
 
-interface IconButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'> {
+export interface IconButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'> {
     /** Nome do ícone (valor de BsIcons ou WellKnownIcons). */
     icon?: string;
     /** Renderer alternativo (IconRenderer) caso queira ícone custom inline. */
@@ -40,7 +40,7 @@ function resolveThemeClass(theme: Themes, outline: boolean, active: boolean): st
             : ThemeClasses.IconButton[theme] as string;
 }
 
-export const IconButton: React.FC<IconButtonProps> = ({
+const IconButton: React.FC<IconButtonProps> = ({
     icon,
     renderer,
     iconClassName,

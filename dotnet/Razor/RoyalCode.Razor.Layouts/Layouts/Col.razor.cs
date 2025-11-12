@@ -28,7 +28,7 @@ public partial class Col
     private SpacingSize height = SpacingSize.Medium;
 
     /// <summary>
-    /// Number of columns the component will occupy. Standard 4.
+    /// Number of columns the component will occupy. Default 4.
     /// </summary>
     [Parameter]
     public int Span { get; set; } = 4;
@@ -52,7 +52,7 @@ public partial class Col
     public int DesktopSpan { get; set; }
 
     /// <summary>
-    /// Component height. When not initialized, it defaults to 8 units.
+    /// Component height. When not initialized, uses context height or Medium as default.
     /// </summary>
     [Parameter]
     public SpacingSize? Height { get; set; }

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { ThemeClasses } from './themes';
 
 export interface RippleProps {
     dark?: boolean;
@@ -13,8 +14,8 @@ export const Ripple: React.FC<RippleProps> = ({ dark = false, className }) => {
     }, []);
 
     const classes = [
-        'ripple',
-        dark ? 'bg-black/30' : 'bg-white/50',
+        ThemeClasses.Ripple.Base,
+        dark ? ThemeClasses.Ripple.Dark : ThemeClasses.Ripple.Light,
         className
     ].filter(Boolean).join(' ');
 
@@ -51,18 +52,18 @@ function ripple(el: HTMLSpanElement | null) {
             y = y - size / 2;
         }
 
-        el.classList.remove('ripple-animation');
+        el.classList.remove(ThemeClasses.Ripple.Animation);
         void el.offsetWidth; // reflow
 
         el.style.left = x + 'px';
         el.style.top = y + 'px';
         el.style.width = size + 'px';
         el.style.height = size + 'px';
-        el.classList.add('ripple-animation');
+        el.classList.add(ThemeClasses.Ripple.Animation);
     });
 
     el.addEventListener('animationend', () => {
-        el.classList.remove('ripple-animation');
+        el.classList.remove(ThemeClasses.Ripple.Animation);
         el.style.left = '';
         el.style.top = '';
         el.style.width = '';

@@ -2,7 +2,7 @@ import React from 'react';
 import { Themes, ThemeClasses, Sizes, Positions, getNavigator, Ripple } from '../commons';
 import { Icon } from '../icon';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     label: string;
     theme?: Themes;
     size?: Sizes;

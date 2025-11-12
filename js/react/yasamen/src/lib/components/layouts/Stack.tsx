@@ -14,7 +14,7 @@ export interface StackProps extends React.HTMLAttributes<HTMLDivElement> {
     children?: React.ReactNode;
 }
 
-export const Stack: React.FC<StackProps> = ({
+const Stack: React.FC<StackProps> = ({
     orientation = Orientations.Vertical,
     gap = Sizes.Medium,
     justify = ContentJustify.Start,
@@ -35,3 +35,5 @@ export const Stack: React.FC<StackProps> = ({
         </div>
     );
 };
+
+export default Stack;

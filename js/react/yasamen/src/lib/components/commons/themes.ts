@@ -201,6 +201,12 @@ export const ThemeClasses = {
         [Themes.Light]: 'ya-i-btn-light',
         [Themes.Dark]: 'ya-i-btn-dark',
     },
+    Ripple: {
+        Base: 'ya-ripple',
+        Animation: 'ya-ripple-animation',
+        Light: 'bg-white/50',
+        Dark: 'bg-black/30',
+    },
     Stack: {
         Base: 'ya-stack',
         Orientation: {

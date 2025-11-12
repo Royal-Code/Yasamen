@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Stack } from '../../lib/components/layouts/Stack';
+import { Stack } from '../../lib/components/layouts';
 import { Orientations, Sizes, ContentJustify } from '../../lib/components/commons';
 import './StackStories.css';
 

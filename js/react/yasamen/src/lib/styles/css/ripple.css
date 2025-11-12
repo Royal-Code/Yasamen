@@ -1,4 +1,4 @@
-﻿span.ripple {
+﻿span.ya-ripple {
     position: absolute;
     border-radius: 50%;
     pointer-events: none;
@@ -8,12 +8,12 @@
     top: 0;
 }
 
-span.ripple.ripple-animation {
+span.ya-ripple.ya-ripple-animation {
     visibility: visible;
-    animation: ripple-animation .45s linear;
+    animation: ya-ripple-animation .45s linear;
 }
 
-@keyframes ripple-animation {
+@keyframes ya-ripple-animation {
   0% {
     transform: scale(0);
     opacity: 0.6;
