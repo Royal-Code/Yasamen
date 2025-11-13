@@ -1,0 +1,16 @@
+
+.ya-bar {
+    @apply flex justify-between items-center w-full;
+}
+
+.ya-bar-start {
+    @apply flex justify-start;
+}
+
+.ya-bar-center {
+    @apply flex justify-center;
+}
+
+.ya-bar-end {
+    @apply flex justify-end;
+}

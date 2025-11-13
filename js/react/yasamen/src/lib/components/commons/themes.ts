@@ -222,5 +222,11 @@ export const ThemeClasses = {
             [Sizes.Larger]: 'ya-stack-gap-xl',
             [Sizes.Largest]: 'ya-stack-gap-2xl',
         }
-    }
+    },
+    Bar: {
+        Base:'ya-bar',
+        Start: 'ya-bar-start',
+        Center: 'ya-bar-center',
+        End: 'ya-bar-end',
+    },
 };

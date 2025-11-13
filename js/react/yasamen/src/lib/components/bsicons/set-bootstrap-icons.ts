@@ -4,6 +4,11 @@ import { bsIconFactory } from "./bs-icon-factory";
 import { BsIcons } from "./bs-icons";
 import { useEffect } from 'react';
 
+/**
+ *  Sets up the Bootstrap icons as the default icon set.
+ *  This function maps well-known icon names to their corresponding Bootstrap icons.
+ *  It should be called once during the application initialization.
+ */
 export function setBootstrapIcons() {
     setIconFactory(bsIconFactory);
 
