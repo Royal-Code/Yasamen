@@ -5,7 +5,7 @@
 
 /* Z-index Utilities */
 
-@utility z-app-bar {
+@utility z-app-header {
     z-index: 1010;
 }
 @utility z-offcanvas-backdrop {

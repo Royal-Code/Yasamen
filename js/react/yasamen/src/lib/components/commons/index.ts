@@ -5,6 +5,11 @@ import { getNavigator, setNavigator, type Navigator } from "./navigator";
 import { Ripple } from "./Ripple";
 import { Orientations } from "./orientation";
 import { ContentJustify, ItemsJustify } from "./justify";
+import { Sides } from "./sides";
+import { Spacing } from "./spacing";
+import { Margins } from "./margins";
+import { Paddings } from "./paddings";
+import { Heights } from "./heights";
 
 export { 
     Positions, 
@@ -17,5 +22,10 @@ export {
     Ripple,
     Orientations,
     ContentJustify,
-    ItemsJustify
+    ItemsJustify,
+    Sides,
+    Spacing,
+    Margins,
+    Paddings,
+    Heights
 };

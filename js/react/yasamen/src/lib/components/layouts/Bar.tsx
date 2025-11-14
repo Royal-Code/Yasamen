@@ -7,8 +7,7 @@ const Start = createSlot('Start');
 const Center = createSlot('Center');
 const End = createSlot('End');
 
-export interface BarProps extends React.HTMLAttributes<HTMLDivElement> 
-{
+export interface BarProps extends React.HTMLAttributes<HTMLDivElement> {
     className?: string;
     children?: React.ReactNode
 }

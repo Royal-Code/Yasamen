@@ -10,6 +10,7 @@
 @import './css/utilities.css';
 
 /* components */
+@import './css/components/app-layout.css';
 @import './css/components/bar.css';
 @import './css/components/btn.css';
 @import './css/components/ibtn.css';
