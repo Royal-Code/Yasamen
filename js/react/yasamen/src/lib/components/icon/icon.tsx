@@ -1,6 +1,6 @@
 import React from 'react';
 import { WellKnownIcons } from './well-known-icons';
-import { getIconRenderer } from './factory/icon-registry';
+import { tryGetIconRenderer } from './factory/icon-registry';
 
 interface IconProps extends React.HTMLAttributes<HTMLElement> {
 	/** Icon name (well known or custom). */
@@ -15,7 +15,8 @@ const Icon: React.FC<IconProps> = ({
      className, 
      ...rest 
 }) => {
-	return getIconRenderer(name)(className, rest);
+	// Usa tryGet para evitar exceptions e renderizar fallback (NoIconRenderer)
+	return tryGetIconRenderer(name)(className, rest);
 };
 
 export default Icon;

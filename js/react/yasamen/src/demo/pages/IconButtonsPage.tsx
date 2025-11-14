@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import IconButton from '../../lib/components/button/IconButton';
 import { Themes, Sizes } from '../../lib/components/commons';
 import { WellKnownIcons } from '../../lib/components/icon/well-known-icons';
+import { BsIcons } from '../../lib/components/bsicons';
 
 const themeValues = Object.values(Themes);
 const sizeValues = Object.values(Sizes);
@@ -28,7 +29,7 @@ const IconButtonsPage: React.FC = () => {
         <label className="flex items-center gap-2">
           Ícone:
           <select value={iconName} onChange={e => setIconName(e.target.value)} className="border px-1 py-0.5 text-xs">
-            {Object.values(WellKnownIcons).map(v => (
+            {Object.values(BsIcons).map(v => (
               <option key={v} value={v}>{v}</option>
             ))}
           </select>

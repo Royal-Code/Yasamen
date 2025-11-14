@@ -2,15 +2,14 @@ import React, { useState, useMemo } from 'react';
 import Icon from '../../lib/components/icon/Icon';
 import { WellKnownIcons } from '../../lib/components/icon/well-known-icons';
 
-const allIcons = Object.values(WellKnownIcons);
-
 const IconsPage: React.FC = () => {
   const [filter, setFilter] = useState('');
   const [customName, setCustomName] = useState('');
 
+  const allIcons = useMemo(() => Object.values(WellKnownIcons), []);
   const filtered = useMemo(() => {
     return allIcons.filter(n => n.toLowerCase().includes(filter.toLowerCase()));
-  }, [filter]);
+  }, [filter, allIcons]);
 
   return (
     <div className="icons-page">

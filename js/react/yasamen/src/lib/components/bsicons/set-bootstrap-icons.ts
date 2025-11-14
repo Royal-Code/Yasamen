@@ -1,8 +1,8 @@
 import { setIconFactory } from "../icon/factory/icon-registry";
-import { WellKnownIcons } from "../icon/well-known-icons";
+import { configureWellKnownIcons } from "../icon/well-known-icons";
 import { bsIconFactory } from "./bs-icon-factory";
 import { BsIcons } from "./bs-icons";
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 /**
  *  Sets up the Bootstrap icons as the default icon set.
@@ -12,38 +12,41 @@ import { useEffect } from 'react';
 export function setBootstrapIcons() {
     setIconFactory(bsIconFactory);
 
-    WellKnownIcons.Add = BsIcons.PlusCircle;
-    WellKnownIcons.Remove = BsIcons.DashCircle;
-    WellKnownIcons.Edit = BsIcons.PencilSquare;
-    WellKnownIcons.Save = BsIcons.Save;
-    WellKnownIcons.Cancel = BsIcons.XCircle;
-    WellKnownIcons.Close = BsIcons.XCircle;
-    WellKnownIcons.Search = BsIcons.Search;
-    WellKnownIcons.Filter = BsIcons.Funnel;
-    WellKnownIcons.Sort = BsIcons.Filter;
-    WellKnownIcons.SortAsc = BsIcons.SortAlphaDown;
-    WellKnownIcons.SortDesc = BsIcons.SortAlphaUp;
-    WellKnownIcons.Working = BsIcons.Gear;
-    WellKnownIcons.Progress = BsIcons.GearWideConnected;
-    WellKnownIcons.Minus = BsIcons.Dash;
-    WellKnownIcons.Plus = BsIcons.Plus;
-    WellKnownIcons.Success = BsIcons.CheckCircle;
-    WellKnownIcons.Error = BsIcons.XCircle;
-    WellKnownIcons.Warning = BsIcons.ExclamationTriangle;
-    WellKnownIcons.Info = BsIcons.InfoCircle;
-    WellKnownIcons.UserProfile = BsIcons.Person;
-    WellKnownIcons.UserSettings = BsIcons.PersonGear;
-    WellKnownIcons.UserLogout = BsIcons.BoxArrowRight;
-    WellKnownIcons.UserLogin = BsIcons.BoxArrowInRight;
-    WellKnownIcons.ShowPassword = BsIcons.Eye;
-    WellKnownIcons.HidePassword = BsIcons.EyeSlash;
-    WellKnownIcons.Menu = BsIcons.List;
-    WellKnownIcons.MenuOpen = BsIcons.List;
-    WellKnownIcons.MenuClose = BsIcons.X;
-    WellKnownIcons.MenuCollapse = BsIcons.ChevronCompactUp;
-    WellKnownIcons.MenuExpand = BsIcons.ChevronCompactDown;
-    WellKnownIcons.MenuCollapseAll = BsIcons.ArrowsAngleContract;
-    WellKnownIcons.MenuExpandAll = BsIcons.ArrowsAngleExpand;
+    configureWellKnownIcons({
+        NoIcon: BsIcons.Ban,
+        Add: BsIcons.PlusCircle,
+        Remove: BsIcons.DashCircle,
+        Edit: BsIcons.PencilSquare,
+        Save: BsIcons.Save,
+        Cancel: BsIcons.XCircle,
+        Close: BsIcons.XCircle,
+        Search: BsIcons.Search,
+        Filter: BsIcons.Funnel,
+        Sort: BsIcons.Filter,
+        SortAsc: BsIcons.SortAlphaDown,
+        SortDesc: BsIcons.SortAlphaUp,
+        Working: BsIcons.Gear,
+        Progress: BsIcons.GearWideConnected,
+        Minus: BsIcons.Dash,
+        Plus: BsIcons.Plus,
+        Success: BsIcons.CheckCircle,
+        Error: BsIcons.XCircle,
+        Warning: BsIcons.ExclamationTriangle,
+        Info: BsIcons.InfoCircle,
+        UserProfile: BsIcons.Person,
+        UserSettings: BsIcons.PersonGear,
+        UserLogout: BsIcons.BoxArrowRight,
+        UserLogin: BsIcons.BoxArrowInRight,
+        ShowPassword: BsIcons.Eye,
+        HidePassword: BsIcons.EyeSlash,
+        Menu: BsIcons.List,
+        MenuOpen: BsIcons.List,
+        MenuClose: BsIcons.X,
+        MenuCollapse: BsIcons.ChevronCompactUp,
+        MenuExpand: BsIcons.ChevronCompactDown,
+        MenuCollapseAll: BsIcons.ArrowsAngleContract,
+        MenuExpandAll: BsIcons.ArrowsAngleExpand
+    });
 }
 
 // Hook para inicializar bootstrap icons em ambiente React
@@ -54,7 +57,32 @@ export function useSetupBootstrapIcons() {
 }
 
 // Componente provider opcional
-export function BootstrapIconsProvider() {
-    useSetupBootstrapIcons();
+export function BootstrapIconsProvider({
+    href = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css',
+    id = 'bootstrap-icons-stylesheet'
+}: { href?: string; id?: string }) {
+    // Synchronous one-time initialization before children render.
+    const initialized = useRef(false);
+    if (!initialized.current) {
+        setBootstrapIcons();
+        initialized.current = true;
+    }
+
+    useEffect(() => {
+        if (typeof document === 'undefined') 
+            return; // SSR safety
+
+        const existing = document.getElementById(id) as HTMLLinkElement | null;
+        
+        if (!existing) {
+            const link = document.createElement('link');
+            link.id = id;
+            link.rel = 'stylesheet';
+            link.href = href;
+            document.head.appendChild(link);
+        } else if (existing.href !== href) {
+            existing.href = href; // allow override
+        }
+    }, [href, id]);
     return null;
 }

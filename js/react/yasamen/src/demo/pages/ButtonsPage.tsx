@@ -35,18 +35,18 @@ const ButtonsPage: React.FC = () => {
         <table className="min-w-full border text-sm border-collapse">
           <thead>
             <tr>
-              <th className="border px-2 py-1 text-left">Tamanho / Tema</th>
-              {themeValues.map(t => (
-                <th key={t} className="border px-2 py-1">{t}</th>
+              <th className="border px-3 py-2 text-left">Tema / Tamanho</th>
+              {sizeValues.map(sz => (
+                <th key={sz} className="border px-3 py-2">{sz}</th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {sizeValues.map(sz => (
-              <tr key={sz}>
-                <td className="border px-2 py-1 font-medium">{sz}</td>
-                {themeValues.map(theme => (
-                  <td key={theme} className="border px-2 py-1">
+            {themeValues.map(theme => (
+              <tr key={theme}>
+                <td className="border px-3 py-2 font-medium">{theme}</td>
+                {sizeValues.map(sz => (
+                  <td key={sz} className="border p-4">
                     <Button
                       label={theme}
                       theme={theme}
