@@ -1,6 +1,7 @@
 import { attachSlots, createSlot, hasContent, pickSlots } from "../../../utils";
-import { Heights, Paddings, Sides } from "../../commons";
+import { Heights, Paddings, Sides, Widths } from "../../commons";
 import type { Spacing } from "../../commons/spacing";
+import { AppLayoutClasses } from "./app-layout-classes";
 
 export interface AppLayoutProps extends React.HTMLAttributes<HTMLDivElement> {
     /** Tamanho do espaço superior */
@@ -41,36 +42,43 @@ const AppLayoutRoot : React.FC<AppLayoutProps> = ({
 
     // construir classes CSS com base nos tamanhos fornecidos
     const containerClasses = [
-        'ya-app-layout',
+        AppLayoutClasses.Base,
         className
     ].filter(Boolean).join(' ');
 
-    const headerClasses = ['ya-app-layout-header', Heights[topSize]].join(' ');
-    const pageClasses = ['ya-app-layout-page', Paddings[Sides.Top][topSize]].join(' ');
-    const contentClasses = ['ya-app-content'].join(' ');
-    const mainClasses = ['ya-app-main'].join(' ');
-    const footerClasses = ['ya-app-layout-footer', Heights[footerSize]].join(' ');
-    const leftMenuClasses = ['ya-app-layout-left-menu', Paddings[Sides.Left][leftMenuSize]].join(' ');
-    const rightMenuClasses = ['ya-app-layout-right-menu', Paddings[Sides.Right][rightMenuSize]].join(' ');
+    const hasLeftMenu = hasContent(slots.LeftMenu);
+    const hasRightMenu = hasContent(slots.RightMenu);
+
+    const headerClasses = [AppLayoutClasses.Header, Heights[topSize]].join(' ');
+    const pageClasses = [AppLayoutClasses.Page, Paddings[Sides.Top][topSize]].join(' ');
+    const contentClasses = [(hasLeftMenu && Paddings[Sides.Left][leftMenuSize]), (hasRightMenu && Paddings[Sides.Right][rightMenuSize]), AppLayoutClasses.Content].join(' ');
+    const mainClasses = [AppLayoutClasses.Main].join(' ');
+    const footerClasses = [AppLayoutClasses.Footer, Heights[footerSize]].join(' ');
+    const leftMenuClasses = [AppLayoutClasses.LeftMenu, Widths[leftMenuSize], Paddings[Sides.Top][topSize]].join(' ');
+    const rightMenuClasses = [AppLayoutClasses.RightMenu, Widths[rightMenuSize], Paddings[Sides.Top][topSize]].join(' ');
 
     return (
-        <div {...rest} className={containerClasses}>
-            <header className={headerClasses}>
-                {hasContent(slots.Top) && slots.Top}
-            </header>
-            <div className={pageClasses}>
-                {hasContent(slots.LeftMenu) && <aside className={leftMenuClasses}>{slots.LeftMenu}</aside>}
-                <div className={contentClasses}>
-                    <main className={mainClasses}>
-                        {hasContent(slots.MainContent) && slots.MainContent}
-                    </main>
-                    <footer className={footerClasses}>
-                        {hasContent(slots.Footer) && slots.Footer}
-                    </footer>
+        <>
+            {hasContent(slots.PreContent) && slots.PreContent}
+            <div {...rest} className={containerClasses}>
+                <header className={headerClasses}>
+                    {hasContent(slots.Top) && slots.Top}
+                </header>
+                <div className={pageClasses}>
+                    {hasLeftMenu && <aside className={leftMenuClasses}>{slots.LeftMenu}</aside>}
+                    <div className={contentClasses}>
+                        <main className={mainClasses}>
+                            {hasContent(slots.MainContent) && slots.MainContent}
+                        </main>
+                        <footer className={footerClasses}>
+                            {hasContent(slots.Footer) && slots.Footer}
+                        </footer>
+                    </div>
+                    {hasRightMenu && <aside className={rightMenuClasses}>{slots.RightMenu}</aside>}
                 </div>
-                {hasContent(slots.RightMenu) && <aside className={rightMenuClasses}>{slots.RightMenu}</aside>}
             </div>
-        </div>
+            {hasContent(slots.PostContent) && slots.PostContent}
+        </>
     );
 };
 

@@ -1,5 +1,5 @@
 import { attachSlots, createSlot, hasContent, pickSlots } from "../../utils";
-import { ThemeClasses } from "../commons";
+import { BarClasses } from "../commons";
 
 
 // Define the three slots.
@@ -26,15 +26,15 @@ const BarRoot: React.FC<BarProps & { children?: React.ReactNode }> = ({
   const slots = pickSlots(children, { Start, Center, End });
 
   const classes = [
-    ThemeClasses.Bar.Base,
+    BarClasses.Base,
     className
   ].filter(Boolean).join(' ');
 
   return (
     <div className={classes} {...rest}>
-      {hasContent(slots.Start) && <div className={ThemeClasses.Bar.Start}>{slots.Start}</div>}
-      {hasContent(slots.Center) && <div className={ThemeClasses.Bar.Center}>{slots.Center}</div>}
-      {hasContent(slots.End) && <div className={ThemeClasses.Bar.End}>{slots.End}</div>}
+      {hasContent(slots.Start) && <div className={BarClasses.Start}>{slots.Start}</div>}
+      {hasContent(slots.Center) && <div className={BarClasses.Center}>{slots.Center}</div>}
+      {hasContent(slots.End) && <div className={BarClasses.End}>{slots.End}</div>}
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Themes, ThemeClasses, Sizes, getNavigator, Ripple } from '../commons';
+import { Themes, IconButtonClasses, Sizes, getNavigator, Ripple } from '../commons';
 import { Icon } from '../icon';
 import { type IconRenderer } from '../icon/factory/icon-renderer';
 
@@ -26,18 +26,20 @@ export interface IconButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLBut
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
     /** Navegar para URL ao clicar */
     navigateTo?: string;
+    /** Rótulo acessível explícito para leitores de tela */
+    ariaLabel?: string;
 }
 
-// Resolve a classe de tema usando o mapeamento central ThemeClasses.IconButton
+// Resolve a classe de tema usando o mapeamento central IconButtonClasses
 function resolveThemeClass(theme: Themes, outline: boolean, active: boolean): string {
 
     return outline
         ? active
-            ? ThemeClasses.IconButton.Active.Outline[theme]
-            : ThemeClasses.IconButton.Outline[theme]
+            ? IconButtonClasses.Active.Outline[theme]
+            : IconButtonClasses.Outline[theme]
         : active
-            ? ThemeClasses.IconButton.Active[theme] as string
-            : ThemeClasses.IconButton[theme] as string;
+            ? IconButtonClasses.Active[theme] as string
+            : IconButtonClasses[theme] as string;
 }
 
 const IconButton: React.FC<IconButtonProps> = ({
@@ -52,6 +54,7 @@ const IconButton: React.FC<IconButtonProps> = ({
     className = '',
     onClick,
     navigateTo,
+    ariaLabel,
     type = 'button',
     ...rest
 }) => {
@@ -65,9 +68,9 @@ const IconButton: React.FC<IconButtonProps> = ({
     }
 
     const themeClass = resolveThemeClass(theme, outline, active);
-    const sizeClass = ThemeClasses.IconButton.Sizes[size];
-    const baseClass = ThemeClasses.IconButton.Base;
-    const disabledClass = disabled ? ThemeClasses.IconButton.Disabled : '';
+    const sizeClass = IconButtonClasses.Sizes[size];
+    const baseClass = IconButtonClasses.Base;
+    const disabledClass = disabled ? IconButtonClasses.Disabled : '';
     const classes = [className, themeClass, sizeClass, baseClass, disabledClass].filter(Boolean).join(' ');
 
     // Gerar conteúdo do ícone:
@@ -93,12 +96,14 @@ const IconButton: React.FC<IconButtonProps> = ({
         }
     };
 
+    const computedAriaLabel = ariaLabel || icon || undefined;
+
     return (
         <button
             type={type}
             disabled={disabled}
             className={classes}
-            aria-label={rest['aria-label'] || icon || 'icon button'}
+            aria-label={computedAriaLabel}
             onClick={handleClick}
             {...rest}
         >

@@ -3,13 +3,42 @@ import './BarStories.css';
 import Bar from '../../lib/components/layouts/Bar';
 
 /*
-  Stories para Bar (compound component com slots Start / Center / End).
-  Objetivos:
-  - Demonstrar composição de slots.
-  - Mostrar ausência de slots intermediários.
-  - Evidenciar política "último vence" (override).
-  - Variantes com classes extras.
-  - Visualização opcional dos contornos dos slots.
+  Padrão de Slots (Compound Component)
+
+  O componente Bar segue um padrão de composição via slots nomeados (<Bar.Start />, <Bar.Center />, <Bar.End />),
+  inspirado na versão Razor (Bar.razor) onde os slots eram Start / Middle / End. Na migração para React,
+  "Middle" foi renomeado para "Center" para ficar consistente com convenções de layout e utilidades Tailwind.
+
+  Características principais:
+  - Os slots são estáticos e definidos por utilidades createSlot + attachSlots.
+  - Apenas o último slot de cada tipo fornecido é renderizado (política "último vence").
+  - Slots vazios (sem children, null, undefined, string vazia) não são emitidos no DOM.
+  - A ordem visual é Start | Center | End dentro de um wrapper com classes base (ya-bar ...).
+  - É possível combinar apenas alguns slots: ex. Start + End, ou somente Center.
+  - A prop className adiciona classes ao contêiner raiz; cada slot recebe sua própria classe semântica (ya-bar-start, ya-bar-center, ya-bar-end).
+
+  Diferenças frente ao Razor:
+  - Naming: Middle -> Center.
+  - API React usa composição JSX em vez de parâmetros / RenderFragments.
+  - Override: No Razor seria necessário lógica adicional; aqui pickSlots simplesmente mantém o último encontrado.
+
+  Exemplo de Uso Básico:
+    <Bar className="p-2 bg-light-100">
+      <Bar.Start><Logo /></Bar.Start>
+      <Bar.Center><Title /></Bar.Center>
+      <Bar.End><UserMenu /></Bar.End>
+    </Bar>
+
+  Override (último vence):
+    <Bar>
+      <Bar.Start>Primeiro</Bar.Start>
+      <Bar.Start>Segundo (renderizado)</Bar.Start>
+    </Bar>
+
+  Somente um slot:
+    <Bar><Bar.End>Ações</Bar.End></Bar>
+
+  A documentação abaixo demonstra cenários de composição, ausência e override.
 */
 
 const meta = {
@@ -19,7 +48,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'Bar expõe três slots: Start, Center e End. Internamente utiliza utilidades createSlot + pickSlots. Se múltiplos slots iguais forem fornecidos, o último prevalece. Slots vazios não são renderizados. Pode receber classes adicionais via className.'
+        component: 'Padrão de slots: <Bar.Start />, <Bar.Center /> e <Bar.End />. Similar ao Bar.razor (Start/Middle/End) porém usando Center. Política de override: último slot de mesmo tipo substitui anteriores. Slots sem conteúdo não são renderizados. Use para cabeçalhos, barras de ferramentas ou regiões horizontais com alinhamentos semânticos.'
       }
     }
   },

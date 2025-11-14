@@ -29,11 +29,11 @@ const Container: React.FC<ContainerProps> = ({
     let classes = '';
 
     if (type == LayoutTypes.Grid) {
-        const baseClasse = LayoutClasses.Base.Container;
+        const baseClass = LayoutClasses.Base.Container;
         const gridBaseClass = LayoutClasses.Grid.Base;
         const sizeClass = LayoutClasses.Grid.Container[size];
 
-        classes = [className, baseClasse, gridBaseClass, sizeClass].filter(Boolean).join(' ');
+        classes = [className, baseClass, gridBaseClass, sizeClass].filter(Boolean).join(' ');
     } else {
         const baseClasse = LayoutClasses.Base.Container;
         const flexClasses = LayoutClasses.Flex.Container;

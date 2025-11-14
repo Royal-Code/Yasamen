@@ -16,7 +16,7 @@ function isBsIcon(value: unknown): value is BsIconsValues {
 }
 
 function bsIconRenderer(name: string): IconRenderer {
-    return (className: string | undefined, rest) => {
+    return (className: string | undefined, ...rest) => {
         const classNames = ["bi", `bi-${name}`, className].filter(Boolean).join(" ");
         return <i className={classNames} {...rest} />;
     };

@@ -1,5 +1,5 @@
 
-import { ContentJustify, Orientations, Sizes, ThemeClasses } from "../commons";
+import { ContentJustify, Orientations, Sizes, StackClasses, Justifies } from "../commons";
 
 export interface StackProps extends React.HTMLAttributes<HTMLDivElement> {
     /** Orientation of the stack */
@@ -22,10 +22,10 @@ const Stack: React.FC<StackProps> = ({
     children,
     ...rest
 }) => {
-    const orientationClass = ThemeClasses.Stack.Orientation[orientation];
-    const gapClass = ThemeClasses.Stack.Gap[gap];
-    const justifyClass = ThemeClasses.Justify.Content[justify];
-    const baseClass = ThemeClasses.Stack.Base;
+    const orientationClass = StackClasses.Orientation[orientation];
+    const gapClass = StackClasses.Gap[gap];
+    const justifyClass = Justifies.Content[justify];
+    const baseClass = StackClasses.Base;
     
     const classes = [className, orientationClass, gapClass, justifyClass, baseClass].filter(Boolean).join(' ');
 

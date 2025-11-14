@@ -150,6 +150,10 @@
             padding-right: var(--body--modal--padding-right);
         }
 
+    #root {
+        width: 100%;
+    }
+
     *, *::before, *::after {
         box-sizing: var(--box-sizing);
     }

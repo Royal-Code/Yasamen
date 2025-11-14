@@ -1,0 +1,16 @@
+
+.ya-status {
+    @apply text-center py-12;
+}
+
+.ya-status-code {
+    @apply text-3xl font-bold mb-4;
+}
+
+.ya-status-message {
+    @apply text-neutral-600 mb-6;
+}
+
+.ya-status-content {
+    @apply mt-6;
+}

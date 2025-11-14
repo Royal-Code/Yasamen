@@ -1,5 +1,5 @@
 import React from 'react';
-import { Themes, ThemeClasses, Sizes, Positions, getNavigator, Ripple } from '../commons';
+import { Themes, ButtonClasses, Sizes, Positions, getNavigator, Ripple } from '../commons';
 import { Icon } from '../icon';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -41,15 +41,15 @@ const Button: React.FC<ButtonProps> = ({
 
     const themeClass = outline
         ? active
-            ? ThemeClasses.Button.Active.Outline[theme]
-            : ThemeClasses.Button.Outline[theme]
+            ? ButtonClasses.Active.Outline[theme]
+            : ButtonClasses.Outline[theme]
         : active
-            ? ThemeClasses.Button.Active[theme]
-            : ThemeClasses.Button[theme];
-    const sizeClass = ThemeClasses.Button.Sizes[size];
-    const baseClass = ThemeClasses.Button.Base;
-    const disabledClass = disabled ? ThemeClasses.Button.Disabled : '';
-    const blockClass = block ? ThemeClasses.Button.Block : '';
+            ? ButtonClasses.Active[theme]
+            : ButtonClasses[theme];
+    const sizeClass = ButtonClasses.Sizes[size];
+    const baseClass = ButtonClasses.Base;
+    const disabledClass = disabled ? ButtonClasses.Disabled : '';
+    const blockClass = block ? ButtonClasses.Block : '';
 
     const classes = [className, themeClass, sizeClass, baseClass, disabledClass, blockClass].filter(Boolean).join(' ');
 

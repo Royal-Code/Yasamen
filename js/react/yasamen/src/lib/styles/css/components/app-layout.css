@@ -4,10 +4,33 @@
 }
 
 .ya-app-layout-header {
-    @apply fixed top-0 right-0 left-0 z-app-header;
+    @apply fixed top-0 right-0 left-0 z-app-header  bg-white;
 }
 
-.ya-app-page {
+.ya-app-layout-page {
     @apply flex w-full h-full;
 }
 
+.ya-app-layout-content {
+    @apply grid w-full self-stretch max-sm:px-0;
+}
+
+.ya-app-layout-main {
+    @apply bg-light-100;
+}
+
+.ya-app-layout-footer {
+    @apply flex w-full self-end items-center bg-white;
+}
+
+@utility ya-app-side-menu {
+    @apply overflow-hidden max-sm:hidden sm:fixed top-0 bottom-0 bg-white flex-col justify-start;
+}
+
+.ya-app-layout-left-menu {
+    @apply ya-app-side-menu left-0;
+}
+
+.ya-app-layout-right-menu {
+    @apply ya-app-side-menu right-0;
+}
