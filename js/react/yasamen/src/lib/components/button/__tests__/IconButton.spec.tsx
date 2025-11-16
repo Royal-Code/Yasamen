@@ -17,7 +17,7 @@ describe('IconButton component', () => {
   it('applies theme + size classes', () => {
     render(<IconButton icon="x" theme={Themes.Alert} size={Sizes.Small} ariaLabel="Fechar" />);
     const btn = screen.getByRole('button', { name: 'Fechar' });
-    expect(btn.classList.contains(IconButtonClasses[Themes.Alert])).toBe(true);
+    expect(btn.classList.contains(IconButtonClasses[Themes.Alert] as string)).toBe(true);
     expect(btn.classList.contains(IconButtonClasses.Sizes[Sizes.Small])).toBe(true);
   });
 

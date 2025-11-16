@@ -7,7 +7,7 @@ describe('Button component', () => {
   it('renders with primary theme class', () => {
     render(<Button label="Ok" theme={Themes.Primary} />);
     const btn = screen.getByRole('button', { name: 'Ok' });
-    expect(btn.classList.contains(ButtonClasses[Themes.Primary])).toBe(true);
+    expect(btn.classList.contains(ButtonClasses[Themes.Primary] as string)).toBe(true);
   });
 
   it('renders outline+active success class', () => {
@@ -23,7 +23,7 @@ describe('Button component', () => {
   });
 
   it('throws for invalid center icon position', () => {
-    // @ts-expect-error test invalid position
+    //// @ts-expect-error test invalid position
     expect(() => render(<Button label="X" icon="x" iconPosition="center" />)).toThrow();
   });
 

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { BgColors, TextColors, Justifies, ButtonClasses, IconButtonClasses, RippleClasses, StackClasses, BarClasses } from '../index';
+import { BgColors, ButtonClasses, IconButtonClasses, RippleClasses, StackClasses, BarClasses } from '../index';
 
 describe('Commons exports', () => {
   it('exports BgColors with primary', () => {

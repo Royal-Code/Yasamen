@@ -8,6 +8,7 @@ import IconsPage from './pages/IconsPage';
 import StackPage from './pages/StackPage';
 import LayoutPage from './pages/LayoutPage';
 import BarPage from './pages/BarPage';
+import ModalPage from './pages/ModalPage';
 import DemoMainLayout from './layout/DemoMainLayout';
 import { Status404 } from '../lib/components/status';
 
@@ -22,6 +23,7 @@ const App: React.FC = () => (
       <Route path="/stack" element={<StackPage />} />
       <Route path="/layout" element={<LayoutPage />} />
       <Route path="/bar" element={<BarPage />} />
+      <Route path="/modal" element={<ModalPage />} />
     </Route>
     <Route element={<DemoMainLayout />}>
       <Route path="*" element={<Status404 />} />

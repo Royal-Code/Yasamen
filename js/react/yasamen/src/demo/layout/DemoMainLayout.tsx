@@ -5,6 +5,8 @@ import { Bar } from '../../lib/components/layouts';
 import { Button } from '../../lib/components/button';
 import { IconButton } from '../../lib/components/button';
 import { Link, useLocation } from 'react-router-dom';
+import { BsIcons } from '../../lib/components/bsicons';
+import { ModalOutlet } from '../../lib/components/modal/ModalOutlet';
 
 /**
  * DemoMainLayout
@@ -25,6 +27,7 @@ const DemoMainLayout: React.FC = () => {
 		<AppLayout>
 			<AppLayout.PreContent>
 				{/* Espaço antes do layout principal se necessário */}
+				<ModalOutlet />
 			</AppLayout.PreContent>
 
 			<AppLayout.Top>
@@ -43,11 +46,12 @@ const DemoMainLayout: React.FC = () => {
 							<Link to="/stack" className={navLinkClass('/stack')}>Stack</Link>
 							<Link to="/layout" className={navLinkClass('/layout')}>Layout</Link>
 							<Link to="/bar" className={navLinkClass('/bar')}>Bar</Link>
+							<Link to="/modal" className={navLinkClass('/modal')}>Modal</Link>
 						</nav>
 					</Bar.Center>
 					<Bar.End>
 						<div className="flex items-center gap-2">
-							<IconButton icon="trash" ariaLabel="Limpar" theme="alert" size="sm" />
+							<IconButton icon={BsIcons.Trash} ariaLabel="Limpar" theme="alert" />
 							<Button label="Ação" theme="primary" size="sm" />
 						</div>
 					</Bar.End>

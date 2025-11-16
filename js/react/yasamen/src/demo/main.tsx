@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App.tsx';
+import { ModalProvider } from '../lib/components/modal/ModalProvider.tsx';
 import { BootstrapIconsProvider } from '../lib/components/bsicons/set-bootstrap-icons.ts';
 import { ReactRouterNavigatorProvider } from '../lib/utils/react-router-navigation.ts';
 
@@ -13,7 +14,9 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <BootstrapIconsProvider />
       <ReactRouterNavigatorProvider />
-      <App />
+      <ModalProvider>
+        <App />
+      </ModalProvider>
     </BrowserRouter>
   </StrictMode>
 );
