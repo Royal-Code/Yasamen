@@ -23,14 +23,12 @@
 	};
 
 	private bool isOpen = false;
-	private bool isOpening = false;
-	private bool isClosing = false;
-	private TaskCompletionSource? taskCompletionSource;
 	private Backdrop? backdrop;
+	private ModalAction? currentAction;
 
 	private IReadOnlyDictionary<string, object> Attributes => ModalService.IsOpen ? openedAttributes : closedAttributes;
 
-	private string Classes => ModalService.IsOpen || isClosing ? "ya-modal-outlet ya-modal-outlet-show" : "ya-modal-outlet";
+	private string Classes => ModalService.IsOpen ? "ya-modal-outlet ya-modal-outlet-show" : "ya-modal-outlet";
 
 	protected override void OnInitialized()
 	{
@@ -48,86 +46,26 @@
 	/// </summary>
 	internal new void StateHasChanged() => base.StateHasChanged();
 
-	internal Task OpenAsync()
+	internal Task PerformAsync(ModalAction action)
 	{
-		if (isOpen)
-			return Task.CompletedTask;
+		return InvokeAsync(async () => {
 
-		taskCompletionSource?.SetResult();
-		taskCompletionSource = new TaskCompletionSource();
+			if (currentAction is not null)
+				await currentAction.OnComplete();
 
-		isOpening = true;
-		isClosing = false;
-		isOpen = true;
-
-		StateHasChanged();
-
-		return taskCompletionSource.Task;
-	}
-
-	internal Task CloseAsync()
-	{
-		if (!isOpen)
-			return Task.CompletedTask;
-
-		taskCompletionSource?.SetResult();
-		taskCompletionSource = new TaskCompletionSource();
-
-		isClosing = true;
-		isOpening = false;
-		isOpen = false;
-
-		StateHasChanged();
-
-		return taskCompletionSource.Task;
-	}
-
-	internal Task RunAsync(Func<Task> action)
-	{
-		return InvokeAsync(action);
+			currentAction = action;
+			isOpen = action.Type == ModalActionType.Open;
+			StateHasChanged();
+		});
 	}
 
 	protected override async Task OnAfterRenderAsync(bool firstRender)
 	{
-		if (isOpening)
+		if (currentAction is not null && backdrop is not null)
 		{
-			await InvokeAsync(async () =>
-			{
-				await Task.Delay(10);
-
-				Tracer.Write<ModalOutlet>(
-					"OnAfterRenderAsync.InvokeAsync",
-					"OnAfterRenderAsync.InvokeAsync called for opening");
-
-				isOpening = false;
-				if (backdrop is not null)
-					await backdrop.OpenAsync();
-
-				taskCompletionSource?.SetResult();
-				taskCompletionSource = null;
-
-				StateHasChanged();
-			});
-		}
-		if (isClosing)
-		{
-			await InvokeAsync(async () =>
-			{
-				await Task.Delay(10);
-
-				Tracer.Write<ModalOutlet>(
-					"OnAfterRenderAsync.InvokeAsync",
-					"OnAfterRenderAsync.InvokeAsync called for closing");
-				
-				if (backdrop is not null)
-					await backdrop.CloseAsync();
-
-				isClosing = false;
-				taskCompletionSource?.SetResult();
-				taskCompletionSource = null;
-
-				StateHasChanged();
-			});
+			var action = currentAction;
+			currentAction = null;
+			await backdrop.PerformAsync(action);
 		}
 	}
 }

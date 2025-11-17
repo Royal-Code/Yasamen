@@ -7,6 +7,7 @@ import { IconButton } from '../../lib/components/button';
 import { Link, useLocation } from 'react-router-dom';
 import { BsIcons } from '../../lib/components/bsicons';
 import { ModalOutlet } from '../../lib/components/modal/ModalOutlet';
+import { SectionOutlet } from '../../lib/components/outlet';
 
 /**
  * DemoMainLayout
@@ -45,6 +46,7 @@ const DemoMainLayout: React.FC = () => {
 							<Link to="/icons" className={navLinkClass('/icons')}>Icons</Link>
 							<Link to="/stack" className={navLinkClass('/stack')}>Stack</Link>
 							<Link to="/layout" className={navLinkClass('/layout')}>Layout</Link>
+							<Link to="/section" className={navLinkClass('/section')}>Section</Link>
 							<Link to="/bar" className={navLinkClass('/bar')}>Bar</Link>
 							<Link to="/modal" className={navLinkClass('/modal')}>Modal</Link>
 						</nav>
@@ -73,6 +75,10 @@ const DemoMainLayout: React.FC = () => {
 
 			<AppLayout.MainContent>
 				<div className="p-6 md:p-7 lg:p-8 max-xs:p-4">
+					{/* Header dinâmico de página via SectionOutlet */}
+					<div className="mb-4">
+						<SectionOutlet id="header" />
+					</div>
 					<Outlet />
 				</div>
 			</AppLayout.MainContent>

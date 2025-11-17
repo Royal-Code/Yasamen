@@ -4,95 +4,76 @@
 
 @code {
 	private string Classes => "ya-modal-backdrop"
-		.AddClass(shown, "ya-modal-backdrop-shown")
-		.AddClass(shown || showing || hiding, "ya-modal-visible")
-		.AddClass(showing, "ya-modal-backdrop-showing")
-		.AddClass(hiding, "ya-modal-backdrop-hiding");
+		.AddClass(phase == ModalPhase.Opened, "ya-modal-backdrop-shown")
+		.AddClass(phase != ModalPhase.Closed, "ya-modal-visible")
+		.AddClass(phase == ModalPhase.Opening, "ya-modal-backdrop-showing")
+		.AddClass(phase == ModalPhase.Closing, "ya-modal-backdrop-hiding");
 
-	private bool shown;
-	private bool showing;
-	private bool hiding;
-	private bool hideRequest;
-	private AnimationCompletion? animation;
+	private ModalPhase phase;
+	private ModalAction? currentAction;
 
 	private Task BackdropClickHandler(MouseEventArgs args) => ModalService.BackdropActionAsync();
 
-	internal Task OpenAsync()
+	internal async Task PerformAsync(ModalAction action)
 	{
-		if (shown || showing)
-			return Task.CompletedTask;
+		await InvokeAsync(async () =>
+		{
+			if (currentAction is not null)
+				await currentAction.OnComplete();
 
-		animation?.Complete();
+			currentAction = action;
+			if (action.Type == ModalActionType.Open)
+			{
+				phase = ModalPhase.Opening;
+			}
+			else
+			{
+				phase = ModalPhase.Closing;
 
-		Tracer.Write<Backdrop>("OpenAsync", "OpenAsync called");
-
-		showing = true;
-		hiding = false;
-
-		StateHasChanged();
-		animation = new AnimationCompletion();
-		return animation.Task;
+				var action = currentAction;
+				await Task.Run(async () =>
+				{
+					await Task.Delay(300);
+					if (action == currentAction)
+						await TransitionEndHandler();
+				});
+			}
+			StateHasChanged();
+		});
 	}
 
-	internal Task CloseAsync()
+	private async Task TransitionEndHandler()
 	{
-		if (!shown || hiding)
-			return Task.CompletedTask;
+		if (currentAction is null)
+				return;
 
-		animation?.Complete();
+		await currentAction.Completed();
+		currentAction = null;
 
-		Tracer.Write<Backdrop>("CloseAsync", "CloseAsync called");
-
-		hideRequest = true;
-		showing = false;
-
-		StateHasChanged();
-		animation = new AnimationCompletion();
-		return animation.Task;
-	}
-
-	private Task TransitionEndHandler()
-	{
-		Tracer.Write<Backdrop>(
-			"TransitionEndHandler", 
-			"TransitionEndHandler called, {0}, {1}, {2}", shown, showing, hiding);
-
-		if (showing)
-		{
-			shown = true;
-			showing = false;
-		}
-		if (hiding)
-		{
-			shown = false;
-			hiding = false;
-		}
-		animation?.Complete();
-		animation = null;
-		StateHasChanged();
-		return Task.CompletedTask;
+		if (phase == ModalPhase.Closing)
+			await InvokeAsync(async () =>
+			{
+				phase = ModalPhase.Closed;
+				StateHasChanged();
+			});
 	}
 
 	protected override async Task OnAfterRenderAsync(bool firstRender)
 	{
-		if (showing)
+		if (phase == ModalPhase.Opening)
 		{
 			await InvokeAsync(async () =>
 			{
 				await Task.Delay(10);
-				shown = true;
-				showing = false;
+				phase = ModalPhase.Opened;
 				StateHasChanged();
-			});
-		}
-		if (hideRequest)
-		{
-			await InvokeAsync(async () =>
-			{
-				await Task.Delay(10);
-				hiding = true;
-				hideRequest = false;
-				StateHasChanged();
+				
+				var action = currentAction;
+				await Task.Run(async () => {
+					await Task.Delay(300);
+					if (action == currentAction)
+						await TransitionEndHandler();
+				});
 			});
 		}
 	}

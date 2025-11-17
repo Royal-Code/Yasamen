@@ -52,3 +52,53 @@ export default tseslint.config({
   },
 })
 ```
+
+## Section Outlet / Content
+
+O padrão de seções permite declarar conteúdo em qualquer lugar da árvore e renderizá-lo em outro ponto específico. Baseado no conceito de `SectionOutlet` / `SectionContent` do Blazor.
+
+### Uso Básico
+
+Envólva sua aplicação com o `SectionProvider`:
+
+```tsx
+import { SectionProvider } from './src/lib/components/outlet';
+
+<SectionProvider>
+  <App />
+</SectionProvider>
+```
+
+Declare conteúdo em um ponto da árvore:
+
+```tsx
+import { SectionContent } from './src/lib/components/outlet';
+
+<SectionContent id="header">
+  <h1>Título da Página</h1>
+</SectionContent>
+```
+
+E consuma em outro ponto com o `SectionOutlet`:
+
+```tsx
+import { SectionOutlet } from './src/lib/components/outlet';
+
+<header>
+  <SectionOutlet id="header" />
+</header>
+```
+
+Se múltiplos `SectionContent` usarem o mesmo `id`, o último montado vence. Ao desmontar um conteúdo, o anterior volta automaticamente.
+
+### Comportamento
+- Registro em pilha por `id` (stack).
+- Atualização do nó ao mudar `children`.
+- Limpeza automática no unmount.
+- Sem markup extra no `SectionOutlet` (usa fragment).
+
+### Quando usar
+Útil para títulos dinâmicos, barras de ação, breadcrumbs ou áreas de layout global definidas por páginas internas.
+
+### Fallback
+Não há fallback interno; se nenhum conteúdo registrado, nada é renderizado. Você pode embrulhar `<SectionOutlet />` com markup adicional para fornecer um placeholder.

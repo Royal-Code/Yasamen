@@ -1,15 +1,11 @@
 import type { ModalAction, ModalState } from "./types";
 
-export const initialModalState: ModalState = {
-    order: [],
-    items: {},
-};
-
 export function modalReducer(
     state: ModalState,
     action: ModalAction
 ): ModalState {
     switch (action.type) {
+        
         case "REGISTER": {
             if (state.items[action.id]) return state;
 
@@ -27,6 +23,7 @@ export function modalReducer(
                 },
             };
         }
+
         case "UNREGISTER": {
             if (!state.items[action.id])
                  return state;
@@ -42,6 +39,7 @@ export function modalReducer(
                 pendingNext: state.pendingNext === action.id ? undefined : state.pendingNext,
             };
         }
+
         case "OPEN": {
             const isTop = state.order[state.order.length - 1];
             if (!isTop) {
@@ -54,6 +52,7 @@ export function modalReducer(
                 pendingNext: action.id,
             };
         }
+
         case "CLOSE": {
             const top = state.order[state.order.length - 1];
 
@@ -61,6 +60,7 @@ export function modalReducer(
 
             return applyRequestClose(state, action.id);
         }
+
         case "PHASE": {
             const item = state.items[action.id];
 
@@ -74,6 +74,7 @@ export function modalReducer(
                 },
             };
         }
+
         case "UPDATE_CONTENT": {
             const item = state.items[action.id];
             if (!item) return state;
@@ -85,6 +86,7 @@ export function modalReducer(
                 }
             };
         }
+
         case "UPDATE_META": {
             const item = state.items[action.id];
             if (!item) return state;
@@ -96,10 +98,12 @@ export function modalReducer(
                 }
             };
         }
+
         case "TRANSITION_DONE": {
             const item = state.items[action.id];
 
-            if (!item) return state;
+            if (!item) 
+                return state;
 
             // final de abertura
             if (item.phase === "opening") {

@@ -1,4 +1,7 @@
-﻿namespace RoyalCode.Razor.Internal.Modals;
+﻿using RoyalCode.Razor.Commons;
+using System.Collections.Concurrent;
+
+namespace RoyalCode.Razor.Internal.Modals;
 
 /// <summary>
 /// <para>
@@ -28,6 +31,11 @@ public sealed class ModalService
     /// The ModalOutlet component associated with this service.
     /// </summary>
     internal ModalOutlet? Outlet { get; set; }
+
+    /// <summary>
+    /// The backdrop modal item.
+    /// </summary>
+    internal ModalItem? Backdrop { get; set; }
 
     /// <summary>
     /// Adds a modal item. This will create a SectionOutlet for the modal item.
@@ -66,36 +74,43 @@ public sealed class ModalService
     /// <returns>A task that represents the asynchronous operation, finishing when the modal is opened.</returns>
     public async Task OpenAsync(ModalItem item)
     {
-        if (Outlet is null)
+        if (Outlet is null || Backdrop is null)
             return;
 
-        var requireOpen = !IsOpen;
-        IsOpen = true;
+        TaskCompletionSource tcs = new();
 
-        if (requireOpen)
-            await Outlet.OpenAsync();
+        var openAction = new ModalAction()
+        {
+            Type = ModalActionType.Open,
+            OnComplete = () =>
+            {
+                openedItems.Add(item);
+                tcs.SetResult();
+                return Task.CompletedTask;
+            }
+        };
 
         var openedItem = openedItems.LastOrDefault();
-        if (openedItem is not null)
+        if (openedItem is null)
         {
-            await Outlet.RunAsync(async () =>
+            // se não houver nenhum aberto, abre o backdrop primeiro
+            var openOutletAction = new ModalAction()
             {
-                openedItem.IsOpen = false;
-                await openedItem.StateHasChangedAsync();
+                Type = ModalActionType.Open,
+                OnComplete= () => item.PerformAsync(openAction)
+            };
 
-                await Outlet.RunAsync(async () =>
-                {
-                    openedItems.Add(item);
-                    item.IsOpen = true;
-                    await item.StateHasChangedAsync();
-                });
-            });
+            await Outlet.PerformAsync(openOutletAction);
         }
         else
         {
-            openedItems.Add(item);
-            item.IsOpen = true;
-            await item.StateHasChangedAsync();
+            var closeLastAction = new ModalAction()
+            {
+                Type = ModalActionType.Close,
+                OnComplete = () => item.PerformAsync(openAction)
+            };
+
+            await openedItem.PerformAsync(closeLastAction);
         }
     }
 
@@ -120,39 +135,49 @@ public sealed class ModalService
     public async Task CloseAsync(ModalItem item)
     {
         var openedItem = openedItems.LastOrDefault();
-        if (openedItem is null || Outlet is null)
+        if (openedItem is null || Outlet is null || Backdrop is null)
             return;
 
         openedItems.Remove(item);
         if (openedItem != item)
             return;
 
-        var nextOpenedItem = openedItems.LastOrDefault();
 
+        Func<Task> onClosedAction;
+
+        var nextOpenedItem = openedItems.LastOrDefault();
         if (nextOpenedItem is not null)
         {
-
-            await Outlet.RunAsync(async () =>
+            onClosedAction = async () =>
             {
-                openedItem.IsOpen = false;
-                await openedItem.StateHasChangedAsync();
-
-                await Outlet.RunAsync(async () =>
+                var openNextAction = new ModalAction()
                 {
-                    nextOpenedItem.IsOpen = true;
-                    await nextOpenedItem.StateHasChangedAsync();
-                });
-            });
+                    Type = ModalActionType.Open,
+                    OnComplete = () => Task.CompletedTask
+                };
+                await nextOpenedItem.PerformAsync(openNextAction);
+            };
         }
         else
         {
-            openedItem.IsOpen = false;
-            await openedItem.StateHasChangedAsync();
-            Outlet.StateHasChanged();
-
-            IsOpen = false;
-            await Outlet.CloseAsync();
+            onClosedAction = async () =>
+            {
+                var closeOutletAction = new ModalAction()
+                {
+                    Type = ModalActionType.Close,
+                    OnComplete = () => Task.CompletedTask
+                };
+                await Outlet.PerformAsync(closeOutletAction);
+            };
         }
+
+        var closeAction = new ModalAction()
+        {
+            Type = ModalActionType.Close,
+            OnComplete = onClosedAction
+        };
+
+        await Outlet.PerformAsync(closeAction);
     }
 
     /// <summary>
@@ -171,3 +196,48 @@ public sealed class ModalService
     }
 }
 
+public class ModalCommandQueue
+{
+    private readonly ConcurrentQueue<IModalCommand> queue = new();
+
+    public void Enqueue(IModalCommand command)
+    {
+        queue.Enqueue(command);
+    }
+
+    public async Task ExecuteAsync()
+    {
+        while (queue.TryDequeue(out var command))
+        {
+            await command.ExecuteAsync();
+        }
+    }
+}
+
+public interface IModalCommand
+{
+    Task ExecuteAsync();
+}
+
+public class OutletCommand : IModalCommand
+{
+    private readonly ModalActionType actionType;
+    private readonly ModalOutlet outlet;
+
+    public Task ExecuteAsync()
+    {
+        TaskCompletionSource tcs = new();
+
+        ModalAction action = new()
+        {
+            Type = actionType,
+            OnComplete = () =>
+            {
+                tcs.SetResult();
+                return Task.CompletedTask;
+            }
+        };
+
+        outlet.PerformAsync(action);
+    }
+}

@@ -16,9 +16,9 @@
     public static int ModalMaxTransitionTime { get; set; } = 800;
 
     private string Classes => "ya-modal"
-        .AddClass(isOpen || closing, "ya-modal-show")
-        .AddClass(opening, "ya-modal-opening")
-        .AddClass(closing, "ya-modal-closing")
+        .AddClass(phase == ModalPhase.Opened, "ya-modal-show")
+        .AddClass(phase == ModalPhase.Opening, "ya-modal-opening")
+        .AddClass(phase == ModalPhase.Closing, "ya-modal-closing")
         .AddClass(Center, "ya-modal-center");
 
     private readonly ModalContext context;
@@ -26,13 +26,10 @@
     private readonly Func<Task> transitionEndHandler;
 
     private ElementReference element;
-    private AnimationCompletion? animation;
 
     private bool disposed;
-    private bool opening;
-    private bool closing;
-    private bool closeRequested;
-    private bool isOpen;
+    private ModalPhase phase = ModalPhase.Closed;
+    private ModalAction? currentAction;
 
     public Modal()
     {
@@ -40,7 +37,7 @@
         {
             Modal = this,
         };
-        item = new ModalItem(StateHasChangedAsync);
+        item = new ModalItem(PerformAsync);
         transitionEndHandler = TransitionEndHandler;
     }
 
@@ -62,76 +59,52 @@
     [Parameter]
     public EventCallback<ModalEventArgs> OnOpenClose { get; set; }
 
-    private Task StateHasChangedAsync()
+    private async Task PerformAsync(ModalAction action)
     {
-        if (disposed || isOpen == item.IsOpen)
-			return Task.CompletedTask;
+        if (disposed)
+            return;
 
         // end the old task
-        animation?.Complete();
+        if (currentAction is not null)
+            await currentAction.Completed();
 
-        if (item.IsOpen)
-            return InternalOpenAsync();
-        else
-			return InternalCloseAsync();
-    }
-
-    private Task InternalOpenAsync()
-    {
-		opening = true;
-        closing = false;
-        closeRequested = false;
-
-        StateHasChanged();
-		animation = new AnimationCompletion(ModalMaxTransitionTime);
-		return animation.Task;
-    }
-
-    private Task InternalCloseAsync()
-    {
-		opening = false;
-        closing = false;
-		closeRequested = true;
-
-		StateHasChanged();
-        animation = new AnimationCompletion(ModalMaxTransitionTime);
-		return animation.Task;
-    }
-
-    private async Task CompleteTransitionEndTask()
-    {
-        animation?.Complete();
-        animation = null;
-
-        isOpen = item.IsOpen;
-        opening = false;
-        closing = false;
-        closeRequested = false;
-
-        var evt = new ModalEventArgs()
+        await InvokeAsync(async () =>
         {
-            IsOpen = isOpen,
-            Modal = this
-        };
+            currentAction = action;
+            if (action.Type == ModalActionType.Open)
+            {
+                phase = ModalPhase.Opening;
+            }
+            else
+            {
+				phase = ModalPhase.Closing;
 
-        await OnOpenClose.InvokeAsync(evt);
-
-        if (context.Handler is not null)
-            await context.Handler.OnModalEventAsync(evt);
-
-        StateHasChanged();
-
-        if (isOpen && element.Id.IsPresent())
-            await element.FocusAsync();
+                var action = currentAction;
+                await Task.Run(async () =>
+                {
+                    await Task.Delay(300);
+                    if (action == currentAction)
+                        await TransitionEndHandler();
+                });
+            }
+			StateHasChanged();
+        });
     }
 
     public async Task TransitionEndHandler()
     {
-        Tracer.Write<Modal>(
-            "TransitionEndHandler",
-            "TransitionEndHandler called, isOpen: {0}, opening: {1}, closing: {2}", isOpen, opening, closing);
+        if (currentAction is null)
+            return;
 
-        await CompleteTransitionEndTask();
+        await currentAction.Completed();
+        currentAction = null;
+
+        if (phase == ModalPhase.Closing)
+            await InvokeAsync(async () =>
+            {
+                phase = ModalPhase.Closed;
+                StateHasChanged();
+            });
     }
 
     protected override Task OnInitializedAsync()
@@ -168,31 +141,24 @@
         {
             context.Element = element;
         }
-        if (opening)
+
+        if (phase == ModalPhase.Opening)
         {
             await InvokeAsync(async () =>
             {
                 await Task.Delay(10);
-
-				isOpen = true;
-                opening = false;
+                phase = ModalPhase.Opened;
                 StateHasChanged();
+
+                var action = currentAction;
+                await Task.Run(async () =>
+                {
+                    await Task.Delay(300);
+                    if (action == currentAction)
+                        await TransitionEndHandler();
+                });
             });
         }
-        if (closeRequested)
-        {
-            await InvokeAsync(async () =>
-            {
-                await Task.Delay(10);
-
-				isOpen = false;
-				closeRequested = false;
-                closing = true;
-                StateHasChanged();
-            });
-        }
-
-        await base.OnAfterRenderAsync(firstRender);
     }
 
     public async Task OpenAsync()
@@ -200,7 +166,7 @@
         if (disposed)
             throw new ObjectDisposedException(GetType().Name, $"Modal [{Id}] was disposed");
 
-        if (isOpen)
+        if (phase != ModalPhase.Closed)
             return;
 
         await ModalService.OpenAsync(item);
@@ -211,7 +177,7 @@
         if (disposed)
             throw new ObjectDisposedException(GetType().Name, $"Modal [{Id}] was disposed");
 
-        if (!isOpen)
+        if (phase != ModalPhase.Opened)
             return;
 
         await ModalService.CloseAsync(item);
@@ -221,10 +187,11 @@
     {
         disposed = true;
 
-        if (item.IsOpen)
+        if (phase != ModalPhase.Closed)
             await ModalService.CloseAsync(item);
 
-        await CompleteTransitionEndTask();
+        if (currentAction is not null)
+            await currentAction.Completed();
 
         ModalService.Remove(item);
     }

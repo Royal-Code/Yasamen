@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App.tsx';
 import { ModalProvider } from '../lib/components/modal/ModalProvider.tsx';
+import { SectionProvider } from '../lib/components/outlet';
 import { BootstrapIconsProvider } from '../lib/components/bsicons/set-bootstrap-icons.ts';
 import { ReactRouterNavigatorProvider } from '../lib/utils/react-router-navigation.ts';
 
@@ -15,7 +16,9 @@ createRoot(document.getElementById('root')!).render(
       <BootstrapIconsProvider />
       <ReactRouterNavigatorProvider />
       <ModalProvider>
-        <App />
+        <SectionProvider>
+          <App />
+        </SectionProvider>
       </ModalProvider>
     </BrowserRouter>
   </StrictMode>

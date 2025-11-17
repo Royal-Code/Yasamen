@@ -7,6 +7,7 @@ import IconButtonsPage from './pages/IconButtonsPage';
 import IconsPage from './pages/IconsPage';
 import StackPage from './pages/StackPage';
 import LayoutPage from './pages/LayoutPage';
+import SectionPage from './pages/SectionPage';
 import BarPage from './pages/BarPage';
 import ModalPage from './pages/ModalPage';
 import DemoMainLayout from './layout/DemoMainLayout';
@@ -22,6 +23,7 @@ const App: React.FC = () => (
       <Route path="/icons" element={<IconsPage />} />
       <Route path="/stack" element={<StackPage />} />
       <Route path="/layout" element={<LayoutPage />} />
+      <Route path="/section" element={<SectionPage />} />
       <Route path="/bar" element={<BarPage />} />
       <Route path="/modal" element={<ModalPage />} />
     </Route>

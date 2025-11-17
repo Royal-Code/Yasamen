@@ -9,16 +9,19 @@ export interface ModalDescriptor {
 }
 
 export interface ModalState {
-    order: string[];          // pilha
+    /** Ordem dos modais na pilha de abertos */
+    order: string[];
+    /** Modais registrados */
     items: Record<string, ModalDescriptor>;
-    pendingNext?: string;     // sequência: abrir após fechar topo
+    /** sequência: abrir após fechar topo */
+    pendingNext?: string;
 }
 
 export type ModalAction =
-    | { type: "REGISTER"; id: string; content: React.ReactNode; closeable: boolean }
+    | { type: "REGISTER"; id: string; content: React.ReactNode; closeable: boolean, center: boolean }
     | { type: "UNREGISTER"; id: string }
     | { type: "UPDATE_CONTENT"; id: string; content: React.ReactNode }
-    | { type: "UPDATE_META"; id: string; closeable?: boolean }
+    | { type: "UPDATE_META"; id: string; closeable?: boolean, center?: boolean }
     | { type: "OPEN"; id: string }                // abre direto ou agenda se topo existe
     | { type: "CLOSE"; id: string }               // fecha topo
     | { type: "PHASE"; id: string; phase: ModalDescriptor["phase"] } // atualização de fase
