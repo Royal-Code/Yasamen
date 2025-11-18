@@ -1,31 +1,80 @@
 ﻿
 /* Backdrop (phases) */
-.ya-modal-backdrop { @apply fixed inset-0 bg-black/20 opacity-0 pointer-events-none transition-default z-backdrop; }
-.ya-modal-backdrop-opening { @apply opacity-100 pointer-events-auto; animation: ya-backdrop-fade-in 0.25s ease forwards; }
-.ya-modal-backdrop-open { @apply opacity-100 pointer-events-auto; }
-.ya-modal-backdrop-closing { @apply opacity-0 pointer-events-none; animation: ya-backdrop-fade-out 0.25s ease forwards; }
+.ya-modal-backdrop { 
+    @apply hidden bg-black/20 opacity-0 transition-default z-backdrop;
+}
+.ya-modal-backdrop-opening-start {
+    @apply block fixed top-0 left-0 w-full h-full opacity-0;
+}
+.ya-modal-backdrop-opening {
+    @apply block fixed top-0 left-0 w-full h-full opacity-100;
+}
+.ya-modal-backdrop-open {
+    @apply block fixed top-0 left-0 w-full h-full opacity-100;
+}
+.ya-modal-backdrop-closing-start {
+    @apply block fixed top-0 left-0 w-full h-full opacity-100;
+}
+.ya-modal-backdrop-closing {
+    @apply block fixed top-0 left-0 w-full h-full opacity-0;
+}
 
 /* Outlet */
-.ya-modal-outlet { @apply fixed inset-0 w-full h-full overflow-y-auto overflow-x-hidden outline-0 z-modal pointer-events-none hidden; }
-.ya-modal-outlet-open { @apply block pointer-events-auto; }
+.ya-modal-outlet {
+    @apply hidden fixed top-0 left-0 w-full h-full overflow-x-hidden overflow-y-auto outline-0 z-modal;
+}
+.ya-modal-outlet-open {
+    @apply block;
+}
 
-/* Modal base (phases) */
-.ya-modal { @apply hidden relative w-auto m-auto opacity-0 pointer-events-none transition-default z-modal; }
-.ya-modal-closed { @apply hidden opacity-0 pointer-events-none; }
+/* Modal base */
+.ya-modal {
+    @apply relative w-auto m-auto transition-default z-modal;
+}
+.ya-modal-opening-start {
+    @apply block translate-y-[-50px];
+}
+.ya-modal-opening {
+    @apply block translate-y-0;
+}
+.ya-modal-open {
+    @apply block translate-y-0;
+}
+.ya-modal-closing-start { 
+    @apply block translate-y-0;
+}
+.ya-modal-closing { 
+    @apply block translate-y-[-50px];
+}
+.ya-modal-closed {
+    @apply hidden translate-y-[-50px] pointer-events-none;
+}
 
-/* Conteúdo interno */
-.ya-modal > * { @apply transition-default; }
+/* Centralização */
+.ya-modal-center { @apply items-center justify-center; }
+.ya-modal-center:not(.ya-modal-closed) {
+    @apply flex;
+}
 
-/* Modal phases */
-.ya-modal-open { @apply block opacity-100 pointer-events-auto; }
-.ya-modal-opening { @apply block; animation: ya-modal-open 0.25s ease forwards; }
-.ya-modal-closing { @apply block; animation: ya-modal-close 0.25s ease forwards; }
-
-/* Centralização opcional */
-.ya-modal.ya-modal-open.ya-modal-center { @apply flex items-center justify-center; }
-
-/* Keyframes */
-@keyframes ya-modal-open { from { opacity:0; transform:translateY(-50px); } to { opacity:1; transform:translateY(0); } }
-@keyframes ya-modal-close { from { opacity:1; transform:translateY(0); } to { opacity:0; transform:translateY(-50px); } }
-@keyframes ya-backdrop-fade-in { from { opacity:0; } to { opacity:1; } }
-@keyframes ya-backdrop-fade-out { from { opacity:1; } to { opacity:0; } }
+/* Modal Conteúdo interno */
+.ya-modal > * {
+    @apply pointer-events-auto transition-default;
+}
+.ya-modal.ya-modal-opening-start > * {
+    @apply opacity-0;
+}
+.ya-modal.ya-modal-opening > * {
+    @apply opacity-100;
+}
+.ya-modal.ya-modal-open > * {
+    @apply opacity-100;
+}
+.ya-modal.ya-modal-closing-start > * {
+    @apply opacity-100;
+}
+.ya-modal.ya-modal-closing > * {
+    @apply opacity-0;
+}
+.ya-modal.ya-modal-closed > * {
+    @apply opacity-0;
+}

@@ -1,56 +1,53 @@
 ﻿
+/* BACKDROP */
 .ya-modal-backdrop {
     @apply hidden bg-black/20 opacity-0 transition-default z-backdrop;
 }
+.ya-modal-backdrop-shown {
+    @apply block fixed top-0 left-0 w-full h-full opacity-100;
+}
+.ya-modal-backdrop-showing {
+    @apply block fixed top-0 left-0 w-full h-full opacity-0;
+}
+.ya-modal-backdrop-hiding {
+    @apply opacity-0;
+}
 
-    .ya-modal-backdrop.ya-modal-backdrop-shown {
-        @apply block fixed top-0 left-0 w-full h-full opacity-100;
-    }
-
-    .ya-modal-backdrop.ya-modal-backdrop-showing {
-        @apply block fixed top-0 left-0 w-full h-full opacity-0;
-    }
-
-    .ya-modal-backdrop.ya-modal-backdrop-hiding {
-        @apply opacity-0;
-    }
+/* OUTLET */
 
 .ya-modal-outlet {
     @apply hidden fixed top-0 left-0 w-full h-full overflow-x-hidden overflow-y-auto outline-0 z-modal;
 }
+.ya-modal-outlet-show {
+    @apply block;
+}
 
-    .ya-modal-outlet.ya-modal-outlet-show {
-        @apply block;
-    }
+/* MODAL */
 
 .ya-modal {
     @apply hidden relative w-auto m-auto pointer-events-none transition-default z-modal;
 }
-
-    .ya-modal > * {
-        @apply pointer-events-auto transition-default;
-    }
-
-    .ya-modal.ya-modal-show > * {
-        @apply opacity-100;
-    }
-
-    .ya-modal.ya-modal-opening > * {
-        @apply opacity-0;
-    }
-
-    .ya-modal.ya-modal-closing > * {
-        @apply opacity-0;
-    }
-
-    .ya-modal.ya-modal-show.ya-modal-center {
-        @apply h-full flex items-center;
-    }
-
 .ya-modal-show {
     @apply block translate-y-0;
 }
-
 .ya-modal-opening, .ya-modal-closing {
     @apply block translate-y-[-50px];
+}
+
+.ya-modal.ya-modal-show.ya-modal-center {
+    @apply h-full flex items-center;
+}
+
+/* MODAL CONTENT */
+.ya-modal > * {
+    @apply pointer-events-auto transition-default;
+}
+.ya-modal.ya-modal-show > * {
+    @apply opacity-100;
+}
+.ya-modal.ya-modal-opening > * {
+    @apply opacity-0;
+}
+.ya-modal.ya-modal-closing > * {
+    @apply opacity-0;
 }

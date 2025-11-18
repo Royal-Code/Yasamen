@@ -18,15 +18,17 @@ export interface ModalHandler {
 }
 
 interface ModalState {
-    phase: 'closed' | 'opening' | 'open' | 'closing';
+    phase: 'closed' | 'opening_start' | 'opening' | 'open' | 'closing_start' | 'closing';
     closeable: boolean;
     center: boolean;
 }
 
 type ModalAction =
     | { type: 'OPEN' }
+    | { type: 'OPEN_PROMOTE' }
     | { type: 'OPEN_DONE' }
     | { type: 'CLOSE' }
+    | { type: 'CLOSE_PROMOTE' }
     | { type: 'CLOSE_DONE' };
 
 export interface ModalItem {
@@ -37,11 +39,15 @@ export interface ModalItem {
 const reducer = (state: ModalState, action: ModalAction): ModalState => {
     switch (action.type) {
         case 'OPEN':
-            return state.phase === 'closed' ? { ...state, phase: 'opening' } : state;
+            return state.phase === 'closed' ? { ...state, phase: 'opening_start' } : state;
+        case 'OPEN_PROMOTE':
+            return state.phase === 'opening_start' ? { ...state, phase: 'opening' } : state;
         case 'OPEN_DONE':
             return state.phase === 'opening' ? { ...state, phase: 'open' } : state;
         case 'CLOSE':
-            return state.phase === 'open' ? { ...state, phase: 'closing' } : state;
+            return state.phase === 'open' ? { ...state, phase: 'closing_start' } : state;
+        case 'CLOSE_PROMOTE':
+            return state.phase === 'closing_start' ? { ...state, phase: 'closing' } : state;
         case 'CLOSE_DONE':
             return state.phase === 'closing' ? { ...state, phase: 'closed' } : state;
         default:
@@ -52,7 +58,7 @@ const reducer = (state: ModalState, action: ModalAction): ModalState => {
 const Modal: React.FC<ModalProps> = ({
     id,
     closeable = true,
-    center = true,
+    center = false,
     children,
     onOpenClose,
     handler
@@ -75,23 +81,42 @@ const Modal: React.FC<ModalProps> = ({
         };
     }, [sectionId, systemDispatch]);
 
+    // Promotion frame from opening_start -> opening (allows initial layout commit without transition)
+    useEffect(() => {
+        if (state.phase === 'opening_start') {
+            const raf = requestAnimationFrame(() => {
+                dispatch({ type: 'OPEN_PROMOTE' });
+            });
+            return () => cancelAnimationFrame(raf);
+        } else if (state.phase === 'closing_start') {
+            const raf = requestAnimationFrame(() => {
+                dispatch({ type: 'CLOSE_PROMOTE' });
+            });
+            return () => cancelAnimationFrame(raf);
+        }
+    }, [state.phase]);
+
     // Avança fases somente após término da animação/transição (fallback timeout)
     useEffect(() => {
+        // somente durante transições reais
+        if (state.phase !== 'opening' && state.phase !== 'closing')
+             return;
+
         const el = modalRef.current;
-        if (!el) return;
-        if (state.phase !== 'opening' && state.phase !== 'closing') return;
+        if (!el) 
+            return;
 
         const handleEnd = () => {
-            if (state.phase === 'opening') dispatch({ type: 'OPEN_DONE' });
-            else if (state.phase === 'closing') dispatch({ type: 'CLOSE_DONE' });
+            if (state.phase === 'opening') 
+                dispatch({ type: 'OPEN_DONE' });
+            else if (state.phase === 'closing') 
+                dispatch({ type: 'CLOSE_DONE' });
         };
 
-        el.addEventListener('animationend', handleEnd);
         el.addEventListener('transitionend', handleEnd);
-        const timeoutId = setTimeout(handleEnd, 350); // fallback ligeiramente > duração declarada
+        const timeoutId = setTimeout(handleEnd, ModalClasses.TimeOut);
 
         return () => {
-            el.removeEventListener('animationend', handleEnd);
             el.removeEventListener('transitionend', handleEnd);
             clearTimeout(timeoutId);
         };
@@ -103,11 +128,13 @@ const Modal: React.FC<ModalProps> = ({
         const curr = state.phase;
         if (prev !== curr) {
             if (curr === 'open') {
-                if (onOpenClose) onOpenClose(true);
+                if (onOpenClose)
+                     onOpenClose(true);
                 systemDispatch({ type: 'MODAL_OPENED', id: sectionId });
             }
             if (curr === 'closed') {
-                if (onOpenClose) onOpenClose(false);
+                if (onOpenClose) 
+                    onOpenClose(false);
                 systemDispatch({ type: 'MODAL_CLOSED', id: sectionId });
             }
             lastPhaseRef.current = curr;
@@ -127,8 +154,10 @@ const Modal: React.FC<ModalProps> = ({
     const classes = [
         ModalClasses.Modal.Base,
         state.phase === 'closed' ? ModalClasses.Modal.Closed :
+        state.phase === 'opening_start' ? ModalClasses.Modal.OpeningStart :
         state.phase === 'opening' ? ModalClasses.Modal.Opening :
         state.phase === 'open' ? ModalClasses.Modal.Open :
+        state.phase === 'closing_start' ? ModalClasses.Modal.ClosingStart :
         state.phase === 'closing' ? ModalClasses.Modal.Closing :
         null,
         center ? 'ya-modal-center' : null

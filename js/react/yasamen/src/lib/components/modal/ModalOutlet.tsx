@@ -2,16 +2,17 @@ import React, { useEffect } from "react";
 import { useModalSystem } from "./modal-context";
 import { ModalClasses } from "./modal-classes";
 import { SectionOutlet } from "../outlet";
-import type { ModalItem } from "./modal";
-import { ModalBackdrop } from './ModalBackdrop';
+import type { ModalItem } from "./Modal";
+import { ModalBackdrop, type BackdropAction } from './ModalBackdrop';
 
 export interface ModalSystemState {
     isOpen: boolean; // outlet visível
-    backdropPhase: 'closed' | 'opening' | 'open' | 'closing';
+    backdropDispatch?: React.Dispatch<BackdropAction>; // dispatch do backdrop
     items: ModalItem[]; // modais registrados (sempre montados)
     openedItemsIds: string[]; // stack de modais abertos (topo = último)
     actionQueue: ModalSystemAction[]; // fila de ações internas e high-level
     processQueue: boolean; // se true, deve processar a fila
+    effectQueue: EffectCommand[]; // fila de comandos de efeito a serem processados
 }
 
 export type ModalSystemAction =
@@ -19,6 +20,7 @@ export type ModalSystemAction =
     | { type: 'UNREGISTER'; item: ModalItem }
     | { type: 'OPEN'; id: string } // high-level solicitar abertura
     | { type: 'CLOSE'; id: string } // high-level solicitar fechamento
+    | { type: 'SET_BACKDROP_DISPATCH'; dispatch?: React.Dispatch<BackdropAction>}
     | { type: 'BACKDROP_ACTION' }
     | { type: 'OPEN_OUTLET' }
     | { type: 'CLOSE_OUTLET' }
@@ -27,6 +29,7 @@ export type ModalSystemAction =
     | { type: 'OPEN_MODAL'; id: string }
     | { type: 'CLOSE_MODAL'; id: string }
     | { type: 'PROCESS_QUEUE'; processNext?: boolean }
+    | { type: 'EFFECT_PROCESSED' }
     | { type: 'MODAL_OPENED'; id: string } // evento (futuro trigger por animação)
     | { type: 'MODAL_CLOSED'; id: string } // evento (futuro trigger por animação)
     | { type: 'BACKDROP_OPENED' }
@@ -34,7 +37,14 @@ export type ModalSystemAction =
     | { type: 'OUTLET_SHOWN' }
     | { type: 'OUTLET_HIDDEN' };
 
+export interface EffectCommand {
+    execute: () => void;
+}
+
 export const ModalSystemReducer = (state: ModalSystemState, action: ModalSystemAction): ModalSystemState => {
+    if (import.meta.env.MODE !== 'production') {
+        console.log('[ModalSystemReducer]', action.type, action);
+    }
     switch (action.type) {
         case "REGISTER": {
 
@@ -80,10 +90,11 @@ export const ModalSystemReducer = (state: ModalSystemState, action: ModalSystemA
             if (state.openedItemsIds.length > 0) {
                 return {
                     ...state,
+                    openedItemsIds: [...state.openedItemsIds, action.id],
                     actionQueue: [
                         ...state.actionQueue,
-                        { type: "CLOSE", id: state.openedItemsIds[state.openedItemsIds.length - 1] },
-                        { type: "OPEN", id: action.id }
+                        { type: "CLOSE_MODAL", id: state.openedItemsIds[state.openedItemsIds.length - 1] },
+                        { type: "OPEN_MODAL", id: action.id }
                     ],
                     processQueue: true,
                 };
@@ -92,6 +103,7 @@ export const ModalSystemReducer = (state: ModalSystemState, action: ModalSystemA
                 // senão, enfilera abertura do outlet, do backdrop e do modal
                 return {
                     ...state,
+                    openedItemsIds: [action.id],
                     actionQueue: [
                         ...state.actionQueue,
                         { type: "OPEN_OUTLET" },
@@ -107,18 +119,20 @@ export const ModalSystemReducer = (state: ModalSystemState, action: ModalSystemA
             if (state.openedItemsIds.length === 0)
                 return state;
 
-            // se não for o último aberto então só remove da lista de abertos
-            if (state.openedItemsIds[state.openedItemsIds.length - 1] !== action.id) {
+            const lastId = state.openedItemsIds[state.openedItemsIds.length - 1];
+
+            if (lastId !== action.id)
                 return {
                     ...state,
                     openedItemsIds: state.openedItemsIds.filter(id => id !== action.id),
+                    processQueue: true,
                 };
-            }
             
             // se houver mais de um aberto, enfileira o fechamento do atual e a reabertura do anterior
             if (state.openedItemsIds.length > 1) {
                 return {
                     ...state,
+                    openedItemsIds: state.openedItemsIds.filter(id => id !== action.id),
                     actionQueue: [
                         ...state.actionQueue,
                         { type: "CLOSE_MODAL", id: action.id },
@@ -131,6 +145,7 @@ export const ModalSystemReducer = (state: ModalSystemState, action: ModalSystemA
                 // senão, enfilera o fechamento do modal, do backdrop e do outlet
                 return {
                     ...state,
+                    openedItemsIds: state.openedItemsIds.filter(id => id !== action.id),
                     actionQueue: [
                         ...state.actionQueue,
                         { type: "CLOSE_MODAL", id: action.id },
@@ -141,6 +156,12 @@ export const ModalSystemReducer = (state: ModalSystemState, action: ModalSystemA
                 };
             }
         }
+        case 'SET_BACKDROP_DISPATCH': {
+            return {
+                ...state,
+                backdropDispatch: action.dispatch,
+            };
+        }
         case 'BACKDROP_ACTION': {
 
             // verifica se há algum aberto
@@ -150,19 +171,10 @@ export const ModalSystemReducer = (state: ModalSystemState, action: ModalSystemA
             // se o último aberto for closeable, enfileira o fechamento
             const lastId = state.openedItemsIds[state.openedItemsIds.length - 1];
             const lastItem = state.items.find(i => i.id === lastId);
-            if (lastItem) {
-                // aqui seria necessário verificar a propriedade closeable do modal
-                return {
-                    ...state,
-                    actionQueue: [
-                        ...state.actionQueue,
-                        { type: "CLOSE", id: lastId }
-                    ],
-                    processQueue: true,
-                };
-            }
+            if (!lastItem)
+                return state;
 
-            return state;
+            return ModalSystemReducer(state, { type: 'CLOSE', id: lastId });
         }
         // Internas de efeito imediato (sem animação ainda)
         case 'OPEN_OUTLET': {
@@ -178,56 +190,76 @@ export const ModalSystemReducer = (state: ModalSystemState, action: ModalSystemA
             return { ...state, isOpen: false };
         }
         case 'OPEN_BACKDROP': {
-            if (state.backdropPhase !== 'closed')
-                 return state;
+            if (state.backdropDispatch)
+            {
+                const dispatch = state.backdropDispatch;
+                const command = {
+                    execute: () => {
+                        dispatch({ type: 'OPEN' });
+                    }
+                };
 
-            return { ...state, backdropPhase: 'opening' };
+                return {
+                    ...state,
+                    effectQueue: [...state.effectQueue, command ]
+                };
+            }
+            return state;
         }
         case 'CLOSE_BACKDROP': {
-            if (state.backdropPhase === 'closed') 
-                return state;
+            if (state.backdropDispatch) {
+                const dispatch = state.backdropDispatch;
+                const command = {
+                    execute: () => {
+                        dispatch({ type: 'CLOSE' });
+                    }
+                };
 
-            return { ...state, backdropPhase: 'closing' };
+                return {
+                    ...state,
+                    effectQueue: [...state.effectQueue, command ]
+                };
+            }
+            return state;
         }
         case 'OPEN_MODAL': {
-            // adiciona id ao topo se ainda não for o topo
-            const top = state.openedItemsIds[state.openedItemsIds.length - 1];
 
-            if (top === action.id) 
-                return state; // já é topo
+            const item = state.items.find(i => i.id === action.id);
+            if (!item) 
+                return state;
 
-            // dispara dispatch local OPEN
-            state.items.find(i => i.id === action.id)?.dispatch({ type: 'OPEN' });
+            const command = {
+                execute: () => {
+                    item.dispatch({ type: 'OPEN' });
+                }
+            };
 
             return { 
                 ...state,
-                 openedItemsIds: [...state.openedItemsIds, action.id] 
+                effectQueue: [...state.effectQueue, command ],
+                processQueue: false
             };
         }
         case 'CLOSE_MODAL': {
 
-            const top = state.openedItemsIds[state.openedItemsIds.length - 1];
-            if (!top) 
+            const item = state.items.find(i => i.id === action.id);
+            if (!item) 
                 return state;
 
-            // se id não for topo, apenas remove da stack
-            if (top !== action.id) {
-                return {
-                    ...state,
-                    openedItemsIds: state.openedItemsIds.filter(id => id !== action.id)
-                };
-            }
-
-            // dispara dispatch local CLOSE
-            state.items.find(i => i.id === action.id)?.dispatch({ type: 'CLOSE' });
+            const command = {
+                execute: () => {
+                    item.dispatch({ type: 'CLOSE' });
+                }
+            };
 
             // Mantém id até animação terminar (evento futuro MODAL_CLOSED vai tirar)
-            return state;
+            return {
+                ...state,
+                effectQueue: [...state.effectQueue, command ],
+                processQueue: false
+            }
         }
-        // Eventos (placeholder para futuro processamento de animação)
         case 'MODAL_OPENED': {
-            
-            // processar próxima acão da fila, se houver
             if (state.actionQueue.length === 0)
                 return state;   
             return {
@@ -236,26 +268,32 @@ export const ModalSystemReducer = (state: ModalSystemState, action: ModalSystemA
             }
         }
         case 'MODAL_CLOSED': {
-            // remover da stack ao final real da animação
             return {
                 ...state,
-                openedItemsIds: state.openedItemsIds.filter(id => id !== action.id),
                 processQueue: true,
             };
         }
         case 'BACKDROP_OPENED': {
-            if (state.backdropPhase === 'opening') {
-                return { ...state, backdropPhase: 'open', processQueue: state.actionQueue.length > 0 };
-            }
-            return state;
+            return {
+                ...state,
+                processQueue: state.actionQueue.length > 0
+            };
         }
         case 'BACKDROP_CLOSED': {
-            if (state.backdropPhase === 'closing') {
-                return { ...state, backdropPhase: 'closed', processQueue: state.actionQueue.length > 0 };
-            }
-            return state;
+            return {
+                ...state,
+                processQueue: state.actionQueue.length > 0
+            };
         }
-        case 'OUTLET_SHOWN':
+        case 'OUTLET_SHOWN': {
+            // processar próxima acão da fila, se houver
+            if (state.actionQueue.length === 0)
+                return state;
+            return {
+                ...state,
+                processQueue: true,
+            };
+        }
         case 'OUTLET_HIDDEN': {
             // processar próxima acão da fila, se houver
             if (state.actionQueue.length === 0)
@@ -280,9 +318,19 @@ export const ModalSystemReducer = (state: ModalSystemState, action: ModalSystemA
                 ...state, 
                 actionQueue: rest,
                 processQueue: action.processNext ?? false
-            }, next as ModalSystemAction);
+            }, next);
 
             return stateAfter;
+        }
+        case 'EFFECT_PROCESSED': {
+            if (state.effectQueue.length === 0)
+                return state;
+
+            const [, ...rest] = state.effectQueue;
+            return {
+                ...state,
+                effectQueue: rest
+            };
         }
         default:
             return state;
@@ -305,13 +353,44 @@ export const ModalOutlet: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
     const rest2: React.HTMLAttributes<HTMLDivElement> = { ...rest, 'aria-hidden': state.isOpen ? undefined : true };
 
     useEffect(() => {
-        // após abrir ou fechar o outlet, dispara evento correspondente
-        if (state.isOpen) {
-            dispatch({ type: 'OUTLET_SHOWN' });
-        } else {
-            dispatch({ type: 'OUTLET_HIDDEN' });
-        }
+        // Dispara evento após o próximo frame (DOM já atualizado e classes aplicadas)
+        const raf = requestAnimationFrame(() => {
+            dispatch({ type: state.isOpen ? 'OUTLET_SHOWN' : 'OUTLET_HIDDEN' });
+        });
+        return () => cancelAnimationFrame(raf);
     }, [state.isOpen, dispatch]);
+
+    // Processa uma ação da fila por render até esvaziar
+    useEffect(() => {
+        if (state.processQueue === true) {
+            dispatch({ type: 'PROCESS_QUEUE' });
+        }
+    }, [state.processQueue, dispatch]);
+
+    // Processa commandos de efeito (animações) um por render até esvaziar
+    useEffect(() => {
+        if (state.effectQueue.length > 0) {
+            state.effectQueue[0].execute();
+            dispatch({ type: 'EFFECT_PROCESSED' });
+        }
+    }, [state.effectQueue, dispatch]);
+
+    // Listener para tecla ESC fechando modal topo (equivalente a BACKDROP_ACTION)
+    useEffect(() => {
+        if (state.openedItemsIds.length === 0)
+             return;
+
+        const onKey = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                dispatch({ type: 'BACKDROP_ACTION' });
+            }
+        };
+
+        window.addEventListener('keydown', onKey);
+
+        return () => window.removeEventListener('keydown', onKey);
+        
+    }, [state.openedItemsIds.length, dispatch]);
 
     return (
         <div className={outletClasses} {...rest2}>

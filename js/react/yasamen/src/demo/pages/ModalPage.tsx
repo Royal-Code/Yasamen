@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '../../lib/components/button';
 import { Sizes, Themes } from '../../lib/components/commons';
-import Modal, { type ModalHandler } from '../../lib/components/modal/modal';
+import Modal, { type ModalHandler } from '../../lib/components/modal/Modal';
 
 // Conteúdo do Modal B
 const ModalBContent: React.FC<{ onClose: () => void }> = ({ onClose }) => (
@@ -53,16 +53,16 @@ const ModalPage: React.FC = () => {
       </div>
 
       {/* Modais montados (sempre presentes, controlados por handlers) */}
-      <Modal id="demo-modal-a" closeable handler={modalAHandler.current} center>
+      <Modal id="demo-modal-a" handler={modalAHandler.current}>
         <ModalAContent
           onClose={() => modalAHandler.current.close()}
           openB={() => modalBHandler.current.open()}
         />
       </Modal>
-      <Modal id="demo-modal-b" closeable handler={modalBHandler.current} center>
+      <Modal id="demo-modal-b" closeable={false} handler={modalBHandler.current} center>
         <ModalBContent onClose={() => modalBHandler.current.close()} />
       </Modal>
-      <Modal id="demo-modal-c" closeable handler={modalCHandler.current} center>
+      <Modal id="demo-modal-c" handler={modalCHandler.current} center>
         <ModalCContent onClose={() => modalCHandler.current.close()} />
       </Modal>
     </div>

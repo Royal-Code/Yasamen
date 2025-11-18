@@ -2,7 +2,7 @@
 
 export type IconRenderer = (
     className: string | undefined,
-    ...rest: React.HTMLAttributes<HTMLElement>[]
+    rest: React.HTMLAttributes<HTMLElement>
 ) => React.ReactElement;
 
 
