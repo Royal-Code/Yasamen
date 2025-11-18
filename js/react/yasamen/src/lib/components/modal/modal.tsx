@@ -29,11 +29,13 @@ type ModalAction =
     | { type: 'OPEN_DONE' }
     | { type: 'CLOSE' }
     | { type: 'CLOSE_PROMOTE' }
-    | { type: 'CLOSE_DONE' };
+    | { type: 'CLOSE_DONE' }
+    | { type: 'TRANSITION_END' };
 
 export interface ModalItem {
     id: string;
     dispatch: React.Dispatch<ModalAction>;
+    closeable: boolean;
 }
 
 const reducer = (state: ModalState, action: ModalAction): ModalState => {
@@ -50,6 +52,13 @@ const reducer = (state: ModalState, action: ModalAction): ModalState => {
             return state.phase === 'closing_start' ? { ...state, phase: 'closing' } : state;
         case 'CLOSE_DONE':
             return state.phase === 'closing' ? { ...state, phase: 'closed' } : state;
+        case 'TRANSITION_END':
+            if (state.phase === 'opening') {
+                return { ...state, phase: 'open' };
+            } else if (state.phase === 'closing') {
+                return { ...state, phase: 'closed' };
+            }
+            return state;
         default:
             return state;
     }
@@ -75,11 +84,13 @@ const Modal: React.FC<ModalProps> = ({
 
     // Registro no sistema global
     useEffect(() => {
-        systemDispatch({ type: "REGISTER", item: { id: sectionId, dispatch } });
+        systemDispatch({ type: "REGISTER", item: { id: sectionId, dispatch, closeable } });
         return () => {
-            systemDispatch({ type: "UNREGISTER", item: { id: sectionId, dispatch } });
+            systemDispatch({ type: "UNREGISTER", item: { id: sectionId, dispatch, closeable } });
         };
-    }, [sectionId, systemDispatch]);
+    }, [sectionId, systemDispatch, closeable]);
+    // Removido listener imperativo: o elemento é portalizado via SectionContent e o ref
+    // ainda não está disponível quando este efeito roda. Usamos agora onTransitionEnd no JSX.
 
     // Promotion frame from opening_start -> opening (allows initial layout commit without transition)
     useEffect(() => {
@@ -102,22 +113,17 @@ const Modal: React.FC<ModalProps> = ({
         if (state.phase !== 'opening' && state.phase !== 'closing')
              return;
 
-        const el = modalRef.current;
-        if (!el) 
-            return;
-
-        const handleEnd = () => {
-            if (state.phase === 'opening') 
+        const complete = () => {
+            if (state.phase === 'opening') {
                 dispatch({ type: 'OPEN_DONE' });
-            else if (state.phase === 'closing') 
+            } else if (state.phase === 'closing') {
                 dispatch({ type: 'CLOSE_DONE' });
+            }
         };
 
-        el.addEventListener('transitionend', handleEnd);
-        const timeoutId = setTimeout(handleEnd, ModalClasses.TimeOut);
+        const timeoutId = setTimeout(complete, ModalClasses.TimeOut);
 
         return () => {
-            el.removeEventListener('transitionend', handleEnd);
             clearTimeout(timeoutId);
         };
     }, [state.phase]);
@@ -170,6 +176,13 @@ const Modal: React.FC<ModalProps> = ({
                 className={classes}
                 role="dialog"
                 aria-modal="true"
+                onTransitionEnd={(e) => {
+                    if (e.target !== e.currentTarget)
+                         return;
+                    if (state.phase === 'opening' || state.phase === 'closing') {
+                        dispatch({ type: 'TRANSITION_END' });
+                    }
+                }}
             >
                 {children}
             </div>

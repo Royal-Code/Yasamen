@@ -20,5 +20,5 @@ export const ModalClasses = {
         ClosingStart: 'ya-modal-closing-start',
         Closing: 'ya-modal-closing'
     },
-    TimeOut: 750
+    TimeOut: 275
 } as const;

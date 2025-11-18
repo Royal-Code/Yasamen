@@ -168,12 +168,12 @@ export const ModalSystemReducer = (state: ModalSystemState, action: ModalSystemA
             if (state.openedItemsIds.length === 0)
                 return state;
 
-            // se o último aberto for closeable, enfileira o fechamento
             const lastId = state.openedItemsIds[state.openedItemsIds.length - 1];
             const lastItem = state.items.find(i => i.id === lastId);
-            if (!lastItem)
+            if (!lastItem || !lastItem.closeable)
                 return state;
 
+            // se o último aberto for closeable, enfileira o fechamento
             return ModalSystemReducer(state, { type: 'CLOSE', id: lastId });
         }
         // Internas de efeito imediato (sem animação ainda)
@@ -252,7 +252,6 @@ export const ModalSystemReducer = (state: ModalSystemState, action: ModalSystemA
                 }
             };
 
-            // Mantém id até animação terminar (evento futuro MODAL_CLOSED vai tirar)
             return {
                 ...state,
                 effectQueue: [...state.effectQueue, command ],
@@ -340,7 +339,7 @@ export const ModalSystemReducer = (state: ModalSystemState, action: ModalSystemA
 export const ModalOutlet: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
     ...rest
 }) => {
-    const { state, dispatch } = useModalSystem();
+    const { state, } = useModalSystem();
 
     const outletClasses = [
         ModalClasses.Outlet.Base,
@@ -351,6 +350,21 @@ export const ModalOutlet: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
 
     // adiciona aria-hidden booleano quando nenhum modal está aberto (tipagem Booleanish)
     const rest2: React.HTMLAttributes<HTMLDivElement> = { ...rest, 'aria-hidden': state.isOpen ? undefined : true };
+
+    return (
+        <div className={outletClasses} {...rest2}>
+            {Object.values(state.items).map(item => (
+                <SectionOutlet id={item.id} key={item.id} />
+            ))}
+            <ModalBackdrop />
+            <ModalOutletEffects />
+        </div>
+    );
+};
+
+const ModalOutletEffects: React.FC = () => {
+
+    const { state, dispatch } = useModalSystem();
 
     useEffect(() => {
         // Dispara evento após o próximo frame (DOM já atualizado e classes aplicadas)
@@ -392,12 +406,5 @@ export const ModalOutlet: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
         
     }, [state.openedItemsIds.length, dispatch]);
 
-    return (
-        <div className={outletClasses} {...rest2}>
-            {Object.values(state.items).map(item => (
-                <SectionOutlet id={item.id} key={item.id} />
-            ))}
-            <ModalBackdrop />
-        </div>
-    );
-};
+    return null;
+}

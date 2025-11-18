@@ -15,7 +15,8 @@ export type BackdropAction =
     | { type: 'OPEN_PROMOTE' }
     | { type: 'OPEN_DONE' }
     | { type: 'CLOSE' }
-    | { type: 'CLOSE_DONE' };
+    | { type: 'CLOSE_DONE' }
+    | { type: 'TRANSITION_END' };
 
 
 const reducer = (state: BackdropState, action: BackdropAction): BackdropState => {
@@ -30,6 +31,13 @@ const reducer = (state: BackdropState, action: BackdropAction): BackdropState =>
             return state.phase === 'open' ? { ...state, phase: 'closing' } : state;
         case 'CLOSE_DONE':
             return state.phase === 'closing' ? { ...state, phase: 'closed' } : state;
+        case 'TRANSITION_END':
+            if (state.phase === 'opening') {
+                return { ...state, phase: 'open' }
+            } else if (state.phase === 'closing') {
+                return { ...state, phase: 'closed' };
+            }
+            return state;
         default:
             return state;
     }
@@ -64,6 +72,8 @@ export const ModalBackdrop: React.FC<ModalBackdropProps> = ({
         };
     }, [systemDispatch]);
 
+    // Removido listener imperativo; usamos onTransitionEnd diretamente no elemento.
+
     // Promotion frame opening_start -> opening
     useEffect(() => {
         if (state.phase === 'opening_start') {
@@ -74,29 +84,19 @@ export const ModalBackdrop: React.FC<ModalBackdropProps> = ({
         }
     }, [state.phase]);
 
-    // Ao entrar em 'opening' ou 'closing', aguarda fim da transição (transitionend / animationend) para disparar evento.
     useEffect(() => {
         // fases que não precisam aguardar transição
         if (state.phase !== 'opening' && state.phase !== 'closing')
              return;
-
-        const el = ref.current;
-        if (!el) 
-            return;
-
-        const handleEnd = () => {
+        const complete = () => {
             if (state.phase === 'opening') {
                 dispatch({ type: 'OPEN_DONE' });
             } else if (state.phase === 'closing') {
                 dispatch({ type: 'CLOSE_DONE' });
             }
         };
-
-        el.addEventListener('transitionend', handleEnd);
-        const timeoutId = setTimeout(handleEnd, ModalClasses.TimeOut);
-
+        const timeoutId = setTimeout(complete, ModalClasses.TimeOut);
         return () => {
-            el.removeEventListener('transitionend', handleEnd);
             clearTimeout(timeoutId);
         };
     }, [state.phase]);
@@ -120,6 +120,13 @@ export const ModalBackdrop: React.FC<ModalBackdropProps> = ({
             ref={ref}
             className={classes}
             onClick={() => { systemDispatch({ type: 'BACKDROP_ACTION' }); }}
+            onTransitionEnd={(e) => {
+                if (e.target !== e.currentTarget || e.propertyName !== 'opacity')
+                    return;
+                if (state.phase === 'opening' || state.phase === 'closing') {
+                    dispatch({ type: 'TRANSITION_END' });
+                }
+            }}
             {...rest}
         />
     );
