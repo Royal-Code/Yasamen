@@ -12,9 +12,6 @@
 .ya-modal-backdrop-open {
     @apply block fixed top-0 left-0 w-full h-full opacity-100;
 }
-.ya-modal-backdrop-closing-start {
-    @apply block fixed top-0 left-0 w-full h-full opacity-100;
-}
 .ya-modal-backdrop-closing {
     @apply block fixed top-0 left-0 w-full h-full opacity-0;
 }
@@ -53,7 +50,7 @@
 /* Centralização */
 .ya-modal-center { @apply items-center justify-center; }
 .ya-modal-center:not(.ya-modal-closed) {
-    @apply flex;
+    @apply flex h-full;
 }
 
 /* Modal Conteúdo interno */
