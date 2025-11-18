@@ -1,12 +1,12 @@
 import React, { createContext, useContext } from "react";
-import type { ModalState as FullState, ModalAction } from "./types";
+import type { ModalSystemAction, ModalSystemState } from "./ModalOutlet";
 
-interface ModalDispatch {
-    dispatch: React.Dispatch<ModalAction>;
-    state: FullState;
+interface ModalSystemDispatch {
+    state: ModalSystemState;
+    dispatch: React.Dispatch<ModalSystemAction>;
 }
 
-export const ModalContext = createContext<ModalDispatch | null>(null);
+export const ModalContext = createContext<ModalSystemDispatch | null>(null);
 
 export function useModalSystem() {
     const ctx = useContext(ModalContext);

@@ -1,28 +1,31 @@
 ﻿
-/* Backdrop */
+/* Backdrop (phases) */
 .ya-modal-backdrop { @apply fixed inset-0 bg-black/20 opacity-0 pointer-events-none transition-default z-backdrop; }
-.ya-modal-backdrop.ya-modal-backdrop-shown { @apply opacity-100 pointer-events-auto; }
-.ya-modal-backdrop.ya-modal-backdrop-hidden { @apply opacity-0 pointer-events-none; }
+.ya-modal-backdrop-opening { @apply opacity-100 pointer-events-auto; animation: ya-backdrop-fade-in 0.25s ease forwards; }
+.ya-modal-backdrop-open { @apply opacity-100 pointer-events-auto; }
+.ya-modal-backdrop-closing { @apply opacity-0 pointer-events-none; animation: ya-backdrop-fade-out 0.25s ease forwards; }
 
-/* Outlet (não deve bloquear interação quando invisível) */
+/* Outlet */
 .ya-modal-outlet { @apply fixed inset-0 w-full h-full overflow-y-auto overflow-x-hidden outline-0 z-modal pointer-events-none hidden; }
-.ya-modal-outlet.ya-modal-outlet-show { @apply block pointer-events-auto; }
+.ya-modal-outlet-open { @apply block pointer-events-auto; }
 
-/* Modal base sempre montado, mas fechado não ocupa layout */
+/* Modal base (phases) */
 .ya-modal { @apply hidden relative w-auto m-auto opacity-0 pointer-events-none transition-default z-modal; }
-.ya-modal-idle { @apply hidden opacity-0 pointer-events-none; }
+.ya-modal-closed { @apply hidden opacity-0 pointer-events-none; }
 
 /* Conteúdo interno */
 .ya-modal > * { @apply transition-default; }
 
-/* Estados visuais */
-.ya-modal-show { @apply block opacity-100 pointer-events-auto; }
+/* Modal phases */
+.ya-modal-open { @apply block opacity-100 pointer-events-auto; }
 .ya-modal-opening { @apply block; animation: ya-modal-open 0.25s ease forwards; }
 .ya-modal-closing { @apply block; animation: ya-modal-close 0.25s ease forwards; }
 
 /* Centralização opcional */
-.ya-modal.ya-modal-show.ya-modal-center { @apply flex items-center justify-center; }
+.ya-modal.ya-modal-open.ya-modal-center { @apply flex items-center justify-center; }
 
 /* Keyframes */
 @keyframes ya-modal-open { from { opacity:0; transform:translateY(-50px); } to { opacity:1; transform:translateY(0); } }
 @keyframes ya-modal-close { from { opacity:1; transform:translateY(0); } to { opacity:0; transform:translateY(-50px); } }
+@keyframes ya-backdrop-fade-in { from { opacity:0; } to { opacity:1; } }
+@keyframes ya-backdrop-fade-out { from { opacity:1; } to { opacity:0; } }

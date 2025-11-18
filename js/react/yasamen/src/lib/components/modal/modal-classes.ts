@@ -2,18 +2,19 @@
 export const ModalClasses = {
     Outlet: { 
         Base: 'ya-modal-outlet',
-        Show: 'ya-modal-outlet-show'
+        Open: 'ya-modal-outlet-open'
     },
     Backdrop: {
         Base: 'ya-modal-backdrop',
-        Shown: 'ya-modal-backdrop-shown',
-        Hidden: 'ya-modal-backdrop-hidden'
+        Opening: 'ya-modal-backdrop-opening',
+        Open: 'ya-modal-backdrop-open',
+        Closing: 'ya-modal-backdrop-closing'
     },
-    Window: {
+    Modal: {
         Base: 'ya-modal',
-        Idle: 'ya-modal-idle',
-        Show: 'ya-modal-show',
+        Closed: 'ya-modal-closed',
         Opening: 'ya-modal-opening',
+        Open: 'ya-modal-open',
         Closing: 'ya-modal-closing'
     }
 } as const;
