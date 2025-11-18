@@ -94,4 +94,5 @@ public partial class OffCanvas
         if (Closeable is null || Closeable.Value)
             await Hide();
     }
+	
 }

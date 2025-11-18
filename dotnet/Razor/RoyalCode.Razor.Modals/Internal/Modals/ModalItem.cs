@@ -17,9 +17,9 @@ public sealed class ModalItem
     /// Creates a new instance of <see cref="ModalItem"/>.
     /// </summary>
     /// <param name="performAsync">A callback to perform when an action is requested on the modal.</param>
-    public ModalItem(Func<ModalAction, Task> performAsync)
+    public ModalItem()
     {
-        PerformAsync = performAsync;
+        
     }
 
     /// <summary>
@@ -30,7 +30,7 @@ public sealed class ModalItem
     ///     The set accessor is internal to allow the <see cref="ModalService"/> to control the state.
     /// </para>
     /// </summary>
-    public ModalPhase Phase { get; internal set; } = ModalPhase.Closed;
+    public TransitionPhases Phase { get; internal set; } = TransitionPhases.Closed;
 
     /// <summary>
     /// Determines whether the modal can be closed by clicking the backdrop or pressing the escape key.
@@ -40,5 +40,5 @@ public sealed class ModalItem
     /// <summary>
     /// Callback to perform when an action is requested on the modal.
     /// </summary>
-    public Func<ModalAction, Task> PerformAsync { get; }
+    public Func<object, Task> PerformAsync { get; }
 }

@@ -7,7 +7,7 @@
 	{
 		<SectionOutlet SectionId="item" @key="item" />
 	}
-	<Backdrop @ref="backdrop" />
+	<ModalBackdrop @ref="backdrop" />
 </div>
 
 @code {
@@ -23,8 +23,7 @@
 	};
 
 	private bool isOpen = false;
-	private Backdrop? backdrop;
-	private ModalAction? currentAction;
+	private ModalBackdrop? backdrop;
 
 	private IReadOnlyDictionary<string, object> Attributes => ModalService.IsOpen ? openedAttributes : closedAttributes;
 
@@ -46,26 +45,9 @@
 	/// </summary>
 	internal new void StateHasChanged() => base.StateHasChanged();
 
-	internal Task PerformAsync(ModalAction action)
-	{
-		return InvokeAsync(async () => {
-
-			if (currentAction is not null)
-				await currentAction.OnComplete();
-
-			currentAction = action;
-			isOpen = action.Type == ModalActionType.Open;
-			StateHasChanged();
-		});
-	}
-
+	
 	protected override async Task OnAfterRenderAsync(bool firstRender)
 	{
-		if (currentAction is not null && backdrop is not null)
-		{
-			var action = currentAction;
-			currentAction = null;
-			await backdrop.PerformAsync(action);
-		}
+		
 	}
 }

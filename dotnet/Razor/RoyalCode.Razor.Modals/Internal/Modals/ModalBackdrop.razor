@@ -1,0 +1,42 @@
+﻿@inject ModalService ModalService
+
+<div class="@Classes" id="ya-modal-backdrop" tabindex="-1" @onclick="BackdropClickHandler" @ontransitionend="TransitionEndHandler"></div>
+
+@code {
+	private string Classes => "ya-modal-backdrop"
+		.AddClass(phase == TransitionPhases.OpeningStart, "ya-modal-backdrop-opening-start")
+		.AddClass(phase == TransitionPhases.Opening, "ya-modal-backdrop-showing")
+		.AddClass(phase == TransitionPhases.Opened, "ya-modal-backdrop-opened")
+		.AddClass(phase == TransitionPhases.ClosingStart, "ya-modal-backdrop-closing-start")
+		.AddClass(phase == TransitionPhases.Closing, "ya-modal-backdrop-hiding")
+		.AddClass(phase != TransitionPhases.Closed, "ya-modal-visible");
+
+	private TransitionPhases phase;
+
+	private Task BackdropClickHandler(MouseEventArgs args) => ModalService.BackdropActionAsync();
+
+	private async Task TransitionEndHandler()
+	{
+		
+		if (phase == TransitionPhases.Closing)
+			await InvokeAsync(async () =>
+			{
+				phase = TransitionPhases.Closed;
+				StateHasChanged();
+			});
+	}
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		if (phase == TransitionPhases.Opening)
+		{
+			await InvokeAsync(async () =>
+			{
+				await Task.Delay(10);
+				phase = TransitionPhases.Opened;
+				StateHasChanged();
+				
+			});
+		}
+	}
+}

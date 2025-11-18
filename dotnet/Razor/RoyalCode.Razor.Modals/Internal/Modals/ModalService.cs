@@ -79,39 +79,6 @@ public sealed class ModalService
 
         TaskCompletionSource tcs = new();
 
-        var openAction = new ModalAction()
-        {
-            Type = ModalActionType.Open,
-            OnComplete = () =>
-            {
-                openedItems.Add(item);
-                tcs.SetResult();
-                return Task.CompletedTask;
-            }
-        };
-
-        var openedItem = openedItems.LastOrDefault();
-        if (openedItem is null)
-        {
-            // se não houver nenhum aberto, abre o backdrop primeiro
-            var openOutletAction = new ModalAction()
-            {
-                Type = ModalActionType.Open,
-                OnComplete= () => item.PerformAsync(openAction)
-            };
-
-            await Outlet.PerformAsync(openOutletAction);
-        }
-        else
-        {
-            var closeLastAction = new ModalAction()
-            {
-                Type = ModalActionType.Close,
-                OnComplete = () => item.PerformAsync(openAction)
-            };
-
-            await openedItem.PerformAsync(closeLastAction);
-        }
     }
 
     /// <summary>
@@ -143,41 +110,6 @@ public sealed class ModalService
             return;
 
 
-        Func<Task> onClosedAction;
-
-        var nextOpenedItem = openedItems.LastOrDefault();
-        if (nextOpenedItem is not null)
-        {
-            onClosedAction = async () =>
-            {
-                var openNextAction = new ModalAction()
-                {
-                    Type = ModalActionType.Open,
-                    OnComplete = () => Task.CompletedTask
-                };
-                await nextOpenedItem.PerformAsync(openNextAction);
-            };
-        }
-        else
-        {
-            onClosedAction = async () =>
-            {
-                var closeOutletAction = new ModalAction()
-                {
-                    Type = ModalActionType.Close,
-                    OnComplete = () => Task.CompletedTask
-                };
-                await Outlet.PerformAsync(closeOutletAction);
-            };
-        }
-
-        var closeAction = new ModalAction()
-        {
-            Type = ModalActionType.Close,
-            OnComplete = onClosedAction
-        };
-
-        await Outlet.PerformAsync(closeAction);
     }
 
     /// <summary>
@@ -193,51 +125,5 @@ public sealed class ModalService
     {
         var openedItem = openedItems.LastOrDefault();
         return openedItem?.Closeable is true ? CloseAsync(openedItem) : Task.CompletedTask;
-    }
-}
-
-public class ModalCommandQueue
-{
-    private readonly ConcurrentQueue<IModalCommand> queue = new();
-
-    public void Enqueue(IModalCommand command)
-    {
-        queue.Enqueue(command);
-    }
-
-    public async Task ExecuteAsync()
-    {
-        while (queue.TryDequeue(out var command))
-        {
-            await command.ExecuteAsync();
-        }
-    }
-}
-
-public interface IModalCommand
-{
-    Task ExecuteAsync();
-}
-
-public class OutletCommand : IModalCommand
-{
-    private readonly ModalActionType actionType;
-    private readonly ModalOutlet outlet;
-
-    public Task ExecuteAsync()
-    {
-        TaskCompletionSource tcs = new();
-
-        ModalAction action = new()
-        {
-            Type = actionType,
-            OnComplete = () =>
-            {
-                tcs.SetResult();
-                return Task.CompletedTask;
-            }
-        };
-
-        outlet.PerformAsync(action);
     }
 }

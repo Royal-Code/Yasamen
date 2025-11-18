@@ -1,6 +1,7 @@
+@using RoyalCode.Razor.Commons
 
 <div class="z-offcanvas">
-	<aside class="@Classes" @attributes="Attributes" @ref="asideRef">
+	<aside class="@Classes" @attributes="Attributes" @ref="asideRef" id="@dataRef" data-ref="@dataRef" @ontransitionEnded="TransitionEndHandler">
 		<CascadingValue Value="handler">
 			@if (UseBox)
 			{
@@ -18,6 +19,7 @@
 <div class="@BackdropClasses" @onclick="BackdropClickHandler" @ref="backdropRef"></div>
 
 @code {
+	private string dataRef = Guid.NewGuid().ToString();
 	private ElementReference? asideRef;
 	private ElementReference? backdropRef;
 
@@ -31,4 +33,9 @@
 	private string BackdropClasses => "ya-offcanvas-backdrop"
 		.AddClass(IsVisible && Modal, "ya-offcanvas-backdrop-show ya-modal-visible")
 		.AddClass(Fitting is Fitting.Overlaying, "ya-offcanvas-backdrop-overlaying");
+
+	private void TransitionEndHandler(TransitionEventEndArgs args)
+	{
+		Console.WriteLine($"Transition ended for OffCanvas ({asideRef?.Id}, {dataRef}): {args.ElapsedTime}, {args.PropertyName}, {args.DataRef}, {args.ElementId}");
+	}
 }

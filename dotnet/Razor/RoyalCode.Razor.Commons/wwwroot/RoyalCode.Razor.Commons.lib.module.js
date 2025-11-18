@@ -5,6 +5,8 @@ let registered = false;
 // Custom event name
 const CHAR_COUNT_EVENT_NAME = 'inputCharCount';
 const ARROW_UP_DOWN_EVENT_NAME = 'arrowUpDown';
+const TRANSITION_ENDED_EVENT_NAME = 'transitionEnded';
+const TRANSITIONEND_EVENT_NAME = 'transitionend';
 
 export function afterWebStarted(blazor) {
     if (registered === false) {
@@ -34,6 +36,17 @@ function registerInputCharCount(blazor) {
             const detail = event.detail || {};
             return {
                 key: detail.key || ''
+            };
+        }
+    });
+    blazor.registerCustomEventType(TRANSITION_ENDED_EVENT_NAME, {
+        browserEventName: TRANSITIONEND_EVENT_NAME,
+        createEventArgs: event => {
+            return {
+                elapsedTime: event.elapsedTime || 0,
+                propertyName: event.propertyName || '',
+                dataRef: event.target?.dataset?.ref || '',
+                elementId: event.target?.id || ''
             };
         }
     });
