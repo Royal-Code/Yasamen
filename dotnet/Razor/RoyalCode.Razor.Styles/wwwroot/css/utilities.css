@@ -1,6 +1,6 @@
 ﻿
 @utility transition-default {
-    transition: all 0.15s cubic-bezier(.16,1,.3,1);
+    transition: all var(--duration-default) linear;
 }
 
 /* Z-index Utilities */

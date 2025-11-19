@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components.Sections;
+using RoyalCode.Razor.Commons;
 
 namespace RoyalCode.Razor.Internal.Modals;
 
@@ -30,7 +31,7 @@ public sealed class ModalItem
     ///     The set accessor is internal to allow the <see cref="ModalService"/> to control the state.
     /// </para>
     /// </summary>
-    public TransitionPhases Phase { get; internal set; } = TransitionPhases.Closed;
+    public TransitionState Phase { get; }
 
     /// <summary>
     /// Determines whether the modal can be closed by clicking the backdrop or pressing the escape key.

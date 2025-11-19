@@ -3,8 +3,8 @@
 @implements IAsyncDisposable
 @inject ModalService ModalService
 
-<SectionContent SectionId="item">
-    <div class="@Classes" id="@Id" @ref="element" @ontransitionend="@transitionEndHandler">
+<SectionContent SectionId="state">
+    <div class="@Classes" id="@Id" @ref="element" @ontransitionEnded="transitionEndedHandler">
         <CascadingValue Value="context" IsFixed="true">
             @ChildContent
         </CascadingValue>
@@ -16,21 +16,21 @@
     public static int ModalMaxTransitionTime { get; set; } = 800;
 
     private string Classes => "ya-modal"
-        .AddClass(phase == TransitionPhases.OpeningStart, "ya-modal-opening-start")
-        .AddClass(phase == TransitionPhases.Opening, "ya-modal-opening")
-        .AddClass(phase == TransitionPhases.Opened, "ya-modal-opened")
-        .AddClass(phase == TransitionPhases.ClosingStart, "ya-modal-closing-start")
-        .AddClass(phase == TransitionPhases.Closing, "ya-modal-closing")
+        .AddClass(state.Phase == TransitionPhases.OpeningStart, "ya-modal-opening-start")
+        .AddClass(state.Phase == TransitionPhases.Opening, "ya-modal-opening")
+        .AddClass(state.Phase == TransitionPhases.Open, "ya-modal-open")
+        .AddClass(state.Phase == TransitionPhases.ClosingStart, "ya-modal-closing-start")
+        .AddClass(state.Phase == TransitionPhases.Closing, "ya-modal-closing")
+        .AddClass(state.Phase == TransitionPhases.Closed, "ya-modal-closed")
         .AddClass(Center, "ya-modal-center");
 
     private readonly ModalContext context;
-    private readonly ModalItem item;
-    private readonly Func<Task> transitionEndHandler;
+    private readonly ModalState state;
+    private readonly Func<TransitionEndedEventArgs, Task> transitionEndedHandler;
 
+    private TransitionPhases lastPhase = TransitionPhases.Closed;
     private ElementReference element;
-
     private bool disposed;
-    private TransitionPhases phase = TransitionPhases.Closed;
 
     public Modal()
     {
@@ -38,6 +38,8 @@
         {
             Modal = this,
         };
+        state = new(() => InvokeAsync(StateHasChanged));
+        transitionEndedHandler = TransitionEndedHandler;
     }
 
     [Parameter, EditorRequired]
@@ -58,10 +60,16 @@
     [Parameter]
     public EventCallback<ModalEventArgs> OnOpenClose { get; set; }
 
+    private async Task TransitionEndedHandler(TransitionEndedEventArgs args)
+    {
+        if (args.ElementId != Id || args.PropertyName != "transform")
+            return;
+        await state.CompleteAsync();
+    }
 
     protected override Task OnInitializedAsync()
     {
-        ModalService.Add(item);
+        ModalService.Add(state);
         return Task.CompletedTask;
     }
 
@@ -82,7 +90,7 @@
                 $"The parameter {nameof(Handler)} must be the same instance for the same modal.");
         }
 
-        item.Closeable = Closeable;
+        state.Closeable = Closeable;
 
         base.OnParametersSet();
     }
@@ -93,6 +101,26 @@
         {
             context.Element = element;
         }
+        if (lastPhase != state.Phase)
+        {
+            lastPhase = state.Phase;
+            if (state.Phase == TransitionPhases.Open)
+            {
+                await ModalService.ModalOpenedAsync();
+                if (OnOpenClose.HasDelegate)
+                    await OnOpenClose.InvokeAsync(new ModalEventArgs() { Modal = this, IsOpen = true });
+            }
+            else if (state.Phase == TransitionPhases.Closed)
+            {
+                await ModalService.ModalClosedAsync();
+                if (OnOpenClose.HasDelegate)
+					await OnOpenClose.InvokeAsync(new ModalEventArgs() { Modal = this, IsOpen = false });
+            }
+        }
+        if (state.Phase is TransitionPhases.OpeningStart or TransitionPhases.ClosingStart)
+        {
+            await state.PromoteAsync();
+        }
     }
 
     public async Task OpenAsync()
@@ -100,7 +128,7 @@
         if (disposed)
             throw new ObjectDisposedException(GetType().Name, $"Modal [{Id}] was disposed");
 
-        await ModalService.OpenAsync(item);
+        await ModalService.OpenAsync(state);
     }
 
     public async Task CloseAsync()
@@ -108,13 +136,13 @@
         if (disposed)
             throw new ObjectDisposedException(GetType().Name, $"Modal [{Id}] was disposed");
 
-        await ModalService.CloseAsync(item);
+        await ModalService.CloseAsync(state);
     }
 
     public async ValueTask DisposeAsync()
     {
         disposed = true;
 
-        ModalService.Remove(item);
+        ModalService.Remove(state);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace RoyalCode.Razor.Internal.Modals;
+﻿namespace RoyalCode.Razor.Commons;
 
 /// <summary>
 /// Specifies the phases of a transition lifecycle.
@@ -18,7 +18,7 @@ public enum TransitionPhases
     /// <summary>
     /// The component/element is open.
     /// </summary>
-    Opened,
+    Open,
 
     /// <summary>
     /// The component/element is starting to close.

@@ -2,12 +2,17 @@
 
 @inject ModalService ModalService
 
-<div class="@Classes" id="ya-modal-outlet" tabindex="-1" @onkeydown="KeyDownHandler" @attributes="Attributes">
-	@foreach (var item in ModalService.Items)
+<div class="@Classes" 
+	 id="ya-modal-outlet" 
+	 tabindex="-1" 
+	 @onkeydown="keyDownHandler"
+	 @attributes="Attributes"
+>
+	@foreach (var modal in ModalService.Modals)
 	{
-		<SectionOutlet SectionId="item" @key="item" />
+		<SectionOutlet SectionId="modal" @key="modal" />
 	}
-	<ModalBackdrop @ref="backdrop" />
+	<ModalBackdrop />
 </div>
 
 @code {
@@ -22,12 +27,19 @@
 		{ "role", "dialog" }
 	};
 
-	private bool isOpen = false;
-	private ModalBackdrop? backdrop;
-
 	private IReadOnlyDictionary<string, object> Attributes => ModalService.IsOpen ? openedAttributes : closedAttributes;
+	private string Classes => ModalService.IsOpen ? "ya-modal-outlet ya-modal-outlet-open" : "ya-modal-outlet";
 
-	private string Classes => ModalService.IsOpen ? "ya-modal-outlet ya-modal-outlet-show" : "ya-modal-outlet";
+	private readonly Func<KeyboardEventArgs, Task> keyDownHandler;
+	private readonly Action stateHasChanged;
+
+	private bool lastIsOpen = false;
+
+	public ModalOutlet()
+	{
+		keyDownHandler = KeyDownHandler;
+		stateHasChanged = StateHasChanged;
+	}
 
 	protected override void OnInitialized()
 	{
@@ -43,11 +55,17 @@
 	/// <summary>
 	/// Notifies the component that the state has changed.
 	/// </summary>
-	internal new void StateHasChanged() => base.StateHasChanged();
+	internal Task StateHasChangedAsync() => InvokeAsync(stateHasChanged);
 
-	
 	protected override async Task OnAfterRenderAsync(bool firstRender)
 	{
-		
+		if (lastIsOpen != ModalService.IsOpen)
+		{
+			lastIsOpen = ModalService.IsOpen;
+			if (ModalService.IsOpen)
+				await ModalService.OutletOpenedAsync();
+			else
+				await ModalService.OutletClosedAsync();
+		}
 	}
 }

@@ -6,7 +6,6 @@ import { Button } from '../../lib/components/button';
 import { IconButton } from '../../lib/components/button';
 import { Link, useLocation } from 'react-router-dom';
 import { BsIcons } from '../../lib/components/bsicons';
-import { ModalOutlet } from '../../lib/components/modal/ModalOutlet';
 import { SectionOutlet } from '../../lib/components/outlet';
 
 /**
@@ -28,7 +27,6 @@ const DemoMainLayout: React.FC = () => {
 		<AppLayout>
 			<AppLayout.PreContent>
 				{/* Espaço antes do layout principal se necessário */}
-				<ModalOutlet />
 			</AppLayout.PreContent>
 
 			<AppLayout.Top>

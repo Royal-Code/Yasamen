@@ -1,5 +1,5 @@
 ﻿
-<aside @attributes="AdditionalAttributes" class="@Classes">
+<aside @attributes="AdditionalAttributes" class="@Classes" @ref="AsideReference">
     @ChildContent
 </aside>
 
@@ -9,6 +9,8 @@
         .AddClass(Size.ToMinWidthCssClass())
 		.AddClass(Position is Positions.Start, Size.ToFitLeftSpacing(), Size.ToFitRightSpacing())
         .AddClass(AdditionalClasses);
+
+    public ElementReference AsideReference { get; private set; }
 
     [Parameter, EditorRequired]
     public SpacingSize Size { get; set; } = SpacingSize.LargerX2;

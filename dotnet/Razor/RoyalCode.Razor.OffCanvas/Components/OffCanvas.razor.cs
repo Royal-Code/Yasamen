@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using RoyalCode.Razor.Commons.Layout;
 using RoyalCode.Razor.Styles;
 
 namespace RoyalCode.Razor.Components;
@@ -44,6 +45,9 @@ public partial class OffCanvas
 
     [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object> Attributes { get; set; } = null!;
+
+    [CascadingParameter]
+    public ILayoutContext Context { get; set; }
 
     public override Task SetParametersAsync(ParameterView parameters)
     {

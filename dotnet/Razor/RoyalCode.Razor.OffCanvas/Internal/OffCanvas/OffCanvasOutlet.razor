@@ -1,0 +1,12 @@
+﻿@using Microsoft.AspNetCore.Components.Sections
+
+@inject OffCanvasService Service
+
+@foreach (var offcanvas in Service.OffCanvas)
+{
+	<SectionOutlet SectionId="offcanvas" @key="offcanvas" />
+}
+
+@code {
+	public new void StateHasChanged() => base.StateHasChanged();
+}

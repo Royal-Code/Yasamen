@@ -1,7 +1,14 @@
 @using RoyalCode.Razor.Commons
 
+@inject OffCanvasService OffCanvasService
+@implements IDisposable
+
 <div class="z-offcanvas">
-	<aside class="@Classes" @attributes="Attributes" @ref="asideRef" id="@dataRef" data-ref="@dataRef" @ontransitionEnded="TransitionEndHandler">
+	<aside @attributes="Attributes"
+		   class="@Classes" 
+		   data-ref="@dataRef" 
+		   @ontransitionEnded="TransitionEndHandler" 
+		   @ref="asideRef">
 		<CascadingValue Value="handler">
 			@if (UseBox)
 			{
@@ -19,23 +26,52 @@
 <div class="@BackdropClasses" @onclick="BackdropClickHandler" @ref="backdropRef"></div>
 
 @code {
-	private string dataRef = Guid.NewGuid().ToString();
-	private ElementReference? asideRef;
-	private ElementReference? backdropRef;
 
 	private string Classes => "ya-offcanvas"
-		.AddClass(IsVisible, "ya-offcanvas-show")
+		.AddClass(PhaseClass)
 		.AddClass(Position is Positions.Start, "ya-offcanvas-start", "ya-offcanvas-end")
 		.AddClass(Fitting is Fitting.Overlaying, "ya-offcanvas-overlaying")
 		.AddClass(Fitting is Fitting.Float, "ya-offcanvas-float")
 		.AddClass(AdditionalClasses);
 
+	private string dataRef = Guid.NewGuid().ToString();
+	private ElementReference? asideRef;
+	private ElementReference? backdropRef;
+
+	private readonly OffCanvasState state;
+
+	public OffCanvas()
+	{
+		state = new OffCanvasState(() => InvokeAsync(StateHasChanged));
+	}
+
 	private string BackdropClasses => "ya-offcanvas-backdrop"
 		.AddClass(IsVisible && Modal, "ya-offcanvas-backdrop-show ya-modal-visible")
 		.AddClass(Fitting is Fitting.Overlaying, "ya-offcanvas-backdrop-overlaying");
 
-	private void TransitionEndHandler(TransitionEventEndArgs args)
+	private void TransitionEndHandler(TransitionEndedEventArgs args)
 	{
-		Console.WriteLine($"Transition ended for OffCanvas ({asideRef?.Id}, {dataRef}): {args.ElapsedTime}, {args.PropertyName}, {args.DataRef}, {args.ElementId}");
+
 	}
+
+	protected override void OnInitialized()
+	{
+		OffCanvasService.Add(state);
+	}
+
+	public void Dispose()
+	{
+		OffCanvasService.Remove(state);
+	}
+
+	private string PhaseClass => state.Phase switch
+	{
+		TransitionPhases.OpeningStart => "ya-offcanvas-opening-start",
+		TransitionPhases.Opening => "ya-offcanvas-opening",
+		TransitionPhases.Open => "ya-offcanvas-open",
+		TransitionPhases.ClosingStart => "ya-offcanvas-closing-start",
+		TransitionPhases.Closing => "ya-offcanvas-closing",
+		TransitionPhases.Closed => "ya-offcanvas-closed",
+		_ => string.Empty
+	};
 }

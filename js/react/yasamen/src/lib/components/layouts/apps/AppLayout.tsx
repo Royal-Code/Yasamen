@@ -1,7 +1,9 @@
 import { attachSlots, createSlot, hasContent, pickSlots } from "../../../utils";
 import { Heights, Paddings, Sides, Widths } from "../../commons";
 import type { Spacing } from "../../commons/spacing";
+import { ModalOutlet } from "../../modal/ModalOutlet";
 import { AppLayoutClasses } from "./app-layout-classes";
+import { AppLayoutContext } from "./app-layout-context";
 
 export interface AppLayoutProps extends React.HTMLAttributes<HTMLDivElement> {
     /** Tamanho do espaço superior */
@@ -57,8 +59,16 @@ const AppLayoutRoot : React.FC<AppLayoutProps> = ({
     const leftMenuClasses = [AppLayoutClasses.LeftMenu, Widths[leftMenuSize], Paddings[Sides.Top][topSize]].join(' ');
     const rightMenuClasses = [AppLayoutClasses.RightMenu, Widths[rightMenuSize], Paddings[Sides.Top][topSize]].join(' ');
 
+    const context = {
+        topSize,
+        footerSize,
+        leftMenuSize,
+        rightMenuSize,
+    }
+
     return (
-        <>
+        <AppLayoutContext.Provider value={context}>
+            <ModalOutlet />
             {hasContent(slots.PreContent) && slots.PreContent}
             <div {...rest} className={containerClasses}>
                 <header className={headerClasses}>
@@ -78,7 +88,7 @@ const AppLayoutRoot : React.FC<AppLayoutProps> = ({
                 </div>
             </div>
             {hasContent(slots.PostContent) && slots.PostContent}
-        </>
+        </AppLayoutContext.Provider>
     );
 };
 

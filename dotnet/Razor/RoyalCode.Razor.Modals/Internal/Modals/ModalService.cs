@@ -19,13 +19,14 @@ namespace RoyalCode.Razor.Internal.Modals;
 /// </summary>
 public sealed class ModalService
 {
-    private readonly List<ModalItem> items = [];
-    private readonly List<ModalItem> openedItems = [];
+    private readonly List<ModalState> modals = [];
+    private readonly List<ModalState> opened = [];
+    private readonly ConcurrentQueue<Func<Task>> actionQueue = [];
 
     /// <summary>
-    /// An ordered read-only list of modal items, representing the modals managed by the service (opened).
+    /// An ordered read-only list of modal states, representing the modals managed by the service.
     /// </summary>
-    public IReadOnlyList<ModalItem> Items => items;
+    public IReadOnlyList<ModalState> Modals => modals;
 
     /// <summary>
     /// The ModalOutlet component associated with this service.
@@ -33,28 +34,28 @@ public sealed class ModalService
     internal ModalOutlet? Outlet { get; set; }
 
     /// <summary>
-    /// The backdrop modal item.
+    /// The backdrop modal state.
     /// </summary>
-    internal ModalItem? Backdrop { get; set; }
+    internal TransitionState? BackdropState { get; set; }
 
     /// <summary>
-    /// Adds a modal item. This will create a SectionOutlet for the modal item.
+    /// Adds a modal. This will create a SectionOutlet for the modal state.
     /// </summary>
-    /// <param name="item">The modal item to be added.</param>
-    public void Add(ModalItem item)
+    /// <param name="modalState">The modal state to be added.</param>
+    internal void Add(ModalState modalState)
     {
-        items.Add(item);
-        Outlet?.StateHasChanged();
+        modals.Add(modalState);
+        Outlet?.StateHasChangedAsync();
     }
 
     /// <summary>
-    /// Removes a modal item. The SectionOutlet associated with the modal item will be removed.
+    /// Removes a modal. The SectionOutlet associated with the modal state will be removed.
     /// </summary>
-    /// <param name="item">The modal item to be removed.</param>
-    public void Remove(ModalItem item)
+    /// <param name="modalState">The modal state to be removed.</param>
+    internal void Remove(ModalState modalState)
     {
-        items.Remove(item);
-        Outlet?.StateHasChanged();
+        modals.Remove(modalState);
+        Outlet?.StateHasChangedAsync();
     }
 
     /// <summary>
@@ -70,15 +71,32 @@ public sealed class ModalService
     ///     If a modal is already opened, it will be closed before opening the new modal.
     /// </para>
     /// </summary>
-    /// <param name="item">A modal item to be opened.</param>
+    /// <param name="modal">A modal to be opened.</param>
     /// <returns>A task that represents the asynchronous operation, finishing when the modal is opened.</returns>
-    public async Task OpenAsync(ModalItem item)
+    public Task OpenAsync(ModalState modal)
     {
-        if (Outlet is null || Backdrop is null)
-            return;
+        if (Outlet is null || BackdropState is null)
+            return Task.CompletedTask;
 
-        TaskCompletionSource tcs = new();
+        var currentModal = opened.LastOrDefault();
+        if (currentModal == modal)
+            return Task.CompletedTask;
 
+        opened.Add(modal);
+
+        if (currentModal is not null)
+        {
+            actionQueue.Enqueue(() => CloseModalAsync(currentModal));
+            actionQueue.Enqueue(() => OpenModalAsync(modal));
+        }
+        else
+        {
+            actionQueue.Enqueue(OpenOutletAsync);
+            actionQueue.Enqueue(OpenBackdropAsync);
+            actionQueue.Enqueue(() => OpenModalAsync(modal));
+        }
+
+        return ProcessActionAsync();
     }
 
     /// <summary>
@@ -87,29 +105,46 @@ public sealed class ModalService
     /// <returns></returns>
     public Task CloseAsync()
     {
-        var openedItem = openedItems.LastOrDefault();
-        if (openedItem is null)
+        var openedModal = opened.LastOrDefault();
+        if (openedModal is null)
             return Task.CompletedTask;
 
-        return CloseAsync(openedItem);
+        return CloseAsync(openedModal);
     }
 
     /// <summary>
     /// Close a specific modal item. If there was a previously opened modal, it will be reopened.
     /// </summary>
-    /// <param name="item"></param>
+    /// <param name="modal">The modal to be closed.</param>
     /// <returns></returns>
-    public async Task CloseAsync(ModalItem item)
+    public Task CloseAsync(ModalState modal)
     {
-        var openedItem = openedItems.LastOrDefault();
-        if (openedItem is null || Outlet is null || Backdrop is null)
-            return;
+        if (Outlet is null || BackdropState is null)
+            return Task.CompletedTask;
 
-        openedItems.Remove(item);
-        if (openedItem != item)
-            return;
+        var currentModal = opened.LastOrDefault();
+        if (currentModal is null || currentModal != modal)
+        {
+            opened.Remove(modal);
+            return Task.CompletedTask;
+        }
 
+        var previousModal = opened.Count > 1 ? opened[^2] : null;
+        opened.RemoveAt(opened.Count - 1);
 
+        if (previousModal is null)
+        {
+            actionQueue.Enqueue(() => CloseModalAsync(modal));
+            actionQueue.Enqueue(CloseBackdropAsync);
+            actionQueue.Enqueue(CloseOutletAsync);
+        }
+        else
+        {
+            actionQueue.Enqueue(() => CloseModalAsync(modal));
+            actionQueue.Enqueue(() => OpenModalAsync(previousModal));
+        }
+
+        return ProcessActionAsync();
     }
 
     /// <summary>
@@ -121,9 +156,89 @@ public sealed class ModalService
     /// </para>
     /// </summary>
     /// <returns></returns>
-    public Task BackdropActionAsync()
+    internal Task BackdropActionAsync()
     {
-        var openedItem = openedItems.LastOrDefault();
-        return openedItem?.Closeable is true ? CloseAsync(openedItem) : Task.CompletedTask;
+        var modal = opened.LastOrDefault();
+        return modal?.Closeable is true ? CloseAsync(modal) : Task.CompletedTask;
+    }
+
+    internal Task OpenOutletAsync()
+    {
+        if (Outlet is null || IsOpen)
+            return Task.CompletedTask;
+
+        IsOpen = true;
+        return Outlet.StateHasChangedAsync();
+    }
+
+    internal Task OutletOpenedAsync()
+    {
+        return ProcessActionAsync();
+    }
+
+    internal Task CloseOutletAsync()
+    {
+        if (Outlet is null || !IsOpen)
+            return Task.CompletedTask;
+        IsOpen = false;
+        return Outlet.StateHasChangedAsync();
+    }
+
+    internal Task OutletClosedAsync()
+    {
+        return ProcessActionAsync();
+    }
+
+    internal Task OpenBackdropAsync()
+    {
+        if (BackdropState is null)
+            return Task.CompletedTask;
+        return BackdropState.OpenAsync();
+    }
+
+    internal Task BackdropOpenedAsync()
+    {
+        return ProcessActionAsync();
+    }
+
+    internal Task CloseBackdropAsync()
+    {
+        if (BackdropState is null)
+            return Task.CompletedTask;
+        return BackdropState.CloseAsync();
+    }
+
+    internal Task BackdropClosedAsync()
+    {
+        return ProcessActionAsync();
+    }
+
+    internal Task OpenModalAsync(ModalState modal)
+    {
+        return modal.OpenAsync();
+    }
+
+    internal Task ModalOpenedAsync()
+    {
+        return ProcessActionAsync();
+    }
+
+    internal Task CloseModalAsync(ModalState modal)
+    {
+        return modal.CloseAsync();
+    }
+
+    internal Task ModalClosedAsync()
+    {
+        return ProcessActionAsync();
+    }
+
+    private Task ProcessActionAsync()
+    {
+        if (actionQueue.TryDequeue(out var action))
+        {
+            return action();
+        }
+        return Task.CompletedTask;
     }
 }

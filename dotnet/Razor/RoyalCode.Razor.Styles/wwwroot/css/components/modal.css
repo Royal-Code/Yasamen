@@ -1,53 +1,104 @@
-﻿
-/* BACKDROP */
+﻿/* Backdrop (phases) */
 .ya-modal-backdrop {
-    @apply hidden bg-black/20 opacity-0 transition-default z-backdrop;
+    @apply bg-black/20 transition-default z-backdrop;
 }
-.ya-modal-backdrop-shown {
-    @apply block fixed top-0 left-0 w-full h-full opacity-100;
-}
-.ya-modal-backdrop-showing {
+
+.ya-modal-backdrop-opening-start {
     @apply block fixed top-0 left-0 w-full h-full opacity-0;
 }
-.ya-modal-backdrop-hiding {
-    @apply opacity-0;
+
+.ya-modal-backdrop-opening {
+    @apply block fixed top-0 left-0 w-full h-full opacity-100;
 }
 
-/* OUTLET */
+.ya-modal-backdrop-open {
+    @apply block fixed top-0 left-0 w-full h-full opacity-100;
+}
 
+.ya-modal-backdrop-closing-start {
+    @apply block fixed top-0 left-0 w-full h-full opacity-100;
+}
+
+.ya-modal-backdrop-closing {
+    @apply block fixed top-0 left-0 w-full h-full opacity-0;
+}
+
+.ya-modal-backdrop-closed {
+    @apply hidden opacity-0 pointer-events-none;
+}
+
+/* Outlet */
 .ya-modal-outlet {
     @apply hidden fixed top-0 left-0 w-full h-full overflow-x-hidden overflow-y-auto outline-0 z-modal;
 }
-.ya-modal-outlet-show {
+
+.ya-modal-outlet-open {
     @apply block;
 }
 
-/* MODAL */
-
+/* Modal base */
 .ya-modal {
-    @apply hidden relative w-auto m-auto pointer-events-none transition-default z-modal;
+    @apply relative w-auto m-auto transition-default z-modal;
 }
-.ya-modal-show {
-    @apply block translate-y-0;
-}
-.ya-modal-opening, .ya-modal-closing {
+
+.ya-modal-opening-start {
     @apply block translate-y-[-50px];
 }
 
-.ya-modal.ya-modal-show.ya-modal-center {
-    @apply h-full flex items-center;
+.ya-modal-opening {
+    @apply block translate-y-0;
 }
 
-/* MODAL CONTENT */
+.ya-modal-open {
+    @apply block translate-y-0;
+}
+
+.ya-modal-closing-start {
+    @apply block translate-y-0;
+}
+
+.ya-modal-closing {
+    @apply block translate-y-[-50px];
+}
+
+.ya-modal-closed {
+    @apply hidden translate-y-[-50px] pointer-events-none;
+}
+
+/* Centralização */
+.ya-modal-center {
+    @apply items-center justify-center;
+}
+
+    .ya-modal-center:not(.ya-modal-closed) {
+        @apply flex h-full;
+    }
+
+/* Modal Conteúdo interno */
 .ya-modal > * {
     @apply pointer-events-auto transition-default;
 }
-.ya-modal.ya-modal-show > * {
-    @apply opacity-100;
-}
-.ya-modal.ya-modal-opening > * {
+
+.ya-modal.ya-modal-opening-start > * {
     @apply opacity-0;
 }
+
+.ya-modal.ya-modal-opening > * {
+    @apply opacity-100;
+}
+
+.ya-modal.ya-modal-open > * {
+    @apply opacity-100;
+}
+
+.ya-modal.ya-modal-closing-start > * {
+    @apply opacity-100;
+}
+
 .ya-modal.ya-modal-closing > * {
+    @apply opacity-0;
+}
+
+.ya-modal.ya-modal-closed > * {
     @apply opacity-0;
 }

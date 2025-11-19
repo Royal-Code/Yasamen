@@ -12,7 +12,8 @@ const SectionContent: React.FC<SectionContentProps> = ({ id, children }) => {
 
     // Mount / Unmount lifecycle
     React.useEffect(() => {
-        if (!id) return; // Sem id não registra
+        if (!id) 
+            return; // Sem id não registra
         const inst = mount(id, children);
         instanceRef.current = inst;
         return () => {
@@ -24,7 +25,8 @@ const SectionContent: React.FC<SectionContentProps> = ({ id, children }) => {
     // Atualiza o conteúdo quando muda
     React.useEffect(() => {
         const inst = instanceRef.current;
-        if (!inst || !id) return;
+        if (!inst || !id) 
+            return;
         update(inst, id, children);
     }, [children, id, update]);
 

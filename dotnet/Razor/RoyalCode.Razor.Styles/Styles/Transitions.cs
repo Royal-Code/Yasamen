@@ -11,6 +11,7 @@ public enum TransitionTiming
 
 public enum TransitionSpeed
 {
+    Default,
     Slowest,
     Slower,
     Slow,
@@ -41,6 +42,7 @@ public static class TransactionExtensions
     {
         return speed switch
         {
+            TransitionSpeed.Default => "duration-(--duration-default)",
             TransitionSpeed.Slowest => "duration-(--duration-slowest)",
             TransitionSpeed.Slower => "duration-(--duration-slower)",
             TransitionSpeed.Slow => "duration-(--duration-slow)",
@@ -57,6 +59,7 @@ public static class TransactionExtensions
     {
         return speed switch
         {
+            TransitionSpeed.Default => "delay-(--duration-default)",
             TransitionSpeed.Slowest => "delay-(--duration-slowest)",
             TransitionSpeed.Slower => "delay-(--duration-slower)",
             TransitionSpeed.Slow => "delay-(--duration-slow)",

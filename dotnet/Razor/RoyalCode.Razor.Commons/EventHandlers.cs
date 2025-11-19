@@ -5,7 +5,7 @@ namespace RoyalCode.Razor.Commons;
 /// <summary>
 /// Registering missing event handlers.
 /// </summary>
-[EventHandler("ontransitionEnded", typeof(TransitionEventEndArgs), enableStopPropagation: true, enablePreventDefault: false)]
+[EventHandler("ontransitionEnded", typeof(TransitionEndedEventArgs), enableStopPropagation: true, enablePreventDefault: false)]
 [EventHandler("ontransitionend", typeof(EventArgs), enableStopPropagation: true, enablePreventDefault: false)]
 [EventHandler("onanimationend", typeof(EventArgs), enableStopPropagation: true, enablePreventDefault: false)]
 [EventHandler("oninputCharCount", typeof(InputCharCountEventArgs), enableStopPropagation: true, enablePreventDefault: false)]
@@ -37,7 +37,7 @@ public class ArrowUpDownEventArgs : EventArgs
 /// <summary>
 /// Arguments for transition end events.
 /// </summary>
-public class TransitionEventEndArgs : EventArgs
+public class TransitionEndedEventArgs : EventArgs
 {
     /// <summary>
     /// The name of the property associated with the transition.

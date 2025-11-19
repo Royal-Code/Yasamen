@@ -1,12 +1,13 @@
 ﻿:root {
     /* Animation Durations */
-    --durantion-slowest: 0.9s;
-    --durantion-slower: 0.6s;
-    --durantion-slow: 0.4s;
-    --durantion-normal: 0.3s;
-    --durantion-fast: 0.2s;
-    --durantion-faster: 0.15s;
-    --durantion-fastest: 0.1s;
+    --duration-slowest: 0.9s;
+    --duration-slower: 0.6s;
+    --duration-slow: 0.4s;
+    --duration-normal: 0.3s;
+    --duration-fast: 0.2s;
+    --duration-faster: 0.15s;
+    --duration-fastest: 0.1s;
+    --duration-default: .15s;
     /* fit for aside offcanvas */
     --ya-fit-top: 0px;
     --ya-fit-left: 0px;

@@ -1,6 +1,6 @@
-﻿@inject ModalService ModalService
+﻿@inject OffCanvasService Service
 
-<div class="@Classes" 
+<div class="@Classes"
 	 id="@ElementId"
 	 tabindex="-1"
 	 @onclick="backdropClickHandler"
@@ -20,14 +20,14 @@
 	private readonly Func<MouseEventArgs, Task> backdropClickHandler;
 	private readonly Func<TransitionEndedEventArgs, Task> transitionEndHandler;
 
-	public ModalBackdrop()
+	public OffCanvasBackdrop()
 	{
 		phase = new TransitionState(() => InvokeAsync(StateHasChanged));
 		backdropClickHandler = BackdropClickHandler;
 		transitionEndHandler = TransitionEndHandler;
 	}
 
-	private Task BackdropClickHandler(MouseEventArgs args) => ModalService.BackdropActionAsync();
+	private Task BackdropClickHandler(MouseEventArgs args) => Service.BackdropActionAsync();
 
 	private Task TransitionEndHandler(TransitionEndedEventArgs args)
 	{
@@ -39,7 +39,7 @@
 
 	protected override void OnInitialized()
 	{
-		ModalService.BackdropState = phase;
+		Service.BackdropState = phase;
 	}
 
 	protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -48,9 +48,9 @@
 		{
 			lastPhase = phase.Phase;
 			if (phase.Phase == TransitionPhases.Open)
-				await ModalService.BackdropOpenedAsync();
+				await Service.BackdropOpenedAsync();
 			else if (phase.Phase == TransitionPhases.Closed)
-				await ModalService.BackdropClosedAsync();
+				await Service.BackdropClosedAsync();
 		}
 		if (phase.Phase is TransitionPhases.OpeningStart or TransitionPhases.ClosingStart)
 		{

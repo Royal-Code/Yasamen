@@ -24,7 +24,9 @@ export const SectionProvider: React.FC<React.PropsWithChildren> = ({ children })
     const mount = React.useCallback((id: string, node: React.ReactNode) => {
         const instance = Symbol(id);
         setState(prev => {
-            const stack = prev[id] ? [...prev[id], { instanceId: instance, node }] : [{ instanceId: instance, node }];
+            const stack = prev[id] 
+                ? [...prev[id], { instanceId: instance, node }] 
+                : [{ instanceId: instance, node }];
             return { ...prev, [id]: stack };
         });
         return instance;
@@ -33,9 +35,13 @@ export const SectionProvider: React.FC<React.PropsWithChildren> = ({ children })
     const update = React.useCallback((instance: symbol, id: string, node: React.ReactNode) => {
         setState(prev => {
             const stack = prev[id];
-            if (!stack) return prev;
+            if (!stack) 
+                return prev;
+
             const idx = stack.findIndex(s => s.instanceId === instance);
-            if (idx === -1) return prev;
+            if (idx === -1)
+                 return prev;
+                
             const newStack = [...stack];
             newStack[idx] = { ...newStack[idx], node };
             return { ...prev, [id]: newStack };
@@ -45,7 +51,9 @@ export const SectionProvider: React.FC<React.PropsWithChildren> = ({ children })
     const unmount = React.useCallback((instance: symbol, id: string) => {
         setState(prev => {
             const stack = prev[id];
-            if (!stack) return prev;
+            if (!stack) 
+                return prev;
+
             const newStack = stack.filter(s => s.instanceId !== instance);
             const next = { ...prev } as SectionState;
             if (newStack.length === 0) {
@@ -64,6 +72,7 @@ export const SectionProvider: React.FC<React.PropsWithChildren> = ({ children })
 
 export function useSectionSystem() {
     const ctx = useContext(SectionContext);
-    if (!ctx) throw new Error("useSectionSystem must be used inside SectionProvider");
+    if (!ctx) 
+        throw new Error("useSectionSystem must be used inside SectionProvider");
     return ctx;
 }

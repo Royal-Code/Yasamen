@@ -3,6 +3,9 @@ using RoyalCode.Razor.Styles;
 
 namespace RoyalCode.Razor.Layouts.Apps;
 
+/// <summary>
+/// A top application bar component that provides a consistent header area for app layouts.
+/// </summary>
 public partial class AppTopBar
 {
     /// <summary>
