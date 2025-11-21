@@ -4,22 +4,22 @@ using Microsoft.JSInterop;
 namespace RoyalCode.Razor.Commons.Modules;
 
 /// <summary>
-/// Módulo JS para efeito ripple.
+/// JS Module for Ripple effect.
 /// </summary>
-public sealed class RippleJsModule : JsModuleBase
+public sealed class RippleJs : JsModuleBase
 {
     private const string rippleFn = "ripple";
 
     /// <summary>
-    /// Inicializa o módulo.
+    /// Initializes a new instance of the <see cref="RippleJs"/> class.
     /// </summary>
     /// <param name="js"></param>
-    public RippleJsModule(IJSRuntime js) : base(js, "ripple.js") { }
+    public RippleJs(IJSRuntime js) : base(js, "ripple.js") { }
 
     /// <summary>
-    /// Inicializa o elemento de efeito ripple.
+    /// Initializes the ripple effect element.
     /// </summary>
-    /// <param name="rippleSpanElement"></param>
+    /// <param name="rippleSpanElement">The ripple span element reference.</param>
     /// <returns></returns>
     public async ValueTask RippleAsync(ElementReference rippleSpanElement)
     {

@@ -1,40 +1,40 @@
+@using Microsoft.AspNetCore.Components.Sections
 @using RoyalCode.Razor.Commons
 
 @inject OffCanvasService OffCanvasService
 @implements IDisposable
 
-<div class="z-offcanvas">
-	<aside @attributes="Attributes"
-		   class="@Classes" 
-		   data-ref="@dataRef" 
-		   @ontransitionEnded="TransitionEndHandler" 
-		   @ref="asideRef">
-		<CascadingValue Value="handler">
-			@if (UseBox)
-			{
-				<AsideBox Title="@Title" Size="@BoxSize" Closeable="@(Closeable ?? true)">
+<SectionContent SectionId="state">
+	<div>
+		<aside @attributes="Attributes"
+			   class="@Classes"
+			   @ref="state.ElementReference">
+			<CascadingValue Value="handler">
+				@if (UseBox)
+				{
+					<AsideBox Title="@Title" Size="@BoxSize" Closeable="@(Closeable ?? true)">
+						@ChildContent
+					</AsideBox>
+				}
+				else
+				{
 					@ChildContent
-				</AsideBox>
-			}
-			else
-			{
-				@ChildContent
-			}
-		</CascadingValue>
-	</aside>
-</div>
-<div class="@BackdropClasses" @onclick="BackdropClickHandler" @ref="backdropRef"></div>
+				}
+			</CascadingValue>
+		</aside>
+		<div class="@BackdropClasses" @onclick="BackdropClickHandler" @ref="backdropRef"></div>
+	</div>
+</SectionContent>
 
 @code {
 
 	private string Classes => "ya-offcanvas"
-		.AddClass(PhaseClass)
+		.AddClass(state.IsVisible, "ya-offcanvas-show")
 		.AddClass(Position is Positions.Start, "ya-offcanvas-start", "ya-offcanvas-end")
 		.AddClass(Fitting is Fitting.Overlaying, "ya-offcanvas-overlaying")
 		.AddClass(Fitting is Fitting.Float, "ya-offcanvas-float")
 		.AddClass(AdditionalClasses);
 
-	private string dataRef = Guid.NewGuid().ToString();
 	private ElementReference? asideRef;
 	private ElementReference? backdropRef;
 
@@ -46,13 +46,8 @@
 	}
 
 	private string BackdropClasses => "ya-offcanvas-backdrop"
-		.AddClass(IsVisible && Modal, "ya-offcanvas-backdrop-show ya-modal-visible")
+		.AddClass(state.IsVisible && Modal, "ya-offcanvas-backdrop-show ya-modal-visible")
 		.AddClass(Fitting is Fitting.Overlaying, "ya-offcanvas-backdrop-overlaying");
-
-	private void TransitionEndHandler(TransitionEndedEventArgs args)
-	{
-
-	}
 
 	protected override void OnInitialized()
 	{
@@ -63,15 +58,4 @@
 	{
 		OffCanvasService.Remove(state);
 	}
-
-	private string PhaseClass => state.Phase switch
-	{
-		TransitionPhases.OpeningStart => "ya-offcanvas-opening-start",
-		TransitionPhases.Opening => "ya-offcanvas-opening",
-		TransitionPhases.Open => "ya-offcanvas-open",
-		TransitionPhases.ClosingStart => "ya-offcanvas-closing-start",
-		TransitionPhases.Closing => "ya-offcanvas-closing",
-		TransitionPhases.Closed => "ya-offcanvas-closed",
-		_ => string.Empty
-	};
 }

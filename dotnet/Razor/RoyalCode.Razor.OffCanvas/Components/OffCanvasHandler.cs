@@ -2,9 +2,9 @@ namespace RoyalCode.Razor.Components;
 
 public class OffCanvasHandler
 {
-    private OffCanvas? offCanvas;
+    private OffCanvas? offcanvas;
 
-    public bool IsVisible => offCanvas?.IsVisible ?? false;
+    public bool IsVisible => offcanvas?.IsVisible ?? false;
 
     public async ValueTask Toggle()
     {
@@ -16,22 +16,22 @@ public class OffCanvasHandler
     
     public async ValueTask Show()
     {
-        if (offCanvas is null)
+        if (offcanvas is null)
             return;
 
-        await offCanvas.Show();
+        await offcanvas.OpenAsync();
     }
 
     public async ValueTask Hide()
     {
-        if (offCanvas is null)
+        if (offcanvas is null)
             return;
 
-        await offCanvas.Hide();
+        await offcanvas.CloseAsync();
     }
 
-    internal void Init(OffCanvas offCanvas)
+    internal void Init(OffCanvas offcanvas)
     {
-        this.offCanvas = offCanvas;
+        this.offcanvas = offcanvas;
     }
 }

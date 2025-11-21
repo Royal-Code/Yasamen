@@ -1,0 +1,25 @@
+﻿div {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-light-700) var(--color-light-300);
+}
+
+    div::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    div::-webkit-scrollbar-thumb {
+        background-color: var(--color-light-700);
+        border-radius: 3px;
+    }
+
+    div::-webkit-scrollbar-track {
+        background-color: var(--color-light-300);
+    }
+
+h5 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 0;
+    color: var(--b-color-dark);
+}

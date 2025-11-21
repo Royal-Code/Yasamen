@@ -1,7 +1,7 @@
 ﻿.ya-offcanvas {
     max-width: calc(100% - var(--ya-fit-left) - var(--ya-fit-right));
-    @apply invisible fixed flex flex-col bg-clip-padding outline-0 transform;
-    @apply top-[var(--ya-fit-top)] bottom-[var(--ya-fit-bottom)] bg-white transition-all duration-150;
+    @apply invisible fixed flex flex-col bg-clip-padding outline-0 transform z-offcanvas;
+    @apply top-[var(--ya-fit-top)] bottom-0 bg-white transition-all duration-150;
 }
 
 .ya-offcanvas-start {
@@ -9,7 +9,7 @@
 }
 
 .ya-offcanvas-end {
-    @apply right-[var(--ya-fit-right)] translate-x-full;
+    @apply right-[var(--ya-fit-right)] translate-x-[calc(100%_+_var(--ya-fit-right))];
 }
 
 .ya-offcanvas-show {
@@ -25,15 +25,26 @@
     }
 
 .ya-offcanvas-backdrop {
-    display: none;
     @apply hidden opacity-0 bg-black/20 transition-opacity duration-150;
 }
 
 .ya-offcanvas-backdrop-show {
     @apply z-offcanvas-backdrop;
-    @apply block fixed opacity-100 left-[var(--ya-fit-left)] right-[var(--ya-fit-right)] bottom-[var(--ya-fit-bottom)] top-[var(--ya-fit-top)];
+    @apply block fixed opacity-100 left-[var(--ya-fit-left)] right-[var(--ya-fit-right)] bottom-0 top-[var(--ya-fit-top)];
 }
 
 .ya-offcanvas-backdrop-overlaying {
-    @apply top-0;
+    @apply top-0 bottom-0 z-offcanvas-overlay;
 }
+
+    .ya-offcanvas-backdrop-overlaying.ya-offcanvas-start {
+        @apply left-0 -translate-x-full;
+    }
+
+    .ya-offcanvas-backdrop-overlaying.ya-offcanvas-end {
+        @apply right-0 translate-x-full;
+    }
+
+    .ya-offcanvas-backdrop-overlaying.ya-offcanvas-backdrop-show {
+        @apply z-offcanvas-overlay-backdrop left-0 right-0 top-0 bottom-0;
+    }

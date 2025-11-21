@@ -1,0 +1,148 @@
+﻿@page "/demo/commons/elementjs"
+@using RoyalCode.Razor.Commons.Modules
+@inject ElementJs ElementJs
+
+<h3>ElementJs - Demonstração</h3>
+
+<p>Utilitários para interação direta com elementos DOM via JS interop.</p>
+
+<section class="example-block">
+    <h4>Get / Set Property</h4>
+    <input @ref="inputRef" placeholder="Digite algo" />
+    <button @onclick="ReadValue">Get value</button>
+    <button @onclick="SetValue">Set value ("Alterado")</button>
+    <div>Valor atual (C#): @inputValue</div>
+</section>
+
+<section class="example-block">
+    <h4>InvokeVoidMethodAsync (focus)</h4>
+    <button @onclick="FocusInput">Focus input acima</button>
+    <div>Última ação: @lastAction</div>
+</section>
+
+<section class="example-block">
+    <h4>InvokeMethodAsync&lt;T&gt; (getBoundingClientRect)</h4>
+    <div class="rect-target" @ref="rectRef" style="width:180px;height:60px;background:#eef;border:1px solid #99c;display:flex;align-items:center;justify-content:center;margin-bottom:4px;">
+        Target para medir
+    </div>
+    <button @onclick="MeasureByMethod">Medir via InvokeMethodAsync</button>
+    @if (rectFromMethod is not null)
+    {
+        <div>Rect (method): Left=@rectFromMethod.Left Top=@rectFromMethod.Top Width=@rectFromMethod.Width Height=@rectFromMethod.Height</div>
+    }
+</section>
+
+<section class="example-block">
+    <h4>InvokeMethodAsync&lt;T&gt; com propriedades customizadas (scrollIntoView)</h4>
+    <div style="height:100px;overflow:auto;border:1px solid #ccc;" @ref="scrollContainerRef">
+        <div style="height:400px;padding:4px;">
+            <div style="margin-top:300px;" @ref="scrollTargetRef">Elemento para scrollIntoView</div>
+        </div>
+    </div>
+    <button @onclick="DoScrollIntoView">scrollIntoView + ler scrollTop/scrollLeft</button>
+    @if (scrollInfo is not null)
+    {
+        <div>ScrollTop=@scrollInfo.ScrollTop ScrollLeft=@scrollInfo.ScrollLeft</div>
+    }
+</section>
+
+<section class="example-block">
+    <h4>GetRectAsync</h4>
+    <button @onclick="MeasureByHelper">Medir mesmo elemento via GetRectAsync</button>
+    @if (rectFromHelper is not null)
+    {
+        <div>Rect (helper): Left=@rectFromHelper.Left Top=@rectFromHelper.Top Width=@rectFromHelper.Width Height=@rectFromHelper.Height</div>
+    }
+</section>
+
+<section class="example-block">
+    <h4>SelectTextAsync</h4>
+    <textarea @ref="selectRef" style="width:260px;height:80px;">Texto para seleção completa</textarea>
+    <button @onclick="SelectAll">Selecionar texto</button>
+    <button @onclick="ReadSelection">Ler seleção (selectionStart/selectionEnd)</button>
+    <div>Selection: start=@selectionStart end=@selectionEnd</div>
+</section>
+
+@code {
+    private ElementReference inputRef;
+    private ElementReference rectRef;
+    private ElementReference scrollContainerRef;
+    private ElementReference scrollTargetRef;
+    private ElementReference selectRef;
+
+    private string? inputValue;
+    private string? lastAction;
+    private ElementJs.DomRect? rectFromMethod;
+    private ElementJs.DomRect? rectFromHelper;
+    private ScrollInfo? scrollInfo;
+    private int selectionStart;
+    private int selectionEnd;
+
+    // Tipo usado para ler propriedades customizadas (camelCase aplicado automaticamente).
+    private class ScrollInfo
+    {
+        public double ScrollTop { get; set; }
+        public double ScrollLeft { get; set; }
+    }
+
+    private async Task ReadValue()
+    {
+        inputValue = await ElementJs.GetPropertyAsync<string>(inputRef, "value");
+        lastAction = "GetProperty(value)";
+    }
+
+    private async Task SetValue()
+    {
+        await ElementJs.SetPropertyAsync(inputRef, "value", "Alterado");
+        inputValue = await ElementJs.GetPropertyAsync<string>(inputRef, "value");
+        lastAction = "SetProperty(value)";
+    }
+
+    private async Task FocusInput()
+    {
+        await ElementJs.InvokeVoidMethodAsync(inputRef, "focus");
+        lastAction = "InvokeVoidMethod(focus)";
+    }
+
+    private async Task MeasureByMethod()
+    {
+        rectFromMethod = await ElementJs.InvokeMethodAsync<ElementJs.DomRect>(rectRef, "getBoundingClientRect");
+        lastAction = "InvokeMethod(getBoundingClientRect)";
+    }
+
+    private async Task MeasureByHelper()
+    {
+        rectFromHelper = await ElementJs.GetRectAsync(rectRef);
+        lastAction = "GetRect";
+    }
+
+    private async Task DoScrollIntoView()
+    {
+        // Scroll container precisa receber o método para movimentar até o alvo.
+        // Chamamos no alvo para posicioná-lo visível dentro do container.
+        scrollInfo = await ElementJs.InvokeMethodAsync<ScrollInfo>(scrollTargetRef, "scrollIntoView", new[] { "scrollTop", "scrollLeft" });
+        // Como o método foi chamado no target, as propriedades lidas são dele (normalmente 0). Vamos também ler do container.
+        var containerTop = await ElementJs.GetPropertyAsync<double>(scrollContainerRef, "scrollTop");
+        scrollInfo.ScrollTop = containerTop; // sobrescreve com valor real do container para demonstrar.
+        lastAction = "InvokeMethod(scrollIntoView) + propriedades customizadas";
+    }
+
+    private async Task SelectAll()
+    {
+        await ElementJs.SelectTextAsync(selectRef);
+        lastAction = "SelectText";
+    }
+
+    private async Task ReadSelection()
+    {
+        selectionStart = await ElementJs.GetPropertyAsync<int>(selectRef, "selectionStart");
+        selectionEnd = await ElementJs.GetPropertyAsync<int>(selectRef, "selectionEnd");
+        lastAction = "GetProperty(selectionStart/selectionEnd)";
+    }
+}
+
+<style>
+    .example-block { margin-bottom: 1.75rem; padding: .75rem; border: 1px dashed #ccc; border-radius: 6px; }
+    .example-block h4 { margin-top: 0; }
+    .rect-target { user-select: none; }
+</style>

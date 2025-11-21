@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="..\test.targets" />
+
+	<PropertyGroup>
+		<TargetFramework>$(RuntimeVer)</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\RoyalCode.Razor.Commons\RoyalCode.Razor.Commons.csproj" />
+	</ItemGroup>
+
+</Project>

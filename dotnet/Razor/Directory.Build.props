@@ -1,7 +1,7 @@
 <Project>
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
-		<RuntimeVer>net9.0</RuntimeVer>
+		<TargetFramework>net10.0</TargetFramework>
+		<RuntimeVer>net10.0</RuntimeVer>
 	</PropertyGroup>
 	<PropertyGroup>
 		<Nullable>enable</Nullable>
@@ -13,7 +13,7 @@
 		<LibPrev></LibPrev>
 	</PropertyGroup>
 	<PropertyGroup>
-		<AspNetVer>9.0.10</AspNetVer>
-		<ExtVer>9.0.10</ExtVer>
+		<AspNetVer>10.0.0</AspNetVer>
+		<ExtVer>10.0.0</ExtVer>
 	</PropertyGroup>
 </Project>

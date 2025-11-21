@@ -567,9 +567,6 @@
   .z-app-bar {
     z-index: 1010;
   }
-  .z-offcanvas {
-    z-index: 1030;
-  }
   .float-end {
     float: inline-end;
   }
@@ -6523,9 +6520,9 @@
   .text-shadow-xs {
     text-shadow: 0px 1px 1px var(--tw-text-shadow-color, rgb(0 0 0 / 0.2));
   }
-  .max-sm\:ml-0 {
+  .max-sm\:mx-0 {
     @media (width < 40rem) {
-      margin-left: var(--spacing-0);
+      margin-inline: var(--spacing-0);
     }
   }
   .max-sm\:hidden {
@@ -8621,7 +8618,7 @@
   color: var(--color-dark-100);
 }
 .ya-modal-backdrop {
-  z-index: 1040;
+  z-index: 1060;
   background-color: color-mix(in srgb, #000 20%, transparent);
   @supports (color: color-mix(in lab, red, red)) {
     background-color: color-mix(in oklab, var(--color-black) 20%, transparent);
@@ -8682,7 +8679,7 @@
   position: fixed;
   top: var(--spacing-0);
   left: var(--spacing-0);
-  z-index: 1050;
+  z-index: 1070;
   display: none;
   height: 100%;
   width: 100%;
@@ -8696,7 +8693,7 @@
 }
 .ya-modal {
   position: relative;
-  z-index: 1050;
+  z-index: 1070;
   margin: auto;
   width: auto;
   transition: all var(--duration-default) linear;
@@ -8766,6 +8763,7 @@
   max-width: calc(100% - var(--ya-fit-left) - var(--ya-fit-right));
   visibility: hidden;
   position: fixed;
+  z-index: 1030;
   display: flex;
   transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   flex-direction: column;
@@ -8788,7 +8786,7 @@
 }
 .ya-offcanvas-end {
   right: var(--ya-fit-right);
-  --tw-translate-x: 100%;
+  --tw-translate-x: calc(100% + var(--ya-fit-right));
   translate: var(--tw-translate-x) var(--tw-translate-y);
 }
 .ya-offcanvas-show {
@@ -8806,7 +8804,10 @@
 }
 .ya-offcanvas-backdrop {
   display: none;
-  background-color: color-mix(in oklab, var(--color-black) 20%, transparent);
+  background-color: color-mix(in srgb, #000 20%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-black) 20%, transparent);
+  }
   opacity: 0%;
   transition-property: opacity;
   transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
@@ -8826,6 +8827,25 @@
 }
 .ya-offcanvas-backdrop-overlaying {
   top: var(--spacing-0);
+  bottom: var(--spacing-0);
+  z-index: 1050;
+}
+.ya-offcanvas-backdrop-overlaying.ya-offcanvas-start {
+  left: var(--spacing-0);
+  --tw-translate-x: -100%;
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+}
+.ya-offcanvas-backdrop-overlaying.ya-offcanvas-end {
+  right: var(--spacing-0);
+  --tw-translate-x: 100%;
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+}
+.ya-offcanvas-backdrop-overlaying.ya-offcanvas-backdrop-show {
+  top: var(--spacing-0);
+  right: var(--spacing-0);
+  bottom: var(--spacing-0);
+  left: var(--spacing-0);
+  z-index: 1040;
 }
 @property --tw-translate-x {
   syntax: "*";

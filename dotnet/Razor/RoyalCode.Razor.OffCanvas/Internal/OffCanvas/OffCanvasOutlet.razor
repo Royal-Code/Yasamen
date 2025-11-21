@@ -2,11 +2,28 @@
 
 @inject OffCanvasService Service
 
-@foreach (var offcanvas in Service.OffCanvas)
-{
-	<SectionOutlet SectionId="offcanvas" @key="offcanvas" />
-}
+<div class="@Classes">
+	@foreach (var offcanvas in Service.OffCanvas)
+	{
+		<SectionOutlet SectionId="offcanvas" @key="offcanvas" />
+	}
+</div>
 
 @code {
+
+	public string Classes => "ya-offcanvas-outlet"
+		.AddClass(Context.TopSize?.ToFitTopSpacing())
+		.AddClass(Context.RightMenuSize?.ToFitBottomSpacing())
+		.AddClass(Context.FooterSize?.ToFitBottomSpacing())
+		.AddClass(Context.LeftMenuSize?.ToFitLeftSpacing());
+
 	public new void StateHasChanged() => base.StateHasChanged();
+
+	[CascadingParameter]
+	public ILayoutContext Context { get; set; } = default!;
+
+	protected override void OnInitialized()
+	{
+		Service.Outlet = this;
+	}
 }

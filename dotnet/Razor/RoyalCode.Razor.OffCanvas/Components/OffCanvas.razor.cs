@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components;
-using RoyalCode.Razor.Commons.Layout;
 using RoyalCode.Razor.Styles;
 
 namespace RoyalCode.Razor.Components;
@@ -8,7 +7,7 @@ public partial class OffCanvas
 {
     private OffCanvasHandler handler = null!;
 
-    public bool IsVisible { get; private set; }
+    internal bool IsVisible => state.IsVisible;
 
     [Parameter]
     public Positions Position { get; set; } = Positions.End;
@@ -46,9 +45,6 @@ public partial class OffCanvas
     [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object> Attributes { get; set; } = null!;
 
-    [CascadingParameter]
-    public ILayoutContext Context { get; set; }
-
     public override Task SetParametersAsync(ParameterView parameters)
     {
         parameters.SetParameterProperties(this);
@@ -64,39 +60,28 @@ public partial class OffCanvas
 
         handler.Init(this);
 
+        state.Closeable = Closeable ?? true;
+        state.Modal = Modal;
+        state.Position = Position;
+        state.Fitting = Fitting;
+
         return base.SetParametersAsync(ParameterView.Empty);
     }
 
-    public async ValueTask Show()
+    public async ValueTask OpenAsync()
     {
-        if (IsVisible)
-            return;
-
-        IsVisible = true;
-        await Toogle();
+        await OffCanvasService.OpenAsync(state);
     }
 
-    public async ValueTask Hide()
+    public async ValueTask CloseAsync()
     {
-        if (!IsVisible)
-            return;
-
-        IsVisible = false;
-        await Toogle();
-    }
-
-    private async ValueTask Toogle()
-    {
-        if (OnVisibilityChanged.HasDelegate)
-            await OnVisibilityChanged.InvokeAsync(IsVisible);
-
-        await InvokeAsync(StateHasChanged);
+        await OffCanvasService.CloseAsync(state);
     }
 
     private async Task BackdropClickHandler()
     {
         if (Closeable is null || Closeable.Value)
-            await Hide();
+            await CloseAsync();
     }
 	
 }

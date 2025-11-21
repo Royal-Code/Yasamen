@@ -50,6 +50,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Razor.OffCanvas",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Razor.Modals", "RoyalCode.Razor.Modals\RoyalCode.Razor.Modals.csproj", "{D0DB57D2-093E-488A-956C-D83514B4861A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Razor.Commons.Tests", "RoyalCode.Razor.Commons.Tests\RoyalCode.Razor.Commons.Tests.csproj", "{D262F57A-23ED-4F6A-A9E5-AF8F53E4CE24}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -108,6 +110,10 @@ Global
 		{D0DB57D2-093E-488A-956C-D83514B4861A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0DB57D2-093E-488A-956C-D83514B4861A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0DB57D2-093E-488A-956C-D83514B4861A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D262F57A-23ED-4F6A-A9E5-AF8F53E4CE24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D262F57A-23ED-4F6A-A9E5-AF8F53E4CE24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D262F57A-23ED-4F6A-A9E5-AF8F53E4CE24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D262F57A-23ED-4F6A-A9E5-AF8F53E4CE24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -129,6 +135,7 @@ Global
 		{59EBB488-3043-439C-9159-7E6870F6E204} = {CECD2B3A-8036-4A1C-B9E1-E74E6E8691E2}
 		{667C3378-1D69-416D-AB78-B8EF08ED361C} = {947DDA3F-95F0-4F01-9AC1-43C874779423}
 		{D0DB57D2-093E-488A-956C-D83514B4861A} = {947DDA3F-95F0-4F01-9AC1-43C874779423}
+		{D262F57A-23ED-4F6A-A9E5-AF8F53E4CE24} = {CECD2B3A-8036-4A1C-B9E1-E74E6E8691E2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8E24AFE-4B8F-4D0B-BB8C-FD23CE44D40C}
