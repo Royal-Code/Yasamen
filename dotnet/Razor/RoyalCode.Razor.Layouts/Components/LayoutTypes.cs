@@ -1,4 +1,4 @@
-﻿namespace RoyalCode.Razor.Layouts;
+﻿namespace RoyalCode.Razor.Components;
 
 /// <summary>
 /// Define the layout styles.

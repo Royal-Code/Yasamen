@@ -1,0 +1,4 @@
+﻿
+.ya-side-bar {
+    @apply overflow-hidden max-sm:hidden sm:fixed top-0 bottom-0 bg-white flex-col justify-start;
+}

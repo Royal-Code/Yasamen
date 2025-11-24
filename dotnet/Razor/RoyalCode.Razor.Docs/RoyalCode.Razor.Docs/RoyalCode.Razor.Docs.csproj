@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RoyalCode.Razor.Layouts\RoyalCode.Razor.Layouts.csproj" />
+    <ProjectReference Include="..\..\RoyalCode.Razor.Layouts.Apps\RoyalCode.Razor.Layouts.Apps.csproj" />
     <ProjectReference Include="..\..\RoyalCode.Razor.Show\RoyalCode.Razor.Show.csproj" />
     <ProjectReference Include="..\RoyalCode.Razor.Docs.Client\RoyalCode.Razor.Docs.Client.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="$(AspNetVer)" />

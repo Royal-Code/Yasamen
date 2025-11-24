@@ -4,10 +4,9 @@
 </aside>
 
 @code {
-    public string Classes => "ya-app-menu overflow-hidden max-sm:hidden sm:fixed top-0 bottom-0 bg-white flex-col justify-start"
+    public string Classes => "ya-side-bar"
         .AddClass(Size.ToWidthCssClass())
         .AddClass(Size.ToMinWidthCssClass())
-		.AddClass(Position is Positions.Start, Size.ToFitLeftSpacing(), Size.ToFitRightSpacing())
         .AddClass(AdditionalClasses);
 
     public ElementReference AsideReference { get; private set; }

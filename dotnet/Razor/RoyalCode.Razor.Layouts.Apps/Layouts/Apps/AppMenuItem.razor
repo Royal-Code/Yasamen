@@ -1,0 +1,62 @@
+@using Microsoft.AspNetCore.Components.Routing
+@using RoyalCode.Razor.Icons.Factory
+@using RoyalCode.Razor.Layouts.Models
+
+<div class="@Classes">
+    @if (Item.Type == MenuItemType.Link)
+    {
+        <NavLink href="@Item.Url" class="ya-menu-item-content" Match="NavLinkMatch.All">
+            @Item.Text
+        </NavLink>
+        @if (AppMenuContext.UseFavorites)
+        {
+            <div @onclick="ToggleFavorite">
+                @FavoriteIcon(FavoriteColor)
+            </div>
+        }
+    }
+    else if (Item.Type == MenuItemType.Header)
+    {
+        <div class="ya-menu-item-header-text">
+            @Item.Text
+        </div>
+        <div @onclick="() => AppMenuContext.SetCurrentMenuItem(Item)">
+            @WellKnownIcons.MenuExpand()
+        </div>
+	}
+</div>
+
+
+
+@code {
+
+    private string Classes => "ya-menu-item"
+        .AddClass(Item.Type == MenuItemType.Link, "ya-menu-item-link")
+        .AddClass(Item.Type == MenuItemType.Header, "ya-menu-item-header")
+        .AddClass(Item.Type == MenuItemType.Divider, "ya-menu-item-divider");
+
+    private IconFragment FavoriteIcon => Item.IsFavorite ? WellKnownIcons.FavoriteOn : WellKnownIcons.FavoriteOff;
+    private string FavoriteColor => Item.IsFavorite ? TextColor.Highlight : TextColor.Current;
+
+    [Parameter, EditorRequired]
+    public MenuItem Item { get; set; } = default!;
+
+    [CascadingParameter]
+    public AppMenuContext AppMenuContext { get; set; } = default!;
+
+    public async Task ToggleFavorite()
+    {
+        var message = await AppMenuContext.ToggleFavorite(Item);
+        if (message.Type is Commons.Results.MessageType.Success)
+        {
+            Item.IsFavorite = !Item.IsFavorite;
+        }
+        else
+        {
+            // Handle error (e.g., show notification)
+            // For while does not exists any notification system, 
+			// so we will write to console
+			Console.WriteLine($"Error toggling favorite: {message.Text}");
+        }
+    }
+}

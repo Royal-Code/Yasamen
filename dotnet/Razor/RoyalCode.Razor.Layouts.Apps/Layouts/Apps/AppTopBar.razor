@@ -2,19 +2,19 @@
 <div @attributes="AdditionalAttributes" class="@Classes">
     @if (StartContent.IsNotEmptyFragment())
     {
-        <div class="ya-app-bar--start">
+        <div class="ya-top-bar-start">
             @StartContent
         </div>
     }
     @if (CenterContent.IsNotEmptyFragment())
     {
-        <div class="ya-app-bar--center">
+        <div class="ya-top-bar-center">
             @CenterContent
         </div>
     }
     @if (EndContent.IsNotEmptyFragment())
     {
-        <div class="ya-app-bar--end">
+        <div class="ya-top-bar-end">
             @EndContent
         </div>
     }
@@ -22,7 +22,7 @@
 
 @code {
 
-    public string Classes => "ya-app-bar flex justify-between items-center w-full bg-white"
+    public string Classes => "ya-top-bar"
             .AddClass(Size.ToHeightCssClass())
             .AddClass(AdditionalClasses);
 }

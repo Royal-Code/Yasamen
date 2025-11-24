@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components;
 using RoyalCode.Razor.Styles;
-using static RoyalCode.Razor.Layouts.Container;
+using static RoyalCode.Razor.Components.Container;
 
-namespace RoyalCode.Razor.Layouts;
+namespace RoyalCode.Razor.Components;
 
 /// <summary>
 /// <para>

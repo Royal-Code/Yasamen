@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using RoyalCode.Razor.Styles;
 
-namespace RoyalCode.Razor.Layouts;
+namespace RoyalCode.Razor.Components;
 
 /// <summary>
 /// <para>

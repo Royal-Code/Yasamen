@@ -18,6 +18,7 @@ public static class BootstrapIcons
 
         if (includeCommonsIcons)
         {
+            WellKnownIcons.Home = factory.GetFragment(BsIconNames.House);
             WellKnownIcons.Add = factory.GetFragment(BsIconNames.PlusCircle);
             WellKnownIcons.Remove = factory.GetFragment(BsIconNames.DashCircle);
             WellKnownIcons.Edit = factory.GetFragment(BsIconNames.PencilSquare);
@@ -39,7 +40,9 @@ public static class BootstrapIcons
             WellKnownIcons.Success = factory.GetFragment(BsIconNames.CheckCircle);
             WellKnownIcons.Error = factory.GetFragment(BsIconNames.XCircle);
             WellKnownIcons.Warning = factory.GetFragment(BsIconNames.ExclamationCircle);
+            WellKnownIcons.Alert = factory.GetFragment(BsIconNames.ExclamationTriangle);
             WellKnownIcons.Info = factory.GetFragment(BsIconNames.InfoCircle);
+            WellKnownIcons.Highlight = factory.GetFragment(BsIconNames.InfoSquareFill);
 
             WellKnownIcons.UserProfile = factory.GetFragment(BsIconNames.Person);
             WellKnownIcons.UserSettings = factory.GetFragment(BsIconNames.Gear);
@@ -55,6 +58,8 @@ public static class BootstrapIcons
             WellKnownIcons.MenuExpand = factory.GetFragment(BsIconNames.ChevronCompactDown);
             WellKnownIcons.MenuCollapseAll = factory.GetFragment(BsIconNames.ChevronCompactUp);
             WellKnownIcons.MenuExpandAll = factory.GetFragment(BsIconNames.ChevronCompactDown);
+            WellKnownIcons.FavoriteOff = factory.GetFragment(BsIconNames.Heart);
+            WellKnownIcons.FavoriteOn = factory.GetFragment(BsIconNames.HeartFill);
         }
     }
 }

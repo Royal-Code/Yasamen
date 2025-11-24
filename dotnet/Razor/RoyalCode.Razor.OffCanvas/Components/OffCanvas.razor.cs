@@ -19,7 +19,7 @@ public partial class OffCanvas
     public bool Modal { get; set; }
 
     [Parameter]
-    public bool? Closeable { get; set; }
+    public bool Closeable { get; set; } = true;
 
     [Parameter]
     public OffCanvasHandler? Handler { get; set; }
@@ -31,7 +31,7 @@ public partial class OffCanvas
     public EventCallback<bool> OnVisibilityChanged { get; set; }
 
     [Parameter]
-    public bool UseBox { get; set; }
+    public bool UseBox { get; set; } = true;
 
     [Parameter]
     public Sizes BoxSize { get; set; } = Sizes.Medium;
@@ -60,7 +60,7 @@ public partial class OffCanvas
 
         handler.Init(this);
 
-        state.Closeable = Closeable ?? true;
+        state.Closeable = Closeable;
         state.Modal = Modal;
         state.Position = Position;
         state.Fitting = Fitting;
@@ -80,7 +80,7 @@ public partial class OffCanvas
 
     private async Task BackdropClickHandler()
     {
-        if (Closeable is null || Closeable.Value)
+        if (Closeable)
             await CloseAsync();
     }
 	

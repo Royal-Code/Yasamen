@@ -12,7 +12,7 @@
 			<CascadingValue Value="handler">
 				@if (UseBox)
 				{
-					<AsideBox Title="@Title" Size="@BoxSize" Closeable="@(Closeable ?? true)">
+					<AsideBox Title="@Title" Size="@BoxSize" Closeable="@Closeable">
 						@ChildContent
 					</AsideBox>
 				}

@@ -2,7 +2,7 @@
 using System;
 using System.Drawing;
 
-namespace RoyalCode.Razor.Layouts;
+namespace RoyalCode.Razor.Components;
 
 /// <summary>
 /// Define the layout sizes.

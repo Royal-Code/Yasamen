@@ -15,10 +15,15 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(AspNetVer)" />
 	</ItemGroup>
 
-	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+	<!--For production builds, build tw, min, bundle -->
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)' == 'Release'">
 		<Exec Command="bun run build:tw:css" />
 		<Exec Command="bun run build:tw:css:min" />
 		<Exec Command="bun run bundle:css" />
 	</Target>
-
+	<!--For debug builds, build tw only -->
+	<Target Name="PreBuildDebug" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)' == 'Debug'">
+		<Exec Command="bun run build:tw:css" />
+	</Target>
+	
 </Project>

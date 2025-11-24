@@ -2,10 +2,14 @@
 
 @import './css/utilities.css';
 
+@import './css/components/applayout.css';
 @import './css/components/btn.css';
 @import './css/components/ibtn.css';
+@import './css/components/menuitem.css';
 @import './css/components/modal.css';
 @import './css/components/offcanvas.css';
+@import './css//components/sidebar.css';
+@import './css/components/topbar.css';
 
 @theme {
     --color-primary: #0d6dfd;

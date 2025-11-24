@@ -1,0 +1,4 @@
+﻿.ya-top-bar {
+    @apply flex justify-between items-center w-full bg-white;
+    box-shadow: inset 0.1px -2px 6px 1px #A0A0A010;
+}

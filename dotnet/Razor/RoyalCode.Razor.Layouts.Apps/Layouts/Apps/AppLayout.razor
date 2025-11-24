@@ -45,27 +45,27 @@
 
 @code {
 
-	private string Classes => "ya-app-layout grid w-full min-h-screen"
+	private string Classes => "ya-app-layout"
 		.AddClass(TopSize.ToFitTopSpacing())
 		.AddClass(AdditionalClasses);
 
-	private string HeaderClasses => "ya-app-header fixed top-0 right-0 left-0 z-app-bar"
+	private string HeaderClasses => "ya-app-header"
 		.AddClass(AdditionalHeaderClasses);
 
-	private string PageClasses => "ya-app-page flex w-full h-full"
+	private string PageClasses => "ya-app-page"
 		.AddClass(Css.Padding.Side.Top().WithSize(TopSize))
 		.AddClass(AdditionalPageClasses);
 
 	private string AppSideBarClasses => Css.Margin.Side.Top().WithSize(TopSize);
 
-	private string ContentClasses => "ya-app-content grid w-full self-stretch max-sm:mx-0"
+	private string ContentClasses => "ya-app-content"
 		.AddClass(LeftMenu.IsNotEmptyFragment(), Css.Margin.Side.Left().WithSize(LeftMenuSize))
 		.AddClass(RightMenu.IsNotEmptyFragment(), Css.Margin.Side.Right().WithSize(RightMenuSize))
 		.AddClass(AdditionalContentClasses);
 
 	private string MainClasses => "ya-app-main".AddClass(AdditionalMainClasses);
 
-	private string FooterClasses => "ya-app-footer flex w-full self-end items-center bg-white"
+	private string FooterClasses => "ya-app-footer"
 		.AddClass(SpacingSize.LargerX2.ToHeightCssClass())
 		.AddClass(AdditionalFooterClasses);
 

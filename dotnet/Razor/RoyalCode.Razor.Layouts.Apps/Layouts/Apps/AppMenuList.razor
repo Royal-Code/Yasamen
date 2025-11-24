@@ -1,0 +1,12 @@
+﻿@using RoyalCode.Razor.Layouts.Models
+
+@foreach (var item in AppMenuContext.CurrentMenuItem.Children)
+{
+    <AppMenuItem Item="item" @key="item" />
+}
+
+@code {
+
+	[CascadingParameter]
+	public AppMenuContext AppMenuContext { get; set; } = default!;
+}
