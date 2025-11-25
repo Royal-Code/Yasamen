@@ -1,8 +1,17 @@
 ﻿@using RoyalCode.Razor.Layouts.Models
 
-@foreach (var item in AppMenuContext.CurrentMenuItem.Children)
+@if (AppMenuContext.IsLoading)
 {
-    <AppMenuItem Item="item" @key="item" />
+	<div class="app-menu-loading">
+
+	</div>
+}
+else
+{
+	@foreach (var item in AppMenuContext.CurrentMenuItem.Children)
+	{
+		<AppMenuItem Item="item" @key="item" />
+	}
 }
 
 @code {

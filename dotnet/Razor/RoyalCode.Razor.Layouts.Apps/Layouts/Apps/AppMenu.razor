@@ -1,0 +1,35 @@
+﻿@using RoyalCode.Razor.Commons.Results
+
+<CascadingValue Value="context" IsFixed="true">
+	<div class="app-menu">
+		<div class="app-menu-search">
+			search component
+		</div>
+		<div class="app-menu-breadcrumbs">
+			breadcrumbs
+		</div>
+		@if (context.CurrentMenuItem.Text.IsPresent())
+		{
+			<div class="app-menu-title">
+				@context.CurrentMenuItem.Text
+			</div>
+		}
+		<AppMenuList />
+	</div>
+</CascadingValue>
+
+@code {
+
+	private readonly AppMenuContext context;
+
+	public AppMenu()
+	{
+		context = new AppMenuContext(StateHasChanged, ToogleFavoriteAsync);
+	}
+
+	private Task<Message> ToogleFavoriteAsync(MenuItem item)
+	{
+		item.IsFavorite = !item.IsFavorite;
+		return Task.FromResult(Message.Success);
+	}
+}

@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Components;
 using RoyalCode.Razor.Commons.Layout;
+using RoyalCode.Razor.Layouts.Apps;
 using RoyalCode.Razor.Styles;
 
-namespace RoyalCode.Razor.Layouts.Apps;
+namespace RoyalCode.Razor.Layouts.Models;
 
 /// <summary>
 /// Layout context for App Layouts, see more <see cref="ILayoutContext"/>.
