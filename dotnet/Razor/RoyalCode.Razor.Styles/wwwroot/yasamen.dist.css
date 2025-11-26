@@ -6,6 +6,7 @@
     --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --font-serif: "Georgia", "Times New Roman", Times, serif;
     --font-mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+    --color-gray-500: oklch(55.1% 0.027 264.364);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -8618,6 +8619,52 @@
   border-color: var(--color-dark-500);
   background-color: var(--color-dark-500);
   color: var(--color-dark-100);
+}
+.app-menu {
+  display: flex;
+  height: auto;
+  width: calc(var(--spacing) * 100);
+  max-width: 100%;
+  flex-direction: column;
+  overflow-y: auto;
+  background-color: var(--color-white);
+  padding: var(--spacing-6);
+}
+.app-menu-search {
+  margin-bottom: var(--spacing-5);
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.app-menu-breadcrumbs {
+  margin-bottom: var(--spacing-4);
+  width: 100%;
+}
+.app-menu-title {
+  margin-bottom: var(--spacing-2);
+  font-size: var(--text-2xl);
+  line-height: var(--tw-leading, var(--text-2xl--line-height));
+  --tw-font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-bold);
+}
+.app-menu-loading {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--color-gray-500);
+}
+.app-menu-error {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--color-gray-500);
 }
 .ya-menu-item {
   display: flex;

@@ -13,6 +13,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddYasamenCommons();
 builder.Services.AddYasamenModal();
 builder.Services.AddYasamenOffCanvas();
+builder.Services.AddYasamenMenu();
 
 var app = builder.Build();
 

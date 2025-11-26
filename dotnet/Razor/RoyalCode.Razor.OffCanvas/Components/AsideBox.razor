@@ -8,9 +8,7 @@
             }
             @if (Handler != null && Closeable)
             {
-                <button type="button" class="ya-btn-close" aria-label="Close" @onclick="CloseHandler">
-                    @WellKnownIcons.Close("text-sm")
-                </button>
+                <CloseOffCanvasButton />
             }
         </header>
     }
@@ -22,11 +20,11 @@
 @code {
 
     private string Classes => "ya-aside-box"
-        .AddClass("max-w-full p-6 h-auto flex flex-col bg-primary-light-100 overflow-y-auto")
+        .AddClass("max-w-full p-6 h-auto flex flex-col bg-white overflow-y-auto")
         .AddClass(Size.ToContentCssClass())
         .AddClass(AdditionalClasses);
 
-    private string HeaderClasses => "flex space-between center mb-5 w-full"
+    private string HeaderClasses => "flex justify-between items-center mb-5 w-full"
         .AddClass(Title is not null, "h-8", "h-3");
 
     [CascadingParameter]
@@ -49,10 +47,4 @@
 
     [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object>? AdditionalAttributes { get; set; }
-
-    public async Task CloseHandler()
-    {
-        if (Handler is not null)
-            await Handler.Hide();
-    }
 }

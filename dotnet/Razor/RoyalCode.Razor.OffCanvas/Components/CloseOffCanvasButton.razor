@@ -1,0 +1,22 @@
+﻿<button type="button" class="ya-btn-close" aria-label="Close" @onclick="CloseHandler">
+    @WellKnownIcons.Close("text-sm")
+</button>
+
+@code {
+
+	[CascadingParameter]
+	public OffCanvasHandler Handler { get; set; } = null!;
+
+	protected override void OnParametersSet()
+	{
+		if (Handler is null)
+			throw new InvalidOperationException(
+				$"{nameof(CloseOffCanvasButton)} requires a cascading parameter of type {nameof(OffCanvasHandler)}.");
+	}
+
+    public async Task CloseHandler()
+    {
+        if (Handler is not null)
+            await Handler.Hide();
+    }
+}

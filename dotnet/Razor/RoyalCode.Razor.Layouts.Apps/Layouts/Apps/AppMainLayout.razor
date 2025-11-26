@@ -16,10 +16,13 @@
             <IconButton title="Open Menu" IconFragment="@WellKnownIcons.Menu" OnClick="ToggleMenu" />
         </div>
         <div class="my-2 flex justify-center">
-            @WellKnownIcons.Menu()
+            <IconButton title="Open Menu" IconFragment="@WellKnownIcons.FavoriteOff" OnClick="ToggleFavorite" />
         </div>
-        <OffCanvas Handler="offCanvasHandler" UseBox="true" Closeable="true" Position="Positions.Start">
-            Off Canvas Menu Content
+        <AppMenu Handler="menuHandler" />
+        <OffCanvas Position="Positions.Start" Handler="favoriteHandler" Title="Favorites">
+            <div class="p-4">
+				Here are your favorite items.
+            </div>
         </OffCanvas>
     </LeftMenu>
     <Main>
@@ -32,10 +35,17 @@
 
 @code {
 
-    private readonly OffCanvasHandler offCanvasHandler = new();
+    private readonly OffCanvasHandler menuHandler = new();
+	private readonly OffCanvasHandler favoriteHandler = new();
 
     private async Task ToggleMenu()
     {
-        await offCanvasHandler.Toggle();
+        await menuHandler.Toggle();
     }
+
+    private async Task ToggleFavorite()
+    {
+        await favoriteHandler.Toggle();
+    }
+
 }

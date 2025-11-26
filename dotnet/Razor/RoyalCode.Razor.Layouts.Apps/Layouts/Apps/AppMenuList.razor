@@ -3,7 +3,13 @@
 @if (AppMenuContext.IsLoading)
 {
 	<div class="app-menu-loading">
-
+		@Animations.Motions.Rotation()(WellKnownIcons.Working())
+	</div>
+}
+else if (AppMenuContext.LoadException is not null)
+{
+	<div class="app-menu-error">
+		Error: @AppMenuContext.LoadException.Message
 	</div>
 }
 else

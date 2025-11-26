@@ -1,4 +1,6 @@
-﻿namespace RoyalCode.Razor.Layouts.Models;
+﻿using System.Text.Json.Serialization;
+
+namespace RoyalCode.Razor.Layouts.Models;
 
 /// <summary>
 /// Represents a menu item in the application menu.
@@ -43,6 +45,7 @@ public class MenuItem
     /// <summary>
     /// Determines whether the menu item is a leaf node (i.e., has no children).
     /// </summary>
+    [JsonIgnore]
     public bool IsLeaf => Children.Count == 0;
 
     /// <summary>

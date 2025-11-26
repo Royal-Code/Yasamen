@@ -1,35 +1,79 @@
 ﻿@using RoyalCode.Razor.Commons.Results
 
+@inject MenuService MenuService;
+
 <CascadingValue Value="context" IsFixed="true">
-	<div class="app-menu">
-		<div class="app-menu-search">
-			search component
-		</div>
-		<div class="app-menu-breadcrumbs">
-			breadcrumbs
-		</div>
-		@if (context.CurrentMenuItem.Text.IsPresent())
-		{
-			<div class="app-menu-title">
-				@context.CurrentMenuItem.Text
+	<OffCanvas Position="Positions.Start" Handler="Handler" OnVisibilityChanged="VisibilityChangedHandler" UseBox="false">
+		<div @attributes="AdditionalAttributes" class="@Classes">
+			<div class="app-menu-search">
+				<div>
+					search component
+				</div>
+				<CloseOffCanvasButton />
 			</div>
-		}
-		<AppMenuList />
-	</div>
+			<div class="app-menu-breadcrumbs">
+				breadcrumbs
+			</div>
+			@if (context.CurrentMenuItem.Text.IsPresent())
+			{
+				<div class="app-menu-title">
+					@context.CurrentMenuItem.Text
+				</div>
+			}
+			<AppMenuList />
+		</div>
+	</OffCanvas>
 </CascadingValue>
 
 @code {
 
+	public string Classes => "app-menu"
+		.AddClass(AdditionalClasses);
+
 	private readonly AppMenuContext context;
+	private bool isMenuLoaded = false;
 
 	public AppMenu()
 	{
 		context = new AppMenuContext(StateHasChanged, ToogleFavoriteAsync);
 	}
 
+	[Parameter, EditorRequired]
+	public OffCanvasHandler Handler { get; set; } = null!;
+
+	[Parameter]
+	public string? AdditionalClasses { get; set; }
+
+	[Parameter(CaptureUnmatchedValues = true)]
+	public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    protected override void OnParametersSet()
+	{
+		context.Handler = Handler;
+	}
+
 	private Task<Message> ToogleFavoriteAsync(MenuItem item)
 	{
 		item.IsFavorite = !item.IsFavorite;
 		return Task.FromResult(Message.Success);
+	}
+
+	private async Task VisibilityChangedHandler(bool visible)
+	{
+		if (visible && !isMenuLoaded)
+		{
+			context.LoadingStarted();
+			try
+			{
+				var menu = await MenuService.GetMenuAsync();
+				context.LoadingFinished(menu);
+				isMenuLoaded = true;
+			}
+			catch (Exception ex)
+			{
+				context.LoadingFailed(ex);
+				return;
+			}
+		}
 	}
 }

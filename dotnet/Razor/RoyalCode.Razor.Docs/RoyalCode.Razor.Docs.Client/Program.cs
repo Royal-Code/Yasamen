@@ -8,5 +8,6 @@ BootstrapIcons.Include();
 builder.Services.AddYasamenCommons();
 builder.Services.AddYasamenModal();
 builder.Services.AddYasamenOffCanvas();
+builder.Services.AddYasamenMenu();
 
 await builder.Build().RunAsync();

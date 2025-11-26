@@ -1,16 +1,18 @@
-﻿
-.app-menu {
-    @apply bg-white p-4;
+﻿.app-menu {
+    @apply max-w-full p-6 h-auto flex flex-col bg-white overflow-y-auto w-100;
 }
 .app-menu-search {
-    @apply mb-4;
+    @apply flex justify-between items-center mb-5 w-full;
 }
 .app-menu-breadcrumbs {
-    @apply mb-4;
+    @apply mb-4 w-full;
 }
 .app-menu-title {
     @apply text-2xl font-bold mb-2;
 }
 .app-menu-loading {
+    @apply text-center text-gray-500 w-full h-full flex items-center justify-center;
+}
+.app-menu-error {
     @apply text-center text-gray-500 w-full h-full flex items-center justify-center;
 }
