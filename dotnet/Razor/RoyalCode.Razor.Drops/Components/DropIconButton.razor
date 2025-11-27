@@ -1,0 +1,51 @@
+﻿@using RoyalCode.Razor.Internal.Drops
+
+<DropBase Handler="InternalHandler"
+          Direction="Direction"
+          Align="Align" 
+          MinWidth="MinWidth" 
+          ContentType="ContentType" 
+          CloseBehavior="CloseBehavior" 
+          Title="@Title"
+          OnOpened="OnOpened"
+		  OnClosed="OnClosed"
+          AdditionalClasses="@DropAdditionalClasses"
+>
+    <Action>
+        <IconButton Type="Type" 
+					Style="Style"
+                    Size="Size" 
+                    Icon="Icon"
+                    IconAnimation="IconAnimation"
+                    IconFragment="IconFragment"
+					Outline="Outline"
+					Active="Active"
+                    Disabled="Disabled"
+                    AdditionalClasses="@IconAdditionalClasses"
+                    OnClick="onClickHandler" />
+    </Action>
+    <DropContent>
+        @ChildContent
+    </DropContent>
+</DropBase>
+
+@code {
+    private readonly DropHandler handler = new();
+    private readonly Func<MouseEventArgs, Task> onClickHandler;
+
+    private DropHandler InternalHandler => Handler ?? handler;
+
+    public DropIconButton()
+    {
+        onClickHandler = OnClickHandler;
+    }
+
+	private async Task OnClickHandler(MouseEventArgs args)
+	{
+        var currentHandler = InternalHandler;
+        if (currentHandler.IsOpen)
+            return;
+
+        await handler.Open();
+    }
+}

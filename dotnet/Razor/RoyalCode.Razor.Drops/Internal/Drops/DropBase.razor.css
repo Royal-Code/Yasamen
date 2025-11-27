@@ -1,0 +1,152 @@
+﻿
+.ya-drop {
+    position: relative;
+    display: inline-block;
+}
+
+.ya-drop-content {
+    display: none;
+    position: absolute;
+    transition: all .30s linear;
+    opacity: 0;
+    padding: 0;
+    background-color: var(--color-white, #ffffff);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    border-radius: .25rem;
+    z-index: 4;
+}
+
+.ya-drop-open > .ya-drop-content {
+    display: block;
+    opacity: 1;
+}
+
+.ya-drop-down > .ya-drop-content {
+    top: 100%;
+}
+
+.ya-drop-up > .ya-drop-content {
+    top: auto;
+    bottom: 100%;
+}
+
+.ya-drop-right > .ya-drop-content {
+    left: auto;
+    right: 0;
+    transform: translateX(100%);
+}
+
+.ya-drop-left > .ya-drop-content {
+    left: 0;
+    right: auto;
+    transform: translateX(-100%);
+}
+
+.ya-drop-down.ya-drop-start > .ya-drop-content, .ya-drop-up.ya-drop-start > .ya-drop-content {
+    left: 0;
+}
+
+.ya-drop-down.ya-drop-end > .ya-drop-content, .ya-drop-up.ya-drop-end > .ya-drop-content {
+    right: 0;
+}
+
+.ya-drop-down.ya-drop-center > .ya-drop-content, .ya-drop-up.ya-drop-center > .ya-drop-content {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ya-drop-right.ya-drop-start > .ya-drop-content, .ya-drop-left.ya-drop-start > .ya-drop-content {
+    top: 0;
+}
+
+.ya-drop-right.ya-drop-end > .ya-drop-content, .ya-drop-left.ya-drop-end > .ya-drop-content {
+    bottom: 0;
+}
+
+.ya-drop-right.ya-drop-center > .ya-drop-content {
+    top: 50%;
+    transform: translateX(100%) translateY(-50%);
+}
+
+.ya-drop-left.ya-drop-center > .ya-drop-content {
+    top: 50%;
+    transform: translateX(-100%) translateY(-50%);
+}
+
+ul.ya-drop-content ::deep > li {
+    /* no bullet */
+    list-style-type: none;
+    width: 100%;
+}
+
+.ya-drop:not(.ya-drop-left) ::deep .ya-drop-button::after {
+    display: inline-block;
+    margin-left: .275rem;
+    vertical-align: .25rem;
+    content: "";
+}
+
+.ya-drop-down ::deep .ya-drop-button::after {
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-bottom: 0;
+    border-left: .3em solid transparent;
+}
+
+.ya-drop-up ::deep .ya-drop-button::after {
+    border-top: 0;
+    border-right: .3em solid transparent;
+    border-bottom: .3em solid;
+    border-left: .3em solid transparent;
+}
+
+.ya-drop-right ::deep .ya-drop-button::after {
+    border-top: .3em solid transparent;
+    border-right: 0;
+    border-bottom: .3em solid transparent;
+    border-left: .3em solid;
+}
+
+.ya-drop-left ::deep .ya-drop-button::before {
+    display: inline-block;
+    margin-right: .275rem;
+    vertical-align: .25rem;
+    content: "";
+    border-top: .3em solid transparent;
+    border-right: .3em solid;
+    border-bottom: .3em solid transparent;
+}
+
+.ya-drop > div:nth-child(1) {
+    display: flex;
+}
+
+.ya-drop:not(.ya-drop-left) ::deep .ya-drop-button-split {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.ya-drop:not(.ya-drop-left) ::deep .ya-drop-button:nth-child(2) {
+    margin-left: -1px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    flex: 1 1 auto;
+    padding-left: 0.25rem;
+    padding-right: 0.5rem;
+    position: relative;
+}
+
+.ya-drop-left ::deep .ya-drop-button-split {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.ya-drop-left ::deep .ya-drop-button:nth-child(1):not(:last-child) {
+    margin-right: -1px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    flex: 1 1 auto;
+    padding-left: 0.5rem;
+    padding-right: 0.25rem;
+    position: relative;
+}

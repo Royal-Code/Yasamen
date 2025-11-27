@@ -15,8 +15,9 @@ public static class YasamenServiceCollectionExtensions
     /// <returns>The same instance of <paramref name="services"/> for chaining.</returns>
     public static IServiceCollection AddYasamenCommons(this IServiceCollection services)
     {
-        services.AddTransient<RippleJs>();
+        services.AddTransient<ClickJs>();
         services.AddTransient<ElementJs>();
+        services.AddTransient<RippleJs>();
 
         return services;
     }

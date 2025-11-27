@@ -1,0 +1,39 @@
+﻿
+@if (ContentType == DropContentType.List)
+{
+    <li class="@Classes" @onclick="ClickHandler" @attributes="Attributes" role="@Role">
+        @ChildContent
+    </li>
+}
+else
+{
+    <div class="@Classes" @onclick="ClickHandler" @attributes="Attributes" role="menuitem">
+        @ChildContent
+    </div>
+}
+
+@code {
+    private string Classes => "ya-drop-item".AddClass(AdditionalClasses);
+
+    private string Role => OnClick.HasDelegate ? "button" : "menuitem";
+
+    /// <summary>
+	/// The type of content container this item is in.
+    /// </summary>
+    [CascadingParameter]
+    public DropContentType ContentType { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = null!;
+
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? Attributes { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick { get; set; }
+
+    private Task ClickHandler(MouseEventArgs args) => OnClick.InvokeAsync(args);
+}

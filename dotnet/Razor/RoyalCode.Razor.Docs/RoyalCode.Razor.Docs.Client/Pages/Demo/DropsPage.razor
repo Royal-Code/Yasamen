@@ -1,0 +1,150 @@
+﻿@page "/drops"
+
+@layout AppMainLayout
+
+<Box AdditionalClasses="p-8 bg-white border-none">
+
+	<h1>Drops</h1>
+
+	Aqui estão alguns exemplos de uso do componente Drop.
+
+	<h2>DropIconButton</h2>
+
+	<div class="w-full flex flex-wrap my-8">
+		<div class="w-4/12">
+			<span>Drop to Down Start</span>
+			<div class="p-10">
+				<DropIconButton Direction="Directions.Down" Icon="BsIconNames.MenuButton" MinWidth="sizes" Align="Positions.Start">
+					<DropItem>Item 1</DropItem>
+					<DropItem>Item 2</DropItem>
+					<DropItem>Item 3</DropItem>
+				</DropIconButton>
+			</div>
+		</div>
+		<div class="w-4/12">
+			<span>Drop to Down Center</span>
+			<div class="p-10">
+				<DropIconButton Direction="Directions.Down" Icon="BsIconNames.MenuButton" MinWidth="sizes" Align="Positions.Center">
+					<DropItem>Item 1</DropItem>
+					<DropItem>Item 2</DropItem>
+					<DropItem>Item 3</DropItem>
+				</DropIconButton>
+			</div>
+		</div>
+		<div class="w-4/12">
+			<span>Drop to Down End</span>
+			<div class="p-10">
+				<DropIconButton Direction="Directions.Down" Icon="BsIconNames.MenuButton" MinWidth="sizes" Align="Positions.End">
+					<DropItem>Item 1</DropItem>
+					<DropItem>Item 2</DropItem>
+					<DropItem>Item 3</DropItem>
+				</DropIconButton>
+			</div>
+		</div>
+		
+	</div>
+
+	<div class="w-full flex flex-wrap my-8">
+		<div class="w-4/12">
+			<span>Drop to Right Start</span>
+			<div class="p-10">
+				<DropIconButton Direction="Directions.Right" Icon="BsIconNames.MenuButton" MinWidth="sizes" Align="Positions.Start">
+					<DropItem>Item 1</DropItem>
+					<DropItem>Item 2</DropItem>
+					<DropItem>Item 3</DropItem>
+				</DropIconButton>
+			</div>
+		</div>
+		<div class="w-4/12">
+			<span>Drop to Right Center</span>
+			<div class="p-10">
+				<DropIconButton Direction="Directions.Right" Icon="BsIconNames.MenuButton" MinWidth="sizes" Align="Positions.Center">
+					<DropItem>Item 1</DropItem>
+					<DropItem>Item 2</DropItem>
+					<DropItem>Item 3</DropItem>
+				</DropIconButton>
+			</div>
+		</div>
+		<div class="w-4/12">
+			<span>Drop to Right End</span>
+			<div class="p-10">
+				<DropIconButton Direction="Directions.Right" Icon="BsIconNames.MenuButton" MinWidth="sizes" Align="Positions.End">
+					<DropItem>Item 1</DropItem>
+					<DropItem>Item 2</DropItem>
+					<DropItem>Item 3</DropItem>
+				</DropIconButton>
+			</div>
+		</div>
+	</div>
+
+	<div class="w-full flex flex-wrap my-8">
+		<div class="w-4/12">
+			<span>Drop to Left Start</span>
+			<div class="p-10">
+				<DropIconButton Direction="Directions.Left" Icon="BsIconNames.MenuButton" MinWidth="sizes" Align="Positions.Start">
+					<DropItem>Item 1</DropItem>
+					<DropItem>Item 2</DropItem>
+					<DropItem>Item 3</DropItem>
+				</DropIconButton>
+			</div>
+		</div>
+		<div class="w-4/12">
+			<span>Drop to Left Center</span>
+			<div class="p-10">
+				<DropIconButton Direction="Directions.Left" Icon="BsIconNames.MenuButton" MinWidth="sizes" Align="Positions.Center">
+					<DropItem>Item 1</DropItem>
+					<DropItem>Item 2</DropItem>
+					<DropItem>Item 3</DropItem>
+				</DropIconButton>
+			</div>
+		</div>
+		<div class="w-4/12">
+			<span>Drop to Left End</span>
+			<div class="p-10">
+				<DropIconButton Direction="Directions.Left" Icon="BsIconNames.MenuButton" MinWidth="sizes" Align="Positions.End">
+					<DropItem>Item 1</DropItem>
+					<DropItem>Item 2</DropItem>
+					<DropItem>Item 3</DropItem>
+				</DropIconButton>
+			</div>
+		</div>
+	</div>
+
+	<div class="w-full flex flex-wrap my-8">
+		<div class="w-4/12">
+			<span>Drop to Up Start</span>
+			<div class="p-10">
+				<DropIconButton Direction="Directions.Up" Icon="BsIconNames.MenuButton" MinWidth="sizes" Align="Positions.Start">
+					<DropItem>Item 1</DropItem>
+					<DropItem>Item 2</DropItem>
+					<DropItem>Item 3</DropItem>
+				</DropIconButton>
+			</div>
+		</div>
+		<div class="w-4/12">
+			<span>Drop to Up Center</span>
+			<div class="p-10">
+				<DropIconButton Direction="Directions.Up" Icon="BsIconNames.MenuButton" MinWidth="sizes" Align="Positions.Center">
+					<DropItem>Item 1</DropItem>
+					<DropItem>Item 2</DropItem>
+					<DropItem>Item 3</DropItem>
+				</DropIconButton>
+			</div>
+		</div>
+		<div class="w-4/12">
+			<span>Drop to Up End</span>
+			<div class="p-10">
+				<DropIconButton Direction="Directions.Up" Icon="BsIconNames.MenuButton" MinWidth="sizes" Align="Positions.End">
+					<DropItem>Item 1</DropItem>
+					<DropItem>Item 2</DropItem>
+					<DropItem>Item 3</DropItem>
+				</DropIconButton>
+			</div>
+		</div>
+	</div>
+
+</Box>
+
+@code {
+	private static readonly Sizes sizes = Sizes.Smaller;
+}

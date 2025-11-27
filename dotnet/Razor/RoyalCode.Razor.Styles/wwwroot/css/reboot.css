@@ -63,7 +63,7 @@
         --label--bg: var(--font-bg);
         /* caption */
         --caption--margin-top: 0;
-        --caption--margin-bottom: var(--spacing-7);
+        --caption--margin-bottom: var(--spacing-6);
         --caption--font-size: var(--font-lg);
         --caption--font-weight: var(--font-medium);
         --caption--line-height: var(--leading-base);
@@ -72,12 +72,12 @@
         /* list */
         --list--margin-top: 0;
         --list--margin-right: 0;
-        --list--margin-bottom: var(--spacing-7);
+        --list--margin-bottom: var(--spacing-4);
         --list--margin-left: 0;
         --list--padding-top: 0;
         --list--padding-right: 0;
         --list--padding-bottom: 0;
-        --list--padding-left: var(--spacing-11);
+        --list--padding-left: var(--spacing-6);
         --list--child--margin-top: 0;
         --list--child--margin-right: 0;
         --list--child--margin-bottom: 0;
@@ -85,7 +85,7 @@
         --list--child--padding-top: 0;
         --list--child--padding-right: 0;
         --list--child--padding-bottom: 0;
-        --list--child--padding-left: var(--spacing-11);
+        --list--child--padding-left: var(--spacing-6);
         /* description  */
         --dl--margin-top: var(--list--margin-top);
         --dl--margin-right: var(--list--margin-right);

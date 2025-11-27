@@ -1,59 +1,116 @@
 ﻿namespace RoyalCode.Razor.Styles;
 
+/// <summary>
+/// Default spacing sizes
+/// </summary>
 public enum SpacingSize
 {
+    /// <summary>No spacing</summary>
     None,
+    /// <summary>1 - 1px rem based</summary>
     One,      // 1
+    /// <summary>2 - 2px rem based</summary>
     Two,      // 2
+    /// <summary>3 - 4px rem based</summary>
     SmallerX2, // 4
+    /// <summary>4 - 8px rem based</summary>
     Smaller,  // 8
+    /// <summary>5 - 12px rem based</summary>
     Small,    // 12
+    /// <summary>6 - 16px rem based</summary>
     Medium,   // 16
+    /// <summary>7 - 24px rem based</summary>
     Large,    // 24
+    /// <summary>8 - 32px rem based</summary>
     Larger,   // 32
+    /// <summary>9 - 48px rem based</summary>
     LargerX2, // 48
+    /// <summary>10 - 64px rem based</summary>
     LargerX3, // 64
+    /// <summary>11 - 80px rem based</summary>
     LargerX4, // 80
+    /// <summary>12 - 96px rem based</summary>
     LargerX5, // 96
+    /// <summary>13 - 128px rem based</summary>
     LargerX6, // 128
+    /// <summary>14 - 196px rem based</summary>
     LargerX7, // 196
+    /// <summary>15 - 256px rem based</summary>
     LargerX8, // 256
+    /// <summary>16 - 512px rem based</summary>
     Largest,  // 512
+    /// <summary>Initial spacing</summary>
     Initial
 }
 
+/// <summary>
+/// Spacing fractions for width and height
+/// </summary>
 public enum SpacingFraction
 {
+    /// <summary>No spacing</summary>
     None,
-    One,      // 1/12
-    Two,      // 2/12
-    Three,    // 3/12
-    Four,     // 4/12
-    Five,     // 5/12
-    Six,      // 6/12
-    Seven,    // 7/12
-    Eight,    // 8/12
-    Nine,     // 9/12
-    Ten,      // 10/12
-    Eleven,   // 11/12
-    Full,     // 12/12
+    /// <summary>1/12</summary>
+    One,
+    /// <summary>2/12</summary>
+    Two,
+    /// <summary>3/12</summary>
+    Three,
+    /// <summary>4/12</summary>
+    Four,
+    /// <summary>5/12</summary>
+    Five,
+    /// <summary>6/12</summary>
+    Six,
+    /// <summary>7/12</summary>
+    Seven,
+    /// <summary>8/12</summary>
+    Eight,
+    /// <summary>9/12</summary>
+    Nine,
+    /// <summary>10/12</summary>
+    Ten,
+    /// <summary>11/12</summary>
+    Eleven,
+    /// <summary>12/12</summary>
+    Full,
 }
 
+/// <summary>
+/// Flags for specifying sides for spacing, e.g. padding and margin.
+/// </summary>
 [Flags]
 public enum SpacingSide
 {
+    /// <summary>No spacing</summary>
     None,
+    /// <summary>Top spacing, e.g mt-* pt-*</summary>
     Top = 1,
+    /// <summary>Right spacing, e.g mr-* pr-*</summary>
     Right = 2,
+    /// <summary>Bottom spacing, e.g mb-* pb-*</summary>
     Bottom = 4,
+    /// <summary>Left spacing, e.g ml-* pl-*</summary>
     Left = 8,
+    /// <summary>Horizontal spacing, e.g mx-* px-*</summary>
     Horizontal = Left | Right,
+    /// <summary>Vertical spacing, e.g my-* py-*</summary>
     Vertical = Top | Bottom,
+    /// <summary>All sides spacing, e.g m-* p-*</summary>
     All = Horizontal | Vertical
 }
 
+/// <summary>
+/// Maps spacing sizes and sides to CSS classes
+/// </summary>
 public static class SpacingMap
 {
+    /// <summary>
+    /// Gets the CSS class for padding based on side and size
+    /// </summary>
+    /// <param name="side">The side to apply padding to</param>
+    /// <param name="size">The size of the padding</param>
+    /// <returns>The CSS class for the specified padding</returns>
     public static string GetPaddingCssClass(SpacingSide side, SpacingSize size)
     {
         if (side == SpacingSide.None)
@@ -81,6 +138,7 @@ public static class SpacingMap
                 SpacingSize.LargerX8 => "pt-15",
                 SpacingSize.Largest => "pt-16",
                 SpacingSize.Initial => "pt-initial",
+                _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
             },
             SpacingSide.Right => size switch
             {
@@ -102,6 +160,7 @@ public static class SpacingMap
                 SpacingSize.LargerX8 => "pr-15",
                 SpacingSize.Largest => "pr-16",
                 SpacingSize.Initial => "pr-initial",
+                _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
             },
             SpacingSide.Bottom => size switch
             {
@@ -123,6 +182,7 @@ public static class SpacingMap
                 SpacingSize.LargerX8 => "pb-15",
                 SpacingSize.Largest => "pb-16",
                 SpacingSize.Initial => "pb-initial",
+                _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
             },
             SpacingSide.Left => size switch
             {
@@ -144,6 +204,7 @@ public static class SpacingMap
                 SpacingSize.LargerX8 => "pl-15",
                 SpacingSize.Largest => "pl-16",
                 SpacingSize.Initial => "pl-initial",
+                _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
             },
             SpacingSide.Horizontal => size switch
             {
@@ -165,6 +226,7 @@ public static class SpacingMap
                 SpacingSize.LargerX8 => "px-15",
                 SpacingSize.Largest => "px-16",
                 SpacingSize.Initial => "px-initial",
+                _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
             },
             SpacingSide.Vertical => size switch
             {
@@ -186,6 +248,7 @@ public static class SpacingMap
                 SpacingSize.LargerX8 => "py-15",
                 SpacingSize.Largest => "py-16",
                 SpacingSize.Initial => "py-initial",
+                _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
             },
             SpacingSide.All => size switch
             {
@@ -207,10 +270,18 @@ public static class SpacingMap
                 SpacingSize.LargerX8 => "p-15",
                 SpacingSize.Largest => "p-16",
                 SpacingSize.Initial => "p-initial",
+                _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
             },
+            _ => throw new ArgumentOutOfRangeException(nameof(side), side, null)
         };
     }
 
+    /// <summary>
+    /// Gets the CSS class for margin based on side and size
+    /// </summary>
+    /// <param name="side">The side to apply margin to</param>
+    /// <param name="size">The size of the margin</param>
+    /// <returns>The CSS class for the specified margin</returns>
     public static string GetMarginCssClass(SpacingSide side, SpacingSize size)
     {
         if (side == SpacingSide.None)
@@ -238,6 +309,7 @@ public static class SpacingMap
                 SpacingSize.LargerX8 => "mt-15",
                 SpacingSize.Largest => "mt-16",
                 SpacingSize.Initial => "mt-initial",
+                _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
             },
             SpacingSide.Right => size switch
             {
@@ -259,6 +331,7 @@ public static class SpacingMap
                 SpacingSize.LargerX8 => "mr-15",
                 SpacingSize.Largest => "mr-16",
                 SpacingSize.Initial => "mr-initial",
+                _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
             },
             SpacingSide.Bottom => size switch
             {
@@ -280,6 +353,7 @@ public static class SpacingMap
                 SpacingSize.LargerX8 => "mb-15",
                 SpacingSize.Largest => "mb-16",
                 SpacingSize.Initial => "mb-initial",
+                _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
             },
             SpacingSide.Left => size switch
             {
@@ -301,6 +375,7 @@ public static class SpacingMap
                 SpacingSize.LargerX8 => "ml-15",
                 SpacingSize.Largest => "ml-16",
                 SpacingSize.Initial => "ml-initial",
+                _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
             },
             SpacingSide.Horizontal => size switch
             {
@@ -322,6 +397,7 @@ public static class SpacingMap
                 SpacingSize.LargerX8 => "mx-15",
                 SpacingSize.Largest => "mx-16",
                 SpacingSize.Initial => "mx-initial",
+                _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
             },
             SpacingSide.Vertical => size switch
             {
@@ -343,6 +419,7 @@ public static class SpacingMap
                 SpacingSize.LargerX8 => "my-15",
                 SpacingSize.Largest => "my-16",
                 SpacingSize.Initial => "my-initial",
+                _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
             },
             SpacingSide.All => size switch
             {
@@ -364,11 +441,17 @@ public static class SpacingMap
                 SpacingSize.LargerX8 => "m-15",
                 SpacingSize.Largest => "m-16",
                 SpacingSize.Initial => "m-initial",
+                _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
             },
             _ => throw new ArgumentOutOfRangeException(nameof(side), side, null)
         };
     }
 
+    /// <summary>
+    /// Gets the CSS class for width based on size
+    /// </summary>
+    /// <param name="size">The size of the width</param>
+    /// <returns>The CSS class for the specified width</returns>
     public static string ToWidthCssClass(this SpacingSize size)
     {
         return size switch
@@ -391,9 +474,15 @@ public static class SpacingMap
             SpacingSize.LargerX8 => "w-15",
             SpacingSize.Largest => "w-16",
             SpacingSize.Initial => "w-initial",
+            _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
         };
     }
 
+    /// <summary>
+    /// Gets the CSS class for max-width based on size
+    /// </summary>
+    /// <param name="size">The size of the max-width</param>
+    /// <returns>The CSS class for the specified max-width</returns>
     public static string ToMaxWidthCssClass(this SpacingSize size)
     {
         return size switch
@@ -416,9 +505,15 @@ public static class SpacingMap
             SpacingSize.LargerX8 => "max-w-15",
             SpacingSize.Largest => "max-w-16",
             SpacingSize.Initial => "max-w-initial",
+            _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
         };
     }
 
+    /// <summary>
+    /// Gets the CSS class for min-width based on size
+    /// </summary>
+    /// <param name="size">The size of the min-width</param>
+    /// <returns>The CSS class for the specified min-width</returns>
     public static string ToMinWidthCssClass(this SpacingSize size)
     {
         return size switch
@@ -441,9 +536,15 @@ public static class SpacingMap
             SpacingSize.LargerX8 => "min-w-15",
             SpacingSize.Largest => "min-w-16",
             SpacingSize.Initial => "min-w-initial",
+            _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
         };
     }
 
+    /// <summary>
+    /// Gets the CSS class for height based on size
+    /// </summary>
+    /// <param name="size">The size of the height</param>
+    /// <returns>The CSS class for the specified height</returns>
     public static string ToHeightCssClass(this SpacingSize size)
     {
         return size switch
@@ -465,10 +566,16 @@ public static class SpacingMap
             SpacingSize.LargerX7 => "h-14",
             SpacingSize.LargerX8 => "h-15",
             SpacingSize.Largest => "h-16",
-            SpacingSize.Initial => "h-initial"
+            SpacingSize.Initial => "h-initial",
+            _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
         };
     }
 
+    /// <summary>
+    /// Gets the CSS class for max-height based on size
+    /// </summary>
+    /// <param name="size">The size of the max-height</param>
+    /// <returns>The CSS class for the specified max-height</returns>
     public static string ToMaxHeightCssClass(this SpacingSize size)
     {
         return size switch
@@ -490,10 +597,16 @@ public static class SpacingMap
             SpacingSize.LargerX7 => "max-h-14",
             SpacingSize.LargerX8 => "max-h-15",
             SpacingSize.Largest => "max-h-16",
-            SpacingSize.Initial => "max-h-initial"
+            SpacingSize.Initial => "max-h-initial",
+            _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
         };
     }
 
+    /// <summary>
+    /// Gets the CSS class for min-height based on size
+    /// </summary>
+    /// <param name="size">The size of the min-height</param>
+    /// <returns>The CSS class for the specified min-height</returns>
     public static string ToMinHeightCssClass(this SpacingSize size)
     {
         return size switch
@@ -515,10 +628,16 @@ public static class SpacingMap
             SpacingSize.LargerX7 => "min-h-14",
             SpacingSize.LargerX8 => "min-h-15",
             SpacingSize.Largest => "min-h-16",
-            SpacingSize.Initial => "min-h-initial"
+            SpacingSize.Initial => "min-h-initial",
+            _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
         };
     }
 
+    /// <summary>
+    /// Gets the CSS class for width based on fraction
+    /// </summary>
+    /// <param name="fraction">The fraction of the width</param>
+    /// <returns>The CSS class for the specified width</returns>
     public static string ToWidthCssClass(this SpacingFraction fraction)
     {
         return fraction switch
@@ -536,9 +655,15 @@ public static class SpacingMap
             SpacingFraction.Ten => "w-10/12",
             SpacingFraction.Eleven => "w-11/12",
             SpacingFraction.Full => "w-full",
+            _ => throw new ArgumentOutOfRangeException(nameof(fraction), fraction, null),
         };
     }
 
+    /// <summary>
+    /// Gets the CSS class for min-width based on fraction
+    /// </summary>
+    /// <param name="fraction">The fraction of the min-width</param>
+    /// <returns>The CSS class for the specified min-width</returns>
     public static string ToMinWidthCssClass(this SpacingFraction fraction)
     {
         return fraction switch
@@ -556,9 +681,15 @@ public static class SpacingMap
             SpacingFraction.Ten => "min-w-10/12",
             SpacingFraction.Eleven => "min-w-11/12",
             SpacingFraction.Full => "min-w-full",
+            _ => throw new ArgumentOutOfRangeException(nameof(fraction), fraction, null),
         };
     }
 
+    /// <summary>
+    /// Gets the CSS class for max-width based on fraction
+    /// </summary>
+    /// <param name="fraction">The fraction of the max-width</param>
+    /// <returns>The CSS class for the specified max-width</returns>
     public static string ToMaxWidthCssClass(this SpacingFraction fraction)
     {
         return fraction switch
@@ -576,9 +707,15 @@ public static class SpacingMap
             SpacingFraction.Ten => "max-w-10/12",
             SpacingFraction.Eleven => "max-w-11/12",
             SpacingFraction.Full => "max-w-full",
+            _ => throw new ArgumentOutOfRangeException(nameof(fraction), fraction, null),
         };
     }
 
+    /// <summary>
+    /// Gets the CSS class for height based on fraction
+    /// </summary>
+    /// <param name="fraction">The fraction of the height</param>
+    /// <returns>The CSS class for the specified height</returns>
     public static string ToHeightCssClass(this SpacingFraction fraction)
     {
         return fraction switch
@@ -596,9 +733,15 @@ public static class SpacingMap
             SpacingFraction.Ten => "h-10/12",
             SpacingFraction.Eleven => "h-11/12",
             SpacingFraction.Full => "h-full",
+            _ => throw new ArgumentOutOfRangeException(nameof(fraction), fraction, null),
         };
     }
 
+    /// <summary>
+    /// Gets the CSS class for min-height based on fraction
+    /// </summary>
+    /// <param name="fraction">The fraction of the min-height</param>
+    /// <returns>The CSS class for the specified min-height</returns>
     public static string ToMinHeightCssClass(this SpacingFraction fraction)
     {
         return fraction switch
@@ -616,9 +759,15 @@ public static class SpacingMap
             SpacingFraction.Ten => "min-h-10/12",
             SpacingFraction.Eleven => "min-h-11/12",
             SpacingFraction.Full => "min-h-full",
+            _ => throw new ArgumentOutOfRangeException(nameof(fraction), fraction, null),
         };
     }
 
+    /// <summary>
+    /// Gets the CSS class for max-height based on fraction
+    /// </summary>
+    /// <param name="fraction">The fraction of the max-height</param>
+    /// <returns>The CSS class for the specified max-height</returns>
     public static string ToMaxHeightCssClass(this SpacingFraction fraction)
     {
         return fraction switch
@@ -636,6 +785,7 @@ public static class SpacingMap
             SpacingFraction.Ten => "max-h-10/12",
             SpacingFraction.Eleven => "max-h-11/12",
             SpacingFraction.Full => "max-h-full",
+            _ => throw new ArgumentOutOfRangeException(nameof(fraction), fraction, null),
         };
     }
 }

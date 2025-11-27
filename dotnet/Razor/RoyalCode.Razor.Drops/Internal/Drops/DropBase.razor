@@ -1,0 +1,220 @@
+﻿@using RoyalCode.Razor.Commons.Modules
+@using RoyalCode.Razor.Commons.Modules.Interops
+
+
+@implements IAsyncDisposable
+
+@inject ClickJs ClickJsModule;
+
+<div class="@Classes" @attributes="AdditionalAttributes" @ref="DropReference">
+    <div @ref="ActionReference" aria-haspopup="true" aria-expanded="@AriaExpanded" role="button" title="@title">
+        @Action
+    </div>
+    <CascadingValue Value="ContentType">
+        @if (ContentType == DropContentType.List)
+        {
+            <ul class="@ContentClasses" @ref="ContentReference">
+                @DropContent
+            </ul>
+        }
+        else
+        {
+            <div class="@ContentClasses" @ref="ContentReference">
+                @DropContent
+            </div>
+        }
+    </CascadingValue>
+</div>
+
+@code {
+    private string Classes => "ya-drop"
+        .AddClass(IsOpen, "ya-drop-open")
+        .AddClass(Direction == Directions.Down, "ya-drop-down")
+        .AddClass(Direction == Directions.Up, "ya-drop-up")
+        .AddClass(Direction == Directions.Left, "ya-drop-left")
+        .AddClass(Direction == Directions.Right, "ya-drop-right")
+        .AddClass(Align == Positions.Start, "ya-drop-start")
+        .AddClass(Align == Positions.Center, "ya-drop-center")
+        .AddClass(Align == Positions.End, "ya-drop-end")
+        
+        .AddClass(AdditionalClasses);
+
+    private string ContentClasses => "ya-drop-content"
+        .AddClass(MinWidth?.ToContentMinWidthCssClass())
+        .AddClass(AdditionalContentClasses);
+
+    private readonly Func<bool, ICollection<ElementReference>, ValueTask> onBodyClickHandler;
+    private JsBodyClickListener? listener;
+    private ElementReference? listenerRef;
+    private bool clickedOnAction;
+    private DropHandler? handler;
+    private string title = "Dropdown";
+
+    public DropBase()
+    {
+        onBodyClickHandler = OnBodyClickHandler;
+    }
+
+    public string? AriaExpanded => IsOpen.ToString().ToLowerInvariant();
+
+    public ElementReference DropReference { get; private set; }
+
+    public ElementReference ActionReference { get; private set; }
+
+    public ElementReference ContentReference { get; private set; }
+
+    public bool IsOpen { get; private set; }
+
+    [Parameter]
+    public RenderFragment Action { get; set; } = default!;
+
+    [Parameter]
+    public RenderFragment DropContent { get; set; } = default!;
+
+    [Parameter]
+    public DropHandler? Handler { get; set; }
+
+    /// <summary>
+	/// Drop direction.
+    /// </summary>
+    [Parameter]
+    public Directions Direction { get; set; }
+
+    /// <summary>
+	/// Drop alignment.
+    /// </summary>
+    [Parameter]
+    public Positions Align { get; set; }
+
+    /// <summary>
+    /// Largura mínima para o menu do drop.
+    /// </summary>
+    [Parameter]
+    public Sizes? MinWidth { get; set; }
+
+    /// <summary>
+    /// Tipo do conteúdo do menu, lista ou não definido.
+    /// </summary>
+    [Parameter]
+    public DropContentType ContentType { get; set; }
+
+    /// <summary>
+    /// Comportamento de fechamento do menu.
+    /// </summary>
+    [Parameter]
+    public DropCloseBehavior CloseBehavior { get; set; }
+
+    /// <summary>
+    /// Atributo <c>title</c> do elemento de dropdown.
+    /// </summary>
+    [Parameter]
+    public string? Title { get; set; }
+
+    /// <summary>
+    /// Classes adicionais para o drop.
+    /// </summary>
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
+
+    /// <summary>
+    /// Classes adicionais para o content do drop.
+    /// </summary>
+    [Parameter]
+    public string? AdditionalContentClasses { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    [Parameter]
+    public EventCallback<DropEventArgs> OnOpened { get; set; }
+
+    [Parameter]
+    public EventCallback<DropEventArgs> OnClosed { get; set; }
+
+    public async Task Open()
+    {
+        if (clickedOnAction)
+        {
+            clickedOnAction = false;
+            return;
+        }
+
+        IsOpen = true;
+
+        await OnOpened.InvokeAsync(new DropEventArgs(this));
+
+        StateHasChanged();
+    }
+
+    public async Task Close()
+    {
+        IsOpen = false;
+
+        await OnClosed.InvokeAsync(new DropEventArgs(this));
+
+        StateHasChanged();
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (Handler != handler)
+        {
+            handler?.Unlisten();
+            handler = Handler;
+            handler?.Listen(this);
+        }
+
+        if (Title.IsPresent())
+            title = Title;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+            listener = await ClickJsModule.CreateListenerAsync(onBodyClickHandler);
+
+        if (listener is null)
+            return;
+
+        if (IsOpen)
+        {
+            if (listenerRef is null || listenerRef.Value.Id != DropReference.Id)
+            {
+                await listener.ListenAsync(DropReference, ActionReference, ContentReference);
+                listenerRef = DropReference;
+            }
+        }
+        else if (listenerRef is not null)
+        {
+            await listener.UnlistenAsync();
+            listenerRef = null;
+        }
+    }
+
+    private async ValueTask OnBodyClickHandler(bool isInside, ICollection<ElementReference> targetElements)
+    {
+        if (CloseBehavior != DropCloseBehavior.CloseManually)
+            clickedOnAction = targetElements.Contains(ActionReference);
+
+        // if close behavior is close on click outside
+        // and not clicked inside the content, then close
+        if (CloseBehavior == DropCloseBehavior.CloseOnClickOutside && !targetElements.Contains(ContentReference))
+        {
+            await Close();
+            return;
+        }
+
+        if (CloseBehavior == DropCloseBehavior.CloseOnClick)
+        {
+            await Close();
+        }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (listener is not null)
+            await listener.DisposeAsync();
+        listener = null;
+        handler?.Unlisten();
+    }
+}

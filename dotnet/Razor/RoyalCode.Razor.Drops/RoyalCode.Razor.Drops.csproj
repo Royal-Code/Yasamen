@@ -15,4 +15,8 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(AspNetVer)" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\RoyalCode.Razor.Buttons\RoyalCode.Razor.Buttons.csproj" />
+	</ItemGroup>
+
 </Project>
