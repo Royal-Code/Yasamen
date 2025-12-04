@@ -97,6 +97,18 @@ public class MenuItem
     {
         return Text is not null && Text.Contains(value, StringComparison.InvariantCultureIgnoreCase);
     }
+
+    /// <summary>
+    /// Sets the parent reference for all child menu items recursively.
+    /// </summary>
+    public void SetParentForChildren()
+    {
+        foreach (var child in Children)
+        {
+            child.Parent = this;
+            child.SetParentForChildren();
+        }
+    }
 }
 
 /// <summary>
@@ -115,7 +127,7 @@ public enum MenuItemType
     Divider,
 
     /// <summary>
-    /// Represents a header menu item, typically used for grouping other items.
+    /// Represents a module menu item, typically used for grouping other items.
     /// </summary>
-    Header
+    Module,
 }

@@ -41,6 +41,11 @@ public class AppMenuContext
     public bool IsLoading { get; private set; }
 
     /// <summary>
+    /// Gets a value indicating whether a filter is currently applied.
+    /// </summary>
+    public bool IsFiltering => filteredMenuItem is not null;
+
+    /// <summary>
     /// Gets the current menu item, considering filter state if active.
     /// </summary>
     public MenuItem CurrentMenuItem => filteredMenuItem ?? currentMenuItem;
@@ -138,7 +143,7 @@ public class AppMenuContext
             var items = Root.Filter(value);
             filteredMenuItem = new MenuItem()
             {
-                Type = MenuItemType.Header,
+                Type = MenuItemType.Module,
                 Children = [.. items]
             };
             lastSearchValue = value;

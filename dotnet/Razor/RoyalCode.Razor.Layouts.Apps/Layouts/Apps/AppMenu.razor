@@ -1,41 +1,44 @@
-﻿@using RoyalCode.Razor.Commons.Results
+﻿@using Microsoft.AspNetCore.Components.Routing
+@using RoyalCode.Razor.Commons.Results
+@using System.Threading.Tasks
 
+@implements IDisposable
 @inject MenuService MenuService;
+@inject NavigationManager NavigationManager;
 
 <CascadingValue Value="context" IsFixed="true">
 	<OffCanvas Position="Positions.Start" Handler="Handler" OnVisibilityChanged="VisibilityChangedHandler" UseBox="false">
 		<div @attributes="AdditionalAttributes" class="@Classes">
-			<div class="app-menu-search">
-				<div>
+			<div class="ya-app-menu-search">
+				<div class="border-b-1 mb-4">
 					search component
 				</div>
 				<CloseOffCanvasButton />
 			</div>
-			<div class="app-menu-breadcrumbs">
-				breadcrumbs
-			</div>
-			@if (context.CurrentMenuItem.Text.IsPresent())
+			@if (!context.IsFiltering && lastBreadcrumbs is not null)
 			{
-				<div class="app-menu-title">
-					@context.CurrentMenuItem.Text
+				<div class="ya-app-menu-breadcrumbs">
+					<DescribesBreadcrumbs MaxVisibleItems="3" Items="lastBreadcrumbs" OnClick="ChangeCurrentMenuItem" />
 				</div>
 			}
-			<AppMenuList />
+			<AppMenuList CurrentMenuItem="context.CurrentMenuItem" />
 		</div>
 	</OffCanvas>
 </CascadingValue>
 
 @code {
-
-	public string Classes => "app-menu"
-		.AddClass(AdditionalClasses);
+	public string Classes => "ya-app-menu".AddClass(AdditionalClasses);
 
 	private readonly AppMenuContext context;
+	private readonly EventHandler<LocationChangedEventArgs> locationChangedHandler;
 	private bool isMenuLoaded = false;
+	private MenuItem? lastMenuItem;
+	private IReadOnlyList<BreadcrumbDescription>? lastBreadcrumbs;
 
 	public AppMenu()
 	{
-		context = new AppMenuContext(StateHasChanged, ToogleFavoriteAsync);
+		context = new AppMenuContext(InternalStateHasChanged, ToggleFavoriteAsync);
+		locationChangedHandler = LocationChangedHandler;
 	}
 
 	[Parameter, EditorRequired]
@@ -47,12 +50,24 @@
 	[Parameter(CaptureUnmatchedValues = true)]
 	public Dictionary<string, object>? AdditionalAttributes { get; set; }
 
-    protected override void OnParametersSet()
+	protected override void OnInitialized()
 	{
-		context.Handler = Handler;
+		NavigationManager.LocationChanged += locationChangedHandler;
 	}
 
-	private Task<Message> ToogleFavoriteAsync(MenuItem item)
+	protected override void OnParametersSet()
+	{
+		context.Handler = Handler;
+		CheckBreadcrumbs();
+	}
+
+	private void InternalStateHasChanged()
+	{
+		CheckBreadcrumbs();
+		StateHasChanged();
+	}
+
+	private Task<Message> ToggleFavoriteAsync(MenuItem item)
 	{
 		item.IsFavorite = !item.IsFavorite;
 		return Task.FromResult(Message.Success);
@@ -66,8 +81,8 @@
 			try
 			{
 				var menu = await MenuService.GetMenuAsync();
-				context.LoadingFinished(menu);
 				isMenuLoaded = true;
+				context.LoadingFinished(menu);
 			}
 			catch (Exception ex)
 			{
@@ -75,5 +90,54 @@
 				return;
 			}
 		}
+	}
+
+	private void CheckBreadcrumbs()
+	{
+		if (!context.IsFiltering && lastMenuItem != context.CurrentMenuItem)
+		{
+			lastMenuItem = context.CurrentMenuItem;
+			lastBreadcrumbs = null;
+
+			if (lastMenuItem is not null)
+			{
+				var breadcrumbs = new List<BreadcrumbDescription>();
+				var menuItem = lastMenuItem;
+				while (menuItem is not null)
+				{
+					breadcrumbs.Insert(0, new BreadcrumbDescription
+					{
+						Description = menuItem.Text,
+						State = menuItem
+					});
+					menuItem = menuItem.Parent;
+				}
+				lastBreadcrumbs = breadcrumbs;
+			}
+		}
+	}
+
+	private void ChangeCurrentMenuItem(BreadcrumbDescription args)
+	{
+		if (args.State is MenuItem item)
+		{
+			context.SetCurrentMenuItem(item);
+		}
+	}
+
+	private void LocationChangedHandler(object? sender, LocationChangedEventArgs e)
+	{
+		if (context.Handler?.IsVisible ?? false)
+		{
+			_ = InvokeAsync(async () =>
+			{
+				await context.Handler.Hide();
+			});
+		}
+	}
+
+	public void Dispose()
+	{
+		NavigationManager.LocationChanged -= locationChangedHandler;
 	}
 }

@@ -2,26 +2,42 @@
 
 @if (AppMenuContext.IsLoading)
 {
-	<div class="app-menu-loading">
-		@Animations.Motions.Rotation()(WellKnownIcons.Working())
+	<div class="ya-app-menu-loading">
+		@Loading
 	</div>
 }
 else if (AppMenuContext.LoadException is not null)
 {
-	<div class="app-menu-error">
+	<div class="ya-app-menu-error">
 		Error: @AppMenuContext.LoadException.Message
+	</div>
+}
+else if (CurrentMenuItem.Children.Count == 0)
+{
+	<div class="ya-app-menu-empty">
+		No items to display.
 	</div>
 }
 else
 {
-	@foreach (var item in AppMenuContext.CurrentMenuItem.Children)
+	@foreach (var item in CurrentMenuItem.Children)
 	{
 		<AppMenuItem Item="item" @key="item" />
 	}
 }
 
 @code {
+	private RenderFragment? loading;
+	public RenderFragment Loading => loading ?? Animations.Motions.Rotation()(WellKnownIcons.Working());
 
 	[CascadingParameter]
 	public AppMenuContext AppMenuContext { get; set; } = default!;
+
+	[Parameter, EditorRequired]
+	public MenuItem CurrentMenuItem { get; set; } = default!;
+
+    protected override void OnAfterRender(bool firstRender)
+	{
+		base.OnAfterRender(firstRender);
+	}
 }

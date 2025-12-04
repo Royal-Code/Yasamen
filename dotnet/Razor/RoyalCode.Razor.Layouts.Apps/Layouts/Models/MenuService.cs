@@ -64,7 +64,9 @@ public sealed class MenuService
         var menuItems = await menuLoader.LoadMenuItemsAsync(cancellationToken);
         var root = new MenuItem
         {
-            Type = MenuItemType.Header,
+            Id = "ya-root-menu",
+            Text = "Menu",
+            Type = MenuItemType.Module,
             Children = [.. menuItems]
         };
 
@@ -76,6 +78,8 @@ public sealed class MenuService
             else
                 root.Children = [..root.Children, item];
         }
+
+        root.SetParentForChildren();
 
         menuItem = root;
         return root;

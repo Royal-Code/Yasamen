@@ -1,0 +1,27 @@
+﻿
+<nav aria-label="breadcrumb">
+	<ol class="@Classes">
+		@if (MenuItems.IsNotEmptyFragment())
+		{
+			<li class="ya-breadcrumb-item ya-breadcrumb-dropdown">
+				<DropButton MinWidth="Sizes.Smaller" Size="Sizes.Smallest" Style="Themes.Light">
+					<ButtonContent>
+						@WellKnownIcons.Dots()
+					</ButtonContent>
+					<DropMenu>
+						@MenuItems
+					</DropMenu>
+				</DropButton>
+			</li>
+		}
+		@if (Items.IsNotEmptyFragment())
+		{
+			@Items
+		}
+	</ol>
+</nav>
+
+@code {
+
+	private string Classes => "ya-breadcrumb".AddClass(AdditionalClasses);
+}

@@ -1,16 +1,28 @@
 ﻿
 .ya-menu-item {
-    @apply flex items-center w-full text-dark-500 justify-between;
+    @apply py-4 px-6 flex items-center w-full text-dark-500 justify-between;
 }
+
 .ya-menu-item-link {
-    @apply px-6 py-4 cursor-pointer select-none hover:bg-light-300;
+    @apply cursor-pointer select-none hover:bg-light-50;
 }
-.ya-menu-item-header {
-    @apply px-6 py-4 font-semibold text-dark-700;
+
+    .ya-menu-item-link:has(.ya-menu-item-content.active) {
+        @apply bg-light-25 hover:bg-light-50;
+    }
+
+.ya-menu-item-module {
+    @apply font-medium text-dark-700 hover:bg-light-50;
 }
+
 .ya-menu-item-divider {
-    @apply my-2 border-t border-light-700;
+    @apply border-t border-light-700;
 }
+
 .ya-menu-item-content {
-    @apply px-6 py-4 text-dark-600;
+    @apply text-dark-600;
+}
+
+.ya-menu-item-icon {
+    @apply cursor-pointer select-none hover:text-primary-500;
 }

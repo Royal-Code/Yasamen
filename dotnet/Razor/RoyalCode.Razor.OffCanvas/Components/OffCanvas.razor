@@ -42,7 +42,16 @@
 
 	public OffCanvas()
 	{
-		state = new OffCanvasState(() => InvokeAsync(StateHasChanged));
+		state = new OffCanvasState(() => InvokeAsync(VisibilityChanged));
+	}
+
+	private async Task VisibilityChanged()
+	{
+		StateHasChanged();
+
+		var isVisible = state.IsVisible;
+		if (OnVisibilityChanged.HasDelegate)
+			await OnVisibilityChanged.InvokeAsync(isVisible);
 	}
 
 	private string BackdropClasses => "ya-offcanvas-backdrop"

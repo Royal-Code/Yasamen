@@ -3,13 +3,14 @@
 @import './css/utilities.css';
 
 @import './css/components/applayout.css';
+@import './css/components/breadcrumbs.css';
 @import './css/components/btn.css';
 @import './css/components/ibtn.css';
 @import './css/components/menu.css';
 @import './css/components/menuitem.css';
 @import './css/components/modal.css';
 @import './css/components/offcanvas.css';
-@import './css//components/sidebar.css';
+@import './css/components/sidebar.css';
 @import './css/components/topbar.css';
 
 @theme {
@@ -104,6 +105,9 @@
     --color-danger-800: #5d1017;
     --color-danger-900: #2f080c;
     --color-light: #F2F1F3;
+    --color-light-10: #fbfafc;
+    --color-light-25: #f9f8fa;
+    --color-light-50: #f6f4f8;
     --color-light-100: #f2f1f3;
     --color-light-200: #e6e4e8;
     --color-light-300: #dad7dd;

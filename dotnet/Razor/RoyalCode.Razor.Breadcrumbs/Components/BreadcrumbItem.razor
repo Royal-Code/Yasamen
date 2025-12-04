@@ -1,0 +1,63 @@
+﻿
+<li class="@Classes">
+	@if (OnClick.HasDelegate)
+	{
+		<a class="@LinkClasses" @onclick="OnClick" @attributes="AdditionalAttributes">
+			@ChildContent
+		</a>
+	}
+	else
+	{
+		<NavLink href="@Href" class="@LinkClasses" Match="Match" @attributes="AdditionalAttributes">
+			@ChildContent
+		</NavLink>
+	}
+</li>
+
+@code {
+
+	private string Classes => "ya-breadcrumb-item".AddClass(AdditionalClasses);
+	private string LinkClasses => "ya-breadcrumb-link".AddClass(Active, "active");
+
+	/// <summary>
+	/// The URL that the breadcrumb item links to.
+	/// </summary>
+	[Parameter]
+	public string Href { get; set; } = string.Empty;
+
+	/// <summary>
+	/// The content of the breadcrumb item.
+	/// </summary>
+	[Parameter]
+	public RenderFragment? ChildContent { get; set; }
+
+	/// <summary>
+	/// Gets or sets the matching strategy for the breadcrumb item.
+	/// </summary>
+	[Parameter]
+	public NavLinkMatch Match { get; set; } = NavLinkMatch.Prefix;
+
+	/// <summary>
+	/// Gets or sets a value indicating whether the breadcrumb item is active.
+	/// </summary>
+	[Parameter]
+	public bool Active { get; set; }
+
+    /// <summary>
+    /// Event callback invoked when the breadcrumb item is clicked.
+    /// </summary>
+    [Parameter]
+	public EventCallback<MouseEventArgs> OnClick { get; set; }
+
+	/// <summary>
+	/// Additional CSS class names appended to the generated button classes.
+	/// </summary>
+	[Parameter]
+	public string? AdditionalClasses { get; set; }
+
+	/// <summary>
+	/// Gets or sets a collection of additional attributes that will be added to the generated a element.
+	/// </summary>
+	[Parameter(CaptureUnmatchedValues = true)]
+	public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+}

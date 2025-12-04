@@ -16,9 +16,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\RoyalCode.Razor.Buttons\RoyalCode.Razor.Buttons.csproj" />
-		<ProjectReference Include="..\RoyalCode.Razor.Commons\RoyalCode.Razor.Commons.csproj" />
-		<ProjectReference Include="..\RoyalCode.Razor.Icons\RoyalCode.Razor.Icons.csproj" />
+		<ProjectReference Include="..\RoyalCode.Razor.Breadcrumbs\RoyalCode.Razor.Breadcrumbs.csproj" />
 		<ProjectReference Include="..\RoyalCode.Razor.Layouts\RoyalCode.Razor.Layouts.csproj" />
 		<ProjectReference Include="..\RoyalCode.Razor.Modals\RoyalCode.Razor.Modals.csproj" />
 		<ProjectReference Include="..\RoyalCode.Razor.OffCanvas\RoyalCode.Razor.OffCanvas.csproj" />

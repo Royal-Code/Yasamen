@@ -1,0 +1,92 @@
+﻿@inject NavigationManager NavigationManager;
+
+@if (initialized)
+{
+	int i = 0;
+	if (hiddenCount > 0)
+	{
+		int last = Items.Count - hiddenCount;
+		<Breadcrumb>
+			<MenuItems>
+				@foreach (var hidden in Items.Slice(0, hiddenCount))
+				{
+					<DropItem OnClick="hidden.MouseCallback">
+						@hidden.Description
+					</DropItem>
+				}
+			</MenuItems>
+			<Items>
+				@foreach (var item in Items.Skip(hiddenCount))
+				{
+					i++;
+					bool active = i == last;
+					<BreadcrumbItem OnClick="item.MouseCallback" Active="@active">
+						@item.Description
+					</BreadcrumbItem>
+				}
+			</Items>
+		</Breadcrumb>
+	}
+	else
+	{
+		int last = Items.Count;
+		<Breadcrumb>
+			<Items>
+				@foreach (var item in Items)
+				{
+					i++;
+					bool active = i == last;
+					<BreadcrumbItem OnClick="item.MouseCallback" Active="@active">
+						@item.Description
+					</BreadcrumbItem>
+				}
+			</Items>
+		</Breadcrumb>
+	}
+}
+
+@code {
+	private readonly Func<BreadcrumbDescription, Task> clickHandler;
+	private int hiddenCount;
+	private bool initialized;
+
+	public DescribesBreadcrumbs()
+	{
+		clickHandler = ClickHandler;
+	}
+
+	[Parameter, EditorRequired]
+	public IReadOnlyList<BreadcrumbDescription> Items { get; set; } = default!;
+
+	[Parameter, EditorRequired]
+	public int MaxVisibleItems { get; set; }
+
+	[Parameter]
+	public EventCallback<BreadcrumbDescription> OnClick { get; set; }
+
+	protected override void OnParametersSet()
+	{
+		hiddenCount = Items.Count > MaxVisibleItems
+			? Items.Count - MaxVisibleItems
+			: 0;
+
+		initialized = true;
+
+		foreach(var item in Items)
+		{
+			item.SetClickHandler(clickHandler);
+		}
+	}
+
+	private async Task ClickHandler(BreadcrumbDescription item)
+	{
+		if (OnClick.HasDelegate)
+		{
+			await OnClick.InvokeAsync(item);
+		}
+		else if (item.HRef.IsPresent())
+		{
+			NavigationManager.NavigateTo(item.HRef);
+		}
+	}
+}

@@ -1,18 +1,21 @@
-﻿.app-menu {
-    @apply max-w-full p-6 h-auto flex flex-col bg-white overflow-y-auto w-100;
+﻿.ya-app-menu {
+    @apply max-w-full p-6 flex flex-col bg-white w-100;
 }
-.app-menu-search {
+.ya-app-menu-search {
     @apply flex justify-between items-center mb-5 w-full;
 }
-.app-menu-breadcrumbs {
-    @apply mb-4 w-full;
+.ya-app-menu-breadcrumbs {
+    @apply mb-4 w-full border-b-1;
 }
-.app-menu-title {
+.ya-app-menu-title {
     @apply text-2xl font-bold mb-2;
 }
-.app-menu-loading {
+.ya-app-menu-loading {
     @apply text-center text-gray-500 w-full h-full flex items-center justify-center;
 }
-.app-menu-error {
+.ya-app-menu-error {
+    @apply text-center text-gray-500 w-full h-full flex items-center justify-center;
+}
+.ya-app-menu-empty {
     @apply text-center text-gray-500 w-full h-full flex items-center justify-center;
 }

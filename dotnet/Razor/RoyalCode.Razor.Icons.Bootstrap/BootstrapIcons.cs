@@ -36,6 +36,7 @@ public static class BootstrapIcons
 
             WellKnownIcons.Minus = factory.GetFragment(BsIconNames.Dash);
             WellKnownIcons.Plus = factory.GetFragment(BsIconNames.Plus);
+            WellKnownIcons.Dots = factory.GetFragment(BsIconNames.ThreeDots);
 
             WellKnownIcons.Success = factory.GetFragment(BsIconNames.CheckCircle);
             WellKnownIcons.Error = factory.GetFragment(BsIconNames.XCircle);
@@ -54,10 +55,10 @@ public static class BootstrapIcons
             WellKnownIcons.Menu = factory.GetFragment(BsIconNames.List);
             WellKnownIcons.MenuOpen = factory.GetFragment(BsIconNames.List);
             WellKnownIcons.MenuClose = factory.GetFragment(BsIconNames.X);
-            WellKnownIcons.MenuCollapse = factory.GetFragment(BsIconNames.ChevronCompactUp);
-            WellKnownIcons.MenuExpand = factory.GetFragment(BsIconNames.ChevronCompactDown);
-            WellKnownIcons.MenuCollapseAll = factory.GetFragment(BsIconNames.ChevronCompactUp);
-            WellKnownIcons.MenuExpandAll = factory.GetFragment(BsIconNames.ChevronCompactDown);
+            WellKnownIcons.MenuCollapse = factory.GetFragment(BsIconNames.ChevronDoubleDown);
+            WellKnownIcons.MenuExpand = factory.GetFragment(BsIconNames.ChevronRight);
+            WellKnownIcons.MenuCollapseAll = factory.GetFragment(BsIconNames.ChevronDoubleUp);
+            WellKnownIcons.MenuExpandAll = factory.GetFragment(BsIconNames.ChevronDoubleRight);
             WellKnownIcons.FavoriteOff = factory.GetFragment(BsIconNames.Heart);
             WellKnownIcons.FavoriteOn = factory.GetFragment(BsIconNames.HeartFill);
         }

@@ -10,29 +10,27 @@
         </NavLink>
         @if (AppMenuContext.UseFavorites)
         {
-            <div @onclick="ToggleFavorite">
+            <div class="ya-menu-item-icon" @onclick="ToggleFavorite">
                 @FavoriteIcon(FavoriteColor)
             </div>
         }
     }
-    else if (Item.Type == MenuItemType.Header)
+    else if (Item.Type == MenuItemType.Module)
     {
-        <div class="ya-menu-item-header-text">
+        <div class="ya-menu-item-module-text">
             @Item.Text
         </div>
-        <div @onclick="() => AppMenuContext.SetCurrentMenuItem(Item)">
+        <div class="ya-menu-item-icon" @onclick="() => AppMenuContext.SetCurrentMenuItem(Item)">
             @WellKnownIcons.MenuExpand()
         </div>
 	}
 </div>
 
-
-
 @code {
 
     private string Classes => "ya-menu-item"
         .AddClass(Item.Type == MenuItemType.Link, "ya-menu-item-link")
-        .AddClass(Item.Type == MenuItemType.Header, "ya-menu-item-header")
+        .AddClass(Item.Type == MenuItemType.Module, "ya-menu-item-module")
         .AddClass(Item.Type == MenuItemType.Divider, "ya-menu-item-divider");
 
     private IconFragment FavoriteIcon => Item.IsFavorite ? WellKnownIcons.FavoriteOn : WellKnownIcons.FavoriteOff;

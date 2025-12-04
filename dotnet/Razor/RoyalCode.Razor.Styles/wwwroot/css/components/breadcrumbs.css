@@ -1,0 +1,23 @@
+﻿.ya-breadcrumb {
+    @apply flex items-center text-sm text-dark-400 m-0;
+}
+
+.ya-breadcrumb-item {
+    @apply flex items-center;
+}
+
+.ya-breadcrumb-dropdown {
+    @apply relative;
+}
+
+.ya-breadcrumb-link {
+    @apply text-dark-400 hover:text-dark-600 hover:font-medium;
+}
+
+    .ya-breadcrumb-link.active {
+        @apply font-semibold text-dark-900;
+    }
+
+.ya-breadcrumb-item + .ya-breadcrumb-item::before {
+    @apply content-['»'] mx-3 text-dark-100;
+}

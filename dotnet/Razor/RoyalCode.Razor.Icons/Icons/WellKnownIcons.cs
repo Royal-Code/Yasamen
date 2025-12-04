@@ -87,6 +87,11 @@ public static class WellKnownIcons
     public static IconFragment Plus { get; set; } = NoIconFragment;
 
     /// <summary>
+    /// Icon with three dots, typically indicating more options.
+    /// </summary>
+    public static IconFragment Dots { get; set; } = NoIconFragment;
+
+    /// <summary>
     /// Icon indicating work in progress / processing.
     /// </summary>
     public static IconFragment Working { get; set; } = NoIconFragment;

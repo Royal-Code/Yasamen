@@ -1,5 +1,6 @@
 using RoyalCode.Razor.Docs.Components;
 using RoyalCode.Razor.Icons.Bootstrap;
+using RoyalCode.Razor.Docs.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,8 @@ builder.Services.AddYasamenCommons();
 builder.Services.AddYasamenModal();
 builder.Services.AddYasamenOffCanvas();
 builder.Services.AddYasamenMenu();
+
+builder.Services.AddMenuItems();
 
 var app = builder.Build();
 
