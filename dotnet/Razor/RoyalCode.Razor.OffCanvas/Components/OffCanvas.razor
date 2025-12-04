@@ -52,6 +52,7 @@
 		var isVisible = state.IsVisible;
 		if (OnVisibilityChanged.HasDelegate)
 			await OnVisibilityChanged.InvokeAsync(isVisible);
+		handler.NotifyStateChanged();
 	}
 
 	private string BackdropClasses => "ya-offcanvas-backdrop"

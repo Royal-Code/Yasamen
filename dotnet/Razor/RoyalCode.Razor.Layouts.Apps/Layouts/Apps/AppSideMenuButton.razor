@@ -1,0 +1,29 @@
+﻿@implements IDisposable
+
+<AppSideItem Active="menuHandler.IsVisible">
+	<IconButton Style="Style" title="Open Menu" IconFragment="@WellKnownIcons.Menu" OnClick="ToggleMenu" />
+</AppSideItem>
+<AppMenu Handler="menuHandler" />
+
+@code {
+
+	private readonly OffCanvasHandler menuHandler;
+
+	private Themes Style => menuHandler.IsVisible ? Themes.Primary : Themes.Default;
+
+	public AppSideMenuButton()
+	{
+		menuHandler = new();
+		menuHandler.RegisterStateHasChanged(StateHasChanged);
+	}
+
+	private async Task ToggleMenu()
+	{
+        await menuHandler.Toggle();
+    }
+
+    public void Dispose()
+    {
+        menuHandler.ClearStateHasChanged();
+    }
+}

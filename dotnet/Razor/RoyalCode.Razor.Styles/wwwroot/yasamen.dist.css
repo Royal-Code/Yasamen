@@ -168,7 +168,7 @@
     --color-danger-800: #5d1017;
     --color-danger-900: #2f080c;
     --color-light: #F2F1F3;
-    --color-light-25: #f9f8fa;
+    --color-light-10: #fbfafc;
     --color-light-50: #f6f4f8;
     --color-light-100: #f2f1f3;
     --color-light-200: #e6e4e8;
@@ -8864,7 +8864,13 @@
   }
 }
 .ya-menu-item-link:has(.ya-menu-item-content.active) {
-  background-color: var(--color-light-25);
+  border-left-style: var(--tw-border-style);
+  border-left-width: 3px;
+  border-color: color-mix(in srgb, #0d6dfd 50%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    border-color: color-mix(in oklab, var(--color-primary-500) 50%, transparent);
+  }
+  background-color: var(--color-light-10);
   &:hover {
     @media (hover: hover) {
       background-color: var(--color-light-50);
@@ -9141,6 +9147,29 @@
   }
   @media (width >= 40rem) {
     position: fixed;
+  }
+}
+.ya-side-bar-item {
+  margin-inline: var(--spacing-2);
+  display: flex;
+  justify-content: center;
+  padding-block: var(--spacing-3);
+}
+.ya-side-bar-item.active {
+  margin-left: var(--spacing-0);
+  border-left-style: var(--tw-border-style);
+  border-left-width: 2px;
+  border-color: color-mix(in srgb, #0d6dfd 50%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    border-color: color-mix(in oklab, var(--color-primary-500) 50%, transparent);
+  }
+  background-color: color-mix(in srgb, #0d6dfd 10%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-primary-500) 10%, transparent);
+  }
+  color: color-mix(in srgb, #0d6dfd 50%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    color: color-mix(in oklab, var(--color-primary-500) 50%, transparent);
   }
 }
 .ya-top-bar {

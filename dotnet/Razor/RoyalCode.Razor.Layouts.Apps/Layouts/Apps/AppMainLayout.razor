@@ -12,13 +12,10 @@
         End
     </TopEnd>
     <LeftMenu>
-        <div class="my-2 flex justify-center">
-            <IconButton title="Open Menu" IconFragment="@WellKnownIcons.Menu" OnClick="ToggleMenu" />
-        </div>
-        <div class="my-2 flex justify-center">
+        <AppSideMenuButton />
+        <div class="mx-2 py-3 flex justify-center">
             <IconButton title="Open Menu" IconFragment="@WellKnownIcons.FavoriteOff" OnClick="ToggleFavorite" />
         </div>
-        <AppMenu Handler="menuHandler" />
         <OffCanvas Position="Positions.Start" Handler="favoriteHandler" Title="Favorites">
             <div class="p-4">
 				Here are your favorite items.
@@ -35,13 +32,7 @@
 
 @code {
 
-    private readonly OffCanvasHandler menuHandler = new();
 	private readonly OffCanvasHandler favoriteHandler = new();
-
-    private async Task ToggleMenu()
-    {
-        await menuHandler.Toggle();
-    }
 
     private async Task ToggleFavorite()
     {

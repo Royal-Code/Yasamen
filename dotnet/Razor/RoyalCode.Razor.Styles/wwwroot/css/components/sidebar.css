@@ -2,3 +2,11 @@
 .ya-side-bar {
     @apply overflow-hidden max-sm:hidden sm:fixed top-0 bottom-0 bg-white flex-col justify-start;
 }
+
+.ya-side-bar-item {
+    @apply mx-2 py-3 flex justify-center;
+}
+
+    .ya-side-bar-item.active {
+        @apply border-l-2 border-primary-500/50 ml-0 bg-primary-500/10;
+    }

@@ -1,0 +1,22 @@
+﻿<div @attributes="AdditionalAttributes" class="@SideMenuButtonClasses">
+	@ChildContent
+</div>
+
+@code {
+
+	public string SideMenuButtonClasses => "ya-side-bar-item"
+		.AddClass(Active, "active")
+		.AddClass(AdditionalClasses);
+
+	[Parameter]
+	public bool Active { get; set; }
+
+    [Parameter]
+	public RenderFragment? ChildContent { get; set; }
+
+	[Parameter]
+	public string AdditionalClasses { get; set; } = string.Empty;
+
+	[Parameter(CaptureUnmatchedValues = true)]
+	public Dictionary<string, object> AdditionalAttributes { get; set; } = new();
+}

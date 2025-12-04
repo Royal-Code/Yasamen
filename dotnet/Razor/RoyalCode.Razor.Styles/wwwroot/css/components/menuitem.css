@@ -8,7 +8,7 @@
 }
 
     .ya-menu-item-link:has(.ya-menu-item-content.active) {
-        @apply bg-light-25 hover:bg-light-50;
+        @apply border-l-3 border-primary-500/50 bg-light-10 hover:bg-light-50;
     }
 
 .ya-menu-item-module {
