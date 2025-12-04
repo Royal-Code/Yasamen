@@ -1,0 +1,9 @@
+﻿
+<div class="ya-control-group">
+	@ChildContent
+</div>
+
+@code {
+	[Parameter]
+	public RenderFragment ChildContent { get; set; } = EmptyFragment.Delegate;
+}

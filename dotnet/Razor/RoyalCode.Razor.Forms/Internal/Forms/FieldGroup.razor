@@ -1,0 +1,85 @@
+﻿@using RoyalCode.Razor.Styles
+
+<div class="@Classes">
+	<div class="ya-field-group-description">
+		<label for="@LabelId" class="ya-field-group-label">@Label</label>
+		@DescriptionComplement
+	</div>
+	@if(UseInputGroup)
+	{
+		<ControlGroup>
+			@Prepend
+			@Control
+			@Append
+		</ControlGroup>
+	}
+	else
+	{
+		@Control
+	}
+	@if (Information.IsPresent())
+	{
+		<FieldInformation Message="@Information" />
+	}
+	@if (FooterAction.IsNotEmptyFragment())
+	{
+		<div class="ya-field-group-footer">
+			@FooterAction
+		</div>
+	}
+	@if (ErrorMessage.IsPresent())
+	{
+		<FieldError ErrorMessage="@ErrorMessage" />
+	}
+</div>
+
+@code {
+	private string Classes => "ya-field-group"
+		.AddClass(Expanded, "w-full")
+		.AddClass(ErrorMessage.IsPresent(), "ya-field-invalid")
+		.AddClass(AdditionalClasses);
+
+	private bool UseInputGroup => Prepend.IsNotEmptyFragment() || Append.IsNotEmptyFragment();
+
+	[Parameter]
+	public bool Expanded { get; set; } = true;
+
+    [Parameter]
+	public string? Label { get; set; }
+
+	[Parameter]
+	public string? LabelId { get; set; }
+
+	[Parameter]
+	public string? Information { get; set; }
+
+	[Parameter]
+	public string? ErrorMessage { get; set; }
+
+	[Parameter]
+	public RenderFragment DescriptionComplement { get; set; } = EmptyFragment.Delegate;
+
+	[Parameter]
+	public RenderFragment Prepend { get; set; } = EmptyFragment.Delegate;
+
+	[Parameter]
+	public RenderFragment Append { get; set; } = EmptyFragment.Delegate;
+
+	[Parameter, EditorRequired]
+	public RenderFragment Control { get; set; } = default!;
+
+	[Parameter]
+	public RenderFragment FooterAction { get; set; } = EmptyFragment.Delegate;
+
+	/// <summary>
+	/// Style classes passed to the outermost element of the component.
+	/// </summary>
+	[Parameter]
+	public string? AdditionalClasses { get; set; }
+
+	/// <summary>
+	/// additional HTML attributes.
+	/// </summary>
+	[Parameter(CaptureUnmatchedValues = true)]
+	public Dictionary<string, object>? AdditionalAttributes { get; set; }
+}

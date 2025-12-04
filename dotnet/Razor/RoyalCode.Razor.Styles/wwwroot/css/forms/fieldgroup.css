@@ -1,0 +1,12 @@
+﻿
+.ya-field-group {
+
+}
+
+.ya-field-group-description {
+    @apply flex w-full items-bottom justify-between;
+}
+
+.ya-field-group-label {
+    @apply text-secondary-700;
+}

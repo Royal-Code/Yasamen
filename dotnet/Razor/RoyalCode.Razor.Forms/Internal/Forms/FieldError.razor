@@ -1,0 +1,9 @@
+﻿<div>
+	<span class="ya-field-error-message">@ErrorMessage</span>
+</div>
+
+@code {
+
+	[Parameter, EditorRequired]
+	public string ErrorMessage { get; set; } = default!;
+}
