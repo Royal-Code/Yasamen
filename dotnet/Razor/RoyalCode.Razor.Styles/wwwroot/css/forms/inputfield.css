@@ -1,0 +1,31 @@
+﻿.ya-input-field {
+    @apply block w-full bg-white text-dark-800 text-sm border-1 border-light-400 rounded-md shadow-sm transition-colors duration-150;
+    @apply px-4 py-4;
+    @apply placeholder:text-secondary-400;
+    @apply focus:outline-none focus:border-primary-500 focus:ring-3 focus:ring-primary-300/50;
+    @apply disabled:bg-light-100 disabled:text-dark-300 disabled:cursor-not-allowed;
+}
+
+.ya-input-field-invalid {
+    @apply border-danger-500 text-danger-700;
+    @apply focus:border-danger-600 focus:ring-danger-300/50;
+}
+
+.ya-input-field.\2xs {
+    @apply text-2xs px-3 py-1;
+}
+.ya-input-field.xs {
+    @apply text-xs px-3 py-1.5;
+}
+.ya-input-field.sm {
+    @apply text-sm px-4 py-2;
+}
+.ya-input-field.lg {
+    @apply text-base px-4.5 py-4.5;
+}
+.ya-input-field.xl {
+    @apply text-lg px-5 py-5;
+}
+.ya-input-field.\2xl {
+    @apply text-xl px-6 py-5;
+}

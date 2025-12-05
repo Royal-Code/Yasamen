@@ -17,6 +17,7 @@ public static class YasamenServiceCollectionExtensions
     {
         services.AddTransient<ClickJs>();
         services.AddTransient<ElementJs>();
+        services.AddTransient<FormsJs>();
         services.AddTransient<RippleJs>();
 
         return services;

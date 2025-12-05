@@ -1,8 +1,38 @@
-﻿@typeparam TValue
+﻿@using RoyalCode.Razor.Styles
+@typeparam TValue
 @inherits FieldBase<TValue>
 
-<h3>InputFieldBase</h3>
+<FieldGroup Label="@FieldLabel"
+	        LabelId="@FieldLabelId"
+			LabelFor="@FieldInputId"
+			Information="@Information"
+			ErrorMessage="@GetErrorMessage()"
+			DescriptionComplement="@DescriptionComplement"
+			Prepend="@Prepend"
+			Append="@Append"
+		    AdditionalClasses="@AdditionalClasses">
+	<Control>
+		<input @attributes="AdditionalAttributes"
+			   id="@FieldInputId"
+			   name="@FieldInputName"
+			   type="@Type.ToString().ToLower()"
+			   class="@Classes"
+			   aria-labelledby="@FieldLabelId"
+			   aria-label="@Placeholder"
+			   placeholder="@Placeholder"
+			   readonly="@ReadOnly"
+			   disabled="@Disabled"
+			   maxlength="@MaxLength"
+			   @bind-value="CurrentValueAsString"
+			   @bind-value:event="@BindEvent"
+			   @bind-value:after="OnValueChange"
+	           @ref="Element">
+	</Control>
+</FieldGroup>
 
 @code {
-
+	public string Classes => "ya-input-field"
+		.AddClass(IsInvalid, "ya-input-field-invalid")
+		.AddClass(Size.ToCssClassName())
+		.AddClass(AdditionalClasses);
 }

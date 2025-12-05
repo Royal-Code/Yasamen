@@ -154,6 +154,23 @@ public static class ConfigureMenu
                         Url = "drops",
                         Type = MenuItemType.Link
                     }
+                    ,
+                    new MenuItem
+                    {
+                        Id = "forms",
+                        Text = "Forms",
+                        Type = MenuItemType.Module,
+                        Children =
+                        [
+                            new MenuItem
+                            {
+                                Id = "textfield",
+                                Text = "Text Field",
+                                Url = "demo/forms/text-field",
+                                Type = MenuItemType.Link
+                            }
+                        ]
+                    }
                 ]
             });
         });

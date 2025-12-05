@@ -1,0 +1,61 @@
+﻿@page "/demo/forms/text-field"
+
+@layout AppMainLayout
+
+<Box AdditionalClasses="p-8 bg-white border-none">
+
+	<h1>TextField</h1>
+
+	<p class="mb-4">Campos de texto com estilos baseados em Bootstrap, usando Tailwind. Exemplos de uso e estados.</p>
+
+	<h2>Simples</h2>
+	<EditForm Model="this">
+		<TextField Label="Nome" @bind-Value="_name" Placeholder="Digite seu nome" />
+	</EditForm>
+
+	<h2>Com informação</h2>
+	<EditForm Model="this">
+		<TextField Label="Usuário" @bind-Value="_user" Placeholder="usuário" />
+	</EditForm>
+
+	<h2>Com prepend e append</h2>
+	<EditForm Model="this">
+		<TextField Label="Site" @bind-Value="_site" Placeholder="meusite">
+			<Prepend>
+				<span class="inline-flex items-center px-3 text-secondary-600">https://</span>
+			</Prepend>
+			<Append>
+				<span class="inline-flex items-center px-3 text-secondary-600">.com</span>
+			</Append>
+		</TextField>
+	</EditForm>
+
+	<h2>Estados</h2>
+	<EditForm Model="this">
+		<Container>
+			<Col>
+				<TextField Label="Normal" @bind-Value="_stateNormal" Placeholder="normal" />
+			</Col>
+			<Col>
+				<TextField Label="Readonly" Value="@_stateReadonly" ReadOnly="true" />
+			</Col>
+			<Col>
+				<TextField Label="Disabled" Value="@_stateDisabled" Disabled="true" />
+			</Col>
+			<Col>
+				<TextField Label="Invalid" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
+			</Col>
+		</Container>
+	</EditForm>
+
+</Box>
+
+@code {
+	private string _name = string.Empty;
+	private string _user = string.Empty;
+	private string _site = string.Empty;
+	private string _stateNormal = string.Empty;
+	private string _stateReadonly = "somente leitura";
+	private string _stateDisabled = "desabilitado";
+	private string _stateInvalid = string.Empty;
+}

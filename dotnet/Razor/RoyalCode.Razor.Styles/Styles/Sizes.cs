@@ -23,8 +23,48 @@ public enum Sizes
     Largest,
 }
 
+/// <summary>
+/// Extension methods for the Sizes enum.
+/// </summary>
 public static class SizesExtensions
 {
+    /// <summary>
+    /// Converts the Sizes enum to its corresponding CSS class name.
+    /// </summary>
+    /// <param name="size">The size enum value.</param>
+    /// <returns>A string representing the CSS class name.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">
+    ///     When the size value is not recognized.
+    /// </exception>
+    public static string ToCssClassName(this Sizes size)
+    {
+        return size switch
+        {
+            Sizes.Default => string.Empty,
+            Sizes.Smallest => "2xs",
+            Sizes.Smaller => "xs",
+            Sizes.Small => "sm",
+            Sizes.Medium => "md",
+            Sizes.Large => "lg",
+            Sizes.Larger => "xl",
+            Sizes.Largest => "2xl",
+            _ => throw new ArgumentOutOfRangeException(nameof(size), size, null),
+        };
+    }
+
+    /// <summary>
+    /// Converts the Sizes enum to its corresponding CSS class name with a prefix.
+    /// </summary>
+    /// <param name="size">The size enum value.</param>
+    /// <param name="prefix">The prefix to prepend to the CSS class name.</param>
+    /// <returns>A string representing the CSS class name with the prefix.</returns>
+    public static string ToCssClassName(this Sizes size, string prefix)
+    {
+        return size == Sizes.Default 
+            ? string.Empty 
+            : $"{prefix}-{size.ToCssClassName()}";
+    }
+
     /// <summary>
     /// Converts the Sizes enum to its corresponding content CSS class to apply width/height.
     /// </summary>

@@ -2,7 +2,7 @@
 
 <div class="@Classes">
 	<div class="ya-field-group-description">
-		<label for="@LabelId" class="ya-field-group-label">@Label</label>
+		<label id="@LabelId" for="@LabelFor" class="ya-field-group-label">@Label</label>
 		@DescriptionComplement
 	</div>
 	@if(UseInputGroup)
@@ -36,13 +36,17 @@
 @code {
 	private string Classes => "ya-field-group"
 		.AddClass(Expanded, "w-full")
-		.AddClass(ErrorMessage.IsPresent(), "ya-field-invalid")
+		.AddClass(Size.ToCssClassName())
+		.AddClass(ErrorMessage.IsPresent(), "ya-field-group-invalid")
 		.AddClass(AdditionalClasses);
 
 	private bool UseInputGroup => Prepend.IsNotEmptyFragment() || Append.IsNotEmptyFragment();
 
 	[Parameter]
 	public bool Expanded { get; set; } = true;
+
+	[Parameter]
+	public Sizes Size { get; set; }
 
     [Parameter]
 	public string? Label { get; set; }
@@ -51,23 +55,47 @@
 	public string? LabelId { get; set; }
 
 	[Parameter]
+	public string? LabelFor { get; set; }
+
+	[Parameter]
 	public string? Information { get; set; }
 
 	[Parameter]
 	public string? ErrorMessage { get; set; }
 
+	/// <summary>
+	/// <para>
+	///		Additional content to be displayed alongside the control's description.
+	/// </para>
+	/// <para>
+	///		The description is typically used to provide extra context or instructions for the user, 
+	///		or add extra action for the field.
+	/// </para>
+	/// </summary>
 	[Parameter]
 	public RenderFragment DescriptionComplement { get; set; } = EmptyFragment.Delegate;
 
+	/// <summary>
+	/// Components or markup to be rendered before the control.
+	/// </summary>
 	[Parameter]
 	public RenderFragment Prepend { get; set; } = EmptyFragment.Delegate;
 
+	/// <summary>
+	/// Components or markup to be rendered after the control.
+	/// </summary>
 	[Parameter]
 	public RenderFragment Append { get; set; } = EmptyFragment.Delegate;
 
+	/// <summary>
+	/// The main control fragment, e.g. input, select, textarea.
+	/// </summary>
 	[Parameter, EditorRequired]
 	public RenderFragment Control { get; set; } = default!;
 
+	/// <summary>
+	/// Footer action fragment. Rendered at the bottom of the field group, justified to the right.
+	/// </summary>
 	[Parameter]
 	public RenderFragment FooterAction { get; set; } = EmptyFragment.Delegate;
 

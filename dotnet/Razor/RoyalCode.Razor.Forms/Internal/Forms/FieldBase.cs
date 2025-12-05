@@ -65,6 +65,18 @@ public abstract class FieldBase : ComponentBase, IAsyncDisposable
     public string? Placeholder { get; set; }
 
     /// <summary>
+    /// Gets or sets additional information provided by the user about the field.
+    /// </summary>
+    [Parameter]
+    public string? Information { get; set; }
+
+    /// <summary>
+    /// Gets or sets the error message to be displayed.
+    /// </summary>
+    [Parameter]
+    public string? Error { get; set; }
+
+    /// <summary>
     /// Indicates whether the component is disabled.
     /// </summary>
     [Parameter]
@@ -98,13 +110,19 @@ public abstract class FieldBase : ComponentBase, IAsyncDisposable
     /// Prepend content for the field.
     /// </summary>
     [Parameter]
-    public RenderFragment? Prepend { get; set; }
+    public RenderFragment Prepend { get; set; } = EmptyFragment.Delegate;
 
     /// <summary>
     /// Append content for the field.
     /// </summary>
     [Parameter]
-    public RenderFragment? Append { get; set; }
+    public RenderFragment Append { get; set; } = EmptyFragment.Delegate;
+
+    /// <summary>
+    /// Description complement for the field. Placed with the label justified to the end of the field.
+    /// </summary>
+    [Parameter]
+    public RenderFragment DescriptionComplement { get; set; } = EmptyFragment.Delegate;
 
     /// <summary>
     /// JS interop utilities for work with the field element.
@@ -276,6 +294,9 @@ public abstract class FieldBase : ComponentBase, IAsyncDisposable
     {
         if (ParseError.IsPresent())
             return ParseError;
+
+        if (Error.IsPresent())
+            return Error;
 
         if (errorMessages is not null && errorMessages.Count > 0)
             return errorMessages[0].Text;

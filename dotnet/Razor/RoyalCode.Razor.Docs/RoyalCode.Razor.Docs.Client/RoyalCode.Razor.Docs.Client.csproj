@@ -17,6 +17,7 @@
     <ProjectReference Include="..\..\RoyalCode.Razor.Buttons\RoyalCode.Razor.Buttons.csproj" />
     <ProjectReference Include="..\..\RoyalCode.Razor.Commons\RoyalCode.Razor.Commons.csproj" />
     <ProjectReference Include="..\..\RoyalCode.Razor.Drops\RoyalCode.Razor.Drops.csproj" />
+    <ProjectReference Include="..\..\RoyalCode.Razor.Forms\RoyalCode.Razor.Forms.csproj" />
     <ProjectReference Include="..\..\RoyalCode.Razor.Icons.Bootstrap\RoyalCode.Razor.Icons.Bootstrap.csproj" />
     <ProjectReference Include="..\..\RoyalCode.Razor.Icons\RoyalCode.Razor.Icons.csproj" />
     <ProjectReference Include="..\..\RoyalCode.Razor.Layouts.Apps\RoyalCode.Razor.Layouts.Apps.csproj" />

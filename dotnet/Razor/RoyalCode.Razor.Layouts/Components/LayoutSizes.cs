@@ -52,7 +52,7 @@ public static class LayoutSizesExtensions
     {
         return size switch
         {
-            LayoutSizes.Default | LayoutSizes.Desktop
+            LayoutSizes.Default or LayoutSizes.Desktop
                 => "grid xs:grid-cols-1 gap-8 items-start grid-cols-4 md:grid-cols-8 lg:grid-cols-12 2xl:grid-cols-16",
             LayoutSizes.Laptop
                 => "grid xs:grid-cols-1 gap-8 items-start sm:grid-cols-4 md:grid-cols-8 lg:grid-cols-12",

@@ -2,7 +2,7 @@
     :root {
         /* Font */
         --font-color: var(--text-dark, #38333c);
-        --font-bg: var(--color-light, #F2F1F3);
+        --font-bg: var(--color-white, #F2F1F3);
         /* body */
         --body--margin: var(--spacing-0);
         --body--font-family: var(--font-sans);
@@ -10,7 +10,7 @@
         --body--font-weight: var(--font-normal);
         --body--line-height: var(--leading-base);
         --body--color: var(--color-dark);
-        --body--bg: var(--color-light);
+        --body--bg: var(--color-light-100);
         --body--modal--padding-right: 15px;
         /* box */
         --box-sizing: border-box;

@@ -1,12 +1,59 @@
 ﻿
 .ya-field-group {
+    @apply w-full mb-4 h-10;
+}
+    .ya-field-group.\2xs {
+        @apply h-7;
+    }
+    .ya-field-group.xs {
+        @apply h-8;
+    }
+    .ya-field-group.sm {
+        @apply h-9;
+    }
+    .ya-field-group.lg {
+        @apply h-11;
+    }
+    .ya-field-group.xl {
+        @apply h-12;
+    }
+    .ya-field-group.\2xl {
+        @apply h-13;
+    }
 
+.ya-field-group-invalid {
+    /* when invalid, emphasize label */
+    @apply [&_.ya-field-group-label]:text-danger-700;
 }
 
 .ya-field-group-description {
-    @apply flex w-full items-bottom justify-between;
+    @apply flex w-full items-baseline justify-between mb-2 text-sm;
 }
+    .ya-field-group-description.\2xs {
+        @apply mb-0 text-2xs;
+    }
+    .ya-field-group-description.xs {
+        @apply mb-1 text-xs;
+    }
+    .ya-field-group-description.sm {
+        @apply mb-1.5;
+    }
+    .ya-field-group-description.lg {
+        @apply mb-2.5 text-base;
+    }
+    .ya-field-group-description.xl {
+        @apply mb-2.5 text-lg;
+    }
+    .ya-field-group-description.\2xl {
+        @apply mb-2.5 text-xl;
+    }
 
 .ya-field-group-label {
-    @apply text-secondary-700;
+    @apply font-medium text-dark-700;
 }
+
+.ya-field-group-footer {
+    @apply mt-2 flex w-full justify-end gap-2;
+}
+
+

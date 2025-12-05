@@ -1,3 +1,4 @@
-﻿body
-{
+﻿/* Control group wrapper similar to Bootstrap input-group */
+.ya-control-group {
+    @apply flex w-full items-stretch gap-2;
 }

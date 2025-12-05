@@ -13,6 +13,12 @@
 @import './css/components/sidebar.css';
 @import './css/components/topbar.css';
 
+@import './css/forms/controlgroup.css';
+@import './css/forms/fielderror.css';
+@import './css/forms/fieldgroup.css';
+@import './css/forms/fieldinfo.css';
+@import './css/forms/inputfield.css';
+
 @theme {
     --color-primary: #0d6dfd;
     --color-primary-100: #cfe2ff;

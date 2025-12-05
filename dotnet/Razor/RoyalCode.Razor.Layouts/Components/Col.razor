@@ -11,6 +11,6 @@
         .AddGridColClass(type == LayoutTypes.Grid, size, Span, TabletSpan, LaptopSpan, DesktopSpan)
         .AddClass(type == LayoutTypes.Flex, "flex-initial px-4")
         .AddClass(type == LayoutTypes.Flex && Span > 0, size.ToFlexColClass(Span, TabletSpan, LaptopSpan, DesktopSpan))
-        .AddClass(height.ToHeightCssClass())
+        .AddClass(height.ToMinHeightCssClass())
         .AddClass(AdditionalClasses);
 }
