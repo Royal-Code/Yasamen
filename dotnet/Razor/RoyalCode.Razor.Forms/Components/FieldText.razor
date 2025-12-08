@@ -1,0 +1,29 @@
+﻿@using RoyalCode.Razor.Styles
+
+<div @attributes="AdditionalAttributes" class="@Classes">
+	@ChildContent
+</div>
+
+@code {
+
+	private string Classes => "ya-field-text"
+		.AddClass(AdditionalClasses);
+
+	/// <summary>
+	/// Content to be rendered inside the field.
+	/// </summary>
+	[Parameter, EditorRequired]
+	public RenderFragment ChildContent { get; set; }
+
+	/// <summary>
+	/// Style classes passed to the outermost element of the component.
+	/// </summary>
+	[Parameter]
+	public string? AdditionalClasses { get; set; }
+
+	/// <summary>
+	/// additional HTML attributes.
+	/// </summary>
+	[Parameter(CaptureUnmatchedValues = true)]
+	public Dictionary<string, object>? AdditionalAttributes { get; set; }
+}

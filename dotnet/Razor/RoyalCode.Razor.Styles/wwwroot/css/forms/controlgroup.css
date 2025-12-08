@@ -1,4 +1,17 @@
-﻿/* Control group wrapper similar to Bootstrap input-group */
-.ya-control-group {
-    @apply flex w-full items-stretch gap-2;
+﻿.ya-control-group {
+    @apply flex w-full;
 }
+
+/* se não for o primeiro filho do .ya-control-group deve ter as bordas esquerdas sem round */
+    .ya-control-group > :not(:first-child) {
+        @apply rounded-l-none -ml-1;
+    }
+
+/* se não for o último filho do .ya-control-group deve ter as bordas direitas sem round */
+    .ya-control-group > :not(:last-child) {
+        @apply rounded-r-none;
+    }
+
+    .ya-control-group > .ya-input-field:focus {
+        @apply z-1;
+    }

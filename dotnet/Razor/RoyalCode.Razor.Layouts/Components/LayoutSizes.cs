@@ -53,13 +53,13 @@ public static class LayoutSizesExtensions
         return size switch
         {
             LayoutSizes.Default or LayoutSizes.Desktop
-                => "grid xs:grid-cols-1 gap-8 items-start grid-cols-4 md:grid-cols-8 lg:grid-cols-12 2xl:grid-cols-16",
+                => "grid xs:grid-cols-1 gap-5 items-start grid-cols-4 md:grid-cols-8 lg:grid-cols-12 2xl:grid-cols-16",
             LayoutSizes.Laptop
-                => "grid xs:grid-cols-1 gap-8 items-start sm:grid-cols-4 md:grid-cols-8 lg:grid-cols-12",
+                => "grid xs:grid-cols-1 gap-5 items-start sm:grid-cols-4 md:grid-cols-8 lg:grid-cols-12",
             LayoutSizes.Tablet
-                => "grid xs:grid-cols-1 gap-8 items-start sm:grid-cols-4 md:grid-cols-8",
+                => "grid xs:grid-cols-1 gap-5 items-start sm:grid-cols-4 md:grid-cols-8",
             LayoutSizes.Phone
-                => "grid xs:grid-cols-1 gap-8 items-start sm:grid-cols-4",
+                => "grid xs:grid-cols-1 gap-5 items-start sm:grid-cols-4",
             _ => throw new ArgumentOutOfRangeException(nameof(size), size, "Invalid layout size")
         };
     }

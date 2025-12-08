@@ -1,9 +1,10 @@
 ﻿.ya-input-field {
-    @apply block w-full bg-white text-dark-800 text-sm border-1 border-light-400 rounded-md shadow-sm transition-colors duration-150;
-    @apply px-4 py-4;
+    @apply block w-full bg-white text-dark-800 text-base border-1 border-light-400 rounded-md transition-all duration-150;
+    @apply px-5 py-3.5;
     @apply placeholder:text-secondary-400;
     @apply focus:outline-none focus:border-primary-500 focus:ring-3 focus:ring-primary-300/50;
     @apply disabled:bg-light-100 disabled:text-dark-300 disabled:cursor-not-allowed;
+    @apply read-only:bg-light-100 read-only:text-dark-600 read-only:cursor-default;
 }
 
 .ya-input-field-invalid {
@@ -11,21 +12,21 @@
     @apply focus:border-danger-600 focus:ring-danger-300/50;
 }
 
-.ya-input-field.\2xs {
-    @apply text-2xs px-3 py-1;
+.ya-input-field.ya-field-2xs {
+    @apply text-2xs px-4 py-2 focus:ring-2;
 }
-.ya-input-field.xs {
-    @apply text-xs px-3 py-1.5;
+.ya-input-field.ya-field-xs {
+    @apply text-xs px-4 py-3 focus:ring-2;
 }
-.ya-input-field.sm {
-    @apply text-sm px-4 py-2;
+.ya-input-field.ya-field-sm {
+    @apply text-sm px-5 py-3 focus:ring-3;
 }
-.ya-input-field.lg {
-    @apply text-base px-4.5 py-4.5;
+.ya-input-field.ya-field-lg {
+    @apply text-lg px-6 py-4 focus:ring-4;
 }
-.ya-input-field.xl {
-    @apply text-lg px-5 py-5;
+.ya-input-field.ya-field-xl {
+    @apply text-xl px-6 py-5 focus:ring-4;
 }
-.ya-input-field.\2xl {
-    @apply text-xl px-6 py-5;
+.ya-input-field.ya-field-2xl {
+    @apply text-2xl px-7 py-5 focus:ring-5;
 }

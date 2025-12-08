@@ -9,28 +9,32 @@
 	<p class="mb-4">Campos de texto com estilos baseados em Bootstrap, usando Tailwind. Exemplos de uso e estados.</p>
 
 	<h2>Simples</h2>
+
 	<EditForm Model="this">
 		<TextField Label="Nome" @bind-Value="_name" Placeholder="Digite seu nome" />
 	</EditForm>
 
 	<h2>Com informação</h2>
+
 	<EditForm Model="this">
 		<TextField Label="Usuário" @bind-Value="_user" Placeholder="usuário" />
 	</EditForm>
 
 	<h2>Com prepend e append</h2>
+
 	<EditForm Model="this">
 		<TextField Label="Site" @bind-Value="_site" Placeholder="meusite">
 			<Prepend>
-				<span class="inline-flex items-center px-3 text-secondary-600">https://</span>
+				<FieldText>https://</FieldText>
 			</Prepend>
 			<Append>
-				<span class="inline-flex items-center px-3 text-secondary-600">.com</span>
+				<FieldText>.com</FieldText>
 			</Append>
 		</TextField>
 	</EditForm>
 
 	<h2>Estados</h2>
+
 	<EditForm Model="this">
 		<Container>
 			<Col>
@@ -45,6 +49,48 @@
 			<Col>
 				<TextField Label="Invalid" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
 			</Col>
+			<Col>
+				<TextField Label="Normal with prepend" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
+					<Prepend>
+						<FieldText>@@</FieldText>
+					</Prepend>
+				</TextField>
+			</Col>
+			<Col>
+				<TextField Label="Normal with append" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
+					<Append>
+						<FieldText>@@</FieldText>
+					</Append>
+				</TextField>
+			</Col>
+		</Container>
+	</EditForm>
+
+	<h2>Tamanhos</h2>
+
+	<EditForm Model="this">
+		<Container>
+			<Col>
+			<TextField Label="Smallest" Size="Sizes.Smallest" @bind-Value="_name" Placeholder="Smallest" />
+			</Col>
+			<Col>
+				<TextField Label="Smaller" Size="Sizes.Smaller" @bind-Value="_name" Placeholder="smaller" />
+			</Col>
+			<Col>
+				<TextField Label="Small" Size="Sizes.Small" @bind-Value="_name" Placeholder="small" />
+			</Col>
+			<Col>
+				<TextField Label="Medium" Size="Sizes.Medium" @bind-Value="_name" Placeholder="medium" />
+			</Col>
+			<Col>
+				<TextField Label="Large" Size="Sizes.Large" @bind-Value="_name" Placeholder="large" />
+			</Col>
+			<Col>
+				<TextField Label="Larger" Size="Sizes.Larger" @bind-Value="_name" Placeholder="larger" />
+			</Col>
+			<Col>
+				<TextField Label="Largest" Size="Sizes.Largest" @bind-Value="_name" Placeholder="largest" />
+			</Col>
 		</Container>
 	</EditForm>
 
@@ -55,6 +101,8 @@
 	private string _user = string.Empty;
 	private string _site = string.Empty;
 	private string _stateNormal = string.Empty;
+	private string _stateNormalWithPrepend = string.Empty;
+	private string _stateNormalWithAppend = string.Empty;
 	private string _stateReadonly = "somente leitura";
 	private string _stateDisabled = "desabilitado";
 	private string _stateInvalid = string.Empty;

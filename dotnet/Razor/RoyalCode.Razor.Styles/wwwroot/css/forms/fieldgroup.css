@@ -1,25 +1,7 @@
 ﻿
 .ya-field-group {
-    @apply w-full mb-4 h-10;
+    @apply w-full;
 }
-    .ya-field-group.\2xs {
-        @apply h-7;
-    }
-    .ya-field-group.xs {
-        @apply h-8;
-    }
-    .ya-field-group.sm {
-        @apply h-9;
-    }
-    .ya-field-group.lg {
-        @apply h-11;
-    }
-    .ya-field-group.xl {
-        @apply h-12;
-    }
-    .ya-field-group.\2xl {
-        @apply h-13;
-    }
 
 .ya-field-group-invalid {
     /* when invalid, emphasize label */
@@ -27,33 +9,51 @@
 }
 
 .ya-field-group-description {
-    @apply flex w-full items-baseline justify-between mb-2 text-sm;
+    @apply flex w-full items-baseline justify-between text-sm;
 }
     .ya-field-group-description.\2xs {
-        @apply mb-0 text-2xs;
+        @apply text-2xs;
     }
     .ya-field-group-description.xs {
-        @apply mb-1 text-xs;
+        @apply text-xs;
     }
     .ya-field-group-description.sm {
-        @apply mb-1.5;
+        @apply text-sm;
     }
     .ya-field-group-description.lg {
-        @apply mb-2.5 text-base;
+        @apply text-base;
     }
     .ya-field-group-description.xl {
-        @apply mb-2.5 text-lg;
+        @apply text-lg;
     }
     .ya-field-group-description.\2xl {
-        @apply mb-2.5 text-xl;
+        @apply text-xl;
     }
 
 .ya-field-group-label {
-    @apply font-medium text-dark-700;
+    @apply text-dark-700 text-base;
 }
 
 .ya-field-group-footer {
-    @apply mt-2 flex w-full justify-end gap-2;
+    @apply mt-2 flex w-full justify-end items-start text-sm;
 }
 
+    .ya-field-group-footer.\2xs {
+        @apply text-2xs;
+    }
+    .ya-field-group-footer.xs {
+        @apply text-xs;
+    }
+    .ya-field-group-footer.sm {
+        @apply text-sm;
+    }
+    .ya-field-group-footer.lg {
+        @apply text-base;
+    }
+    .ya-field-group-footer.xl {
+        @apply text-lg;
+    }
+    .ya-field-group-footer.\2xl {
+        @apply text-xl;
+    }
 
