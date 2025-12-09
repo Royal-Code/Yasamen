@@ -199,6 +199,7 @@
     --spacing-0: 0;
     --spacing-1: .0625rem;
     --spacing-2: .125rem;
+    --spacing-2\.5: .1875rem;
     --spacing-3: .25rem;
     --spacing-3\.5: .375rem;
     --spacing-4: .5rem;
@@ -9390,7 +9391,7 @@
 }
 .ya-input-field.ya-field-sm {
   padding-inline: var(--spacing-5);
-  padding-block: var(--spacing-3\.5);
+  padding-block: var(--spacing-3);
   font-size: var(--text-sm);
   line-height: var(--tw-leading, var(--text-sm--line-height));
   &:focus {
@@ -9427,6 +9428,13 @@
     --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(5px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
+}
+.ya-input-field-invalid {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right calc(var(--spacing-3\.5) + var(--spacing-2\.5)) center;
+  background-size: calc(var(--spacing-5) + var(--spacing-3\.5)) calc(var(--spacing-5) + var(--spacing-3\.5));
+  padding-right: calc(var(--spacing-7) + var(--spacing-5));
 }
 @property --tw-translate-x {
   syntax: "*";

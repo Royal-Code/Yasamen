@@ -33,63 +33,226 @@
 		</TextField>
 	</EditForm>
 
-	<h2>Estados</h2>
+	<h2>Estado: Normal</h2>
 
 	<EditForm Model="this">
 		<Container>
 			<Col>
-				<TextField Label="Normal" @bind-Value="_stateNormal" Placeholder="normal" />
+				<TextField Label="Smallest" Size="Sizes.Smallest" @bind-Value="_stateNormal" Placeholder="normal" />
 			</Col>
 			<Col>
-				<TextField Label="Readonly" Value="@_stateReadonly" ReadOnly="true" />
+				<TextField Label="Smaller" Size="Sizes.Smaller" @bind-Value="_stateNormal" Placeholder="normal" />
 			</Col>
 			<Col>
-				<TextField Label="Disabled" Value="@_stateDisabled" Disabled="true" />
+				<TextField Label="Small" Size="Sizes.Small" @bind-Value="_stateNormal" Placeholder="normal" />
 			</Col>
 			<Col>
-				<TextField Label="Invalid" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
+				<TextField Label="Medium" Size="Sizes.Medium" @bind-Value="_stateNormal" Placeholder="normal" />
 			</Col>
 			<Col>
-				<TextField Label="Normal with prepend" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
+				<TextField Label="Large" Size="Sizes.Large" @bind-Value="_stateNormal" Placeholder="normal" />
+			</Col>
+			<Col>
+				<TextField Label="Larger" Size="Sizes.Larger" @bind-Value="_stateNormal" Placeholder="normal" />
+			</Col>
+			<Col>
+				<TextField Label="Largest" Size="Sizes.Largest" @bind-Value="_stateNormal" Placeholder="normal" />
+			</Col>
+		</Container>
+	</EditForm>
+
+	<h2>Estado: Readonly</h2>
+
+	<EditForm Model="this">
+		<Container>
+			<Col>
+				<TextField Label="Smallest" Size="Sizes.Smallest" Value="@_stateReadonly" ReadOnly="true" />
+			</Col>
+			<Col>
+				<TextField Label="Smaller" Size="Sizes.Smaller" Value="@_stateReadonly" ReadOnly="true" />
+			</Col>
+			<Col>
+				<TextField Label="Small" Size="Sizes.Small" Value="@_stateReadonly" ReadOnly="true" />
+			</Col>
+			<Col>
+				<TextField Label="Medium" Size="Sizes.Medium" Value="@_stateReadonly" ReadOnly="true" />
+			</Col>
+			<Col>
+				<TextField Label="Large" Size="Sizes.Large" Value="@_stateReadonly" ReadOnly="true" />
+			</Col>
+			<Col>
+				<TextField Label="Larger" Size="Sizes.Larger" Value="@_stateReadonly" ReadOnly="true" />
+			</Col>
+			<Col>
+				<TextField Label="Largest" Size="Sizes.Largest" Value="@_stateReadonly" ReadOnly="true" />
+			</Col>
+		</Container>
+	</EditForm>
+
+	<h2>Estado: Disabled</h2>
+
+	<EditForm Model="this">
+		<Container>
+			<Col>
+				<TextField Label="Smallest" Size="Sizes.Smallest" Value="@_stateDisabled" Disabled="true" />
+			</Col>
+			<Col>
+				<TextField Label="Smaller" Size="Sizes.Smaller" Value="@_stateDisabled" Disabled="true" />
+			</Col>
+			<Col>
+				<TextField Label="Small" Size="Sizes.Small" Value="@_stateDisabled" Disabled="true" />
+			</Col>
+			<Col>
+				<TextField Label="Medium" Size="Sizes.Medium" Value="@_stateDisabled" Disabled="true" />
+			</Col>
+			<Col>
+				<TextField Label="Large" Size="Sizes.Large" Value="@_stateDisabled" Disabled="true" />
+			</Col>
+			<Col>
+				<TextField Label="Larger" Size="Sizes.Larger" Value="@_stateDisabled" Disabled="true" />
+			</Col>
+			<Col>
+				<TextField Label="Largest" Size="Sizes.Largest" Value="@_stateDisabled" Disabled="true" />
+			</Col>
+		</Container>
+	</EditForm>
+
+	<h2>Estado: Invalid</h2>
+
+	<EditForm Model="this">
+		<Container>
+			<Col>
+				<TextField Label="Smallest" Size="Sizes.Smallest" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
+			</Col>
+			<Col>
+				<TextField Label="Smaller" Size="Sizes.Smaller" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
+			</Col>
+			<Col>
+				<TextField Label="Small" Size="Sizes.Small" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
+			</Col>
+			<Col>
+				<TextField Label="Medium" Size="Sizes.Medium" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
+			</Col>
+			<Col>
+				<TextField Label="Large" Size="Sizes.Large" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
+			</Col>
+			<Col>
+				<TextField Label="Larger" Size="Sizes.Larger" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
+			</Col>
+			<Col>
+				<TextField Label="Largest" Size="Sizes.Largest" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
+			</Col>
+		</Container>
+	</EditForm>
+
+	<h2>Estado: Normal com prepend</h2>
+
+	<EditForm Model="this">
+		<Container>
+			<Col>
+				<TextField Label="Smallest" Size="Sizes.Smallest" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
 					<Prepend>
 						<FieldText>@@</FieldText>
 					</Prepend>
 				</TextField>
 			</Col>
 			<Col>
-				<TextField Label="Normal with append" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
-					<Append>
+				<TextField Label="Smaller" Size="Sizes.Smaller" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
+					<Prepend>
 						<FieldText>@@</FieldText>
-					</Append>
+					</Prepend>
+				</TextField>
+			</Col>
+			<Col>
+				<TextField Label="Small" Size="Sizes.Small" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
+					<Prepend>
+						<FieldText>@@</FieldText>
+					</Prepend>
+				</TextField>
+			</Col>
+			<Col>
+				<TextField Label="Medium" Size="Sizes.Medium" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
+					<Prepend>
+						<FieldText>@@</FieldText>
+					</Prepend>
+				</TextField>
+			</Col>
+			<Col>
+				<TextField Label="Large" Size="Sizes.Large" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
+					<Prepend>
+						<FieldText>@@</FieldText>
+					</Prepend>
+				</TextField>
+			</Col>
+			<Col>
+				<TextField Label="Larger" Size="Sizes.Larger" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
+					<Prepend>
+						<FieldText>@@</FieldText>
+					</Prepend>
+				</TextField>
+			</Col>
+			<Col>
+				<TextField Label="Largest" Size="Sizes.Largest" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
+					<Prepend>
+						<FieldText>@@</FieldText>
+					</Prepend>
 				</TextField>
 			</Col>
 		</Container>
 	</EditForm>
 
-	<h2>Tamanhos</h2>
+	<h2>Estado: Normal com append</h2>
 
 	<EditForm Model="this">
 		<Container>
 			<Col>
-			<TextField Label="Smallest" Size="Sizes.Smallest" @bind-Value="_name" Placeholder="Smallest" />
+				<TextField Label="Smallest" Size="Sizes.Smallest" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
+					<Append>
+						<FieldText>@@</FieldText>
+					</Append>
+				</TextField>
 			</Col>
 			<Col>
-				<TextField Label="Smaller" Size="Sizes.Smaller" @bind-Value="_name" Placeholder="smaller" />
+				<TextField Label="Smaller" Size="Sizes.Smaller" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
+					<Append>
+						<FieldText>@@</FieldText>
+					</Append>
+				</TextField>
 			</Col>
 			<Col>
-				<TextField Label="Small" Size="Sizes.Small" @bind-Value="_name" Placeholder="small" />
+				<TextField Label="Small" Size="Sizes.Small" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
+					<Append>
+						<FieldText>@@</FieldText>
+					</Append>
+				</TextField>
 			</Col>
 			<Col>
-				<TextField Label="Medium" Size="Sizes.Medium" @bind-Value="_name" Placeholder="medium" />
+				<TextField Label="Medium" Size="Sizes.Medium" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
+					<Append>
+						<FieldText>@@</FieldText>
+					</Append>
+				</TextField>
 			</Col>
 			<Col>
-				<TextField Label="Large" Size="Sizes.Large" @bind-Value="_name" Placeholder="large" />
+				<TextField Label="Large" Size="Sizes.Large" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
+					<Append>
+						<FieldText>@@</FieldText>
+					</Append>
+				</TextField>
 			</Col>
 			<Col>
-				<TextField Label="Larger" Size="Sizes.Larger" @bind-Value="_name" Placeholder="larger" />
+				<TextField Label="Larger" Size="Sizes.Larger" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
+					<Append>
+						<FieldText>@@</FieldText>
+					</Append>
+				</TextField>
 			</Col>
 			<Col>
-				<TextField Label="Largest" Size="Sizes.Largest" @bind-Value="_name" Placeholder="largest" />
+				<TextField Label="Largest" Size="Sizes.Largest" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
+					<Append>
+						<FieldText>@@</FieldText>
+					</Append>
+				</TextField>
 			</Col>
 		</Container>
 	</EditForm>
