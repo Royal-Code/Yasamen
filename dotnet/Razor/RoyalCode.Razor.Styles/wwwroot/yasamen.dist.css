@@ -203,7 +203,9 @@
     --spacing-3: .25rem;
     --spacing-3\.5: .375rem;
     --spacing-4: .5rem;
+    --spacing-4\.5: 0.625rem;
     --spacing-5: 0.75rem;
+    --spacing-5\.5: 0.875rem;
     --spacing-6: 1rem;
     --spacing-7: 1.5rem;
     --spacing-8: 2rem;
@@ -7118,6 +7120,128 @@
   align-items: center;
   align-self: flex-end;
   background-color: var(--color-white);
+}
+.ya-badge {
+  display: inline-block;
+  border-radius: calc(infinity * 1px);
+  padding-inline: var(--spacing-4);
+  vertical-align: middle;
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+  --tw-font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-normal);
+}
+.ya-badge-primary {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-primary-200);
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-800);
+}
+.ya-badge-secondary {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-secondary-200);
+  background-color: var(--color-secondary-100);
+  color: var(--color-secondary-800);
+}
+.ya-badge-tertiary {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-tertiary-200);
+  background-color: var(--color-tertiary-100);
+  color: var(--color-tertiary-800);
+}
+.ya-badge-success {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-success-200);
+  background-color: var(--color-success-100);
+  color: var(--color-success-800);
+}
+.ya-badge-warning {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-warning-200);
+  background-color: var(--color-warning-100);
+  color: var(--color-warning-800);
+}
+.ya-badge-alert {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-alert-200);
+  background-color: var(--color-alert-100);
+  color: var(--color-alert-800);
+}
+.ya-badge-danger {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-danger-200);
+  background-color: var(--color-danger-100);
+  color: var(--color-danger-800);
+}
+.ya-badge-info {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-info-200);
+  background-color: var(--color-info-100);
+  color: var(--color-info-800);
+}
+.ya-badge-highlight {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-highlight-200);
+  background-color: var(--color-highlight-100);
+  color: var(--color-highlight-800);
+}
+.ya-badge-light {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-light-200);
+  background-color: var(--color-light-100);
+  color: var(--color-light-800);
+}
+.ya-badge-dark {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-dark-200);
+  background-color: var(--color-dark-100);
+  color: var(--color-dark-800);
+}
+.ya-badge-2xs {
+  padding-inline: var(--spacing-3);
+  font-size: var(--text-2xs);
+  line-height: var(--tw-leading, var(--text-2xs--line-height));
+}
+.ya-badge-xs {
+  padding-inline: var(--spacing-3);
+  font-size: var(--text-xs);
+  line-height: var(--tw-leading, var(--text-xs--line-height));
+}
+.ya-badge-sm {
+  padding-inline: var(--spacing-3\.5);
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+}
+.ya-badge-md {
+  padding-inline: var(--spacing-4);
+  font-size: var(--text-base);
+  line-height: var(--tw-leading, var(--text-base--line-height));
+}
+.ya-badge-lg {
+  padding-inline: var(--spacing-4\.5);
+  font-size: var(--text-lg);
+  line-height: var(--tw-leading, var(--text-lg--line-height));
+}
+.ya-badge-xl {
+  padding-inline: var(--spacing-5);
+  font-size: var(--text-xl);
+  line-height: var(--tw-leading, var(--text-xl--line-height));
+}
+.ya-badge-2xl {
+  padding-inline: var(--spacing-5\.5);
+  font-size: var(--text-2xl);
+  line-height: var(--tw-leading, var(--text-2xl--line-height));
 }
 .ya-breadcrumb {
   margin: var(--spacing-0);

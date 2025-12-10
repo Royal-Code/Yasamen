@@ -60,6 +60,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Razor.Breadcrumbs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Razor.Forms", "RoyalCode.Razor.Forms\RoyalCode.Razor.Forms.csproj", "{E405096C-E485-49FB-8789-8036E256E348}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalCode.Razor.Alerts", "RoyalCode.Razor.Alerts\RoyalCode.Razor.Alerts.csproj", "{AF29E847-137F-4963-9F14-DDC7983DE2DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -138,6 +140,10 @@ Global
 		{E405096C-E485-49FB-8789-8036E256E348}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E405096C-E485-49FB-8789-8036E256E348}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E405096C-E485-49FB-8789-8036E256E348}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF29E847-137F-4963-9F14-DDC7983DE2DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF29E847-137F-4963-9F14-DDC7983DE2DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF29E847-137F-4963-9F14-DDC7983DE2DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF29E847-137F-4963-9F14-DDC7983DE2DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -164,6 +170,7 @@ Global
 		{0EDEA59E-C8F3-4945-8F9D-7A865F1B1CEE} = {947DDA3F-95F0-4F01-9AC1-43C874779423}
 		{D209CB62-7104-46D7-8C25-3D8BE5357F72} = {947DDA3F-95F0-4F01-9AC1-43C874779423}
 		{E405096C-E485-49FB-8789-8036E256E348} = {947DDA3F-95F0-4F01-9AC1-43C874779423}
+		{AF29E847-137F-4963-9F14-DDC7983DE2DF} = {947DDA3F-95F0-4F01-9AC1-43C874779423}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8E24AFE-4B8F-4D0B-BB8C-FD23CE44D40C}

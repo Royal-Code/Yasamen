@@ -135,6 +135,13 @@ public static class ConfigureMenu
                     },
                     new MenuItem
                     {
+                        Id = "badges",
+                        Text = "Badges",
+                        Url = "badges",
+                        Type = MenuItemType.Link
+                    },
+                    new MenuItem
+                    {
                         Id = "icon-buttons",
                         Text = "Icon Buttons",
                         Url = "icon-buttons",

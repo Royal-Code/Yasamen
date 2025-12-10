@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\RoyalCode.Razor.Alerts\RoyalCode.Razor.Alerts.csproj" />
     <ProjectReference Include="..\..\RoyalCode.Razor.Animations\RoyalCode.Razor.Animations.csproj" />
     <ProjectReference Include="..\..\RoyalCode.Razor.Buttons\RoyalCode.Razor.Buttons.csproj" />
     <ProjectReference Include="..\..\RoyalCode.Razor.Commons\RoyalCode.Razor.Commons.csproj" />

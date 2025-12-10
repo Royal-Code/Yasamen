@@ -1,0 +1,67 @@
+﻿@page "/badges"
+
+@layout AppMainLayout
+
+<Box AdditionalClasses="p-8 bg-white border-none">
+
+    <h1>Badges</h1>
+
+    <h2>Badges por tamanho e estilo</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                @foreach (var theme in _themes)
+                {
+                    <th>@theme</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var size in _sizes)
+            {
+                <tr>
+                    <td>@SizeDisplay(size)</td>
+                    @foreach (var theme in _themes)
+                    {
+                        <td>
+                            <Badge Text="Badge" Size="@size" Style="@theme" />
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</Box>
+
+@code {
+    private readonly Themes[] _themes =
+    [
+        Themes.Primary,
+        Themes.Secondary,
+        Themes.Tertiary,
+        Themes.Info,
+        Themes.Highlight,
+        Themes.Success,
+        Themes.Warning,
+        Themes.Alert,
+        Themes.Danger,
+        Themes.Light,
+        Themes.Dark
+    ];
+
+    private readonly Sizes[] _sizes =
+    [
+        Sizes.Smallest,
+        Sizes.Smaller,
+        Sizes.Small,
+        Sizes.Medium,
+        Sizes.Large,
+        Sizes.Larger,
+        Sizes.Largest
+    ];
+
+    private static string SizeDisplay(Sizes size) => size.ToString();
+}

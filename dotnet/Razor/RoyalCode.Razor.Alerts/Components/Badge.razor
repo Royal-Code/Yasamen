@@ -1,0 +1,93 @@
+﻿
+<div @attributes="AdditionalAttributes" class="@Classes">
+	@if (Icon is not null && IconPosition == Positions.Start)
+	{
+		<Icon Kind="Icon" />
+	}
+	@if (Text.IsPresent())
+	{
+		@Text
+	}
+	@if (ChildContent.IsNotEmptyFragment())
+	{
+		@ChildContent
+	}
+	@if (Icon is not null && IconPosition == Positions.End)
+	{
+		<Icon Kind="Icon" />
+	}
+</div>
+
+@code {
+
+	public string Classes => "ya-badge"
+		.AddClass(GetStyle())
+		.AddClass(Size.ToCssClassName("ya-badge"))
+		.AddClass(AdditionalClasses);
+
+	[Parameter]
+	public RenderFragment? ChildContent { get; set; } = EmptyFragment.Delegate;
+
+	[Parameter]
+	public string? Text { get; set; }
+
+	[Parameter]
+	public Themes Style { get; set; }
+
+	/// <summary>
+	/// Size variant applied to the badge padding and font sizing.
+	/// </summary>
+	[Parameter]
+	public Sizes Size { get; set; }
+
+	/// <summary>
+	/// Optional icon enumeration value to render an icon alongside the content.
+	/// </summary>
+	[Parameter]
+	public Enum? Icon { get; set; }
+
+	/// <summary>
+	/// <para>
+	///     The position of the icon relative to the content (before or after).
+	/// </para>
+	/// <para>
+	///     The <see cref="Positions.Center"/> value is not valid for this parameter and will default to <see cref="Positions.Start"/>.
+	/// </para>
+	/// </summary>
+	[Parameter]
+	public Positions IconPosition { get; set; }
+
+	[Parameter]
+	public string? AdditionalClasses { get; set; }
+
+	[Parameter(CaptureUnmatchedValues = true)]
+	public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+	private string GetStyle()
+	{
+		return Style switch
+		{
+			Themes.Primary => "ya-badge-primary",
+			Themes.Secondary => "ya-badge-secondary",
+			Themes.Tertiary => "ya-badge-tertiary",
+			Themes.Success => "ya-badge-success",
+			Themes.Danger => "ya-badge-danger",
+			Themes.Warning => "ya-badge-warning",
+			Themes.Alert => "ya-badge-alert",
+			Themes.Info => "ya-badge-info",
+			Themes.Highlight => "ya-badge-highlight",
+			Themes.Light => "ya-badge-light",
+			Themes.Dark => "ya-badge-dark",
+			_ => "ya-badge-secondary"
+		};
+	}
+
+	protected override void OnParametersSet()
+	{
+		if (IconPosition == Positions.Center)
+		{
+			throw new InvalidOperationException(
+				$"The {nameof(IconPosition)} parameter cannot be set to {Positions.Center} for the {nameof(Badge)} component. Please use either {Positions.Start} or {Positions.End}.");
+		}
+	}
+}

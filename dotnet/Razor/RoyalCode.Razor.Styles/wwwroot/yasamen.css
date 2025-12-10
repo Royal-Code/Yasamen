@@ -3,6 +3,7 @@
 @import './css/utilities.css';
 
 @import './css/components/applayout.css';
+@import './css/components/badge.css';
 @import './css/components/breadcrumbs.css';
 @import './css/components/btn.css';
 @import './css/components/ibtn.css';
