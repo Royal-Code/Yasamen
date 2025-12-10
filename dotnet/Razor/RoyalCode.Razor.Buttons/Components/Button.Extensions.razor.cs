@@ -24,17 +24,19 @@ public static class ButtonExtensions
         if (size == Sizes.Default)
             size = Sizes.Medium;
 
-        return size switch
-        {
-            Sizes.Smallest => "ya-btn-2xs",
-            Sizes.Smaller => "ya-btn-xs",
-            Sizes.Small => "ya-btn-sm",
-            Sizes.Medium => "ya-btn-md",
-            Sizes.Large => "ya-btn-lg",
-            Sizes.Larger => "ya-btn-xl",
-            Sizes.Largest => "ya-btn-2xl",
-            _ => string.Empty,
-        };
+        return size.ToCssClassName("ya-btn");
+
+        ////return size switch
+        ////{
+        ////    Sizes.Smallest => "ya-btn-2xs",
+        ////    Sizes.Smaller => "ya-btn-xs",
+        ////    Sizes.Small => "ya-btn-sm",
+        ////    Sizes.Medium => "ya-btn-md",
+        ////    Sizes.Large => "ya-btn-lg",
+        ////    Sizes.Larger => "ya-btn-xl",
+        ////    Sizes.Largest => "ya-btn-2xl",
+        ////    _ => string.Empty,
+        ////};
     }
 
     /// <summary>

@@ -37,27 +37,27 @@
 
 	<EditForm Model="this">
 		<Container>
-			<Col>
+			<Slot>
 				<TextField Label="Smallest g" Size="Sizes.Smallest" @bind-Value="_stateNormal" Placeholder="normal" />
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Smaller g" Size="Sizes.Smaller" @bind-Value="_stateNormal" Placeholder="normal" />
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Small g" Size="Sizes.Small" @bind-Value="_stateNormal" Placeholder="normal" />
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Medium g" Size="Sizes.Medium" @bind-Value="_stateNormal" Placeholder="normal" />
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Large" Size="Sizes.Large" @bind-Value="_stateNormal" Placeholder="normal" />
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Larger" Size="Sizes.Larger" @bind-Value="_stateNormal" Placeholder="normal" />
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Largest" Size="Sizes.Largest" @bind-Value="_stateNormal" Placeholder="normal" />
-			</Col>
+			</Slot>
 		</Container>
 	</EditForm>
 
@@ -65,27 +65,27 @@
 
 	<EditForm Model="this">
 		<Container>
-			<Col>
-			<TextField Label="Smallest" Size="Sizes.Smallest" Value="@_stateReadonly" ReadOnly="true" />
-			</Col>
-			<Col>
-			<TextField Label="Smaller" Size="Sizes.Smaller" Value="@_stateReadonly" ReadOnly="true" />
-			</Col>
-			<Col>
-			<TextField Label="Small" Size="Sizes.Small" Value="@_stateReadonly" ReadOnly="true" />
-			</Col>
-			<Col>
-			<TextField Label="Medium" Size="Sizes.Medium" Value="@_stateReadonly" ReadOnly="true" />
-			</Col>
-			<Col>
-			<TextField Label="Large" Size="Sizes.Large" Value="@_stateReadonly" ReadOnly="true" />
-			</Col>
-			<Col>
-			<TextField Label="Larger" Size="Sizes.Larger" Value="@_stateReadonly" ReadOnly="true" />
-			</Col>
-			<Col>
-			<TextField Label="Largest" Size="Sizes.Largest" Value="@_stateReadonly" ReadOnly="true" />
-			</Col>
+			<Slot>
+				<TextField Label="Smallest" Size="Sizes.Smallest" Value="@_stateReadonly" ReadOnly="true" />
+			</Slot>
+			<Slot>
+				<TextField Label="Smaller" Size="Sizes.Smaller" Value="@_stateReadonly" ReadOnly="true" />
+			</Slot>
+			<Slot>
+				<TextField Label="Small" Size="Sizes.Small" Value="@_stateReadonly" ReadOnly="true" />
+			</Slot>
+			<Slot>
+				<TextField Label="Medium" Size="Sizes.Medium" Value="@_stateReadonly" ReadOnly="true" />
+			</Slot>
+			<Slot>
+				<TextField Label="Large" Size="Sizes.Large" Value="@_stateReadonly" ReadOnly="true" />
+			</Slot>
+			<Slot>
+				<TextField Label="Larger" Size="Sizes.Larger" Value="@_stateReadonly" ReadOnly="true" />
+			</Slot>
+			<Slot>
+				<TextField Label="Largest" Size="Sizes.Largest" Value="@_stateReadonly" ReadOnly="true" />
+			</Slot>
 		</Container>
 	</EditForm>
 
@@ -93,27 +93,27 @@
 
 	<EditForm Model="this">
 		<Container>
-			<Col>
-			<TextField Label="Smallest" Size="Sizes.Smallest" Value="@_stateDisabled" Disabled="true" />
-			</Col>
-			<Col>
-			<TextField Label="Smaller" Size="Sizes.Smaller" Value="@_stateDisabled" Disabled="true" />
-			</Col>
-			<Col>
-			<TextField Label="Small" Size="Sizes.Small" Value="@_stateDisabled" Disabled="true" />
-			</Col>
-			<Col>
-			<TextField Label="Medium" Size="Sizes.Medium" Value="@_stateDisabled" Disabled="true" />
-			</Col>
-			<Col>
-			<TextField Label="Large" Size="Sizes.Large" Value="@_stateDisabled" Disabled="true" />
-			</Col>
-			<Col>
-			<TextField Label="Larger" Size="Sizes.Larger" Value="@_stateDisabled" Disabled="true" />
-			</Col>
-			<Col>
-			<TextField Label="Largest" Size="Sizes.Largest" Value="@_stateDisabled" Disabled="true" />
-			</Col>
+			<Slot>
+				<TextField Label="Smallest" Size="Sizes.Smallest" Value="@_stateDisabled" Disabled="true" />
+			</Slot>
+			<Slot>
+				<TextField Label="Smaller" Size="Sizes.Smaller" Value="@_stateDisabled" Disabled="true" />
+			</Slot>
+			<Slot>
+				<TextField Label="Small" Size="Sizes.Small" Value="@_stateDisabled" Disabled="true" />
+			</Slot>
+			<Slot>
+				<TextField Label="Medium" Size="Sizes.Medium" Value="@_stateDisabled" Disabled="true" />
+			</Slot>
+			<Slot>
+				<TextField Label="Large" Size="Sizes.Large" Value="@_stateDisabled" Disabled="true" />
+			</Slot>
+			<Slot>
+				<TextField Label="Larger" Size="Sizes.Larger" Value="@_stateDisabled" Disabled="true" />
+			</Slot>
+			<Slot>
+				<TextField Label="Largest" Size="Sizes.Largest" Value="@_stateDisabled" Disabled="true" />
+			</Slot>
 		</Container>
 	</EditForm>
 
@@ -121,27 +121,27 @@
 
 	<EditForm Model="this">
 		<Container>
-			<Col>
-			<TextField Label="Smallest" Size="Sizes.Smallest" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
-			</Col>
-			<Col>
-			<TextField Label="Smaller" Size="Sizes.Smaller" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
-			</Col>
-			<Col>
-			<TextField Label="Small" Size="Sizes.Small" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
-			</Col>
-			<Col>
-			<TextField Label="Medium" Size="Sizes.Medium" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
-			</Col>
-			<Col>
-			<TextField Label="Large" Size="Sizes.Large" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
-			</Col>
-			<Col>
-			<TextField Label="Larger" Size="Sizes.Larger" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
-			</Col>
-			<Col>
-			<TextField Label="Largest" Size="Sizes.Largest" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
-			</Col>
+			<Slot>
+				<TextField Label="Smallest" Size="Sizes.Smallest" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
+			</Slot>
+			<Slot>
+				<TextField Label="Smaller" Size="Sizes.Smaller" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
+			</Slot>
+			<Slot>
+				<TextField Label="Small" Size="Sizes.Small" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
+			</Slot>
+			<Slot>
+				<TextField Label="Medium" Size="Sizes.Medium" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
+			</Slot>
+			<Slot>
+				<TextField Label="Large" Size="Sizes.Large" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
+			</Slot>
+			<Slot>
+				<TextField Label="Larger" Size="Sizes.Larger" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
+			</Slot>
+			<Slot>
+				<TextField Label="Largest" Size="Sizes.Largest" @bind-Value="_stateInvalid" Placeholder="inválido" Error="Este campo é inválido." />
+			</Slot>
 		</Container>
 	</EditForm>
 
@@ -149,55 +149,55 @@
 
 	<EditForm Model="this">
 		<Container>
-			<Col>
-			<TextField Label="Smallest" Size="Sizes.Smallest" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
-				<Prepend>
-					<FieldText>@@</FieldText>
-				</Prepend>
-			</TextField>
-			</Col>
-			<Col>
-			<TextField Label="Smaller" Size="Sizes.Smaller" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
-				<Prepend>
-					<FieldText>@@</FieldText>
-				</Prepend>
-			</TextField>
-			</Col>
-			<Col>
-			<TextField Label="Small" Size="Sizes.Small" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
-				<Prepend>
-					<FieldText>@@</FieldText>
-				</Prepend>
-			</TextField>
-			</Col>
-			<Col>
-			<TextField Label="Medium" Size="Sizes.Medium" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
-				<Prepend>
-					<FieldText>@@</FieldText>
-				</Prepend>
-			</TextField>
-			</Col>
-			<Col>
-			<TextField Label="Large" Size="Sizes.Large" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
-				<Prepend>
-					<FieldText>@@</FieldText>
-				</Prepend>
-			</TextField>
-			</Col>
-			<Col>
-			<TextField Label="Larger" Size="Sizes.Larger" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
-				<Prepend>
-					<FieldText>@@</FieldText>
-				</Prepend>
-			</TextField>
-			</Col>
-			<Col>
-			<TextField Label="Largest" Size="Sizes.Largest" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
-				<Prepend>
-					<FieldText>@@</FieldText>
-				</Prepend>
-			</TextField>
-			</Col>
+			<Slot>
+				<TextField Label="Smallest" Size="Sizes.Smallest" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
+					<Prepend>
+						<FieldText>@@</FieldText>
+					</Prepend>
+				</TextField>
+			</Slot>
+			<Slot>
+				<TextField Label="Smaller" Size="Sizes.Smaller" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
+					<Prepend>
+						<FieldText>@@</FieldText>
+					</Prepend>
+				</TextField>
+			</Slot>
+			<Slot>
+				<TextField Label="Small" Size="Sizes.Small" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
+					<Prepend>
+						<FieldText>@@</FieldText>
+					</Prepend>
+				</TextField>
+			</Slot>
+			<Slot>
+				<TextField Label="Medium" Size="Sizes.Medium" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
+					<Prepend>
+						<FieldText>@@</FieldText>
+					</Prepend>
+				</TextField>
+			</Slot>
+			<Slot>
+				<TextField Label="Large" Size="Sizes.Large" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
+					<Prepend>
+						<FieldText>@@</FieldText>
+					</Prepend>
+				</TextField>
+			</Slot>
+			<Slot>
+				<TextField Label="Larger" Size="Sizes.Larger" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
+					<Prepend>
+						<FieldText>@@</FieldText>
+					</Prepend>
+				</TextField>
+			</Slot>
+			<Slot>
+				<TextField Label="Largest" Size="Sizes.Largest" @bind-Value="_stateNormalWithPrepend" Placeholder="normal">
+					<Prepend>
+						<FieldText>@@</FieldText>
+					</Prepend>
+				</TextField>
+			</Slot>
 		</Container>
 	</EditForm>
 
@@ -205,55 +205,55 @@
 
 	<EditForm Model="this">
 		<Container>
-			<Col>
-			<TextField Label="Smallest" Size="Sizes.Smallest" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
-				<Append>
-					<FieldText>@@</FieldText>
-				</Append>
-			</TextField>
-			</Col>
-			<Col>
-			<TextField Label="Smaller" Size="Sizes.Smaller" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
-				<Append>
-					<FieldText>@@</FieldText>
-				</Append>
-			</TextField>
-			</Col>
-			<Col>
-			<TextField Label="Small" Size="Sizes.Small" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
-				<Append>
-					<FieldText>@@</FieldText>
-				</Append>
-			</TextField>
-			</Col>
-			<Col>
-			<TextField Label="Medium" Size="Sizes.Medium" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
-				<Append>
-					<FieldText>@@</FieldText>
-				</Append>
-			</TextField>
-			</Col>
-			<Col>
-			<TextField Label="Large" Size="Sizes.Large" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
-				<Append>
-					<FieldText>@@</FieldText>
-				</Append>
-			</TextField>
-			</Col>
-			<Col>
-			<TextField Label="Larger" Size="Sizes.Larger" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
-				<Append>
-					<FieldText>@@</FieldText>
-				</Append>
-			</TextField>
-			</Col>
-			<Col>
-			<TextField Label="Largest" Size="Sizes.Largest" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
-				<Append>
-					<FieldText>@@</FieldText>
-				</Append>
-			</TextField>
-			</Col>
+			<Slot>
+				<TextField Label="Smallest" Size="Sizes.Smallest" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
+					<Append>
+						<FieldText>@@</FieldText>
+					</Append>
+				</TextField>
+			</Slot>
+			<Slot>
+				<TextField Label="Smaller" Size="Sizes.Smaller" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
+					<Append>
+						<FieldText>@@</FieldText>
+					</Append>
+				</TextField>
+			</Slot>
+			<Slot>
+				<TextField Label="Small" Size="Sizes.Small" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
+					<Append>
+						<FieldText>@@</FieldText>
+					</Append>
+				</TextField>
+			</Slot>
+			<Slot>
+				<TextField Label="Medium" Size="Sizes.Medium" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
+					<Append>
+						<FieldText>@@</FieldText>
+					</Append>
+				</TextField>
+			</Slot>
+			<Slot>
+				<TextField Label="Large" Size="Sizes.Large" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
+					<Append>
+						<FieldText>@@</FieldText>
+					</Append>
+				</TextField>
+			</Slot>
+			<Slot>
+				<TextField Label="Larger" Size="Sizes.Larger" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
+					<Append>
+						<FieldText>@@</FieldText>
+					</Append>
+				</TextField>
+			</Slot>
+			<Slot>
+				<TextField Label="Largest" Size="Sizes.Largest" @bind-Value="_stateNormalWithAppend" Placeholder="normal">
+					<Append>
+						<FieldText>@@</FieldText>
+					</Append>
+				</TextField>
+			</Slot>
 		</Container>
 	</EditForm>
 
@@ -263,139 +263,223 @@
 	<h2>Information em todos os tamanhos</h2>
 	<EditForm Model="this">
 		<Container>
-			<Col>
+			<Slot>
 				<TextField Label="Smallest" Size="Sizes.Smallest" @bind-Value="_name" Information="Informação auxiliar para o campo." />
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Smaller" Size="Sizes.Smaller" @bind-Value="_name" Information="Informação auxiliar para o campo." />
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Small" Size="Sizes.Small" @bind-Value="_name" Information="Informação auxiliar para o campo." />
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Medium" Size="Sizes.Medium" @bind-Value="_name" Information="Informação auxiliar para o campo." />
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Large" Size="Sizes.Large" @bind-Value="_name" Information="Informação auxiliar para o campo." />
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Larger" Size="Sizes.Larger" @bind-Value="_name" Information="Informação auxiliar para o campo." />
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Largest" Size="Sizes.Largest" @bind-Value="_name" Information="Informação auxiliar para o campo." />
-			</Col>
+			</Slot>
 		</Container>
 	</EditForm>
 
 	<!-- FooterAction não é suportado como child content em TextField. Removido o exemplo dedicado. -->
 
-	<h2>DescriptionComplement em todos os tamanhos</h2>
+	<h2>DescriptionComplement com FieldBadge em todos os tamanhos</h2>
 	<EditForm Model="this">
 		<Container>
-			<Col>
+			<Slot>
 				<TextField Label="Smallest" Size="Sizes.Smallest" @bind-Value="_name">
 					<DescriptionComplement>
-						<FieldText AdditionalClasses="text-xs text-gray-500">Dica: use um apelido.</FieldText>
+						<FieldBadge AdditionalClasses="text-xs text-gray-500">Dica: use um apelido.</FieldBadge>
 					</DescriptionComplement>
 				</TextField>
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Smaller" Size="Sizes.Smaller" @bind-Value="_name">
 					<DescriptionComplement>
-						<FieldText AdditionalClasses="text-xs text-gray-500">Dica: use um apelido.</FieldText>
+						<FieldBadge AdditionalClasses="text-xs text-gray-500">Dica: use um apelido.</FieldBadge>
 					</DescriptionComplement>
 				</TextField>
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Small" Size="Sizes.Small" @bind-Value="_name">
 					<DescriptionComplement>
-						<FieldText AdditionalClasses="text-xs text-gray-500">Dica: use um apelido.</FieldText>
+						<FieldBadge AdditionalClasses="text-xs text-gray-500">Dica: use um apelido.</FieldBadge>
 					</DescriptionComplement>
 				</TextField>
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Medium" Size="Sizes.Medium" @bind-Value="_name">
 					<DescriptionComplement>
-						<FieldText AdditionalClasses="text-xs text-gray-500">Dica: use um apelido.</FieldText>
+						<FieldBadge AdditionalClasses="text-xs text-gray-500">Dica: use um apelido.</FieldBadge>
 					</DescriptionComplement>
 				</TextField>
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Large" Size="Sizes.Large" @bind-Value="_name">
 					<DescriptionComplement>
-						<FieldText AdditionalClasses="text-xs text-gray-500">Dica: use um apelido.</FieldText>
+						<FieldBadge AdditionalClasses="text-xs text-gray-500">Dica: use um apelido.</FieldBadge>
 					</DescriptionComplement>
 				</TextField>
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Larger" Size="Sizes.Larger" @bind-Value="_name">
 					<DescriptionComplement>
-						<FieldText AdditionalClasses="text-xs text-gray-500">Dica: use um apelido.</FieldText>
+						<FieldBadge AdditionalClasses="text-xs text-gray-500">Dica: use um apelido.</FieldBadge>
 					</DescriptionComplement>
 				</TextField>
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Largest" Size="Sizes.Largest" @bind-Value="_name">
 					<DescriptionComplement>
-						<FieldText AdditionalClasses="text-xs text-gray-500">Dica: use um apelido.</FieldText>
+						<FieldBadge AdditionalClasses="text-xs text-gray-500">Dica: use um apelido.</FieldBadge>
 					</DescriptionComplement>
 				</TextField>
-			</Col>
+			</Slot>
+		</Container>
+	</EditForm>
+
+	<h2>DescriptionComplement com FieldBadge em todas as cores</h2>
+	<EditForm Model="this">
+		<Container>
+			<Slot>
+				<TextField Label="FieldBadge Primary" @bind-Value="_name">
+					<DescriptionComplement>
+						<FieldBadge Style="Themes.Primary" AdditionalClasses="text-xs">Primary</FieldBadge>
+					</DescriptionComplement>
+				</TextField>
+			</Slot>
+			<Slot>
+				<TextField Label="FieldBadge Secondary" @bind-Value="_name">
+					<DescriptionComplement>
+						<FieldBadge Style="Themes.Secondary" AdditionalClasses="text-xs">Secondary</FieldBadge>
+					</DescriptionComplement>
+				</TextField>
+			</Slot>
+			<Slot>
+				<TextField Label="FieldBadge Tertiary" @bind-Value="_name">
+					<DescriptionComplement>
+						<FieldBadge Style="Themes.Tertiary" AdditionalClasses="text-xs">Tertiary</FieldBadge>
+					</DescriptionComplement>
+				</TextField>
+			</Slot>
+			<Slot>
+				<TextField Label="FieldBadge Success" @bind-Value="_name">
+					<DescriptionComplement>
+						<FieldBadge Style="Themes.Success" AdditionalClasses="text-xs">Success</FieldBadge>
+					</DescriptionComplement>
+				</TextField>
+			</Slot>
+			<Slot>
+				<TextField Label="FieldBadge Warning" @bind-Value="_name">
+					<DescriptionComplement>
+						<FieldBadge Style="Themes.Warning" AdditionalClasses="text-xs">Warning</FieldBadge>
+					</DescriptionComplement>
+				</TextField>
+			</Slot>
+			<Slot>
+				<TextField Label="FieldBadge Alert" @bind-Value="_name">
+					<DescriptionComplement>
+						<FieldBadge Style="Themes.Alert" AdditionalClasses="text-xs">Alert</FieldBadge>
+					</DescriptionComplement>
+				</TextField>
+			</Slot>
+			<Slot>
+				<TextField Label="FieldBadge Danger" @bind-Value="_name">
+					<DescriptionComplement>
+						<FieldBadge Style="Themes.Danger" AdditionalClasses="text-xs">Danger</FieldBadge>
+					</DescriptionComplement>
+				</TextField>
+			</Slot>
+			<Slot>
+				<TextField Label="FieldBadge Info" @bind-Value="_name">
+					<DescriptionComplement>
+						<FieldBadge Style="Themes.Info" AdditionalClasses="text-xs">Info</FieldBadge>
+					</DescriptionComplement>
+				</TextField>
+			</Slot>
+			<Slot>
+				<TextField Label="FieldBadge Highlight" @bind-Value="_name">
+					<DescriptionComplement>
+						<FieldBadge Style="Themes.Highlight" AdditionalClasses="text-xs">Highlight</FieldBadge>
+					</DescriptionComplement>
+				</TextField>
+			</Slot>
+			<Slot>
+				<TextField Label="FieldBadge Light" @bind-Value="_name">
+					<DescriptionComplement>
+						<FieldBadge Style="Themes.Light" AdditionalClasses="text-xs">Light</FieldBadge>
+					</DescriptionComplement>
+				</TextField>
+			</Slot>
+			<Slot>
+				<TextField Label="FieldBadge Dark" @bind-Value="_name">
+					<DescriptionComplement>
+						<FieldBadge Style="Themes.Dark" AdditionalClasses="text-xs">Dark</FieldBadge>
+					</DescriptionComplement>
+				</TextField>
+			</Slot>
+
 		</Container>
 	</EditForm>
 
 	<h2>FooterAction em todos os tamanhos</h2>
 	<EditForm Model="this">
 		<Container>
-			<Col>
+			<Slot>
 				<TextField Label="Smallest" Size="Sizes.Smallest" @bind-Value="_name">
 					<FooterAction>
 						<Button Label="Ação" Size="Sizes.Smallest" />
 					</FooterAction>
 				</TextField>
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Smaller" Size="Sizes.Smaller" @bind-Value="_name">
 					<FooterAction>
 						<Button Label="Ação" Size="Sizes.Smaller" />
 					</FooterAction>
 				</TextField>
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Small" Size="Sizes.Small" @bind-Value="_name">
 					<FooterAction>
 						<Button Label="Ação" Size="Sizes.Small" />
 					</FooterAction>
 				</TextField>
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Medium" Size="Sizes.Medium" @bind-Value="_name">
 					<FooterAction>
 						<Button Label="Ação" />
 					</FooterAction>
 				</TextField>
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Large" Size="Sizes.Large" @bind-Value="_name">
 					<FooterAction>
 						<Button Label="Ação" />
 					</FooterAction>
 				</TextField>
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Larger" Size="Sizes.Larger" @bind-Value="_name">
 					<FooterAction>
-						<Button Label="Ação"  />
+						<Button Label="Ação" />
 					</FooterAction>
 				</TextField>
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Largest" Size="Sizes.Largest" @bind-Value="_name">
 					<FooterAction>
 						<Button Label="Ação" />
 					</FooterAction>
 				</TextField>
-			</Col>
+			</Slot>
 		</Container>
 	</EditForm>
 
@@ -407,104 +491,104 @@
 			<label>Incluir erros (@(_includeErrors ? "true" : "false"))</label>
 		</div>
 		<Container>
-			<Col>
+			<Slot>
 				<TextField Label="Smallest" Size="Sizes.Smallest" @bind-Value="_name" Information="Informação útil"
-					Error="@(_includeErrors ? "Erro de validação" : null)">
+						   Error="@(_includeErrors ? "Erro de validação" : null)">
 					<Prepend>
 						<FieldText>#</FieldText>
 					</Prepend>
 					<DescriptionComplement>
-						<FieldText AdditionalClasses="text-xs text-gray-500">Complemento da descrição</FieldText>
+						<FieldBadge AdditionalClasses="text-xs text-gray-500">Complemento da descrição</FieldBadge>
 					</DescriptionComplement>
 					<FooterAction>
 						<Button Label="Salvar" Size="Sizes.Smallest" />
 					</FooterAction>
 				</TextField>
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Smaller" Size="Sizes.Smaller" @bind-Value="_name" Information="Informação útil"
-					Error="@(_includeErrors ? "Erro de validação" : null)">
+						   Error="@(_includeErrors ? "Erro de validação" : null)">
 					<Prepend>
 						<FieldText>#</FieldText>
 					</Prepend>
 					<DescriptionComplement>
-						<FieldText AdditionalClasses="text-xs text-gray-500">Complemento da descrição</FieldText>
+						<FieldBadge AdditionalClasses="text-xs text-gray-500">Complemento da descrição</FieldBadge>
 					</DescriptionComplement>
 					<FooterAction>
 						<Button Label="Salvar" Size="Sizes.Smaller" />
 					</FooterAction>
 				</TextField>
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Small" Size="Sizes.Small" @bind-Value="_name" Information="Informação útil"
-					Error="@(_includeErrors ? "Erro de validação" : null)">
+						   Error="@(_includeErrors ? "Erro de validação" : null)">
 					<Prepend>
 						<FieldText>#</FieldText>
 					</Prepend>
 					<DescriptionComplement>
-						<FieldText AdditionalClasses="text-xs text-gray-500">Complemento da descrição</FieldText>
+						<FieldBadge AdditionalClasses="text-xs text-gray-500">Complemento da descrição</FieldBadge>
 					</DescriptionComplement>
 					<FooterAction>
 						<Button Label="Salvar" Size="Sizes.Small" />
-				</FooterAction>
+					</FooterAction>
 				</TextField>
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Medium" Size="Sizes.Medium" @bind-Value="_name" Information="Informação útil"
-					Error="@(_includeErrors ? "Erro de validação" : null)">
+						   Error="@(_includeErrors ? "Erro de validação" : null)">
 					<Prepend>
 						<FieldText>#</FieldText>
 					</Prepend>
 					<DescriptionComplement>
-						<FieldText AdditionalClasses="text-xs text-gray-500">Complemento da descrição</FieldText>
+						<FieldBadge AdditionalClasses="text-xs text-gray-500">Complemento da descrição</FieldBadge>
 					</DescriptionComplement>
 					<FooterAction>
 						<Button Label="Salvar" />
 					</FooterAction>
 				</TextField>
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Large" Size="Sizes.Large" @bind-Value="_name" Information="Informação útil"
-					Error="@(_includeErrors ? "Erro de validação" : null)">
+						   Error="@(_includeErrors ? "Erro de validação" : null)">
 					<Prepend>
 						<FieldText>#</FieldText>
 					</Prepend>
 					<DescriptionComplement>
-						<FieldText AdditionalClasses="text-xs text-gray-500">Complemento da descrição</FieldText>
+						<FieldBadge AdditionalClasses="text-xs text-gray-500">Complemento da descrição</FieldBadge>
 					</DescriptionComplement>
 					<FooterAction>
 						<Button Label="Salvar" />
 					</FooterAction>
 				</TextField>
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Larger" Size="Sizes.Larger" @bind-Value="_name" Information="Informação útil"
-					Error="@(_includeErrors ? "Erro de validação" : null)">
+						   Error="@(_includeErrors ? "Erro de validação" : null)">
 					<Prepend>
 						<FieldText>#</FieldText>
 					</Prepend>
 					<DescriptionComplement>
-						<FieldText AdditionalClasses="text-xs text-gray-500">Complemento da descrição</FieldText>
+						<FieldBadge AdditionalClasses="text-xs text-gray-500">Complemento da descrição</FieldBadge>
 					</DescriptionComplement>
 					<FooterAction>
 						<Button Label="Salvar" />
 					</FooterAction>
 				</TextField>
-			</Col>
-			<Col>
+			</Slot>
+			<Slot>
 				<TextField Label="Largest" Size="Sizes.Largest" @bind-Value="_name" Information="Informação útil"
-					Error="@(_includeErrors ? "Erro de validação" : null)">
+						   Error="@(_includeErrors ? "Erro de validação" : null)">
 					<Prepend>
 						<FieldText>#</FieldText>
 					</Prepend>
 					<DescriptionComplement>
-						<FieldText AdditionalClasses="text-xs text-gray-500">Complemento da descrição</FieldText>
+						<FieldBadge AdditionalClasses="text-xs text-gray-500">Complemento da descrição</FieldBadge>
 					</DescriptionComplement>
 					<FooterAction>
 						<Button Label="Salvar" />
 					</FooterAction>
 				</TextField>
-			</Col>
+			</Slot>
 		</Container>
 	</EditForm>
 

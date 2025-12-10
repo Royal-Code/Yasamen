@@ -6,22 +6,22 @@ namespace RoyalCode.Razor.Components;
 
 /// <summary>
 /// <para>
-///     Represents a responsive column component that adjusts its span and height based on screen size and configuration.
+///     Represents a responsive slot component that adjusts its span and height based on screen size and configuration.
 /// </para>
 /// <para>
-///     Use the <see cref="Col"/> component as a child of the <see cref="Container"/> component to create a responsive layout.
+///     Use the <see cref="Slot"/> component as a child of the <see cref="Container"/> component to create a responsive layout.
 /// </para>
 /// </summary>
 /// <remarks>
-///     The <see cref="Col"/> component allows specifying the number of columns it occupies for different
-///     screen sizes,  as well as its height. 
+///     The <see cref="Slot"/> component allows specifying the number of columns (span) it occupies for different
+///     screen sizes, as well as its height. 
 ///     <br />
 ///     The default span is 4 columns, and the default height is 8 units.
 ///     <br />    
 ///     Optional properties for specific screen sizes (e.g., <see cref="TabletSpan"/>, <see cref="LaptopSpan"/>,
 ///     <see cref="DesktopSpan"/>) can be used to override the default span for those screen sizes.
 /// </remarks>
-public partial class Col
+public partial class Slot
 {
     private LayoutTypes type = LayoutTypes.Grid;
     private LayoutSizes size = LayoutSizes.Default;

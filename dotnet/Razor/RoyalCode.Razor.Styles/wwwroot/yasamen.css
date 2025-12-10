@@ -13,6 +13,7 @@
 @import './css/components/sidebar.css';
 @import './css/components/topbar.css';
 
+@import './css/forms/fieldbadge.css';
 @import './css/forms/fielderror.css';
 @import './css/forms/fieldgroup.css';
 @import './css/forms/fieldtext.css';

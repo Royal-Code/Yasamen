@@ -1,0 +1,53 @@
+﻿@using RoyalCode.Razor.Styles
+<div @attributes="AdditionalAttributes" class="@Classes">
+	@if(Text.IsPresent())
+	{
+		@Text
+	}
+	@if (ChildContent.IsNotEmptyFragment())
+	{
+		@ChildContent
+	}
+</div>
+
+@code {
+
+	public string Classes => "ya-field-badge"
+		.AddClass(GetStyle())
+		.AddClass(AdditionalClasses);
+
+	[Parameter]
+	public RenderFragment? ChildContent { get; set; } = EmptyFragment.Delegate;
+
+	[Parameter]
+	public string? Text { get; set; }
+
+	[Parameter]
+	public Themes Style { get; set; }
+
+	[Parameter]
+	public string? AdditionalClasses { get; set; }
+
+	[Parameter(CaptureUnmatchedValues = true)]
+	public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+
+	private string GetStyle()
+	{
+		return Style switch
+		{
+			Themes.Primary => "ya-field-badge-primary",
+			Themes.Secondary => "ya-field-badge-secondary",
+			Themes.Tertiary => "ya-field-badge-tertiary",
+			Themes.Success => "ya-field-badge-success",
+			Themes.Danger => "ya-field-badge-danger",
+			Themes.Warning => "ya-field-badge-warning",
+			Themes.Alert => "ya-field-badge-alert",
+			Themes.Info => "ya-field-badge-info",
+			Themes.Highlight => "ya-field-badge-highlight",
+			Themes.Light => "ya-field-badge-light",
+			Themes.Dark => "ya-field-badge-dark",
+			_ => "ya-field-badge-highlight"
+		};
+	}
+}

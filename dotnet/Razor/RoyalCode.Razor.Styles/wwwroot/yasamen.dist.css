@@ -9182,6 +9182,128 @@
   background-color: var(--color-white);
   box-shadow: inset 0.1px -2px 6px 1px #A0A0A010;
 }
+.ya-field-badge {
+  display: inline-block;
+  border-radius: calc(infinity * 1px);
+  padding-inline: var(--spacing-4);
+  vertical-align: middle;
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+  --tw-font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-normal);
+}
+.ya-field-badge-primary {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-primary-200);
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-800);
+}
+.ya-field-badge-secondary {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-secondary-200);
+  background-color: var(--color-secondary-100);
+  color: var(--color-secondary-800);
+}
+.ya-field-badge-tertiary {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-tertiary-200);
+  background-color: var(--color-tertiary-100);
+  color: var(--color-tertiary-800);
+}
+.ya-field-badge-success {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-success-200);
+  background-color: var(--color-success-100);
+  color: var(--color-success-800);
+}
+.ya-field-badge-warning {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-warning-200);
+  background-color: var(--color-warning-100);
+  color: var(--color-warning-800);
+}
+.ya-field-badge-alert {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-alert-200);
+  background-color: var(--color-alert-100);
+  color: var(--color-alert-800);
+}
+.ya-field-badge-danger {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-danger-200);
+  background-color: var(--color-danger-100);
+  color: var(--color-danger-800);
+}
+.ya-field-badge-info {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-info-200);
+  background-color: var(--color-info-100);
+  color: var(--color-info-800);
+}
+.ya-field-badge-highlight {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-highlight-200);
+  background-color: var(--color-highlight-100);
+  color: var(--color-highlight-800);
+}
+.ya-field-badge-light {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-light-200);
+  background-color: var(--color-light-100);
+  color: var(--color-light-800);
+}
+.ya-field-badge-dark {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-dark-200);
+  background-color: var(--color-dark-100);
+  color: var(--color-dark-800);
+}
+.ya-field-2xs .ya-field-badge {
+  padding-inline: var(--spacing-3);
+  font-size: var(--text-2xs);
+  line-height: var(--tw-leading, var(--text-2xs--line-height));
+}
+.ya-field-xs .ya-field-badge {
+  padding-inline: var(--spacing-3\.5);
+  font-size: var(--text-2xs);
+  line-height: var(--tw-leading, var(--text-2xs--line-height));
+}
+.ya-field-sm .ya-field-badge {
+  padding-inline: var(--spacing-4);
+  font-size: var(--text-xs);
+  line-height: var(--tw-leading, var(--text-xs--line-height));
+}
+.ya-field-md .ya-field-badge {
+  padding-inline: var(--spacing-4);
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+}
+.ya-field-lg .ya-field-badge {
+  padding-inline: var(--spacing-4);
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+}
+.ya-field-xl .ya-field-badge {
+  padding-inline: var(--spacing-5);
+  font-size: var(--text-base);
+  line-height: var(--tw-leading, var(--text-base--line-height));
+}
+.ya-field-2xl .ya-field-badge {
+  padding-inline: var(--spacing-5);
+  font-size: var(--text-base);
+  line-height: var(--tw-leading, var(--text-base--line-height));
+}
 .ya-field-error-message {
   margin-top: var(--spacing-2);
   --tw-leading: var(--leading-snug);
@@ -9239,10 +9361,13 @@
   }
 }
 .ya-field-group-description {
+  margin-bottom: var(--spacing-3);
   display: flex;
   width: 100%;
   align-items: baseline;
   justify-content: space-between;
+  font-size: var(--text-base);
+  line-height: var(--tw-leading, var(--text-base--line-height));
 }
 .ya-field-2xs .ya-field-group-description {
   margin-bottom: var(--spacing-2\.5);

@@ -9,7 +9,7 @@
 }
 
 .ya-field-group-description {
-    @apply flex w-full items-baseline justify-between;
+    @apply flex w-full items-baseline justify-between text-base mb-3;
 }
 .ya-field-2xs .ya-field-group-description {
     @apply text-xs mb-2.5;
