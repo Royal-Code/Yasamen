@@ -17,14 +17,21 @@
 	{
 		@Control
 	}
-	@if (Information.IsPresent())
+	@if (Information.IsPresent() || FooterAction.IsNotEmptyFragment())
 	{
-		<FieldInformation Message="@Information" />
-	}
-	@if (FooterAction.IsNotEmptyFragment())
-	{
-		<div class="ya-field-group-footer">
-			@FooterAction
+		<div class="ya-field-group-informative">
+			@if (Information.IsPresent())
+			{
+				<div class="ya-field-information">
+					@Information
+				</div>
+			}
+			@if (FooterAction.IsNotEmptyFragment())
+			{
+				<div class="ya-field-group-footer">
+					@FooterAction
+				</div>
+			}
 		</div>
 	}
 	@if (ErrorMessage.IsPresent())
@@ -36,7 +43,7 @@
 @code {
 	private string Classes => "ya-field-group"
 		.AddClass(Expanded, "w-full")
-		.AddClass(Size.ToCssClassName())
+		.AddClass(Size.ToCssClassName("ya-field"))
 		.AddClass(ErrorMessage.IsPresent(), "ya-field-group-invalid")
 		.AddClass(AdditionalClasses);
 

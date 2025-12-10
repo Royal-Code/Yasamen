@@ -4236,6 +4236,9 @@
   .text-dark-900 {
     color: var(--color-dark-900);
   }
+  .text-gray-500 {
+    color: var(--color-gray-500);
+  }
   .text-highlight {
     color: var(--color-highlight);
   }
@@ -9179,29 +9182,53 @@
   background-color: var(--color-white);
   box-shadow: inset 0.1px -2px 6px 1px #A0A0A010;
 }
-.ya-control-group {
-  display: flex;
-  width: 100%;
-}
-.ya-control-group > :not(:first-child) {
-  margin-left: calc(var(--spacing-1) * -1);
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.ya-control-group > :not(:last-child) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.ya-control-group > .ya-input-field:focus {
-  z-index: 1;
-}
 .ya-field-error-message {
   margin-top: var(--spacing-2);
+  --tw-leading: var(--leading-snug);
+  line-height: var(--leading-snug);
+  color: var(--color-danger-600);
+}
+.ya-field-2xs .ya-field-error-message {
+  font-size: var(--text-xs);
+  line-height: var(--tw-leading, var(--text-xs--line-height));
+  --tw-leading: var(--leading-snug);
+  line-height: var(--leading-snug);
+}
+.ya-field-xs .ya-field-error-message {
   font-size: var(--text-sm);
   line-height: var(--tw-leading, var(--text-sm--line-height));
   --tw-leading: var(--leading-snug);
   line-height: var(--leading-snug);
-  color: var(--color-danger-600);
+}
+.ya-field-sm .ya-field-error-message {
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+  --tw-leading: var(--leading-snug);
+  line-height: var(--leading-snug);
+}
+.ya-field-md .ya-field-error-message {
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+  --tw-leading: var(--leading-snug);
+  line-height: var(--leading-snug);
+}
+.ya-field-lg .ya-field-error-message {
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+  --tw-leading: var(--leading-snug);
+  line-height: var(--leading-snug);
+}
+.ya-field-xl .ya-field-error-message {
+  font-size: var(--text-base);
+  line-height: var(--tw-leading, var(--text-base--line-height));
+  --tw-leading: var(--leading-snug);
+  line-height: var(--leading-snug);
+}
+.ya-field-2xl .ya-field-error-message {
+  font-size: var(--text-lg);
+  line-height: var(--tw-leading, var(--text-lg--line-height));
+  --tw-leading: var(--leading-snug);
+  line-height: var(--leading-snug);
 }
 .ya-field-group {
   width: 100%;
@@ -9216,76 +9243,83 @@
   width: 100%;
   align-items: baseline;
   justify-content: space-between;
-  font-size: var(--text-sm);
-  line-height: var(--tw-leading, var(--text-sm--line-height));
 }
-.ya-field-group-description.\2xs {
-  font-size: var(--text-2xs);
-  line-height: var(--tw-leading, var(--text-2xs--line-height));
-}
-.ya-field-group-description.xs {
+.ya-field-2xs .ya-field-group-description {
+  margin-bottom: var(--spacing-2\.5);
   font-size: var(--text-xs);
   line-height: var(--tw-leading, var(--text-xs--line-height));
 }
-.ya-field-group-description.sm {
+.ya-field-xs .ya-field-group-description {
+  margin-bottom: var(--spacing-3);
+  font-size: var(--text-xs);
+  line-height: var(--tw-leading, var(--text-xs--line-height));
+}
+.ya-field-sm .ya-field-group-description {
+  margin-bottom: var(--spacing-3);
   font-size: var(--text-sm);
   line-height: var(--tw-leading, var(--text-sm--line-height));
 }
-.ya-field-group-description.lg {
+.ya-field-md .ya-field-group-description {
+  margin-bottom: var(--spacing-3);
   font-size: var(--text-base);
   line-height: var(--tw-leading, var(--text-base--line-height));
 }
-.ya-field-group-description.xl {
+.ya-field-lg .ya-field-group-description {
+  margin-bottom: var(--spacing-3);
+  font-size: var(--text-base);
+  line-height: var(--tw-leading, var(--text-base--line-height));
+}
+.ya-field-xl .ya-field-group-description {
+  margin-bottom: var(--spacing-3\.5);
   font-size: var(--text-lg);
   line-height: var(--tw-leading, var(--text-lg--line-height));
 }
-.ya-field-group-description.\2xl {
+.ya-field-2xl .ya-field-group-description {
+  margin-bottom: var(--spacing-4);
   font-size: var(--text-xl);
   line-height: var(--tw-leading, var(--text-xl--line-height));
 }
 .ya-field-group-label {
-  font-size: var(--text-base);
-  line-height: var(--tw-leading, var(--text-base--line-height));
+  margin-inline: var(--spacing-2);
+  margin-block: var(--spacing-0);
   color: var(--color-dark-700);
 }
-.ya-field-group-footer {
-  margin-top: var(--spacing-2);
+.ya-field-group-informative {
   display: flex;
   width: 100%;
   align-items: flex-start;
-  justify-content: flex-end;
-  font-size: var(--text-sm);
-  line-height: var(--tw-leading, var(--text-sm--line-height));
+  justify-content: space-between;
 }
-.ya-field-group-footer.\2xs {
+.ya-field-2xs .ya-field-group-informative {
   font-size: var(--text-2xs);
   line-height: var(--tw-leading, var(--text-2xs--line-height));
 }
-.ya-field-group-footer.xs {
+.ya-field-xs .ya-field-group-informative {
   font-size: var(--text-xs);
   line-height: var(--tw-leading, var(--text-xs--line-height));
 }
-.ya-field-group-footer.sm {
+.ya-field-sm .ya-field-group-informative {
   font-size: var(--text-sm);
   line-height: var(--tw-leading, var(--text-sm--line-height));
 }
-.ya-field-group-footer.lg {
+.ya-field-md .ya-field-group-informative {
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+}
+.ya-field-lg .ya-field-group-informative {
   font-size: var(--text-base);
   line-height: var(--tw-leading, var(--text-base--line-height));
 }
-.ya-field-group-footer.xl {
+.ya-field-xl .ya-field-group-informative {
   font-size: var(--text-lg);
   line-height: var(--tw-leading, var(--text-lg--line-height));
 }
-.ya-field-group-footer.\2xl {
+.ya-field-2xl .ya-field-group-informative {
   font-size: var(--text-xl);
   line-height: var(--tw-leading, var(--text-xl--line-height));
 }
-.ya-field-information {
-  margin-top: var(--spacing-2);
-  font-size: var(--text-xs);
-  line-height: var(--tw-leading, var(--text-xs--line-height));
-  color: var(--color-secondary-600);
+.ya-field-group-footer {
+  margin-left: auto;
 }
 .ya-field-text {
   border-radius: var(--radius-md);
@@ -9293,11 +9327,47 @@
   border-width: 1px;
   border-color: var(--color-light-400);
   background-color: var(--color-light-100);
+  color: var(--color-dark-600);
   padding-inline: var(--spacing-6);
   padding-block: var(--spacing-3\.5);
   font-size: var(--text-base);
   line-height: var(--tw-leading, var(--text-base--line-height));
-  color: var(--color-dark-600);
+}
+.ya-field-2xs .ya-field-text {
+  padding-inline: var(--spacing-4);
+  padding-block: var(--spacing-2);
+  font-size: var(--text-2xs);
+  line-height: var(--tw-leading, var(--text-2xs--line-height));
+}
+.ya-field-xs .ya-field-text {
+  padding-inline: var(--spacing-4);
+  padding-block: var(--spacing-3);
+  font-size: var(--text-xs);
+  line-height: var(--tw-leading, var(--text-xs--line-height));
+}
+.ya-field-sm .ya-field-text {
+  padding-inline: var(--spacing-5);
+  padding-block: var(--spacing-3);
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+}
+.ya-field-lg .ya-field-text {
+  padding-inline: var(--spacing-6);
+  padding-block: var(--spacing-4);
+  font-size: var(--text-lg);
+  line-height: var(--tw-leading, var(--text-lg--line-height));
+}
+.ya-field-xl .ya-field-text {
+  padding-inline: var(--spacing-6);
+  padding-block: var(--spacing-5);
+  font-size: var(--text-2xl);
+  line-height: var(--tw-leading, var(--text-2xl--line-height));
+}
+.ya-field-2xl .ya-field-text {
+  padding-inline: var(--spacing-6);
+  padding-block: var(--spacing-5);
+  font-size: var(--text-5xl);
+  line-height: var(--tw-leading, var(--text-5xl--line-height));
 }
 .ya-input-field {
   display: block;
@@ -9307,8 +9377,6 @@
   border-width: 1px;
   border-color: var(--color-light-400);
   background-color: var(--color-white);
-  font-size: var(--text-base);
-  line-height: var(--tw-leading, var(--text-base--line-height));
   color: var(--color-dark-800);
   transition-property: all;
   transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
@@ -9317,6 +9385,8 @@
   transition-duration: 150ms;
   padding-inline: var(--spacing-5);
   padding-block: var(--spacing-3\.5);
+  font-size: var(--text-base);
+  line-height: var(--tw-leading, var(--text-base--line-height));
   &::placeholder {
     color: var(--color-secondary-400);
   }
@@ -9369,7 +9439,8 @@
     }
   }
 }
-.ya-input-field.ya-field-2xs {
+.ya-field-2xs .ya-input-field {
+  border-radius: var(--radius-sm);
   padding-inline: var(--spacing-4);
   padding-block: var(--spacing-2);
   font-size: var(--text-2xs);
@@ -9379,7 +9450,8 @@
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
 }
-.ya-input-field.ya-field-xs {
+.ya-field-xs .ya-input-field {
+  border-radius: var(--radius-sm);
   padding-inline: var(--spacing-4);
   padding-block: var(--spacing-3);
   font-size: var(--text-xs);
@@ -9389,7 +9461,8 @@
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
 }
-.ya-input-field.ya-field-sm {
+.ya-field-sm .ya-input-field {
+  border-radius: var(--radius-sm);
   padding-inline: var(--spacing-5);
   padding-block: var(--spacing-3);
   font-size: var(--text-sm);
@@ -9399,8 +9472,8 @@
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
 }
-.ya-input-field.ya-field-lg {
-  padding-inline: var(--spacing-6);
+.ya-field-lg .ya-input-field {
+  padding-inline: var(--spacing-5);
   padding-block: var(--spacing-4);
   font-size: var(--text-lg);
   line-height: var(--tw-leading, var(--text-lg--line-height));
@@ -9409,23 +9482,24 @@
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
 }
-.ya-input-field.ya-field-xl {
+.ya-field-xl .ya-input-field {
   padding-inline: var(--spacing-6);
-  padding-block: var(--spacing-5);
-  font-size: var(--text-xl);
-  line-height: var(--tw-leading, var(--text-xl--line-height));
-  &:focus {
-    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-}
-.ya-input-field.ya-field-2xl {
-  padding-inline: var(--spacing-7);
   padding-block: var(--spacing-5);
   font-size: var(--text-2xl);
   line-height: var(--tw-leading, var(--text-2xl--line-height));
   &:focus {
     --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(5px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+}
+.ya-field-2xl .ya-input-field {
+  border-radius: var(--radius-lg);
+  padding-inline: var(--spacing-6);
+  padding-block: var(--spacing-5);
+  font-size: var(--text-5xl);
+  line-height: var(--tw-leading, var(--text-5xl--line-height));
+  &:focus {
+    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(6px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
 }
@@ -9435,6 +9509,52 @@
   background-position: right calc(var(--spacing-3\.5) + var(--spacing-2\.5)) center;
   background-size: calc(var(--spacing-5) + var(--spacing-3\.5)) calc(var(--spacing-5) + var(--spacing-3\.5));
   padding-right: calc(var(--spacing-7) + var(--spacing-5));
+}
+.ya-field-2xs .ya-input-field-invalid {
+  background-position: right calc(var(--spacing-2) + var(--spacing-2\.5)) center;
+  background-size: calc(var(--spacing-4) + var(--spacing-3)) calc(var(--spacing-4) + var(--spacing-3));
+  padding-right: calc(var(--spacing-6) + var(--spacing-3\.5));
+}
+.ya-field-xs .ya-input-field-invalid {
+  background-position: right calc(var(--spacing-2\.5) + var(--spacing-2\.5)) center;
+  background-size: calc(var(--spacing-4) + var(--spacing-3)) calc(var(--spacing-4) + var(--spacing-3));
+  padding-right: calc(var(--spacing-6) + var(--spacing-4));
+}
+.ya-field-sm .ya-input-field-invalid {
+  background-position: right calc(var(--spacing-3) + var(--spacing-2\.5)) center;
+  background-size: calc(var(--spacing-5) + var(--spacing-3)) calc(var(--spacing-5) + var(--spacing-3));
+  padding-right: calc(var(--spacing-6) + var(--spacing-5));
+}
+.ya-field-lg .ya-input-field-invalid {
+  background-position: right calc(var(--spacing-4) + var(--spacing-3)) center;
+  background-size: calc(var(--spacing-6) + var(--spacing-4)) calc(var(--spacing-6) + var(--spacing-4));
+  padding-right: calc(var(--spacing-8) + var(--spacing-5));
+}
+.ya-field-xl .ya-input-field-invalid {
+  background-position: right calc(var(--spacing-4) + var(--spacing-3)) center;
+  background-size: calc(var(--spacing-7) + var(--spacing-5)) calc(var(--spacing-7) + var(--spacing-5));
+  padding-right: calc(var(--spacing-9) + var(--spacing-5));
+}
+.ya-field-2xl .ya-input-field-invalid {
+  background-position: right calc(var(--spacing-4) + var(--spacing-3)) center;
+  background-size: calc(var(--spacing-8) + var(--spacing-5)) calc(var(--spacing-8) + var(--spacing-5));
+  padding-right: calc(var(--spacing-9) + var(--spacing-6));
+}
+.ya-control-group {
+  display: flex;
+  width: 100%;
+}
+.ya-control-group > :not(:first-child) {
+  margin-left: calc(var(--spacing-1) * -1);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.ya-control-group > :not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.ya-control-group > .ya-input-field:focus {
+  z-index: 1;
 }
 @property --tw-translate-x {
   syntax: "*";

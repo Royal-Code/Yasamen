@@ -125,6 +125,12 @@ public abstract class FieldBase : ComponentBase, IAsyncDisposable
     public RenderFragment DescriptionComplement { get; set; } = EmptyFragment.Delegate;
 
     /// <summary>
+    /// Content for the footer action area of the field.
+    /// </summary>
+    [Parameter]
+    public RenderFragment FooterAction { get; set; } = EmptyFragment.Delegate;
+
+    /// <summary>
     /// JS interop utilities for work with the field element.
     /// </summary>
     public FieldJs Js { get; } = new();

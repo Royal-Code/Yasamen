@@ -9,51 +9,59 @@
 }
 
 .ya-field-group-description {
-    @apply flex w-full items-baseline justify-between text-sm;
+    @apply flex w-full items-baseline justify-between;
 }
-    .ya-field-group-description.\2xs {
-        @apply text-2xs;
-    }
-    .ya-field-group-description.xs {
-        @apply text-xs;
-    }
-    .ya-field-group-description.sm {
-        @apply text-sm;
-    }
-    .ya-field-group-description.lg {
-        @apply text-base;
-    }
-    .ya-field-group-description.xl {
-        @apply text-lg;
-    }
-    .ya-field-group-description.\2xl {
-        @apply text-xl;
-    }
+.ya-field-2xs .ya-field-group-description {
+    @apply text-xs mb-2.5;
+}
+.ya-field-xs .ya-field-group-description {
+    @apply text-xs mb-3;
+}
+.ya-field-sm .ya-field-group-description {
+    @apply text-sm mb-3;
+}
+.ya-field-md .ya-field-group-description {
+    @apply text-base mb-3;
+}
+.ya-field-lg .ya-field-group-description {
+    @apply text-base mb-3;
+}
+.ya-field-xl .ya-field-group-description {
+    @apply text-lg mb-3.5;
+}
+.ya-field-2xl .ya-field-group-description {
+    @apply text-xl mb-4;
+}
 
 .ya-field-group-label {
-    @apply text-dark-700 text-base;
+    @apply text-dark-700 mx-2 my-0;
+}
+
+.ya-field-group-informative {
+    @apply flex w-full justify-between items-start;
+}
+.ya-field-2xs .ya-field-group-informative {
+    @apply text-2xs;
+}
+.ya-field-xs .ya-field-group-informative {
+    @apply text-xs;
+}
+.ya-field-sm .ya-field-group-informative {
+    @apply text-sm;
+}
+.ya-field-md .ya-field-group-informative {
+    @apply text-sm;
+}
+.ya-field-lg .ya-field-group-informative {
+    @apply text-base;
+}
+.ya-field-xl .ya-field-group-informative {
+    @apply text-lg;
+}
+.ya-field-2xl .ya-field-group-informative {
+    @apply text-xl;
 }
 
 .ya-field-group-footer {
-    @apply mt-2 flex w-full justify-end items-start text-sm;
+    @apply ml-auto;
 }
-
-    .ya-field-group-footer.\2xs {
-        @apply text-2xs;
-    }
-    .ya-field-group-footer.xs {
-        @apply text-xs;
-    }
-    .ya-field-group-footer.sm {
-        @apply text-sm;
-    }
-    .ya-field-group-footer.lg {
-        @apply text-base;
-    }
-    .ya-field-group-footer.xl {
-        @apply text-lg;
-    }
-    .ya-field-group-footer.\2xl {
-        @apply text-xl;
-    }
-

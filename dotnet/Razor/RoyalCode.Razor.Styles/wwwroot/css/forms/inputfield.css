@@ -1,6 +1,6 @@
 ﻿.ya-input-field {
-    @apply block w-full bg-white text-dark-800 text-base border-1 border-light-400 rounded-md transition-all duration-150;
-    @apply px-5 py-3.5;
+    @apply block w-full bg-white text-dark-800 border-1 border-light-400 rounded-md transition-all duration-150;
+    @apply text-base px-5 py-3.5;
     @apply placeholder:text-secondary-400;
     @apply focus:outline-none focus:border-primary-500 focus:ring-3 focus:ring-primary-300/50;
     @apply disabled:bg-light-100 disabled:text-dark-300 disabled:cursor-not-allowed;
@@ -12,23 +12,23 @@
     @apply focus:border-danger-600 focus:ring-danger-300/50;
 }
 
-.ya-input-field.ya-field-2xs {
-    @apply text-2xs px-4 py-2 focus:ring-2;
+.ya-field-2xs .ya-input-field {
+    @apply text-2xs px-4 py-2 focus:ring-2 rounded-sm;
 }
-.ya-input-field.ya-field-xs {
-    @apply text-xs px-4 py-3 focus:ring-2;
+.ya-field-xs .ya-input-field {
+    @apply text-xs px-4 py-3 focus:ring-2 rounded-sm;
 }
-.ya-input-field.ya-field-sm {
-    @apply text-sm px-5 py-3 focus:ring-3;
+.ya-field-sm .ya-input-field {
+    @apply text-sm px-5 py-3 focus:ring-3 rounded-sm;
 }
-.ya-input-field.ya-field-lg {
-    @apply text-lg px-6 py-4 focus:ring-4;
+.ya-field-lg .ya-input-field {
+    @apply text-lg px-5 py-4 focus:ring-4;
 }
-.ya-input-field.ya-field-xl {
-    @apply text-xl px-6 py-5 focus:ring-4;
+.ya-field-xl .ya-input-field {
+    @apply text-2xl px-6 py-5 focus:ring-5;
 }
-.ya-input-field.ya-field-2xl {
-    @apply text-2xl px-7 py-5 focus:ring-5;
+.ya-field-2xl .ya-input-field {
+    @apply text-5xl px-6 py-5 focus:ring-6 rounded-lg;
 }
 
 .ya-input-field-invalid {
@@ -37,4 +37,34 @@
     background-position: right calc(var(--spacing-3\.5) + var(--spacing-2\.5)) center;
     background-size: calc(var(--spacing-5) + var(--spacing-3\.5)) calc(var(--spacing-5) + var(--spacing-3\.5));
     padding-right: calc(var(--spacing-7) + var(--spacing-5));
+}
+.ya-field-2xs .ya-input-field-invalid {
+    background-position: right calc(var(--spacing-2) + var(--spacing-2\.5)) center;
+    background-size: calc(var(--spacing-4) + var(--spacing-3)) calc(var(--spacing-4) + var(--spacing-3));
+    padding-right: calc(var(--spacing-6) + var(--spacing-3\.5));
+}
+.ya-field-xs .ya-input-field-invalid {
+    background-position: right calc(var(--spacing-2\.5) + var(--spacing-2\.5)) center;
+    background-size: calc(var(--spacing-4) + var(--spacing-3)) calc(var(--spacing-4) + var(--spacing-3));
+    padding-right: calc(var(--spacing-6) + var(--spacing-4));
+}
+.ya-field-sm .ya-input-field-invalid {
+    background-position: right calc(var(--spacing-3) + var(--spacing-2\.5)) center;
+    background-size: calc(var(--spacing-5) + var(--spacing-3)) calc(var(--spacing-5) + var(--spacing-3));
+    padding-right: calc(var(--spacing-6) + var(--spacing-5));
+}
+.ya-field-lg .ya-input-field-invalid {
+    background-position: right calc(var(--spacing-4) + var(--spacing-3)) center;
+    background-size: calc(var(--spacing-6) + var(--spacing-4)) calc(var(--spacing-6) + var(--spacing-4));
+    padding-right: calc(var(--spacing-8) + var(--spacing-5));
+}
+.ya-field-xl .ya-input-field-invalid {
+    background-position: right calc(var(--spacing-4) + var(--spacing-3)) center;
+    background-size: calc(var(--spacing-7) + var(--spacing-5)) calc(var(--spacing-7) + var(--spacing-5));
+    padding-right: calc(var(--spacing-9) + var(--spacing-5));
+}
+.ya-field-2xl .ya-input-field-invalid {
+    background-position: right calc(var(--spacing-4) + var(--spacing-3)) center;
+    background-size: calc(var(--spacing-8) + var(--spacing-5)) calc(var(--spacing-8) + var(--spacing-5));
+    padding-right: calc(var(--spacing-9) + var(--spacing-6));
 }

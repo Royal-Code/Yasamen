@@ -1,4 +1,29 @@
 ﻿
 .ya-field-text {
-    @apply bg-light-100 text-dark-600 text-base border-1 border-light-400 rounded-md px-6 py-3.5;
+    @apply bg-light-100 text-dark-600 border-1 border-light-400 rounded-md;
+    @apply text-base px-6 py-3.5;
+}
+
+.ya-field-2xs .ya-field-text {
+    @apply text-2xs px-4 py-2;
+}
+
+.ya-field-xs .ya-field-text {
+    @apply text-xs px-4 py-3;
+}
+
+.ya-field-sm .ya-field-text {
+    @apply text-sm px-5 py-3;
+}
+
+.ya-field-lg .ya-field-text {
+    @apply text-lg px-6 py-4;
+}
+
+.ya-field-xl .ya-field-text {
+    @apply text-2xl px-6 py-5;
+}
+
+.ya-field-2xl .ya-field-text {
+    @apply text-5xl px-6 py-5;
 }
