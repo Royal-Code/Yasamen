@@ -6,10 +6,12 @@
 @import './css/components/badge.css';
 @import './css/components/breadcrumbs.css';
 @import './css/components/btn.css';
+@import './css/components/feedback.css';
 @import './css/components/ibtn.css';
 @import './css/components/menu.css';
 @import './css/components/menuitem.css';
 @import './css/components/modal.css';
+@import './css/components/notification.css';
 @import './css/components/offcanvas.css';
 @import './css/components/sidebar.css';
 @import './css/components/topbar.css';

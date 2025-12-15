@@ -140,6 +140,12 @@ public static class ConfigureMenu
                         Url = "badges",
                         Type = MenuItemType.Link
                     },
+                    new MenuItem {
+                        Id = "feedbacks",
+                        Text = "Feedbacks",
+                        Url = "feedbacks",
+                        Type = MenuItemType.Link
+                    },
                     new MenuItem
                     {
                         Id = "icon-buttons",

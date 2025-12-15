@@ -1,0 +1,110 @@
+﻿
+.ya-feedback {
+    @apply rounded-md border-1 inline-flex relative;
+}
+
+.ya-feedback-block {
+    @apply flex w-full;
+}
+
+.ya-feedback-primary {
+    @apply border-primary-500/50 bg-primary-100 text-primary-800;
+}
+.ya-feedback-secondary {
+    @apply border-secondary-500/50 bg-secondary-100 text-secondary-800;
+}
+.ya-feedback-tertiary {
+    @apply border-tertiary-500/50 bg-tertiary-100 text-tertiary-800;
+}
+.ya-feedback-success {
+    @apply border-success-500/50 bg-success-100 text-success-800;
+}
+.ya-feedback-info {
+    @apply border-info-500/50 bg-info-100 text-info-800;
+}
+.ya-feedback-highlight {
+    @apply border-highlight-500/50 bg-highlight-100 text-highlight-800;
+}
+.ya-feedback-warning {
+    @apply border-warning-500/50 bg-warning-100 text-warning-800;
+}
+.ya-feedback-alert {
+    @apply border-alert-500/50 bg-alert-100 text-alert-800;
+}
+.ya-feedback-danger {
+    @apply border-danger-500/50 bg-danger-100 text-danger-800;
+}
+.ya-feedback-light {
+    @apply border-light-500/50 bg-light-100 text-light-800;
+}
+.ya-feedback-dark {
+    @apply border-dark-500/50 bg-dark-100 text-dark-800;
+}
+
+.ya-feedback-2xs {
+    @apply text-2xs p-3.5;
+}
+.ya-feedback-xs {
+    @apply text-xs p-4.5;
+}
+.ya-feedback-sm {
+    @apply text-sm p-5;
+}
+.ya-feedback-md {
+    @apply text-base p-5.5;
+}
+.ya-feedback-lg {
+    @apply text-lg p-6;
+}
+.ya-feedback-xl {
+    @apply text-xl p-6.5;
+}
+.ya-feedback-2xl {
+    @apply text-2xl p-7;
+}
+
+.ya-feedback-title {
+    @apply font-semibold mb-4 border-b border-current pb-4;
+}
+
+.ya-feedback-icon {
+    @apply h-full m-auto;
+}
+
+.ya-feedback-2xs .ya-feedback-icon {
+    @apply pr-3.5;
+}
+.ya-feedback-xs .ya-feedback-icon {
+    @apply pr-4.5;
+}
+.ya-feedback-sm .ya-feedback-icon {
+    @apply pr-5;
+}
+.ya-feedback-md .ya-feedback-icon {
+    @apply pr-5.5;
+}
+.ya-feedback-lg .ya-feedback-icon {
+    @apply pr-6;
+}
+.ya-feedback-xl .ya-feedback-icon {
+    @apply pr-6.5;
+}
+.ya-feedback-2xl .ya-feedback-icon {
+    @apply pr-7;
+}
+
+.ya-feedback-content {
+    @apply w-full;
+}
+
+.ya-feedback-text {
+    @apply w-full;
+}
+
+.ya-feedback-2xs .ya-btn-close {
+    @apply top-1.5 right-2.5;
+}
+
+.ya-feedback-xs .ya-btn-close, .ya-feedback-sm .ya-btn-close {
+    @apply top-2.5 right-2.5;
+}

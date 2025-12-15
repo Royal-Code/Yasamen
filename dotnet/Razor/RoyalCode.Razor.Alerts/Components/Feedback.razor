@@ -1,0 +1,157 @@
+﻿
+@if (!closed)
+{
+	<div @attributes="AdditionalAttributes" class="@Classes">
+		@if (Icon is not null)
+		{
+			<div class="@IconClasses">
+				<Icon Kind="Icon" />
+			</div>
+		}
+		<div class="ya-feedback-content">
+			@if (!string.IsNullOrWhiteSpace(Title))
+			{
+				if (Size == Sizes.Smallest || Size == Sizes.Smaller)
+				{
+					<h6 class="@TitleClasses">@Title</h6>
+				}
+				else if (Size == Sizes.Small)
+				{
+					<h5 class="@TitleClasses">@Title</h5>
+				}
+				else if (Size == Sizes.Larger)
+				{
+
+					<h3 class="@TitleClasses">@Title</h3>
+				}
+				else if (Size == Sizes.Largest)
+				{
+					<h2 class="@TitleClasses">@Title</h2>
+				}
+				else
+				{
+					<h4 class="@TitleClasses">@Title</h4>
+				}
+			}
+			@if (!string.IsNullOrWhiteSpace(Text))
+			{
+				<div class="@TextClasses">@Text</div>
+			}
+			@ChildContent
+		</div>
+		@if (Closeable)
+		{
+			<button type="button" class="ya-btn-close" aria-label="Close" @onclick="CloseAsync">
+				@WellKnownIcons.Close("text-sm")
+			</button>
+		}
+	</div>
+}
+
+@code {
+	private bool closed = false;
+
+	private string Classes => "ya-feedback"
+		.AddClass(GetStyle())
+		.AddClass(Size.ToCssClassName("ya-feedback"))
+		.AddClass(Block, "ya-feedback-block")
+		.AddClass(AdditionalClasses);
+
+	private string IconClasses => "ya-feedback-icon"
+		.AddClass(GetIconSize());
+
+	private string TitleClasses => "ya-feedback-title"
+		.AddClass(Closeable, "pr-8");
+
+	private string TextClasses => "ya-feedback-text"
+		.AddClass(Closeable && Title.IsMissing(), "pr-8");
+
+	[Parameter]
+	public RenderFragment? ChildContent { get; set; } = EmptyFragment.Delegate;
+
+	[Parameter]
+	public string? Title { get; set; }
+
+	[Parameter]
+	public string? Text { get; set; }
+
+	[Parameter]
+	public Themes Style { get; set; }
+
+	/// <summary>
+	/// Size variant applied to the badge padding and font sizing.
+	/// </summary>
+	[Parameter]
+	public Sizes Size { get; set; }
+
+	/// <summary>
+	/// Optional icon enumeration value to render an icon alongside the content.
+	/// </summary>
+	[Parameter]
+	public Enum? Icon { get; set; }
+
+	[Parameter]
+	public bool Closeable { get; set; }
+
+	[Parameter]
+	public EventCallback OnClose { get; set; }
+
+	[Parameter]
+	public bool Block { get; set; } = true;
+
+	[Parameter]
+	public string? AdditionalClasses { get; set; }
+
+	[Parameter(CaptureUnmatchedValues = true)]
+	public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+
+	private string GetStyle()
+	{
+		return Style switch
+		{
+			Themes.Primary => "ya-feedback-primary",
+			Themes.Secondary => "ya-feedback-secondary",
+			Themes.Tertiary => "ya-feedback-tertiary",
+			Themes.Success => "ya-feedback-success",
+			Themes.Info => "ya-feedback-info",
+			Themes.Highlight => "ya-feedback-highlight",
+			Themes.Warning => "ya-feedback-warning",
+			Themes.Alert => "ya-feedback-alert",
+			Themes.Danger => "ya-feedback-danger",
+			Themes.Light => "ya-feedback-light",
+			Themes.Dark => "ya-feedback-dark",
+			_ => "ya-feedback-success",
+		};
+	}
+
+	private string? GetIconSize()
+	{
+		if (Title.IsPresent())
+		{
+			return Size switch
+			{
+				Sizes.Smallest => "text-lg",
+				Sizes.Smaller => "text-lg",
+				Sizes.Small => "text-xl",
+				Sizes.Medium => "text-2xl",
+				Sizes.Large => "text-3xl",
+				Sizes.Larger => "text-4xl",
+				Sizes.Largest => "text-5xl",
+				_ => null,
+			};
+		}
+
+		return null;
+	}
+
+
+	private async Task CloseAsync()
+	{
+		closed = true;
+		if (OnClose.HasDelegate)
+		{
+			await OnClose.InvokeAsync(null);
+		}
+	}
+}

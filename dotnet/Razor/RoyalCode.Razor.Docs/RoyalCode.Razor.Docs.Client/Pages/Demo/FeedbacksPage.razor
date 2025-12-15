@@ -1,0 +1,87 @@
+﻿@page "/feedbacks"
+
+@layout AppMainLayout
+
+<Box AdditionalClasses="p-8 bg-white border-none">
+
+    <h1>Feedbacks</h1>
+
+    <div class="flex gap-6 items-center mb-6">
+        <label class="flex items-center gap-2">
+            <input type="checkbox" @bind="showTitle" />
+            <span>Título</span>
+        </label>
+        <label class="flex items-center gap-2">
+            <input type="checkbox" @bind="showIcon" />
+            <span>Ícone</span>
+        </label>
+        <label class="flex items-center gap-2">
+            <input type="checkbox" @bind="closeable" />
+            <span>Closeable</span>
+        </label>
+        <label class="flex items-center gap-2">
+            <input type="checkbox" @bind="block" />
+            <span>Block</span>
+        </label>
+    </div>
+
+    <h2>Feedbacks por tamanho e estilo</h2>
+
+    @foreach (var size in _sizes)
+    {
+        <div class="mb-8">
+            <h3 class="mb-4">@SizeDisplay(size)</h3>
+            <div class="w-full">
+                @foreach (var theme in _themes)
+                {
+                    <Feedback Style="@theme"
+                              Size="@size"
+                              Title="@(showTitle ? $"{theme} {size}" : null)"
+                              Text="Feedback de exemplo"
+                              Icon="@(showIcon ? icon : null)"
+                              Closeable="@closeable"
+                              Block="@block"
+                              AdditionalClasses="mb-4" />
+                }
+            </div>
+        </div>
+    }
+
+</Box>
+
+@code {
+    private bool showTitle = true;
+    private bool showIcon = true;
+    private bool closeable = false;
+    private bool block = true;
+
+	Enum icon = BsIconNames.Info;
+
+    private readonly Themes[] _themes =
+    [
+        Themes.Primary,
+        Themes.Secondary,
+        Themes.Tertiary,
+        Themes.Info,
+        Themes.Highlight,
+        Themes.Success,
+        Themes.Warning,
+        Themes.Alert,
+        Themes.Danger,
+        Themes.Light,
+        Themes.Dark
+    ];
+
+    private readonly Sizes[] _sizes =
+    [
+        Sizes.Smallest,
+        Sizes.Smaller,
+        Sizes.Small,
+        Sizes.Medium,
+        Sizes.Large,
+        Sizes.Larger,
+        Sizes.Largest
+    ];
+
+    private static string SizeDisplay(Sizes size) => size.ToString();
+}
