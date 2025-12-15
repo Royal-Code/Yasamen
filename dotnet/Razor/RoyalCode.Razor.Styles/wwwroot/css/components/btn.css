@@ -2,11 +2,11 @@
     @apply relative overflow-hidden border-1 transition-all duration-150 focus:outline-none;
 }
 
-.ya-btn-2xs {
+.ya-btn-2xs, .ya-field-2xs .ya-field-action, .ya-field-xs .ya-field-action, .ya-field-sm .ya-field-action, .ya-field-md .ya-field-action {
     @apply text-xs px-3 py-1 focus-within:ring-2 rounded-sm;
 }
 
-.ya-btn-xs {
+.ya-btn-xs, .ya-field-lg .ya-field-action, .ya-field-xl .ya-field-action, .ya-field-2xl .ya-field-action {
     @apply text-sm px-4 py-2 focus-within:ring-3 rounded-sm;
 }
 

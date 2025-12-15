@@ -65,3 +65,7 @@
 .ya-field-group-footer {
     @apply ml-auto;
 }
+
+    .ya-field-group-footer .ya-field-action {
+        @apply mt-2;
+    }

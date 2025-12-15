@@ -1,0 +1,23 @@
+﻿@using RoyalCode.Razor.Styles
+
+
+<Button @attributes="AdditionalAttributes"
+		Label="@Label"
+		Style="Style"
+		Icon="Icon"
+		IconPosition="IconPosition"
+		Outline="Outline"
+		Active="Active"
+		Disabled="Disabled"
+		AdditionalClasses="@Classes"
+		OnClick="OnClick">
+
+	@ChildContent
+
+</Button>
+
+
+@code {
+
+	private string Classes => "ya-field-action".AddClass(AdditionalClasses);
+}

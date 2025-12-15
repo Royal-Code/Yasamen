@@ -1,4 +1,4 @@
-/*! tailwindcss v4.1.17 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.1.18 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -7298,7 +7298,7 @@
     outline-style: none;
   }
 }
-.ya-btn-2xs {
+.ya-btn-2xs, .ya-field-2xs .ya-field-action, .ya-field-xs .ya-field-action, .ya-field-sm .ya-field-action, .ya-field-md .ya-field-action {
   border-radius: var(--radius-sm);
   padding-inline: var(--spacing-3);
   padding-block: var(--spacing-1);
@@ -7309,7 +7309,7 @@
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
 }
-.ya-btn-xs {
+.ya-btn-xs, .ya-field-lg .ya-field-action, .ya-field-xl .ya-field-action, .ya-field-2xl .ya-field-action {
   border-radius: var(--radius-sm);
   padding-inline: var(--spacing-4);
   padding-block: var(--spacing-2);
@@ -9316,83 +9316,6 @@
   --tw-font-weight: var(--font-weight-normal);
   font-weight: var(--font-weight-normal);
 }
-.ya-field-badge-primary {
-  border-style: var(--tw-border-style);
-  border-width: 1px;
-  border-color: var(--color-primary-200);
-  background-color: var(--color-primary-100);
-  color: var(--color-primary-800);
-}
-.ya-field-badge-secondary {
-  border-style: var(--tw-border-style);
-  border-width: 1px;
-  border-color: var(--color-secondary-200);
-  background-color: var(--color-secondary-100);
-  color: var(--color-secondary-800);
-}
-.ya-field-badge-tertiary {
-  border-style: var(--tw-border-style);
-  border-width: 1px;
-  border-color: var(--color-tertiary-200);
-  background-color: var(--color-tertiary-100);
-  color: var(--color-tertiary-800);
-}
-.ya-field-badge-success {
-  border-style: var(--tw-border-style);
-  border-width: 1px;
-  border-color: var(--color-success-200);
-  background-color: var(--color-success-100);
-  color: var(--color-success-800);
-}
-.ya-field-badge-warning {
-  border-style: var(--tw-border-style);
-  border-width: 1px;
-  border-color: var(--color-warning-200);
-  background-color: var(--color-warning-100);
-  color: var(--color-warning-800);
-}
-.ya-field-badge-alert {
-  border-style: var(--tw-border-style);
-  border-width: 1px;
-  border-color: var(--color-alert-200);
-  background-color: var(--color-alert-100);
-  color: var(--color-alert-800);
-}
-.ya-field-badge-danger {
-  border-style: var(--tw-border-style);
-  border-width: 1px;
-  border-color: var(--color-danger-200);
-  background-color: var(--color-danger-100);
-  color: var(--color-danger-800);
-}
-.ya-field-badge-info {
-  border-style: var(--tw-border-style);
-  border-width: 1px;
-  border-color: var(--color-info-200);
-  background-color: var(--color-info-100);
-  color: var(--color-info-800);
-}
-.ya-field-badge-highlight {
-  border-style: var(--tw-border-style);
-  border-width: 1px;
-  border-color: var(--color-highlight-200);
-  background-color: var(--color-highlight-100);
-  color: var(--color-highlight-800);
-}
-.ya-field-badge-light {
-  border-style: var(--tw-border-style);
-  border-width: 1px;
-  border-color: var(--color-light-200);
-  background-color: var(--color-light-100);
-  color: var(--color-light-800);
-}
-.ya-field-badge-dark {
-  border-style: var(--tw-border-style);
-  border-width: 1px;
-  border-color: var(--color-dark-200);
-  background-color: var(--color-dark-100);
-  color: var(--color-dark-800);
-}
 .ya-field-2xs .ya-field-badge {
   padding-inline: var(--spacing-3);
   font-size: var(--text-2xs);
@@ -9569,6 +9492,9 @@
 }
 .ya-field-group-footer {
   margin-left: auto;
+}
+.ya-field-group-footer .ya-field-action {
+  margin-top: var(--spacing-2);
 }
 .ya-field-text {
   border-radius: var(--radius-md);
