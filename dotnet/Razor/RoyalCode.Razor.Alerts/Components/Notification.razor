@@ -1,5 +1,83 @@
-﻿<h3>Notification</h3>
+﻿@using RoyalCode.Razor.Icons.Factory
+
+<div @attributes="AdditionalAttributes" class="@Classes">
+
+</div>
 
 @code {
 
+	private string Classes => "ya-notification"
+		.AddClass(GetStyle())
+		.AddClass(AdditionalClasses);
+
+	[Parameter]
+	public RenderFragment? ChildContent { get; set; } = EmptyFragment.Delegate;
+
+	[Parameter]
+	public string? Text { get; set; }
+
+	[Parameter]
+	public Themes Style { get; set; }
+
+	/// <summary>
+	/// Show Icon.
+	/// </summary>
+	[Parameter]
+	public bool Icon { get; set; }
+
+	/// <summary>
+	/// A timer after which the notification will close automatically.
+	/// </summary>
+	[Parameter]
+	public TimeSpan? Timer { get; set; }
+
+	[Parameter]
+	public bool Closeable { get; set; }
+
+	[Parameter]
+	public EventCallback OnClose { get; set; }
+
+	[Parameter]
+	public string? AdditionalClasses { get; set; }
+
+	[Parameter(CaptureUnmatchedValues = true)]
+	public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+	private string GetStyle()
+	{
+		return Style switch
+		{
+			Themes.Primary => "ya-notification-primary",
+			Themes.Secondary => "ya-notification-secondary",
+			Themes.Tertiary => "ya-notification-tertiary",
+			Themes.Info => "ya-notification-info",
+			Themes.Highlight => "ya-notification-highlight",
+			Themes.Success => "ya-notification-success",
+			Themes.Warning => "ya-notification-warning",
+			Themes.Alert => "ya-notification-alert",
+			Themes.Danger => "ya-notification-danger",
+			Themes.Light => "ya-notification-light",
+			Themes.Dark => "ya-notification-dark",
+			_ => "ya-notification-highlight",
+		};
+	}
+
+	private IconFragment GetIcon()
+	{
+		return Style switch
+		{
+			Themes.Primary => WellKnownIcons.Info,
+			Themes.Secondary => WellKnownIcons.Info,
+			Themes.Tertiary => WellKnownIcons.Info,
+			Themes.Info => WellKnownIcons.Info,
+			Themes.Highlight => WellKnownIcons.Highlight,
+			Themes.Success => WellKnownIcons.Success,
+			Themes.Warning => WellKnownIcons.Warning,
+			Themes.Alert => WellKnownIcons.Alert,
+			Themes.Danger => WellKnownIcons.Error,
+			Themes.Light => WellKnownIcons.Info,
+			Themes.Dark => WellKnownIcons.Info,
+			_ => WellKnownIcons.Info,
+		};
+	}
 }
