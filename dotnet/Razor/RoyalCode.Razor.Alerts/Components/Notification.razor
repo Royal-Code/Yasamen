@@ -1,7 +1,27 @@
 ﻿@using RoyalCode.Razor.Icons.Factory
 
 <div @attributes="AdditionalAttributes" class="@Classes">
-
+	<div class="ya-notification-box">
+		@if (Icon)
+		{
+			<div class="ya-notification-icon">
+				@GetIcon()()
+			</div>
+		}
+		else
+		{
+			<div class="ya-notification-bar"></div>
+		}
+		<div class="ya-notification-content">
+			<p>hello</p>
+			<p>Pa</p>
+			<p>Po</p>
+		</div>
+	</div>
+	@if (Timer is not null)
+	{
+		<div class=".ya-notification-timer"></div>
+	}
 </div>
 
 @code {

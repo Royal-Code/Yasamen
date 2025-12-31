@@ -5,6 +5,8 @@ namespace RoyalCode.Razor.Icons.Bootstrap;
 
 internal class BootstrapIconContentFactory : IIconContentFactory
 {
+    public Type EnumType { get; } = typeof(BsIconNames);
+
     public IconFragment GetFragment(Enum iconKind)
     {
         var baseCssClass = $"bi-{iconKind.GetDescription()}";

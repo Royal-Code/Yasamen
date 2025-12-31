@@ -1,4 +1,156 @@
 ﻿
 .ya-notification {
-    @apply rounded-md bg-white;
+    @apply overflow-hidden rounded-md border-1;
+}
+.ya-notification-primary {
+    @apply border-primary-400;
+}
+.ya-notification-secondary {
+    @apply border-secondary-400;
+}
+.ya-notification-tertiary {
+    @apply border-tertiary-400;
+}
+.ya-notification-info {
+    @apply border-info-400;
+}
+.ya-notification-highlight {
+    @apply border-highlight-400;
+}
+.ya-notification-success {
+    @apply border-success-400;
+}
+.ya-notification-warning {
+    @apply border-warning-400;
+}
+.ya-notification-alert {
+    @apply border-alert-400;
+}
+.ya-notification-danger {
+    @apply border-danger-400;
+}
+.ya-notification-light {
+    @apply border-light-400;
+}
+.ya-notification-dark {
+    @apply border-dark-400;
+}
+
+.ya-notification-box {
+    @apply flex;
+}
+
+.ya-notification-icon {
+    @apply flex w-8.5 items-center justify-center self-auto;
+}
+.ya-notification-primary .ya-notification-icon {
+    @apply bg-primary-400 text-white;
+}
+.ya-notification-secondary .ya-notification-icon {
+    @apply bg-secondary-400 text-white;
+}
+.ya-notification-tertiary .ya-notification-icon {
+    @apply bg-tertiary-400 text-white;
+}
+.ya-notification-info .ya-notification-icon {
+    @apply bg-info-400 text-white;
+}
+.ya-notification-highlight .ya-notification-icon {
+    @apply bg-highlight-400 text-white;
+}
+.ya-notification-success .ya-notification-icon {
+    @apply bg-success-400 text-white;
+}
+.ya-notification-warning .ya-notification-icon {
+    @apply bg-warning-400 text-white;
+}
+.ya-notification-alert .ya-notification-icon {
+    @apply bg-alert-400 text-white;
+}
+.ya-notification-danger .ya-notification-icon {
+    @apply bg-danger-400 text-white;
+}
+.ya-notification-light .ya-notification-icon {
+    @apply bg-light-400 text-white;
+}
+.ya-notification-dark .ya-notification-icon {
+    @apply bg-dark-400 text-white;
+}
+
+.ya-notification-bar {
+    @apply flex w-3;
+}
+.ya-notification-primary .ya-notification-bar {
+    @apply bg-primary-400;
+}
+.ya-notification-secondary .ya-notification-bar {
+    @apply bg-secondary-400;
+}
+.ya-notification-tertiary .ya-notification-bar {
+    @apply bg-tertiary-400;
+}
+.ya-notification-info .ya-notification-bar {
+    @apply bg-info-400;
+}
+.ya-notification-highlight .ya-notification-bar {
+    @apply bg-highlight-400;
+}
+.ya-notification-success .ya-notification-bar {
+    @apply bg-success-400;
+}
+.ya-notification-warning .ya-notification-bar {
+    @apply bg-warning-400;
+}
+.ya-notification-alert .ya-notification-bar {
+    @apply bg-alert-400;
+}
+.ya-notification-danger .ya-notification-bar {
+    @apply bg-danger-400;
+}
+.ya-notification-light .ya-notification-bar {
+    @apply bg-light-400;
+}
+.ya-notification-dark .ya-notification-bar {
+    @apply bg-dark-400;
+}
+
+.ya-notification-content {
+    @apply min-w-15 grow p-3;
+}
+
+.ya-notification-timer {
+    @apply h-3 w-full;
+}
+.ya-notification-primary .ya-notification-timer {
+    @apply bg-primary-400;
+}
+.ya-notification-secondary .ya-notification-timer {
+    @apply bg-secondary-400;
+}
+.ya-notification-tertiary .ya-notification-timer {
+    @apply bg-tertiary-400;
+}
+.ya-notification-info .ya-notification-timer {
+    @apply bg-info-400;
+}
+.ya-notification-highlight .ya-notification-timer {
+    @apply bg-highlight-400;
+}
+.ya-notification-success .ya-notification-timer {
+    @apply bg-success-400;
+}
+.ya-notification-warning .ya-notification-timer {
+    @apply bg-warning-400;
+}
+.ya-notification-alert .ya-notification-timer {
+    @apply bg-alert-400;
+}
+.ya-notification-danger .ya-notification-timer {
+    @apply bg-danger-400;
+}
+.ya-notification-light .ya-notification-timer {
+    @apply bg-light-400;
+}
+.ya-notification-dark .ya-notification-timer {
+    @apply bg-dark-400;
 }
