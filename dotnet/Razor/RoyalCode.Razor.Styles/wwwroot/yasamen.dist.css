@@ -9644,6 +9644,99 @@
   right: var(--spacing-4);
   bottom: var(--spacing-4);
 }
+.ya-notification-wrapper {
+  transition-property: all;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+  transition-duration: var(--tw-duration, var(--default-transition-duration));
+  transition-duration: 150ms;
+}
+.ya-notification-closed {
+  pointer-events: none;
+  opacity: 0%;
+}
+.ya-notification-open {
+  opacity: 100%;
+}
+.ya-notification-group-top .ya-notification-opening-start, .ya-notification-group-top-start .ya-notification-opening-start, .ya-notification-group-top-end .ya-notification-opening-start {
+  opacity: 0%;
+  transform: translateY(-0.5rem);
+}
+.ya-notification-group-top .ya-notification-opening, .ya-notification-group-top-start .ya-notification-opening, .ya-notification-group-top-end .ya-notification-opening {
+  opacity: 100%;
+  transform: translateY(0);
+}
+.ya-notification-group-top .ya-notification-closing-start, .ya-notification-group-top-start .ya-notification-closing-start, .ya-notification-group-top-end .ya-notification-closing-start {
+  opacity: 100%;
+  transform: translateY(0);
+}
+.ya-notification-group-top .ya-notification-closing, .ya-notification-group-top-start .ya-notification-closing, .ya-notification-group-top-end .ya-notification-closing {
+  opacity: 0%;
+  transform: translateY(-0.5rem);
+}
+.ya-notification-group-bottom .ya-notification-opening-start, .ya-notification-group-bottom-start .ya-notification-opening-start, .ya-notification-group-bottom-end .ya-notification-opening-start {
+  opacity: 0%;
+  transform: translateY(0.5rem);
+}
+.ya-notification-group-bottom .ya-notification-opening, .ya-notification-group-bottom-start .ya-notification-opening, .ya-notification-group-bottom-end .ya-notification-opening {
+  opacity: 100%;
+  transform: translateY(0);
+}
+.ya-notification-group-bottom .ya-notification-closing-start, .ya-notification-group-bottom-start .ya-notification-closing-start, .ya-notification-group-bottom-end .ya-notification-closing-start {
+  opacity: 100%;
+  transform: translateY(0);
+}
+.ya-notification-group-bottom .ya-notification-closing, .ya-notification-group-bottom-start .ya-notification-closing, .ya-notification-group-bottom-end .ya-notification-closing {
+  opacity: 0%;
+  transform: translateY(0.5rem);
+}
+.ya-notification-group-left .ya-notification-opening-start, .ya-notification-group-left-start .ya-notification-opening-start, .ya-notification-group-left-end .ya-notification-opening-start {
+  opacity: 0%;
+  transform: translateX(-0.5rem);
+}
+.ya-notification-group-left .ya-notification-opening, .ya-notification-group-left-start .ya-notification-opening, .ya-notification-group-left-end .ya-notification-opening {
+  opacity: 100%;
+  transform: translateX(0);
+}
+.ya-notification-group-left .ya-notification-closing-start, .ya-notification-group-left-start .ya-notification-closing-start, .ya-notification-group-left-end .ya-notification-closing-start {
+  opacity: 100%;
+  transform: translateX(0);
+}
+.ya-notification-group-left .ya-notification-closing, .ya-notification-group-left-start .ya-notification-closing, .ya-notification-group-left-end .ya-notification-closing {
+  opacity: 0%;
+  transform: translateX(-0.5rem);
+}
+.ya-notification-group-right .ya-notification-opening-start, .ya-notification-group-right-start .ya-notification-opening-start, .ya-notification-group-right-end .ya-notification-opening-start {
+  opacity: 0%;
+  transform: translateX(0.5rem);
+}
+.ya-notification-group-right .ya-notification-opening, .ya-notification-group-right-start .ya-notification-opening, .ya-notification-group-right-end .ya-notification-opening {
+  opacity: 100%;
+  transform: translateX(0);
+}
+.ya-notification-group-right .ya-notification-closing-start, .ya-notification-group-right-start .ya-notification-closing-start, .ya-notification-group-right-end .ya-notification-closing-start {
+  opacity: 100%;
+  transform: translateX(0);
+}
+.ya-notification-group-right .ya-notification-closing, .ya-notification-group-right-start .ya-notification-closing, .ya-notification-group-right-end .ya-notification-closing {
+  opacity: 0%;
+  transform: translateX(0.5rem);
+}
+.ya-notification-group-center .ya-notification-opening-start {
+  opacity: 0%;
+  transform: scale(0.98);
+}
+.ya-notification-group-center .ya-notification-opening {
+  opacity: 100%;
+  transform: scale(1);
+}
+.ya-notification-group-center .ya-notification-closing-start {
+  opacity: 100%;
+  transform: scale(1);
+}
+.ya-notification-group-center .ya-notification-closing {
+  opacity: 0%;
+  transform: scale(0.98);
+}
 .ya-offcanvas {
   max-width: calc(100% - var(--ya-fit-left) - var(--ya-fit-right));
   visibility: hidden;

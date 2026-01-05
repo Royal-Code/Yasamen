@@ -20,6 +20,11 @@ public enum Placements
     Bottom,
 
     /// <summary>
+    /// Place the element centered within the available space.
+    /// </summary>
+    Center,
+
+    /// <summary>
     /// Place the element at the left position.
     /// </summary>
     Left,
@@ -28,11 +33,6 @@ public enum Placements
     /// Place the element at the right position.
     /// </summary>
     Right,
-
-    /// <summary>
-    /// Place the element centered within the available space.
-    /// </summary>
-    Center,
 
     /// <summary>
     /// Place the element at the top position aligned to the start (e.g., left in LTR).

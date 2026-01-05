@@ -105,6 +105,50 @@
         }
     </NotificationGroup>
 
+    <h2 class="mt-8">Notificações em Grupos com Animation</h2>
+
+    <div class="flex gap-6 items-center mb-6">
+        <label class="flex items-center gap-2">
+            <span>Placement</span>
+            <select class="ya-input" @bind="selectedPlacement2">
+                @foreach (var p in _placements)
+                {
+                    <option value="@p">@p</option>
+                }
+            </select>
+        </label>
+        <label class="flex items-center gap-2">
+            <input type="checkbox" @bind="useContent2" />
+            <span>Usar NotificationContent</span>
+        </label>
+        <button class="ya-btn ya-btn-primary" type="button" @onclick="AddToGroup2">Adicionar notificação</button>
+    </div>
+
+    <NotificationGroup Placement="@selectedPlacement2">
+        @foreach (var n in _groupItems2)
+        {
+            <NotificationAnimation @ref="n.AnimRef">
+                @if (useContent2)
+                {
+                    <Notification Icon="true"
+                                  Closeable="true"
+                                  Timer="@TimeSpan.FromSeconds(8)"
+                                  OnClose="@(async () => { if (n.AnimRef is not null) await n.AnimRef.CloseAsync(); RemoveFromGroup2(n.Id); })">
+                        <NotificationContent Text="@n.Text" Details="@n.Details" />
+                    </Notification>
+                }
+                else
+                {
+                    <Notification Text="@n.Text"
+                                  Icon="true"
+                                  Closeable="true"
+                                  Timer="@TimeSpan.FromSeconds(8)"
+                                  OnClose="@(async () => { if (n.AnimRef is not null) await n.AnimRef.CloseAsync(); RemoveFromGroup2(n.Id); })" />
+                }
+            </NotificationAnimation>
+        }
+    </NotificationGroup>
+
 </Box>
 
 @code {
@@ -132,12 +176,36 @@
     private Placements selectedPlacement = Placements.TopEnd;
     private bool useContent = true;
     private readonly List<GroupItem> _groupItems = new();
+    private Placements selectedPlacement2 = Placements.TopEnd;
+    private bool useContent2 = true;
+    private readonly List<GroupItem> _groupItems2 = new();
 
     protected override void OnInitialized()
     {
         foreach (var theme in _themes)
         {
             _items.Add(new Item { Theme = theme });
+        }
+    }
+
+    private void AddToGroup2()
+    {
+        _groupItems2.Add(new GroupItem
+        {
+            Id = Guid.NewGuid(),
+            Text = "Notificação de grupo (anim)",
+            Details = "Detalhes da notificação do grupo (anim)",
+            PendingOpen = true,
+        });
+    }
+
+    private void RemoveFromGroup2(Guid id)
+    {
+        var idx = _groupItems2.FindIndex(g => g.Id == id);
+        if (idx >= 0)
+        {
+            _groupItems2.RemoveAt(idx);
+            StateHasChanged();
         }
     }
 
@@ -152,7 +220,7 @@
         }
     }
 
-    private class Item
+    public class Item
     {
         public Themes Theme { get; set; }
         public Notification? Ref { get; set; }
@@ -180,10 +248,25 @@
         }
     }
 
-    private class GroupItem
+    public class GroupItem
     {
         public Guid Id { get; set; }
         public string Text { get; set; } = string.Empty;
         public string Details { get; set; } = string.Empty;
+        public NotificationAnimation? AnimRef { get; set; }
+        public bool PendingOpen { get; set; }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        // Open animations for newly added items once their refs are available
+        foreach (var item in _groupItems2)
+        {
+            if (item.PendingOpen && item.AnimRef is not null)
+            {
+                await item.AnimRef.OpenAsync();
+                item.PendingOpen = false;
+            }
+        }
     }
 }

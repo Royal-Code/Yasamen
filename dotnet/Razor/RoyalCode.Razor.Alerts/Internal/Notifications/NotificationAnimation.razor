@@ -1,0 +1,77 @@
+﻿@using Microsoft.AspNetCore.Components.Sections
+
+<div class="@Classes" @ontransitionEnded="transitionEndedHandler">
+	@if (state.Phase != TransitionPhases.Closed)
+	{
+		@ChildContent
+	}
+</div>
+
+@code {
+	private readonly TransitionState state;
+    private readonly Func<TransitionEndedEventArgs, Task> transitionEndedHandler;
+    private TransitionPhases lastPhase = TransitionPhases.Closed;
+
+	private string Classes => "ya-notification-wrapper"
+		.AddClass(GetStateCss());
+
+	[Parameter]
+	public RenderFragment ChildContent { get; set; } = default!;
+
+
+	public NotificationAnimation()
+	{
+        state = new TransitionState(StateHasChangedAsync);
+        transitionEndedHandler = TransitionEndedHandler;
+	}
+
+	public Task StateHasChangedAsync()
+	{
+		return InvokeAsync(StateHasChanged);
+	}
+
+	public Task OpenAsync()
+	{
+		return state.OpenAsync();
+	}
+
+	public Task CloseAsync()
+	{
+		return state.CloseAsync();
+	}
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (lastPhase != state.Phase)
+        {
+            lastPhase = state.Phase;
+        }
+
+        if (state.Phase is TransitionPhases.OpeningStart or TransitionPhases.ClosingStart)
+        {
+            await state.PromoteAsync();
+        }
+    }
+
+    private async Task TransitionEndedHandler(TransitionEndedEventArgs args)
+    {
+        if (args.PropertyName != "transform")
+            return;
+
+        await state.CompleteAsync();
+    }
+
+	private string GetStateCss()
+	{
+		return state.Phase switch
+		{
+			TransitionPhases.Closed => "ya-notification-closed",
+			TransitionPhases.OpeningStart => "ya-notification-opening-start",
+			TransitionPhases.Opening => "ya-notification-opening",
+			TransitionPhases.Open => "ya-notification-open",
+			TransitionPhases.ClosingStart => "ya-notification-closing-start",
+			TransitionPhases.Closing => "ya-notification-closing",
+			_ => string.Empty,
+		};
+	}
+}
