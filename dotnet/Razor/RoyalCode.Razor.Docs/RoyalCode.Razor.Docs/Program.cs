@@ -14,6 +14,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddYasamenCommons();
 builder.Services.AddYasamenModal();
 builder.Services.AddYasamenOffCanvas();
+builder.Services.AddYasamenNotification();
 builder.Services.AddYasamenMenu();
 
 builder.Services.AddMenuItems();

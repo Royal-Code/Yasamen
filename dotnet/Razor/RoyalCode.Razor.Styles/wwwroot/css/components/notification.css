@@ -1,5 +1,5 @@
 ﻿.ya-notification {
-    @apply overflow-hidden rounded-md border-1;
+    @apply overflow-hidden rounded-md border-1 bg-white;
 }
 .ya-notification-primary {
     @apply border-primary-400;
@@ -192,8 +192,8 @@
 }
 
 /* Stack notifications vertically with gap */
-.ya-notification-group > .ya-notification {
-    @apply mb-2 shadow-lg;
+.ya-notification-group > * {
+    @apply mb-4 shadow-lg;
 }
 
 /* Top placements */

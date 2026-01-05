@@ -9373,6 +9373,7 @@
   border-radius: var(--radius-md);
   border-style: var(--tw-border-style);
   border-width: 1px;
+  background-color: var(--color-white);
 }
 .ya-notification-primary {
   border-color: var(--color-primary-400);
@@ -9576,8 +9577,8 @@
   z-index: 1090;
   max-width: 100%;
 }
-.ya-notification-group > .ya-notification {
-  margin-bottom: var(--spacing-2);
+.ya-notification-group > * {
+  margin-bottom: var(--spacing-4);
   --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
   box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
 }

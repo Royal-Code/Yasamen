@@ -2,6 +2,7 @@
 @using RoyalCode.Razor.Internal.Notifications
 
 @layout AppMainLayout
+@inject Notify Notify
 
 <Box AdditionalClasses="p-8 bg-white border-none">
 
@@ -43,7 +44,7 @@
                        @bind-value:after="StateHasChanged" />
 
                 <Notification @ref="item.Ref"
-                              Style="@item.Theme"
+                              Theme="@item.Theme"
                               Text="Notificação de exemplo"
                               Icon="@showIcon"
                               Closeable="@closeable"
@@ -104,6 +105,30 @@
             }
         }
     </NotificationGroup>
+
+    <h2 class="mt-8">Notificações via Serviço Notify</h2>
+
+    <div class="flex gap-6 items-center mb-6">
+        <label class="flex items-center gap-2">
+            <span>Placement</span>
+            <select class="ya-input" @bind="servicePlacement">
+                @foreach (var p in _placements)
+                {
+                    <option value="@p">@p</option>
+                }
+            </select>
+        </label>
+        <label class="flex items-center gap-2">
+            <span>Theme</span>
+            <select class="ya-input" @bind="serviceTheme">
+                @foreach (var t in _themes)
+                {
+                    <option value="@t">@t</option>
+                }
+            </select>
+        </label>
+        <button class="ya-btn ya-btn-primary" type="button" @onclick="TriggerServiceNotification">Disparar notificação</button>
+    </div>
 
     <h2 class="mt-8">Notificações em Grupos com Animation</h2>
 
@@ -179,6 +204,8 @@
     private Placements selectedPlacement2 = Placements.TopEnd;
     private bool useContent2 = true;
     private readonly List<GroupItem> _groupItems2 = new();
+    private Placements servicePlacement = Placements.TopEnd;
+    private Themes serviceTheme = Themes.Info;
 
     protected override void OnInitialized()
     {
@@ -268,5 +295,12 @@
                 item.PendingOpen = false;
             }
         }
+    }
+
+    private Task TriggerServiceNotification()
+    {
+        var text = $"Notificação {serviceTheme}";
+        var details = $"Exemplo via serviço em {servicePlacement}";
+        return Notify.ShowAsync(serviceTheme, text, details, item => item.Placement = servicePlacement);
     }
 }

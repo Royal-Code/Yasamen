@@ -16,6 +16,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\RoyalCode.Razor.Alerts\RoyalCode.Razor.Alerts.csproj" />
 		<ProjectReference Include="..\RoyalCode.Razor.Breadcrumbs\RoyalCode.Razor.Breadcrumbs.csproj" />
 		<ProjectReference Include="..\RoyalCode.Razor.Layouts\RoyalCode.Razor.Layouts.csproj" />
 		<ProjectReference Include="..\RoyalCode.Razor.Modals\RoyalCode.Razor.Modals.csproj" />

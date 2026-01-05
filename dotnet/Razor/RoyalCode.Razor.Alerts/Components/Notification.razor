@@ -66,7 +66,7 @@
 	public string? Text { get; set; }
 
 	[Parameter]
-	public Themes Style { get; set; }
+	public Themes Theme { get; set; }
 
 	/// <summary>
 	/// Show Icon.
@@ -168,7 +168,7 @@
 
 	private string GetStyle()
 	{
-		return Style switch
+		return Theme switch
 		{
 			Themes.Primary => "ya-notification-primary",
 			Themes.Secondary => "ya-notification-secondary",
@@ -187,7 +187,7 @@
 
 	private IconFragment GetIcon()
 	{
-		return Style switch
+		return Theme switch
 		{
 			Themes.Primary => WellKnownIcons.Info,
 			Themes.Secondary => WellKnownIcons.Info,

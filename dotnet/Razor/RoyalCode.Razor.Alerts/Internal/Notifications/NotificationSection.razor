@@ -1,0 +1,77 @@
+﻿@using RoyalCode.Razor.Components
+
+@inject NotificationService NotificationService
+
+<NotificationAnimation @ref="animationRef">
+	<Notification Theme="@Item.Theme"
+				  Icon="@Item.Icon"
+				  Text="@Text"
+				  Closeable="@Item.Closeable"
+				  CloseOnClick="@Item.CloseOnClick"
+				  OnOpen="@Item.OnOpen"
+				  OnClose="@onClose"
+				  Timer="@Item.Timer"
+				  ChildContent="Details()" />
+</NotificationAnimation>
+
+@code {
+
+	private RenderFragment detailsFragment = EmptyFragment.Delegate;
+	private NotificationAnimation? animationRef;
+	private EventCallback onClose;
+
+	public NotificationSection()
+	{
+		onClose = EventCallback.Factory.Create(this, OnClose);
+	}
+
+	[Parameter, EditorRequired]
+	public NotificationItem Item { get; set; }
+
+	private string? Text => Item.Details.IsMissing() ? Item.Text : null;
+
+	private RenderFragment Details()
+	{
+		if (Item.Details.IsMissing())
+		{
+			return EmptyFragment.Delegate;
+		}
+
+		if (detailsFragment.IsNotEmptyFragment())
+		{
+			return detailsFragment;
+		}
+
+		detailsFragment = builder =>
+		{
+			builder.OpenComponent<NotificationContent>(0);
+			builder.AddAttribute(1, "Text", Item.Text);
+			builder.AddAttribute(2, "Details", Item.Details);
+			builder.CloseComponent();
+		};
+
+		return detailsFragment;
+	}
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		if (!firstRender || animationRef is null)
+			return;
+
+		await animationRef.OpenAsync();
+	}
+
+	private async Task OnClose()
+	{
+		if (animationRef is not null)
+		{
+			await animationRef.CloseAsync();
+
+		}
+
+		if (Item.OnClose.HasDelegate)
+			await Item.OnClose.InvokeAsync();
+
+		await NotificationService.Remove(Item);
+	}
+}

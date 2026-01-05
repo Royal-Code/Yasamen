@@ -1,0 +1,31 @@
+﻿@inject NotificationService NotificationService
+
+@foreach (var kvp in NotificationService.Notifications.Where(kvp => kvp.Value.Count is not 0))
+{
+	<NotificationGroup Placement="@kvp.Key" @key="kvp.Key">
+		@foreach (var notification in kvp.Value)
+		{
+			<NotificationSection Item="notification" @key="notification" />
+		}
+	</NotificationGroup>
+}
+
+@code {
+
+	private readonly Action stateHasChanged;
+
+	public NotificationOutlet()
+	{
+		stateHasChanged = StateHasChanged;
+	}
+
+	public Task StateHasChangedAsync()
+	{
+		return InvokeAsync(stateHasChanged);
+	}
+
+	protected override void OnInitialized()
+	{
+		NotificationService.Outlet = this;
+	}
+}
