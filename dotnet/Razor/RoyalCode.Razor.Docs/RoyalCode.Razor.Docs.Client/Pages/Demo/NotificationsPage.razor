@@ -1,0 +1,106 @@
+﻿@page "/notifications"
+
+@layout AppMainLayout
+
+<Box AdditionalClasses="p-8 bg-white border-none">
+
+    <h1>Notifications</h1>
+
+    <div class="flex gap-6 items-center mb-6">
+        <label class="flex items-center gap-2">
+            <input type="checkbox" @bind="showIcon" @bind:after="StateHasChanged" />
+            <span>Ícone</span>
+        </label>
+        <label class="flex items-center gap-2">
+            <input type="checkbox" @bind="closeable" @bind:after="StateHasChanged" />
+            <span>Closeable</span>
+        </label>
+        <label class="flex items-center gap-2">
+            <input type="checkbox" @bind="closeOnClick" @bind:after="StateHasChanged" />
+            <span>CloseOnClick</span>
+        </label>
+        <button class="ya-btn ya-btn-primary" type="button" @onclick="ReopenAll">Reabrir todos</button>
+    </div>
+
+    <h2>Notificações por estilo</h2>
+
+    <div class="w-full">
+        @for (var i = 0; i < _items.Count; i++)
+        {
+            var item = _items[i];
+            <div class="flex items-center gap-4 mb-4">
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" @bind="item.ShowTimer" @bind:after="(() => StateHasChanged())" />
+                    <span>Timer</span>
+                </label>
+                <input type="number"
+                       min="0"
+                       step="1"
+                       style="width: 6rem;"
+                       @bind-value="item.TimerSeconds"
+                       @bind-value:event="oninput"
+                       @bind-value:after="StateHasChanged" />
+
+                <Notification @ref="item.Ref"
+                              Style="@item.Theme"
+                              Text="Notificação de exemplo"
+                              Icon="@showIcon"
+                              Closeable="@closeable"
+                              CloseOnClick="@closeOnClick"
+                              Timer="@(item.ShowTimer && item.TimerSeconds > 0 ? TimeSpan.FromSeconds(item.TimerSeconds) : null)"
+                              AdditionalClasses="flex-1" />
+            </div>
+        }
+    </div>
+
+</Box>
+
+@code {
+    private bool showIcon = true;
+    private bool closeable = false;
+    private bool closeOnClick = true;
+
+    private readonly Themes[] _themes =
+    [
+        Themes.Primary,
+        Themes.Secondary,
+        Themes.Tertiary,
+        Themes.Info,
+        Themes.Highlight,
+        Themes.Success,
+        Themes.Warning,
+        Themes.Alert,
+        Themes.Danger,
+        Themes.Light,
+        Themes.Dark
+    ];
+
+    private readonly List<Item> _items = new();
+
+    protected override void OnInitialized()
+    {
+        foreach (var theme in _themes)
+        {
+            _items.Add(new Item { Theme = theme });
+        }
+    }
+
+    private async Task ReopenAll()
+    {
+        foreach (var item in _items)
+        {
+            if (item.Ref is not null)
+            {
+                await item.Ref.OpenAsync();
+            }
+        }
+    }
+
+    private class Item
+    {
+        public Themes Theme { get; set; }
+        public Notification? Ref { get; set; }
+        public bool ShowTimer { get; set; }
+        public int TimerSeconds { get; set; } = 0;
+    }
+}

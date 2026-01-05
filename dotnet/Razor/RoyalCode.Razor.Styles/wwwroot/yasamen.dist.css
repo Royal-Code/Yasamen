@@ -211,6 +211,7 @@
     --spacing-6\.5: 1.25rem;
     --spacing-7: 1.5rem;
     --spacing-8: 2rem;
+    --spacing-8\.5: 2.5rem;
     --spacing-9: 3rem;
     --spacing-10: 4rem;
     --spacing-11: 5rem;
@@ -1808,6 +1809,9 @@
   .min-w-screen {
     min-width: 100vw;
   }
+  .flex-1 {
+    flex: 1;
+  }
   .flex-initial {
     flex: 0 auto;
   }
@@ -2435,6 +2439,9 @@
   }
   .gap-3 {
     gap: var(--spacing-3);
+  }
+  .gap-4 {
+    gap: var(--spacing-4);
   }
   .gap-5 {
     gap: var(--spacing-5);
@@ -9362,8 +9369,194 @@
   opacity: 0%;
 }
 .ya-notification {
+  overflow: hidden;
   border-radius: var(--radius-md);
-  background-color: var(--color-white);
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+}
+.ya-notification-primary {
+  border-color: var(--color-primary-400);
+}
+.ya-notification-secondary {
+  border-color: var(--color-secondary-400);
+}
+.ya-notification-tertiary {
+  border-color: var(--color-tertiary-400);
+}
+.ya-notification-info {
+  border-color: var(--color-info-400);
+}
+.ya-notification-highlight {
+  border-color: var(--color-highlight-400);
+}
+.ya-notification-success {
+  border-color: var(--color-success-400);
+}
+.ya-notification-warning {
+  border-color: var(--color-warning-400);
+}
+.ya-notification-alert {
+  border-color: var(--color-alert-400);
+}
+.ya-notification-danger {
+  border-color: var(--color-danger-400);
+}
+.ya-notification-light {
+  border-color: var(--color-light-400);
+}
+.ya-notification-dark {
+  border-color: var(--color-dark-400);
+}
+.ya-notification-box {
+  display: flex;
+}
+.ya-notification-icon {
+  display: flex;
+  width: var(--spacing-8\.5);
+  align-items: center;
+  justify-content: center;
+  align-self: auto;
+}
+.ya-notification-primary .ya-notification-icon {
+  background-color: var(--color-primary-400);
+  color: var(--color-white);
+}
+.ya-notification-secondary .ya-notification-icon {
+  background-color: var(--color-secondary-400);
+  color: var(--color-white);
+}
+.ya-notification-tertiary .ya-notification-icon {
+  background-color: var(--color-tertiary-400);
+  color: var(--color-white);
+}
+.ya-notification-info .ya-notification-icon {
+  background-color: var(--color-info-400);
+  color: var(--color-white);
+}
+.ya-notification-highlight .ya-notification-icon {
+  background-color: var(--color-highlight-400);
+  color: var(--color-white);
+}
+.ya-notification-success .ya-notification-icon {
+  background-color: var(--color-success-400);
+  color: var(--color-white);
+}
+.ya-notification-warning .ya-notification-icon {
+  background-color: var(--color-warning-400);
+  color: var(--color-white);
+}
+.ya-notification-alert .ya-notification-icon {
+  background-color: var(--color-alert-400);
+  color: var(--color-white);
+}
+.ya-notification-danger .ya-notification-icon {
+  background-color: var(--color-danger-400);
+  color: var(--color-white);
+}
+.ya-notification-light .ya-notification-icon {
+  background-color: var(--color-light-400);
+  color: var(--color-white);
+}
+.ya-notification-dark .ya-notification-icon {
+  background-color: var(--color-dark-400);
+  color: var(--color-white);
+}
+.ya-notification-bar {
+  display: flex;
+  width: var(--spacing-3);
+}
+.ya-notification-primary .ya-notification-bar {
+  background-color: var(--color-primary-400);
+}
+.ya-notification-secondary .ya-notification-bar {
+  background-color: var(--color-secondary-400);
+}
+.ya-notification-tertiary .ya-notification-bar {
+  background-color: var(--color-tertiary-400);
+}
+.ya-notification-info .ya-notification-bar {
+  background-color: var(--color-info-400);
+}
+.ya-notification-highlight .ya-notification-bar {
+  background-color: var(--color-highlight-400);
+}
+.ya-notification-success .ya-notification-bar {
+  background-color: var(--color-success-400);
+}
+.ya-notification-warning .ya-notification-bar {
+  background-color: var(--color-warning-400);
+}
+.ya-notification-alert .ya-notification-bar {
+  background-color: var(--color-alert-400);
+}
+.ya-notification-danger .ya-notification-bar {
+  background-color: var(--color-danger-400);
+}
+.ya-notification-light .ya-notification-bar {
+  background-color: var(--color-light-400);
+}
+.ya-notification-dark .ya-notification-bar {
+  background-color: var(--color-dark-400);
+}
+.ya-notification-content {
+  min-width: var(--spacing-15);
+  flex-grow: 1;
+  padding: var(--spacing-3);
+}
+.ya-notification-timer {
+  height: var(--spacing-3);
+  width: 100%;
+  transform-origin: left;
+  animation: notification-progress linear forwards;
+}
+.ya-notification-primary .ya-notification-timer {
+  background-color: var(--color-primary-400);
+}
+.ya-notification-secondary .ya-notification-timer {
+  background-color: var(--color-secondary-400);
+}
+.ya-notification-tertiary .ya-notification-timer {
+  background-color: var(--color-tertiary-400);
+}
+.ya-notification-info .ya-notification-timer {
+  background-color: var(--color-info-400);
+}
+.ya-notification-highlight .ya-notification-timer {
+  background-color: var(--color-highlight-400);
+}
+.ya-notification-success .ya-notification-timer {
+  background-color: var(--color-success-400);
+}
+.ya-notification-warning .ya-notification-timer {
+  background-color: var(--color-warning-400);
+}
+.ya-notification-alert .ya-notification-timer {
+  background-color: var(--color-alert-400);
+}
+.ya-notification-danger .ya-notification-timer {
+  background-color: var(--color-danger-400);
+}
+.ya-notification-light .ya-notification-timer {
+  background-color: var(--color-light-400);
+}
+.ya-notification-dark .ya-notification-timer {
+  background-color: var(--color-dark-400);
+}
+@keyframes notification-progress {
+  0% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+.ya-notification-close {
+  position: relative;
+  min-width: var(--spacing-8);
+}
+.ya-notification-close .ya-btn-close {
+  top: var(--spacing-2);
+  right: var(--spacing-2);
 }
 .ya-offcanvas {
   max-width: calc(100% - var(--ya-fit-left) - var(--ya-fit-right));

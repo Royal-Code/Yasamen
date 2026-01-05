@@ -120,6 +120,8 @@
 
 .ya-notification-timer {
     @apply h-3 w-full;
+    transform-origin: left;
+    animation: notification-progress linear forwards;
 }
 .ya-notification-primary .ya-notification-timer {
     @apply bg-primary-400;
@@ -154,3 +156,21 @@
 .ya-notification-dark .ya-notification-timer {
     @apply bg-dark-400;
 }
+
+@keyframes notification-progress {
+    0% {
+        transform: scaleX(1);
+    }
+
+    100% {
+        transform: scaleX(0);
+    }
+}
+
+.ya-notification-close {
+    @apply relative min-w-8;
+}
+
+    .ya-notification-close .ya-btn-close {
+        @apply top-2 right-2;
+    }

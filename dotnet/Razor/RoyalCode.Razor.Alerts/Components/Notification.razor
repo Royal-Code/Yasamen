@@ -1,34 +1,63 @@
 ﻿@using RoyalCode.Razor.Icons.Factory
 
-<div @attributes="AdditionalAttributes" class="@Classes">
-	<div class="ya-notification-box">
-		@if (Icon)
-		{
-			<div class="ya-notification-icon">
-				@GetIcon()()
+@if (!closed)
+{
+	<div @attributes="AdditionalAttributes" class="@Classes" role="alert" @onmouseover="HoverHandler" @onmouseout="MouseOutHandler" @onclick="ClickHandler">
+		<div class="ya-notification-box">
+			@if (Icon)
+			{
+				<div class="ya-notification-icon">
+					@GetIcon()()
+				</div>
+			}
+			else
+			{
+				<div class="ya-notification-bar"></div>
+			}
+			<div class="ya-notification-content">
+				@if (Text.IsPresent())
+				{
+					@Text
+				}
+				@if (ChildContent.IsNotEmptyFragment())
+				{
+					@ChildContent
+				}
 			</div>
-		}
-		else
-		{
-			<div class="ya-notification-bar"></div>
-		}
-		<div class="ya-notification-content">
-			<p>hello</p>
-			<p>Pa</p>
-			<p>Po</p>
+			@if (Closeable)
+			{
+				<div class="ya-notification-close">
+					<button type="button" class="ya-btn-close" aria-label="Close" @onclick="CloseAsync">
+						@WellKnownIcons.Close("text-sm")
+					</button>
+				</div>
+			}
 		</div>
+		@if (Timer is not null)
+		{
+			<div class="ya-notification-timer"
+				 style="@TimerBarStyles"
+				 role="progressbar"
+				 aria-hidden="false"
+				 aria-label="notification timer"
+				 @onanimationend="ProgressBarHandler"></div>
+		}
 	</div>
-	@if (Timer is not null)
-	{
-		<div class=".ya-notification-timer"></div>
-	}
-</div>
+}
 
 @code {
+	private bool timerPaused;
+	private bool closed;
+	private bool initialized;
 
 	private string Classes => "ya-notification"
 		.AddClass(GetStyle())
 		.AddClass(AdditionalClasses);
+
+	private string TimerBarStyles => $"animation-duration: {TotalMilliseconds}ms; animation-play-state:"
+		.AddClass(timerPaused, "paused;", "running;");
+
+	private string TotalMilliseconds => Timer?.TotalMilliseconds.ToString() ?? "0";
 
 	[Parameter]
 	public RenderFragment? ChildContent { get; set; } = EmptyFragment.Delegate;
@@ -51,17 +80,91 @@
 	[Parameter]
 	public TimeSpan? Timer { get; set; }
 
+	/// <summary>
+	/// Close the notification when it is clicked.
+	/// </summary>
+	[Parameter]
+	public bool CloseOnClick { get; set; }
+
+	/// <summary>
+	/// Whether the notification starts in a closed state.
+	/// </summary>
+	[Parameter]
+	public bool StartClosed { get; set; }
+
+	/// <summary>
+	/// Whether the notification can be closed manually. It will show a close button.
+	/// </summary>
 	[Parameter]
 	public bool Closeable { get; set; }
 
+	/// <summary>
+	/// Event callback triggered when the notification is closed.
+	/// </summary>
 	[Parameter]
 	public EventCallback OnClose { get; set; }
+
+	/// <summary>
+	/// Event callback triggered when the notification is opened.
+	/// </summary>
+	[Parameter]
+	public EventCallback OnOpen { get; set; }
 
 	[Parameter]
 	public string? AdditionalClasses { get; set; }
 
 	[Parameter(CaptureUnmatchedValues = true)]
 	public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+	protected override void OnParametersSet()
+	{
+		if (!initialized)
+		{
+			initialized = true;
+			closed = StartClosed;
+		}
+	}
+
+	private Task HoverHandler(MouseEventArgs args)
+	{
+		timerPaused = true;
+		return Task.CompletedTask;
+	}
+
+	private Task MouseOutHandler(MouseEventArgs args)
+	{
+		timerPaused = false;
+		return Task.CompletedTask;
+	}
+
+	private async Task ClickHandler()
+	{
+		if (CloseOnClick)
+			await CloseAsync();
+	}
+
+	private async Task ProgressBarHandler(EventArgs args)
+	{
+		await CloseAsync();
+	}
+
+	public async Task CloseAsync()
+	{
+		if (OnClose.HasDelegate)
+			await OnClose.InvokeAsync(null);
+
+		closed = true;
+		StateHasChanged();
+	}
+
+	public async Task OpenAsync()
+	{
+		if (OnOpen.HasDelegate)
+			await OnOpen.InvokeAsync(null);
+
+		closed = false;
+		await InvokeAsync(StateHasChanged);
+	}
 
 	private string GetStyle()
 	{

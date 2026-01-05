@@ -148,6 +148,13 @@ public static class ConfigureMenu
                     },
                     new MenuItem
                     {
+                        Id = "notifications",
+                        Text = "Notifications",
+                        Url = "notifications",
+                        Type = MenuItemType.Link
+                    },
+                    new MenuItem
+                    {
                         Id = "icon-buttons",
                         Text = "Icon Buttons",
                         Url = "icon-buttons",
