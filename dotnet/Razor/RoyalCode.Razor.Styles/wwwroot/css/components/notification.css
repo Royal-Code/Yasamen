@@ -1,5 +1,4 @@
-﻿
-.ya-notification {
+﻿.ya-notification {
     @apply overflow-hidden rounded-md border-1;
 }
 .ya-notification-primary {
@@ -174,3 +173,74 @@
     .ya-notification-close .ya-btn-close {
         @apply top-2 right-2;
     }
+
+.ya-notification-content-group {
+    @apply block;
+}
+
+.ya-notification-content-text {
+    @apply text-sm;
+}
+
+.ya-notification-content-details {
+    @apply mt-1 text-2xs text-dark-700;
+}
+
+/* Notification Group */
+.ya-notification-group {
+    @apply fixed z-notification max-w-full;
+}
+
+/* Stack notifications vertically with gap */
+.ya-notification-group > .ya-notification {
+    @apply mb-2 shadow-lg;
+}
+
+/* Top placements */
+.ya-notification-group-top {
+    @apply top-4 left-1/2 -translate-x-1/2;
+}
+.ya-notification-group-top-start {
+    @apply top-4 left-4;
+}
+.ya-notification-group-top-end {
+    @apply top-4 right-4;
+}
+
+/* Bottom placements */
+.ya-notification-group-bottom {
+    @apply bottom-4 left-1/2 -translate-x-1/2;
+}
+.ya-notification-group-bottom-start {
+    @apply bottom-4 left-4;
+}
+.ya-notification-group-bottom-end {
+    @apply bottom-4 right-4;
+}
+
+/* Left / Right centered placements */
+.ya-notification-group-left {
+    @apply left-4 top-1/2 -translate-y-1/2;
+}
+.ya-notification-group-right {
+    @apply right-4 top-1/2 -translate-y-1/2;
+}
+
+/* Full center */
+.ya-notification-group-center {
+    @apply left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+/* Start/End for left/right aligned stacks */
+.ya-notification-group-left-start {
+    @apply left-4 top-4;
+}
+.ya-notification-group-left-end {
+    @apply left-4 bottom-4;
+}
+.ya-notification-group-right-start {
+    @apply right-4 top-4;
+}
+.ya-notification-group-right-end {
+    @apply right-4 bottom-4;
+}

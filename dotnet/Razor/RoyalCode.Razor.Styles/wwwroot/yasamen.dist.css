@@ -9558,6 +9558,92 @@
   top: var(--spacing-2);
   right: var(--spacing-2);
 }
+.ya-notification-content-group {
+  display: block;
+}
+.ya-notification-content-text {
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+}
+.ya-notification-content-details {
+  margin-top: var(--spacing-1);
+  font-size: var(--text-2xs);
+  line-height: var(--tw-leading, var(--text-2xs--line-height));
+  color: var(--color-dark-700);
+}
+.ya-notification-group {
+  position: fixed;
+  z-index: 1090;
+  max-width: 100%;
+}
+.ya-notification-group > .ya-notification {
+  margin-bottom: var(--spacing-2);
+  --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.ya-notification-group-top {
+  top: var(--spacing-4);
+  left: calc(1/2 * 100%);
+  --tw-translate-x: calc(calc(1/2 * 100%) * -1);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+}
+.ya-notification-group-top-start {
+  top: var(--spacing-4);
+  left: var(--spacing-4);
+}
+.ya-notification-group-top-end {
+  top: var(--spacing-4);
+  right: var(--spacing-4);
+}
+.ya-notification-group-bottom {
+  bottom: var(--spacing-4);
+  left: calc(1/2 * 100%);
+  --tw-translate-x: calc(calc(1/2 * 100%) * -1);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+}
+.ya-notification-group-bottom-start {
+  bottom: var(--spacing-4);
+  left: var(--spacing-4);
+}
+.ya-notification-group-bottom-end {
+  right: var(--spacing-4);
+  bottom: var(--spacing-4);
+}
+.ya-notification-group-left {
+  top: calc(1/2 * 100%);
+  left: var(--spacing-4);
+  --tw-translate-y: calc(calc(1/2 * 100%) * -1);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+}
+.ya-notification-group-right {
+  top: calc(1/2 * 100%);
+  right: var(--spacing-4);
+  --tw-translate-y: calc(calc(1/2 * 100%) * -1);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+}
+.ya-notification-group-center {
+  top: calc(1/2 * 100%);
+  left: calc(1/2 * 100%);
+  --tw-translate-x: calc(calc(1/2 * 100%) * -1);
+  --tw-translate-y: calc(calc(1/2 * 100%) * -1);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+}
+.ya-notification-group-left-start {
+  top: var(--spacing-4);
+  left: var(--spacing-4);
+}
+.ya-notification-group-left-end {
+  bottom: var(--spacing-4);
+  left: var(--spacing-4);
+}
+.ya-notification-group-right-start {
+  top: var(--spacing-4);
+  right: var(--spacing-4);
+}
+.ya-notification-group-right-end {
+  right: var(--spacing-4);
+  bottom: var(--spacing-4);
+}
 .ya-offcanvas {
   max-width: calc(100% - var(--ya-fit-left) - var(--ya-fit-right));
   visibility: hidden;

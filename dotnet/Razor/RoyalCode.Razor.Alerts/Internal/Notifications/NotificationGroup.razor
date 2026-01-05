@@ -1,0 +1,44 @@
+﻿@using RoyalCode.Razor.Styles
+
+<div @attributes="AdditionalAttributes" class="@Classes">
+    @ChildContent
+</div>
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; } = EmptyFragment.Delegate;
+
+    [Parameter]
+    public Placements Placement { get; set; } = Placements.TopEnd;
+
+    [Parameter]
+    public string? AdditionalClasses { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string Classes => "ya-notification-group"
+        .AddClass(GetPlacementClass())
+        .AddClass(AdditionalClasses);
+
+    private string GetPlacementClass()
+    {
+        return Placement switch
+        {
+            Placements.Top => "ya-notification-group-top",
+            Placements.Bottom => "ya-notification-group-bottom",
+            Placements.Left => "ya-notification-group-left",
+            Placements.Right => "ya-notification-group-right",
+            Placements.Center => "ya-notification-group-center",
+            Placements.TopStart => "ya-notification-group-top-start",
+            Placements.TopEnd => "ya-notification-group-top-end",
+            Placements.BottomStart => "ya-notification-group-bottom-start",
+            Placements.BottomEnd => "ya-notification-group-bottom-end",
+            Placements.LeftStart => "ya-notification-group-left-start",
+            Placements.LeftEnd => "ya-notification-group-left-end",
+            Placements.RightStart => "ya-notification-group-right-start",
+            Placements.RightEnd => "ya-notification-group-right-end",
+            _ => "ya-notification-group-top-end",
+        };
+    }
+}

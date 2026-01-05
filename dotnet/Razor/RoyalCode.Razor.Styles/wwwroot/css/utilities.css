@@ -26,9 +26,11 @@
 @utility z-modal {
     z-index: 1070;
 }
+@utility z-notification {
+    z-index: 1090;
+}
 
 /* Fit Utilities */
-
 @utility fit-top-* {
     --ya-fit-top: --value(--spacing-*);
 }

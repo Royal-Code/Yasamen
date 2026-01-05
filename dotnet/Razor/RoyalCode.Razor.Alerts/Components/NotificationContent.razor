@@ -1,0 +1,13 @@
+﻿<div class="ya-notification-content-group">
+	<div class="ya-notification-content-text">@Text</div>
+	<div class="ya-notification-content-details">@Details</div>
+</div>
+
+@code {
+
+	[Parameter, EditorRequired]
+	public string Text { get; set; }
+
+	[Parameter, EditorRequired]
+	public string Details { get; set; }
+}

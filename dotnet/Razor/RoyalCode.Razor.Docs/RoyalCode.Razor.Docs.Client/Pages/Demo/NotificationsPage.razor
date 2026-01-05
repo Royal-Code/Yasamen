@@ -1,4 +1,5 @@
 ﻿@page "/notifications"
+@using RoyalCode.Razor.Internal.Notifications
 
 @layout AppMainLayout
 
@@ -53,6 +54,57 @@
         }
     </div>
 
+    <h2>Notificações com NotificationContent</h2>
+
+    <Notification Icon="@showIcon"
+                  Closeable="@closeable"
+                  CloseOnClick="@closeOnClick">
+        <NotificationContent Text="Notificação com conteúdo personalizado"
+							 Details="Este é um exemplo de notificação que utiliza o componente NotificationContent para exibir texto e detalhes de forma estruturada." />
+    </Notification>
+
+    <h2 class="mt-8">Notificações em Grupos</h2>
+
+    <div class="flex gap-6 items-center mb-6">
+        <label class="flex items-center gap-2">
+            <span>Placement</span>
+            <select class="ya-input" @bind="selectedPlacement">
+                @foreach (var p in _placements)
+                {
+                    <option value="@p">@p</option>
+                }
+            </select>
+        </label>
+        <label class="flex items-center gap-2">
+            <input type="checkbox" @bind="useContent" />
+            <span>Usar NotificationContent</span>
+        </label>
+        <button class="ya-btn ya-btn-primary" type="button" @onclick="AddToGroup">Adicionar notificação</button>
+    </div>
+
+    <NotificationGroup Placement="@selectedPlacement">
+        @foreach (var n in _groupItems)
+        {
+            if (useContent)
+            {
+                <Notification Icon="true"
+                              Closeable="true"
+                              Timer="@TimeSpan.FromSeconds(8)"
+                              OnClose="(() => RemoveFromGroup(n.Id))">
+                    <NotificationContent Text="@n.Text" Details="@n.Details" />
+                </Notification>
+            }
+            else
+            {
+                <Notification Text="@n.Text"
+                              Icon="true"
+                              Closeable="true"
+                              Timer="@TimeSpan.FromSeconds(8)"
+                              OnClose="(() => RemoveFromGroup(n.Id))" />
+            }
+        }
+    </NotificationGroup>
+
 </Box>
 
 @code {
@@ -76,6 +128,10 @@
     ];
 
     private readonly List<Item> _items = new();
+    private readonly Placements[] _placements = Enum.GetValues<Placements>();
+    private Placements selectedPlacement = Placements.TopEnd;
+    private bool useContent = true;
+    private readonly List<GroupItem> _groupItems = new();
 
     protected override void OnInitialized()
     {
@@ -102,5 +158,32 @@
         public Notification? Ref { get; set; }
         public bool ShowTimer { get; set; }
         public int TimerSeconds { get; set; } = 0;
+    }
+
+    private void AddToGroup()
+    {
+        _groupItems.Add(new GroupItem
+        {
+            Id = Guid.NewGuid(),
+            Text = "Notificação de grupo",
+            Details = "Detalhes da notificação do grupo",
+        });
+    }
+
+    private void RemoveFromGroup(Guid id)
+    {
+        var idx = _groupItems.FindIndex(g => g.Id == id);
+        if (idx >= 0)
+        {
+            _groupItems.RemoveAt(idx);
+            StateHasChanged();
+        }
+    }
+
+    private class GroupItem
+    {
+        public Guid Id { get; set; }
+        public string Text { get; set; } = string.Empty;
+        public string Details { get; set; } = string.Empty;
     }
 }
