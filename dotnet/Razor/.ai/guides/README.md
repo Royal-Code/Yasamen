@@ -19,6 +19,7 @@
 | [07-form-components.md](07-form-components.md) | Infraestrutura de formulários: FieldBase, FieldGroup, validação, addons |
 | [08-service-pattern.md](08-service-pattern.md) | Padrão de serviços DI + Outlet (Notifications, Modals, OffCanvas) |
 | [09-showcases-and-docs.md](09-showcases-and-docs.md) | Padrão de showcases em `RoyalCode.Razor.Docs.Client` enquanto `RoyalCode.Razor.Show` não existe |
+| [10-spec-execution-and-delivery.md](10-spec-execution-and-delivery.md) | Como executar uma spec, validar, revisar e concluir a entrega com rastreabilidade |
 
 ---
 
@@ -31,3 +32,4 @@
 5. **Ao criar um serviço DI com outlet** (toast, modal, etc.): leia [08](08-service-pattern.md)
 6. **Ao criar um novo pacote/projeto**: leia [01](01-project-structure.md)
 7. **Ao documentar ou criar exemplos de uso**: leia [09](09-showcases-and-docs.md)
+8. **Ao implementar uma spec até o fechamento**: leia [10](10-spec-execution-and-delivery.md)

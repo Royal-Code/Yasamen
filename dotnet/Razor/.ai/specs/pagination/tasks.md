@@ -33,3 +33,11 @@
 - [ ] Registrar o item `/demo/navigation/pagination` em `ConfigureMenu.cs`.
 - [ ] Cobrir uso básico, loading, janela numérica, largura reduzida e integração com lista paginada.
 - [ ] Atualizar `ui-map.md` após a implementação.
+
+## Encerramento
+
+- [ ] Comparar a implementação com `requirements.md`, `design.md` e os guides aplicados.
+- [ ] Executar build, testes e validação manual do showcase.
+- [ ] Fazer revisão crítica do diff final.
+- [ ] Preencher `delivery.md`.
+- [ ] Atualizar o status final da spec.

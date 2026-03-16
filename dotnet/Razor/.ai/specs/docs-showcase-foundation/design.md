@@ -149,3 +149,10 @@ Essas classes são internas ao Docs e não entram no contrato público dos pacot
 - Confirmar se vale criar aliases temporários para rotas antigas ou fazer migração seca.
 - Confirmar se `MainLayout.razor` e `NavMenu.razor` do Docs ainda têm papel ativo ou se são legado removível.
 - Confirmar quando `RoyalCode.Razor.Show` deve começar a absorver a infraestrutura reutilizável.
+
+## Validação Esperada
+
+- `dotnet build` do `RoyalCode.Razor.Docs.Client` e do host `RoyalCode.Razor.Docs`.
+- Validação manual da navegação, das rotas e do shell visual dos showcases.
+- Revisão das páginas migradas para garantir uso apenas de API pública.
+- Atualização do template de specs e dos guides relacionados ao fluxo novo.

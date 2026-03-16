@@ -33,3 +33,11 @@
 - [ ] Cobrir `NoData`, `NoResults`, `NoPermission`, CTA e variação em largura reduzida.
 - [ ] Atualizar `ui-map.md` quando o componente estiver pronto.
 - [ ] Reavaliar a relação entre `Feedback` e `EmptyState`.
+
+## Encerramento
+
+- [ ] Comparar a implementação com `requirements.md`, `design.md` e os guides aplicados.
+- [ ] Executar build, testes e validação manual do showcase.
+- [ ] Fazer revisão crítica do diff final.
+- [ ] Preencher `delivery.md`.
+- [ ] Atualizar o status final da spec.

@@ -11,7 +11,7 @@
 | Roadmap | `R1 › Componentes Diversos › Pagination` |
 | Pacote sugerido | `RoyalCode.Razor.Navigation` |
 | Showcase inicial | `/demo/navigation/pagination` |
-| Guides aplicados | `01-project-structure`, `02-styles-and-css`, `06-component-anatomy`, `09-showcases-and-docs` |
+| Guides aplicados | `01-project-structure`, `02-styles-and-css`, `06-component-anatomy`, `09-showcases-and-docs`, `10-spec-execution-and-delivery` |
 
 ## Objetivo
 
@@ -78,3 +78,9 @@ Entregar um componente de paginação reutilizável para listas, tabelas e grids
 - [ ] O contrato visual usa classes `ya-pagination*`.
 - [ ] Não é criado `*.razor.css` no pacote.
 - [ ] Há showcase no `RoyalCode.Razor.Docs.Client` com lista paginada.
+
+## Critérios de Conclusão
+
+- [ ] Existe `delivery.md` preenchido ao final da implementação.
+- [ ] A implementação foi comparada com requirements, design e guides.
+- [ ] O status final da spec foi atualizado com evidência.

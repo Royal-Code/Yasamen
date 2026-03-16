@@ -11,7 +11,7 @@
 | Roadmap | — |
 | Pacote sugerido | `RoyalCode.Razor.Docs.Client` + `RoyalCode.Razor.Docs` |
 | Showcase inicial | — |
-| Guides aplicados | `01-project-structure`, `02-styles-and-css`, `06-component-anatomy`, `09-showcases-and-docs` |
+| Guides aplicados | `01-project-structure`, `02-styles-and-css`, `06-component-anatomy`, `09-showcases-and-docs`, `10-spec-execution-and-delivery` |
 
 ## Objetivo
 
@@ -83,3 +83,9 @@ Melhorar a qualidade do `RoyalCode.Razor.Docs.Client` como host oficial de showc
 - [ ] O Docs possui CSS próprio para o shell de showcase.
 - [ ] O padrão de rota `/demo/...` está definido e adotado para páginas novas.
 - [ ] Há backlog explícito para migração das páginas legadas.
+
+## Critérios de Conclusão
+
+- [ ] Existe `delivery.md` preenchido ao final da implementação.
+- [ ] A implementação foi comparada com requirements, design e guides.
+- [ ] O status final da spec foi atualizado com evidência.

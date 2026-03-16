@@ -93,3 +93,10 @@ Estratégia:
 - Confirmar se o primeiro release deve usar `IconButton` ou botões nativos estilizados.
 - Confirmar se `PageSize` entra apenas como dado informativo ou se deve influenciar texto de resumo.
 - Confirmar se ocultar completamente quando `TotalPages <= 1` é desejável em todas as telas.
+
+## Validação Esperada
+
+- `dotnet build` do pacote novo e do `RoyalCode.Razor.Docs.Client`.
+- Testes cobrindo janela numérica, loading, limites e `aria-current`.
+- Validação manual do showcase em `/demo/navigation/pagination`.
+- Atualização da nota correspondente no `ui-map.md` após a entrega.

@@ -60,3 +60,10 @@
 - Dependências novas ou controversas.
 - Decisões que ainda precisam de validação.
 - Trade-offs assumidos para o primeiro release.
+
+## Validação Esperada
+
+- Build e projetos afetados que devem ser executados.
+- Testes mínimos esperados.
+- Validação manual esperada no showcase.
+- Impactos esperados em `ui-map.md` e `ui-plan.md`, se houver.

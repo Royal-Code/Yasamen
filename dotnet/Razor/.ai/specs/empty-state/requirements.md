@@ -11,7 +11,7 @@
 | Roadmap | `R2 › Empty` |
 | Pacote sugerido | `RoyalCode.Razor.Alerts` |
 | Showcase inicial | `/demo/feedback/empty-state` |
-| Guides aplicados | `01-project-structure`, `02-styles-and-css`, `06-component-anatomy`, `09-showcases-and-docs` |
+| Guides aplicados | `01-project-structure`, `02-styles-and-css`, `06-component-anatomy`, `09-showcases-and-docs`, `10-spec-execution-and-delivery` |
 
 ## Objetivo
 
@@ -76,3 +76,9 @@ Entregar um componente semântico para estados vazios de tela, reduzindo a neces
 - [ ] Não é criado `*.razor.css` novo.
 - [ ] Há showcase no `RoyalCode.Razor.Docs.Client` com e sem ação.
 - [ ] Há atualização futura prevista da nota de `UIP-FEEDBACK-EMPTY_STATE`.
+
+## Critérios de Conclusão
+
+- [ ] Existe `delivery.md` preenchido ao final da implementação.
+- [ ] A implementação foi comparada com requirements, design e guides.
+- [ ] O status final da spec foi atualizado com evidência.

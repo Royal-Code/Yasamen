@@ -48,3 +48,11 @@
 
 - [ ] Atualizar o template de specs sempre que o padrão de showcase evoluir.
 - [ ] Revisitar a relação entre `Docs` e `RoyalCode.Razor.Show` quando a plataforma de showcase começar a existir.
+
+## Encerramento
+
+- [ ] Comparar a implementação com `requirements.md`, `design.md` e os guides aplicados.
+- [ ] Executar build e validação manual das páginas e rotas afetadas.
+- [ ] Fazer revisão crítica do diff final.
+- [ ] Preencher `delivery.md`.
+- [ ] Atualizar o status final da spec.

@@ -4,14 +4,14 @@
 
 | Campo | Valor |
 |---|---|
-| Status | Rascunho |
+| Status | Aprovada |
 | Prioridade | `P1` |
 | Fase do plano | `F1.1` |
 | UI Pattern | `UIP-NAV-TABS` |
 | Roadmap | `R1 › Componentes Diversos › Tabs` |
 | Pacote sugerido | `RoyalCode.Razor.Navigation` |
 | Showcase inicial | `/demo/navigation/tabs` |
-| Guides aplicados | `01-project-structure`, `02-styles-and-css`, `06-component-anatomy`, `09-showcases-and-docs` |
+| Guides aplicados | `01-project-structure`, `02-styles-and-css`, `06-component-anatomy`, `09-showcases-and-docs`, `10-spec-execution-and-delivery` |
 
 ## Objetivo
 
@@ -58,6 +58,10 @@ Entregar um componente de navegação por seções que cubra o gap de `Tabs` no 
 - Cada gatilho de aba deve usar `role="tab"`, `aria-selected`, `aria-controls` e foco por teclado.
 - Cada painel deve usar `role="tabpanel"` e associação por `id`.
 - Deve haver suporte para `ArrowLeft`, `ArrowRight`, `Home` e `End` no modo horizontal.
+- Deve haver suporte para `ArrowUp` e `ArrowDown` no modo vertical (mesma semântica de `ArrowLeft`/`ArrowRight`).
+- `Enter` e `Space` devem ativar a tab com foco quando o foco não segue automaticamente a seta.
+- O foco deve percorrer apenas as tabs do `tablist` (roving tabindex — somente a tab ativa tem `tabindex="0"`; as demais têm `tabindex="-1"`).
+- Tabs desabilitadas devem ser ignoradas na navegação por teclado.
 - Em Mobile, o cabeçalho deve aceitar overflow horizontal sem quebrar o layout.
 
 ## Showcase Obrigatório
@@ -75,8 +79,19 @@ Entregar um componente de navegação por seções que cubra o gap de `Tabs` no 
 ## Critérios de Aceite
 
 - [ ] É possível declarar `Tabs` e múltiplas `Tab` em markup Razor simples.
+- [ ] O componente funciona em modo controlado (`ActiveTab` + `ActiveTabChanged`) e em modo interno (sem parâmetro externo).
 - [ ] O componente cobre os cenários horizontal, vertical, desabilitado e com badge.
+- [ ] A navegação por teclado respeita o padrão roving tabindex e suporta setas, Home, End, Enter e Space.
+- [ ] Tabs desabilitadas são ignoradas no clique e no teclado.
 - [ ] O contrato visual usa classes `ya-tabs*` em `RoyalCode.Razor.Styles`.
 - [ ] Não é criado `*.razor.css` no pacote.
+- [ ] Cada gatilho expõe `role="tab"`, `aria-selected`, `aria-controls`, `tabindex` correto e `id` estável.
+- [ ] Cada painel expõe `role="tabpanel"`, `aria-labelledby` e `id` estável.
 - [ ] Há showcase funcional em `RoyalCode.Razor.Docs.Client`.
-- [ ] Há testes cobrindo troca de aba por clique e teclado.
+- [ ] Há testes cobrindo troca por clique, troca por teclado (setas + Home/End), tab desabilitada e modo controlado.
+
+## Critérios de Conclusão
+
+- [ ] Existe `delivery.md` preenchido ao final da implementação.
+- [ ] A implementação foi comparada com requirements, design e guides.
+- [ ] O status final da spec foi atualizado com evidência.

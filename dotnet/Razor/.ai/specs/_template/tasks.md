@@ -32,3 +32,12 @@
 - [ ] Cobrir cenário básico, variações, estados e composição.
 - [ ] Documentar API pública e exemplos de uso.
 - [ ] Atualizar `ui-map.md` e `ui-plan.md` se a entrega mudar a cobertura.
+
+## Encerramento
+
+- [ ] Comparar a implementação com `requirements.md`, `design.md` e os guides aplicados.
+- [ ] Executar build, testes e validações manuais previstos.
+- [ ] Fazer revisão crítica do próprio diff.
+- [ ] Preencher `delivery.md`.
+- [ ] Atualizar o status final da spec.
+- [ ] Fechar ou justificar tasks remanescentes.

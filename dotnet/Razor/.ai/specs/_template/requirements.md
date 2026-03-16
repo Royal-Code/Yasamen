@@ -4,14 +4,14 @@
 
 | Campo | Valor |
 |---|---|
-| Status | Rascunho |
+| Status | `Rascunho` |
 | Prioridade | `P?` |
 | Fase do plano | `F?.?` |
 | UI Pattern | `UIP-...` |
 | Roadmap | `R? › ...` |
 | Pacote sugerido | `RoyalCode.Razor.<Pacote>` |
 | Showcase inicial | `/demo/<grupo>/<componente>` |
-| Guides aplicados | `01-project-structure`, `02-styles-and-css`, `06-component-anatomy`, `09-showcases-and-docs` |
+| Guides aplicados | `01-project-structure`, `02-styles-and-css`, `06-component-anatomy`, `09-showcases-and-docs`, `10-spec-execution-and-delivery` |
 
 ## Objetivo
 
@@ -65,3 +65,9 @@ Descrever o problema que o componente resolve, em que cenários ele será usado 
 - [ ] O componente não depende de `*.razor.css` novo.
 - [ ] Há showcase em `RoyalCode.Razor.Docs.Client` com rota e menu definidos.
 - [ ] Existem exemplos e testes suficientes para evitar regressão básica.
+
+## Critérios de Conclusão
+
+- [ ] Existe `delivery.md` preenchido ao final da implementação.
+- [ ] A comparação entre requirements, design, guides e código foi registrada.
+- [ ] O status final da spec foi atualizado de forma coerente.

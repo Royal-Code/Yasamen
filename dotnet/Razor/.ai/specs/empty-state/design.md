@@ -91,3 +91,10 @@ Estratégia:
 - Confirmar se `Variant` também deve selecionar `Theme` implicitamente.
 - Confirmar se vale oferecer textos padrão opcionais no futuro.
 - Confirmar se `Feedback` deve continuar existindo como alternativa genérica, sem overlap excessivo com `EmptyState`.
+
+## Validação Esperada
+
+- `dotnet build` do pacote `RoyalCode.Razor.Alerts` e do `RoyalCode.Razor.Docs.Client`.
+- Testes cobrindo variantes, slots e fallback visual.
+- Validação manual do showcase em `/demo/feedback/empty-state`.
+- Atualização da nota correspondente no `ui-map.md` após a entrega.
