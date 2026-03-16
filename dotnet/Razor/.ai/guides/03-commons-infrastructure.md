@@ -1,243 +1,147 @@
-# Guide 03 — Projeto Commons: Infraestrutura Compartilhada
+# Guide 03 - Projeto Commons: Infraestrutura Compartilhada
 
-> O que é o projeto `RoyalCode.Razor.Commons`, para que serve cada parte, e como usar seus utilitários nos outros projetos.
-
----
-
-## Propósito do Projeto Commons
-
-`RoyalCode.Razor.Commons` é o projeto de **infraestrutura transversal** — não contém componentes visuais. Fornece:
-
-1. **JS Modules** — wrappers type-safe para interop JavaScript
-2. **`EmptyFragment`** — utilitário para `RenderFragment` vazios
-3. **Extensions** — helpers de string, atributos HTML e ID generation
-4. **`TransitionState` / `VisibleState`** — gerenciamento de estados de animação/visibilidade
-5. **Registros DI** (`AddYasamenCommons`)
-6. **Módulo de autenticação** (utilitários de auth state + HTTP handler)
-
-Todos os outros projetos de componentes dependem de Commons.
+> O que e o projeto `RoyalCode.Razor.Commons`, o que ele concentra de infraestrutura e como os outros pacotes devem usa-lo.
 
 ---
 
-## `EmptyFragment` — Fragmentos Vazios
+## Proposito do Projeto Commons
 
-Padrão obrigatório para parâmetros `RenderFragment` opcionais.
+`RoyalCode.Razor.Commons` e o pacote de infraestrutura transversal da biblioteca. Ele concentra utilitarios e primitives reutilizadas por varios projetos.
+
+Na pratica, ele contem:
+
+1. JS modules para interop JavaScript;
+2. `EmptyFragment` para parametros `RenderFragment`;
+3. extensoes utilitarias de string, atributos HTML e IDs;
+4. `TransitionState` e `VisibleState`;
+5. registros DI (`AddYasamenCommons`);
+6. utilitarios de autenticacao;
+7. componentes utilitarios de infraestrutura, como `Ripple`.
+
+Commons nao e um pacote de catalogo visual amplo, mas pode conter componente utilitario transversal quando isso simplifica a infraestrutura compartilhada.
+
+---
+
+## `EmptyFragment`
+
+Padrao para parametros opcionais de `RenderFragment`.
 
 ```csharp
-// Em vez de null:
 [Parameter]
 public RenderFragment Prepend { get; set; } = EmptyFragment.Delegate;
+```
 
-// Para verificar se foi preenchido:
+Para testar se houve preenchimento:
+
+```csharp
 if (Prepend.IsNotEmptyFragment())
 {
     // renderizar
 }
-
-// Fragment tipado:
-[Parameter]
-public RenderFragment<MyModel> ItemTemplate { get; set; } = EmptyFragment.GetDelegate<MyModel>();
 ```
 
-**Regra:** todo parâmetro `RenderFragment` opcional **deve** ter valor padrão `EmptyFragment.Delegate`. Nunca usar `null` como padrão.
-
-**Por quê:** `.IsNotEmptyFragment()` detecta corretamente se o slot foi fornecido, evitando comparação com `null` que falha em alguns cenários de re-render do Blazor.
+Regra: evitar `null` como valor padrao para fragments opcionais quando a biblioteca precisa distinguir fragmento ausente de fragmento vazio.
 
 ---
 
-## `CssClasses` — Método `IsPresent` / `IsMissing`
+## `AdditionalAttributes`
 
-Além dos extension methods em `CssClasses`, o namespace expõe extensões de string:
-
-```csharp
-// Verifica se string não é null/whitespace
-string? text = GetText();
-if (text.IsPresent()) { /* usar text */ }
-if (text.IsMissing()) { /* não usar */ }
-
-// Em .razor (exemplo do Feedback):
-@if (Title.IsPresent())
-{
-    <h4>@Title</h4>
-}
-```
-
----
-
-## `AdditionalAttributesExtensions` — Splatting de Atributos
-
-Padrão para componentes que usam `[Parameter(CaptureUnmatchedValues = true)]`:
+Padrao para componentes que aceitam splatting:
 
 ```csharp
-// Parâmetro obrigatório em componentes que aceitam splatting:
 [Parameter(CaptureUnmatchedValues = true)]
 public Dictionary<string, object>? AdditionalAttributes { get; set; }
 ```
 
 No markup:
+
 ```razor
 <div class="@Classes" @attributes="AdditionalAttributes">
 ```
 
-Para **extrair** atributos específicos antes de splat (ex: extrair `class` manual):
-```csharp
-// Extrai e remove "class" do dict para não duplicar
-var extraClass = AdditionalAttributes.ExtractClass();
-```
+Se precisar tratar algum atributo antes do splatting, use os helpers do Commons.
 
 ---
 
-## `YasamenExtensions` — Utilitários de ID e Texto
+## IDs e utilitarios
 
-### Geração de IDs únicos
+Exemplos:
+
 ```csharp
-// 10 letras minúsculas aleatórias
-string id = YasamenExtensions.GenerateId(); // "kzjqpwxmnt"
-
-// Converter string em ID HTML-safe
-string htmlId = "Meu Componente!".ToHtmlId(); // "Meu-Componente"
-```
-
-Usado em `FieldBase` para gerar `labelId` e `inputId` únicos quando não fornecidos pelo consumidor.
-
-### `GetDefaultDisplayName` para Labels
-```csharp
-// Lê DisplayName, Description ou DisplayAttribute do MemberInfo
-// Usado em FieldBase para inferir o Label a partir da propriedade bindada
+string id = YasamenExtensions.GenerateId();
+string htmlId = "Meu Componente".ToHtmlId();
 string label = propertyInfo.GetDefaultDisplayName();
 ```
 
+Esses helpers aparecem especialmente em componentes de formulario.
+
 ---
 
-## JS Modules — Padrão `JsModuleBase`
+## JS Modules
 
-Todo interop JavaScript é encapsulado em uma classe que herda de `JsModuleBase`.
-
-### Como funciona
-
-```csharp
-public abstract class JsModuleBase
-{
-    // Caminho relativo ao wwwroot do assembly
-    protected JsModuleBase(IJSRuntime js, string pathFromWwwRoot, bool isLibrary = true)
-
-    // Carrega o módulo lazy (apenas na primeira chamada)
-    protected async ValueTask<IJSObjectReference> GetModuleAsync()
-    // → Resolve para: "./_content/{AssemblyName}/{pathFromWwwRoot}"
-}
-```
-
-### Criando um novo JS Module
+Interop JavaScript deve ser encapsulado em classes derivadas de `JsModuleBase`.
 
 ```csharp
 public sealed class MyJs : JsModuleBase
 {
     public MyJs(IJSRuntime js) : base(js, "my-module.js") { }
-
-    public async ValueTask DoSomethingAsync(ElementReference element)
-    {
-        var js = await GetModuleAsync();
-        await js.InvokeVoidAsync("doSomething", element);
-    }
 }
 ```
 
-Registrar no DI como `Transient`:
-```csharp
-services.AddTransient<MyJs>();
-```
+Regra:
 
-O arquivo JS deve estar em `wwwroot/my-module.js` do projeto que define o módulo.
+- arquivo JS em `wwwroot/`;
+- wrapper C# no Commons ou no pacote dono da funcionalidade;
+- registro DI normalmente como `Transient`.
 
-### Módulos existentes
+Exemplos atuais:
 
-| Classe | Arquivo JS | Propósito |
-|---|---|---|
-| `RippleJs` | `ripple.js` | Efeito material ripple em botões |
-| `ClickJs` | `click.js` | Listener de clique no `document.body` (usado por dropdowns) |
-| `ElementJs` | `element.js` | Get/Set propriedades DOM, invoke métodos, getBoundingClientRect |
-| `FormsJs` | `forms.js` | Blur-on-Enter, focus-next, get/set value de input |
-
-### `FieldJs` — JS específico de campos de formulário
-
-`FieldJs` é um helper **não injetável diretamente** — é instanciado por `FieldBase` internamente. Encapsula operações JS específicas do ciclo de vida de um campo.
-
----
-
-## `TransitionState` — Gerenciamento de Transições CSS
-
-Gerencia o ciclo de vida de transições CSS com as fases:
-
-```
-OpeningStart → Opening → Open → ClosingStart → Closing → Closed
-```
-
-```csharp
-// Exemplo de uso (Modal, NotificationAnimation):
-private TransitionState transitionState = new();
-
-// Para abrir:
-await transitionState.OpenAsync(StateHasChanged);
-
-// Para fechar:
-await transitionState.CloseAsync(StateHasChanged);
-
-// Fase atual:
-TransitionPhases phase = transitionState.Phase;
-
-// Gerar classe CSS:
-string cssClass = $"ya-modal-{transitionState.Phase.ToCssClass()}";
-```
-
-Cada fase dura um ciclo de render, permitindo que o CSS aplique a transição.
-
----
-
-## `VisibleState` — Toggle Simples de Visibilidade
-
-Para componentes com show/hide sem transição animada complexa:
-
-```csharp
-private VisibleState visibleState = new();
-
-// Mostrar:
-await visibleState.ShowAsync(StateHasChanged);
-
-// Esconder:
-await visibleState.HideAsync(StateHasChanged);
-
-// Estado:
-bool isVisible = visibleState.IsVisible;
-```
-
-Usado pelo `OffCanvas` e outros componentes de sobreposição.
-
----
-
-## `AddYasamenCommons` — Registro DI
-
-```csharp
-// Em Program.cs da app consumidora:
-builder.Services.AddYasamenCommons();
-```
-
-Registra `Transient`:
+- `RippleJs`
 - `ClickJs`
 - `ElementJs`
 - `FormsJs`
-- `RippleJs`
 
 ---
 
-## Módulo de Autenticação (uso avançado)
+## `TransitionState` e `VisibleState`
 
-O projeto inclui utilitários para propagação de auth state via HTTP:
+`TransitionState` serve para ciclos com fases de abertura e fechamento.
+
+`VisibleState` serve para show/hide simples.
+
+Exemplo:
 
 ```csharp
-// Adiciona handler que injeta auth state em requests HTTP:
-builder.Services
-    .AddHttpClient("MyApi")
-    .AuthorizeWithAuthenticationState();
+await transitionState.OpenAsync(StateHasChanged);
+await transitionState.CloseAsync(StateHasChanged);
+
+await visibleState.ShowAsync(StateHasChanged);
+await visibleState.HideAsync(StateHasChanged);
 ```
 
-Claims padrão disponíveis em `WellKnownClaimNames` (Name, Email, Role, Sub, etc.).
+---
+
+## `Ripple`
+
+`Ripple` existe no Commons e e um componente visual utilitario de infraestrutura. Ele nao muda o papel do pacote, mas mostra que Commons pode expor componente transversal quando isso apoia varios outros pacotes.
+
+---
+
+## `AddYasamenCommons`
+
+Uso esperado:
+
+```csharp
+builder.Services.AddYasamenCommons();
+```
+
+Isso registra os JS modules compartilhados e a infraestrutura comum necessaria para os demais componentes.
+
+---
+
+## Regras Praticas
+
+1. Coloque no Commons apenas o que for transversal.
+2. Nao mova para o Commons componentes de dominio ou de catalogo apenas por reuso eventual.
+3. Um componente utilitario de infraestrutura pode morar no Commons se ele apoiar varios pacotes e nao pertencer semanticamente a um componente final.
+4. Helpers de markup, JS interop, estados de transicao e extensoes gerais sao candidatos naturais ao Commons.

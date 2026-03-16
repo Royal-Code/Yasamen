@@ -1,532 +1,242 @@
-# Guide 08 — Padrão Service + Outlet
+# Guide 08 - Service, Outlet and Handler Patterns
 
-> Como funciona o padrão de sobreposições globais (Notifications, Modals, OffCanvas). Como criar novos pares Service+Outlet.
-
----
-
-## Conceito
-
-Componentes "globais" (toasts, modais, painéis laterais) não podem ser instanciados onde são invocados — eles precisam renderizar no topo da árvore DOM. O padrão usado é:
-
-```
-Service (Scoped DI)
-  ├── mantém estado (lista de items, se está aberto, etc.)
-  ├── notifica Outlet via evento/action
-  └── API pública para abrir/fechar/adicionar
-
-Outlet (.razor — fica no AppLayout ou em App.razor)
-  ├── injeta o Service
-  ├── subscreve os eventos dele
-  └── renderiza o markup baseado no estado
-
-Consumer (qualquer componente)
-  └── injeta o Service e chama a API
-```
-
-Cada par usa `SectionOutlet`/`SectionContent` do Blazor para renderizar no lugar correto (do AppLayout para dentro do componente).
+> Como a biblioteca implementa overlays e componentes globais hoje. Este guide documenta o padrao real de `Notification`, `Modal` e `OffCanvas`.
 
 ---
 
-## Padrão de Notificações
+## Visao Geral
 
-### `NotificationService` (estado interno)
+Nao existe um unico padrao universal de "Service + Outlet" na biblioteca.
 
-```csharp
-public class NotificationService
-{
-    private readonly List<NotificationEntry> entries = new();
-    internal event Action? OnChange;
+Hoje ha dois modelos reais:
 
-    internal IReadOnlyList<NotificationEntry> Entries => entries;
+1. `Notification`: servico global + facade publica + outlet global.
+2. `Modal` e `OffCanvas`: instancia declarada no componente + handler publico + servico interno + projecao via `SectionContent` / `SectionOutlet`.
 
-    internal void Add(NotificationEntry entry)
-    {
-        entries.Add(entry);
-        OnChange?.Invoke();
-    }
+O erro mais comum e tentar forcar um novo overlay a caber no modelo errado.
 
-    internal void Remove(NotificationEntry entry)
-    {
-        entries.Remove(entry);
-        OnChange?.Invoke();
-    }
-}
+---
+
+## Padrao A - Servico Global + Outlet Global
+
+Este e o caso de `Notification`.
+
+### Quando usar
+
+Use este modelo quando o overlay:
+
+- nao pertence a uma instancia especifica declarada na pagina;
+- precisa ser disparado de qualquer lugar por DI;
+- funciona como fila ou agrupamento global da sessao;
+- nao depende de um `Handler` por instancia.
+
+### Fluxo real
+
+```text
+Consumer
+  -> injeta Notify
+  -> chama Success / Danger / ShowAsync(...)
+
+Notify
+  -> cria/configura NotificationItem
+  -> delega para NotificationService
+
+NotificationService
+  -> organiza itens por Placement
+  -> pede re-render ao NotificationOutlet
+
+NotificationOutlet
+  -> renderiza NotificationGroup por Placement
+  -> cada grupo renderiza NotificationSection / Notification
 ```
 
-### `Notify` (API pública)
+### Peculiaridades importantes
 
-```csharp
-// Scoped — é o que os consumidores injetam
-public class Notify
-{
-    private readonly NotificationService service;
-
-    public Notify(NotificationService service)
-    {
-        this.service = service;
-    }
-
-    public void Success(string message, string? title = null)
-        => service.Add(new NotificationEntry(message, title, Themes.Success));
-
-    public void Error(string message, string? title = null)
-        => service.Add(new NotificationEntry(message, title, Themes.Danger));
-
-    public void Warning(string message, string? title = null)
-        => service.Add(new NotificationEntry(message, title, Themes.Warning));
-
-    public void Info(string message, string? title = null)
-        => service.Add(new NotificationEntry(message, title, Themes.Info));
-}
-```
-
-### `NotificationOutlet.razor`
-
-```razor
-@inject NotificationService Service
-@implements IDisposable
-
-@foreach (var entry in Service.Entries)
-{
-    <Notification @key="entry" Entry="@entry" OnDismiss="@(() => Service.Remove(entry))" />
-}
-
-@code {
-    protected override void OnInitialized()
-    {
-        Service.OnChange += StateHasChanged;
-    }
-
-    public void Dispose()
-    {
-        Service.OnChange -= StateHasChanged;
-    }
-}
-```
+- `Notification` nao usa `SectionContent` / `SectionOutlet`.
+- O `NotificationService` mantem um dicionario por `Placements`.
+- A API publica `Notify` aceita callback `configure` para customizar cada item.
+- O posicionamento ja e configuravel por `NotificationItem.Placement`.
 
 ### Registro DI
 
 ```csharp
-// AlertServiceCollectionExtensions.cs
-namespace Microsoft.Extensions.DependencyInjection;
-
-public static class AlertServiceCollectionExtensions
-{
-    public static IServiceCollection AddYasamenNotification(
-        this IServiceCollection services)
-    {
-        services.AddScoped<NotificationService>();
-        services.AddScoped<Notify>();
-        return services;
-    }
-}
+builder.Services.AddYasamenNotification();
 ```
 
-### Uso no AppLayout
+Isso registra:
+
+- `NotificationService` como `Scoped`
+- `Notify` como `Scoped`
+
+### Outlet no layout
+
+O layout hospeda o outlet interno:
 
 ```razor
-@* MainLayout.razor *@
-<div class="ya-app-layout">
-    @Body
-</div>
-
-<NotificationOutlet />
+<RoyalCode.Razor.Internal.Notifications.NotificationOutlet />
 ```
 
-### Uso no Consumer
+### Exemplo de uso
 
 ```razor
 @inject Notify Notify
 
-<Button Label="Salvar" OnClick="@Save" />
+<Button Label="Salvar" OnClick="@SaveAsync" />
 
 @code {
-    async Task Save()
+    private async Task SaveAsync()
     {
-        await DataService.SaveAsync();
-        Notify.Success("Salvo com sucesso!");
+        await SaveDataAsync();
+
+        await Notify.Success(
+            "Dados salvos com sucesso.",
+            configure: item => item.Placement = Placements.BottomEnd);
     }
 }
 ```
 
 ---
 
-## Padrão de Modal
+## Padrao B - Componente Declarado + Handler + Servico Interno + Outlet
 
-### `ModalHandler` (controle de uma modal)
+Este e o caso de `Modal` e `OffCanvas`.
+
+### Quando usar
+
+Use este modelo quando o overlay:
+
+- existe como componente declarado pelo consumidor;
+- precisa de parametros, slots e conteudo definidos no ponto de uso;
+- precisa de um `Handler` publico para abrir e fechar;
+- precisa renderizar visualmente em outra parte da arvore DOM.
+
+### Fluxo real
+
+```text
+Consumer
+  -> declara <Modal ...> ou <OffCanvas ...>
+  -> mantem ModalHandler ou OffCanvasHandler
+  -> chama handler.OpenAsync / CloseAsync ou handler.Show / Hide / Toggle
+
+Component instance
+  -> cria estado interno
+  -> registra estado no servico interno
+  -> projeta markup com SectionContent
+
+Internal service
+  -> coordena abertura/fechamento
+  -> controla backdrop, pilha ou exclusao por lado
+
+Outlet
+  -> renderiza SectionOutlet para estados registrados
+```
+
+### Como `Modal` funciona
+
+- o consumidor declara `<Modal Handler="...">`;
+- o componente registra um `ModalState` no `ModalService`;
+- o markup do modal e projetado com `SectionContent`;
+- `ModalOutlet` renderiza os estados registrados com `SectionOutlet`;
+- `ModalHandler` expoe `OpenAsync()` e `CloseAsync()`.
+
+Registro DI:
 
 ```csharp
-// Criado pelo consumer e passado para Modal
-public class ModalHandler
-{
-    internal event Action<bool>? OnVisiblityChange;
-
-    public bool IsOpen { get; private set; }
-
-    public void Open()
-    {
-        IsOpen = true;
-        OnVisiblityChange?.Invoke(true);
-    }
-
-    public void Close()
-    {
-        IsOpen = false;
-        OnVisiblityChange?.Invoke(false);
-    }
-}
+builder.Services.AddYasamenModal();
 ```
 
-### `Modal.razor` (o componente)
+Outlet no layout:
 
 ```razor
-@if (State.IsVisible)
-{
-    <div class="ya-modal-backdrop" @onclick="HandleBackdropClick">
-        <div class="ya-modal @Classes" @onclick:stopPropagation>
-            @if (Header.IsNotEmptyFragment())
-            {
-                <div class="ya-modal-header">
-                    @Header
-                    <button class="ya-modal-close" @onclick="() => Handler?.Close()">
-                        <Icon Kind="WellKnownIcons.Close" />
-                    </button>
-                </div>
-            }
-            <div class="ya-modal-body">
-                @ChildContent
-            </div>
-            @if (Footer.IsNotEmptyFragment())
-            {
-                <div class="ya-modal-footer">
-                    @Footer
-                </div>
-            }
-        </div>
-    </div>
-}
-
-@code {
-    [Parameter, EditorRequired]
-    public ModalHandler? Handler { get; set; }
-
-    [Parameter]
-    public RenderFragment? ChildContent { get; set; }
-
-    [Parameter]
-    public RenderFragment Header { get; set; } = EmptyFragment.Delegate;
-
-    [Parameter]
-    public RenderFragment Footer { get; set; } = EmptyFragment.Delegate;
-
-    [Parameter]
-    public bool CloseOnBackdrop { get; set; } = true;
-
-    [Parameter]
-    public string? AdditionalClasses { get; set; }
-
-    private VisibleState State { get; } = new();
-
-    protected override void OnParametersSet()
-    {
-        if (Handler is not null)
-            Handler.OnVisiblityChange += OnVisibilityChange;
-    }
-
-    private void OnVisibilityChange(bool visible)
-    {
-        if (visible) State.Show(); else State.Hide();
-        StateHasChanged();
-    }
-
-    private void HandleBackdropClick()
-    {
-        if (CloseOnBackdrop)
-            Handler?.Close();
-    }
-
-    private string Classes => "ya-modal-content"
-        .AddClass(AdditionalClasses);
-}
+<RoyalCode.Razor.Internal.Modals.ModalOutlet />
 ```
 
-### Uso no Consumer
+### Como `OffCanvas` funciona
+
+- o consumidor declara `<OffCanvas Handler="...">`;
+- o componente registra um `OffCanvasState` no `OffCanvasService`;
+- o markup e projetado com `SectionContent`;
+- `OffCanvasOutlet` renderiza os estados registrados com `SectionOutlet`;
+- `OffCanvasHandler` expoe `Show()`, `Hide()` e `Toggle()`.
+
+Registro DI:
+
+```csharp
+builder.Services.AddYasamenOffCanvas();
+```
+
+Outlet no layout:
+
+```razor
+<RoyalCode.Razor.Internal.OffCanvas.OffCanvasOutlet />
+```
+
+### Exemplo de uso
 
 ```razor
 @code {
     private readonly ModalHandler editModal = new();
+    private readonly OffCanvasHandler filters = new();
 }
 
-<Button Label="Editar" OnClick="editModal.Open" />
+<Button Label="Editar" OnClick="@editModal.OpenAsync" />
+<Button Label="Filtros" OnClick="@filters.Show" />
 
 <Modal Handler="editModal">
-    <Header>Editar Item</Header>
-    <ChildContent>
-        <EditForm Model="@item" OnValidSubmit="Save">
-            <TextField @bind-Value="item.Name" Label="Nome" />
-            <Button Type="ButtonTypes.Submit" Label="Salvar" />
-        </EditForm>
-    </ChildContent>
-    <Footer>
-        <Button Label="Cancelar" OnClick="editModal.Close" />
-    </Footer>
+    <Body>
+        <TextField @bind-Value="model.Name" Label="Nome" />
+    </Body>
 </Modal>
-```
 
----
-
-## Padrão de OffCanvas
-
-### `OffCanvasHandler` (controle do painel)
-
-```csharp
-public class OffCanvasHandler
-{
-    internal event Action<bool>? OnVisibilityChange;
-
-    public bool IsVisible { get; private set; }
-
-    public void Show()
-    {
-        IsVisible = true;
-        OnVisibilityChange?.Invoke(true);
-    }
-
-    public void Hide()
-    {
-        IsVisible = false;
-        OnVisibilityChange?.Invoke(false);
-    }
-
-    public void Toggle()
-    {
-        if (IsVisible) Hide(); else Show();
-    }
-}
-```
-
-### `OffCanvas.razor` (o componente)
-
-```razor
-<div class="ya-offcanvas @PositionClass @VisibilityClass" 
-     @onclick:stopPropagation="true">
-    @if (Header.IsNotEmptyFragment())
-    {
-        <div class="ya-offcanvas-header">
-            @Header
-            <CloseOffCanvasButton Handler="@Handler" />
-        </div>
-    }
-    <div class="ya-offcanvas-body">
-        @ChildContent
-    </div>
-</div>
-
-@if (State.IsVisible)
-{
-    <div class="ya-offcanvas-backdrop" @onclick="HandleBackdropClick" />
-}
-
-@code {
-    [Parameter, EditorRequired]
-    public OffCanvasHandler? Handler { get; set; }
-
-    [Parameter]
-    public OffCanvasPositions Position { get; set; } = OffCanvasPositions.End;
-
-    [Parameter]
-    public bool CloseOnBackdrop { get; set; } = true;
-
-    [Parameter]
-    public RenderFragment Header { get; set; } = EmptyFragment.Delegate;
-
-    [Parameter]
-    public RenderFragment? ChildContent { get; set; }
-
-    private VisibleState State { get; } = new();
-
-    private string PositionClass => Position switch
-    {
-        OffCanvasPositions.Start => "ya-offcanvas-start",
-        OffCanvasPositions.Top   => "ya-offcanvas-top",
-        OffCanvasPositions.Bottom => "ya-offcanvas-bottom",
-        _ => "ya-offcanvas-end"
-    };
-
-    private string VisibilityClass => State.IsVisible ? "ya-offcanvas-show" : "";
-
-    protected override void OnParametersSet()
-    {
-        if (Handler is not null)
-            Handler.OnVisibilityChange += OnVisibilityChange;
-    }
-
-    private void OnVisibilityChange(bool visible)
-    {
-        if (visible) State.Show(); else State.Hide();
-        StateHasChanged();
-    }
-
-    private void HandleBackdropClick()
-    {
-        if (CloseOnBackdrop)
-            Handler?.Hide();
-    }
-}
-```
-
-### Uso no Consumer
-
-```razor
-@code {
-    private readonly OffCanvasHandler filterPanel = new();
-}
-
-<Button Label="Filtros" OnClick="filterPanel.Show" />
-
-<OffCanvas Handler="filterPanel" Position="OffCanvasPositions.End">
-    <Header>Filtros</Header>
-    <ChildContent>
-        <TextField @bind-Value="filter.Name" Label="Nome" />
-        <Button Label="Aplicar" OnClick="ApplyFilter" />
-    </ChildContent>
+<OffCanvas Handler="filters" Position="Positions.End">
+    <Body>
+        <TextField @bind-Value="search" Label="Busca" />
+    </Body>
 </OffCanvas>
 ```
 
 ---
 
-## `AsideBox` — Painel Lateral Persistente
+## Diferencas Praticas
 
-`AsideBox` é diferente: ele **não** usa Handler. É uma div lateral sempre presente no layout, controlada pelo AppLayout:
-
-```razor
-<AsideBox Position="OffCanvasPositions.End"
-          Title="Propriedades"
-          Visible="@showProperties">
-    @* conteúdo sempre montado *@
-</AsideBox>
-```
+| Caso | Surface publica | Estado principal | Outlet | Section projection |
+|---|---|---|---|---|
+| `Notification` | `Notify` | `NotificationService` | `NotificationOutlet` | Nao |
+| `Modal` | `ModalHandler` + `<Modal>` | `ModalService` + `ModalState` | `ModalOutlet` | Sim |
+| `OffCanvas` | `OffCanvasHandler` + `<OffCanvas>` | `OffCanvasService` + `OffCanvasState` | `OffCanvasOutlet` | Sim |
 
 ---
 
-## Como Criar um Novo Par Service + Outlet
+## Regras para Novos Overlays
 
-### 1. Criar o entry/state model
-
-```csharp
-// ToastEntry.cs (ou qualquer nome)
-internal sealed class ToastEntry
-{
-    public string Message { get; init; } = "";
-    public Themes Theme { get; init; } = Themes.Info;
-    public int Duration { get; init; } = 5000; // ms
-}
-```
-
-### 2. Criar o Service interno
-
-```csharp
-// ToastService.cs (internal)
-internal sealed class ToastService
-{
-    private readonly List<ToastEntry> items = new();
-    internal event Action? Changed;
-    internal IReadOnlyList<ToastEntry> Items => items;
-
-    internal void Push(ToastEntry entry)
-    {
-        items.Add(entry);
-        Changed?.Invoke();
-    }
-
-    internal void Dismiss(ToastEntry entry)
-    {
-        items.Remove(entry);
-        Changed?.Invoke();
-    }
-}
-```
-
-### 3. Criar a API pública
-
-```csharp
-// Toast.cs (public façade)
-public sealed class Toast
-{
-    private readonly ToastService svc;
-    internal Toast(ToastService svc) => this.svc = svc;
-
-    public void Show(string message, Themes theme = Themes.Info, int duration = 5000)
-        => svc.Push(new ToastEntry { Message = message, Theme = theme, Duration = duration });
-}
-```
-
-### 4. Criar o Outlet
-
-```razor
-@* ToastOutlet.razor *@
-@inject ToastService Service
-@implements IDisposable
-
-<div class="ya-toast-container">
-    @foreach (var item in Service.Items)
-    {
-        <Toast @key="item" Entry="@item" OnDismiss="() => Service.Dismiss(item)" />
-    }
-</div>
-
-@code {
-    protected override void OnInitialized() => Service.Changed += StateHasChanged;
-    public void Dispose() => Service.Changed -= StateHasChanged;
-}
-```
-
-### 5. Registrar no DI
-
-```csharp
-// ToastServiceCollectionExtensions.cs
-namespace Microsoft.Extensions.DependencyInjection;
-
-public static class ToastServiceCollectionExtensions
-{
-    public static IServiceCollection AddYasamenToast(this IServiceCollection services)
-    {
-        services.AddScoped<ToastService>();
-        services.AddScoped<Toast>();
-        return services;
-    }
-}
-```
-
-### 6. Adicionar o Outlet no AppLayout
-
-```razor
-@* MainLayout.razor *@
-<ToastOutlet />
-```
+1. Nao assumir que todo overlay precisa de `SectionOutlet`.
+2. Se o recurso for global e disparado por DI, prefira facade publica + servico + outlet global.
+3. Se o recurso for uma instancia declarada com conteudo proprio, prefira componente + handler + servico interno + `SectionContent` / `SectionOutlet`.
+4. `Service` interno e `Outlet` interno devem ficar em namespace `RoyalCode.Razor.Internal.*`.
+5. A surface publica deve expor apenas o que o consumidor precisa usar: componente, handler e extensao DI.
+6. Services de estado de UI continuam `Scoped`.
 
 ---
 
-## Referência Rápida
+## Regras de Layout
 
-| Sobreposição | Handler criado por | Controle | DI necessário |
-|---|---|---|---|
-| **Notification** | (não tem Handler) | via `Notify` injetado | `AddYasamenNotification()` |
-| **Modal** | Consumer (`new ModalHandler()`) | `Handler.Open()` / `Close()` | não precisa de DI |
-| **OffCanvas** | Consumer (`new OffCanvasHandler()`) | `Handler.Show()` / `Hide()` | não precisa de DI |
+O layout de aplicacao precisa hospedar os outlets internos correspondentes aos recursos usados. Hoje o conjunto esperado e:
 
-**Regra:**  
-- Sobreposições **globais** (não ligadas a um componente específico) → Service + Outlet + DI  
-- Sobreposições **locais** (ligadas a um botão específico) → Handler inline, sem DI
+```razor
+<RoyalCode.Razor.Internal.Modals.ModalOutlet />
+<RoyalCode.Razor.Internal.OffCanvas.OffCanvasOutlet />
+<RoyalCode.Razor.Internal.Notifications.NotificationOutlet />
+```
+
+Se um novo overlay exigir outlet, a presenca dele no layout faz parte do contrato do pacote.
 
 ---
 
-## Checklist para Novo Overlay/Service
+## Checklist
 
-- [ ] Entry model `internal sealed` com propriedades `init`
-- [ ] Service `internal sealed` com `event Action? Changed` e lista interna
-- [ ] Façade pública com método semântico (`Show`, `Push`, `Add`)
-- [ ] Outlet `.razor` injeta Service interno (não a façade), assina `Changed`, dispose correto
-- [ ] DI extension em namespace `Microsoft.Extensions.DependencyInjection`
-- [ ] Ambos `Service` e Façade registrados como `Scoped`
-- [ ] Outlet adicionado ao `AppLayout` ou `App.razor`
+- [ ] O overlay e global ou pertence a uma instancia declarada?
+- [ ] Existe necessidade de `Handler` publico?
+- [ ] O layout precisa hospedar um outlet?
+- [ ] O service de estado deve ser `Scoped`?
+- [ ] O namespace interno ficou em `RoyalCode.Razor.Internal.*`?
+- [ ] A API publica exposta esta minima e coerente com o padrao escolhido?

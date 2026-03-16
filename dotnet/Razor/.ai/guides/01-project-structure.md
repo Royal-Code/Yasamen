@@ -1,64 +1,86 @@
-# Guide 01 — Estrutura de Projetos
+# Guide 01 - Estrutura de Projetos
 
-> Como a biblioteca é organizada em projetos, quais são as dependências entre eles e como criar um novo pacote.
-
----
-
-## Visão Geral da Solução
-
-A biblioteca **RoyalCode.Razor** é organizada em múltiplos projetos `SDK="Microsoft.NET.Sdk.Razor"`, cada um com uma responsabilidade clara. Não existe um projeto monolítico — cada grupo de componentes tem seu próprio pacote NuGet.
-
-### Grafo de Dependências
-
-```
-RoyalCode.Razor.Styles          (zero deps — raiz de estilos)
-      ↑
-RoyalCode.Razor.Icons           (depende: Styles)
-      ↑
-RoyalCode.Razor.Animations      (depende: Styles)
-      ↑
-RoyalCode.Razor.Commons         (depende: Styles, Icons, Animations implicitamente via Extensions)
-      ↑                ↑
-RoyalCode.Razor.Buttons    RoyalCode.Razor.Alerts
-(Commons, Animations,       (Commons, Icons)
- Icons)
-      ↑
-RoyalCode.Razor.Drops       (Commons, Icons, Animations, Buttons)
-      ↑
-RoyalCode.Razor.Forms       (Commons, Styles, Buttons)
-      ↑
-RoyalCode.Razor.Breadcrumbs (Commons, Drops, Icons)
-RoyalCode.Razor.Modals      (Commons)
-RoyalCode.Razor.OffCanvas   (Commons)
-      ↑
-RoyalCode.Razor.Layouts     (Commons, Styles)
-      ↑
-RoyalCode.Razor.Layouts.Apps (Commons, Styles, Buttons, OffCanvas, Modals, Alerts, Breadcrumbs, Icons, Layouts)
-```
-
-**Regra:** nunca criar dependência circular. Projetos de UI de baixo nível (Styles, Icons, Commons) **não dependem** de projetos de componente.
+> Como a biblioteca esta organizada em projetos, quais dependencias existem de fato e como estruturar novos pacotes.
 
 ---
 
-## Estrutura do Projeto `.csproj`
+## Visao Geral
 
-Todo projeto de componentes segue este padrão:
+A solucao `RoyalCode.Razor` e composta por varios projetos `Microsoft.NET.Sdk.Razor`. Cada pacote tem responsabilidade propria e pode ser consumido isoladamente.
+
+Para evitar leitura errada da arquitetura, e importante separar:
+
+1. **visao logica**: como os pacotes se organizam conceitualmente;
+2. **referencias diretas**: quais `<ProjectReference>` existem hoje nos `.csproj`.
+
+---
+
+## Visao Logica
+
+```text
+Base
+  - RoyalCode.Razor.Styles
+  - RoyalCode.Razor.Icons
+  - RoyalCode.Razor.Animations
+  - RoyalCode.Razor.Commons
+
+Componentes e infra de UI
+  - RoyalCode.Razor.Buttons
+  - RoyalCode.Razor.Drops
+  - RoyalCode.Razor.Forms
+  - RoyalCode.Razor.Alerts
+  - RoyalCode.Razor.Breadcrumbs
+  - RoyalCode.Razor.Modals
+  - RoyalCode.Razor.OffCanvas
+  - RoyalCode.Razor.Layouts
+
+Composicao de aplicacao
+  - RoyalCode.Razor.Layouts.Apps
+```
+
+Essa visao e conceitual. Ela ajuda a manter o desenho da biblioteca, mas nao deve ser copiada mecanicamente para os `.csproj`.
+
+---
+
+## Referencias Diretas Atuais
+
+| Projeto | Referencias diretas |
+|---|---|
+| `RoyalCode.Razor.Styles` | *(nenhuma)* |
+| `RoyalCode.Razor.Icons` | *(nenhuma)* |
+| `RoyalCode.Razor.Animations` | *(nenhuma)* |
+| `RoyalCode.Razor.Commons` | `Styles` |
+| `RoyalCode.Razor.Buttons` | `Animations`, `Commons`, `Icons` |
+| `RoyalCode.Razor.Drops` | `Buttons` |
+| `RoyalCode.Razor.Forms` | `Buttons` |
+| `RoyalCode.Razor.Alerts` | `Commons`, `Icons` |
+| `RoyalCode.Razor.Breadcrumbs` | `Drops` |
+| `RoyalCode.Razor.Modals` | `Commons`, `Styles` |
+| `RoyalCode.Razor.OffCanvas` | `Buttons`, `Styles` |
+| `RoyalCode.Razor.Layouts` | `Commons` |
+| `RoyalCode.Razor.Layouts.Apps` | `Alerts`, `Breadcrumbs`, `Layouts`, `Modals`, `OffCanvas` |
+
+### Regras
+
+- Nunca criar dependencia circular.
+- Adicionar apenas referencias diretas realmente necessarias.
+- Nao inflar o `.csproj` com dependencias "conceituais" que entram apenas por analogia.
+
+---
+
+## Estrutura Basica de um `.csproj`
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
-    <!-- Importa configurações de empacotamento NuGet -->
-    <Import Project="..\pack.targets" />
+    <Import Project="..\\pack.targets" />
 
     <PropertyGroup>
-        <!-- Usa a variável do Directory.Build.props -->
         <TargetFramework>$(RuntimeVer)</TargetFramework>
-        <!-- Namespace raiz sempre igual para componentes públicos -->
         <RootNamespace>RoyalCode.Razor</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-        <!-- Obrigatório em projetos Blazor para browser -->
         <SupportedPlatform Include="browser" />
     </ItemGroup>
 
@@ -67,42 +89,41 @@ Todo projeto de componentes segue este padrão:
     </ItemGroup>
 
     <ItemGroup>
-        <!-- Dependências do projeto — apenas o necessário -->
-        <ProjectReference Include="..\RoyalCode.Razor.Commons\RoyalCode.Razor.Commons.csproj" />
+        <ProjectReference Include="..\\RoyalCode.Razor.Commons\\RoyalCode.Razor.Commons.csproj" />
     </ItemGroup>
 
 </Project>
 ```
 
-### Variáveis Centrais (`Directory.Build.props`)
+### Variaveis centrais
 
-| Variável | Valor | Uso |
-|---|---|---|
-| `$(RuntimeVer)` | `net10.0` | TargetFramework de todos os projetos |
-| `$(AspNetVer)` | `10.0.1` | Versão do pacote ASP.NET |
-| `$(LibVer)` | `0.0.0.1` | Versão do NuGet (todos os projetos têm a mesma versão) |
+| Variavel | Uso |
+|---|---|
+| `$(RuntimeVer)` | `TargetFramework` compartilhado |
+| `$(AspNetVer)` | versao do pacote ASP.NET |
+| `$(LibVer)` | versao do pacote NuGet |
 
-**Regra:** nunca hardcodar versões no `.csproj`. Usar sempre as variáveis do `Directory.Build.props`.
+**Regra:** nao hardcodar versoes no `.csproj`.
 
 ---
 
-## Namespace Padrão
+## Namespaces
 
 | Contexto | Namespace |
 |---|---|
-| Componentes públicos (`.razor` e `.cs`) | `RoyalCode.Razor.Components` |
-| Componentes internos (não para consumo direto) | `RoyalCode.Razor.Internal.<NomeProjeto>` |
-| Extensões de DI (`IServiceCollection`) | `Microsoft.Extensions.DependencyInjection` |
-| Extensões gerais de utilidade | `RoyalCode.Razor.Commons.Extensions` |
-| Estilos e enums | `RoyalCode.Razor.Styles` |
+| Componentes publicos | `RoyalCode.Razor.Components` |
+| Infra interna | `RoyalCode.Razor.Internal.<NomeProjeto>` |
+| Extensoes de DI | `Microsoft.Extensions.DependencyInjection` |
+| Extensoes utilitarias | `RoyalCode.Razor.Commons.Extensions` |
+| Enums e builders de estilo | `RoyalCode.Razor.Styles` |
 
-O `RootNamespace` do `.csproj` é sempre `RoyalCode.Razor` para que o compilador resolva corretamente.
+O `RootNamespace` e `RoyalCode.Razor` para manter coerencia entre componentes publicos, tipos internos e arquivos `.razor`.
 
 ---
 
-## Arquivo `_Imports.razor`
+## `_Imports.razor`
 
-Todo projeto de componentes tem um `_Imports.razor` na raiz com os usings globais para os arquivos `.razor`:
+Cada pacote Razor tem um `_Imports.razor` na raiz. Exemplo comum:
 
 ```razor
 @using Microsoft.AspNetCore.Components.Web
@@ -112,50 +133,64 @@ Todo projeto de componentes tem um `_Imports.razor` na raiz com os usings globai
 @using RoyalCode.Razor.Styles
 ```
 
-Projetos que usam animações adicionam:
+Pacotes que usam animacoes podem incluir:
+
 ```razor
 @using RoyalCode.Razor.Animations
 ```
 
-**Regra:** `@using` de namespaces internos (ex: `RoyalCode.Razor.Internal.*`) **não entram** em `_Imports.razor` — são resolvidos apenas nos arquivos onde são necessários.
+### Regra real para namespaces internos
+
+O steering anterior estava rigido demais. A regra correta e:
+
+- `RoyalCode.Razor.Internal.*` nao faz parte da API publica do pacote;
+- em arquivos publicos isolados, prefira usar namespaces internos apenas onde forem necessarios;
+- no `_Imports.razor` **do proprio pacote**, e aceitavel incluir `@using RoyalCode.Razor.Internal.*` quando isso simplifica a implementacao interna dos componentes Razor.
+
+Em outras palavras: namespace interno no `_Imports.razor` do pacote e um detalhe de implementacao valido. O que nao pode acontecer e trata-lo como contrato para consumidores externos.
 
 ---
 
-## Estrutura de Pastas Dentro de um Projeto
+## Estrutura Interna de Pastas
 
-```
+```text
 RoyalCode.Razor.XYZ/
-├── _Imports.razor              # Usings globais do projeto
-├── RoyalCode.Razor.XYZ.csproj
-├── Components/                 # Componentes públicos
-│   ├── MyComponent.razor
-│   ├── MyComponent.razor.cs    # Code-behind (quando necessário)
-│   └── MyComponent.cs          # Alternativa: componente 100% C# (sem .razor)
-├── Internal/                   # Infraestrutura interna (não pública)
-│   └── XYZ/
-│       ├── InternalHelper.cs
-│       └── InternalComponent.razor
-└── Extensions/                 # Extensões de DI e utilitários públicos
-    └── XYZServiceCollectionExtensions.cs
+|-- _Imports.razor
+|-- RoyalCode.Razor.XYZ.csproj
+|-- Components/
+|   |-- MyComponent.razor
+|   |-- MyComponent.razor.cs
+|   `-- MyComponent.cs
+|-- Internal/
+|   `-- XYZ/
+|       |-- InternalHelper.cs
+|       `-- InternalComponent.razor
+`-- Extensions/
+    `-- XYZServiceCollectionExtensions.cs
 ```
 
-**Regra:** pasta `Internal/` agrupa tudo que **não** deve ser usado diretamente pelo consumidor do pacote. Pasta `Components/` é a API pública.
+### Regras
+
+- `Components/` e a superficie publica do pacote.
+- `Internal/` concentra infraestrutura e componentes que nao devem ser consumidos diretamente.
+- `Extensions/` concentra integracao publica, principalmente DI.
 
 ---
 
 ## Criando um Novo Projeto
 
-1. Copiar o `.csproj` de um projeto existente similar e ajustar o nome.
-2. Criar `_Imports.razor` com os usings necessários.
-3. Adicionar o projeto à solução `Razor.sln`.
-4. Adicionar `<ProjectReference>` apenas nos projetos que este **consome** (não o inverso).
-5. Se o projeto registra serviços DI, criar `Extensions/XYZServiceCollectionExtensions.cs` com método `AddYasamenXYZ(this IServiceCollection services)`.
+1. Copiar o `.csproj` de um pacote semelhante.
+2. Ajustar nome do projeto e referencias diretas.
+3. Criar `_Imports.razor` com os `@using` realmente necessarios.
+4. Adicionar o projeto em `Razor.sln`.
+5. Criar `Components/`, `Internal/` e `Extensions/` conforme o papel do pacote.
+6. Se houver integracao DI, expor `AddYasamenXYZ(this IServiceCollection services)`.
 
 ---
 
-## Registros DI — Padrão
+## Padrao para DI
 
-Cada projeto que precisa de DI cria uma extensão no namespace `Microsoft.Extensions.DependencyInjection`:
+Cada pacote que precisa registrar servicos deve expor uma extensao no namespace `Microsoft.Extensions.DependencyInjection`.
 
 ```csharp
 namespace Microsoft.Extensions.DependencyInjection;
@@ -170,9 +205,16 @@ public static class XYZServiceCollectionExtensions
 }
 ```
 
-| Projeto | Método DI |
-|---|---|
-| Commons | `AddYasamenCommons()` |
-| Alerts (Notifications) | `AddYasamenNotification()` |
+Exemplos reais:
 
-**Regra de lifetime:** JS Modules → `Transient`. Serviços de estado de UI (ex: NotificationService) → `Scoped`. Utilitários sem estado → `Transient` ou estático.
+- `AddYasamenCommons()`
+- `AddYasamenNotification()`
+- `AddYasamenModal()`
+- `AddYasamenOffCanvas()`
+- `AddYasamenMenu()`
+
+### Lifetimes
+
+- JS modules tendem a `Transient`.
+- Servicos de estado de UI tendem a `Scoped`.
+- Utilitarios sem estado podem ser `Transient` ou estaticos.

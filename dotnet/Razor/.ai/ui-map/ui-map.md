@@ -200,23 +200,23 @@
 
 **Componentes RoyalCode:** `AppMenu`, `AppMenuList`, `AppMenuItem`, `AppSideBar`, `AppSideMenuButton`, `AppLayout`
 
-**Nota de Adaptação: 8 / 10**
+**Nota de Adaptacao: 8 / 10**
 
-**Justificativa:** A biblioteca tem um sistema de menu completo: `AppLayout` com sidebar, `AppSideMenuButton` que abre o `AppMenu` via `OffCanvas`, `AppMenuList` renderizando os itens do nível atual, e `AppMenuItem` com suporte a links, módulos (drill-down) e divisores. Suporta favoritos e navegação hierárquica. Não há bottom navigation bar nativa para Mobile (o padrão usa a gaveta/hamburger), o que limita levemente a conformidade com a regra Mobile do catálogo.
+**Justificativa:** A biblioteca tem um sistema de menu robusto: `AppLayout` com sidebar, `AppSideMenuButton` que abre o `AppMenu` via `OffCanvas`, `AppMenuList` renderizando os itens do nivel atual, e `AppMenuItem` com suporte a links, modulos (drill-down) e divisores. Suporta favoritos e navegacao hierarquica. O ponto fraco atual nao e o carregamento do menu, mas a experiencia complementar: o `AppMenu` ainda contem um placeholder interno de busca (`search component`) e nao ha bottom navigation nativa para Mobile.
 
 **Exemplo:**
 
 ```razor
-@* AppLayout já inclui a estrutura completa de navegação *@
+@* AppLayout ja inclui a estrutura completa de navegacao *@
 <AppLayout>
     <TopStart>
         <AppSideMenuButton />  @* hamburger que abre o AppMenu *@
     </TopStart>
     <TopCenter>
-        <span>Minha Aplicação</span>
+        <span>Minha Aplicacao</span>
     </TopCenter>
     <LeftMenu>
-        @* Ícones de acesso rápido na sidebar *@
+        @* Icones de acesso rapido na sidebar *@
         <AppSideItem>
             <IconButton Icon="WellKnownIcons.Home" OnClick="@GoHome" />
         </AppSideItem>
@@ -225,17 +225,43 @@
         @Body
     </Main>
     <Footer>
-        <span>© 2026</span>
+        <span>(c) 2026</span>
     </Footer>
 </AppLayout>
 ```
 
 Para alimentar o `AppMenu` com itens de menu:
 
-```razor
-@* No serviço DI — fornecer IMenuProvider com estrutura MenuItem *@
-services.AddScoped<IMenuProvider, MyMenuProvider>();
+```csharp
+builder.Services
+    .AddYasamenMenu()
+    .ConfigureMenuItems(
+        new MenuItem
+        {
+            Id = "home",
+            Text = "Inicio",
+            Url = "/",
+            Type = MenuItemType.Link
+        },
+        new MenuItem
+        {
+            Id = "cadastros",
+            Text = "Cadastros",
+            Type = MenuItemType.Module,
+            Children =
+            [
+                new MenuItem
+                {
+                    Id = "clientes",
+                    Text = "Clientes",
+                    Url = "/clientes",
+                    Type = MenuItemType.Link
+                }
+            ]
+        });
 ```
+
+Tambem e possivel fornecer um `IMenuLoader` customizado quando o menu vier de HTTP ou outra fonte externa.
 
 ---
 
@@ -568,11 +594,11 @@ else if (activeTab == "hist")
 
 ## UIP-INPUT-FORM_FIELD_GROUP — Form Field Group
 
-**Componentes RoyalCode:** `Stack`, `FieldText`, `FieldBadge`, `FieldAction`
+**Componentes RoyalCode:** `FieldGroup`, `ControlGroup`, `InputFieldBase<TValue>`, `TextField`, `FieldText`, `FieldBadge`, `FieldAction`
 
-**Nota de Adaptação: 3 / 10**
+**Nota de Adaptacao: 6 / 10**
 
-**Justificativa:** A biblioteca tem utilitários de apoio a formulários (`FieldText` para texto descritivo, `FieldBadge` para badges "Obrigatório/Beta", `FieldAction` para botões ao lado de campos), mas não tem um componente `FormFieldGroup` que encapsule a validação inline, o agrupamento semântico e as transições de estado (válido/erro/a submeter). O desenvolvedor usa `EditForm` nativo do Blazor e organiza com `Stack`. A integração com `EditContext` e `ValidationMessageStore` é responsabilidade do consumidor.
+**Justificativa:** A biblioteca ja tem uma boa infraestrutura de campo: `FieldGroup` concentra label, descricao complementar, informacao, erro e footer; `ControlGroup` trata prepend/append; `InputFieldBase<TValue>` integra essa estrutura com `EditContext`; e `TextField` ja entrega um campo concreto pronto para uso. O gap nao esta no agrupamento de campo em si, mas na falta de mais inputs concretos e de componentes de entrada mais complexos. Por isso a cobertura e media, nao baixa.
 
 **Exemplo:**
 
@@ -581,24 +607,26 @@ else if (activeTab == "hist")
     <DataAnnotationsValidator />
 
     <Stack>
-        @* Título da secção *@
         <div class="font-semibold text-lg">Dados Pessoais</div>
 
-        @* Campo com badge de obrigatório *@
-        <div>
-            <label for="nome">
-                Nome
-                <FieldBadge Text="Obrigatório" Style="Themes.Danger" />
-            </label>
-            <InputText id="nome" @bind-Value="model.Name" class="ya-input" />
-            <ValidationMessage For="@(() => model.Name)" />
-        </div>
+        <TextField @bind-Value="model.Name"
+                   Label="Nome"
+                   Information="Informe o nome completo.">
+            <DescriptionComplement>
+                <FieldBadge Text="Obrigatorio" Style="Themes.Danger" />
+            </DescriptionComplement>
+        </TextField>
 
-        @* Campo com ação ao lado *@
-        <div class="flex gap-2">
-            <InputText @bind-Value="model.Code" class="ya-input flex-1" placeholder="Código" />
-            <FieldAction Label="Gerar" OnClick="@GenerateCode" />
-        </div>
+        <TextField @bind-Value="model.Code"
+                   Label="Codigo"
+                   Placeholder="Codigo interno">
+            <Append>
+                <FieldAction Label="Gerar" OnClick="@GenerateCode" />
+            </Append>
+            <FooterAction>
+                <FieldText>Use um codigo curto e unico.</FieldText>
+            </FooterAction>
+        </TextField>
 
         <Button Label="Guardar" Type="ButtonTypes.Submit" Style="Themes.Primary" />
     </Stack>
@@ -890,16 +918,16 @@ else
 
 ## UIP-FEEDBACK-TOAST_ALERT — Toast / Alert
 
-**Componentes RoyalCode:** `Notification`, `NotificationContent`, `Notify` (serviço DI)
+**Componentes RoyalCode:** `Notification`, `NotificationContent`, `Notify` (servico DI)
 
-**Nota de Adaptação: 9 / 10**
+**Nota de Adaptacao: 9 / 10**
 
-**Justificativa:** Cobertura quase total. `Notification` tem: auto-dismiss com `Timer`, barra de progresso animada, pausa no hover, `CloseOnClick`, temas completos, ícone ou barra colorida, `OnClose`/`OnOpen` callbacks. O serviço `Notify` permite uso programático com métodos de conveniência por tema (`Success`, `Danger`, `Warning`, etc.). `NotificationContent` cobre texto + detalhe em duas linhas. Falta posicionamento configurável (sempre no topo — `NotificationOutlet` é incluído automaticamente pelo `AppLayout`).
+**Justificativa:** Cobertura quase total. `Notification` tem auto-dismiss com `Timer`, barra de progresso animada, pausa no hover, `CloseOnClick`, temas completos, icone ou barra colorida, e callbacks `OnClose` / `OnOpen`. O servico `Notify` permite uso programatico com metodos de conveniencia por tema (`Success`, `Danger`, `Warning`, etc.) e callback `configure`. O posicionamento ja e configuravel por `NotificationItem.Placement`, e o `NotificationOutlet` agrupa os itens por `Placements`.
 
 **Exemplo:**
 
 ```razor
-@* Uso programático via serviço *@
+@* Uso programatico via servico *@
 @inject Notify Notify
 
 <Button Label="Salvar" OnClick="@HandleSave" Style="Themes.Primary" />
@@ -908,12 +936,17 @@ else
     private async Task HandleSave()
     {
         await SaveData();
-        await Notify.Success("Dados salvos com sucesso!");
+        await Notify.Success(
+            "Dados salvos com sucesso!",
+            configure: item => item.Placement = Placements.BottomEnd);
     }
 
     private async Task HandleError()
     {
-        await Notify.Danger("Erro ao salvar os dados.", "Verifique a conexão e tente novamente.");
+        await Notify.Danger(
+            "Erro ao salvar os dados.",
+            "Verifique a conexao e tente novamente.",
+            item => item.Placement = Placements.TopEnd);
     }
 }
 
@@ -922,7 +955,7 @@ else
               Timer="@TimeSpan.FromSeconds(5)"
               Closeable="true"
               Icon="true">
-    <NotificationContent Text="Atenção" Details="Sua sessão irá expirar em breve." />
+    <NotificationContent Text="Atencao" Details="Sua sessao ira expirar em breve." />
 </Notification>
 ```
 
@@ -1248,7 +1281,7 @@ else
 | UIP-DATA-CARD_GRID | Card Grid | 5 | `Box`+`Container`+`Slot` |
 | UIP-DATA-TIMELINE_ITEM | Timeline Item | 0 | *(nenhum)* |
 | UIP-DATA-KANBAN_COLUMN | Kanban Column | 0 | *(nenhum)* |
-| UIP-INPUT-FORM_FIELD_GROUP | Form Field Group | 3 | `Stack`, `FieldText`, `FieldBadge`, `FieldAction` |
+| UIP-INPUT-FORM_FIELD_GROUP | Form Field Group | 6 | `FieldGroup`, `ControlGroup`, `TextField`, `FieldBadge`, `FieldAction` |
 | UIP-INPUT-SEARCH_BAR | Search Bar | 1 | *(manual com input nativo + IconButton)* |
 | UIP-INPUT-FILTER_PANEL | Filter Panel | 4 | `OffCanvas`, `Box`+`Stack` |
 | UIP-INPUT-DATE_PICKER | Date Picker | 0 | *(nenhum)* |
@@ -1275,7 +1308,7 @@ else
 | Estruturais | 5,8 | Boa cobertura de grids e stacks; sem scroll region dedicada |
 | Navegação | 3,4 | Breadcrumb e Menu excelentes; Tabs, Pagination e Stepper ausentes |
 | Dados & Listagem | 1,4 | Apenas Card Grid parcialmente coberto; Data Table e Timeline ausentes |
-| Entrada | 1,6 | Utilitários de form presentes; nenhum input complexo (search, date, inline) |
+| Entrada | 2,2 | Infra de forms boa; poucos inputs concretos e nenhum input complexo (search, date, inline) |
 | Feedback & Estado | 5,8 | Toast e Contextual Dialog fortes; Loading e Empty State fracos |
 | Ação | 6,0 | Bar e Contextual Menu muito bons; FAB sem componente dedicado |
 | Conteúdo | 1,2 | Nenhum componente de conteúdo estruturado (Detail, Metric, Rich Text, Media) |
