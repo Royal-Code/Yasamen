@@ -1,7 +1,7 @@
 # Plano de Desenvolvimento — RoyalCode.Razor
 
 > Gerado em 15/03/2026.
-> Relaciona os componentes do Roadmap com os UI Patterns do Catálogo Global (catalogo-ui.md).
+> Relaciona os componentes do Roadmap com os UI Patterns do Catálogo Global (`catalogo-ui.md`).
 > Prioridade guiada pelos gaps de cobertura identificados no ui-map.md.
 
 ---
@@ -11,15 +11,15 @@
 | Prioridade | Critério |
 |---|---|
 | **P1 — Crítico** | Padrão do catálogo com nota 0 e alta frequência de uso em apps reais |
-| **P2 — Alto** | Padrão com nota ≤ 4 ou componente que desbloqueia múltiplos outros |
+| **P2 — Alto** | Padrão com nota <= 4 ou componente que desbloqueia múltiplos outros |
 | **P3 — Médio** | Componente de roadmap sem cobertura de catálogo, mas de uso comum |
 | **P4 — Baixo** | Componentes avançados / nicho, sem impacto em padrões core |
 
 ---
 
-## Fase 1 — Fundações de Dados e Navegação
+## Fase 1 — Fundações de Dados, Busca e Navegação
 
-> Itens ausentes que bloqueiam a maioria dos cenários reais de aplicação.
+> Itens ausentes que bloqueiam a maioria dos cenários reais de aplicação e destravam listagens, fluxos e shells básicos.
 
 ### F1.1 — Tabs
 **Roadmap:** R1 › Componentes Diversos › `Tabs`
@@ -36,7 +36,7 @@ Comportamento essencial:
 - Suporte a badge/contagem por tab individual
 - Scroll lateral em Mobile quando tabs excedem a largura
 
-Dependência de: `Button`/`Badge` (já existem), CSS `ya-tabs`
+Dependência de: `Button`, `Badge` (já existem), CSS `ya-tabs`
 
 ---
 
@@ -45,13 +45,13 @@ Dependência de: `Button`/`Badge` (já existem), CSS `ya-tabs`
 **Cobre:** `UIP-NAV-PAGINATION` (nota atual: 0/10)
 **P1**
 
-Componentes a criar:
+Componente a criar:
 - `Pagination` — barra com botões de navegação e indicador de página
 
 Parâmetros: `CurrentPage`, `TotalPages`, `PageSize`, `OnPageChanged`, `Loading`
 
 Comportamento essencial:
-- Desktop: botões anterior/próxima + páginas numeradas (max 7 visíveis) + primeira/última
+- Desktop: botões anterior/próxima + páginas numeradas (máx. 7 visíveis) + primeira/última
 - Mobile: simplificado — anterior, indicador "X de Y", próxima
 - Botões desativados durante loading e nos extremos
 
@@ -95,7 +95,48 @@ Nota: `RotationMotion` (spinner) permanece para casos pontuais; skeleton é pref
 
 ---
 
-### F1.5 — Steps / Stepper
+### F1.5 — SearchField
+**Roadmap:** R2 › `SearchField`
+**Cobre:** `UIP-INPUT-SEARCH_BAR` (nota atual: 1/10 → ~8)
+**P1**
+
+Componente a criar:
+- `SearchField` — campo de busca com ícone, botão de limpar, debounce e sugestões dropdown opcionais
+
+Parâmetros: `Value`, `OnSearch`, `Placeholder`, `DebounceMs`, `Suggestions`, `OnSuggestionSelected`, `SearchOnEnter`, `SearchOnInput`
+
+Comportamento essencial:
+- Busca por Enter, por digitação ou por ambos
+- Botão de limpar quando houver valor
+- Debounce configurável para toolbars e listagens
+- Modo compacto para barras de ação e cabeçalhos de listagem
+- Estrutura pronta para fechar o gap de busca no `AppMenu`
+
+Dependência de: `Icon`, `Button` e infraestrutura de campo já existente
+
+---
+
+### F1.6 — ScrollRegion
+**Roadmap:** — (gap do catálogo)
+**Cobre:** `UIP-STRUCT-SCROLLABLE_REGION` (nota atual: 2/10 → ~7)
+**P2**
+
+Componente a criar:
+- `ScrollRegion` — wrapper com scroll independente, dimensões controladas e estados auxiliares de loading/fim
+
+Parâmetros: `MaxHeight`, `MaxWidth`, `Orientation`, `Loading`, `ReachedEnd`, `ChildContent`
+
+Comportamento essencial:
+- Scroll independente do restante da página
+- Suporte a eixo vertical e horizontal
+- Classe raiz `ya-scroll-region`
+- Hooks visuais para loading e fim de conteúdo sem impor lazy loading interno
+
+Dependência de: CSS `ya-scroll-region`
+
+---
+
+### F1.7 — Steps / Stepper
 **Roadmap:** R1 › Componentes Diversos › `Steps`
 **Cobre:** `UIP-NAV-STEPPER_INDICATOR` (nota atual: 0/10)
 **P2**
@@ -110,10 +151,9 @@ Status por etapa: `Pending` / `InProgress` / `Complete` / `Error` / `Disabled`
 Mobile: exibe "Passo X de Y" compacto com nome da etapa atual.
 
 ---
+## Fase 2 — Expansão de Inputs Concretos
 
-## Fase 2 — Formulários Completos
-
-> Inputs concretos que completam a infraestrutura de formulários (base `InputFieldBase` já existe).
+> A infraestrutura base de formulários já existe (`FieldGroup`, `ControlGroup`, `InputFieldBase<TValue>` e `TextField`); esta fase amplia o catálogo de campos concretos e variações de layout.
 
 ### F2.1 — NumberField
 **Roadmap:** R1 › Forms › `NumberField`
@@ -121,7 +161,7 @@ Mobile: exibe "Passo X de Y" compacto com nome da etapa atual.
 **P1**
 
 Componente a criar:
-- `NumberField<TValue>` onde `TValue` : `INumber<TValue>` (int, decimal, double…)
+- `NumberField<TValue>` onde `TValue` : `INumber<TValue>` (`int`, `decimal`, `double`…)
 
 Parâmetros adicionais: `Min`, `Max`, `Step`, `Format` (string de formato C#), `ShowSpinner` (botões +/-)
 
@@ -135,7 +175,7 @@ Parâmetros adicionais: `Min`, `Max`, `Step`, `Format` (string de formato C#), `
 Componente a criar:
 - `TextAreaField` — `<textarea>` com label, validação, addons e resize controlado
 
-Parâmetros: `Rows`, `MaxLength`, `Resize` (none/vertical/auto), `Placeholder`, `ReadOnly`
+Parâmetros: `Rows`, `MaxLength`, `Resize` (`none`/`vertical`/`auto`), `Placeholder`, `ReadOnly`
 
 ---
 
@@ -196,13 +236,13 @@ Componentes a criar:
 - `DateTimeField` — data + hora
 - `DateRangeField` — intervalo de datas (data início / data fim)
 
-Comportamento: calendário em dropdown Desktop, modal em Mobile, navegação por mês/ano, datas desativadas por callback `IsDisabled(DateTime)`.
+Comportamento: calendário em dropdown no Desktop, modal no Mobile, navegação por mês/ano e datas desativadas por callback `IsDisabled(DateTime)`.
 
 Dependência de: `Modal` ou lógica de dropdown própria.
 
 ---
 
-### F2.8 — Compact / Inline Label option
+### F2.8 — Compact / Inline Label
 **Roadmap:** R1 › Melhorias
 **Cobre:** `UIP-INPUT-FORM_FIELD_GROUP`
 **P3**
@@ -211,7 +251,6 @@ Melhoria em `FieldGroup`:
 - Parâmetro `LabelVariant: FieldLabelVariant` — `Default` (acima do campo) | `Compact` (label flutua sobre a borda do input, estilo Material/Bootstrap floating label) | `Inline` (label à esquerda do campo)
 
 ---
-
 ## Fase 3 — Conteúdo e Apresentação
 
 ### F3.1 — Card
@@ -266,7 +305,39 @@ Componentes a criar:
 
 ---
 
-### F3.5 — Timeline
+### F3.5 — DetailBlock
+**Roadmap:** — (gap do catálogo)
+**Cobre:** `UIP-CONTENT-DETAIL_BLOCK` (nota atual: 3/10 → ~8)
+**P2**
+
+Componentes a criar:
+- `DetailBlock` — bloco semântico para exibir grupos de atributos
+- `DetailRow` — linha responsiva de `rótulo + valor`
+- `DetailGroup` — agrupador opcional para subseções com divisor
+
+Parâmetros do `DetailBlock`: `Title`, `Subtitle`, `Loading`, `Columns`, `Actions`, `ChildContent`
+Parâmetros do `DetailRow`: `Label`, `Value`, `LabelWidth`, `StackOnMobile`
+
+Dependência de: `SkeletonText` (F1.4) para estado de carregamento.
+
+---
+
+### F3.6 — MetricCard
+**Roadmap:** — (gap do catálogo)
+**Cobre:** `UIP-CONTENT-METRIC_CARD` (nota atual: 2/10 → ~8)
+**P3**
+
+Componentes a criar:
+- `MetricCard` — cartão de métrica com valor, variação e período
+- `MetricTrend` — região auxiliar para tendência, comparação e sparkline opcional
+
+Parâmetros: `Title`, `Value`, `Variation`, `VariationTheme`, `Period`, `Icon`, `Loading`, `ChildContent`
+
+Dependência de: `Badge`, `Icon` e `Skeleton`.
+
+---
+
+### F3.7 — Timeline
 **Roadmap:** R1 › Componentes Diversos › `Timeline`
 **Cobre:** `UIP-DATA-TIMELINE_ITEM` (nota atual: 0/10)
 **P3**
@@ -275,10 +346,9 @@ Componentes a criar:
 - `Timeline` — container de feed cronológico
 - `TimelineItem` — entrada com indicador temporal, ícone, conteúdo e ação
 
-Parâmetros: `OccurredAt`, `Icon`, `Theme` (Success/Danger/Info), `IsNew`, `Expandable`
+Parâmetros: `OccurredAt`, `Icon`, `Theme` (`Success`/`Danger`/`Info`), `IsNew`, `Expandable`
 
 ---
-
 ## Fase 4 — Dados Complexos
 
 ### F4.1 — DataGrid
@@ -316,7 +386,7 @@ Componentes a criar:
 - `KanbanColumn` — coluna com cabeçalho, contagem e itens arrastáveis
 - `KanbanCard` — card arrastável com título e metadados
 
-Dependência de: suporte a Drag & Drop (R2) — **este componente deve aguardar a Fase de DnD**.
+Dependência de: suporte a Drag & Drop (R2) — **este componente deve aguardar a fase de DnD**.
 
 ---
 
@@ -330,7 +400,7 @@ Dependência de: suporte a Drag & Drop (R2) — **este componente deve aguardar 
 Componente a criar:
 - `Tooltip` — popup de texto ao hover/focus em qualquer elemento filho
 
-Parâmetros: `Text`, `Position` (Top/Bottom/Start/End), `Delay`, `ChildContent`
+Parâmetros: `Text`, `Position` (`Top`/`Bottom`/`Start`/`End`), `Delay`, `ChildContent`
 
 ---
 
@@ -354,25 +424,25 @@ Diferença do `Tooltip`: tem conteúdo rico (não só texto), persiste até fech
 Componente a criar:
 - `PopConfirm` — popover com mensagem, botão confirmar e cancelar
 
-Parâmetros: `Title`, `Message`, `ConfirmLabel`, `CancelLabel`, `OnConfirm`, `OnCancel`, `Theme` (Danger para ações destrutivas)
+Parâmetros: `Title`, `Message`, `ConfirmLabel`, `CancelLabel`, `OnConfirm`, `OnCancel`, `Theme` (`Danger` para ações destrutivas)
 
 Dependência de: `Popover` (F5.2) ou infraestrutura do `DropBase`.
 
 ---
 
-### F5.4 — ConfirmDialog (template pronto)
+### F5.4 — ConfirmDialog
 **Roadmap:** R3 › `ConfirmDialog`
 **Cobre:** `UIP-FEEDBACK-CONFIRMATION_DIALOG` (melhoria de nota 7 → 9)
 **P2**
 
 Componente a criar:
-- `ConfirmDialog` — template de Modal específico para confirmação com props de alto nível
+- `ConfirmDialog` — template de `Modal` específico para confirmação com props de alto nível
 
-Parâmetros: `Title`, `Message`, `ConfirmLabel`, `ConfirmStyle` (default Danger), `CancelLabel`, `OnConfirm`, `OnCancel`, `Handler`
+Parâmetros: `Title`, `Message`, `ConfirmLabel`, `ConfirmStyle` (default `Danger`), `CancelLabel`, `OnConfirm`, `OnCancel`, `Handler`
 
 ---
 
-### F5.5 — Dispatch Button
+### F5.5 — DispatchButton
 **Roadmap:** R2 › `Dispatch`
 **Cobre:** padrão de ação assíncrona com feedback visual no botão
 **P2**
@@ -382,19 +452,26 @@ Componente a criar:
 
 Parâmetros: `Label`, `OnDispatch` (`Func<Task>`), `SuccessMessage`, `ErrorMessage`, `LoadingLabel`
 
-Dependência de: `Button`, `RotationMotion`, `Notify` (todos já existem)
+Dependência de: `Button`, `RotationMotion` e `Notify` (todos já existem)
 
 ---
 
-### F5.6 — SearchField
-**Roadmap:** R2 › `SearchField`
-**Cobre:** `UIP-INPUT-SEARCH_BAR` (nota atual: 1/10 → ~8)
-**P2**
+### F5.6 — FloatingActionButton
+**Roadmap:** — (gap do catálogo)
+**Cobre:** `UIP-ACTION-FLOATING_ACTION` (nota atual: 3/10 → ~8)
+**P3**
 
-Componente a criar:
-- `SearchField` — campo de busca com ícone, botão de limpar, debounce e sugestões dropdown opcional
+Componentes a criar:
+- `FloatingActionButton` — botão de ação flutuante com posicionamento fixo e variante circular
+- `FloatingActionGroup` — agrupador opcional para ação principal + ações secundárias
 
-Parâmetros: `Value`, `OnSearch`, `Placeholder`, `DebounceMs`, `Suggestions` (list), `OnSuggestionSelected`, `SearchOnEnter`, `SearchOnInput`
+Parâmetros: `Icon`, `Label`, `Position`, `Visible`, `Loading`, `Expanded`, `OnClick`
+
+Comportamento:
+- Tamanho mínimo adequado para Mobile
+- Posição fixa configurável
+- Suporte a modo ícone e modo expandido com label
+- Visibilidade condicionada a estado e permissão externa
 
 ---
 
@@ -403,7 +480,7 @@ Parâmetros: `Value`, `OnSearch`, `Placeholder`, `DebounceMs`, `Suggestions` (li
 **Cobre:** `UIP-INPUT-FILTER_PANEL` (nota atual: 4/10 → ~7)
 **P3**
 
-Componente a criar:
+Componentes a criar:
 - `FilterPanel` — container inteligente para filtros com estado "ativos" e botão "limpar todos"
 - `FilterIndicator` — badge que indica quantos filtros estão ativos (para o botão do painel mobile)
 
@@ -412,7 +489,6 @@ Comportamento:
 - Mobile: usa `OffCanvas` (já existe) como gaveta; `FilterIndicator` aparece no botão de abertura
 
 ---
-
 ## Fase 6 — Layout e Shell Avançados
 
 ### F6.1 — Split (painel dividido com divisor arrastável)
@@ -506,7 +582,7 @@ Componentes a criar:
 
 ### F7.5 — Charts
 **Roadmap:** R1 › Complexos
-**P4** — recomendado integrar biblioteca de terceiros (ex: ApexCharts.Blazor, ChartJs.Blazor).
+**P4** — recomendado integrar biblioteca de terceiros (ex.: ApexCharts.Blazor, ChartJs.Blazor).
 
 ### F7.6 — BarCode / QRCode
 **Roadmap:** R1 › Complexos
@@ -522,7 +598,9 @@ Componentes a criar:
 | F1.2 | Pagination | R1 | UIP-NAV-PAGINATION | P1 |
 | F1.3 | EmptyState | R2 | UIP-FEEDBACK-EMPTY_STATE | P1 |
 | F1.4 | Skeleton | R1 | UIP-FEEDBACK-LOADING_STATE | P1 |
-| F1.5 | Steps | R1 | UIP-NAV-STEPPER_INDICATOR | P2 |
+| F1.5 | SearchField | R2 | UIP-INPUT-SEARCH_BAR | P1 |
+| F1.6 | ScrollRegion | — | UIP-STRUCT-SCROLLABLE_REGION | P2 |
+| F1.7 | Steps | R1 | UIP-NAV-STEPPER_INDICATOR | P2 |
 | F2.1 | NumberField | R1 | UIP-INPUT-FORM_FIELD_GROUP | P1 |
 | F2.2 | TextArea | R1 | UIP-INPUT-FORM_FIELD_GROUP | P1 |
 | F2.3 | Select | R1 | UIP-INPUT-FORM_FIELD_GROUP | P1 |
@@ -535,7 +613,9 @@ Componentes a criar:
 | F3.2 | ListGroup / ListItem | R1 | UIP-DATA-LIST_ITEM | P2 |
 | F3.3 | Panel | R1 | — | P3 |
 | F3.4 | Accordion / Collapse | R1 | — | P3 |
-| F3.5 | Timeline | R1 | UIP-DATA-TIMELINE_ITEM | P3 |
+| F3.5 | DetailBlock | — | UIP-CONTENT-DETAIL_BLOCK | P2 |
+| F3.6 | MetricCard | — | UIP-CONTENT-METRIC_CARD | P3 |
+| F3.7 | Timeline | R1 | UIP-DATA-TIMELINE_ITEM | P3 |
 | F4.1 | DataGrid | R1 | UIP-DATA-DATA_TABLE | P1 |
 | F4.2 | Kanban | R1 | UIP-DATA-KANBAN_COLUMN | P4 |
 | F5.1 | Tooltip | R1 | — | P2 |
@@ -543,7 +623,7 @@ Componentes a criar:
 | F5.3 | PopConfirm | R2 | UIP-FEEDBACK-CONFIRMATION_DIALOG | P2 |
 | F5.4 | ConfirmDialog | R3 | UIP-FEEDBACK-CONFIRMATION_DIALOG | P2 |
 | F5.5 | DispatchButton | R2 | — | P2 |
-| F5.6 | SearchField | R2 | UIP-INPUT-SEARCH_BAR | P2 |
+| F5.6 | FloatingActionButton | — | UIP-ACTION-FLOATING_ACTION | P3 |
 | F5.7 | FilterPanel | — | UIP-INPUT-FILTER_PANEL | P3 |
 | F6.1 | SplitPanel | R2 | UIP-STRUCT-SPLIT_PANEL | P3 |
 | F6.2 | GoTop | R2 | — | P4 |
@@ -553,14 +633,11 @@ Componentes a criar:
 | F7.x | Tree, Agenda, Charts… | R1/R3 | — | P4 |
 
 ---
-
 ## Gaps de Catálogo Sem Plano Ainda
+
+> Os gaps abaixo permanecem fora das fases principais e podem virar backlog dedicado depois que as frentes P1/P2 estiverem estabilizadas.
 
 | ID_UI_PATTERN | Gap | Nota Atual | Ação Sugerida |
 |---|---|:---:|---|
-| `UIP-STRUCT-SCROLLABLE_REGION` | Sem componente dedicado | 2 | Criar `ScrollRegion` wrapper com scroll independente e estados de loading/fim |
-| `UIP-CONTENT-DETAIL_BLOCK` | Só composição manual | 3 | Criar `DetailBlock` + `DetailRow` (rótulo + valor com grid responsivo) |
-| `UIP-CONTENT-METRIC_CARD` | Só `Box` manual | 2 | Criar `MetricCard` com valor, variação, período e sparkline |
 | `UIP-CONTENT-RICH_TEXT_BLOCK` | Apenas `MarkupString` | 1 | Criar `RichTextBlock` com tipografia editorial e `prose` aplicado |
-| `UIP-CONTENT-MEDIA_VIEWER` | Ausente | 0 | Criar `MediaViewer` para imagem/vídeo/documento — ou integrar lib de terceiros |
-| `UIP-ACTION-FLOATING_ACTION` | Sem FAB dedicado | 3 | Criar `FloatingActionButton` com posicionamento fixo, tamanho e visibilidade |
+| `UIP-CONTENT-MEDIA_VIEWER` | Ausente | 0 | Criar `MediaViewer` para imagem/vídeo/documento — ou integrar biblioteca de terceiros |

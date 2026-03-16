@@ -200,23 +200,23 @@
 
 **Componentes RoyalCode:** `AppMenu`, `AppMenuList`, `AppMenuItem`, `AppSideBar`, `AppSideMenuButton`, `AppLayout`
 
-**Nota de Adaptacao: 8 / 10**
+**Nota de Adaptação: 8 / 10**
 
-**Justificativa:** A biblioteca tem um sistema de menu robusto: `AppLayout` com sidebar, `AppSideMenuButton` que abre o `AppMenu` via `OffCanvas`, `AppMenuList` renderizando os itens do nivel atual, e `AppMenuItem` com suporte a links, modulos (drill-down) e divisores. Suporta favoritos e navegacao hierarquica. O ponto fraco atual nao e o carregamento do menu, mas a experiencia complementar: o `AppMenu` ainda contem um placeholder interno de busca (`search component`) e nao ha bottom navigation nativa para Mobile.
+**Justificativa:** A biblioteca tem um sistema de menu robusto: `AppLayout` com sidebar, `AppSideMenuButton` que abre o `AppMenu` via `OffCanvas`, `AppMenuList` renderizando os itens do nível atual, e `AppMenuItem` com suporte a links, módulos (drill-down) e divisores. Suporta favoritos e navegação hierárquica. O ponto fraco atual não é o carregamento do menu, mas a experiência complementar: o `AppMenu` ainda contém um placeholder interno de busca (`search component`) e não há bottom navigation nativa para Mobile.
 
 **Exemplo:**
 
 ```razor
-@* AppLayout ja inclui a estrutura completa de navegacao *@
+@* AppLayout já inclui a estrutura completa de navegação *@
 <AppLayout>
     <TopStart>
         <AppSideMenuButton />  @* hamburger que abre o AppMenu *@
     </TopStart>
     <TopCenter>
-        <span>Minha Aplicacao</span>
+        <span>Minha Aplicação</span>
     </TopCenter>
     <LeftMenu>
-        @* Icones de acesso rapido na sidebar *@
+        @* Ícones de acesso rápido na sidebar *@
         <AppSideItem>
             <IconButton Icon="WellKnownIcons.Home" OnClick="@GoHome" />
         </AppSideItem>
@@ -239,7 +239,7 @@ builder.Services
         new MenuItem
         {
             Id = "home",
-            Text = "Inicio",
+            Text = "Início",
             Url = "/",
             Type = MenuItemType.Link
         },
@@ -261,7 +261,7 @@ builder.Services
         });
 ```
 
-Tambem e possivel fornecer um `IMenuLoader` customizado quando o menu vier de HTTP ou outra fonte externa.
+Também é possível fornecer um `IMenuLoader` customizado quando o menu vier de HTTP ou outra fonte externa.
 
 ---
 
@@ -596,9 +596,9 @@ else if (activeTab == "hist")
 
 **Componentes RoyalCode:** `FieldGroup`, `ControlGroup`, `InputFieldBase<TValue>`, `TextField`, `FieldText`, `FieldBadge`, `FieldAction`
 
-**Nota de Adaptacao: 6 / 10**
+**Nota de Adaptação: 6 / 10**
 
-**Justificativa:** A biblioteca ja tem uma boa infraestrutura de campo: `FieldGroup` concentra label, descricao complementar, informacao, erro e footer; `ControlGroup` trata prepend/append; `InputFieldBase<TValue>` integra essa estrutura com `EditContext`; e `TextField` ja entrega um campo concreto pronto para uso. O gap nao esta no agrupamento de campo em si, mas na falta de mais inputs concretos e de componentes de entrada mais complexos. Por isso a cobertura e media, nao baixa.
+**Justificativa:** A biblioteca já tem uma boa infraestrutura de campo: `FieldGroup` concentra label, descrição complementar, informação, erro e footer; `ControlGroup` trata prepend/append; `InputFieldBase<TValue>` integra essa estrutura com `EditContext`; e `TextField` já entrega um campo concreto pronto para uso. O gap não está no agrupamento de campo em si, mas na falta de mais inputs concretos e de componentes de entrada mais complexos. Por isso a cobertura é média, não baixa.
 
 **Exemplo:**
 
@@ -613,22 +613,22 @@ else if (activeTab == "hist")
                    Label="Nome"
                    Information="Informe o nome completo.">
             <DescriptionComplement>
-                <FieldBadge Text="Obrigatorio" Style="Themes.Danger" />
+                <FieldBadge Text="Obrigatório" Style="Themes.Danger" />
             </DescriptionComplement>
         </TextField>
 
         <TextField @bind-Value="model.Code"
-                   Label="Codigo"
-                   Placeholder="Codigo interno">
+                   Label="Código"
+                   Placeholder="Código interno">
             <Append>
                 <FieldAction Label="Gerar" OnClick="@GenerateCode" />
             </Append>
             <FooterAction>
-                <FieldText>Use um codigo curto e unico.</FieldText>
+                <FieldText>Use um código curto e único.</FieldText>
             </FooterAction>
         </TextField>
 
-        <Button Label="Guardar" Type="ButtonTypes.Submit" Style="Themes.Primary" />
+        <Button Label="Salvar" Type="ButtonTypes.Submit" Style="Themes.Primary" />
     </Stack>
 </EditForm>
 ```
@@ -918,16 +918,16 @@ else
 
 ## UIP-FEEDBACK-TOAST_ALERT — Toast / Alert
 
-**Componentes RoyalCode:** `Notification`, `NotificationContent`, `Notify` (servico DI)
+**Componentes RoyalCode:** `Notification`, `NotificationContent`, `Notify` (serviço DI)
 
-**Nota de Adaptacao: 9 / 10**
+**Nota de Adaptação: 9 / 10**
 
-**Justificativa:** Cobertura quase total. `Notification` tem auto-dismiss com `Timer`, barra de progresso animada, pausa no hover, `CloseOnClick`, temas completos, icone ou barra colorida, e callbacks `OnClose` / `OnOpen`. O servico `Notify` permite uso programatico com metodos de conveniencia por tema (`Success`, `Danger`, `Warning`, etc.) e callback `configure`. O posicionamento ja e configuravel por `NotificationItem.Placement`, e o `NotificationOutlet` agrupa os itens por `Placements`.
+**Justificativa:** Cobertura quase total. `Notification` tem auto-dismiss com `Timer`, barra de progresso animada, pausa no hover, `CloseOnClick`, temas completos, ícone ou barra colorida, e callbacks `OnClose` / `OnOpen`. O serviço `Notify` permite uso programático com métodos de conveniência por tema (`Success`, `Danger`, `Warning`, etc.) e callback `configure`. O posicionamento já é configurável por `NotificationItem.Placement`, e o `NotificationOutlet` agrupa os itens por `Placements`.
 
 **Exemplo:**
 
 ```razor
-@* Uso programatico via servico *@
+@* Uso programático via serviço *@
 @inject Notify Notify
 
 <Button Label="Salvar" OnClick="@HandleSave" Style="Themes.Primary" />
@@ -945,7 +945,7 @@ else
     {
         await Notify.Danger(
             "Erro ao salvar os dados.",
-            "Verifique a conexao e tente novamente.",
+            "Verifique a conexão e tente novamente.",
             item => item.Placement = Placements.TopEnd);
     }
 }
@@ -955,7 +955,7 @@ else
               Timer="@TimeSpan.FromSeconds(5)"
               Closeable="true"
               Icon="true">
-    <NotificationContent Text="Atencao" Details="Sua sessao ira expirar em breve." />
+    <NotificationContent Text="Atenção" Details="Sua sessão irá expirar em breve." />
 </Notification>
 ```
 
