@@ -6,6 +6,7 @@ Este índice organiza as instruções por papel lógico e por domínio.
 
 - [station.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/station.md)
 - [lib-spec.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/lib-spec.md)
+- [app-spec.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/app-spec.md)
 - [screen-spec.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/screen-spec.md)
 
 ## Grupos
@@ -37,6 +38,14 @@ Conteúdo canônico:
 - [flows/screens/create-screen-spec.md](flows/screens/create-screen-spec.md)
 - [flows/screens/refine-screen-spec.md](flows/screens/refine-screen-spec.md)
 
+### Fluxos de app consumidor
+
+Conteúdo canônico:
+
+- [flows/apps/plan-app.md](flows/apps/plan-app.md)
+- [flows/apps/create-app-spec.md](flows/apps/create-app-spec.md)
+- [flows/apps/refine-app-spec.md](flows/apps/refine-app-spec.md)
+
 ### Uso do Yasamen
 
 Conteúdo ativo:
@@ -54,8 +63,9 @@ Escopo:
 
 ## Regras Operacionais
 
-- Para componente ou spec, use também [cross-cutting-component-decisions.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/cross-cutting-component-decisions.md).
+- Para componente ou spec, use também [cross-cutting-component-decisions.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/cross-cutting-component-decisions.md).
 - Para tela, use também [planning-and-ui-mapping.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/screens/planning-and-ui-mapping.md) e [cross-cutting-screen-decisions.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/cross-cutting-screen-decisions.md).
+- Para app consumidor, use também [using-yasamen-in-blazor.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/yasamen/using-yasamen-in-blazor.md), [consumer-app-conventions.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/yasamen/consumer-app-conventions.md) e [cross-cutting-app-decisions.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/cross-cutting-app-decisions.md).
 - `station` é a entrada portátil; para expansão da biblioteca, encaminhe para `lib-spec`.
 - Pedido de pacote novo via `lib-spec` é `spec-first` por padrão.
 
@@ -63,6 +73,7 @@ Escopo:
 
 - `@spec-station`
 - `@lib-spec`
+- `@app-spec`
 - `@screen-spec`
 - `@yasamen`
 

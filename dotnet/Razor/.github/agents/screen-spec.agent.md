@@ -32,6 +32,8 @@ Seu trabalho é lidar com:
 - Use backlog, roadmap ou mapa local de gaps quando existirem.
 - Neste repositório, `components-plan-list.md` e `ui-plan.md` são a referência padrão para isso.
 - Quando a tela depender de specs filhas de componente, deixe isso explícito.
+- Se houver informação suficiente, abra ou refine a `screen spec` em vez de só explicar o fluxo.
+- Se faltar informação, peça uma lista enumerada única do que precisa ser conhecido.
 - Use sempre acentuação.
 
 

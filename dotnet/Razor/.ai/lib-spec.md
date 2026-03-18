@@ -149,7 +149,7 @@ Regra:
 - Usar sempre acentuação.
 - Não misturar planeamento colaborativo com implementação sem pedido explícito.
 - Em pedidos de componente novo, consultar `components-plan-list.md` e `ui-plan.md`.
-- Em qualquer fluxo de componente ou spec, fechar os checkpoints de `.ai/guides/rules/cross-cutting-component-decisions.md`.
+- Em qualquer fluxo de componente ou spec, fechar os checkpoints de `.ai/guides/expand/cross-cutting-component-decisions.md`.
 - Em pedidos de componente novo, tratar pacote novo como decisão de design, não como palpite.
 - Em pedidos de ajuste, distinguir claramente:
   - erro de implementação;

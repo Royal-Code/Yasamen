@@ -27,8 +27,8 @@ Antes de criar o projeto, a IA deve ler:
 - `.ai/guides/expand/css-visual-contract.md`, se houver contrato visual público
 - `.ai/guides/expand/outlet-patterns.md`, se o pacote usar service/outlet
 - `.ai/guides/expand/navigation-patterns.md`, se o pacote for de navegação
-- `.ai/guides/rules/component-composition-and-dependencies.md`, quando houver dúvida sobre reuso, dependências ou ordem de implementação
-- `.ai/guides/rules/cross-cutting-component-decisions.md`, para fechar pacote, `Style`, `Size`, tokens, composição, showcase e entrega
+- `.ai/guides/expand/component-composition-and-dependencies.md`, quando houver dúvida sobre reuso, dependências ou ordem de implementação
+- `.ai/guides/expand/cross-cutting-component-decisions.md`, para fechar pacote, `Style`, `Size`, tokens, composição, showcase e entrega
 - `.ai/roadmap/components-plan-list.md`, quando a criação do pacote estiver ligada a uma família de componentes ainda em planeamento
 
 ## Fluxo Obrigatório

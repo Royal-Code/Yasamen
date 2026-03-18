@@ -31,6 +31,7 @@ Permitir execução direta de tela quando:
 
 - Não criar componente novo da biblioteca dentro deste fluxo por reflexo.
 - Não esconder gap de componente dentro de markup local excessivo.
+- Se shell, navegação ou convenções do app ainda estiverem abertos, parar e usar `app-spec`.
 - Se a tela for de demo ou documentação de um projeto consumidor, adotar convenção local do próprio projeto.
 - Se a solução da tela estiver conceitualmente aberta, parar e usar `screen-spec`.
 

@@ -11,7 +11,7 @@ Antes de recomendar o próximo passo, a IA deve ler:
 - `.ai/roadmap/components-plan-list.md`
 - `.ai/specs/`
 - `.ai/guides/rules/spec-execution-and-delivery.md`
-- `.ai/guides/rules/cross-cutting-component-decisions.md`
+- `.ai/guides/expand/cross-cutting-component-decisions.md`
 
 ## Critérios de Decisão
 

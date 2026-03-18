@@ -46,7 +46,7 @@ Antes de escrever código, validar:
 
 - se `requirements.md` e `design.md` não se contradizem;
 - se o design cobre os requisitos principais;
-- se os checkpoints de `cross-cutting-component-decisions.md` estão realmente fechados;
+- se os checkpoints transversais aplicáveis estão realmente fechados;
 - se os guides impõem alguma restrição ainda ausente na spec;
 - se há gaps de pacote, CSS, showcase, DI ou testes.
 

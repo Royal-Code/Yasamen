@@ -7,6 +7,8 @@
 Antes de agir, ler:
 
 - `.ai/guides/yasamen/using-yasamen-in-blazor.md`
+- `.ai/guides/yasamen/consumer-app-conventions.md`
+- `.ai/app-spec.md`, quando o app ainda não tiver convenções estáveis ou quando o pedido envolver várias telas ou módulos
 - `.ai/screen-spec.md`, quando o projeto já nascer acoplado a uma tela ainda não definida
 
 ## Objetivo
@@ -33,7 +35,9 @@ Criar um projeto consumidor que já nasça:
 
 - Não tratar este fluxo como criação de pacote da biblioteca.
 - Não usar `.ai/instructions/expand/create-library-project.md` para projeto consumidor.
+- Se shell, navegação, convenções do app ou relação entre várias telas ainda estiverem abertos, preferir `app-spec` antes de scaffoldar.
 - Se o projeto tiver demo, showcase ou docs próprias, definir convenção local do projeto consumidor em vez de depender do guide interno de showcase da biblioteca.
 - Se a tela ainda não estiver definida, preferir `screen-spec` antes de implementar páginas complexas.
 - Se o projeto revelar gaps na biblioteca, registrar e encaminhar para `lib-spec`.
+- Se faltar informação para scaffoldar o projeto com segurança, pedir uma lista enumerada única do que precisa ser conhecido antes de seguir.
 

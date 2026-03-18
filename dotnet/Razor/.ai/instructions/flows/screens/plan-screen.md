@@ -39,7 +39,8 @@ Se a tela for virar protótipo, showcase ou página navegável em docs:
 ## Regras
 
 - Trabalhar em gates.
-- Em cada gate, apresentar proposta curta, decisões, pontos em aberto e uma pergunta objetiva.
+- Em cada gate, apresentar proposta curta, decisões e pontos em aberto.
+- Se faltar informação para avançar no gate atual, pedir uma lista enumerada única do que precisa ser conhecido.
 - Se a tela já existir, começar pelo quadro `As-Is` antes de propor o `To-Be`.
 - Fechar explicitamente a cadeia `Shell -> Screen -> Page Pattern -> Zona -> UIP`.
 - Para cada zona, escolher apenas `UIP-*` do catálogo.
@@ -51,7 +52,9 @@ Se a tela for virar protótipo, showcase ou página navegável em docs:
   - `Gap estrutural da tela`
 - Se a tela depender de componentes ausentes, registrar isso e indicar se será preciso abrir ou refinar specs filhas em `.ai/specs/`.
 - Jornadas e capacidades, quando fornecidas, podem reforçar contexto e prioridade; quando ausentes, não bloqueiam o fluxo.
-- Esperar aprovação antes de avançar.
+- Não transformar o fluxo em uma pergunta por vez.
+- Derivar o máximo possível a partir do pedido e dos guides, mas não inventar.
+- Se já houver informação suficiente para abrir a `screen spec`, preferir escalar para `create-screen-spec`.
 - Usar sempre acentuação.
 
 

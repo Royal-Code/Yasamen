@@ -9,7 +9,7 @@ Antes de iniciar o planeamento, a IA deve ler:
 - `.ai/ui-map/ui-map.md`
 - `.ai/roadmap/ui-plan.md`
 - `.ai/roadmap/components-plan-list.md`
-- `.ai/guides/rules/cross-cutting-component-decisions.md`
+- `.ai/guides/expand/cross-cutting-component-decisions.md`
 - `.ai/templates/lib/spec/requirements.md`
 - `.ai/templates/lib/spec/design.md`
 - `.ai/templates/lib/spec/tasks.md`

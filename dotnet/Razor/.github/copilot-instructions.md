@@ -7,8 +7,11 @@ Este repositório é uma solução .NET de biblioteca de componentes Razor.
 - Use `.ai/ui-map/ui-map.md` como mapa de cobertura e lacunas.
 - Use `.ai/roadmap/ui-plan.md` como fonte de fase, prioridade e sequência.
 - Use `.ai/guides/` como referência normativa para estrutura, CSS, anatomia de componentes, showcases e execução de specs.
-- Use `.ai/guides/rules/cross-cutting-component-decisions.md` como checklist curto para qualquer componente ou spec.
+- Use `.ai/guides/expand/cross-cutting-component-decisions.md` como checklist curto para qualquer componente ou spec.
+- Use `.ai/guides/rules/cross-cutting-app-decisions.md` como checklist curto para qualquer `app spec`.
 - Use `.ai/guides/screens/planning-and-ui-mapping.md` para planeamento de telas e mapeamento `UIP -> Yasamen`.
+- Use `.ai/guides/yasamen/consumer-app-conventions.md` para convenções de app consumidor.
+- Use `.ai/templates/apps/spec/` como base para novas app specs.
 - Use `.ai/templates/lib/spec/` como base para novas library specs.
 - Use `.ai/templates/screens/spec/` como base para novas screen specs.
 
@@ -55,10 +58,22 @@ Este repositório é uma solução .NET de biblioteca de componentes Razor.
 - Feche os checkpoints de `.ai/guides/rules/cross-cutting-screen-decisions.md` em qualquer fluxo de tela.
 - Para planeamento, criação ou refinamento de `screen specs`, prefira o agente `screen-spec`.
 
+## Fluxo de apps consumidores
+
+- Para planejar um app consumidor, use `.ai/app-spec.md` como orquestrador próprio.
+- Em app consumidor, feche primeiro shell, navegação, convenções locais e consumo de Yasamen antes de multiplicar telas.
+- Quando o pedido envolver app novo, a `app spec` deve cobrir também estrutura de projetos, integração à solution, referências, `Program.cs`, `_Imports.razor` e estilos públicos.
+- Em apps corporativos ou administrativos, a `app spec` deve decidir explicitamente estratégia inicial de dados, autenticação e integrações.
+- Ao criar uma `app spec`, distinguir o que é referência base confirmada do que é referência candidata.
+- Ao criar uma `app spec`, não marque `tasks.md` por reflexo e não confunda completude da spec com implementação do app.
+- Ao pedir informação em `app-spec`, prefira linguagem de domínio do utilizador e evite ancorar a conversa em exemplos de famílias de componentes do repositório.
+- Para planeamento, criação ou refinamento de `app specs`, prefira o agente `app-spec`.
+
 ## Agentes preferenciais
 
-- `spec-station`: entrada portátil e roteamento para `screen-spec`, `yasamen` ou encaminhamento para `lib-spec`.
+- `spec-station`: entrada portátil e roteamento para `app-spec`, `screen-spec`, `yasamen` ou encaminhamento para `lib-spec`.
 - `lib-spec`: domínio de componentes, pacotes e specs de biblioteca.
+- `app-spec`: domínio de apps consumidores que usam Yasamen.
 - `screen-spec`: domínio de telas e `screen specs`.
 - `yasamen`: execução direta no repositório sem criar spec nova por padrão.
 

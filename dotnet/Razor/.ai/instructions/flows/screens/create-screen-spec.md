@@ -60,6 +60,24 @@ Arquivos obrigatórios:
   - registrar como entrada opcional da tela;
   - não remodelar a `screen spec` inteira em torno delas.
 
+## Regra de completude
+
+Antes de criar a `screen spec`, a IA deve verificar se já conhece informação suficiente para preencher pelo menos:
+
+- objetivo e contexto da tela;
+- natureza da tela: nova ou alteração;
+- shell ou hipótese inicial de shell;
+- `Page Pattern` principal ou hipótese forte;
+- zonas funcionais iniciais;
+- estratégia de mapeamento para Yasamen;
+- principais gaps ou dependências de componente.
+
+Se isso não estiver suficientemente claro:
+
+- não inventar;
+- não responder só com explicação do fluxo;
+- pedir uma lista enumerada única do que precisa saber para abrir a spec com qualidade.
+
 ## Regras de Qualidade
 
 - Não copiar o template sem adaptação.
@@ -67,6 +85,7 @@ Arquivos obrigatórios:
 - Não misturar a `screen spec` com API detalhada de componente.
 - Não tratar `ui-map.md` como catálogo agnóstico; ele é adapter tecnológico.
 - Não esconder gaps de componente dentro de texto genérico.
+- Se houver informação suficiente, criar os arquivos da `screen spec` em vez de só orientar o utilizador a fazê-lo.
 - Usar sempre acentuação.
 
 

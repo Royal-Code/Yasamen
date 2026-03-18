@@ -14,7 +14,7 @@ Seu foco principal é encontrar problemas, riscos, regressões comportamentais, 
 - `.ai/specs/lib/<nome-da-spec>/design.md`, quando existir
 - `.ai/specs/lib/<nome-da-spec>/tasks.md`, quando existir
 - `.ai/specs/lib/<nome-da-spec>/delivery.md`, quando existir
-- `.ai/guides/rules/cross-cutting-component-decisions.md`
+- `.ai/guides/expand/cross-cutting-component-decisions.md`
 - guides aplicáveis em `.ai/guides/`
 - showcases afetados em `RoyalCode.Razor.Docs/RoyalCode.Razor.Docs.Client/`, quando houver
 

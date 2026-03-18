@@ -12,6 +12,7 @@ Ele cobre:
 - configuração básica de estilos e `_Imports`;
 - registro de serviços;
 - composição de telas com componentes Yasamen;
+- organização de app consumidor em conjunto com convenções locais;
 - limites entre consumo da biblioteca e expansão da biblioteca.
 
 ## Quando usar este guide
@@ -22,6 +23,8 @@ Use este guide quando o trabalho for:
 - instalar ou atualizar pacotes Yasamen em um app existente;
 - criar ou editar telas consumidoras com componentes já disponíveis;
 - configurar showcase, docs internas ou páginas de demonstração em um app consumidor.
+
+Se o problema estiver no nível estrutural do app, combinar também com `consumer-app-conventions.md` e `app-spec`.
 
 Não use este guide como substituto de `lib-spec` quando o trabalho for criar componente novo da biblioteca.
 
@@ -51,6 +54,11 @@ Pacotes adicionais conforme a necessidade:
 - `RoyalCode.Razor.Alerts`
 - `RoyalCode.Razor.Navigation`
 - outros pacotes da solução
+
+Regra:
+
+- distinguir no design do app o que é `base confirmada` do que é apenas `candidato por necessidade`;
+- não tratar exemplos genéricos de pacote como lista confirmada da entrega.
 
 ### Estilos
 
@@ -83,6 +91,23 @@ Quando um pacote exigir registro explícito, usar apenas extensões públicas do
 
 Não registrar tipos internos manualmente no app consumidor.
 
+## Convenções de app consumidor
+
+Antes de multiplicar telas, vale fechar:
+
+- shell e layout principal;
+- navegação global;
+- convenção de rota;
+- convenção de docs, demo ou showcase do projeto consumidor;
+- política local de override visual.
+
+Quando essas decisões ainda não estiverem claras:
+
+- usar `consumer-app-conventions.md`;
+- preferir `app-spec` antes de abrir várias `screen specs`.
+
+Em apps com módulos de negócio, a lista inicial de perguntas deve preferir linguagem de domínio do utilizador, não exemplos de galeria de componentes da biblioteca.
+
 ## Telas consumidoras
 
 Ao criar ou editar uma tela:
@@ -113,5 +138,11 @@ Encaminhar para `screen-spec` quando:
 
 - a tela ainda exigir definição de shell, `Page Pattern`, zonas e `UIP-*`;
 - a solução da página ainda estiver conceitualmente aberta.
+
+Encaminhar para `app-spec` quando:
+
+- o app ainda não tiver shell, layout, navegação e convenções locais estáveis;
+- houver várias telas dependentes das mesmas decisões de app;
+- o problema estiver no nível estrutural do app consumidor.
 
 

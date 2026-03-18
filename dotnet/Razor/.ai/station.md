@@ -6,15 +6,17 @@
 
 `Spec Station` fica acima dos orquestradores de domínio.
 
-Ele não executa tudo diretamente. O papel dele é:
+Ele não deve parar na explicação do roteamento. O papel dele é:
 
 - interpretar o pedido;
 - classificar o tipo de trabalho;
 - escolher o orquestrador, instrução ou modo de execução mais adequado;
-- manter a conversa curta e previsível na entrada.
+- manter a conversa curta e previsível na entrada;
+- executar o fluxo escolhido até onde for seguro avançar.
 
 Nesta organização, `station` é a porta de entrada portátil para:
 
+- `app-spec`
 - `screen-spec`
 - `yasamen`
 
@@ -22,14 +24,31 @@ Expansão da biblioteca fica fora do escopo direto desta entrada e deve usar `.a
 
 Regra operacional:
 
-- quando o pedido entra por `station`, a saída padrão é roteamento e próximo passo;
+- quando o pedido entra por `station`, o roteamento pode ser silencioso;
+- a saída padrão deve ser seguir o fluxo escolhido, não apenas explicá-lo;
+- se houver informação suficiente, materializar o próximo artefato ou etapa do fluxo;
+- se faltar informação, listar em uma resposta enumerada tudo o que precisa ser conhecido para executar a próxima etapa;
 - `station` não deve scaffoldar projeto, editar código ou implementar diretamente por reflexo.
 
 ---
 
 ## Famílias Atuais
 
-### 1. `screen-spec`
+### 1. `app-spec`
+
+Usar para:
+
+- novo app consumidor com Yasamen;
+- reorganização estrutural de app existente;
+- shell, layout, navegação e convenções do app;
+- relação entre app, telas, pacotes e serviços públicos;
+- `app specs`.
+
+Entrada:
+
+- `.ai/app-spec.md`
+
+### 2. `screen-spec`
 
 Usar para:
 
@@ -45,7 +64,7 @@ Entrada:
 
 - `.ai/screen-spec.md`
 
-### 2. `yasamen`
+### 3. `yasamen`
 
 Usar para:
 
@@ -75,7 +94,6 @@ Usar `.ai/lib-spec.md` diretamente para:
 
 Estas famílias ainda não estão formalizadas, mas o `Spec Station` já deve tratá-las como expansão natural do sistema:
 
-- `app-spec`
 - `api-spec`
 - `domain-spec`
 - `use-case-spec`
@@ -97,6 +115,24 @@ Se o pedido cair em uma dessas famílias:
 Fluxo:
 
 - `.ai/screen-spec.md`
+
+Regra:
+
+- se houver informação suficiente para abrir a `screen spec`, seguir direto para isso;
+- se faltar informação, pedir lista enumerada do que falta;
+- usar o fluxo puramente colaborativo só quando o utilizador pedir planeamento iterativo.
+
+### Pedido de app consumidor
+
+Fluxo:
+
+- `.ai/app-spec.md`
+
+Regra:
+
+- se houver informação suficiente para abrir a `app spec`, seguir direto para isso;
+- se faltar informação para abrir a `app spec` ou para preparar o projeto, pedir lista enumerada do que falta;
+- usar o fluxo puramente colaborativo de planeamento só quando o utilizador pedir isso explicitamente ou quando o problema ainda estiver muito aberto.
 
 ### Pedido de ajuste direto no repositório
 
@@ -132,13 +168,20 @@ Fluxo:
 - Preferir orquestradores de domínio a instruções soltas.
 - Não misturar tela com componente ou expansão da biblioteca.
 - Não misturar pedido de execução direta com criação automática de spec sem necessidade.
+- Não responder apenas com “o fluxo correto é x” quando já for possível executar `x`.
 - Quando houver spec existente, preferir reutilizá-la.
 - Quando houver apenas requisitos vagos, preferir planeamento antes de implementação.
 - Quando o pedido for de expansão da biblioteca, encaminhar para `.ai/lib-spec.md`.
+- Não inventar informação ausente só para completar template ou flow.
+- Quando faltar informação, perguntar em lista enumerada única, não uma pergunta por vez.
 
 ---
 
 ## Exemplos de Uso
+
+```text
+Leia `.ai/station.md` e quero planejar um novo app Blazor administrativo com Yasamen.
+```
 
 ```text
 Leia `.ai/station.md` e quero planejar a tela de listagem de clientes.

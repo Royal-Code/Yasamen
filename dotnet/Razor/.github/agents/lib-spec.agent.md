@@ -21,7 +21,7 @@ Seu trabalho é lidar com:
 - `.ai/instructions/flows/expand/refine-spec.md`
 - `.ai/instructions/flows/expand/implement-spec.md`
 - `.ai/instructions/expand/create-library-project.md`
-- `.ai/guides/rules/cross-cutting-component-decisions.md`
+- `.ai/guides/expand/cross-cutting-component-decisions.md`
 
 ## Regras
 

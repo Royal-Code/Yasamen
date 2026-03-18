@@ -10,7 +10,7 @@ Seu trabalho é manter a qualidade do `RoyalCode.Razor.Docs.Client` como host of
 ## Fontes obrigatórias
 
 - `.ai/guides/expand/showcases-and-docs.md`
-- `.ai/guides/rules/cross-cutting-component-decisions.md`
+- `.ai/guides/expand/cross-cutting-component-decisions.md`
 - `.ai/specs/lib/docs-showcase-foundation/requirements.md`
 - `.ai/specs/lib/docs-showcase-foundation/design.md`
 - `.ai/specs/lib/docs-showcase-foundation/tasks.md`

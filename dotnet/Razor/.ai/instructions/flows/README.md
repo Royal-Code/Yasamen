@@ -5,6 +5,7 @@ Esta pasta organiza fluxos por domínio.
 Grupos previstos:
 
 - [expand/](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/instructions/flows/expand)
+- [apps/](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/instructions/flows/apps)
 - [screens/](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/instructions/flows/screens)
 - [yasamen/](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/instructions/flows/yasamen)
 

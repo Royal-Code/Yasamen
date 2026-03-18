@@ -13,6 +13,14 @@ Esta pasta contém instruções operacionais do Copilot.
 - reforço de comportamento de agentes;
 - alinhamento entre Copilot e a base documental de `.ai`.
 
+Agentes de domínio ativos:
+
+- `spec-station`
+- `lib-spec`
+- `app-spec`
+- `screen-spec`
+- `yasamen`
+
 ## Instruções legadas arquivadas
 
 As instruções ligadas a orquestradores antigos foram movidas para:

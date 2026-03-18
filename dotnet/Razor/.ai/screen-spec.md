@@ -16,6 +16,8 @@ Este orquestrador trata:
 
 Ele não substitui `.ai/lib-spec.md`.
 
+Se o problema estiver no nível estrutural do app consumidor, usar `.ai/app-spec.md` antes de detalhar telas.
+
 Regra:
 
 - `.ai/lib-spec.md` continua para componentes, pacotes e specs técnicas;
@@ -36,6 +38,11 @@ Fluxo:
 
 - `.ai/instructions/flows/screens/plan-screen.md`
 
+Regra:
+
+- usar este fluxo quando o utilizador quiser planeamento explícito por gates;
+- se a informação já for suficiente para abrir a `screen spec`, preferir `.ai/instructions/flows/screens/create-screen-spec.md`.
+
 ### 2. Criar uma screen spec
 
 Pedido típico:
@@ -46,6 +53,11 @@ Pedido típico:
 Fluxo:
 
 - `.ai/instructions/flows/screens/create-screen-spec.md`
+
+Regra:
+
+- este é o fluxo preferencial quando o utilizador quer “planejar” uma tela e já há informação suficiente para materializar a spec;
+- se faltar informação, pedir lista enumerada do que falta para preencher os campos essenciais da spec.
 
 ### 3. Refinar uma screen spec existente
 
@@ -98,10 +110,13 @@ Fluxo:
 - Usar `.ai/ui-map/catalogo-ui.md` como base agnóstica.
 - Usar `.ai/ui-map/ui-map.md` como adapter tecnológico para Yasamen.
 - Fechar os checkpoints de `.ai/guides/rules/cross-cutting-screen-decisions.md`.
+- Se shell, layout, navegação ou convenções locais do app ainda estiverem indefinidos, escalar para `.ai/app-spec.md`.
 - Consultar backlog, roadmap ou mapa local de gaps quando isso existir.
 - Neste repositório, usar `.ai/roadmap/components-plan-list.md` e `.ai/roadmap/ui-plan.md` como referência padrão para dependências reveladas pela tela.
 - Tratar gaps de tela e gaps de componente como coisas diferentes.
 - Jornadas e capacidades podem ser lidas se existirem, mas não bloqueiam o fluxo nesta versão.
+- Não responder só com explicação do fluxo quando já for possível abrir ou refinar a `screen spec`.
+- Quando faltar informação, pedir lista enumerada única do que precisa ser conhecido para continuar.
 
 ---
 

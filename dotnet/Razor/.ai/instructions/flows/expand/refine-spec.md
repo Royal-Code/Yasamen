@@ -13,7 +13,7 @@ Antes de refinar a spec, a IA deve ler:
 - `.ai/ui-map/ui-map.md`
 - `.ai/roadmap/ui-plan.md`
 - `.ai/roadmap/components-plan-list.md`
-- `.ai/guides/rules/cross-cutting-component-decisions.md`
+- `.ai/guides/expand/cross-cutting-component-decisions.md`
 - os guides listados em `Guides aplicados`
 
 ## Regras
