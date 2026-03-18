@@ -1,35 +1,81 @@
-# Guides — RoyalCode.Razor
+﻿# Guides
 
-> Steering files para desenvolvimento de componentes na biblioteca RoyalCode.Razor (Yasamen Design System).
-> Cada guide documenta um aspeto da arquitetura, convenções ou padrões obrigatórios.
-> **Toda IA ou desenvolvedor que criar um novo componente DEVE ler os guides relevantes antes de começar.**
+Este índice organiza os guides ativos por grupo e por domínio.
 
----
+## Entrada
 
-## Índice de Guides
+Entradas preferenciais:
 
-| Arquivo | Propósito |
-|---|---|
-| [01-project-structure.md](01-project-structure.md) | Estrutura de projetos, dependências e como criar um novo pacote |
-| [02-styles-and-css.md](02-styles-and-css.md) | Sistema de estilos: enums, CssClasses, builders e convenção `ya-` |
-| [03-commons-infrastructure.md](03-commons-infrastructure.md) | Projeto Commons: JS modules, EmptyFragment, extensões e DI |
-| [04-icons-system.md](04-icons-system.md) | Sistema de ícones: IconFragment, WellKnownIcons, factories |
-| [05-animations.md](05-animations.md) | Sistema de animações: AnimationFragment, RotationMotion, RotateEffect |
-| [06-component-anatomy.md](06-component-anatomy.md) | Anatomia de um componente: .razor + .razor.cs, parâmetros, CSS, DI |
-| [07-form-components.md](07-form-components.md) | Infraestrutura de formulários: FieldBase, FieldGroup, validação, addons |
-| [08-service-pattern.md](08-service-pattern.md) | Padrão de serviços DI + Outlet (Notifications, Modals, OffCanvas) |
-| [09-showcases-and-docs.md](09-showcases-and-docs.md) | Padrão de showcases em `RoyalCode.Razor.Docs.Client` enquanto `RoyalCode.Razor.Show` não existe |
-| [10-spec-execution-and-delivery.md](10-spec-execution-and-delivery.md) | Como executar uma spec, validar, revisar e concluir a entrega com rastreabilidade |
+- [station.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/station.md)
+- [lib-spec.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/lib-spec.md)
+- [screen-spec.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/screen-spec.md)
 
----
+## Grupos
 
-## Como usar os Guides
+- [expand/](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand): guides para expandir a biblioteca.
+- [yasamen/](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/yasamen): guides para usar Yasamen em outros projetos.
+- [rules/](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules): guides transversais.
+- [screens/](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/screens): guides do domínio de telas.
 
-1. **Antes de criar um componente simples** (leaf, sem estado): leia [06](06-component-anatomy.md) + [02](02-styles-and-css.md)
-2. **Antes de criar um componente de formulário**: leia também [07](07-form-components.md) + [03](03-commons-infrastructure.md)
-3. **Ao usar ícones**: leia [04](04-icons-system.md)
-4. **Ao usar animações**: leia [05](05-animations.md)
-5. **Ao criar um serviço DI com outlet** (toast, modal, etc.): leia [08](08-service-pattern.md)
-6. **Ao criar um novo pacote/projeto**: leia [01](01-project-structure.md)
-7. **Ao documentar ou criar exemplos de uso**: leia [09](09-showcases-and-docs.md)
-8. **Ao implementar uma spec até o fechamento**: leia [10](10-spec-execution-and-delivery.md)
+## Mapa Atual
+
+### Expansão da biblioteca
+
+- [project-structure.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/project-structure.md)
+- [styles-and-css.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/styles-and-css.md)
+- [commons-infrastructure.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/commons-infrastructure.md)
+- [icons-system.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/icons-system.md)
+- [animations.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/animations.md)
+- [component-anatomy.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/component-anatomy.md)
+- [form-components.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/form-components.md)
+- [service-pattern.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/service-pattern.md)
+- [css-visual-contract.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/css-visual-contract.md)
+- [outlet-patterns.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/outlet-patterns.md)
+- [navigation-patterns.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/navigation-patterns.md)
+- [form-components-lightweight.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/form-components-lightweight.md)
+- [showcases-and-docs.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/showcases-and-docs.md)
+
+### Uso do Yasamen
+
+- [using-yasamen-in-blazor.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/yasamen/using-yasamen-in-blazor.md)
+
+### Regras transversais
+
+- [spec-execution-and-delivery.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/spec-execution-and-delivery.md)
+- [component-composition-and-dependencies.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/component-composition-and-dependencies.md)
+- [cross-cutting-component-decisions.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/cross-cutting-component-decisions.md)
+
+### Domínio de telas
+
+- [planning-and-ui-mapping.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/screens/planning-and-ui-mapping.md)
+
+## Leitura Mínima por Situação
+
+1. Componente novo:
+   [component-anatomy.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/component-anatomy.md),
+   [styles-and-css.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/styles-and-css.md),
+   [component-composition-and-dependencies.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/component-composition-and-dependencies.md),
+   [cross-cutting-component-decisions.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/cross-cutting-component-decisions.md)
+2. Forms consolidados:
+   [form-components.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/form-components.md),
+   [commons-infrastructure.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/commons-infrastructure.md),
+   [cross-cutting-component-decisions.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/cross-cutting-component-decisions.md)
+3. Forms ainda pouco definidos:
+   [form-components-lightweight.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/form-components-lightweight.md),
+   [form-components.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/form-components.md),
+   [cross-cutting-component-decisions.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/cross-cutting-component-decisions.md)
+4. Serviço com outlet:
+   [outlet-patterns.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/outlet-patterns.md) e
+   [service-pattern.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/service-pattern.md)
+5. Novo pacote de biblioteca:
+   [project-structure.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/project-structure.md),
+   [styles-and-css.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/styles-and-css.md),
+   [cross-cutting-component-decisions.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/cross-cutting-component-decisions.md)
+6. Showcase ou docs:
+   [showcases-and-docs.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/expand/showcases-and-docs.md)
+7. Execução completa de spec:
+   [spec-execution-and-delivery.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/spec-execution-and-delivery.md)
+8. Tela ou página:
+   [planning-and-ui-mapping.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/screens/planning-and-ui-mapping.md) e
+   [cross-cutting-component-decisions.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/cross-cutting-component-decisions.md)
+

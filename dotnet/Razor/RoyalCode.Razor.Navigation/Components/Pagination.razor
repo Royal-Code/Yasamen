@@ -1,0 +1,109 @@
+@if (ShouldRenderPagination)
+{
+    <nav class="@Classes" aria-label="@NavigationLabel" @attributes="UnmatchedAttributes">
+        <div class="ya-pagination-desktop">
+            <ul class="ya-pagination-list">
+                <li class="ya-pagination-item">
+                    <button type="button"
+                            class="@GetControlClasses(IsFirstPage)"
+                            disabled="@IsInteractionDisabled(IsFirstPage)"
+                            aria-label="Primeira página"
+                            data-nav="first"
+                            @onclick="@(() => ChangePageAsync(1))">
+                        @FirstIcon
+                    </button>
+                </li>
+                <li class="ya-pagination-item">
+                    <button type="button"
+                            class="@GetControlClasses(IsFirstPage)"
+                            disabled="@IsInteractionDisabled(IsFirstPage)"
+                            aria-label="Página anterior"
+                            data-nav="previous"
+                            @onclick="@(() => ChangePageAsync(EffectiveCurrentPage - 1))">
+                        @PreviousIcon
+                    </button>
+                </li>
+
+                @if (Window.ShowLeadingEllipsis)
+                {
+                    <li class="ya-pagination-item">
+                        <span class="ya-pagination-ellipsis" aria-hidden="true">...</span>
+                    </li>
+                }
+
+                @foreach (var page in Window.Pages)
+                {
+                    <li class="ya-pagination-item">
+                        <button type="button"
+                                class="@GetPageClasses(page)"
+                                disabled="@IsInteractionDisabled(page == EffectiveCurrentPage)"
+                                aria-current="@(GetAriaCurrent(page))"
+                                aria-label="@GetPageLabel(page)"
+                                data-page="@(page)"
+                                @onclick="@(() => ChangePageAsync(page))">
+                            @(page)
+                        </button>
+                    </li>
+                }
+
+                @if (Window.ShowTrailingEllipsis)
+                {
+                    <li class="ya-pagination-item">
+                        <span class="ya-pagination-ellipsis" aria-hidden="true">...</span>
+                    </li>
+                }
+
+                <li class="ya-pagination-item">
+                    <button type="button"
+                            class="@GetControlClasses(IsLastPage)"
+                            disabled="@IsInteractionDisabled(IsLastPage)"
+                            aria-label="Próxima página"
+                            data-nav="next"
+                            @onclick="@(() => ChangePageAsync(EffectiveCurrentPage + 1))">
+                        @NextIcon
+                    </button>
+                </li>
+                <li class="ya-pagination-item">
+                    <button type="button"
+                            class="@GetControlClasses(IsLastPage)"
+                            disabled="@IsInteractionDisabled(IsLastPage)"
+                            aria-label="Última página"
+                            data-nav="last"
+                            @onclick="@(() => ChangePageAsync(EffectiveTotalPages))">
+                        @LastIcon
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <div class="ya-pagination-mobile">
+            <button type="button"
+                    class="@GetControlClasses(IsFirstPage)"
+                    disabled="@IsInteractionDisabled(IsFirstPage)"
+                    aria-label="Página anterior"
+                    data-nav="previous"
+                    @onclick="@(() => ChangePageAsync(EffectiveCurrentPage - 1))">
+                @PreviousIcon
+            </button>
+
+            <span class="ya-pagination-mobile-summary" aria-live="polite">
+                Página @EffectiveCurrentPage de @EffectiveTotalPages
+            </span>
+
+            <button type="button"
+                    class="@GetControlClasses(IsLastPage)"
+                    disabled="@IsInteractionDisabled(IsLastPage)"
+                    aria-label="Próxima página"
+                    data-nav="next"
+                    @onclick="@(() => ChangePageAsync(EffectiveCurrentPage + 1))">
+                @NextIcon
+            </button>
+        </div>
+    </nav>
+}
+else if (ShouldRenderSinglePageMessage)
+{
+    <div class="@MessageClasses" @attributes="UnmatchedAttributes">
+        <span class="ya-pagination-empty-message">@SinglePageMessage</span>
+    </div>
+}

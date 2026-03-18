@@ -1,4 +1,4 @@
-# UI Map — RoyalCode Razor Library
+﻿# UI Map — RoyalCode Razor Library
 
 > Mapeamento entre os UI Patterns do Catálogo Global (catalogo-ui.md) e os componentes Blazor da biblioteca RoyalCode.Razor.
 >
@@ -343,41 +343,30 @@ else if (activeTab == "hist")
 
 ## UIP-NAV-PAGINATION — Pagination
 
-**Componentes RoyalCode:** *(nenhum)*
+**Componentes RoyalCode:** `Pagination`
 
-**Nota de Adaptação: 0 / 10**
+**Nota de Adaptação: 9 / 10**
 
-**Justificativa:** Não existe componente de paginação. Nenhum primitivo da biblioteca cobre navegação entre páginas de resultados, indicador de página atual, primeira/última página ou botões de anterior/próxima com estado desativado durante loading.
+**Justificativa:** `Pagination` cobre diretamente o padrão com API pública controlada por estado externo, navegação para primeira/anterior/próxima/última, janela numérica no Desktop, resumo compacto no Mobile e bloqueio durante loading. O componente também expõe `aria-current="page"`, usa `<nav aria-label="Paginação">` e centraliza o contrato visual em classes `ya-pagination*`. O único gap residual do primeiro release é não incluir seletor de tamanho de página nem sincronização automática com URL.
 
-**Exemplo (implementação manual):**
+**Exemplo:**
 
 ```razor
-@* Implementação manual usando Button e Bar *@
-<Bar>
-    <Start>
-        <Button Label="Anterior"
-                Disabled="@(currentPage <= 1)"
-                OnClick="@PreviousPage"
-                Icon="WellKnownIcons.Back" />
-    </Start>
-    <Middle>
-        <span>Página @currentPage de @totalPages</span>
-    </Middle>
-    <End>
-        <Button Label="Próxima"
-                Disabled="@(currentPage >= totalPages)"
-                OnClick="@NextPage"
-                Icon="WellKnownIcons.Next"
-                IconPosition="Positions.End" />
-    </End>
-</Bar>
+<Pagination CurrentPage="@currentPage"
+            TotalPages="@totalPages"
+            Loading="@loading"
+            OnPageChanged="@ChangePageAsync" />
 
 @code {
-    private int currentPage = 1;
-    private int totalPages = 10;
+    private int currentPage = 3;
+    private int totalPages = 12;
+    private bool loading;
 
-    private void PreviousPage() { if (currentPage > 1) currentPage--; }
-    private void NextPage() { if (currentPage < totalPages) currentPage++; }
+    private Task ChangePageAsync(int page)
+    {
+        currentPage = page;
+        return Task.CompletedTask;
+    }
 }
 ```
 
@@ -1274,7 +1263,7 @@ else
 | UIP-NAV-NAVIGATION_MENU | Navigation Menu | 8 | `AppMenu`, `AppMenuItem`, `AppSideBar` |
 | UIP-NAV-BREADCRUMB | Breadcrumb | 9 | `Breadcrumb`, `BreadcrumbItem`, `DescribesBreadcrumbs` |
 | UIP-NAV-TABS | Tabs | 0 | *(nenhum)* |
-| UIP-NAV-PAGINATION | Pagination | 0 | *(nenhum)* |
+| UIP-NAV-PAGINATION | Pagination | 9 | `Pagination` |
 | UIP-NAV-STEPPER_INDICATOR | Stepper Indicator | 0 | *(nenhum)* |
 | UIP-DATA-DATA_TABLE | Data Table | 0 | *(nenhum)* |
 | UIP-DATA-LIST_ITEM | List Item | 2 | `AppMenuItem` (só em nav) |
@@ -1306,9 +1295,10 @@ else
 | Grupo | Média | Observação |
 |---|:---:|---|
 | Estruturais | 5,8 | Boa cobertura de grids e stacks; sem scroll region dedicada |
-| Navegação | 3,4 | Breadcrumb e Menu excelentes; Tabs, Pagination e Stepper ausentes |
+| Navegação | 5,2 | Breadcrumb, Menu e Pagination fortes; Tabs e Stepper ainda ausentes |
 | Dados & Listagem | 1,4 | Apenas Card Grid parcialmente coberto; Data Table e Timeline ausentes |
 | Entrada | 2,2 | Infra de forms boa; poucos inputs concretos e nenhum input complexo (search, date, inline) |
 | Feedback & Estado | 5,8 | Toast e Contextual Dialog fortes; Loading e Empty State fracos |
 | Ação | 6,0 | Bar e Contextual Menu muito bons; FAB sem componente dedicado |
 | Conteúdo | 1,2 | Nenhum componente de conteúdo estruturado (Detail, Metric, Rich Text, Media) |
+

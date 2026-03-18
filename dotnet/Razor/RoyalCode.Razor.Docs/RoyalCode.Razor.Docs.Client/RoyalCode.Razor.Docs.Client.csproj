@@ -23,6 +23,7 @@
     <ProjectReference Include="..\..\RoyalCode.Razor.Icons\RoyalCode.Razor.Icons.csproj" />
     <ProjectReference Include="..\..\RoyalCode.Razor.Layouts.Apps\RoyalCode.Razor.Layouts.Apps.csproj" />
     <ProjectReference Include="..\..\RoyalCode.Razor.Modals\RoyalCode.Razor.Modals.csproj" />
+    <ProjectReference Include="..\..\RoyalCode.Razor.Navigation\RoyalCode.Razor.Navigation.csproj" />
     <ProjectReference Include="..\..\RoyalCode.Razor.Show\RoyalCode.Razor.Show.csproj" />
     <ProjectReference Include="..\..\RoyalCode.Razor.Styles\RoyalCode.Razor.Styles.csproj" />
   </ItemGroup>

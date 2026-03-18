@@ -1,0 +1,176 @@
+@page "/demo/navigation/pagination"
+
+@layout AppMainLayout
+
+<Box AdditionalClasses="p-8 bg-white border-none space-y-10">
+
+	<header class="space-y-3">
+		<h1>Pagination</h1>
+		<p>
+			Navegação paginada para listas, tabelas e grids, com janela numérica no Desktop e resumo compacto em largura reduzida.
+		</p>
+	</header>
+
+	<section class="space-y-4">
+		<h2>Básico</h2>
+		<p>Uso mínimo com estado externo controlando a página atual.</p>
+		<Pagination CurrentPage="@basicPage"
+					TotalPages="12"
+					OnPageChanged="@SetBasicPage" />
+	</section>
+
+	<section class="space-y-4">
+		<h2>Tamanhos</h2>
+		<p>
+			A paginação suporta a escala de <code>Sizes</code> da biblioteca, permitindo ajustar densidade e leitura conforme o contexto.
+		</p>
+		<div class="space-y-4 rounded-xl border border-light-300 p-4">
+			@foreach (var sizeOption in sizeOptions)
+			{
+				<div class="space-y-2">
+					<h3>@sizeOption.Label</h3>
+					<Pagination CurrentPage="4"
+								TotalPages="12"
+								Size="@sizeOption.Value"
+								OnPageChanged="@NoOpAsync" />
+				</div>
+			}
+		</div>
+	</section>
+
+	<section class="space-y-4">
+		<h2>Janela Numérica</h2>
+		<p>O mesmo componente ajusta a janela conforme a posição atual na coleção.</p>
+		<div class="grid gap-6">
+			<div class="space-y-2">
+				<h3>Início</h3>
+				<Pagination CurrentPage="1" TotalPages="15" OnPageChanged="@NoOpAsync" />
+			</div>
+			<div class="space-y-2">
+				<h3>Meio</h3>
+				<Pagination CurrentPage="8" TotalPages="15" OnPageChanged="@NoOpAsync" />
+			</div>
+			<div class="space-y-2">
+				<h3>Fim</h3>
+				<Pagination CurrentPage="15" TotalPages="15" OnPageChanged="@NoOpAsync" />
+			</div>
+		</div>
+	</section>
+
+	<section class="space-y-4">
+		<h2>Estados</h2>
+		<p>Loading desabilita a navegação e evita cliques duplicados enquanto a troca de página está pendente.</p>
+		<div class="space-y-3">
+			<Button Label="Alternar loading"
+					Style="Themes.Secondary"
+					OnClick="@(_ => ToggleLoading())" />
+			<Pagination CurrentPage="@loadingPage"
+					TotalPages="10"
+					Loading="@loadingDemo"
+					OnPageChanged="@SetLoadingPage" />
+		</div>
+	</section>
+
+	<section class="space-y-4">
+		<h2>Sem Navegação Efetiva</h2>
+		<p>
+			Quando só existe uma página, o componente pode continuar oculto, renderizar os controles mesmo assim ou exibir uma mensagem customizada.
+		</p>
+		<div class="space-y-4 rounded-xl border border-light-300 p-4">
+			<div class="space-y-2">
+				<h3>Renderizar Mesmo Com Uma Página</h3>
+				<Pagination CurrentPage="1"
+								TotalPages="1"
+								SinglePageMode="PaginationSinglePageMode.Render"
+								OnPageChanged="@NoOpAsync" />
+			</div>
+			<div class="space-y-2">
+				<h3>Mensagem Customizada</h3>
+				<Pagination CurrentPage="1"
+								TotalPages="1"
+								SinglePageMode="PaginationSinglePageMode.Message"
+								SinglePageMessage="Todos os resultados cabem em uma única página."
+								OnPageChanged="@NoOpAsync" />
+			</div>
+		</div>
+	</section>
+
+	<section class="space-y-4">
+		<h2>Largura Reduzida</h2>
+		<p>Em um contêiner estreito, a versão compacta mostra anterior, resumo e próxima.</p>
+		<div class="max-w-sm rounded-xl border border-light-300 p-4">
+			<Pagination CurrentPage="4" TotalPages="18" OnPageChanged="@NoOpAsync" />
+		</div>
+	</section>
+
+	<section class="space-y-4">
+		<h2>Integração com Lista</h2>
+		<p>A paginação abaixo controla uma lista simples de itens para demonstrar uso real de consumo externo.</p>
+		<div class="space-y-4 rounded-xl border border-light-300 p-4">
+			<ul class="list-disc space-y-2 pl-5">
+				@foreach (var item in VisibleItems)
+				{
+					<li>@item</li>
+				}
+			</ul>
+			<Pagination CurrentPage="@listPage"
+					TotalPages="@ListTotalPages"
+					PageSize="@ListPageSize"
+					OnPageChanged="@SetListPage" />
+		</div>
+	</section>
+
+</Box>
+
+@code {
+	private readonly IReadOnlyList<string> products = Enumerable.Range(1, 24)
+		.Select(index => $"Produto {index:00}")
+		.ToArray();
+
+	private int basicPage = 3;
+	private int loadingPage = 5;
+	private bool loadingDemo;
+	private int listPage = 1;
+	private readonly IReadOnlyList<(string Label, Sizes Value)> sizeOptions =
+	[
+		("Smallest", Sizes.Smallest),
+		("Smaller", Sizes.Smaller),
+		("Small", Sizes.Small),
+		("Medium", Sizes.Medium),
+		("Large", Sizes.Large),
+		("Larger", Sizes.Larger),
+		("Largest", Sizes.Largest)
+	];
+
+	private const int ListPageSize = 5;
+
+	private int ListTotalPages => (int)Math.Ceiling(products.Count / (double)ListPageSize);
+
+	private IEnumerable<string> VisibleItems => products
+		.Skip((listPage - 1) * ListPageSize)
+		.Take(ListPageSize);
+
+	private Task SetBasicPage(int page)
+	{
+		basicPage = page;
+		return Task.CompletedTask;
+	}
+
+	private Task SetLoadingPage(int page)
+	{
+		loadingPage = page;
+		return Task.CompletedTask;
+	}
+
+	private Task SetListPage(int page)
+	{
+		listPage = page;
+		return Task.CompletedTask;
+	}
+
+	private Task NoOpAsync(int _)
+		=> Task.CompletedTask;
+
+	private void ToggleLoading()
+		=> loadingDemo = !loadingDemo;
+}

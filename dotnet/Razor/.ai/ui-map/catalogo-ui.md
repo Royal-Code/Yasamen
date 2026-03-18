@@ -1,4 +1,4 @@
-# Catalogo Global de UI Patterns
+﻿# Catalogo Global de UI Patterns
 
 > Heuristica Visual (Frontend)
 > Destinado prioritariamente a orquestracao por IA, podendo ser auditado por humanos.
@@ -680,3 +680,4 @@ Para alterar um UI Pattern existente:
 3. Versionar o catálogo após alteração.
 
 ---
+

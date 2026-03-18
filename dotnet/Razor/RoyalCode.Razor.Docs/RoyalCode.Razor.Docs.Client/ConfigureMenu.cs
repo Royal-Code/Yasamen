@@ -128,6 +128,22 @@ public static class ConfigureMenu
                     },
                     new MenuItem
                     {
+                        Id = "navigation",
+                        Text = "Navigation",
+                        Type = MenuItemType.Module,
+                        Children =
+                        [
+                            new MenuItem
+                            {
+                                Id = "pagination",
+                                Text = "Pagination",
+                                Url = "demo/navigation/pagination",
+                                Type = MenuItemType.Link
+                            }
+                        ]
+                    },
+                    new MenuItem
+                    {
                         Id = "buttons",
                         Text = "Buttons",
                         Url = "buttons",

@@ -1,0 +1,116 @@
+﻿# Using Yasamen in Blazor
+
+> Guia de consumo da biblioteca Yasamen em projetos Blazor.
+
+## Objetivo
+
+Este guide existe para orientar a criação e a manutenção de projetos consumidores da biblioteca.
+
+Ele cobre:
+
+- instalação de pacotes;
+- configuração básica de estilos e `_Imports`;
+- registro de serviços;
+- composição de telas com componentes Yasamen;
+- limites entre consumo da biblioteca e expansão da biblioteca.
+
+## Quando usar este guide
+
+Use este guide quando o trabalho for:
+
+- criar um novo projeto Blazor que usa Yasamen;
+- instalar ou atualizar pacotes Yasamen em um app existente;
+- criar ou editar telas consumidoras com componentes já disponíveis;
+- configurar showcase, docs internas ou páginas de demonstração em um app consumidor.
+
+Não use este guide como substituto de `lib-spec` quando o trabalho for criar componente novo da biblioteca.
+
+## Regras de consumo
+
+- consumir apenas API pública dos pacotes;
+- não usar namespaces `Internal.*` de Yasamen;
+- não copiar CSS interno da biblioteca para o projeto consumidor;
+- preferir temas, tamanhos e classes públicas já previstos pela biblioteca;
+- se faltar componente ou padrão, registrar gap e encaminhar para `lib-spec`.
+
+## Configuração mínima de um app consumidor
+
+### Pacotes
+
+Instalar apenas os pacotes necessários para a família de componentes usada.
+
+Base comum em projetos visuais:
+
+- `RoyalCode.Razor.Styles`
+- `RoyalCode.Razor.Commons`
+
+Pacotes adicionais conforme a necessidade:
+
+- `RoyalCode.Razor.Buttons`
+- `RoyalCode.Razor.Forms`
+- `RoyalCode.Razor.Alerts`
+- `RoyalCode.Razor.Navigation`
+- outros pacotes da solução
+
+### Estilos
+
+O projeto consumidor deve carregar o CSS público da biblioteca, não recriar os tokens.
+
+Regras:
+
+- usar `yasamen.css` como base pública;
+- sobrescritas locais devem respeitar os tokens e o contrato visual da biblioteca;
+- não tratar `*.razor.css` internos da biblioteca como API.
+
+### `_Imports.razor`
+
+Adicionar apenas namespaces públicos necessários.
+
+Base comum:
+
+```razor
+@using RoyalCode.Razor.Styles
+@using RoyalCode.Razor.Commons
+```
+
+Adicionar pacotes específicos conforme a superfície usada.
+
+### DI
+
+Quando um pacote exigir registro explícito, usar apenas extensões públicas do tipo:
+
+- `AddYasamenXyz(...)`
+
+Não registrar tipos internos manualmente no app consumidor.
+
+## Telas consumidoras
+
+Ao criar ou editar uma tela:
+
+- preferir composição com componentes já existentes;
+- seguir `screen-spec` quando a tela ainda não estiver bem definida;
+- seguir `yasamen` quando a tarefa for execução direta no repositório;
+- registrar gaps de componente quando a biblioteca ainda não cobrir a necessidade.
+
+## Showcase e docs em app consumidor
+
+Se o projeto consumidor tiver área de demonstração ou docs:
+
+- seguir o padrão visual e estrutural do guide `showcases-and-docs.md`;
+- separar showcase de uso real da app, quando isso reduzir confusão;
+- preferir exemplos funcionais, não galerias artificiais.
+
+## Quando escalar para outro fluxo
+
+Encaminhar para `lib-spec` quando:
+
+- o projeto consumidor revelar um gap de componente reutilizável;
+- for necessário criar pacote novo da biblioteca;
+- a mudança deixar de ser consumo e virar expansão da biblioteca.
+
+Encaminhar para `screen-spec` quando:
+
+- a tela ainda exigir definição de shell, `Page Pattern`, zonas e `UIP-*`;
+- a solução da página ainda estiver conceitualmente aberta.
+
+

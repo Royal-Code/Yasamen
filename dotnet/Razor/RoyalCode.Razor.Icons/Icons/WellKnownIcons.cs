@@ -205,4 +205,24 @@ public static class WellKnownIcons
     /// Icon for favorite on / marked as favorite.
     /// </summary>
     public static IconFragment FavoriteOn { get; set; } = NoIconFragment;
+
+    /// <summary>
+    /// Icon for jumping to the first page in pagination controls.
+    /// </summary>
+    public static IconFragment PaginationFirst { get; set; } = NoIconFragment;
+
+    /// <summary>
+    /// Icon for moving to the previous page in pagination controls.
+    /// </summary>
+    public static IconFragment PaginationPrevious { get; set; } = NoIconFragment;
+
+    /// <summary>
+    /// Icon for moving to the next page in pagination controls.
+    /// </summary>
+    public static IconFragment PaginationNext { get; set; } = NoIconFragment;
+
+    /// <summary>
+    /// Icon for jumping to the last page in pagination controls.
+    /// </summary>
+    public static IconFragment PaginationLast { get; set; } = NoIconFragment;
 }

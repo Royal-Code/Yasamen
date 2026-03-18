@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Docs (ASP.NET Core)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build docs",
+      "program": "${workspaceFolder}/RoyalCode.Razor.Docs/RoyalCode.Razor.Docs/bin/Debug/net10.0/RoyalCode.Razor.Docs.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/RoyalCode.Razor.Docs/RoyalCode.Razor.Docs",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "Now listening on: (https?://\\S+)"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "launchBrowser": {
+        "enabled": true,
+        "args": "http://localhost:5029",
+        "windows": {
+          "command": "cmd.exe",
+          "args": "/C start http://localhost:5029"
+        }
+      }
+    }
+  ]
+}

@@ -61,6 +61,11 @@ public static class BootstrapIcons
             WellKnownIcons.MenuExpandAll = factory.GetFragment(BsIconNames.ChevronDoubleRight);
             WellKnownIcons.FavoriteOff = factory.GetFragment(BsIconNames.Heart);
             WellKnownIcons.FavoriteOn = factory.GetFragment(BsIconNames.HeartFill);
+
+            WellKnownIcons.PaginationFirst = factory.GetFragment(BsIconNames.ChevronDoubleLeft);
+            WellKnownIcons.PaginationPrevious = factory.GetFragment(BsIconNames.ChevronLeft);
+            WellKnownIcons.PaginationNext = factory.GetFragment(BsIconNames.ChevronRight);
+            WellKnownIcons.PaginationLast = factory.GetFragment(BsIconNames.ChevronDoubleRight);
         }
     }
 }

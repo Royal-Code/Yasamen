@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="..\test.targets" />
+
+	<PropertyGroup>
+		<TargetFramework>$(RuntimeVer)</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\RoyalCode.Razor.Navigation\RoyalCode.Razor.Navigation.csproj" />
+	</ItemGroup>
+
+</Project>

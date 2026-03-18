@@ -1,0 +1,135 @@
+.ya-pagination {
+    @apply flex flex-col gap-3;
+}
+
+.ya-pagination-desktop {
+    @apply hidden md:block;
+}
+
+.ya-pagination-mobile {
+    @apply flex items-center justify-between gap-3 md:hidden;
+}
+
+.ya-pagination-list {
+    @apply m-0 flex list-none flex-wrap items-center gap-2 p-0;
+}
+
+.ya-pagination-item {
+    @apply list-none;
+}
+
+.ya-pagination-link,
+.ya-pagination-control {
+    @apply inline-flex items-center justify-center border border-light-400 bg-white font-medium text-dark-600 transition-colors duration-150 hover:not-disabled:bg-light-100 focus:outline-none;
+}
+
+.ya-pagination-icon {
+    @apply pointer-events-none block;
+}
+
+.ya-pagination-2xs .ya-pagination-link,
+.ya-pagination-2xs .ya-pagination-control {
+    @apply min-h-5 min-w-5 rounded-sm px-2 py-1 text-xs focus-within:ring-2 focus-within:ring-primary-300/60;
+}
+
+.ya-pagination-xs .ya-pagination-link,
+.ya-pagination-xs .ya-pagination-control {
+    @apply min-h-6 min-w-6 rounded-sm px-3 py-1 text-sm focus-within:ring-3 focus-within:ring-primary-300/60;
+}
+
+.ya-pagination-sm .ya-pagination-link,
+.ya-pagination-sm .ya-pagination-control {
+    @apply min-h-7 min-w-7 rounded-md px-3 py-1 text-sm focus-within:ring-4 focus-within:ring-primary-300/60;
+}
+
+.ya-pagination-md .ya-pagination-link,
+.ya-pagination-md .ya-pagination-control {
+    @apply min-h-8 min-w-8 rounded-md px-4 py-2 text-base focus-within:ring-4 focus-within:ring-primary-300/60;
+}
+
+.ya-pagination-lg .ya-pagination-link,
+.ya-pagination-lg .ya-pagination-control {
+    @apply min-h-9 min-w-9 rounded-md px-5 py-2 text-base focus-within:ring-4 focus-within:ring-primary-300/60;
+}
+
+.ya-pagination-xl .ya-pagination-link,
+.ya-pagination-xl .ya-pagination-control {
+    @apply min-h-10 min-w-10 rounded-lg px-5 py-3 text-xl focus-within:ring-5 focus-within:ring-primary-300/60;
+}
+
+.ya-pagination-2xl .ya-pagination-link,
+.ya-pagination-2xl .ya-pagination-control {
+    @apply min-h-11 min-w-11 rounded-lg px-6 py-3 text-2xl focus-within:ring-6 focus-within:ring-primary-300/60;
+}
+
+.ya-pagination-link-active {
+    @apply border-primary-500 bg-primary-500 text-white hover:bg-primary-600 hover:text-white;
+}
+
+.ya-pagination-link-disabled {
+    @apply cursor-not-allowed opacity-50 hover:bg-white;
+}
+
+.ya-pagination-ellipsis {
+    @apply px-1 text-dark-300 select-none;
+}
+
+.ya-pagination-mobile-summary {
+    @apply flex-1 text-center text-sm font-medium text-dark-500 tabular-nums;
+}
+
+.ya-pagination-2xs .ya-pagination-mobile-summary {
+    @apply text-xs;
+}
+
+.ya-pagination-xs .ya-pagination-mobile-summary,
+.ya-pagination-sm .ya-pagination-mobile-summary {
+    @apply text-sm;
+}
+
+.ya-pagination-md .ya-pagination-mobile-summary,
+.ya-pagination-lg .ya-pagination-mobile-summary {
+    @apply text-base;
+}
+
+.ya-pagination-xl .ya-pagination-mobile-summary {
+    @apply text-xl;
+}
+
+.ya-pagination-2xl .ya-pagination-mobile-summary {
+    @apply text-2xl;
+}
+
+.ya-pagination-loading {
+    @apply opacity-80;
+}
+
+.ya-pagination-empty {
+    @apply rounded-md border border-light-300 bg-light-50 px-4 py-2;
+}
+
+.ya-pagination-empty-message {
+    @apply text-sm font-medium text-dark-400;
+}
+
+.ya-pagination-2xs .ya-pagination-empty-message {
+    @apply text-xs;
+}
+
+.ya-pagination-xs .ya-pagination-empty-message,
+.ya-pagination-sm .ya-pagination-empty-message {
+    @apply text-sm;
+}
+
+.ya-pagination-md .ya-pagination-empty-message,
+.ya-pagination-lg .ya-pagination-empty-message {
+    @apply text-base;
+}
+
+.ya-pagination-xl .ya-pagination-empty-message {
+    @apply text-xl;
+}
+
+.ya-pagination-2xl .ya-pagination-empty-message {
+    @apply text-2xl;
+}

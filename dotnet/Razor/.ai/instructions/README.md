@@ -1,107 +1,67 @@
-# Instructions — RoyalCode.Razor
+﻿# Instructions
 
-> Instruções operacionais reutilizáveis para iniciar novos chats com menos contexto manual.
+Este índice organiza as instruções por papel lógico e por domínio.
 
-## Arquivos Disponíveis
+## Entradas Principais
 
-| Arquivo | Uso |
-|---|---|
-| `../spec.md` | Orquestrador de entrada única para escolher, planejar, criar, refinar ou implementar specs |
-| `plan-spec.md` | Planejar uma spec em colaboração com o utilizador, por gates e etapas aprovadas |
-| `create-spec.md` | Criar ou revisar uma spec completa a partir do template e dos guides |
-| `refine-spec.md` | Fortalecer uma spec existente antes da implementação |
-| `implement-spec.md` | Executar uma spec completa: ler, validar, implementar, testar, revisar e concluir |
-| `select-next-spec.md` | Analisar o planeamento atual e recomendar a próxima spec a criar, refinar ou implementar |
+- [station.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/station.md)
+- [lib-spec.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/lib-spec.md)
+- [screen-spec.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/screen-spec.md)
 
-## Uso Recomendado
+## Grupos
 
-Fluxo orquestrado de entrada única:
+- [expand/](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/instructions/expand): ações para expandir a biblioteca.
+- [yasamen/](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/instructions/yasamen): ações para usar Yasamen em apps e telas.
+- [rules/](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/instructions/rules): instruções genéricas e transversais.
+- [flows/](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/instructions/flows): fluxos orientados por domínio.
+- [agents/](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/instructions/agents): documentação conceitual de comportamento de agentes.
 
-```text
-Leia `.ai/spec.md` e quero planejar a próxima spec.
-```
+## Mapa Atual
 
-Ou:
+### Fluxos de expansão da biblioteca
 
-```text
-Leia `.ai/spec.md` e implemente a spec `pagination`.
-```
+Conteúdo canônico:
 
-Ou:
+- [flows/expand/select-next-spec.md](flows/expand/select-next-spec.md)
+- [flows/expand/plan-spec.md](flows/expand/plan-spec.md)
+- [flows/expand/create-spec.md](flows/expand/create-spec.md)
+- [flows/expand/refine-spec.md](flows/expand/refine-spec.md)
+- [flows/expand/implement-spec.md](flows/expand/implement-spec.md)
+- [expand/create-library-project.md](expand/create-library-project.md)
 
-```text
-Leia `.ai/spec.md` e refine a spec `tabs`.
-```
+### Fluxos de telas
 
-Para planeamento colaborativo com gates:
+Conteúdo canônico:
 
-```text
-Leia `.ai/instructions/plan-spec.md` e planeje a spec `search-field`.
-```
+- [flows/screens/plan-screen.md](flows/screens/plan-screen.md)
+- [flows/screens/create-screen-spec.md](flows/screens/create-screen-spec.md)
+- [flows/screens/refine-screen-spec.md](flows/screens/refine-screen-spec.md)
 
-Ou:
+### Uso do Yasamen
 
-```text
-Leia `.ai/instructions/plan-spec.md` e planeje a próxima spec.
-```
+Conteúdo ativo:
 
-Em um novo chat, use também prompts curtos como:
+- [yasamen/install-yasamen-packages.md](yasamen/install-yasamen-packages.md)
+- [yasamen/create-blazor-yasamen-project.md](yasamen/create-blazor-yasamen-project.md)
+- [yasamen/create-or-edit-screen.md](yasamen/create-or-edit-screen.md)
 
-```text
-Leia `.ai/instructions/implement-spec.md` e implemente a spec `pagination`.
-```
+Escopo:
 
-Ou:
+- instalar pacote;
+- configurar serviços;
+- criar projeto front-end que usa Yasamen;
+- criar ou editar telas consumidoras da biblioteca.
 
-```text
-Leia `.ai/instructions/implement-spec.md` e execute a spec `docs-showcase-foundation`.
-```
+## Regras Operacionais
 
-Para criar uma spec nova:
+- Para componente ou spec, use também [cross-cutting-component-decisions.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/cross-cutting-component-decisions.md).
+- Para tela, use também [planning-and-ui-mapping.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/screens/planning-and-ui-mapping.md).
+- Pedido de pacote novo via `station` ou `lib-spec` é `spec-first` por padrão.
 
-```text
-Leia `.ai/instructions/create-spec.md` e crie a spec `search-field`.
-```
+## Agentes Preferenciais
 
-Ou:
+- `@spec-station`
+- `@lib-spec`
+- `@screen-spec`
+- `@yasamen`
 
-```text
-Leia `.ai/instructions/create-spec.md` e crie a spec `tabs`.
-```
-
-Para refinar uma spec existente:
-
-```text
-Leia `.ai/instructions/refine-spec.md` e refine a spec `pagination`.
-```
-
-Ou:
-
-```text
-Leia `.ai/instructions/refine-spec.md` e fortaleça a spec `docs-showcase-foundation`.
-```
-
-Para decidir o próximo passo:
-
-```text
-Leia `.ai/instructions/select-next-spec.md` e diga qual deve ser a próxima spec.
-```
-
-Ou:
-
-```text
-Leia `.ai/instructions/select-next-spec.md` e diga se o próximo passo deve ser criar, refinar ou implementar alguma spec.
-```
-
-## Convenção
-
-- O nome da spec corresponde à pasta em `.ai/specs/<nome-da-spec>/`.
-- A instrução operacional é responsável por localizar e ler:
-  - `requirements.md`
-  - `design.md`
-  - `tasks.md`
-  - `delivery.md`
-- Specs novas devem nascer a partir de `.ai/specs/_template/`.
-- `plan-spec.md` é o fluxo colaborativo com gates.
-- `create-spec.md` é o fluxo direto para gerar a spec inteira.
-- `../spec.md` pode ser usado como ponto único de entrada para rotear o fluxo certo.

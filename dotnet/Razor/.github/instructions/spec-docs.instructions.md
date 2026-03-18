@@ -1,4 +1,4 @@
----
+﻿---
 applyTo: ".ai/specs/**/*.md"
 ---
 
@@ -13,5 +13,7 @@ applyTo: ".ai/specs/**/*.md"
 - Não deixe texto genérico do template quando a decisão já puder ser tomada.
 - Não misture requisitos com decisões de design.
 - Não misture design com changelog ou revisão.
-- Quando a spec envolver showcase, alinhe com `.ai/guides/09-showcases-and-docs.md`.
-- Toda spec deve manter coerência com `.ai/ui-map/ui-map.md`, `.ai/ui-map/ui-plan.md` e `.ai/guides/10-spec-execution-and-delivery.md`.
+- Quando a spec envolver showcase, alinhe com `.ai/guides/expand/showcases-and-docs.md`.
+- Toda spec deve manter coerência com `.ai/ui-map/ui-map.md`, `.ai/roadmap/ui-plan.md` e `.ai/guides/rules/spec-execution-and-delivery.md`.
+
+
