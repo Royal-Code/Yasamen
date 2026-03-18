@@ -48,9 +48,14 @@ Para qualquer planeamento de tela, ler:
 
 - `.ai/ui-map/catalogo-ui.md`
 - `.ai/ui-map/ui-map.md`
+- `.ai/guides/rules/cross-cutting-screen-decisions.md`
+
+Se o projeto tiver backlog, roadmap ou mapa local de gaps, ler também.
+
+Neste repositório, as referências padrão são:
+
 - `.ai/roadmap/components-plan-list.md`
 - `.ai/roadmap/ui-plan.md`
-- `.ai/guides/rules/cross-cutting-component-decisions.md`
 
 Se a tela for virar demonstração, protótipo navegável ou artefato em `Docs.Client`, combinar também com:
 

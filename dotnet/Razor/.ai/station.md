@@ -13,6 +13,13 @@ Ele não executa tudo diretamente. O papel dele é:
 - escolher o orquestrador, instrução ou modo de execução mais adequado;
 - manter a conversa curta e previsível na entrada.
 
+Nesta organização, `station` é a porta de entrada portátil para:
+
+- `screen-spec`
+- `yasamen`
+
+Expansão da biblioteca fica fora do escopo direto desta entrada e deve usar `.ai/lib-spec.md`.
+
 Regra operacional:
 
 - quando o pedido entra por `station`, a saída padrão é roteamento e próximo passo;
@@ -22,21 +29,7 @@ Regra operacional:
 
 ## Famílias Atuais
 
-### 1. `lib-spec`
-
-Usar para:
-
-- componentes novos da biblioteca;
-- specs de componente;
-- specs de pacote;
-- criação orientada por spec de pacote de biblioteca `RoyalCode.Razor.*`;
-- implementação de spec técnica já existente.
-
-Entrada:
-
-- `.ai/lib-spec.md`
-
-### 2. `screen-spec`
+### 1. `screen-spec`
 
 Usar para:
 
@@ -52,7 +45,7 @@ Entrada:
 
 - `.ai/screen-spec.md`
 
-### 3. `yasamen`
+### 2. `yasamen`
 
 Usar para:
 
@@ -65,6 +58,16 @@ Regra:
 
 - `yasamen` segue guides, specs existentes e instruções aplicáveis;
 - não cria spec nova por padrão, a menos que o utilizador peça isso explicitamente.
+
+### Fora do escopo desta entrada: `lib-spec`
+
+Usar `.ai/lib-spec.md` diretamente para:
+
+- componentes novos da biblioteca;
+- specs de componente;
+- specs de pacote;
+- criação orientada por spec de pacote de biblioteca `RoyalCode.Razor.*`;
+- implementação de spec técnica de expansão da biblioteca.
 
 ---
 
@@ -89,17 +92,6 @@ Se o pedido cair em uma dessas famílias:
 
 ## Roteamento de Intenções
 
-### Pedido de componente ou pacote da biblioteca
-
-Fluxo:
-
-- `.ai/lib-spec.md`
-
-Regra:
-
-- pedido de pacote ou projeto novo entra em `lib-spec` por padrão como fluxo orientado por spec;
-- scaffolding direto só deve acontecer quando o utilizador pedir isso explicitamente ou chamar `.ai/instructions/expand/create-library-project.md`.
-
 ### Pedido de tela ou página
 
 Fluxo:
@@ -111,6 +103,18 @@ Fluxo:
 Fluxo:
 
 - `yasamen`, com apoio de guides, specs e instruções já existentes.
+
+### Pedido de expansão da biblioteca
+
+Fluxo:
+
+- `.ai/lib-spec.md`
+
+Regra:
+
+- `station` não executa nem orquestra expansão da biblioteca por padrão;
+- quando o pedido for de componente, pacote ou spec de expansão, a saída deve ser encaminhar para `.ai/lib-spec.md`;
+- scaffolding direto continua fora do `station` e só deve acontecer por pedido explícito.
 
 ### Pedido de domínio ainda não formalizado
 
@@ -126,11 +130,11 @@ Fluxo:
 
 - Usar sempre acentuação.
 - Preferir orquestradores de domínio a instruções soltas.
-- Não misturar tela com componente.
+- Não misturar tela com componente ou expansão da biblioteca.
 - Não misturar pedido de execução direta com criação automática de spec sem necessidade.
-- Pedido de projeto novo via `station` deve ser tratado como `spec-first` por padrão.
 - Quando houver spec existente, preferir reutilizá-la.
 - Quando houver apenas requisitos vagos, preferir planeamento antes de implementação.
+- Quando o pedido for de expansão da biblioteca, encaminhar para `.ai/lib-spec.md`.
 
 ---
 
@@ -141,18 +145,18 @@ Leia `.ai/station.md` e quero planejar a tela de listagem de clientes.
 ```
 
 ```text
-Leia `.ai/station.md` e crie o componente `button-group`.
+Leia `.ai/station.md` e quero criar ou editar uma tela de pedidos usando Yasamen.
 ```
 
 ```text
-Leia `.ai/station.md` e quero um novo pacote `RoyalCode.Razor.Navigation`; primeiro planeje ou crie a spec e depois prepare o projeto.
-```
-
-```text
-Leia `.ai/station.md` e implemente a spec `pagination`.
+Leia `.ai/station.md` e quero ajustar uma tela existente de pedidos sem abrir spec nova.
 ```
 
 ```text
 Leia `.ai/station.md` e ajuste a documentação atual do Docs.Client sem criar spec nova.
+```
+
+```text
+Leia `.ai/station.md` e quero criar um componente novo da biblioteca; encaminhe para o fluxo correto.
 ```
 

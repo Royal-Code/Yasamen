@@ -8,14 +8,19 @@ Antes de iniciar o planeamento, a IA deve ler:
 
 - `.ai/ui-map/catalogo-ui.md`
 - `.ai/ui-map/ui-map.md`
-- `.ai/roadmap/components-plan-list.md`
-- `.ai/roadmap/ui-plan.md`
 - `.ai/guides/screens/planning-and-ui-mapping.md`
-- `.ai/guides/rules/cross-cutting-component-decisions.md`
+- `.ai/guides/rules/cross-cutting-screen-decisions.md`
 - `.ai/templates/screens/spec/requirements.md`
 - `.ai/templates/screens/spec/design.md`
 - `.ai/templates/screens/spec/tasks.md`
 - `.ai/templates/screens/spec/delivery.md`
+
+Se houver backlog, roadmap ou mapa local de gaps do projeto, a IA deve ler também.
+
+Neste repositório, os arquivos padrão para isso são:
+
+- `.ai/roadmap/components-plan-list.md`
+- `.ai/roadmap/ui-plan.md`
 
 Se a tela for virar protótipo, showcase ou página navegável em docs:
 

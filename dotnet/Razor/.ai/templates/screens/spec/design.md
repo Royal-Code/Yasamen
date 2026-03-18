@@ -71,6 +71,7 @@ Registrar:
 - Onde a tela será materializada, se isso já estiver decidido.
 - Se a saída é apenas handoff técnico, declarar explicitamente.
 - Se houver prototipagem em docs ou host navegável, registrar o alvo.
+- Registrar convenções locais de rota, menu, layout ou showcase, quando forem relevantes para o projeto.
 
 ## Riscos e Questões em Aberto
 

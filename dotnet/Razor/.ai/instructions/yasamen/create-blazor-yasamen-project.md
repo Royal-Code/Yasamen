@@ -7,9 +7,7 @@
 Antes de agir, ler:
 
 - `.ai/guides/yasamen/using-yasamen-in-blazor.md`
-- `.ai/guides/expand/showcases-and-docs.md`, se o projeto já nascer com showcase
-- `.ai/guides/expand/styles-and-css.md`
-- `.ai/guides/rules/cross-cutting-component-decisions.md`, quando a criação do projeto estiver acoplada a uma entrega concreta de UI
+- `.ai/screen-spec.md`, quando o projeto já nascer acoplado a uma tela ainda não definida
 
 ## Objetivo
 
@@ -35,6 +33,7 @@ Criar um projeto consumidor que já nasça:
 
 - Não tratar este fluxo como criação de pacote da biblioteca.
 - Não usar `.ai/instructions/expand/create-library-project.md` para projeto consumidor.
+- Se o projeto tiver demo, showcase ou docs próprias, definir convenção local do projeto consumidor em vez de depender do guide interno de showcase da biblioteca.
 - Se a tela ainda não estiver definida, preferir `screen-spec` antes de implementar páginas complexas.
 - Se o projeto revelar gaps na biblioteca, registrar e encaminhar para `lib-spec`.
 

@@ -45,18 +45,19 @@ Este repositório é uma solução .NET de biblioteca de componentes Razor.
 - Para criar ou refinar specs, mantenha rastreabilidade com `ui-map.md`, `components-plan-list.md`, `ui-plan.md` e os guides aplicados.
 - Para implementar uma spec, feche também `delivery.md` e `tasks.md`, e atualize `ui-map.md` ou `ui-plan.md` quando a cobertura ou o roadmap mudarem.
 - Para revisão crítica de implementação, bugs, regressões e aderência à spec, prefira o agente `yasamen`.
-- Para pedido de pacote ou projeto novo via `station` ou `lib-spec`, preserve o padrão `spec-first`; use `create-library-project.md` diretamente apenas para scaffolding explícito.
+- Para pedido de pacote ou projeto novo da biblioteca, preserve o padrão `spec-first`; via `station`, encaminhe para `lib-spec`; use `create-library-project.md` diretamente apenas para scaffolding explícito.
 
 ## Fluxo de telas
 
 - Para planejar telas, use `.ai/screen-spec.md` como orquestrador próprio.
 - Em telas, preserve a cadeia `Shell -> Screen -> Page Pattern -> Zona -> UIP`.
 - Use `.ai/ui-map/catalogo-ui.md` como base agnóstica e `.ai/ui-map/ui-map.md` como mapeamento para Yasamen.
+- Feche os checkpoints de `.ai/guides/rules/cross-cutting-screen-decisions.md` em qualquer fluxo de tela.
 - Para planeamento, criação ou refinamento de `screen specs`, prefira o agente `screen-spec`.
 
 ## Agentes preferenciais
 
-- `spec-station`: entrada máxima e roteamento.
+- `spec-station`: entrada portátil e roteamento para `screen-spec`, `yasamen` ou encaminhamento para `lib-spec`.
 - `lib-spec`: domínio de componentes, pacotes e specs de biblioteca.
 - `screen-spec`: domínio de telas e `screen specs`.
 - `yasamen`: execução direta no repositório sem criar spec nova por padrão.

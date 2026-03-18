@@ -7,7 +7,6 @@
 Antes de agir, ler:
 
 - `.ai/guides/yasamen/using-yasamen-in-blazor.md`
-- `.ai/guides/expand/showcases-and-docs.md`, quando a tela for demo ou docs
 - `.ai/ui-map/ui-map.md`, quando houver dúvida de cobertura
 - `.ai/roadmap/components-plan-list.md`, quando surgir dependência de componente ausente
 
@@ -32,5 +31,6 @@ Permitir execução direta de tela quando:
 
 - Não criar componente novo da biblioteca dentro deste fluxo por reflexo.
 - Não esconder gap de componente dentro de markup local excessivo.
+- Se a tela for de demo ou documentação de um projeto consumidor, adotar convenção local do próprio projeto.
 - Se a solução da tela estiver conceitualmente aberta, parar e usar `screen-spec`.
 

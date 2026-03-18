@@ -55,8 +55,9 @@ Escopo:
 ## Regras Operacionais
 
 - Para componente ou spec, use também [cross-cutting-component-decisions.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/cross-cutting-component-decisions.md).
-- Para tela, use também [planning-and-ui-mapping.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/screens/planning-and-ui-mapping.md).
-- Pedido de pacote novo via `station` ou `lib-spec` é `spec-first` por padrão.
+- Para tela, use também [planning-and-ui-mapping.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/screens/planning-and-ui-mapping.md) e [cross-cutting-screen-decisions.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/cross-cutting-screen-decisions.md).
+- `station` é a entrada portátil; para expansão da biblioteca, encaminhe para `lib-spec`.
+- Pedido de pacote novo via `lib-spec` é `spec-first` por padrão.
 
 ## Agentes Preferenciais
 

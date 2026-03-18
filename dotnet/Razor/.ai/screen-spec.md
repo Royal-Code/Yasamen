@@ -97,7 +97,9 @@ Fluxo:
 - Não inventar `UIP-*` local.
 - Usar `.ai/ui-map/catalogo-ui.md` como base agnóstica.
 - Usar `.ai/ui-map/ui-map.md` como adapter tecnológico para Yasamen.
-- Consultar `.ai/roadmap/components-plan-list.md` e `.ai/roadmap/ui-plan.md` quando a tela revelar dependências de componente.
+- Fechar os checkpoints de `.ai/guides/rules/cross-cutting-screen-decisions.md`.
+- Consultar backlog, roadmap ou mapa local de gaps quando isso existir.
+- Neste repositório, usar `.ai/roadmap/components-plan-list.md` e `.ai/roadmap/ui-plan.md` como referência padrão para dependências reveladas pela tela.
 - Tratar gaps de tela e gaps de componente como coisas diferentes.
 - Jornadas e capacidades podem ser lidas se existirem, mas não bloqueiam o fluxo nesta versão.
 

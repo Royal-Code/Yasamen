@@ -21,7 +21,7 @@
 |---|---|---|---|
 | `catalogo-ui.md` | `UIP-*` selecionados | `design.md` | `OK` |
 | `ui-map.md` | mapeamento para Yasamen | `design.md` | `OK` |
-| `components-plan-list.md` | dependências de componente | `design.md` | `OK` |
+| `backlog ou roadmap local` | dependências de componente | `design.md` | `OK` |
 
 ## Gaps e Dependências
 
@@ -34,6 +34,7 @@
 - Cadeia estrutural revisada.
 - `Page Pattern` confirmado.
 - Mapeamento `UIP -> Yasamen` revisado.
+- Convenções locais do projeto registradas, quando aplicáveis.
 
 ## Próximo Passo Recomendado
 

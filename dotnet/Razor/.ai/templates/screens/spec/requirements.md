@@ -11,7 +11,7 @@
 | Rota ou contexto | `A definir` |
 | Alvo de implementação | `App existente | Prototipagem | A definir` |
 | Artefato relacionado | `Tela | Página | Fluxo` |
-| Guides aplicados | `cross-cutting-component-decisions`, `planning-and-ui-mapping` |
+| Guides aplicados | `cross-cutting-screen-decisions`, `planning-and-ui-mapping` |
 
 ## Objetivo
 
@@ -32,6 +32,7 @@ Descrever o que a tela resolve, quem a usa, qual tarefa principal ela suporta e 
 - Necessidades de responsividade e acessibilidade.
 - Necessidade de mapeamento para Yasamen.
 - Dependências de componente que a tela pode revelar.
+- Convenções locais do projeto para rota, menu, docs ou showcase, quando existirem.
 
 ## Fora de Escopo
 
@@ -63,11 +64,13 @@ Descrever o que a tela resolve, quem a usa, qual tarefa principal ela suporta e 
 - [ ] O mapeamento para Yasamen foi classificado entre `Existente`, `Composição`, `Gap de componente` ou `Gap estrutural`.
 - [ ] As dependências de component spec foram listadas.
 - [ ] A distinção entre `As-Is` e `To-Be` ficou clara quando a tela já existia.
+- [ ] Convenções locais do projeto foram registradas quando forem relevantes para a tela.
 
 ## Critérios de Conclusão
 
 - [ ] Existe `delivery.md` preenchido ao final do trabalho.
 - [ ] A cadeia `Shell -> Screen -> Page Pattern -> Zona -> UIP` foi registrada.
 - [ ] O handoff técnico da tela está pronto para implementação ou decomposição em specs filhas.
+- [ ] O uso de Yasamen como adapter tecnológico ficou explícito, quando aplicável.
 
 

@@ -44,6 +44,7 @@ Entradas preferenciais:
 - [spec-execution-and-delivery.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/spec-execution-and-delivery.md)
 - [component-composition-and-dependencies.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/component-composition-and-dependencies.md)
 - [cross-cutting-component-decisions.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/cross-cutting-component-decisions.md)
+- [cross-cutting-screen-decisions.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/cross-cutting-screen-decisions.md)
 
 ### Domínio de telas
 
@@ -77,5 +78,5 @@ Entradas preferenciais:
    [spec-execution-and-delivery.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/spec-execution-and-delivery.md)
 8. Tela ou página:
    [planning-and-ui-mapping.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/screens/planning-and-ui-mapping.md) e
-   [cross-cutting-component-decisions.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/cross-cutting-component-decisions.md)
+   [cross-cutting-screen-decisions.md](/c:/git/github/royal-code/Yasamen/dotnet/Razor/.ai/guides/rules/cross-cutting-screen-decisions.md)
 

@@ -8,11 +8,16 @@ Antes de escrever a `screen spec`, a IA deve ler:
 
 - `.ai/ui-map/catalogo-ui.md`
 - `.ai/ui-map/ui-map.md`
+- `.ai/guides/screens/planning-and-ui-mapping.md`
+- `.ai/guides/rules/cross-cutting-screen-decisions.md`
+- o template em `.ai/templates/screens/spec/`
+
+Se houver backlog, roadmap ou mapa local de gaps do projeto, a IA deve ler também.
+
+Neste repositório, os arquivos padrão para isso são:
+
 - `.ai/roadmap/components-plan-list.md`
 - `.ai/roadmap/ui-plan.md`
-- `.ai/guides/screens/planning-and-ui-mapping.md`
-- `.ai/guides/rules/cross-cutting-component-decisions.md`
-- o template em `.ai/templates/screens/spec/`
 
 ## Saída Esperada
 

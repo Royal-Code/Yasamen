@@ -96,7 +96,8 @@ Ao criar ou editar uma tela:
 
 Se o projeto consumidor tiver área de demonstração ou docs:
 
-- seguir o padrão visual e estrutural do guide `showcases-and-docs.md`;
+- definir uma convenção local do próprio projeto consumidor para rotas, páginas e agrupamento;
+- preferir reaproveitar componentes e layouts públicos da biblioteca, sem depender de guides internos de expansão;
 - separar showcase de uso real da app, quando isso reduzir confusão;
 - preferir exemplos funcionais, não galerias artificiais.
 

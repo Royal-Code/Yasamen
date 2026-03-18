@@ -7,8 +7,6 @@
 Antes de agir, ler:
 
 - `.ai/guides/yasamen/using-yasamen-in-blazor.md`
-- `.ai/guides/expand/showcases-and-docs.md`, se houver showcase ou docs
-- `.ai/guides/expand/styles-and-css.md`, quando a tarefa envolver estilos
 
 ## Objetivo
 

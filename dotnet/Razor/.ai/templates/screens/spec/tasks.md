@@ -20,12 +20,14 @@
 - [ ] Mapear cada necessidade da tela para `Existente`, `Composição`, `Gap de componente` ou `Gap estrutural`.
 - [ ] Identificar componentes Yasamen reaproveitados.
 - [ ] Identificar componentes ausentes que exigem specs filhas.
-- [ ] Relacionar dependências com `components-plan-list.md` e `ui-plan.md` do roadmap.
+- [ ] Relacionar dependências com backlog, roadmap ou mapa local de gaps, quando isso existir.
+- [ ] Neste repositório, relacionar dependências com `components-plan-list.md` e `ui-plan.md`.
 
 ## Handoff Técnico
 
 - [ ] Consolidar a cadeia `Shell -> Screen -> Page Pattern -> Zona -> UIP`.
 - [ ] Consolidar o mapeamento `UIP -> Yasamen`.
+- [ ] Registrar convenções locais de rota, menu, layout ou showcase, quando forem relevantes.
 - [ ] Listar specs filhas necessárias em `.ai/specs/`, quando houver.
 - [ ] Declarar próximos passos recomendados para implementação da tela.
 
