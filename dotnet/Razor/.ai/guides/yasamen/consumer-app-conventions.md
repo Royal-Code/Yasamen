@@ -23,6 +23,12 @@ Use este guide quando o trabalho for:
 - definir convenções antes de abrir várias `screen specs`;
 - padronizar a forma de consumir Yasamen em um repositório de app.
 
+Quando o pedido for só “criar um novo projeto”:
+
+- fechar apenas a fundação do app;
+- não forçar lista grande de módulos, telas, dados ou integrações;
+- deixar o detalhe funcional para `screen-spec`, evolução da `app spec` ou implementação posterior.
+
 ## Decisões obrigatórias no app consumidor
 
 ### 1. Modelo do app
@@ -93,7 +99,8 @@ Definir:
 
 Regra:
 
-- não deixar esse ponto implícito em apps com cara corporativa ou fluxo administrativo.
+- não deixar esse ponto implícito quando o utilizador já estiver a definir escopo funcional do app;
+- se o pedido ainda for só de fundação do projeto, registrar esse bloco como `adiado` é aceitável.
 
 ### 6. Docs, showcase e demo do app
 

@@ -14,6 +14,34 @@ Ele não substitui:
 
 Ele apenas consolida os checkpoints mínimos que uma `app spec` não pode deixar implícitos.
 
+## Níveis de detalhe
+
+Uma `app spec` pode nascer em dois níveis:
+
+- `Fundação do app`:
+  - suficiente para criar o projeto, configurar host, shell base, referências, estilos e bootstrapping;
+  - é o padrão quando o utilizador pede apenas um projeto novo ou a base estrutural do app.
+- `Escopo funcional do app`:
+  - entra quando o utilizador também quer fechar módulos, telas, dados, autenticação e integrações.
+
+Regra:
+
+- não forçar uma `app spec` de escopo funcional quando o pedido real for apenas criar a fundação do projeto;
+- quando o detalhe funcional ainda não existir, registrar isso como `adiado para telas, screen specs ou evolução futura`.
+
+## Gate mínimo da fundação do app
+
+Antes de materializar uma `app spec` no nível `fundação do app`, é obrigatório conhecer:
+
+- nome canônico do app e dos projetos, ou convenção explícita de nome;
+- interpretação exata do host quando o pedido for ambíguo, por exemplo `client/server` em Blazor;
+- arquétipo de shell esperado, por exemplo administrativo, portal, catálogo, workspace operacional ou equivalente.
+
+Regra:
+
+- sem esse gate, a IA pode planejar e explicar opções, mas não deve criar a `app spec`;
+- esses três pontos exigem confirmação do utilizador, não só inferência.
+
 ## Entradas mínimas
 
 Antes de fechar uma `app spec`, garantir leitura de:
@@ -61,8 +89,8 @@ Se o app já tiver backlog, roadmap ou inventário de telas:
 
 Regra:
 
-- uma `app spec` de app corporativo não deve deixar implícito como a primeira entrega lida com dados e autenticação;
-- se isso ainda não estiver decidido, registrar explicitamente como questão em aberto, não fingir que está resolvido.
+- quando o app já tiver escopo funcional definido, não deixar implícito como a primeira entrega lida com dados e autenticação;
+- quando o pedido for apenas de fundação do projeto, esse bloco pode ficar explicitamente `adiado`, sem bloquear a spec.
 
 ### 5. Relação com telas
 
@@ -70,6 +98,10 @@ Regra:
 - telas prioritárias;
 - dependências de `screen spec`, quando houver;
 - lacunas que ainda precisam de planeamento de tela.
+
+Regra:
+
+- se o utilizador ainda não tiver descrito módulos ou telas, a `app spec` pode registrar esse bloco como `derivação futura`, sem inventar backlog funcional.
 
 ### 6. Convenções locais do projeto
 
@@ -93,7 +125,7 @@ Regra:
 - [ ] O contexto do app está claro?
 - [ ] Shell, layout e navegação estão claros?
 - [ ] O consumo de Yasamen foi definido?
-- [ ] A estratégia inicial de dados, autenticação e integrações foi definida?
-- [ ] As telas prioritárias foram identificadas?
+- [ ] A estratégia inicial de dados, autenticação e integrações foi definida ou explicitamente adiada?
+- [ ] As telas prioritárias foram identificadas ou explicitamente adiadas?
 - [ ] Convenções locais do projeto foram registradas?
 - [ ] Está claro quando o próximo passo é `screen-spec`, `yasamen` ou `lib-spec`?

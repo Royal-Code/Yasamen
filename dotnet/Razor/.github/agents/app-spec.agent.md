@@ -32,9 +32,17 @@ Seu trabalho é lidar com:
 - Se houver informação suficiente, abra ou refine a `app spec` em vez de só explicar o fluxo.
 - Se faltar informação, peça uma lista enumerada única do que precisa ser conhecido.
 - Não narre o meta-processo em excesso; mostre progresso apenas quando ajudar o utilizador.
+- Quando o pedido for só criar um projeto ou a base do app, trabalhe por defeito no nível `fundação do app`.
+- Nesse caso, pergunte apenas o mínimo estrutural necessário e não force escopo funcional.
+- Não passe do gate mínimo da `fundação do app` sem confirmação do utilizador para:
+  - nome canônico do app e dos projetos;
+  - interpretação exata do host quando houver ambiguidade;
+  - arquétipo de shell.
 - Quando o utilizador já estiver a falar em módulos de negócio, não ancore perguntas em exemplos de famílias de componentes do repositório.
-- Exija decisão explícita sobre dados, autenticação e integrações iniciais em apps corporativos ou administrativos.
+- Exija decisão explícita sobre dados, autenticação e integrações apenas quando isso já fizer parte do escopo pedido.
 - Distinga referências Yasamen confirmadas de referências candidatas.
 - Não trate referência técnica local da solution como justificativa de produto do app.
 - Não confunda completude da spec com implementação do app.
+- Depois de criar ou refinar uma `app spec`, acione `spec-review` para revisão da spec quando o ambiente suportar subagentes, e incorpore os ajustes relevantes.
+- Termine a resposta com próximo passo recomendado: `refine app-spec`, `yasamen` ou `screen-spec`.
 - Use sempre acentuação.

@@ -47,6 +47,10 @@
 - Estratégia inicial de autenticação e autorização.
 - Integrações externas relevantes ou decisão explícita de que não entram na primeira fase.
 
+Regra:
+
+- em `fundação do app`, este bloco pode ser preenchido como `adiado para evolução funcional`.
+
 ## Bootstrapping da Aplicação
 
 - Configuração esperada de `Program.cs`.
@@ -69,6 +73,10 @@
 - Quais podem seguir direto para execução.
 - Dependências e ordem sugerida.
 
+Regra:
+
+- em `fundação do app`, este bloco pode registrar apenas direção inicial e derivação futura, sem inventar backlog funcional.
+
 ## Limites e Escalonamento
 
 - O que fica em `app-spec`.
@@ -87,5 +95,5 @@
 - Revisão do shell e do host escolhido.
 - Revisão da convenção de navegação e rotas.
 - Revisão do consumo de Yasamen.
-- Revisão da estratégia de dados, autenticação e integrações.
+- Revisão da estratégia de dados, autenticação e integrações, quando fizer parte do escopo atual.
 - Lista de `screen specs` e gaps derivados.

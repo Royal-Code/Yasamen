@@ -13,6 +13,8 @@ Este orquestrador trata:
 - relação entre app, telas e `screen specs`;
 - geração de `app spec`.
 
+Por defeito, quando o pedido for “criar um projeto novo” ou “montar a base do app”, este orquestrador deve trabalhar primeiro no nível `fundação do app`, não no nível `escopo funcional completo`.
+
 Ele não substitui:
 
 - `.ai/screen-spec.md` para tela;
@@ -103,12 +105,27 @@ Fluxo:
 - Não responder só com explicação do fluxo quando já for possível abrir ou refinar a `app spec`.
 - Quando faltar informação, pedir lista enumerada única do que precisa ser conhecido para continuar.
 - Quando o pedido envolver app novo, a `app spec` deve cobrir criação do projeto, referências, `Program.cs`, `_Imports.razor`, estilos públicos e validação base.
-- Quando o pedido envolver módulos corporativos, a `app spec` deve decidir explicitamente a estratégia inicial de dados, autenticação e integrações.
+- Quando o pedido envolver apenas criação da base do projeto, perguntar só o mínimo para fundação do app:
+  - nome;
+  - tipo de host;
+  - propósito do app;
+  - shell base;
+  - estratégia de consumo de Yasamen;
+  - integração local com a solution, quando aplicável.
+- Gate obrigatório para `fundação do app`:
+  - nome canônico do app e dos projetos;
+  - interpretação exata do host quando o pedido for ambíguo, como `client/server` em Blazor;
+  - arquétipo de shell.
+- Sem esse gate confirmado, não materializar a `app spec`; limitar-se a pedir a lista enumerada mínima do que falta.
+- Quando o utilizador não tiver trazido escopo funcional, não forçar módulos, telas, dados, autenticação ou integrações; registrar isso como etapa posterior.
+- Quando o pedido envolver módulos corporativos já definidos, a `app spec` deve então decidir explicitamente a estratégia inicial de dados, autenticação e integrações.
 - Distinguir explicitamente referências e pacotes `confirmados` de referências e pacotes `candidatos`.
 - Não usar exemplos de famílias de componentes do repositório para ancorar perguntas quando o utilizador já estiver a falar em módulos de negócio.
 - Referências ao repositório atual podem entrar apenas como apoio técnico local, não como justificativa central do app.
 - Ao criar a `app spec`, `tasks.md` deve nascer como backlog pendente, não como checklist já concluído.
 - Ao criar a `app spec`, deixar claro que critérios marcados dizem respeito à completude da spec, não à implementação do app.
+- Depois de criar ou refinar a `app spec`, executar uma revisão de spec por `spec-review` quando essa capacidade estiver disponível.
+- Encerrar a resposta com próximo passo recomendado no fluxo: `refine app-spec`, `yasamen` ou `screen-spec`.
 
 ## Exemplos de Uso
 

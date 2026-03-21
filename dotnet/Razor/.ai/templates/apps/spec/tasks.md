@@ -1,5 +1,7 @@
 # Tasks - <Nome do App>
 
+> Ajuste este backlog ao nível da spec. Em `fundação do app`, mantenha só tarefas estruturais e deixe o funcional como derivação futura.
+
 ## Scaffolding do App
 
 - [ ] Criar os projetos Blazor necessários para o app.
@@ -16,8 +18,8 @@
 
 ## Dados, Autenticação e Integrações
 
-- [ ] Definir a estratégia inicial de dados da primeira entrega.
-- [ ] Definir se a primeira fase usa mock, estado local, backend real ou integração futura.
+- [ ] Definir a estratégia inicial de dados da primeira entrega, quando fizer parte do escopo atual.
+- [ ] Definir se a primeira fase usa mock, estado local, backend real ou integração futura, quando aplicável.
 - [ ] Definir a estratégia inicial de autenticação e autorização, quando aplicável.
 
 ## Shell, Layout e Navegação
@@ -28,8 +30,8 @@
 
 ## Telas e Dependências
 
-- [ ] Criar ou refinar as `screen specs` necessárias.
-- [ ] Implementar as primeiras telas ou áreas previstas no app.
+- [ ] Criar ou refinar as `screen specs` necessárias, quando já houver escopo funcional.
+- [ ] Implementar as primeiras telas ou áreas previstas no app, quando isso já fizer parte da entrega.
 - [ ] Registrar e tratar gaps que exijam `lib-spec`.
 
 ## Validação e Encerramento

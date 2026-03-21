@@ -108,6 +108,12 @@ Quando essas decisões ainda não estiverem claras:
 
 Em apps com módulos de negócio, a lista inicial de perguntas deve preferir linguagem de domínio do utilizador, não exemplos de galeria de componentes da biblioteca.
 
+Quando o pedido for apenas criar um projeto novo:
+
+- perguntar só o necessário para a fundação do app;
+- não exigir detalhamento de módulos, telas, dados ou integrações se o utilizador ainda não quiser fechar isso;
+- materializar uma `app spec` de base e deixar o funcional para evolução posterior.
+
 ## Telas consumidoras
 
 Ao criar ou editar uma tela:

@@ -34,6 +34,8 @@ Seu trabalho é lidar com:
 - Quando a tela depender de specs filhas de componente, deixe isso explícito.
 - Se houver informação suficiente, abra ou refine a `screen spec` em vez de só explicar o fluxo.
 - Se faltar informação, peça uma lista enumerada única do que precisa ser conhecido.
+- Depois de criar ou refinar uma `screen spec`, acione `spec-review` para revisão da spec quando o ambiente suportar subagentes, e incorpore os ajustes relevantes.
+- Termine a resposta com próximo passo recomendado: `refine screen-spec`, `yasamen` ou `lib-spec`.
 - Use sempre acentuação.
 
 

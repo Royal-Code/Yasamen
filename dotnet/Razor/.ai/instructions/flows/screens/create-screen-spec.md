@@ -88,4 +88,26 @@ Se isso não estiver suficientemente claro:
 - Se houver informação suficiente, criar os arquivos da `screen spec` em vez de só orientar o utilizador a fazê-lo.
 - Usar sempre acentuação.
 
+## Etapa pós-criação
+
+Depois de criar ou refinar a `screen spec`:
+
+- acionar o agente `spec-review` do Copilot para revisar a spec, quando o ambiente suportar subagentes;
+- se o subagente não estiver disponível, fazer revisão equivalente localmente;
+- incorporar os ajustes relevantes antes de encerrar a resposta.
+
+## Fechamento da resposta
+
+A resposta final da criação da `screen spec` deve informar:
+
+- onde a spec foi criada;
+- se a revisão da spec encontrou ou não pontos relevantes;
+- qual é o próximo passo recomendado no fluxo.
+
+Opções típicas de próximo passo:
+
+- `refine screen-spec`, quando a revisão encontrar inconsistências;
+- `yasamen`, quando a tela já estiver pronta para implementação;
+- `lib-spec`, quando a revisão revelar gap real de componente.
+
 

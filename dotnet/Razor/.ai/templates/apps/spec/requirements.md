@@ -37,6 +37,10 @@ Descrever o que o app resolve, quem o utiliza e qual contexto de consumo da bibl
 - Telas ou módulos prioritários.
 - Convenções locais de rota, menu, docs ou showcase.
 
+Regra:
+
+- quando a spec estiver só no nível `fundação do app`, os itens funcionais podem ficar explicitamente adiados.
+
 ## Fora de Escopo
 
 - Implementação detalhada de componente da biblioteca.
@@ -69,9 +73,9 @@ Descrever o que o app resolve, quem o utiliza e qual contexto de consumo da bibl
 - [ ] O shell principal foi definido.
 - [ ] A convenção de navegação e rota foi definida.
 - [ ] Os pacotes, estilos e serviços públicos de Yasamen foram identificados.
-- [ ] A estratégia inicial de dados, autenticação e integrações foi definida.
-- [ ] As telas ou módulos prioritários foram listados.
-- [ ] As dependências de `screen spec` foram identificadas.
+- [ ] A estratégia inicial de dados, autenticação e integrações foi definida ou explicitamente adiada.
+- [ ] As telas ou módulos prioritários foram listados ou explicitamente adiados.
+- [ ] As dependências de `screen spec` foram identificadas ou explicitamente adiadas.
 - [ ] Os limites entre consumo e expansão da biblioteca ficaram claros.
 
 ## Critérios de Prontidão para Execução

@@ -37,5 +37,11 @@ Antes de iniciar o planeamento, a IA deve ler:
 - Não narrar o meta-processo em excesso; mostrar apenas o necessário para o utilizador acompanhar o avanço.
 - Quando fizer perguntas, preferir linguagem neutra e de domínio do utilizador.
 - Não sugerir exemplos de módulos por famílias de componentes da biblioteca quando o pedido já estiver num domínio de negócio.
-- Fechar explicitamente a estratégia inicial de dados, autenticação e integrações antes de declarar o handoff como pronto.
+- Quando o pedido for apenas de fundação do projeto, não exigir detalhamento funcional para abrir a spec.
+- Antes de abrir a `app spec` de fundação, fechar obrigatoriamente:
+  - nome canônico do app e dos projetos;
+  - interpretação exata do host, quando houver ambiguidade;
+  - arquétipo de shell.
+- Sem esse gate, o fluxo deve parar na lista enumerada do que falta.
+- Fechar explicitamente a estratégia inicial de dados, autenticação e integrações apenas quando o utilizador já estiver a descrever o escopo funcional do app ou pedir esse nível de definição.
 - Usar sempre acentuação.

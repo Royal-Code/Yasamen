@@ -155,6 +155,8 @@ Regra:
   - erro de implementação;
   - mudança de design;
   - mudança de escopo.
+- Depois de criar ou refinar uma `lib spec`, executar revisão por `spec-review` quando essa capacidade estiver disponível.
+- Encerrar a resposta com próximo passo recomendado no fluxo: `refine lib-spec`, `implement lib-spec` ou `create-library-project`.
 
 ---
 

@@ -12,4 +12,6 @@ applyTo: ".ai/screen-spec.md"
 - Ele deve tratar backlog ou roadmap local como entrada opcional; neste repositório, os arquivos padrão são `.ai/roadmap/components-plan-list.md` e `.ai/roadmap/ui-plan.md`.
 - Se houver informação suficiente, ele deve abrir ou refinar a `screen spec`, não apenas explicar o fluxo.
 - Se faltar informação, ele deve pedir uma lista enumerada única do que falta para continuar.
+- Depois de criar ou refinar a spec, ele deve acionar `spec-review` quando essa capacidade estiver disponível.
+- Ele deve terminar a resposta com o próximo passo recomendado no fluxo, por exemplo `refine screen-spec`, `yasamen` ou `lib-spec`.
 

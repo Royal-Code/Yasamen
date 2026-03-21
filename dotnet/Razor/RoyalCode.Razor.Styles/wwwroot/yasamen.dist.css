@@ -1,4 +1,4 @@
-/*! tailwindcss v4.2.1 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.2.2 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -2523,20 +2523,6 @@
       --tw-space-y-reverse: 0;
       margin-block-start: calc(var(--spacing-4) * var(--tw-space-y-reverse));
       margin-block-end: calc(var(--spacing-4) * calc(1 - var(--tw-space-y-reverse)));
-    }
-  }
-  .space-y-6 {
-    :where(& > :not(:last-child)) {
-      --tw-space-y-reverse: 0;
-      margin-block-start: calc(var(--spacing-6) * var(--tw-space-y-reverse));
-      margin-block-end: calc(var(--spacing-6) * calc(1 - var(--tw-space-y-reverse)));
-    }
-  }
-  .space-y-8 {
-    :where(& > :not(:last-child)) {
-      --tw-space-y-reverse: 0;
-      margin-block-start: calc(var(--spacing-8) * var(--tw-space-y-reverse));
-      margin-block-end: calc(var(--spacing-8) * calc(1 - var(--tw-space-y-reverse)));
     }
   }
   .space-y-10 {
@@ -6993,11 +6979,6 @@
   .md\:w-7\/8 {
     @media (width >= 48rem) {
       width: calc(7 / 8 * 100%);
-    }
-  }
-  .md\:grid-cols-3 {
-    @media (width >= 48rem) {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
   .md\:grid-cols-8 {

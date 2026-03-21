@@ -18,18 +18,20 @@ Antes de refinar a `app spec`, a IA deve ler:
 ## Regras
 
 - Tornar a `app spec` mais consistente, específica, executável e rastreável.
+- Preservar o nível de detalhe correto da spec; não inflar uma spec de fundação para escopo funcional sem pedido ou evidência suficiente.
 - Validar explicitamente:
   - contexto do app;
   - tipo do host;
   - shell, layout e navegação;
   - referências e pacotes confirmados versus candidatos;
   - pacotes, estilos e serviços públicos;
-  - estratégia inicial de dados, autenticação e integrações;
+  - estratégia inicial de dados, autenticação e integrações, quando fizerem parte do escopo atual;
   - telas prioritárias e dependências de `screen spec`;
   - convenções locais do projeto;
   - limites entre consumo, execução direta e expansão da biblioteca.
 - Se o app existente estiver sendo alterado, garantir que a distinção entre `As-Is` e `To-Be` fique clara.
 - Se a spec usar referência ao repositório atual, validar se isso está marcado como referência técnica local e não como justificativa de produto.
 - Corrigir seções que confundam completude da spec com implementação do app.
+- Se o pedido atual for só scaffolding de projeto, aceitar que módulos, telas e dados fiquem explicitamente adiados.
 - Preservar o que já estiver bom.
 - Usar sempre acentuação.

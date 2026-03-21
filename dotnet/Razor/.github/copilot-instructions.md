@@ -63,11 +63,15 @@ Este repositório é uma solução .NET de biblioteca de componentes Razor.
 - Para planejar um app consumidor, use `.ai/app-spec.md` como orquestrador próprio.
 - Em app consumidor, feche primeiro shell, navegação, convenções locais e consumo de Yasamen antes de multiplicar telas.
 - Quando o pedido envolver app novo, a `app spec` deve cobrir também estrutura de projetos, integração à solution, referências, `Program.cs`, `_Imports.razor` e estilos públicos.
-- Em apps corporativos ou administrativos, a `app spec` deve decidir explicitamente estratégia inicial de dados, autenticação e integrações.
+- Quando o pedido for apenas criar o projeto ou a base do app, opere no nível `fundação do app` e não force detalhamento funcional.
+- Nesse caso, não crie a `app spec` sem confirmar nome canônico, interpretação exata do host quando ambígua e arquétipo de shell.
+- Em apps corporativos ou administrativos, a `app spec` deve decidir explicitamente estratégia inicial de dados, autenticação e integrações apenas quando esse detalhe já fizer parte do pedido.
 - Ao criar uma `app spec`, distinguir o que é referência base confirmada do que é referência candidata.
 - Ao criar uma `app spec`, não marque `tasks.md` por reflexo e não confunda completude da spec com implementação do app.
 - Ao pedir informação em `app-spec`, prefira linguagem de domínio do utilizador e evite ancorar a conversa em exemplos de famílias de componentes do repositório.
 - Para planeamento, criação ou refinamento de `app specs`, prefira o agente `app-spec`.
+- Após criação ou refinamento de qualquer spec, executar uma revisão de spec por `spec-review` quando essa capacidade estiver disponível.
+- A resposta final de criação ou refinamento de spec deve sempre recomendar explicitamente o próximo fluxo: `refine`, `implement`, `screen-spec`, `yasamen` ou equivalente.
 
 ## Agentes preferenciais
 
@@ -75,6 +79,7 @@ Este repositório é uma solução .NET de biblioteca de componentes Razor.
 - `lib-spec`: domínio de componentes, pacotes e specs de biblioteca.
 - `app-spec`: domínio de apps consumidores que usam Yasamen.
 - `screen-spec`: domínio de telas e `screen specs`.
+- `spec-review`: revisão crítica de specs recém-criadas ou refinadas.
 - `yasamen`: execução direta no repositório sem criar spec nova por padrão.
 
 

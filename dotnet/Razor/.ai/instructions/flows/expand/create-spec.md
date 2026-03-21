@@ -75,4 +75,26 @@ Antes de escrever a spec, a IA deve ler:
 - Em componentes de formulário ainda pouco definidos, preferir `form-components` + `form-components-lightweight`.
 - Não omitir `delivery.md`.
 
+## Etapa pós-criação
+
+Depois de criar ou refinar a `lib spec`:
+
+- acionar o agente `spec-review` do Copilot para revisar a spec, quando o ambiente suportar subagentes;
+- se o subagente não estiver disponível, fazer revisão equivalente localmente;
+- incorporar os ajustes relevantes antes de encerrar a resposta.
+
+## Fechamento da resposta
+
+A resposta final da criação da `lib spec` deve informar:
+
+- onde a spec foi criada;
+- se a revisão da spec encontrou ou não pontos relevantes;
+- qual é o próximo passo recomendado no fluxo.
+
+Opções típicas de próximo passo:
+
+- `refine lib-spec`, quando a revisão encontrar inconsistências;
+- `implement lib-spec`, quando a spec estiver pronta;
+- `create-library-project`, quando o design confirmar pacote novo e a spec já estiver madura.
+
 

@@ -117,6 +117,8 @@ Fluxo:
 - Jornadas e capacidades podem ser lidas se existirem, mas não bloqueiam o fluxo nesta versão.
 - Não responder só com explicação do fluxo quando já for possível abrir ou refinar a `screen spec`.
 - Quando faltar informação, pedir lista enumerada única do que precisa ser conhecido para continuar.
+- Depois de criar ou refinar a `screen spec`, executar revisão por `spec-review` quando essa capacidade estiver disponível.
+- Encerrar a resposta com próximo passo recomendado no fluxo: `refine screen-spec`, `yasamen` ou `lib-spec`.
 
 ---
 

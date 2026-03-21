@@ -19,6 +19,7 @@ Agentes de domínio ativos:
 - `lib-spec`
 - `app-spec`
 - `screen-spec`
+- `spec-review`
 - `yasamen`
 
 ## Instruções legadas arquivadas

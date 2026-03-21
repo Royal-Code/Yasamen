@@ -27,6 +27,9 @@ Seu papel é interpretar o pedido do utilizador, escolher a família correta e s
 - Se faltar informação, peça uma lista enumerada única do que precisa ser conhecido para executar a próxima etapa.
 - Evite narrar o meta-processo quando isso não ajuda o utilizador.
 - Não puxe exemplos enviesados do repositório ao pedir dados em domínios já descritos pelo utilizador.
+- Para pedido de projeto novo, prefira um fluxo leve de fundação do app em vez de forçar planeamento funcional completo.
+- Nesse fluxo leve, não deixe `app-spec` passar sem confirmar nome, interpretação exata do host quando ambígua e arquétipo de shell.
+- Quando o fluxo delegado criar ou refinar uma spec, preserve a etapa de `spec-review` e o fechamento com próximo passo recomendado.
 - `station` é portátil; não trate expansão da biblioteca como fluxo nativo desta entrada.
 - Se o pedido for de projeto ou pacote novo da biblioteca, preserve `spec-first` por padrão e direcione para `lib-spec`.
 - Se o pedido cair em família ainda não formalizada, deixe isso explícito e não invente um fluxo inexistente.

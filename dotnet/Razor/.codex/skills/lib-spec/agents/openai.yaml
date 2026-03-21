@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lib Spec"
+  short_description: "Orquestra specs de biblioteca e componentes"
+  default_prompt: "Use $lib-spec para planejar, criar, refinar ou implementar specs de biblioteca e componentes neste repositório."

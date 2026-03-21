@@ -39,6 +39,52 @@ Arquivos obrigatórios:
   - quais telas precisam de `screen spec`;
   - quais gaps devem escalar para `lib-spec`.
 
+## Modos de criação
+
+### 1. Fundação do app
+
+Usar este modo por padrão quando o utilizador pedir:
+
+- criar um projeto novo;
+- montar a base do app;
+- iniciar um app consumidor;
+- estruturar host, shell e referências.
+
+Neste modo, a `app spec` deve fechar:
+
+- nome e natureza do app;
+- host Blazor;
+- estrutura de projetos;
+- shell base;
+- convenção inicial de navegação;
+- estratégia de consumo de Yasamen;
+- `Program.cs`, `_Imports.razor`, estilos públicos e integração local.
+
+E pode deixar explicitamente adiados:
+
+- módulos detalhados;
+- telas prioritárias;
+- dados;
+- autenticação;
+- integrações externas.
+
+Gate obrigatório antes de criar os arquivos:
+
+- nome canônico do app e dos projetos;
+- interpretação exata do host quando o pedido for ambíguo;
+- arquétipo de shell.
+
+### 2. Escopo funcional do app
+
+Usar este modo quando o utilizador já trouxer ou pedir explicitamente:
+
+- módulos de negócio;
+- telas prioritárias;
+- estratégia de dados;
+- autenticação;
+- integrações;
+- backlog funcional mais rico.
+
 - Se o app já existir:
   - registrar o `As-Is`;
   - registrar o `To-Be`;
@@ -47,6 +93,18 @@ Arquivos obrigatórios:
 ## Regra de completude
 
 Antes de criar a `app spec`, a IA deve verificar se já conhece informação suficiente para preencher pelo menos:
+
+### Para `fundação do app`
+
+- objetivo e contexto do app;
+- host Blazor pretendido e sua interpretação exata quando o pedido usar termos ambíguos como `client/server`;
+- natureza do app: novo ou evolução;
+- nome canônico do app e dos projetos;
+- shell ou hipótese inicial de shell confirmada como arquétipo;
+- estratégia de consumo de Yasamen;
+- integração local com solution ou repositório, quando aplicável.
+
+### Para `escopo funcional do app`
 
 - objetivo e contexto do app;
 - host Blazor pretendido;
@@ -74,6 +132,9 @@ Se isso não estiver suficientemente claro:
   - estratégia de referências;
   - configuração de `Program.cs`, `_Imports.razor` e estilos públicos;
   - passos de scaffolding e validação.
+- Se o pedido envolver apenas criação da base do projeto, não bloquear a spec por falta de módulos, telas, dados ou integrações.
+- Quando esses pontos ainda não existirem, registrá-los como `adiados para evolução posterior`.
+- Se faltar nome canônico, interpretação exata do host ou arquétipo de shell, bloquear a criação da spec e pedir esses itens.
 - Ao criar a spec, não marcar `tasks.md` como concluído por reflexo.
 - Ao criar a spec, não marcar critérios de entrega do app como concluídos por reflexo.
 - Ao criar a spec, se marcar algo como completo, deixar claro que se trata de completude da spec e não de implementação do app.
@@ -81,6 +142,29 @@ Se isso não estiver suficientemente claro:
 - Quando usar um projeto existente da solution como referência, nomear isso como `referência técnica local`.
 - Não listar pacotes como confirmados apenas porque são comuns em demos ou showcases do repositório.
 - Se a lista de módulos do utilizador já estiver em linguagem de negócio, não puxar a conversa para exemplos de componentes como `Buttons`, `Forms` ou equivalentes.
-- O handoff não deve ser declarado pronto se a estratégia inicial de dados, autenticação e integrações continuar ambígua.
+- O handoff para scaffolding base pode ser declarado pronto mesmo com dados, autenticação e integrações adiados.
+- O handoff para telas funcionais não deve ser declarado pronto se esses pontos continuarem ambíguos.
 - Se houver informação suficiente, criar os arquivos da `app spec` em vez de só orientar o utilizador a fazê-lo.
 - Usar sempre acentuação.
+
+## Etapa pós-criação
+
+Depois de criar ou refinar a `app spec`:
+
+- acionar o agente `spec-review` do Copilot para revisar a spec, quando o ambiente suportar subagentes;
+- se o subagente não estiver disponível, fazer revisão equivalente localmente;
+- incorporar os ajustes relevantes antes de encerrar a resposta.
+
+## Fechamento da resposta
+
+A resposta final da criação da `app spec` deve informar:
+
+- onde a spec foi criada;
+- se a revisão da spec encontrou ou não pontos relevantes;
+- qual é o próximo passo recomendado no fluxo.
+
+Opções típicas de próximo passo:
+
+- `refine app-spec`, quando a revisão encontrar inconsistências;
+- `yasamen`, quando a fundação já estiver pronta para scaffolding;
+- `screen-spec`, quando o próximo passo natural for abrir as primeiras telas.

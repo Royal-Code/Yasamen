@@ -1,8 +1,18 @@
 ﻿# UI Map — RoyalCode Razor Library
 
-> Mapeamento entre os UI Patterns do Catálogo Global (catalogo-ui.md) e os componentes Blazor da biblioteca RoyalCode.Razor.
+> Mapeamento entre os `ID_UI_PATTERN` do Catálogo Global ([catalogo_ui_2.md](./catalogo_ui_2.md)) e os componentes Blazor da biblioteca RoyalCode.Razor.
 >
 > Para cada padrão: componente(s) mapeado(s), nota de adaptação (0–10) com justificativa, e exemplo de código Blazor.
+
+---
+
+## Delta do catálogo-ui.md para catalogo_ui_2.md
+
+- O conjunto de `ID_UI_PATTERN` permaneceu o mesmo: continuam **32 UI Patterns canônicos**. O escopo deste `ui-map.md` não mudou em quantidade de padrões.
+- O `catalogo_ui_2.md` formalizou também `Shell Patterns` (`SHP-*`) e `Page Patterns` (`PP-*`). Este documento continua deliberadamente focado só em `UI Patterns` (`UIP-*`).
+- O catálogo novo ficou semanticamente mais exigente: adicionou definição curta, não confundir com, sinais de escolha, limites, variantes reconhecidas e compatibilidades mais explícitas.
+- Por isso, a reanálise abaixo recalibra as notas contra o significado completo do padrão, não apenas contra o nome do componente.
+- Os impactos mais relevantes desta revisão foram em: `Breadcrumb`, `Pagination`, `Form Field Group`, `Filter Panel`, `Empty State`, `Error State`, `Toast / Alert` e `Action Bar`.
 
 ---
 
@@ -202,7 +212,7 @@
 
 **Nota de Adaptação: 8 / 10**
 
-**Justificativa:** A biblioteca tem um sistema de menu robusto: `AppLayout` com sidebar, `AppSideMenuButton` que abre o `AppMenu` via `OffCanvas`, `AppMenuList` renderizando os itens do nível atual, e `AppMenuItem` com suporte a links, módulos (drill-down) e divisores. Suporta favoritos e navegação hierárquica. O ponto fraco atual não é o carregamento do menu, mas a experiência complementar: o `AppMenu` ainda contém um placeholder interno de busca (`search component`) e não há bottom navigation nativa para Mobile.
+**Justificativa:** A biblioteca tem um sistema de menu robusto: `AppLayout` com sidebar, `AppSideMenuButton` que abre o `AppMenu` via `OffCanvas`, `AppMenuList` renderizando loading, erro, vazio e itens do nível atual, e `AppMenuItem` com suporte a links, módulos (drill-down) e divisores. Suporta favoritos e navegação hierárquica. O ponto fraco atual está mais na abrangência do padrão do que no componente isolado: o `AppMenu` ainda contém um placeholder interno de busca (`search component`) e não há bottom navigation nativa para Mobile nem uma variante forte para shells do tipo Portal.
 
 **Exemplo:**
 
@@ -269,9 +279,9 @@ Também é possível fornecer um `IMenuLoader` customizado quando o menu vier de
 
 **Componentes RoyalCode:** `Breadcrumb`, `BreadcrumbItem`, `DescribesBreadcrumbs`
 
-**Nota de Adaptação: 9 / 10**
+**Nota de Adaptação: 8 / 10**
 
-**Justificativa:** Cobertura quase total. `Breadcrumb` renderiza `<nav aria-label="breadcrumb"><ol>`. `BreadcrumbItem` com `Active` marca o item atual como não navegável. O overflow automático para dropdown (via `MenuItems` + `DropButton`) cobre a truncagem em Mobile. `DescribesBreadcrumbs` é uma versão data-driven que atualiza automaticamente via `NavigationManager`. Apenas falta o esqueleto de loading declarativo.
+**Justificativa:** A cobertura é alta, mas não total. `Breadcrumb` renderiza `<nav aria-label="breadcrumb"><ol>`, `DescribesBreadcrumbs` lida com truncagem por dropdown e navegação data-driven, e o conjunto cobre bem o padrão estrutural. O gap relevante é semântico: em `BreadcrumbItem`, o parâmetro `Active` apenas adiciona classe CSS; ele não torna o item atual não navegável por si só. Em `DescribesBreadcrumbs`, o item ativo continua recebendo callback de clique. Portanto, o comportamento final do último nível ainda precisa ser decidido pelo consumidor.
 
 **Exemplo:**
 
@@ -345,9 +355,9 @@ else if (activeTab == "hist")
 
 **Componentes RoyalCode:** `Pagination`
 
-**Nota de Adaptação: 9 / 10**
+**Nota de Adaptação: 10 / 10**
 
-**Justificativa:** `Pagination` cobre diretamente o padrão com API pública controlada por estado externo, navegação para primeira/anterior/próxima/última, janela numérica no Desktop, resumo compacto no Mobile e bloqueio durante loading. O componente também expõe `aria-current="page"`, usa `<nav aria-label="Paginação">` e centraliza o contrato visual em classes `ya-pagination*`. O único gap residual do primeiro release é não incluir seletor de tamanho de página nem sincronização automática com URL.
+**Justificativa:** `Pagination` cobre o padrão diretamente e com bastante maturidade: navegação para primeira/anterior/próxima/última, janela numérica em Desktop, resumo compacto em Mobile, bloqueio durante loading, `aria-current="page"`, `aria-label` configurável, variação de tamanho e modos explícitos para o caso de página única. Os gaps restantes do componente são extras de produto, não lacunas do `UIP-NAV-PAGINATION` definido no catálogo atual.
 
 **Exemplo:**
 
@@ -583,11 +593,11 @@ else if (activeTab == "hist")
 
 ## UIP-INPUT-FORM_FIELD_GROUP — Form Field Group
 
-**Componentes RoyalCode:** `FieldGroup`, `ControlGroup`, `InputFieldBase<TValue>`, `TextField`, `FieldText`, `FieldBadge`, `FieldAction`
+**Componentes RoyalCode:** `FieldGroup`, `ControlGroup`, `FieldError`, `InputFieldBase<TValue>`, `TextField`, `FieldText`, `FieldBadge`, `FieldAction`
 
-**Nota de Adaptação: 6 / 10**
+**Nota de Adaptação: 8 / 10**
 
-**Justificativa:** A biblioteca já tem uma boa infraestrutura de campo: `FieldGroup` concentra label, descrição complementar, informação, erro e footer; `ControlGroup` trata prepend/append; `InputFieldBase<TValue>` integra essa estrutura com `EditContext`; e `TextField` já entrega um campo concreto pronto para uso. O gap não está no agrupamento de campo em si, mas na falta de mais inputs concretos e de componentes de entrada mais complexos. Por isso a cobertura é média, não baixa.
+**Justificativa:** A cobertura do padrão de agrupamento é alta. `FieldGroup` já encapsula label, descrição complementar, informação, footer action e estado de erro; `ControlGroup` cobre prepend/append; `FieldError` é um elemento dedicado para erro inline; `InputFieldBase<TValue>` integra a estrutura com `FieldBase<TValue>` e `EditContext`; e `TextField` prova o fluxo completo num input concreto. Os gaps da biblioteca estão em outros tipos de input, não no `UIP-INPUT-FORM_FIELD_GROUP` em si.
 
 **Exemplo:**
 
@@ -668,11 +678,11 @@ else if (activeTab == "hist")
 
 ## UIP-INPUT-FILTER_PANEL — Filter Panel
 
-**Componentes RoyalCode:** `OffCanvas` (mobile drawer), `Box` + `Stack` (painel lateral Desktop)
+**Componentes RoyalCode:** `OffCanvas`, `AsideBox`, `Box`, `Stack`
 
-**Nota de Adaptação: 4 / 10**
+**Nota de Adaptação: 5 / 10**
 
-**Justificativa:** Para Mobile, o `OffCanvas` cobre exatamente o padrão "gaveta de filtros" com abertura por botão, fundo backdrop e fechamento. Para Desktop, uma composição de `Box`+`Stack` cobre o painel lateral. Faltam os comportamentos de "indicador de filtros ativos" e "limpar todos" como funcionalidades nativas. A transição Desktop→Mobile precisa ser gerida pelo consumidor.
+**Justificativa:** A biblioteca já tem boa base estrutural para o padrão: `OffCanvas` cobre a gaveta de filtros em Mobile com `Position`, `Modal`, `Closeable` e `Handler`; `AsideBox` oferece header, título e estrutura pronta para esse contexto; e `Box` + `Stack` cobrem a versão lateral em Desktop. O que falta é a semântica específica de filtro: contador de filtros ativos, chips, contrato de aplicar/limpar e orquestração responsiva nativa entre as duas variantes.
 
 **Exemplo:**
 
@@ -771,11 +781,11 @@ else
 
 ## UIP-FEEDBACK-EMPTY_STATE — Empty State
 
-**Componentes RoyalCode:** `Feedback` (adaptação parcial)
+**Componentes RoyalCode:** `Feedback`, `Button`, `Icon`
 
-**Nota de Adaptação: 4 / 10**
+**Nota de Adaptação: 5 / 10**
 
-**Justificativa:** `Feedback` renderiza uma caixa tematizada com ícone, título e texto — cobre a estrutura visual do Empty State. Porém, não tem uma variante semântica "vazio" (sem dados) vs "sem resultados de filtro", nem CTA primário embutido como elemento de primeiro nível. O `Feedback` é orientado a alertas, não a empty states. Pode ser adaptado com `ChildContent` para inserir um `Button`.
+**Justificativa:** `Feedback` mais `ChildContent` já resolvem bem título, texto e CTA, e a biblioteca também oferece `Button` e `Icon` para compor a apresentação típica do padrão. Ainda assim, continua sendo adaptação: não existe componente semântico de Empty State, nem variantes explícitas para "sem dados" vs "sem resultados", nem contrato visual pronto de centralização/ilustração.
 
 **Exemplo:**
 
@@ -859,11 +869,11 @@ else
 
 ## UIP-FEEDBACK-ERROR_STATE — Error State
 
-**Componentes RoyalCode:** `Feedback` com `Style="Themes.Danger"`
+**Componentes RoyalCode:** `Feedback`, `FieldError`, `Button`
 
-**Nota de Adaptação: 6 / 10**
+**Nota de Adaptação: 7 / 10**
 
-**Justificativa:** `Feedback` com tema `Danger` cobre a estrutura visual (ícone, título, texto) do Error State. Suporta `Closeable` e `ChildContent` para inserir botão de retry. Falta uma variante semântica formal para os subtipos de erro do catálogo (carregamento, submissão, permissão) e a ação de retry não é um parâmetro de primeiro nível. O `OnClose` callback pode ser usado como "retry" com adaptação.
+**Justificativa:** A cobertura é boa em dois níveis. Para erro de página ou bloco, `Feedback` com tema `Danger` cobre título, texto, ícone, bloco e ações de recuperação via `ChildContent`. Para erro inline de formulário, `FieldError` já fornece um elemento dedicado. O que ainda falta é uma semântica de primeiro nível para subtipos do catálogo, como permissão, não encontrado e retry declarativo.
 
 **Exemplo:**
 
@@ -907,11 +917,11 @@ else
 
 ## UIP-FEEDBACK-TOAST_ALERT — Toast / Alert
 
-**Componentes RoyalCode:** `Notification`, `NotificationContent`, `Notify` (serviço DI)
+**Componentes RoyalCode:** `Notification`, `NotificationContent`, `Notify`, `Feedback`
 
-**Nota de Adaptação: 9 / 10**
+**Nota de Adaptação: 10 / 10**
 
-**Justificativa:** Cobertura quase total. `Notification` tem auto-dismiss com `Timer`, barra de progresso animada, pausa no hover, `CloseOnClick`, temas completos, ícone ou barra colorida, e callbacks `OnClose` / `OnOpen`. O serviço `Notify` permite uso programático com métodos de conveniência por tema (`Success`, `Danger`, `Warning`, etc.) e callback `configure`. O posicionamento já é configurável por `NotificationItem.Placement`, e o `NotificationOutlet` agrupa os itens por `Placements`.
+**Justificativa:** No catálogo novo, `UIP-FEEDBACK-TOAST_ALERT` passou a reconhecer explicitamente duas variantes: toast flutuante temporário e alert inline/contextual persistente. A biblioteca cobre as duas. `Notification` + `Notify` + `NotificationContent` resolvem o toast programático com timer, progresso, hover-pause, placement e callbacks. `Feedback` cobre a variante inline/contextual persistente. Para o padrão como definido hoje, a cobertura é total.
 
 **Exemplo:**
 
@@ -937,6 +947,9 @@ else
             "Verifique a conexão e tente novamente.",
             item => item.Placement = Placements.TopEnd);
     }
+
+    private Task RetrySync()
+        => Task.CompletedTask;
 }
 
 @* Uso declarativo com timer *@
@@ -946,6 +959,17 @@ else
               Icon="true">
     <NotificationContent Text="Atenção" Details="Sua sessão irá expirar em breve." />
 </Notification>
+
+@* Variante inline/contextual persistente *@
+<Feedback Title="Integração parcial"
+          Text="Alguns dados externos não puderam ser sincronizados. Você pode continuar e tentar novamente depois."
+          Style="Themes.Warning"
+          Block="true">
+    <Button Label="Tentar novamente"
+            Style="Themes.Warning"
+            Outline="true"
+            OnClick="@RetrySync" />
+</Feedback>
 ```
 
 ---
@@ -1013,11 +1037,11 @@ else
 
 ## UIP-ACTION-ACTION_BAR — Action Bar
 
-**Componentes RoyalCode:** `Bar`, `Button`, `IconButton`
+**Componentes RoyalCode:** `Bar`, `Button`, `IconButton`, `Badge`
 
-**Nota de Adaptação: 6 / 10**
+**Nota de Adaptação: 7 / 10**
 
-**Justificativa:** `Bar` é exatamente uma barra horizontal com slots Start/Middle/End para organizar ações com `justify-between`. `Button` e `IconButton` cobrem ações primárias, secundárias e destrutivas. Faltam: comportamento automático de overflow (acções secundárias em menu quando a largura é insuficiente), estado contextual de "seleção múltipla ativa" como primeiro nível e desativação automática baseada em permissão. A composição cobre o padrão mas sem automação.
+**Justificativa:** `Bar` entrega a estrutura certa para o padrão, com slots `Start`, `Middle` e `End`; `Button` e `IconButton` cobrem ações primárias, secundárias e destrutivas; e `Badge` ajuda a explicitar contexto de seleção. A cobertura é alta por composição. O que ainda falta é automação: overflow responsivo, política declarativa de prioridade das ações e estados contextuais nativos para seleção e permissão.
 
 **Exemplo:**
 
@@ -1261,26 +1285,26 @@ else
 | UIP-STRUCT-STACK_CONTAINER | Stack Container | 8 | `Stack` |
 | UIP-STRUCT-GRID_CONTAINER | Grid Container | 8 | `Container`+`Slot` |
 | UIP-NAV-NAVIGATION_MENU | Navigation Menu | 8 | `AppMenu`, `AppMenuItem`, `AppSideBar` |
-| UIP-NAV-BREADCRUMB | Breadcrumb | 9 | `Breadcrumb`, `BreadcrumbItem`, `DescribesBreadcrumbs` |
+| UIP-NAV-BREADCRUMB | Breadcrumb | 8 | `Breadcrumb`, `BreadcrumbItem`, `DescribesBreadcrumbs` |
 | UIP-NAV-TABS | Tabs | 0 | *(nenhum)* |
-| UIP-NAV-PAGINATION | Pagination | 9 | `Pagination` |
+| UIP-NAV-PAGINATION | Pagination | 10 | `Pagination` |
 | UIP-NAV-STEPPER_INDICATOR | Stepper Indicator | 0 | *(nenhum)* |
 | UIP-DATA-DATA_TABLE | Data Table | 0 | *(nenhum)* |
 | UIP-DATA-LIST_ITEM | List Item | 2 | `AppMenuItem` (só em nav) |
 | UIP-DATA-CARD_GRID | Card Grid | 5 | `Box`+`Container`+`Slot` |
 | UIP-DATA-TIMELINE_ITEM | Timeline Item | 0 | *(nenhum)* |
 | UIP-DATA-KANBAN_COLUMN | Kanban Column | 0 | *(nenhum)* |
-| UIP-INPUT-FORM_FIELD_GROUP | Form Field Group | 6 | `FieldGroup`, `ControlGroup`, `TextField`, `FieldBadge`, `FieldAction` |
+| UIP-INPUT-FORM_FIELD_GROUP | Form Field Group | 8 | `FieldGroup`, `ControlGroup`, `FieldError`, `TextField`, `FieldBadge`, `FieldAction` |
 | UIP-INPUT-SEARCH_BAR | Search Bar | 1 | *(manual com input nativo + IconButton)* |
-| UIP-INPUT-FILTER_PANEL | Filter Panel | 4 | `OffCanvas`, `Box`+`Stack` |
+| UIP-INPUT-FILTER_PANEL | Filter Panel | 5 | `OffCanvas`, `AsideBox`, `Box`+`Stack` |
 | UIP-INPUT-DATE_PICKER | Date Picker | 0 | *(nenhum)* |
 | UIP-INPUT-INLINE_EDITOR | Inline Editor | 0 | *(nenhum)* |
-| UIP-FEEDBACK-EMPTY_STATE | Empty State | 4 | `Feedback` (adaptação) |
+| UIP-FEEDBACK-EMPTY_STATE | Empty State | 5 | `Feedback`, `Button`, `Icon` |
 | UIP-FEEDBACK-LOADING_STATE | Loading State | 3 | `RotationMotion` (spinner apenas) |
-| UIP-FEEDBACK-ERROR_STATE | Error State | 6 | `Feedback` com `Themes.Danger` |
-| UIP-FEEDBACK-TOAST_ALERT | Toast / Alert | 9 | `Notification`, `Notify` |
+| UIP-FEEDBACK-ERROR_STATE | Error State | 7 | `Feedback`, `FieldError`, `Button` |
+| UIP-FEEDBACK-TOAST_ALERT | Toast / Alert | 10 | `Notification`, `NotificationContent`, `Notify`, `Feedback` |
 | UIP-FEEDBACK-CONFIRMATION_DIALOG | Confirmation Dialog | 7 | `Modal`, `ModalHandler` |
-| UIP-ACTION-ACTION_BAR | Action Bar | 6 | `Bar`, `Button`, `IconButton` |
+| UIP-ACTION-ACTION_BAR | Action Bar | 7 | `Bar`, `Button`, `IconButton`, `Badge` |
 | UIP-ACTION-CONTEXTUAL_MENU | Contextual Menu | 9 | `DropButton`, `DropIconButton`, `DropItem` |
 | UIP-ACTION-FLOATING_ACTION | Floating Action | 3 | `IconButton`+`Button` com CSS manual |
 | UIP-CONTENT-DETAIL_BLOCK | Detail Block | 3 | `Box`+`Stack`+`Bar` |
@@ -1294,11 +1318,11 @@ else
 
 | Grupo | Média | Observação |
 |---|:---:|---|
-| Estruturais | 5,8 | Boa cobertura de grids e stacks; sem scroll region dedicada |
-| Navegação | 5,2 | Breadcrumb, Menu e Pagination fortes; Tabs e Stepper ainda ausentes |
+| Estruturais | 5,8 | Boa cobertura de grids e stacks; split e scroll region ainda dependem de composição |
+| Navegação | 5,2 | Pagination é excelente; menu é forte; breadcrumb ainda depende do consumidor para tornar o item ativo não navegável |
 | Dados & Listagem | 1,4 | Apenas Card Grid parcialmente coberto; Data Table e Timeline ausentes |
-| Entrada | 2,2 | Infra de forms boa; poucos inputs concretos e nenhum input complexo (search, date, inline) |
-| Feedback & Estado | 5,8 | Toast e Contextual Dialog fortes; Loading e Empty State fracos |
-| Ação | 6,0 | Bar e Contextual Menu muito bons; FAB sem componente dedicado |
-| Conteúdo | 1,2 | Nenhum componente de conteúdo estruturado (Detail, Metric, Rich Text, Media) |
+| Entrada | 2,8 | `FieldGroup` é sólido, mas search, date picker e inline editor continuam ausentes |
+| Feedback & Estado | 6,4 | Toast/alert está completo; error state está bem coberto; loading segue fraco sem skeleton |
+| Ação | 6,3 | Action Bar e Contextual Menu são fortes por composição; FAB continua manual |
+| Conteúdo | 1,5 | Ainda não há componentes semânticos dedicados para detalhe, métricas, rich text ou mídia |
 

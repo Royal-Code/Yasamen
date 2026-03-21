@@ -13,6 +13,7 @@ Esta pasta contém os arquivos operacionais de agentes do Copilot.
 - `lib-spec`
 - `app-spec`
 - `screen-spec`
+- `spec-review`
 - `yasamen`
 
 ## Agentes especializados ainda ativos
