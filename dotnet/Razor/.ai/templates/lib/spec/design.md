@@ -71,7 +71,7 @@
 
 - Casos mínimos de teste.
 - Página de demonstração em `RoyalCode.Razor.Docs.Client`.
-- Cenários de exemplo para validação manual.
+- Cenários de exemplo para validação humana e critério esperado de aceite.
 - Relação futura com `RoyalCode.Razor.Show`, se existir.
 
 ## Showcase no Docs
@@ -93,6 +93,7 @@
 - Build e projetos afetados que devem ser executados.
 - Testes mínimos esperados.
 - Validação manual esperada no showcase.
+- Validação humana esperada e quem deve aprovar o aceite, quando aplicável.
 - Impactos esperados em `ui-map.md` e `ui-plan.md`, se houver.
 
 

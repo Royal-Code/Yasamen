@@ -4,7 +4,7 @@
 
 | Campo | Valor |
 |---|---|
-| Status | `Rascunho` |
+| Status | `Concluída` |
 | Prioridade | `P3` |
 | Fase do plano | `F3.x (backlog estrutural de composição de ações)` |
 | UI Pattern | `— (primitivo transversal; apoio direto a UIP-ACTION-ACTION_BAR)` |

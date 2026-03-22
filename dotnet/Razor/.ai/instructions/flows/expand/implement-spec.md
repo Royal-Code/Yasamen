@@ -37,9 +37,11 @@ Além disso:
 - Implementar a spec de forma end-to-end.
 - Atualizar showcase no `RoyalCode.Razor.Docs.Client` quando aplicável.
 - Executar build, testes e validações manuais previstos.
+- Registrar a validação humana prevista na spec e o aceite explícito do humano, quando aplicável.
 - Fechar `delivery.md`, `tasks.md` e o status final da spec.
 - Em formulários ainda pouco definidos, não forçar uma API maior do que a spec aprovou.
 - Usar sempre acentuação.
+- Se a implementação estiver pronta, mas a validação humana prevista ainda não tiver acontecido, não marcar a spec como `Concluída`; deixar o status como `Aguardando validação humana` e registrar a pendência em `tasks.md` e `delivery.md`.
 
 ## Validação Visual com Playwright MCP
 

@@ -146,8 +146,31 @@ public static class ConfigureMenu
                     {
                         Id = "buttons",
                         Text = "Buttons",
-                        Url = "buttons",
-                        Type = MenuItemType.Link
+                        Type = MenuItemType.Module,
+                        Children =
+                        [
+                            new MenuItem
+                            {
+                                Id = "buttons-showcase",
+                                Text = "Buttons",
+                                Url = "buttons",
+                                Type = MenuItemType.Link
+                            },
+                            new MenuItem
+                            {
+                                Id = "icon-buttons",
+                                Text = "Icon Buttons",
+                                Url = "icon-buttons",
+                                Type = MenuItemType.Link
+                            },
+                            new MenuItem
+                            {
+                                Id = "button-group",
+                                Text = "Button Group",
+                                Url = "demo/buttons/button-group",
+                                Type = MenuItemType.Link
+                            }
+                        ]
                     },
                     new MenuItem
                     {
@@ -167,13 +190,6 @@ public static class ConfigureMenu
                         Id = "notifications",
                         Text = "Notifications",
                         Url = "notifications",
-                        Type = MenuItemType.Link
-                    },
-                    new MenuItem
-                    {
-                        Id = "icon-buttons",
-                        Text = "Icon Buttons",
-                        Url = "icon-buttons",
                         Type = MenuItemType.Link
                     },
                     new MenuItem

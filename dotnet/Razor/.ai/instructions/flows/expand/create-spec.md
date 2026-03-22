@@ -39,6 +39,10 @@ Antes de escrever a spec, a IA deve ler:
   - registrar isso explicitamente no `design.md`;
   - identificar o pacote alvo;
   - indicar que a implementação deverá seguir `.ai/instructions/expand/create-library-project.md`.
+- Toda spec nova com comportamento observável, UI ou showcase deve prever explicitamente:
+  - task de testes/validação humana;
+  - registro do aceite humano em `delivery.md`;
+  - regra de que a spec não fecha como `Concluída` sem esse aceite, ficando em `Aguardando validação humana` enquanto a validação não ocorrer.
 
 ## Seleção de Guides
 
@@ -74,6 +78,7 @@ Antes de escrever a spec, a IA deve ler:
 - Não tratar `RoyalCode.Razor.Show` como host atual de showcase.
 - Em componentes de formulário ainda pouco definidos, preferir `form-components` + `form-components-lightweight`.
 - Não omitir `delivery.md`.
+- Não omitir a task de validação humana quando a entrega tiver comportamento observável ou showcase.
 
 ## Etapa pós-criação
 

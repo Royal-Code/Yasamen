@@ -7,7 +7,7 @@ Componentes básicos iniciais:
 
 - [x] Ripple — `RoyalCode.Razor.Commons` › `Ripple.razor`
 - [x] Button — `RoyalCode.Razor.Buttons` › `Button.razor`
-- [ ] ButtonGroup
+- [x] ButtonGroup — `RoyalCode.Razor.Buttons` › `ButtonGroup.razor`
 - [x] IconButton — `RoyalCode.Razor.Buttons` › `IconButton.razor`
 - [x] Alert — `RoyalCode.Razor.Alerts` › `Feedback.razor`
 - [x] Messages — `RoyalCode.Razor.Alerts` › `Notification.razor` + `Notify` (serviço DI)

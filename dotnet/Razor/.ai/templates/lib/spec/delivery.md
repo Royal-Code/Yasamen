@@ -4,7 +4,7 @@
 
 | Campo | Valor |
 |---|---|
-| Status final | `Concluída` |
+| Status final | `A preencher` |
 | Data | `YYYY-MM-DD` |
 | Implementador | `IA` / `Pessoa` |
 | Spec | `<pasta-da-spec>` |
@@ -48,6 +48,7 @@
 | Build | `dotnet build ...` | `OK` |
 | Testes | `dotnet test ...` | `OK` |
 | Showcase | `rota/página validada` | `OK` |
+| Humano | `aceite humano explícito, data e escopo dos testes realizados` | `OK` / `Pendente` |
 | Visual | `Playwright MCP disponível / indisponível; screenshots e rotas validadas` | `OK` / `N/A` |
 
 ## Revisão de Código
@@ -69,6 +70,7 @@
 
 - [ ] Todas as tasks essenciais foram concluídas.
 - [ ] Tasks não concluídas foram justificadas.
+- [ ] O aceite humano foi registrado ou a spec ficou explicitamente em `Aguardando validação humana`.
 - [ ] O status final da spec foi atualizado.
 
 ## Artefatos Atualizados

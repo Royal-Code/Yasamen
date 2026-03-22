@@ -36,6 +36,11 @@
 - [ ] Cobrir fluxo feliz, estados de borda e regressões prováveis.
 - [ ] Cobrir a decisão estrutural mais arriscada da composição, quando aplicável.
 
+## Validação Humana
+
+- [ ] Executar os testes humanos previstos no componente ou showcase com o responsável pela validação.
+- [ ] Registrar em `delivery.md` a data, o escopo e o aceite explícito do humano; sem isso, a spec fica em `Aguardando validação humana`.
+
 ## Documentação
 
 - [ ] Criar a página de showcase em `RoyalCode.Razor.Docs.Client/Pages/Demo/...`.

@@ -1,0 +1,112 @@
+@page "/demo/buttons/button-group"
+
+@layout AppMainLayout
+
+<Box AdditionalClasses="p-8 bg-white border-none space-y-10">
+
+    <header class="space-y-3">
+        <h1>Button Group</h1>
+        <p>
+            Agrupa <code>Button</code> e <code>IconButton</code> com continuidade visual,
+            semântica de grupo e defaults herdados para tema, tamanho e desabilitação.
+        </p>
+    </header>
+
+    <section class="space-y-4">
+        <h2>Básico</h2>
+        <p>Uso horizontal simples para ações relacionadas.</p>
+        <ButtonGroup AriaLabel="Ações principais do formulário">
+            <Button Label="Salvar" Style="Themes.Primary" />
+            <Button Label="Salvar e Continuar" Style="Themes.Secondary" />
+            <Button Label="Cancelar" Style="Themes.Light" />
+        </ButtonGroup>
+    </section>
+
+    <section class="space-y-4">
+        <h2>Herança de Tema e Tamanho</h2>
+        <p>
+            O grupo pode definir defaults para filhos que permaneçam com <code>Themes.Default</code>
+            e <code>Sizes.Default</code>.
+        </p>
+        <ButtonGroup AriaLabel="Ações destrutivas"
+                     Style="Themes.Danger"
+                     Size="Sizes.Large">
+            <Button Label="Remover" />
+            <Button Label="Arquivar" Style="Themes.Secondary" />
+            <IconButton Icon="BsIconNames.Trash" />
+        </ButtonGroup>
+    </section>
+
+    <section class="space-y-4">
+        <h2>Composição com IconButton</h2>
+        <p>
+            Em grupos com ícones puros, forneça um nome acessível no grupo e rótulos individuais quando o contexto pedir.
+        </p>
+        <ButtonGroup AriaLabel="Ferramentas rápidas do item"
+                     Style="Themes.Info"
+                     Size="Sizes.Small">
+            <IconButton Icon="BsIconNames.Search" />
+            <IconButton Icon="BsIconNames.Pencil" />
+            <Button Label="Detalhes" />
+        </ButtonGroup>
+    </section>
+
+    <section class="space-y-4">
+        <h2>Orientação Vertical</h2>
+        <p>Quando o espaço horizontal é insuficiente, a orientação vertical mantém o mesmo contrato visual.</p>
+        <div class="max-w-xs">
+            <ButtonGroup Orientation="ButtonGroupOrientation.Vertical"
+                         AriaLabel="Ações do painel lateral"
+                         Style="Themes.Secondary">
+                <Button Label="Editar" />
+                <Button Label="Duplicar" />
+                <Button Label="Excluir" Style="Themes.Danger" />
+            </ButtonGroup>
+        </div>
+    </section>
+
+    <section class="space-y-4">
+        <h2>Estados</h2>
+        <p>O grupo pode desabilitar todos os filhos suportados sem duplicar configuração item a item.</p>
+        <div class="space-y-4">
+            <ButtonGroup AriaLabel="Estados ativos"
+                         Style="Themes.Highlight"
+                         Size="Sizes.Small">
+                <Button Label="Lista" Active="true" />
+                <Button Label="Quadro" />
+                <Button Label="Calendário" />
+            </ButtonGroup>
+
+            <ButtonGroup AriaLabel="Ações indisponíveis"
+                         Disabled="true"
+                         Style="Themes.Warning">
+                <Button Label="Publicar" />
+                <Button Label="Agendar" />
+                <IconButton Icon="BsIconNames.Send" />
+            </ButtonGroup>
+        </div>
+    </section>
+
+    <section class="space-y-4">
+        <h2>Contêiner Estreito</h2>
+        <p>Exemplo de uso em barra de ações compacta dentro de uma área mais estreita.</p>
+        <div class="max-w-md rounded-xl border border-light-300 p-4 space-y-4">
+            <Bar>
+                <Start>
+                    <strong>Pedido #2048</strong>
+                </Start>
+                <End>
+                    <ButtonGroup AriaLabel="Ações do pedido" Size="Sizes.Small">
+                        <Button Label="Salvar" Style="Themes.Primary" />
+                        <Button Label="Cancelar" Style="Themes.Light" />
+                    </ButtonGroup>
+                </End>
+            </Bar>
+
+            <div class="text-sm text-dark-300">
+                Quando o agrupamento horizontal não couber com conforto, prefira trocar para a orientação vertical.
+            </div>
+        </div>
+    </section>
+
+</Box>

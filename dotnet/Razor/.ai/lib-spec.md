@@ -155,6 +155,7 @@ Regra:
   - erro de implementação;
   - mudança de design;
   - mudança de escopo.
+- Em spec com comportamento observável ou showcase, não marcar o trabalho como `Concluído` sem aceite humano explícito dos testes previstos; até lá, usar estado aberto ou `Aguardando validação humana`.
 - Depois de criar ou refinar uma `lib spec`, executar revisão por `spec-review` quando essa capacidade estiver disponível.
 - Encerrar a resposta com próximo passo recomendado no fluxo: `refine lib-spec`, `implement lib-spec` ou `create-library-project`.
 

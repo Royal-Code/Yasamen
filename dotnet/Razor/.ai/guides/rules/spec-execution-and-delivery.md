@@ -63,6 +63,7 @@ Validação mínima esperada:
 - `dotnet build` do projeto ou solução afetada;
 - testes automatizados aplicáveis;
 - validação manual do showcase no `Docs.Client`, quando houver UI;
+- validação humana prevista na spec, com aceite explícito registrado quando houver comportamento observável, UI ou ajuste fino dependente de percepção;
 - revisão do impacto em `ui-map.md` e `ui-plan.md`, quando aplicável.
 
 ### 5. Validação visual com Playwright MCP
@@ -87,7 +88,16 @@ Se houver screenshots, elas devem ser tratadas como artefato de evidência.
 
 Depois de implementar e validar, a própria IA deve revisar o diff em modo reviewer.
 
-### 7. Encerramento
+### 7. Gate de validação humana
+
+Quando a spec exigir validação humana:
+
+- a IA deve registrar claramente que a implementação está pronta para testes do humano;
+- a task de validação humana só pode ser marcada após aceite explícito do humano;
+- sem esse aceite, a spec não fecha como `Concluída`;
+- enquanto o aceite não existir, o status final deve permanecer aberto ou como `Aguardando validação humana`.
+
+### 8. Encerramento
 
 Só então:
 
@@ -108,6 +118,7 @@ Uma spec pode ser marcada como `Concluída` quando:
 - [ ] testes relevantes executados ou ausência justificada;
 - [ ] showcase criado ou atualizado no `Docs.Client`, quando aplicável;
 - [ ] revisão de código feita;
+- [ ] validação humana prevista executada e aceite explícito registrado, quando aplicável;
 - [ ] `delivery.md` preenchido;
 - [ ] `tasks.md` encerrado;
 - [ ] `ui-map.md` e `ui-plan.md` atualizados, quando a cobertura mudou.
@@ -128,10 +139,11 @@ Se uma IA receber uma spec para implementar, a sequência correta é:
 3. implementar;
 4. validar;
 5. tentar validação visual quando houver UI relevante;
-6. revisar o próprio trabalho criticamente;
-7. preencher `delivery.md`;
-8. fechar `tasks.md`;
-9. atualizar status e artefatos derivados.
+6. preparar e registrar o gate de validação humana;
+7. revisar o próprio trabalho criticamente;
+8. preencher `delivery.md`;
+9. fechar `tasks.md`;
+10. atualizar status e artefatos derivados, sem usar `Concluída` antes do aceite humano quando ele for exigido.
 
 
 

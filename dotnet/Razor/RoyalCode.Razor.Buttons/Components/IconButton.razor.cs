@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using RoyalCode.Razor.Animations;
+using RoyalCode.Razor.Internal.Buttons;
 using RoyalCode.Razor.Icons.Factory;
 using RoyalCode.Razor.Styles;
 
@@ -13,6 +14,19 @@ public partial class IconButton
     /// </summary>
     [Inject]
     private NavigationManager Navigator { get; set; } = null!;
+
+    [CascadingParameter]
+    private ButtonGroupContext? GroupContext { get; set; }
+
+    private Themes EffectiveStyle => Style != Themes.Default
+        ? Style
+        : GroupContext?.Style ?? Themes.Default;
+
+    private Sizes EffectiveSize => Size != Sizes.Default
+        ? Size
+        : GroupContext?.Size ?? Sizes.Default;
+
+    private bool EffectiveDisabled => Disabled || GroupContext?.Disabled == true;
 
     /// <summary>
     /// Gets a reference to the underlying HTML element. Set through the component markup via <c>@ref</c>.
@@ -103,7 +117,7 @@ public partial class IconButton
     /// <param name="args">Mouse event arguments from the Blazor runtime.</param>
     private async Task ClickHandler(MouseEventArgs args)
     {
-        if (Disabled)
+        if (EffectiveDisabled)
             return;
 
         if (OnClick.HasDelegate)

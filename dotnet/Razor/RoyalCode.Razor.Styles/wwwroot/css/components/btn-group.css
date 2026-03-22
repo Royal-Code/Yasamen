@@ -1,0 +1,107 @@
+.ya-btn-group {
+    @apply inline-flex items-stretch isolate align-middle;
+}
+
+.ya-btn-group-horizontal {
+    @apply flex-row;
+}
+
+.ya-btn-group-vertical {
+    @apply flex-col;
+}
+
+.ya-btn-group-disabled {
+    @apply cursor-not-allowed;
+}
+
+.ya-btn-group > .ya-btn,
+.ya-btn-group > .ya-i-btn {
+    @apply relative;
+}
+
+.ya-btn-group > .ya-btn:hover,
+.ya-btn-group > .ya-i-btn:hover,
+.ya-btn-group > .ya-btn:focus,
+.ya-btn-group > .ya-i-btn:focus,
+.ya-btn-group > .ya-btn:focus-visible,
+.ya-btn-group > .ya-i-btn:focus-visible {
+    @apply z-10;
+}
+
+/* Inside ButtonGroup, IconButton should follow the same size envelope
+   as Button for height, typography and corner radius. */
+.ya-btn-group > .ya-i-btn.ya-i-btn-2xs {
+    width: calc((var(--text-xs) * var(--text-xs--line-height)) + (var(--spacing-1) * 2) + 2px);
+    height: calc((var(--text-xs) * var(--text-xs--line-height)) + (var(--spacing-1) * 2) + 2px);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-xs);
+    line-height: var(--text-xs--line-height);
+}
+
+.ya-btn-group > .ya-i-btn.ya-i-btn-xs {
+    width: calc((var(--text-sm) * var(--text-sm--line-height)) + (var(--spacing-2) * 2) + 2px);
+    height: calc((var(--text-sm) * var(--text-sm--line-height)) + (var(--spacing-2) * 2) + 2px);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    line-height: var(--text-sm--line-height);
+}
+
+.ya-btn-group > .ya-i-btn.ya-i-btn-sm {
+    width: calc((var(--text-base) * var(--text-base--line-height)) + (var(--spacing-2) * 2) + 2px);
+    height: calc((var(--text-base) * var(--text-base--line-height)) + (var(--spacing-2) * 2) + 2px);
+    border-radius: var(--radius-md);
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+}
+
+.ya-btn-group > .ya-i-btn.ya-i-btn-md {
+    width: calc((var(--text-base) * var(--text-base--line-height)) + (var(--spacing-3) * 2) + 2px);
+    height: calc((var(--text-base) * var(--text-base--line-height)) + (var(--spacing-3) * 2) + 2px);
+    border-radius: var(--radius-md);
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+}
+
+.ya-btn-group > .ya-i-btn.ya-i-btn-lg {
+    width: calc((var(--text-base) * var(--text-base--line-height)) + (var(--spacing-4) * 2) + 2px);
+    height: calc((var(--text-base) * var(--text-base--line-height)) + (var(--spacing-4) * 2) + 2px);
+    border-radius: var(--radius-md);
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+}
+
+.ya-btn-group > .ya-i-btn.ya-i-btn-xl {
+    width: calc((var(--text-xl) * var(--text-xl--line-height)) + (var(--spacing-4) * 2) + 2px);
+    height: calc((var(--text-xl) * var(--text-xl--line-height)) + (var(--spacing-4) * 2) + 2px);
+    border-radius: var(--radius-lg);
+    font-size: var(--text-xl);
+    line-height: var(--text-xl--line-height);
+}
+
+.ya-btn-group > .ya-i-btn.ya-i-btn-2xl {
+    width: calc((var(--text-2xl) * var(--text-2xl--line-height)) + (var(--spacing-4) * 2) + 2px);
+    height: calc((var(--text-2xl) * var(--text-2xl--line-height)) + (var(--spacing-4) * 2) + 2px);
+    border-radius: var(--radius-lg);
+    font-size: var(--text-2xl);
+    line-height: var(--text-2xl--line-height);
+}
+
+.ya-btn-group-horizontal > .ya-btn:not(:first-child),
+.ya-btn-group-horizontal > .ya-i-btn:not(:first-child) {
+    @apply -ml-px rounded-l-none;
+}
+
+.ya-btn-group-horizontal > .ya-btn:not(:last-child),
+.ya-btn-group-horizontal > .ya-i-btn:not(:last-child) {
+    @apply rounded-r-none;
+}
+
+.ya-btn-group-vertical > .ya-btn:not(:first-child),
+.ya-btn-group-vertical > .ya-i-btn:not(:first-child) {
+    @apply -mt-px rounded-t-none;
+}
+
+.ya-btn-group-vertical > .ya-btn:not(:last-child),
+.ya-btn-group-vertical > .ya-i-btn:not(:last-child) {
+    @apply rounded-b-none;
+}

@@ -59,6 +59,7 @@ Use este skill quando o pedido envolver componente novo, pacote novo, `lib spec`
   - corrigindo implementação;
   - corrigindo design da spec;
   - ampliando escopo.
+- Em execução de spec com comportamento observável ou showcase, só considere a spec `Concluída` após aceite humano explícito dos testes previstos; antes disso, o estado deve permanecer aberto ou como `Aguardando validação humana`.
 - Depois de criar ou refinar uma `lib spec`, execute revisão por subagente quando o ambiente suportar essa capacidade.
 - Use sempre acentuação.
 

@@ -77,11 +77,13 @@ Descrever o problema que o componente resolve, em que cenários ele será usado 
 - [ ] A decisão sobre composições, reuso e pré-requisitos foi tomada e documentada.
 - [ ] Os tokens relevantes de `yasamen.css` foram identificados e aplicados de forma coerente.
 - [ ] Existem exemplos e testes suficientes para evitar regressão básica.
+- [ ] A spec define testes ou validação humana quando a entrega tiver comportamento observável, UI ou showcase.
 
 ## Critérios de Conclusão
 
 - [ ] Existe `delivery.md` preenchido ao final da implementação.
 - [ ] A comparação entre requirements, design, guides e código foi registrada.
+- [ ] O aceite humano foi registrado quando a spec exigir validação humana.
 - [ ] O status final da spec foi atualizado de forma coerente.
 
 

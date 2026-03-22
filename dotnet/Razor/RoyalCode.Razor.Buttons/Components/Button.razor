@@ -1,7 +1,7 @@
 
 <button type="@Type.ToHtmlAttr()"
         class="@Classes"
-        disabled="@Disabled"
+        disabled="@EffectiveDisabled"
         @onclick="ClickHandler"
         @attributes="AdditionalAttributes"
         @ref="Reference">
@@ -26,15 +26,15 @@
 @code{
 
     private string Classes => "ya-btn"
-		.AddClass(Style.ToButtonTheme(Active, Outline))
-		.AddClass(Size.ToButtonSize())
+		.AddClass(EffectiveStyle.ToButtonTheme(Active, Outline))
+		.AddClass(EffectiveSize.ToButtonSize())
 		.AddClass(Block, "w-full")
-        .AddClass(Disabled, "cursor-not-allowed opacity-50")
+        .AddClass(EffectiveDisabled, "cursor-not-allowed opacity-50")
 		.AddClass(AdditionalClasses);
 
     private RenderFragment RenderIcon => IconAnimation is not null
         ? IconAnimation(IconRender.Fragment(Icon!))
 		: IconRender.Fragment(Icon!);
 
-    private bool DarkRipple => Outline || Style is Themes.Light;
+    private bool DarkRipple => Outline || EffectiveStyle is Themes.Light;
 }
