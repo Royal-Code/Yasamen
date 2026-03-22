@@ -66,7 +66,7 @@ Componentes diversos:
 - [x] Dialog (Modal) — `RoyalCode.Razor.Modals` › `Modal`, `ModalHandler`
 - [ ] Tabs
 - [ ] Tree
-- [ ] Pagination
+- [x] Pagination
 - [ ] Panel *(parcial — `Box` + `OffCanvas/AsideBox` cobrem casos de painel)*
 - [ ] Placeholders / Skeleton
 - [ ] Popover
