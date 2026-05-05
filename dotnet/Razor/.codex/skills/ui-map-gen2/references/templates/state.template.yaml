@@ -1,0 +1,55 @@
+# State Template — ui-map-gen v2
+
+# Identificação da rodada
+ui_map_id: UIMAP-{slug}-{YY}-{DoY}
+directory: .ai/ui-map/{slug}/
+
+# Biblioteca principal
+library:
+  name: "{nome da biblioteca}"
+  slug: "{slug-dash-case}"
+  source_kind: repo|web  # repo = código local; web = documentação pública
+  version: "{versão conhecida ou desconhecida}"
+  target_platforms: [web]  # web|mobile|desktop — determina catálogos condicionais activados
+  sources:
+    - kind: code|docs|samples|stories
+      ref: "{path relativo ou URI}"
+
+# Bibliotecas auxiliares (crescem conforme necessário)
+auxiliary_libraries: []
+  # - name: "{nome}"
+  #   purpose: "{para que entra}"
+  #   scope: "{componentes|patterns|tema|comportamento}"
+  #   source_ref: "{path|url}"
+  #   status: pending|done|discarded
+
+# Controle de etapa
+current_stage: workflow|components-summary|visual-language|ui-map|patterns-output|corporate-guides|finalize|done
+current_item: null  # usado em loops; o significado depende da sub-etapa ativa
+patterns_output:
+  substage: null  # samples|blueprints|patterns_map quando current_stage = patterns-output
+
+# Status por etapa
+stages:
+  components_summary: pending|done|blocked
+  visual_language: pending|done|blocked
+  styles_map: pending|done|blocked|skipped
+  ui_map: pending|done|blocked
+  patterns_output: pending|done|blocked
+  corporate_guides: pending|done|blocked|skipped
+  finalize: pending|done|blocked
+
+# Controle de bloqueios e gaps
+blockers: []
+  # - stage: "{etapa}"
+  #   reason: "{motivo}"
+  #   resolution: null|"{como foi resolvido}"
+
+open_gaps: []
+  # - id: GAP-{n}
+  #   stage: "{etapa}"
+  #   description: "{descrição curta}"
+  #   status: open|resolved|accepted
+
+# Próxima ação segura (atualizado a cada transição)
+next_action: "{descrição curta da próxima ação}"

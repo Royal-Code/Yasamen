@@ -1,0 +1,86 @@
+# State Template - ui-map-gen v2
+
+ui_map_id: UIMAP-yasamen-26-124
+directory: .ai/ui-map/yasamen/
+
+library:
+  name: "yasamen"
+  slug: "yasamen"
+  source_kind: repo
+  version: "desconhecida"
+  target_platforms: [web]
+  sources:
+    - kind: code
+      ref: "RoyalCode.Razor.Alerts/"
+    - kind: code
+      ref: "RoyalCode.Razor.Animations/"
+    - kind: code
+      ref: "RoyalCode.Razor.Breadcrumbs/"
+    - kind: code
+      ref: "RoyalCode.Razor.Buttons/"
+    - kind: code
+      ref: "RoyalCode.Razor.Commons/"
+    - kind: code
+      ref: "RoyalCode.Razor.Drops/"
+    - kind: code
+      ref: "RoyalCode.Razor.Forms/"
+    - kind: code
+      ref: "RoyalCode.Razor.Icons/"
+    - kind: code
+      ref: "RoyalCode.Razor.Icons.Bootstrap/"
+    - kind: code
+      ref: "RoyalCode.Razor.Layouts/"
+    - kind: code
+      ref: "RoyalCode.Razor.Layouts.Apps/"
+    - kind: code
+      ref: "RoyalCode.Razor.Modals/"
+    - kind: code
+      ref: "RoyalCode.Razor.Navigation/"
+    - kind: code
+      ref: "RoyalCode.Razor.OffCanvas/"
+    - kind: code
+      ref: "RoyalCode.Razor.Styles/"
+    - kind: docs
+      ref: "RoyalCode.Razor.Docs/"
+    - kind: samples
+      ref: "RoyalCode.Razor.Docs/RoyalCode.Razor.Docs.Client/Pages/Demo/"
+    - kind: samples
+      ref: "RoyalCode.Razor.Show/"
+    - kind: tests
+      ref: "RoyalCode.Razor.Buttons.Tests/"
+    - kind: tests
+      ref: "RoyalCode.Razor.Commons.Tests/"
+    - kind: tests
+      ref: "RoyalCode.Razor.Navigation.Tests/"
+
+auxiliary_libraries: []
+
+current_stage: ui-map
+current_item: null
+patterns_output:
+  substage: null
+
+activated_catalogs:
+  - shell.pattern.md
+  - page.pattern.md
+  - ui_struct.pattern.md
+  - ui_nav.pattern.md
+  - ui_data.pattern.md
+  - ui_input.pattern.md
+  - ui_action.pattern.md
+  - ui_feedback.pattern.md
+  - ui_content.pattern.md
+
+stages:
+  components_summary: done
+  visual_language: done
+  styles_map: done
+  ui_map: pending
+  patterns_output: pending
+  corporate_guides: pending
+  finalize: pending
+
+blockers: []
+open_gaps: []
+
+next_action: "Aguardar avaliação humana do ui-map antes de patterns-output."

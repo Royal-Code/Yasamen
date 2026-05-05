@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI Map Gen 2"
+  short_description: "Mapear bibliotecas UI por protocolos"
+  default_prompt: "Use $ui-map-gen2 para analisar esta biblioteca UI por workflow e gerar ui-map, linguagem visual, samples, blueprints e manifest."
