@@ -7,7 +7,7 @@ library:
   name: "yasamen"
   slug: "yasamen"
   source_kind: repo
-  version: "desconhecida"
+  version: "0.0.0.1"
   target_platforms: [web]
   sources:
     - kind: code
@@ -55,10 +55,10 @@ library:
 
 auxiliary_libraries: []
 
-current_stage: ui-map
+current_stage: done
 current_item: null
 patterns_output:
-  substage: null
+  substage: patterns_map
 
 activated_catalogs:
   - shell.pattern.md
@@ -75,12 +75,12 @@ stages:
   components_summary: done
   visual_language: done
   styles_map: done
-  ui_map: pending
-  patterns_output: pending
-  corporate_guides: pending
-  finalize: pending
+  ui_map: done
+  patterns_output: done
+  corporate_guides: done
+  finalize: done
 
 blockers: []
 open_gaps: []
 
-next_action: "Aguardar avaliação humana do ui-map antes de patterns-output."
+next_action: "Rodada finalizada. Aguardar avaliação humana."
