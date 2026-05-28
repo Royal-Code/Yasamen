@@ -62,7 +62,7 @@
 
 <Bar AdditionalClasses="mb-4">
     <StartContent>
-        <FieldText @bind-Value="busca" Placeholder="Buscar..." @oninput="Buscar" />
+        <TextField @bind-Value="busca" Placeholder="Buscar..." @oninput="Buscar" />
     </StartContent>
 </Bar>
 

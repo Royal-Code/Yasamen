@@ -8,9 +8,9 @@
 | UIP-STRUCT-STACK_CONTAINER | Stack Container | Stack | Box | Não | 9 |
 | UIP-STRUCT-GRID_CONTAINER | Grid Container | Container + Slot | Box | Sim | 9 |
 | UIP-STRUCT-SCROLLABLE_REGION | Scrollable Region | — | — | Sim (CSS) | 2 |
-| UIP-STRUCT-SPLIT_PANEL | Split Panel | — | Container + Slot, Box | Sim | 4 |
-| UIP-STRUCT-COLLAPSIBLE_SECTION | Collapsible Section | — | Box | Sim | 2 |
-| UIP-STRUCT-DOCKED_PANEL_SET | Docked Panel Set | AppLayout | AppSideBar, AppTopBar, OffCanvas | Não | 8 |
+| UIP-STRUCT-SPLIT_PANEL | Split Panel | — | Box, Stack | Sim | 3 |
+| UIP-STRUCT-COLLAPSIBLE_SECTION | Collapsible Section | — | Bar, Box, Badge, Feedback | Sim | 4 |
+| UIP-STRUCT-DOCKED_PANEL_SET | Docked Panel Set | — | AppLayout, AppSideBar, Box, Bar, Stack | Sim | 2 |
 
 ## UI-FEEDBACK — Feedback e Estado
 
@@ -87,8 +87,8 @@
 
 | Pattern Id | Pattern Name | Implementam | Compõe | Montagem | Nota |
 |---|---|---|---|---|---|
-| UIP-INPUT-FORM_FIELD_GROUP | Form Field Group | FieldGroup (interno) | FieldText, FieldAction, FieldBadge, Container, Slot | Não | 8 |
-| UIP-INPUT-INPUT_FIELD | Input Field | FieldText | FieldGroup | Não | 7 |
+| UIP-INPUT-FORM_FIELD_GROUP | Form Field Group | — | Stack, Box | Não | 6 |
+| UIP-INPUT-INPUT_FIELD | Input Field | TextField | FieldText, FieldBadge, FieldAction | Não | 7 |
 | UIP-INPUT-CHOICE_GROUP | Choice Group | — | HTML nativo + FieldGroup | Sim | 2 |
 | UIP-INPUT-OPTION_PICKER | Option Picker | — | HTML `<select>` + FieldGroup | Sim | 2 |
 | UIP-INPUT-LOOKUP_FIELD | Lookup Field | FieldAction | FieldGroup, Button | Fraca | 4 |
@@ -141,34 +141,34 @@
 | Pattern Id | Pattern Name | Implementam | Compõe | Montagem | Nota |
 |---|---|---|---|---|---|
 | PP-LIST-DETAIL | List Detail | — | Bar, Box, Container+Slot, Badge, DropIconButton, Pagination, OffCanvas | Sim | 6 |
-| PP-CATALOG | Catalog | — | Container+Slot, Box, FieldText, Button, Pagination, Badge | Sim | 6 |
-| PP-FORM | Form | — | Container+Slot, FieldText, FieldAction, Button, Feedback, Bar | Não | 8 |
-| PP-WIZARD | Wizard | — | Container+Slot, FieldText, Bar, Button, Feedback | Sim | 5 |
-| PP-DASHBOARD | Dashboard | — | Container+Slot, Box, Stack, Badge, Bar | Sim | 7 |
-| PP-DETAIL | Detail | — | Bar, Box, Stack, Badge, Breadcrumb, Button | Sim | 7 |
-| PP-LANDING | Landing | — | Box, Container+Slot, Bar, Button | Sim | 5 |
-| PP-CONVERSATION | Conversation | — | Stack, Box, Bar, Button, FieldText | Sim | 4 |
-| PP-FEED | Feed | — | Stack, Box, Bar, Badge, Pagination | Sim | 5 |
-| PP-SETTINGS | Settings | — | Box, Stack, FieldText, Bar, Button, Feedback | Sim | 7 |
-| PP-BOARD | Board | — | Container+Slot, Box, Stack, Badge | Sim | 4 |
-| PP-CALENDAR | Calendar | — | — | Não | 1 |
+| PP-CATALOG | Catalog | — | Container+Slot, Box, TextField, OffCanvas, Button, Pagination, Badge | Sim | 8 |
+| PP-FORM | Form | — | EditForm, Stack, Box, TextField, Button, Feedback, Modal | Não | 8 |
+| PP-WIZARD | Wizard | — | Container+Slot, TextField, Bar, Button, Feedback, EditForm | Sim | 6 |
+| PP-DASHBOARD | Dashboard | — | Container+Slot, Box, Stack, Badge, Bar, Feedback, OffCanvas | Sim | 5 |
+| PP-DETAIL | Detail | — | Bar, Box, Stack, Badge, Breadcrumb, Button, Modal | Sim | 8 |
+| PP-LANDING | Landing | — | Box, Container+Slot, Bar, Button | Sim | 4 |
+| PP-CONVERSATION | Conversation | — | Stack, Box, Bar, Button, TextField | Sim | 5 |
+| PP-FEED | Feed | — | Stack, Box, Bar, Badge, Pagination, DropIconButton | Sim | 6 |
+| PP-SETTINGS | Settings | — | Box, Stack, TextField, Bar, Button, Feedback | Sim | 7 |
+| PP-BOARD | Board | — | Container+Slot, Box, Stack, Badge, DropIconButton | Sim | 5 |
+| PP-CALENDAR | Calendar | — | — | Não | 2 |
 | PP-MAP | Map | — | — | Não | 1 |
 | PP-CANVAS | Canvas | — | — | Não | 1 |
-| PP-AUTH | Authentication | — | Box, Stack, FieldText, Button, Feedback, Bar | Sim | 7 |
+| PP-AUTH | Authentication | — | Box, Stack, TextField, Button, Feedback, Bar | Sim | 8 |
 
 ## SHELL — Shell Patterns
 
 | Pattern Id | Pattern Name | Implementam | Compõe | Montagem | Nota |
 |---|---|---|---|---|---|
-| SHP-WORKSPACE_ADMIN | Workspace/Admin | AppLayout | AppTopBar, AppSideBar, AppMenu, OffCanvas, Modal, Notification | Não | 9 |
-| SHP-PORTAL | Portal | AppLayout (parcial) | AppTopBar, Bar, Box, Container+Slot | Sim | 5 |
-| SHP-COMMUNICATION | Communication | — | AppLayout, Box, Stack, Bar | Sim | 4 |
-| SHP-MEDIA_CONTENT | Media/Content | — | AppLayout, Box, Container+Slot | Sim | 4 |
-| SHP-DASHBOARD_ANALYTICS | Dashboard/Analytics | AppLayout | AppTopBar, AppSideBar, Container+Slot, Box | Sim | 7 |
-| SHP-STUDIO_WORKBENCH | Studio/Workbench | — | AppLayout | Sim | 3 |
-| SHP-TRANSACTIONAL_COMMERCE | Transactional/Commerce | — | AppLayout, Box, Container+Slot | Sim | 4 |
-| SHP-KIOSK_EMBEDDED | Kiosk/Embedded | — | Box, Container+Slot | Sim | 3 |
-| SHP-FOCUSED | Focused | — | Box, Stack, Button | Sim | 5 |
+| SHP-WORKSPACE_ADMIN | Workspace/Admin | AppLayout | AppSideBar, AppMenu, OffCanvas, Modal, Notification | Não | 9 |
+| SHP-PORTAL | Portal | — | Bar, Box, Container+Slot, OffCanvas | Sim | 4 |
+| SHP-COMMUNICATION | Communication | — | AppLayout, Box, Stack, Bar, FieldTextArea | Sim | 4 |
+| SHP-MEDIA_CONTENT | Media/Content | — | Bar, Box, Container+Slot, Pagination, OffCanvas | Sim | 6 |
+| SHP-DASHBOARD_ANALYTICS | Dashboard/Analytics | AppLayout | AppSideBar, Container+Slot, Box, Bar, Badge, OffCanvas | Sim | 5 |
+| SHP-STUDIO_WORKBENCH | Studio/Workbench | — | Bar, IconButton, DropButton, Box, FormGroup | Sim | 2 |
+| SHP-TRANSACTIONAL_COMMERCE | Transactional/Commerce | — | Bar, Badge, Container+Slot, Box, OffCanvas, FormGroup, Modal | Sim | 7 |
+| SHP-KIOSK_EMBEDDED | Kiosk/Embedded | — | Bar, Box, Container+Slot, Modal, Feedback | Sim | 6 |
+| SHP-FOCUSED | Focused | — | Box, Stack, Button, Feedback | Sim | 9 |
 
 ## GAP
 
@@ -192,6 +192,7 @@
 | UIP-SYSTEM-MULTI_WINDOW | Multi Window | fora da plataforma | Múltiplas janelas independentes. | nenhum | Gerenciamento de janelas é responsabilidade do browser/OS, não do componente Razor. |
 | UIP-SYSTEM-TRAY | System Tray | fora da plataforma | Presença no system tray do SO. | nenhum | Exclusivo de app desktop nativo; não aplicável a Blazor Web. |
 | UIP-SYSTEM-DOCK_INTEGRATION | Dock Integration | fora da plataforma | Integração com dock do SO. | nenhum | Exclusivo de app desktop nativo. |
+| UIP-NAV-NAV_STACK | Navigation Stack | sem cobertura viável | Navegação hierárquica via push/pop de vistas. | nenhum | Pattern coberto pelo Blazor Router (NavigationManager), não pela biblioteca de componentes; nenhum componente da lib é necessário para este pattern na plataforma Web. |
 | UIP-OVERLAY-BOTTOM_SHEET | Bottom Sheet | fora da plataforma | Superfície deslizante da base (mobile). | nenhum | Padrão primariamente mobile nativo; OffCanvas pode ser usado como alternativa parcial para Web. |
 | UIP-OVERLAY-FLOATING_PANEL | Floating Panel | sem cobertura viável | Painel flutuante reposicionável. | nenhum | Nenhum componente de painel flutuante/draggable; requer implementação customizada. |
 | PP-CALENDAR | Calendar | sem cobertura viável | Página de agenda/calendário. | nenhum | Sem UIP-SURFACE-CALENDAR; página de calendário requer lib externa. |

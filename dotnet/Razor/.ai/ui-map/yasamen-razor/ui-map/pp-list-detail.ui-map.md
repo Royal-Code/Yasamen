@@ -92,7 +92,7 @@
 @* Barra de ações da página *@
 <Bar AdditionalClasses="mb-4">
     <StartContent>
-        <FieldText @bind-Value="busca" Placeholder="Buscar itens..." @oninput="FiltrarLocal" />
+        <TextField @bind-Value="busca" Placeholder="Buscar itens..." @oninput="FiltrarLocal" />
     </StartContent>
     <EndContent>
         <Button Style="Themes.Primary" Label="Novo item"

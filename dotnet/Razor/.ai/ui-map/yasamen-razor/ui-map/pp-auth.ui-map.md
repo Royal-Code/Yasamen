@@ -11,15 +11,15 @@
 
 ### Zona: Conteúdo (credenciais)
 
-1. FormGroup + FieldText (UIP-INPUT-FORM_FIELD_GROUP + UIP-INPUT-INPUT_FIELD)
-- `cobertura`: campos de e-mail (`Type="email"`), senha (`Type="password"`), código de verificação;
-- `nota`: 9;
-- `justificativa`: captura de credenciais — cobertura excelente nativa.
-
-2. FieldCheckbox (lembrar-me)
-- `cobertura`: opção "Lembrar minha senha";
+1. TextField (UIP-INPUT-INPUT_FIELD)
+- `cobertura`: campo de e-mail (`TextField` text com validação `[EmailAddress]`), senha (`Type="@InputType.Password"`), código de verificação;
 - `nota`: 8;
-- `justificativa`: preferência de sessão.
+- `justificativa`: captura de credenciais — cobertura sólida com TextField nativo.
+
+2. HTML `<InputCheckbox>` + label (lembrar-me)
+- `cobertura`: opção "Lembrar minha senha" via `<InputCheckbox @bind-Value>` Blazor + `<label>` HTML; sem estilização da biblioteca;
+- `nota`: 5;
+- `justificativa`: funcional mas requer HTML manual de label e estilo.
 
 3. Feedback Style=Danger (UIP-FEEDBACK-ERROR_STATE)
 - `cobertura`: "Credenciais inválidas", "Conta não encontrada", "Conta bloqueada";
@@ -84,7 +84,6 @@
     }
 }
 
-@* Layout centralizado (AuthLayout.razor) *@
 <div class="min-h-screen flex items-center justify-center bg-light-50 px-4">
     <div class="w-full max-w-sm">
         @* Logo *@
@@ -107,8 +106,8 @@
             <EditForm Model="model" OnValidSubmit="Entrar">
                 <DataAnnotationsValidator />
                 <Stack Gap="Gaps.Medium">
-                    <FieldText @bind-Value="model.Email" Label="E-mail"
-                               Type="email" Required Placeholder="voce@empresa.com" />
+                    <TextField @bind-Value="model.Email" Label="E-mail"
+                               Placeholder="voce@empresa.com" required />
                     <div>
                         <div class="flex justify-between items-center mb-1">
                             <label class="text-sm text-dark-600">Senha</label>
@@ -117,11 +116,19 @@
                                 Esqueceu a senha?
                             </a>
                         </div>
-                        <FieldText @bind-Value="model.Senha" Type="password" Required
-                                   Placeholder="Sua senha" />
+                        <TextField @bind-Value="model.Senha" Type="@InputType.Password"
+                                   Placeholder="Sua senha" required />
                     </div>
-                    <FieldCheckbox @bind-Value="model.LembrarMe" Label="Lembrar minha senha" />
-                    <Button Style="Themes.Primary" Label="@(processando ? "Entrando..." : "Entrar")"
+                    @* Checkbox "lembrar" — InputCheckbox Blazor + label manual *@
+                    <div class="flex items-center gap-2">
+                        <InputCheckbox @bind-Value="model.LembrarMe" id="cb-lembrar"
+                                       class="accent-primary-500" />
+                        <label for="cb-lembrar" class="text-sm text-dark-500 cursor-pointer">
+                            Lembrar minha senha
+                        </label>
+                    </div>
+                    <Button Style="Themes.Primary"
+                            Label="@(processando ? "Entrando..." : "Entrar")"
                             Type="submit" Disabled="@processando"
                             AdditionalClasses="w-full justify-center" />
                 </Stack>
@@ -176,7 +183,8 @@
             {
                 <EditForm Model="@this" OnValidSubmit="Enviar">
                     <Stack Gap="Gaps.Medium">
-                        <FieldText @bind-Value="email" Label="E-mail" Type="email" Required />
+                        <TextField @bind-Value="email" Label="E-mail"
+                                   Placeholder="seu@email.com" required />
                         <Button Style="Themes.Primary"
                                 Label="@(processando ? "Enviando..." : "Enviar instruções")"
                                 Type="submit" Disabled="@processando"
@@ -198,9 +206,9 @@
 ## Decisão de uso
 
 - `nota geral`: 8;
-- `limitações`: sem componente de botão OAuth (Google, Microsoft, GitHub) — requer HTML manual + JS; sem verificação visual de força de senha; sem input de código MFA com slots individuais;
+- `limitações`: sem botão OAuth (Google, Microsoft, GitHub) — requer HTML manual + JS; sem verificação visual de força de senha; sem input de código MFA com slots individuais; checkbox "lembrar" requer `<InputCheckbox>` Blazor + label HTML manual;
 - `recomendação`: `usar por composição`
 - `justificativa geral`:
-  - `FieldText` (`Type="password"`, `Type="email"`) + `Feedback Style=Danger` + `Button` + `Box` cobrem PP-AUTH com excelente qualidade;
+  - `TextField` (`Type="@InputType.Password"`) + `Feedback Style=Danger` + `Button` + `Box` cobrem PP-AUTH com boa qualidade;
   - `AuthorizeView` + `NavigationManager` da plataforma Blazor completam o ciclo de autenticação;
   - Nota 8 reflete ótima cobertura — PP-AUTH é bem suportado pela lib para os casos padrão.

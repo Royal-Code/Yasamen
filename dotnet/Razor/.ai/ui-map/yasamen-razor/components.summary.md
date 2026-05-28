@@ -346,23 +346,65 @@
 
 ---
 
+## TextField
+
+**Grupo**: UI-INPUT
+**Papel de consumo**: uso-direto
+**Propósito**: Campo de texto completo com label, placeholder, erro, informação, prepend/append, integração com EditForm e DataAnnotations. É o componente principal para captura de entrada de texto na biblioteca.
+**Características visuais**:
+- Renderiza via `InputFieldBase<string>` + `FieldGroup` interno com `ya-field-group` + `ya-input-field`
+- Estado inválido: `ya-input-field-invalid` + `ya-field-group-invalid`
+- Tamanhos via `Sizes` enum com classes `ya-field-*`
+- Suporta prefixo textual (`FieldText`) e botão de ação (`FieldAction`) via Prepend/Append
+- Label automático via DataAnnotations quando dentro de `EditForm` com modelo
+**Quando usar**:
+- Inputs de texto, senha e outros tipos simples em formulários
+- Dentro de `EditForm` para binding e validação automática
+- Standalone com `@bind-Value` para inputs fora de formulário
+**Quando não usar**:
+- Apenas como wrapper visual — usar `FieldText`
+- Quando precisa de select/checkbox/number — usar HTML nativo ou componentes Blazor
+**Compõe**: FieldGroup (interno), FieldText (Prepend/Append), FieldAction (FooterAction), FieldBadge (DescriptionComplement)
+**Composto em**: Formulários, páginas de detalhe, filtros inline
+**Propriedades**:
+- `@bind-Value: string` — valor atual (two-way binding)
+- `Type: InputType` — Text (default) | Password
+- `Label: string?` — label; auto-detectado via DataAnnotations quando em EditForm
+- `Placeholder: string?`
+- `Information: string?` — texto de ajuda abaixo do campo
+- `Error: string?` — mensagem de erro manual (complementa DataAnnotations)
+- `Disabled: bool` / `ReadOnly: bool`
+- `Size: Sizes` — densidade/tamanho
+- `Prepend / Append: RenderFragment` — conteúdo antes/após o input (FieldText, FieldAction, FieldBadge)
+- `DescriptionComplement: RenderFragment` — conteúdo adicional na linha do label (FieldBadge)
+- `FooterAction: RenderFragment` — ação no rodapé do campo (FieldAction)
+- `AdditionalClasses / AdditionalAttributes`
+**Referências**:
+- `RoyalCode.Razor.Forms/Components/TextField.cs`
+- `RoyalCode.Razor.Forms/Internal/Forms/InputFieldBase.razor`
+- `RoyalCode.Razor.Forms/Internal/Forms/FieldBase.cs`
+- `RoyalCode.Razor.Docs/.../Forms/TextFieldPage.razor`
+**Notas**: `InputType` suporta apenas `Text` e `Password`. Para email, date, number: usar HTML `<input type="email/date/number">` ou Blazor `<InputDate>`, `<InputNumber>`, dentro de `FieldGroup` (interno, não público). Não existem componentes `FieldSelect`, `FieldCheckbox`, `FieldNumber`, `FieldTextArea` ou `FormGroup` públicos na biblioteca — usar HTML nativo, `<InputSelect>`, `<InputCheckbox>`, `<InputNumber>` do Blazor dentro de `EditForm`.
+
+---
+
 ## FieldText
 
 **Grupo**: UI-INPUT
 **Papel de consumo**: uso-direto
-**Propósito**: Wrapper estrutural para campos de texto. Envolve um input/control com a classe `ya-field-text`.
+**Propósito**: Wrapper decorativo para texto estático dentro de grupos de campo (prefixo/sufixo). Aplica classe `ya-field-text`. NÃO é um input — é um ornamento textual para Prepend/Append de `TextField`.
 **Características visuais**:
 - Classe raiz `ya-field-text`
-- Wrapper simples sem lógica adicional
-**Quando usar**: Para envolver um `<input>` ou control customizado que precisa do estilo de campo de texto da biblioteca.
-**Quando não usar**: Quando se precisa de label, erro e estrutura completa — usar `FieldGroup` (interno) ou construir via layout.
-**Compõe**: Qualquer input HTML ou control
-**Composto em**: FieldGroup (interno), formulários
+- Wrapper `div` simples sem lógica de input
+**Quando usar**: Como conteúdo de `Prepend` ou `Append` em `TextField` para exibir texto estático antes/após o input (ex: `https://`, `@`, `.com`, `R$`).
+**Quando não usar**: Para campos de input com binding — usar `TextField`.
+**Compõe**: Texto estático
+**Composto em**: TextField (Prepend/Append)
 **Propriedades**:
 - `ChildContent: RenderFragment` [EditorRequired]
 - `AdditionalClasses / AdditionalAttributes`
 **Referências**: `RoyalCode.Razor.Forms/Components/FieldText.razor`
-**Notas**: Componente de wrapper simples; lógica de label/error/grupo fica em `FieldGroup` (interno).
+**Notas**: Sempre usado dentro de slots Prepend/Append do TextField. Nunca com @bind-Value.
 
 ---
 

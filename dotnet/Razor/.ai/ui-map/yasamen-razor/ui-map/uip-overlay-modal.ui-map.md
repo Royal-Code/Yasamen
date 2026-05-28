@@ -79,11 +79,21 @@
     <ChildContent>
         <EditForm Model="form" OnValidSubmit="Salvar">
             <DataAnnotationsValidator />
-            <FormGroup>
-                <FieldText @bind-Value="form.Nome" Label="Nome" Required />
-                <FieldText @bind-Value="form.Email" Label="E-mail" Type="email" />
-                <FieldSelect @bind-Value="form.Status" Label="Status" Options="statusOptions" />
-            </FormGroup>
+            <Stack Gap="Gaps.Medium">
+                <TextField @bind-Value="form.Nome" Label="Nome" required />
+                <TextField @bind-Value="form.Email" Label="E-mail" />
+                @* [inferido] FieldSelect não existe — usar <InputSelect> Blazor *@
+                <div class="flex flex-col gap-1">
+                    <label class="text-sm font-medium text-dark-600">Status</label>
+                    <InputSelect @bind-Value="form.Status"
+                                 class="w-full border border-light-300 rounded-md px-3 py-2 text-sm bg-white">
+                        @foreach (var opt in statusOptions)
+                        {
+                            <option value="@opt.Value">@opt.Label</option>
+                        }
+                    </InputSelect>
+                </div>
+            </Stack>
         </EditForm>
     </ChildContent>
     <FooterContent>

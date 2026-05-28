@@ -75,8 +75,8 @@ A biblioteca não tem componente de inline editor. Requer composição manual co
 @if (editando)
 {
     <div class="flex items-center gap-1">
-        <FieldText @bind-Value="valorEdicao" @onkeydown="OnKeyDown"
-                   AdditionalClasses="py-0.5" AutoFocus=true />
+        <TextField @bind-Value="valorEdicao" @onkeydown="OnKeyDown"
+                   AdditionalClasses="py-0.5" autofocus />
         <IconButton Icon="WellKnownIcons.Check" Style="Themes.Success"
                     Size="Sizes.Small" Loading="@salvando"
                     OnClick="ConfirmarEdicao" />
@@ -104,10 +104,10 @@ else
 ```razor
 @if (editando)
 {
-    <FieldText @bind-Value="valorEdicao"
+    <TextField @bind-Value="valorEdicao"
                @onblur="ConfirmarEdicao"
                @onkeydown="OnKeyDown"
-               AutoFocus=true />
+               autofocus />
 }
 else
 {
@@ -121,7 +121,7 @@ else
 
 - `nota geral`: 2;
 - `limitações`: sem componente de inline editor nativo; toda lógica de edição/confirmação/cancelamento é do app; foco automático requer `@ref` + JS ou `AutoFocus`; sem validação inline automática;
-- `recomendação`: `usar com adaptação`
+- `recomendação`: `usar apenas como apoio`
 - `justificativa geral`:
   - `FieldText` + `IconButton` + estado `editando` formam um inline editor funcional;
   - A lógica de alternância é totalmente manual — sem abstração dedicada;

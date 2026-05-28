@@ -130,10 +130,15 @@
             </StartContent>
             <EndContent>
                 @* Seletor de período global *@
-                <FieldSelect Value="@periodoGlobal"
-                             ValueChanged="async v => { periodoGlobal = v; await RefreshAll(); }"
-                             Options='new[] { ("7d","7 dias"), ("30d","30 dias"),
-                                             ("90d","90 dias"), ("1y","1 ano") }' />
+                @* [inferido] FieldSelect não existe — usar ButtonGroup ou InputSelect *@
+                <ButtonGroup>
+                    @foreach (var opt in new[] { ("7d","7d"), ("30d","30d"), ("90d","90d"), ("1y","1 ano") })
+                    {
+                        <Button Label="@opt.Item2" Style="Themes.Secondary" Size="Sizes.Small"
+                                Active="@(periodoGlobal==opt.Item1)" Outline="@(periodoGlobal!=opt.Item1)"
+                                OnClick="async () => { periodoGlobal = opt.Item1; await RefreshAll(); }" />
+                    }
+                </ButtonGroup>
                 <IconButton Icon="WellKnownIcons.Refresh" Style="Themes.Default"
                            title="Atualizar"
                            OnClick="async () => await RefreshAll()" />

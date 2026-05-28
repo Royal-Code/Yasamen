@@ -4,16 +4,16 @@
 
 **Principais**:
 
-1. FieldText
-- `cobertura`: campo textual de busca com `Placeholder="Buscar..."`, `Type="search"` para semântica HTML, ícone de busca via `PrependIcon` ou composição; `@oninput` ou `@onchange` para disparar busca; `@bind-Value` para debounce em C#; botão "limpar" via ícone no lado direito;
+1. TextField
+- `cobertura`: campo textual de busca com `Placeholder="Buscar..."`, `@oninput` ou `@onchange` para disparar busca; `@bind-Value` para debounce em C#; adorno de ícone de busca via `Prepend` + `FieldBadge`; botão "limpar" via `IconButton` ao lado;
 - `limitações`: sem sugestões/autocomplete nativo; sem botão de limpar integrado com ícone X dentro do campo; sem expansão animada;
 - `nota`: 7;
 - `justificativa`: campo de busca textual funcional com semântica correta — cobre a variante mais comum sem sugestões.
 
 **Composição**:
 
-1. Bar (com FieldText + IconButton)
-- `cobertura`: `FieldText` de busca + `IconButton` de limpar ao lado (quando necessário); campo de busca com botão "Pesquisar" explícito ao lado;
+1. Bar (com TextField + IconButton)
+- `cobertura`: `TextField` de busca + `IconButton` de limpar ao lado (quando necessário); campo de busca com botão "Pesquisar" explícito ao lado;
 - `nota`: 7;
 - `justificativa`: variante de busca com ação explícita ou botão de limpar posicionado ao lado.
 
@@ -28,15 +28,15 @@
 
 - `requisitos mal cobertos`:
   - `sugestões/autocomplete durante digitação`: composição manual com lista dropdown absoluta;
-  - `botão X integrado dentro do campo`: compor `<div class="relative">` + `FieldText` + `IconButton` absoluto;
+  - `botão X integrado dentro do campo`: compor `<div class="relative">` + `TextField` + `IconButton` absoluto;
   - `indicador de loading dentro do campo`: ícone de spinner manual ao lado direito via composição;
   - `debounce de busca reativa`: `System.Timers.Timer` ou `Task.Delay` em C# com cancellation token.
 
 - `tipo de adaptação`: componente parcial + composição
 - `o que precisa ser feito`:
-  - Para busca simples (reativa): `FieldText` com `@oninput="Buscar"` + debounce em C#;
-  - Para busca por clique: `Bar` com `FieldText` + `Button "Pesquisar"`;
-  - Para busca com limpar: `FieldText` + `IconButton X` ao lado ou em div relativo.
+  - Para busca simples (reativa): `TextField` com `@oninput="Buscar"` + debounce em C#;
+  - Para busca por clique: `Bar` com `TextField` + `Button "Pesquisar"`;
+  - Para busca com limpar: `TextField` + `IconButton X` ao lado ou em div relativo.
 
 ## Como usar
 
@@ -61,8 +61,8 @@
     }
 }
 
-<FieldText Value="@termoBusca" Placeholder="Buscar usuários..."
-           @oninput="OnBuscar" Type="search" />
+<TextField Value="@termoBusca" Placeholder="Buscar usuários..."
+           @oninput="OnBuscar" />
 ```
 
 ### Busca com botão explícito e limpar
@@ -71,8 +71,8 @@
 <Bar AdditionalClasses="mb-4">
     <StartContent AdditionalClasses="flex-1">
         <div class="flex gap-2 w-full">
-            <FieldText @bind-Value="termoBusca" Placeholder="Buscar..."
-                       AdditionalClasses="flex-1" Type="search" />
+            <TextField @bind-Value="termoBusca" Placeholder="Buscar..."
+                       AdditionalClasses="flex-1" />
             @if (!string.IsNullOrEmpty(termoBusca))
             {
                 <IconButton Icon="WellKnownIcons.Close" Style="Themes.Default"
@@ -90,7 +90,7 @@
 ```razor
 <Bar AdditionalClasses="mb-4">
     <StartContent AdditionalClasses="flex-1">
-        <FieldText @bind-Value="termoBusca" Placeholder="Buscar por nome ou código..."
+        <TextField @bind-Value="termoBusca" Placeholder="Buscar por nome ou código..."
                    AdditionalClasses="w-full max-w-md" @oninput="OnBuscar" />
     </StartContent>
     <EndContent>
@@ -106,6 +106,6 @@
 - `limitações`: sem sugestões/autocomplete nativo; sem botão X integrado dentro do campo; debounce requer lógica C# manual; sem expansão animada; sem histórico de buscas;
 - `recomendação`: `usar por composição`
 - `justificativa geral`:
-  - `FieldText` com `Type="search"` cobre a busca textual simples e reativa;
+  - `TextField` com `Type="search"` cobre a busca textual simples e reativa;
   - Debounce manual em C# + composição com `Bar`/`IconButton` completa os casos comuns;
   - Nota 5 reflete cobertura parcial — funcional para a maioria dos casos mas sem sugestões nativas.

@@ -146,7 +146,7 @@ A biblioteca não tem componente de mapa. PP-MAP depende de `UIP-SURFACE-MAP` co
 
 - `nota geral`: 1;
 - `limitações`: sem componente de mapa nativo — GAP crítico; todo o viewport cartográfico requer biblioteca externa; a lib contribui apenas com toolbar, filtros e painéis de detalhe em overlay;
-- `recomendação`: `usar com adaptação`
+- `recomendação`: `usar apenas como apoio`
 - `justificativa geral`:
   - `Bar` + `OffCanvas` + `Modal` + `Button` cobrem os controles e overlays do mapa com boa qualidade;
   - A superfície de mapa em si é responsabilidade de Leaflet.js, Google Maps, Azure Maps ou equivalente;

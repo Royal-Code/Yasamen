@@ -78,11 +78,10 @@ A biblioteca não tem componente de repeating group. Requer composição com `St
                     </EndContent>
                 </Bar>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <FieldText @bind-Value="contatos[idx].Nome" Label="Nome" Required=true />
-                    <FieldText @bind-Value="contatos[idx].Telefone" Label="Telefone"
-                               Type="tel" />
-                    <FieldText @bind-Value="contatos[idx].Email" Label="E-mail"
-                               Type="email" AdditionalClasses="sm:col-span-2" />
+                    <TextField @bind-Value="contatos[idx].Nome" Label="Nome" Required=true />
+                    <TextField @bind-Value="contatos[idx].Telefone" Label="Telefone" />
+                    <TextField @bind-Value="contatos[idx].Email" Label="E-mail"
+                               AdditionalClasses="sm:col-span-2" />
                 </div>
             </Box>
         }
@@ -104,7 +103,7 @@ A biblioteca não tem componente de repeating group. Requer composição com `St
         <Box Border="BorderBuilder.Box" AdditionalClasses="p-3">
             <Bar>
                 <StartContent>
-                    <FieldText @bind-Value="itens[idx].Descricao" Label="" Placeholder="Descrição" />
+                    <TextField @bind-Value="itens[idx].Descricao" Label="" Placeholder="Descrição" />
                 </StartContent>
                 <EndContent>
                     <ButtonGroup>

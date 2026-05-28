@@ -86,12 +86,12 @@ A biblioteca não tem componente de seção colapsável/accordion. Requer compos
     @if (expandido)
     {
         <div class="p-4">
-            <FormGroup>
-                <FieldText @bind-Value="model.Nome" Label="Nome" Required />
-                <FieldText @bind-Value="model.Email" Label="E-mail" Type="email" />
-                <FieldText @bind-Value="model.Telefone" Label="Telefone" />
-                <FieldText @bind-Value="model.Cpf" Label="CPF" />
-            </FormGroup>
+            <Stack Gap="Gaps.Medium">
+                <TextField @bind-Value="model.Nome" Label="Nome" required />
+                <TextField @bind-Value="model.Email" Label="E-mail" />
+                <TextField @bind-Value="model.Telefone" Label="Telefone" />
+                <TextField @bind-Value="model.Cpf" Label="CPF" />
+            </Stack>
         </div>
     }
 </Box>
@@ -223,10 +223,10 @@ A biblioteca não tem componente de seção colapsável/accordion. Requer compos
             {
                 <Feedback Style="Themes.Danger" Text="Preencha todos os campos obrigatórios." />
             }
-            <FormGroup AdditionalClasses="mt-3">
-                <FieldText @bind-Value="endereco.Cep" Label="CEP" Required />
-                <FieldText @bind-Value="endereco.Logradouro" Label="Logradouro" Required />
-            </FormGroup>
+            <Stack Gap="Gaps.Medium" AdditionalClasses="mt-3">
+                <TextField @bind-Value="endereco.Cep" Label="CEP" required />
+                <TextField @bind-Value="endereco.Logradouro" Label="Logradouro" required />
+            </Stack>
         </div>
     }
 </Box>

@@ -100,7 +100,7 @@
                 </StartContent>
                 <EndContent>
                     @* Busca *@
-                    <FieldText @bind-Value="busca" Placeholder="Buscar..."
+                    <TextField @bind-Value="busca" Placeholder="Buscar..."
                                @oninput="Buscar" AdditionalClasses="w-48" />
 
                     @* Perfil / Login *@

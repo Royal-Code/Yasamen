@@ -74,7 +74,7 @@ A biblioteca não tem componente de gerenciamento de sessão. O tratamento de se
             {
                 <Feedback Style="Themes.Danger" Text="@erroReauth" />
             }
-            <FieldText @bind-Value="senha" Type="password"
+            <TextField @bind-Value="senha" Type="@InputType.Password"
                        Label="Senha" Placeholder="Digite sua senha" />
             <Bar>
                 <EndContent>

@@ -60,7 +60,8 @@ A biblioteca não tem componente de tooltip. A alternativa nativa é o atributo 
 
 ```razor
 <span title="Formato: DD/MM/AAAA">
-    <FieldText @bind-Value="data" Label="Data" Type="date" />
+    <input type="date" @bind="data"
+           class="w-full border border-light-300 rounded-md px-3 py-2 text-sm" />
 </span>
 ```
 
@@ -68,10 +69,10 @@ A biblioteca não tem componente de tooltip. A alternativa nativa é o atributo 
 
 ```razor
 @* Alternativa: texto de ajuda inline abaixo do campo *@
-<FormGroup>
-    <FieldText @bind-Value="cpf" Label="CPF" Placeholder="000.000.000-00" />
+<div class="flex flex-col gap-1">
+    <TextField @bind-Value="cpf" Label="CPF" Placeholder="000.000.000-00" />
     <p class="text-xs text-dark-400 mt-0.5">Somente números, sem pontos ou traços.</p>
-</FormGroup>
+</div>
 ```
 
 ### Substituição por popover para conteúdo longo
@@ -107,7 +108,7 @@ A biblioteca não tem componente de tooltip. A alternativa nativa é o atributo 
 
 - `nota geral`: 1;
 - `limitações`: sem componente de tooltip nativo; tooltip CSS puro via Tailwind funciona mas requer repetição de classes em cada uso; sem gerenciamento de posicionamento; sem acessibilidade automática (`aria-describedby`); tooltip nativo HTML (`title`) sem estilo do design system;
-- `recomendação`: `usar com adaptação`
+- `recomendação`: `usar apenas como apoio`
 - `justificativa geral`:
   - Para ajuda em formulários: preferir texto de ajuda inline (não requer tooltip);
   - Para ícones sem rótulo: `title` HTML como fallback ou tooltip CSS grupo;

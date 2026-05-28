@@ -11,10 +11,10 @@
 
 ### Zona: Conteúdo
 
-1. FormGroup + FieldText/FieldSelect/FieldCheckbox (UIP-INPUT-FORM_FIELD_GROUP)
-- `cobertura`: conteúdo de cada etapa com grupos de campos e validação por `EditContext`;
-- `nota`: 9;
-- `justificativa`: etapa de formulário — cobertura excelente.
+1. EditForm + Stack + TextField (UIP-INPUT-FORM_FIELD_GROUP + UIP-INPUT-INPUT_FIELD)
+- `cobertura`: conteúdo de cada etapa com campos de texto/senha e validação por `EditContext`; sem FormGroup — agrupamento via Stack + heading HTML; select e checkbox via Blazor nativo;
+- `nota`: 7;
+- `justificativa`: etapa de formulário funcional com TextField e composição manual.
 
 2. Box (container de etapa)
 - `cobertura`: card visual da etapa atual com borda e padding;
@@ -136,19 +136,36 @@
     @switch (etapaAtual)
     {
         case 1:
-            <FormGroup Legend="Dados básicos">
-                <FieldText @bind-Value="model.Nome" Label="Nome" Required />
-                <FieldText @bind-Value="model.Email" Label="E-mail" Type="email" Required />
-            </FormGroup>
+            <Stack Gap="Gaps.Medium">
+                <p class="text-sm font-semibold text-dark-700">Dados básicos</p>
+                <TextField @bind-Value="model.Nome" Label="Nome" required />
+                <TextField @bind-Value="model.Email" Label="E-mail" required />
+            </Stack>
             break;
 
         case 2:
-            <FormGroup Legend="Configurações">
-                <FieldSelect @bind-Value="model.PlanoSelecionado" Label="Plano"
-                             Options="planosOptions" Required />
-                <FieldCheckbox @bind-Value="model.AceitouTermos"
-                               Label="Aceito os termos de uso" Required />
-            </FormGroup>
+            <Stack Gap="Gaps.Medium">
+                <p class="text-sm font-semibold text-dark-700">Configurações</p>
+                @* [inferido] FieldSelect não existe — usar <InputSelect> Blazor *@
+                <div class="flex flex-col gap-1">
+                    <label class="text-sm font-medium text-dark-600">Plano</label>
+                    <InputSelect @bind-Value="model.PlanoSelecionado"
+                                 class="w-full border border-light-300 rounded-md px-3 py-2 text-sm bg-white">
+                        @foreach (var opt in planosOptions)
+                        {
+                            <option value="@opt.Value">@opt.Label</option>
+                        }
+                    </InputSelect>
+                </div>
+                @* [inferido] FieldCheckbox não existe — usar <InputCheckbox> Blazor *@
+                <div class="flex items-center gap-2">
+                    <InputCheckbox @bind-Value="model.AceitouTermos" id="cb-termos"
+                                   class="accent-primary-500" />
+                    <label for="cb-termos" class="text-sm text-dark-600 cursor-pointer">
+                        Aceito os termos de uso
+                    </label>
+                </div>
+            </Stack>
             break;
 
         case 3:

@@ -80,7 +80,7 @@
 <Bar AdditionalClasses="mb-4">
     <StartContent>
         <h1 class="text-lg font-semibold text-dark-700">Board de tarefas</h1>
-        <FieldText @bind-Value="busca" Placeholder="Buscar cards..."
+        <TextField @bind-Value="busca" Placeholder="Buscar cards..."
                    @oninput="FiltrarCards" AdditionalClasses="w-48 ml-4" />
     </StartContent>
     <EndContent>

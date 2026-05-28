@@ -191,7 +191,7 @@ else
 
 - `nota geral`: 2;
 - `limitações`: sem componente de calendário nativo — GAP crítico; grade mensal/semanal requer biblioteca externa ou implementação manual substancial; drag/drop de eventos não disponível;
-- `recomendação`: `usar com adaptação`
+- `recomendação`: `usar apenas como apoio`
 - `justificativa geral`:
   - Vista "Agenda" (lista temporal) é a alternativa mais prática sem calendário nativo — `Bar` + `Box` + `Badge` + `Modal` cobrem funcionalidade base;
   - Para grade visual de calendário: FullCalendar (via JS interop) ou Radzen Scheduler (Blazor nativo) são as opções mais práticas;

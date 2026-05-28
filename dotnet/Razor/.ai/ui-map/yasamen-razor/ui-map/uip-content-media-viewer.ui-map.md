@@ -100,7 +100,7 @@ else
 
 - `nota geral`: 2;
 - `limitações`: sem componente de media viewer nativo; lightbox, zoom e galeria requerem biblioteca externa ou JS interop; controles de imagem são HTML/CSS manual; vídeo e áudio usam controles nativos do browser;
-- `recomendação`: `usar com adaptação`
+- `recomendação`: `usar apenas como apoio`
 - `justificativa geral`:
   - HTML nativo (`<img>`, `<video>`, `<audio>`) cobre reprodução básica; `Box` e `Bar` compõem o container e toolbar;
   - Para viewer avançado (lightbox, carousel, zoom): biblioteca externa necessária;

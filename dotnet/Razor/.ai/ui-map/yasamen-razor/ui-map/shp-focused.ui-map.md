@@ -109,7 +109,13 @@
         @* Conteúdo dos termos *@
         Lorem ipsum...
     </div>
-    <FieldCheckbox @bind-Value="aceito" Label="Li e aceito os Termos de Uso" />
+    @* [inferido] FieldCheckbox não existe — usar <InputCheckbox> Blazor *@
+    <div class="flex items-center gap-2">
+        <InputCheckbox @bind-Value="aceito" id="cb-aceito" class="accent-primary-500" />
+        <label for="cb-aceito" class="text-sm text-dark-600 cursor-pointer">
+            Li e aceito os Termos de Uso
+        </label>
+    </div>
     <Bar AdditionalClasses="mt-4">
         <EndContent>
             <Button Style="Themes.Default" Label="Sair"

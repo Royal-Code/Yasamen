@@ -132,7 +132,7 @@ A biblioteca não tem componente de file upload. Blazor provê `<InputFile>` nat
 
 - `nota geral`: 2;
 - `limitações`: sem componente de upload nativo; `<InputFile>` Blazor provê seleção mas sem estilização, preview ou progresso; drag/drop requer event handling manual; progresso de upload requer composição com CSS;
-- `recomendação`: `usar com adaptação`
+- `recomendação`: `usar apenas como apoio`
 - `justificativa geral`:
   - `<InputFile>` Blazor + `Button` como label + `Feedback` para erros cobrem upload funcional;
   - A lib contribui apenas com elementos de apoio visual — sem abstração de upload;

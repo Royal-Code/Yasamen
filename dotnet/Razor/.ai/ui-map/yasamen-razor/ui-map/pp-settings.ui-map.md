@@ -17,17 +17,22 @@
 ### Zona: Conteúdo
 
 1. Stack + Box (seções de configuração)
-- `cobertura`: cada seção com Box+title+FormGroup; Stack vertical de seções;
+- `cobertura`: cada seção com Box + título HTML + Stack de campos; divisão visual de grupos de configuração;
 - `nota`: 8;
 - `justificativa`: container de seção de configuração.
 
-2. FormGroup + FieldText/FieldSelect/FieldCheckbox (UIP-INPUT-FORM_FIELD_GROUP)
-- `cobertura`: parâmetros de configuração em grupos com legend;
-- `nota`: 9;
-- `justificativa`: campos de configuração — cobertura excelente.
+2. EditForm + TextField (UIP-INPUT-INPUT_FIELD)
+- `cobertura`: campos de configuração de texto/senha; sem FormGroup — agrupamento via Box + heading manual;
+- `nota`: 8;
+- `justificativa`: campos de configuração — boa cobertura para texto.
 
-3. uip-struct-collapsible-section (seções avançadas/ocultas)
-- `cobertura`: configurações avançadas ou opcionais colapsáveis;
+3. HTML `<InputSelect>` + `<InputCheckbox>` (preferências)
+- `cobertura`: seleção de opções (tema, idioma, formato) via `<InputSelect>` Blazor; toggles via `<InputCheckbox>` + label manual; sem estilização da biblioteca;
+- `nota`: 4;
+- `justificativa`: funcional mas sem estilo da lib — requer HTML manual de label e classes Tailwind.
+
+4. Seções colapsáveis (configurações avançadas)
+- `cobertura`: configurações avançadas ou opcionais colapsáveis via Box + Bar + `@if`;
 - `nota`: 5;
 - `justificativa`: progressive disclosure de configurações menos usadas.
 
@@ -90,7 +95,7 @@
 
 <div class="flex gap-6">
     @* Navegação lateral *@
-    <nav class="w-52 flex-shrink-0 hidden lg:block">
+    <nav class="w-52 shrink-0 hidden lg:block">
         <Stack Gap="Gaps.None">
             @foreach (var secao in secoes)
             {
@@ -130,49 +135,88 @@
                 case "perfil":
                     <Stack Gap="Gaps.Medium">
                         <Box Border="BorderBuilder.Box" AdditionalClasses="p-5">
-                            <FormGroup Legend="Dados pessoais">
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <FieldText @bind-Value="model.Nome" Label="Nome" Required />
-                                    <FieldText @bind-Value="model.Email" Label="E-mail"
-                                               Type="email" Required />
-                                    <FieldText @bind-Value="model.Telefone" Label="Telefone" />
-                                </div>
-                            </FormGroup>
+                            <p class="text-sm font-semibold text-dark-700 mb-4">Dados pessoais</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <TextField @bind-Value="model.Nome" Label="Nome" required />
+                                <TextField @bind-Value="model.Email" Label="E-mail" required />
+                                <TextField @bind-Value="model.Telefone" Label="Telefone" />
+                            </div>
                         </Box>
                         <Box Border="BorderBuilder.Box" AdditionalClasses="p-5">
-                            <FormGroup Legend="Foto de perfil">
-                                <p class="text-xs text-dark-400 mb-2">
-                                    Formatos aceitos: JPG, PNG. Máximo 2MB.
-                                </p>
-                                <Button Style="Themes.Default" Label="Alterar foto" />
-                            </FormGroup>
+                            <p class="text-sm font-semibold text-dark-700 mb-2">Foto de perfil</p>
+                            <p class="text-xs text-dark-400 mb-3">
+                                Formatos aceitos: JPG, PNG. Máximo 2MB.
+                            </p>
+                            <Button Style="Themes.Default" Label="Alterar foto" />
                         </Box>
                     </Stack>
                     break;
 
                 case "notificacoes":
                     <Box Border="BorderBuilder.Box" AdditionalClasses="p-5">
-                        <FormGroup Legend="Preferências de notificação">
-                            <FieldCheckbox @bind-Value="model.EmailNovidades"
-                                           Label="Receber novidades por e-mail" />
-                            <FieldCheckbox @bind-Value="model.EmailAlertas"
-                                           Label="Alertas críticos por e-mail" />
-                            <FieldCheckbox @bind-Value="model.PushAtivado"
-                                           Label="Notificações push no navegador" />
-                        </FormGroup>
+                        <p class="text-sm font-semibold text-dark-700 mb-4">
+                            Preferências de notificação
+                        </p>
+                        @* InputCheckbox Blazor + label manual *@
+                        <Stack Gap="Gaps.Small">
+                            <div class="flex items-center gap-2">
+                                <InputCheckbox @bind-Value="model.EmailNovidades"
+                                               id="cb-novidades" class="accent-primary-500" />
+                                <label for="cb-novidades" class="text-sm text-dark-600 cursor-pointer">
+                                    Receber novidades por e-mail
+                                </label>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <InputCheckbox @bind-Value="model.EmailAlertas"
+                                               id="cb-alertas" class="accent-primary-500" />
+                                <label for="cb-alertas" class="text-sm text-dark-600 cursor-pointer">
+                                    Alertas críticos por e-mail
+                                </label>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <InputCheckbox @bind-Value="model.PushAtivado"
+                                               id="cb-push" class="accent-primary-500" />
+                                <label for="cb-push" class="text-sm text-dark-600 cursor-pointer">
+                                    Notificações push no navegador
+                                </label>
+                            </div>
+                        </Stack>
                     </Box>
                     break;
 
                 case "aparencia":
                     <Box Border="BorderBuilder.Box" AdditionalClasses="p-5">
-                        <FormGroup Legend="Tema e exibição">
-                            <FieldSelect @bind-Value="model.Tema" Label="Tema"
-                                         Options='new[] { ("light","Claro"), ("dark","Escuro"), ("system","Sistema") }' />
-                            <FieldSelect @bind-Value="model.Idioma" Label="Idioma"
-                                         Options="idiomasOptions" />
-                            <FieldSelect @bind-Value="model.FormatoData" Label="Formato de data"
-                                         Options='new[] { ("dd/MM/yyyy","DD/MM/AAAA"), ("MM/dd/yyyy","MM/DD/AAAA") }' />
-                        </FormGroup>
+                        <p class="text-sm font-semibold text-dark-700 mb-4">Tema e exibição</p>
+                        @* InputSelect Blazor + label manual *@
+                        <Stack Gap="Gaps.Medium">
+                            <div class="flex flex-col gap-1">
+                                <label class="text-sm font-medium text-dark-600">Tema</label>
+                                <InputSelect @bind-Value="model.Tema"
+                                             class="w-full border border-light-300 rounded-md px-3 py-2 text-sm bg-white">
+                                    <option value="light">Claro</option>
+                                    <option value="dark">Escuro</option>
+                                    <option value="system">Sistema</option>
+                                </InputSelect>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <label class="text-sm font-medium text-dark-600">Idioma</label>
+                                <InputSelect @bind-Value="model.Idioma"
+                                             class="w-full border border-light-300 rounded-md px-3 py-2 text-sm bg-white">
+                                    @foreach (var idioma in idiomasOptions)
+                                    {
+                                        <option value="@idioma.Value">@idioma.Label</option>
+                                    }
+                                </InputSelect>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <label class="text-sm font-medium text-dark-600">Formato de data</label>
+                                <InputSelect @bind-Value="model.FormatoData"
+                                             class="w-full border border-light-300 rounded-md px-3 py-2 text-sm bg-white">
+                                    <option value="dd/MM/yyyy">DD/MM/AAAA</option>
+                                    <option value="MM/dd/yyyy">MM/DD/AAAA</option>
+                                </InputSelect>
+                            </div>
+                        </Stack>
                     </Box>
                     break;
             }
@@ -210,9 +254,9 @@
 ## Decisão de uso
 
 - `nota geral`: 7;
-- `limitações`: sem componente de nav vertical dedicado para settings — tabs horizontal (GAP) ou nav CSS manual; `EditContext` separado por seção requer lógica de switch; busca de configuração é manual;
+- `limitações`: sem FormGroup — agrupamento via Box + heading HTML manual; sem nav vertical dedicado para seções — tabs horizontal (GAP) ou nav CSS manual; select e checkbox sem estilização nativa (usar Blazor `<InputSelect>` e `<InputCheckbox>` com classes Tailwind manuais);
 - `recomendação`: `usar por composição`
 - `justificativa geral`:
-  - `FormGroup` + `FieldText/Select/Checkbox` + `Box` + `Bar` cobrem PP-SETTINGS com excelente qualidade;
+  - `TextField` + `Box` + `Stack` + `Bar` cobrem PP-SETTINGS com boa qualidade;
   - Navegação lateral é CSS manual simples — adequado para a maioria dos casos;
-  - Nota 7 reflete ótima cobertura de conteúdo com adaptação na navegação lateral.
+  - Nota 7 reflete ótima cobertura de conteúdo com adaptação no agrupamento e nas preferências de select/checkbox.

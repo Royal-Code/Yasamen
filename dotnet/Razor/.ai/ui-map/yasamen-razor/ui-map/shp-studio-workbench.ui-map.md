@@ -212,7 +212,7 @@ A biblioteca não tem shell de workbench nativo. SHP-STUDIO_WORKBENCH com canvas
 
 - `nota geral`: 2;
 - `limitações`: sem shell de workbench nativo; canvas é GAP crítico; painéis laterais sem resize; drag/drop entre painéis sem suporte; toda a estrutura multi-painel é CSS manual; para IDE/studio completo requer implementação substancial ou biblioteca dedicada;
-- `recomendação`: `usar com adaptação`
+- `recomendação`: `usar apenas como apoio`
 - `justificativa geral`:
   - `Bar` + `IconButton` + `DropButton` + `FormGroup` no inspector cobrem a camada de controles do workbench;
   - A superfície de edição e a estrutura de docking são GAP — requerem biblioteca externa (Fabric.js, Konva.js, Monaco, etc.);

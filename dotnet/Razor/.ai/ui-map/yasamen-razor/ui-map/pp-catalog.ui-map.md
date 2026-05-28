@@ -93,7 +93,7 @@
 @* Cabeçalho com busca e filtros *@
 <Bar AdditionalClasses="mb-4 flex-wrap gap-2">
     <StartContent>
-        <FieldText Value="@busca" ValueChanged="@(v => { busca = v; })"
+        <TextField @bind-Value="busca"
                    @oninput="OnBusca"
                    Placeholder="Buscar no catálogo..." AdditionalClasses="w-64" />
         @if (!string.IsNullOrEmpty(busca) || categoriaFiltro is not null)

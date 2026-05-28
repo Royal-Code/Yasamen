@@ -69,8 +69,8 @@ A biblioteca não tem componente de filter panel. Requer composição de control
 
 <Bar AdditionalClasses="mb-4">
     <StartContent>
-        <FieldText @bind-Value="filtros.Busca" Placeholder="Buscar..."
-                   @oninput="CarregarDados" Type="search" />
+        <TextField @bind-Value="filtros.Busca" Placeholder="Buscar..."
+                   @oninput="CarregarDados" />
     </StartContent>
     <EndContent>
         <div class="relative">
@@ -105,18 +105,27 @@ A biblioteca não tem componente de filter panel. Requer composição de control
 <OffCanvas Id="filtros" Title="Filtros">
     <ChildContent>
         <Stack Gap="Gaps.Medium">
-            <FieldSelect @bind-Value="filtros.Status" Label="Status">
-                <option value="">Todos</option>
-                <option value="ativo">Ativo</option>
-                <option value="inativo">Inativo</option>
-            </FieldSelect>
-            <FieldSelect @bind-Value="filtros.Categoria" Label="Categoria">
-                <option value="">Todas</option>
-                @foreach (var cat in categorias)
-                {
-                    <option value="@cat.Id">@cat.Nome</option>
-                }
-            </FieldSelect>
+            @* [inferido] FieldSelect não existe — usar <InputSelect> Blazor *@
+            <div class="flex flex-col gap-1">
+                <label class="text-sm font-medium text-dark-600">Status</label>
+                <InputSelect @bind-Value="filtros.Status"
+                             class="w-full border border-light-300 rounded-md px-3 py-2 text-sm bg-white">
+                    <option value="">Todos</option>
+                    <option value="ativo">Ativo</option>
+                    <option value="inativo">Inativo</option>
+                </InputSelect>
+            </div>
+            <div class="flex flex-col gap-1">
+                <label class="text-sm font-medium text-dark-600">Categoria</label>
+                <InputSelect @bind-Value="filtros.Categoria"
+                             class="w-full border border-light-300 rounded-md px-3 py-2 text-sm bg-white">
+                    <option value="">Todas</option>
+                    @foreach (var cat in categorias)
+                    {
+                        <option value="@cat.Id">@cat.Nome</option>
+                    }
+                </InputSelect>
+            </div>
         </Stack>
         <Bar AdditionalClasses="mt-6">
             <StartContent>

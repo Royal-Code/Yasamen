@@ -129,13 +129,28 @@ A biblioteca não tem componente de canvas/superfície de edição. PP-CANVAS de
                     </EndContent>
                 </Bar>
                 <div class="flex-1 overflow-y-auto p-3">
-                    <FormGroup>
-                        <FieldNumber @bind-Value="objetoSelecionado.X" Label="X" />
-                        <FieldNumber @bind-Value="objetoSelecionado.Y" Label="Y" />
-                        <FieldNumber @bind-Value="objetoSelecionado.Largura" Label="Largura" />
-                        <FieldNumber @bind-Value="objetoSelecionado.Altura" Label="Altura" />
-                        <FieldText @bind-Value="objetoSelecionado.Cor" Label="Cor (hex)" />
-                    </FormGroup>
+                    @* [inferido] FormGroup/FieldNumber não existem — usar Stack + InputNumber/TextField *@
+                    <Stack Gap="Gaps.Small">
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="flex flex-col gap-0.5">
+                                <label class="text-xs text-dark-400">X</label>
+                                <InputNumber @bind-Value="objetoSelecionado.X" class="w-full border border-light-300 rounded px-2 py-1 text-sm" />
+                            </div>
+                            <div class="flex flex-col gap-0.5">
+                                <label class="text-xs text-dark-400">Y</label>
+                                <InputNumber @bind-Value="objetoSelecionado.Y" class="w-full border border-light-300 rounded px-2 py-1 text-sm" />
+                            </div>
+                            <div class="flex flex-col gap-0.5">
+                                <label class="text-xs text-dark-400">Largura</label>
+                                <InputNumber @bind-Value="objetoSelecionado.Largura" class="w-full border border-light-300 rounded px-2 py-1 text-sm" />
+                            </div>
+                            <div class="flex flex-col gap-0.5">
+                                <label class="text-xs text-dark-400">Altura</label>
+                                <InputNumber @bind-Value="objetoSelecionado.Altura" class="w-full border border-light-300 rounded px-2 py-1 text-sm" />
+                            </div>
+                        </div>
+                        <TextField @bind-Value="objetoSelecionado.Cor" Label="Cor (hex)" />
+                    </Stack>
                 </div>
             </div>
         }
@@ -164,7 +179,7 @@ A biblioteca não tem componente de canvas/superfície de edição. PP-CANVAS de
 
 - `nota geral`: 1;
 - `limitações`: sem componente de canvas nativo — GAP crítico; toda a superfície de edição requer biblioteca externa especializada; pan/zoom, seleção, layers e manipulação de objetos são fora do escopo da lib;
-- `recomendação`: `usar com adaptação`
+- `recomendação`: `usar apenas como apoio`
 - `justificativa geral`:
   - `Bar` + `IconButton` + `DropButton` cobrem toolbar e ações globais do canvas com boa qualidade;
   - Inspector de propriedades via `FormGroup` é funcional para objetos simples;

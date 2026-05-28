@@ -47,8 +47,8 @@ tasks:
   - type: ui-map
     directory: ".ai/ui-map/yasamen-razor/"
     stage: "ui-map"
-    section: "2-geracao"
-    current_item: "UIP-STRUCT-LAYOUT_ZONE"
+    section: "concluida"
+    current_item: ""
     gaps: []
     satisfied_gates:
       - PS.1
@@ -66,4 +66,18 @@ tasks:
       - VL.4
       - VL.FINAL
       - WF.UI.VL
-    next_action: "ui-map"
+      - MAP.1
+      - MAP.2
+      - MAP.3
+      - MAP.4
+      - MAP.FINAL
+      - WF.UI.MAP
+    next_action: "create-samples"
+  - type: create-samples
+    directory: ".ai/ui-map/yasamen-razor/samples/"
+    stage: "create-samples"
+    section: "gerando"
+    current_item: "YasamenStyles"
+    gaps: []
+    satisfied_gates:
+      - CS.1

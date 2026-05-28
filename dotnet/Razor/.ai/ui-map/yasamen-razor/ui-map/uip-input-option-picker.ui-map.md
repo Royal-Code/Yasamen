@@ -1,83 +1,102 @@
 # UIP-INPUT-OPTION_PICKER - Option Picker
 
-**GAP parcial — sem combobox ou multi-select nativo**
+**GAP parcial — sem FieldSelect nativo; usar InputSelect Blazor ou HTML select**
 
-A biblioteca tem `FieldSelect` para select simples e `DropButton` para dropdown, mas não tem combobox com busca local, multi-select estilizado ou picker com autocomplete.
+A biblioteca não tem `FieldSelect`. Para select simples usa-se `<InputSelect>` Blazor (sem estilização da lib) ou HTML `<select>` nativo. Combobox com busca e multi-select estilizado requerem composição manual.
 
 ## Componentes
 
-**Principais**: nenhum dedicado para combobox/autocomplete.
+**Principais**: nenhum dedicado para option picker.
 
 **Composição**:
 
-1. FieldSelect
-- `cobertura`: select HTML nativo estilizado; opções via `<option>` e `<optgroup>`; seleção única; integração com `EditForm` e validação; `@bind-Value` para two-way binding; `Disabled`, `Required`;
-- `limitações`: sem busca/filtro nativo; sem multi-select estilizado; sem opções carregadas remotamente com debounce; visual de `<select>` nativo do browser em mobile;
-- `nota`: 7;
-- `justificativa`: select de opções conhecidas com validação Blazor — cobre a maioria dos casos de option picker simples.
+1. Blazor `<InputSelect>` (select em EditForm)
+- `cobertura`: select integrado com `EditForm` e `DataAnnotationsValidator`; `@bind-Value` para tipo string/enum; opções via `<option>` HTML filho; sem estilização da biblioteca;
+- `limitações`: visual nativo do browser; sem label, information, error estilizados da lib; requer HTML manual de label + validation message;
+- `nota`: 5;
+- `justificativa`: funcional dentro de EditForm mas sem anatomia de campo estilizado da biblioteca.
 
-**Composição adicional**:
+2. HTML `<select>` nativo
+- `cobertura`: select fora de EditForm via `@bind`; opções via `<option>` e `<optgroup>`; sem integração direta com validação Blazor;
+- `nota`: 4;
+- `justificativa`: select funcional sem contexto de formulário Blazor.
 
-1. DropButton (como picker de opções)
+3. DropButton (como picker de opções)
 - `cobertura`: dropdown de opções customizadas; `DropItem` por opção; estado selecionado gerenciado em C#; sem semântica de form field nativo;
 - `limitações`: sem label associado; sem `@bind-Value`; sem integração direta com `EditForm`; sem validação inline;
 - `nota`: 4;
 - `justificativa`: dropdown customizável mas sem anatomia de campo de formulário.
 
-**Descartados**: nenhum.
+**Descartados**:
+- `FieldSelect`: componente não existe na biblioteca.
 
 ## Esforço de adaptação
 
 - `requisitos mal cobertos`:
-  - `combobox com busca local (autocomplete)`: sem nativo — implementar com `FieldText` + `@oninput` + lista de sugestões absoluta via CSS;
-  - `multi-select estilizado`: sem nativo — `<select multiple>` HTML nativo ou composição com `FieldCheckbox` em dropdown;
-  - `opções com imagem ou detalhe`: `DropItem` com `ChildContent` customizado.
+  - `select estilizado com label e validation`: `<InputSelect>` Blazor + HTML `<label>` + `<ValidationMessage>` com classes Tailwind manuais;
+  - `combobox com busca local (autocomplete)`: composição manual — `TextField` + `@oninput` + lista de sugestões absoluta via CSS;
+  - `multi-select estilizado`: `<select multiple>` HTML nativo ou composição com checkboxes em dropdown;
+  - `opções com imagem ou detalhe`: `DropButton` + `DropItem` com `ChildContent` customizado.
 
-- `tipo de adaptação`: componente parcial (FieldSelect) + composição para casos avançados
+- `tipo de adaptação`: composição + HTML nativo
 - `o que precisa ser feito`:
-  - Para select simples de opções estáticas: `FieldSelect` com `<option>` internas;
-  - Para select de opções dinâmicas: `FieldSelect` com `@foreach` de opções em C#;
-  - Para combobox com busca: composição manual — `FieldText` + lista de sugestões via `@oninput`.
+  - Select em formulário Blazor: `<InputSelect @bind-Value>` dentro de `EditForm` + label/validation manual;
+  - Select de opções estáticas fora de EditForm: HTML `<select @bind>`;
+  - Para combobox com busca: composição manual — `TextField` + lista de sugestões via `@oninput`.
 
 ## Como usar
 
-### Select simples
+### Select em formulário Blazor (InputSelect)
 
 ```razor
-<FieldSelect @bind-Value="model.Status" Label="Status" Required=true>
-    <option value="">Selecione...</option>
-    <option value="ativo">Ativo</option>
-    <option value="inativo">Inativo</option>
-    <option value="pendente">Pendente</option>
-</FieldSelect>
+<div class="flex flex-col gap-1 mb-4">
+    <label class="text-sm font-medium text-dark-600">Status</label>
+    <InputSelect @bind-Value="model.Status"
+                 class="w-full border border-light-300 rounded-md px-3 py-2 text-sm bg-white">
+        <option value="">Selecione...</option>
+        <option value="ativo">Ativo</option>
+        <option value="inativo">Inativo</option>
+        <option value="pendente">Pendente</option>
+    </InputSelect>
+    <ValidationMessage For="() => model.Status" class="text-xs text-danger-600" />
+</div>
 ```
 
 ### Select com opções dinâmicas
 
 ```razor
-<FieldSelect @bind-Value="model.CategoriaId" Label="Categoria" Required=true>
-    <option value="0">Selecione uma categoria...</option>
-    @foreach (var cat in categorias)
-    {
-        <option value="@cat.Id">@cat.Nome</option>
-    }
-</FieldSelect>
+<div class="flex flex-col gap-1 mb-4">
+    <label class="text-sm font-medium text-dark-600">Categoria</label>
+    <InputSelect @bind-Value="model.CategoriaId"
+                 class="w-full border border-light-300 rounded-md px-3 py-2 text-sm bg-white">
+        <option value="0">Selecione uma categoria...</option>
+        @foreach (var cat in categorias)
+        {
+            <option value="@cat.Id">@cat.Nome</option>
+        }
+    </InputSelect>
+    <ValidationMessage For="() => model.CategoriaId" class="text-xs text-danger-600" />
+</div>
 ```
 
-### Select agrupado
+### Select agrupado (HTML nativo)
 
 ```razor
-<FieldSelect @bind-Value="model.Regiao" Label="Região">
-    <optgroup label="Sul">
-        <option value="pr">Paraná</option>
-        <option value="sc">Santa Catarina</option>
-        <option value="rs">Rio Grande do Sul</option>
-    </optgroup>
-    <optgroup label="Sudeste">
-        <option value="sp">São Paulo</option>
-        <option value="rj">Rio de Janeiro</option>
-    </optgroup>
-</FieldSelect>
+<div class="flex flex-col gap-1 mb-4">
+    <label class="text-sm font-medium text-dark-600">Região</label>
+    <select @bind="model.Regiao"
+            class="w-full border border-light-300 rounded-md px-3 py-2 text-sm bg-white">
+        <optgroup label="Sul">
+            <option value="pr">Paraná</option>
+            <option value="sc">Santa Catarina</option>
+            <option value="rs">Rio Grande do Sul</option>
+        </optgroup>
+        <optgroup label="Sudeste">
+            <option value="sp">São Paulo</option>
+            <option value="rj">Rio de Janeiro</option>
+        </optgroup>
+    </select>
+</div>
 ```
 
 ### Combobox com busca local (composição manual)
@@ -92,7 +111,7 @@ A biblioteca tem `FieldSelect` para select simples e `DropButton` para dropdown,
 }
 
 <div class="relative">
-    <FieldText @bind-Value="termoBusca" Label="Buscar opção"
+    <TextField @bind-Value="termoBusca" Label="Buscar opção"
                @onfocus="() => mostrarSugestoes = true"
                @oninput="() => mostrarSugestoes = true"
                Placeholder="Digite para buscar..." />
@@ -114,9 +133,9 @@ A biblioteca tem `FieldSelect` para select simples e `DropButton` para dropdown,
 ## Decisão de uso
 
 - `nota geral`: 2;
-- `limitações`: sem combobox nativo com busca; sem multi-select estilizado; `FieldSelect` cobre select simples com visual nativo do browser; combobox e autocomplete requerem composição manual complexa;
-- `recomendação`: `usar com adaptação`
+- `limitações`: sem `FieldSelect` nativo; `<InputSelect>` Blazor provê binding mas sem estilização da lib; label, information e error requerem HTML manual; combobox e autocomplete requerem composição manual complexa;
+- `recomendação`: `usar apenas como apoio`
 - `justificativa geral`:
-  - `FieldSelect` cobre o caso de uso mais comum (select de domínio controlado) com boa cobertura;
-  - Para combobox/autocomplete: composição manual com `FieldText` + lista;
-  - Nota 2 reflete a ausência de combobox, multi-select ou picker customizado nativos.
+  - `<InputSelect>` Blazor cobre select funcional dentro de EditForm mas sem anatomia estilizada;
+  - Para combobox/autocomplete: composição manual com `TextField` + lista;
+  - Nota 2 reflete ausência de componente de select estilizado e de combobox/picker customizado nativos.

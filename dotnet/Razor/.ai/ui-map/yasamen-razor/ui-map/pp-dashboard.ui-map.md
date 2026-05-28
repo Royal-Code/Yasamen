@@ -4,10 +4,10 @@
 
 ### Zona: Filtros
 
-1. Bar + FieldSelect (filtro temporal)
-- `cobertura`: "Hoje / 7 dias / 30 dias / Período personalizado" como select ou ButtonGroup;
+1. Bar + ButtonGroup (filtro temporal)
+- `cobertura`: "Hoje / 7 dias / 30 dias" como ButtonGroup no header do dashboard; estado ativo por botão selecionado; para mais opções usar `<InputSelect>` Blazor;
 - `nota`: 8;
-- `justificativa`: filtros temporais inline no header do dashboard.
+- `justificativa`: filtros temporais inline no header do dashboard — ButtonGroup para 3-4 opções fixas.
 
 ### Zona: Métricas (KPIs)
 
@@ -75,9 +75,18 @@
         <h1 class="text-lg font-semibold text-dark-700">Dashboard</h1>
     </StartContent>
     <EndContent>
-        <FieldSelect Value="@periodo"
-                     ValueChanged="async v => { periodo = v; await Carregar(); }"
-                     Options='new[] { ("7d","7 dias"), ("30d","30 dias"), ("90d","90 dias") }' />
+        @* [inferido] FieldSelect não existe — usar ButtonGroup ou InputSelect *@
+        <ButtonGroup>
+            <Button Label="7 dias" Style="Themes.Secondary" Size="Sizes.Small"
+                    Active="@(periodo=="7d")" Outline="@(periodo!="7d")"
+                    OnClick="async () => { periodo = \"7d\"; await Carregar(); }" />
+            <Button Label="30 dias" Style="Themes.Secondary" Size="Sizes.Small"
+                    Active="@(periodo=="30d")" Outline="@(periodo!="30d")"
+                    OnClick="async () => { periodo = \"30d\"; await Carregar(); }" />
+            <Button Label="90 dias" Style="Themes.Secondary" Size="Sizes.Small"
+                    Active="@(periodo=="90d")" Outline="@(periodo!="90d")"
+                    OnClick="async () => { periodo = \"90d\"; await Carregar(); }" />
+        </ButtonGroup>
         <Button Style="Themes.Default" Size="Sizes.Small" Label="Atualizar"
                 OnClick="Carregar" />
     </EndContent>

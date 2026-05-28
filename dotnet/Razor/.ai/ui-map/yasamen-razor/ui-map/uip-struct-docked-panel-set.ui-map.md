@@ -172,7 +172,7 @@ A biblioteca não tem componente de workspace multi-painel. `AppLayout` + `AppSi
 
 - `nota geral`: 2;
 - `limitações`: sem componente de docked panel set nativo; `AppLayout`+`AppSideBar` cobrem apenas dois painéis; painel inferior, direito e painéis tabulados são CSS manual; sem resize de painéis; sem persistência de layout; toda a coordenação entre painéis é responsabilidade do app;
-- `recomendação`: `usar com adaptação`
+- `recomendação`: `usar apenas como apoio`
 - `justificativa geral`:
   - `AppLayout` + CSS `flex` aninhado cobre workspace com dois a quatro painéis estáticos;
   - Para IDE/workbench real com resize e docking: implementação substancial necessária ou biblioteca externa;

@@ -93,8 +93,8 @@ A biblioteca não tem componente de command palette. Requer composição manual 
        AdditionalClasses="max-w-lg w-full mt-24">
     <ChildContent>
         <div class="p-2 border-b border-light-200">
-            <FieldText @bind-Value="filtro" Placeholder="Buscar comandos..."
-                       AdditionalClasses="w-full" AutoFocus=true />
+            <TextField @bind-Value="filtro" Placeholder="Buscar comandos..."
+                       AdditionalClasses="w-full" autofocus />
         </div>
         <div class="max-h-64 overflow-y-auto py-1">
             @{var lista = Filtrados.ToList();}
@@ -126,7 +126,7 @@ A biblioteca não tem componente de command palette. Requer composição manual 
 
 - `nota geral`: 2;
 - `limitações`: sem componente de command palette nativo; atalho global requer JS interop; fuzzy matching é responsabilidade do app; navegação por teclado na lista requer estado manual; sem histórico, categorias ou atalhos visuais nativos;
-- `recomendação`: `usar com adaptação`
+- `recomendação`: `usar apenas como apoio`
 - `justificativa geral`:
   - `Modal` + `FieldText` + lista de `Button` formam uma command palette funcional mas completamente manual;
   - Nota 2 reflete que a lib fornece apenas primitivos genéricos — toda lógica de paleta é do app;

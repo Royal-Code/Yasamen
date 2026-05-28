@@ -76,7 +76,7 @@ A biblioteca não tem componente de FAB (Floating Action Button). Implementaçã
 
 - `nota geral`: 2;
 - `limitações`: sem componente de FAB nativo; toda implementação é Button com CSS manual de posicionamento; sem variante circular nativa; sem ocultar-em-scroll automático; z-index manual para não colidir com overlays;
-- `recomendação`: `usar com adaptação`
+- `recomendação`: `usar apenas como apoio`
 - `justificativa geral`:
   - `Button` com `AdditionalClasses="fixed bottom-X right-X rounded-full"` cobre FAB funcional;
   - Nota 2 reflete que apenas primitivos genéricos estão disponíveis — nenhum componente específico de FAB existe na lib;

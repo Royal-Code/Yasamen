@@ -88,7 +88,7 @@ A biblioteca não tem componente de autocomplete remoto ou entity picker. Requer
 <Modal Id="lookup-cliente" Title="Selecionar cliente">
     <ChildContent>
         <div class="mb-3">
-            <FieldText @bind-Value="filtroCliente" Placeholder="Buscar por nome..."
+            <TextField @bind-Value="filtroCliente" Placeholder="Buscar por nome..."
                        @oninput="BuscarClientes" />
         </div>
         <Stack Gap="Gaps.Small">

@@ -2,7 +2,7 @@
 
 **GAP parcial — sem componentes dedicados de radio group e checkbox group**
 
-A biblioteca não tem componentes de `RadioGroup`, `CheckboxGroup` ou `ToggleGroup`. Disponível: `FieldCheckbox` (boolean) e HTML nativo para radio/checkbox múltiplo.
+A biblioteca não tem `FieldCheckbox`, `RadioGroup` ou `CheckboxGroup`. Para boolean usa-se `<InputCheckbox>` Blazor nativo ou HTML `<input type="checkbox">`. Seleção única visível entre poucas opções: `ButtonGroup` + `Button`.
 
 ## Componentes
 
@@ -10,46 +10,54 @@ A biblioteca não tem componentes de `RadioGroup`, `CheckboxGroup` ou `ToggleGro
 
 **Composição**:
 
-1. FieldCheckbox
-- `cobertura`: seleção binária (liga/desliga, sim/não); `Label`, `@bind-Value` para `bool`; integrado com `EditForm` e validação;
-- `limitações`: apenas binário — sem grupo de múltipla seleção nativa;
-- `nota`: 7;
-- `justificativa`: switch/toggle binário com semântica correta.
-
-2. FieldSelect (HTML `<select multiple>`)
-- `cobertura`: seleção única (`<select>`) ou múltipla (`<select multiple>`) de lista curta; integrado com Blazor;
-- `limitações`: visual nativo do browser — sem estilização de radio group ou checkbox group;
-- `nota`: 4;
-- `justificativa`: semântica correta mas visual de dropdown, não de choice group visível.
-
-3. ButtonGroup + Button (como segmented choice)
+1. ButtonGroup + Button (como segmented choice)
 - `cobertura`: seleção única visível entre 2-4 opções curtas via `ButtonGroup` com `Button Active="@(valor==opcao)"`; visual de botões selecionados; sem semântica de radio;
 - `nota`: 5;
-- `justificativa`: segmented control visual com estado ativo — bom para 2-4 opções curtas.
+- `justificativa`: segmented control visual com estado ativo — bom para 2-4 opções curtas, mas sem semântica de form field.
 
-**Descartados**: nenhum.
+2. HTML `<input type="checkbox">` / Blazor `<InputCheckbox>` (boolean)
+- `cobertura`: seleção binária (liga/desliga, sim/não); `<InputCheckbox @bind-Value="model.Ativo">` integra com `EditForm`; `<input type="checkbox" @bind="model.Ativo">` funciona fora de EditForm; sem estilização da biblioteca;
+- `nota`: 4;
+- `justificativa`: funcional mas sem Label, sem estilização nativa da lib — requer HTML manual de `<label>` + input.
+
+3. HTML `<select multiple>` / Blazor `<InputSelect>` (multi-select)
+- `cobertura`: seleção múltipla via `<select multiple>`; visual nativo do browser; sem estilização da biblioteca;
+- `nota`: 3;
+- `justificativa`: funcional mas visual de dropdown nativo do browser, não de choice group estilizado.
+
+**Descartados**:
+- `FieldCheckbox`: componente não existe na biblioteca.
+- `FieldSelect`: componente não existe na biblioteca.
 
 ## Esforço de adaptação
 
 - `requisitos mal cobertos`:
-  - `radio group estilizado`: usar HTML `<input type="radio">` + CSS ou composição com `Box` + `@onclick`;
-  - `checkbox group estilizado`: múltiplos `FieldCheckbox` em `Stack` com `Label` do grupo acima;
-  - `toggle/switch binário`: `FieldCheckbox` cobre;
+  - `toggle/switch binário estilizado`: sem nativo — HTML `<input type="checkbox">` + CSS ou `ButtonGroup` com 2 opções;
+  - `radio group estilizado`: HTML `<input type="radio">` com `accent-primary-500` ou `ButtonGroup` para seleção única;
+  - `checkbox group estilizado`: múltiplos `<input type="checkbox">` com `<label>` em `Stack`;
   - `segmented control (opções visíveis)`: `ButtonGroup` + `Button Active` cobre visualmente.
 
 - `tipo de adaptação`: composição + HTML nativo
 - `o que precisa ser feito`:
-  - Binário (sim/não, liga/desliga): `FieldCheckbox`;
+  - Binário (sim/não, liga/desliga): `<InputCheckbox>` Blazor em EditForm + `<label>` HTML manual;
   - Segmented choice (2-4 opções curtas): `ButtonGroup` + `Button` com `Active`;
-  - Radio group / checkbox group estilizado: `Stack` de HTML inputs + CSS ou composição manual.
+  - Radio/checkbox group: HTML nativo com `accent-primary-500` e classes Tailwind para estilo.
 
 ## Como usar
 
-### Toggle binário
+### Toggle binário (Blazor InputCheckbox)
 
 ```razor
-<FieldCheckbox @bind-Value="model.Ativo" Label="Usuário ativo" />
-<FieldCheckbox @bind-Value="model.Notificacoes" Label="Receber notificações por e-mail" />
+<div class="flex flex-col gap-2 mb-4">
+    <div class="flex items-center gap-2">
+        <InputCheckbox @bind-Value="model.Ativo" id="cb-ativo" class="accent-primary-500" />
+        <label for="cb-ativo" class="text-sm text-dark-600 cursor-pointer">Usuário ativo</label>
+    </div>
+    <div class="flex items-center gap-2">
+        <InputCheckbox @bind-Value="model.Notificacoes" id="cb-notif" class="accent-primary-500" />
+        <label for="cb-notif" class="text-sm text-dark-600 cursor-pointer">Receber notificações por e-mail</label>
+    </div>
+</div>
 ```
 
 ### Segmented choice (seleção única visível)
@@ -64,26 +72,34 @@ A biblioteca não tem componentes de `RadioGroup`, `CheckboxGroup` ou `ToggleGro
     <ButtonGroup>
         <Button Label="Básico" Style="Themes.Secondary"
                 Active="@(plano=="basico")" Outline="@(plano!="basico")"
-                OnClick="() => plano = "basico"" />
+                OnClick='() => plano = "basico"' />
         <Button Label="Profissional" Style="Themes.Secondary"
                 Active="@(plano=="pro")" Outline="@(plano!="pro")"
-                OnClick="() => plano = "pro"" />
+                OnClick='() => plano = "pro"' />
         <Button Label="Enterprise" Style="Themes.Secondary"
                 Active="@(plano=="enterprise")" Outline="@(plano!="enterprise")"
-                OnClick="() => plano = "enterprise"" />
+                OnClick='() => plano = "enterprise"' />
     </ButtonGroup>
 </div>
 ```
 
-### Checkbox group manual
+### Checkbox group com HTML nativo
 
 ```razor
 <div class="flex flex-col gap-2 mb-4">
     <label class="text-sm font-medium text-dark-600">Permissões</label>
-    <FieldCheckbox @bind-Value="model.PodeEditar" Label="Editar registros" />
-    <FieldCheckbox @bind-Value="model.PodeExcluir" Label="Excluir registros" />
-    <FieldCheckbox @bind-Value="model.PodeExportar" Label="Exportar dados" />
-    <FieldCheckbox @bind-Value="model.PodeGerenciarUsuarios" Label="Gerenciar usuários" />
+    @foreach (var (id, label, prop) in new[] {
+        ("perm-edit", "Editar registros", model.PodeEditar),
+        ("perm-del", "Excluir registros", model.PodeExcluir),
+        ("perm-exp", "Exportar dados", model.PodeExportar)
+    })
+    {
+        <div class="flex items-center gap-2">
+            <input type="checkbox" id="@id" checked="@prop"
+                   class="accent-primary-500" />
+            <label for="@id" class="text-sm text-dark-600 cursor-pointer">@label</label>
+        </div>
+    }
 </div>
 ```
 
@@ -108,9 +124,9 @@ A biblioteca não tem componentes de `RadioGroup`, `CheckboxGroup` ou `ToggleGro
 ## Decisão de uso
 
 - `nota geral`: 2;
-- `limitações`: sem RadioGroup ou CheckboxGroup dedicados; `FieldCheckbox` cobre apenas boolean; radio group e checkbox group visíveis requerem HTML nativo + CSS; segmented control via ButtonGroup tem visual de botão, não de radio;
-- `recomendação`: `usar com adaptação`
+- `limitações`: sem `FieldCheckbox`, `RadioGroup` ou `CheckboxGroup` nativos; toggle binário e radio/checkbox group requerem HTML nativo + CSS; `ButtonGroup` cobre apenas segmented choice visual;
+- `recomendação`: `usar apenas como apoio`
 - `justificativa geral`:
-  - `FieldCheckbox` cobre toggle binário; `ButtonGroup` + `Button Active` cobre segmented choice visual;
-  - Para radio/checkbox group estilizado, HTML nativo com `accent-primary-500` é a via mais direta;
-  - Nota 2 reflete ausência de componentes dedicados de grupo de escolha.
+  - `ButtonGroup` + `Button Active` cobre segmented choice visual;
+  - Para toggle/checkbox/radio: HTML nativo com `accent-primary-500` é a via direta;
+  - Nota 2 reflete ausência de componentes dedicados de grupo de escolha estilizados.

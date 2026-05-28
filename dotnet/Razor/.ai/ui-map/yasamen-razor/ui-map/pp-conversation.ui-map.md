@@ -212,11 +212,12 @@
             <div class="flex-shrink-0 border-t border-light-200 p-3">
                 <Bar>
                     <StartContent>
-                        <FieldTextArea @bind-Value="novaMensagem"
-                                       Placeholder="Digite uma mensagem..."
-                                       Rows="1"
+                        @* [inferido] FieldTextArea não existe — usar <InputTextArea> Blazor *@
+                        <InputTextArea @bind-Value="novaMensagem"
+                                       placeholder="Digite uma mensagem..."
+                                       rows="1"
                                        @onkeydown="OnKeyDown"
-                                       AdditionalClasses="resize-none" />
+                                       class="flex-1 border border-light-300 rounded-md px-3 py-2 text-sm resize-none" />
                     </StartContent>
                     <EndContent>
                         <IconButton Icon="WellKnownIcons.Send" Style="Themes.Primary"

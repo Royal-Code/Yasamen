@@ -83,15 +83,35 @@
     <ChildContent>
         <EditForm Model="form">
             <Stack Gap="Gaps.Medium">
-                <FieldSelect @bind-Value="form.Status" Label="Status" Options="statusOptions" />
-                <FieldSelect @bind-Value="form.Categoria" Label="Categoria"
-                             Options="categoriaOptions" />
-                <FieldText @bind-Value="form.Responsavel" Label="Responsável" />
+                @* [inferido] FieldSelect não existe — usar <InputSelect> Blazor *@
+                <div class="flex flex-col gap-1">
+                    <label class="text-sm font-medium text-dark-600">Status</label>
+                    <InputSelect @bind-Value="form.Status"
+                                 class="w-full border border-light-300 rounded-md px-3 py-2 text-sm bg-white">
+                        @foreach (var opt in statusOptions)
+                        {
+                            <option value="@opt.Value">@opt.Label</option>
+                        }
+                    </InputSelect>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="text-sm font-medium text-dark-600">Categoria</label>
+                    <InputSelect @bind-Value="form.Categoria"
+                                 class="w-full border border-light-300 rounded-md px-3 py-2 text-sm bg-white">
+                        @foreach (var opt in categoriaOptions)
+                        {
+                            <option value="@opt.Value">@opt.Label</option>
+                        }
+                    </InputSelect>
+                </div>
+                <TextField @bind-Value="form.Responsavel" Label="Responsável" />
                 <div>
                     <label class="text-sm text-dark-400 mb-1 block">Período</label>
                     <div class="flex gap-2">
-                        <FieldText @bind-Value="form.DataInicio" Type="date" />
-                        <FieldText @bind-Value="form.DataFim" Type="date" />
+                        <input type="date" @bind="form.DataInicio"
+                               class="flex-1 border border-light-300 rounded-md px-3 py-2 text-sm" />
+                        <input type="date" @bind="form.DataFim"
+                               class="flex-1 border border-light-300 rounded-md px-3 py-2 text-sm" />
                     </div>
                 </div>
             </Stack>

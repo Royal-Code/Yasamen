@@ -11,17 +11,22 @@
 
 ### Zona: Conteúdo
 
-1. FormGroup + FieldText/FieldSelect/FieldCheckbox/FieldNumber (UIP-INPUT-FORM_FIELD_GROUP + UIP-INPUT-INPUT_FIELD)
-- `cobertura`: grupos de campos com `Legend` + `HelpText`; grid responsivo; validação Blazor nativa;
-- `nota`: 9;
-- `justificativa`: ponto forte da lib — formulário com grupos e campos é cobertura excelente.
+1. EditForm + DataAnnotationsValidator + Stack + Box + TextField (UIP-INPUT-FORM_FIELD_GROUP + UIP-INPUT-INPUT_FIELD)
+- `cobertura`: EditForm Blazor para contexto de validação; Box como container visual de seção; Stack para layout dos campos; TextField para text/password; sem FormGroup dedicado — título de seção via heading HTML;
+- `nota`: 8;
+- `justificativa`: formulário com agrupamento e campos coberto com boa qualidade; sem abstração FormGroup mas Box+Stack+heading funcionam.
 
-2. uip-struct-collapsible-section (seções colapsáveis)
-- `cobertura`: formulários longos com seções opcionais ou avançadas colapsáveis;
+2. Blazor `<InputSelect>` (campos de seleção)
+- `cobertura`: select de opções via `<InputSelect @bind-Value>` dentro de EditForm; label e validation message manuais com Tailwind;
+- `nota`: 5;
+- `justificativa`: select funcional mas sem estilização da lib — cobre o requisito com adaptação manual.
+
+3. Seção colapsável manual (formulários longos)
+- `cobertura`: seções opcionais ou avançadas colapsáveis via Bar + `@if (expandido)`;
 - `nota`: 5;
 - `justificativa`: progressividade no formulário via seções colapsáveis manuais.
 
-3. Feedback Style=Danger + ValidationSummary (UIP-INPUT-VALIDATION_SUMMARY)
+4. Feedback Style=Danger + ValidationSummary (UIP-INPUT-VALIDATION_SUMMARY)
 - `cobertura`: resumo de erros de validação acima do formulário; erros inline por campo;
 - `nota`: 8;
 - `justificativa`: feedback de erros de validação.
@@ -56,6 +61,7 @@
     private EditContext editContext = default!;
     private bool salvando;
     private bool confirmandoCancelamento;
+    private bool enderecoExpandido;
     private bool isNovo => Id is null;
 
     protected override async Task OnInitializedAsync()
@@ -129,17 +135,27 @@
 
     @* Seção principal *@
     <Box Border="BorderBuilder.Box" AdditionalClasses="p-6 mb-4">
-        <FormGroup Legend="Dados do cliente">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <FieldText @bind-Value="model.Nome" Label="Nome" Required />
-                <FieldText @bind-Value="model.Email" Label="E-mail" Type="email" Required />
-                <FieldText @bind-Value="model.Telefone" Label="Telefone" />
-                <FieldSelect @bind-Value="model.Tipo" Label="Tipo" Options="tipoOptions" />
+        <p class="text-sm font-semibold text-dark-700 mb-4">Dados do cliente</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <TextField @bind-Value="model.Nome" Label="Nome" required />
+            <TextField @bind-Value="model.Email" Label="E-mail" required />
+            <TextField @bind-Value="model.Telefone" Label="Telefone" />
+            @* Select — InputSelect Blazor + label manual *@
+            <div class="flex flex-col gap-1">
+                <label class="text-sm font-medium text-dark-600">Tipo</label>
+                <InputSelect @bind-Value="model.Tipo"
+                             class="w-full border border-light-300 rounded-md px-3 py-2 text-sm bg-white">
+                    @foreach (var opt in tipoOptions)
+                    {
+                        <option value="@opt.Value">@opt.Label</option>
+                    }
+                </InputSelect>
+                <ValidationMessage For="() => model.Tipo" class="text-xs text-danger-600" />
             </div>
-        </FormGroup>
+        </div>
     </Box>
 
-    @* Seção de endereço (colapsável) *@
+    @* Seção de endereço (colapsável manual) *@
     <Box Border="BorderBuilder.Box" AdditionalClasses="overflow-hidden mb-4">
         <Bar AdditionalClasses="px-4 py-3 cursor-pointer bg-light-50 border-b border-light-200"
              @onclick="() => enderecoExpandido = !enderecoExpandido">
@@ -153,16 +169,14 @@
         @if (enderecoExpandido)
         {
             <div class="p-4">
-                <FormGroup>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <FieldText @bind-Value="model.Cep" Label="CEP"
-                                   AdditionalClasses="sm:col-span-1" />
-                        <FieldText @bind-Value="model.Logradouro" Label="Logradouro"
-                                   AdditionalClasses="sm:col-span-2" />
-                        <FieldText @bind-Value="model.Cidade" Label="Cidade" />
-                        <FieldText @bind-Value="model.Estado" Label="Estado" />
-                    </div>
-                </FormGroup>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <TextField @bind-Value="model.Cep" Label="CEP"
+                               AdditionalClasses="sm:col-span-1" />
+                    <TextField @bind-Value="model.Logradouro" Label="Logradouro"
+                               AdditionalClasses="sm:col-span-2" />
+                    <TextField @bind-Value="model.Cidade" Label="Cidade" />
+                    <TextField @bind-Value="model.Estado" Label="Estado" />
+                </div>
             </div>
         }
     </Box>
@@ -198,10 +212,10 @@
 
 ## Decisão de uso
 
-- `nota geral`: 9;
-- `limitações`: seções colapsáveis são manuais (sem animação); formulários muito longos com dependências entre campos requerem lógica C# do app; upload de arquivo requer `InputFile` separado;
+- `nota geral`: 8;
+- `limitações`: sem FormGroup — agrupamento via Box + heading HTML manual; select e checkbox sem estilização nativa da lib (usar `<InputSelect>` e `<InputCheckbox>` Blazor); seções colapsáveis sem animação;
 - `recomendação`: `usar direto`
 - `justificativa geral`:
-  - `EditForm` + `FormGroup` + `FieldText/Select/Checkbox` + `DataAnnotationsValidator` cobrem PP-FORM com excelente qualidade nativa;
+  - `EditForm` + `TextField` + `Box` + `Stack` + `DataAnnotationsValidator` cobrem PP-FORM com boa qualidade nativa;
   - `Modal` + `NotificationService` + `Bar` com ações completam o padrão com confirmação e feedback;
-  - Nota 9 reflete PP-FORM como o page pattern mais bem suportado pela lib.
+  - Nota 8 reflete ótima cobertura — PP-FORM é bem suportado com adaptações para grouping e select/checkbox.

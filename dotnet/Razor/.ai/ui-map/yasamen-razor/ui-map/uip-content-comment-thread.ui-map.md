@@ -127,8 +127,10 @@ A biblioteca não tem componente de comment thread. Requer composição com `Sta
     }
 
     @* Composer *@
-    <FieldTextArea @bind-Value="novoComentario" Rows="3"
-                   Placeholder="Escreva um comentário..." />
+    @* [inferido] FieldTextArea não existe — usar <InputTextArea> Blazor *@
+    <InputTextArea @bind-Value="novoComentario" rows="3"
+                   placeholder="Escreva um comentário..."
+                   class="w-full border border-light-300 rounded-md px-3 py-2 text-sm resize-none" />
     <Bar AdditionalClasses="mt-2">
         <EndContent>
             <Button Style="Themes.Secondary" Outline=true Label="Cancelar"

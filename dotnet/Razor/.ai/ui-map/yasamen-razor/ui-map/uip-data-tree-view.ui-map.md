@@ -127,7 +127,7 @@ A biblioteca não tem componente de tree view. Requer composição com `Stack` +
 
 - `nota geral`: 2;
 - `limitações`: sem componente de tree view nativo; requer componente Razor recursivo manual; expansão, seleção e lazy loading são responsabilidade do app; sem drag/drop entre nós; sem busca nativa na árvore;
-- `recomendação`: `usar com adaptação`
+- `recomendação`: `usar apenas como apoio`
 - `justificativa geral`:
   - `Bar` + `IconButton` + `DropIconButton` + recursão Razor cobrem tree view funcional;
   - A lib contribui apenas com os primitivos de linha e ações — toda estrutura hierárquica é do app;

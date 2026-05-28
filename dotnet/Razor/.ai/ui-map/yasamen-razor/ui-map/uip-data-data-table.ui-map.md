@@ -66,7 +66,7 @@ A biblioteca não tem componente de DataTable. A tabela é construída com HTML 
 
 <Bar AdditionalClasses="mb-4">
     <StartContent>
-        <FieldText @bind-Value="busca" Placeholder="Buscar..." Type="search" @oninput="Buscar" />
+        <TextField @bind-Value="busca" Placeholder="Buscar..." @oninput="Buscar" />
     </StartContent>
     <EndContent>
         <Button Style="Themes.Primary" Label="Novo" Icon="WellKnownIcons.Add" OnClick="Novo" />
