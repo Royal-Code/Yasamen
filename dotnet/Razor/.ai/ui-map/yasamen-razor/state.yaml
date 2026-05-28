@@ -46,13 +46,24 @@ auxiliary_libraries: []
 tasks:
   - type: ui-map
     directory: ".ai/ui-map/yasamen-razor/"
-    stage: "project-summary"
-    section: "5-finalizacao"
-    current_item: null
+    stage: "ui-map"
+    section: "2-geracao"
+    current_item: "UIP-STRUCT-LAYOUT_ZONE"
     gaps: []
     satisfied_gates:
       - PS.1
       - PS.2
       - PS.3
       - PS.4
-    next_action: "visual-language"
+      - PS.FINAL
+      - WF.UI.PS
+      - VL.1
+      - VL.2.1
+      - VL.2.2
+      - VL.2.3
+      - VL.2
+      - VL.3
+      - VL.4
+      - VL.FINAL
+      - WF.UI.VL
+    next_action: "ui-map"
