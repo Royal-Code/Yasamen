@@ -1,0 +1,35 @@
+# State Template
+
+# diretório de trabalho
+directory: .ai/ui-map/{slug}/
+
+# Biblioteca principal
+library:
+  name: "{nome da biblioteca}"
+  slug: "{slug-dash-case}"
+  source_kind: repo|web  # repo = código local; web = documentação pública
+  version: "{versão conhecida ou desconhecida}"
+  platforms: [Web]  # Web|Mobile nativo|Desktop nativo — determina catálogos condicionais ativados
+  technical_family: null  # web|theme|ui-resources|presentation|none — define guide/map técnico;
+  sources:
+    - kind: code|docs|samples|stories
+      ref: "{path relativo ou URI}"
+
+# Bibliotecas auxiliares
+auxiliary_libraries: []
+  # - name: "{nome}"
+  #   purpose: "{para que entra}"
+  #   scope: "{componentes|patterns|tema|comportamento}"
+  #   source_ref: "{path|url}"
+  #   status: pending|done|discarded
+
+# controle de execução
+tasks:
+  - type: ui-map|review|release
+    directory: null # ui-map = ".ai/ui-map/{slug}/"; review = ".ai/ui-map/{slug}/analysis/{YY}-{DoY}-{MoD}/"; release = ".ai/ui-map/{slug}/releases/v{n}/"
+    stage: null # nome da etapa atual conforme o tipo
+    section: null # seção atual dentro da etapa atual
+    current_item: null # usado em loops; o significado depende da etapa ativa
+    gaps: [] # gaps em aberto para tratar com o humano durante a etapa
+    satisfied_gates: [] # nome dos gates satisfeitos durante a etapa — zerado ao iniciar a etapa
+    next_action: "{descrição curta da próxima ação}"
