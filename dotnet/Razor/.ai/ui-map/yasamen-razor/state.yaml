@@ -1,0 +1,58 @@
+directory: .ai/ui-map/yasamen-razor/
+
+library:
+  name: "yasamen-razor"
+  slug: "yasamen-razor"
+  source_kind: repo
+  version: "desconhecida"
+  platforms: [Web]
+  technical_family: web
+  sources:
+    - kind: code
+      ref: "RoyalCode.Razor.Buttons/Components"
+    - kind: code
+      ref: "RoyalCode.Razor.Alerts/Components"
+    - kind: code
+      ref: "RoyalCode.Razor.Drops/Components"
+    - kind: code
+      ref: "RoyalCode.Razor.Forms/Components"
+    - kind: code
+      ref: "RoyalCode.Razor.Layouts/Components"
+    - kind: code
+      ref: "RoyalCode.Razor.Layouts.Apps/Layouts/Apps"
+    - kind: code
+      ref: "RoyalCode.Razor.Modals/Components"
+    - kind: code
+      ref: "RoyalCode.Razor.Navigation/Components"
+    - kind: code
+      ref: "RoyalCode.Razor.OffCanvas/Components"
+    - kind: code
+      ref: "RoyalCode.Razor.Breadcrumbs/Components"
+    - kind: code
+      ref: "RoyalCode.Razor.Animations/Animations"
+    - kind: code
+      ref: "RoyalCode.Razor.Commons"
+    - kind: code
+      ref: "RoyalCode.Razor.Icons/Icons"
+    - kind: code
+      ref: "RoyalCode.Razor.Styles"
+    - kind: docs
+      ref: ".ai/guides"
+    - kind: samples
+      ref: "RoyalCode.Razor.Docs/RoyalCode.Razor.Docs.Client/Pages/Demo"
+
+auxiliary_libraries: []
+
+tasks:
+  - type: ui-map
+    directory: ".ai/ui-map/yasamen-razor/"
+    stage: "project-summary"
+    section: "5-finalizacao"
+    current_item: null
+    gaps: []
+    satisfied_gates:
+      - PS.1
+      - PS.2
+      - PS.3
+      - PS.4
+    next_action: "visual-language"
