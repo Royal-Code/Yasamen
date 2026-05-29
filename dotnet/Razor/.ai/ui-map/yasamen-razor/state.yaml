@@ -46,8 +46,8 @@ auxiliary_libraries: []
 tasks:
   - type: ui-map
     directory: ".ai/ui-map/yasamen-razor/"
-    stage: "ui-map"
-    section: "concluida"
+    stage: "patterns-blueprints"
+    section: "triagem"
     current_item: ""
     gaps: []
     satisfied_gates:
@@ -72,12 +72,17 @@ tasks:
       - MAP.4
       - MAP.FINAL
       - WF.UI.MAP
-    next_action: "create-samples"
+      - PB.1
+      - PB.2
+    next_action: "aguardando-confirmacao-triagem"
   - type: create-samples
     directory: ".ai/ui-map/yasamen-razor/samples/"
     stage: "create-samples"
-    section: "gerando"
-    current_item: "YasamenStyles"
+    section: "concluida"
+    current_item: ""
     gaps: []
     satisfied_gates:
       - CS.1
+      - CS.2
+      - CS.3
+      - CS.FINAL

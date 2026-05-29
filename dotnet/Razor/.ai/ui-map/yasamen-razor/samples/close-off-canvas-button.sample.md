@@ -28,7 +28,7 @@ Use dentro de `OffCanvas` com `UseBox=false` quando o header do drawer é constr
 }
 
 <Button Style="Themes.Default" Label="Abrir painel"
-        OnClick="async () => await drawerHandler.ShowAsync()" />
+        OnClick="async () => await drawerHandler.Show()" />
 
 <OffCanvas Position="Positions.End"
            Fitting="Fitting.Overlaying"
@@ -54,7 +54,7 @@ Use dentro de `OffCanvas` com `UseBox=false` quando o header do drawer é constr
 ## API relevante
 
 - **Props/parâmetros**: nenhum parâmetro público — o `OffCanvasHandler` vem por cascading obrigatório
-- **Eventos/comandos**: chama `handler.HideAsync()` ao clicar (interno)
+- **Eventos/comandos**: chama `handler.Hide()` ao clicar (interno)
 - **Slots**: -
 
 ## Limites e combinações frágeis

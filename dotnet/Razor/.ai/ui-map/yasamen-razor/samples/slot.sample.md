@@ -18,7 +18,7 @@
 
 ## Exemplos
 
-### `UIP-STRUCT-GRID_CONTAINER, UIP-DATA-CARD_GRID` — Span básico em grade de 12 colunas
+### `UIP-STRUCT-GRID_CONTAINER, UIP-DATA-CARD_GRID, UIP-INPUT-REPEATING_GROUP` — Span básico em grade de 12 colunas e grupo repetitivo
 
 Cada unidade de `Span` ocupa uma fração da grade; spans somados na mesma linha devem resultar em 12.
 

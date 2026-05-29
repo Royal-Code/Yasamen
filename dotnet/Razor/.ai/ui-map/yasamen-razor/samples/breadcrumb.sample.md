@@ -7,7 +7,7 @@
 **Propósito**: Trilha de navegação com suporte a menu dropdown de overflow para itens ocultos. Para lista dinâmica com limite de visíveis, usar `DescribesBreadcrumbs`.
 **Patterns**:
 - `implementa`: UIP-NAV-BREADCRUMB
-- `compõe`: -
+- `compõe`: UIP-CONTENT-CONTENT_HEADER
 **Setup necessário**: `<YasamenStyles />` no `<head>`
 
 ## Regras rápidas
@@ -17,7 +17,7 @@
 
 ## Exemplos
 
-### `UIP-NAV-BREADCRUMB` — Breadcrumb estático com overflow
+### `UIP-NAV-BREADCRUMB, UIP-CONTENT-CONTENT_HEADER` — Breadcrumb estático com overflow
 
 Use `Items` para itens visíveis e `MenuItems` para overflow (exibido em dropdown quando há itens ocultos).
 

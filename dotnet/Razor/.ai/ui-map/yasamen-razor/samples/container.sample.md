@@ -87,11 +87,11 @@ Use `Container` para formulários com campos em múltiplas colunas; `Slot` com s
 
 **API usada**: `Slot.Span` variável para distribuição de colunas
 
-### `UIP-INPUT-REPEATING_GROUP, UIP-CONTENT-COMPARISON_BLOCK` — Grupo repetitivo e comparação
+### `UIP-INPUT-REPEATING_GROUP, UIP-CONTENT-COMPARISON_BLOCK, UIP-INPUT-FILTER_PANEL` — Grupo repetitivo, comparação e painel de filtros
 
 ```razor
 @* Repeating group: linha de campos replicável *@
-<Stack Gap="Gaps.Small">
+<Stack AdditionalClasses="gap-2">
     @foreach (var (contato, idx) in contatos.Select((c, i) => (c, i)))
     {
         <Container>

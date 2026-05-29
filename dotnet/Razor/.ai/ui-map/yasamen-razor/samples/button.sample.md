@@ -50,22 +50,21 @@ Use `Themes.Primary` para a ação mais importante e `Outline=true` para ações
 Ação destrutiva sempre requer confirmação via Modal; botão de cancel usa Default/outline.
 
 ```razor
-<Modal Id="modal-confirmar-exclusao">
+<Modal Id="modal-confirmar-exclusao" Handler="@modalHandler">
     <ChildContent>
-        <p class="text-sm text-dark-600">
-            Deseja excluir permanentemente "Relatório Q4 2025"?
-        </p>
+        <div class="p-6">
+            <p class="text-sm text-dark-600">
+                Deseja excluir permanentemente "Relatório Q4 2025"?
+            </p>
+        </div>
+        <div class="px-6 py-4 border-t border-light-200 flex justify-end gap-2">
+            <Button Style="Themes.Default" Label="Cancelar"
+                    OnClick="async () => await modalHandler.CloseAsync()" />
+            <Button Style="Themes.Danger" Label="Excluir"
+                    OnClick="ExecutarExclusao" />
+        </div>
     </ChildContent>
-    <FooterContent>
-        <Button Style="Themes.Default" Label="Cancelar"
-                OnClick='() => modalHandler.CloseAsync()' />
-        <Button Style="Themes.Danger" Label="Excluir"
-                OnClick="ExecutarExclusao" />
-    </FooterContent>
 </Modal>
-```
-
-**Nota**: `FooterContent` é slot do `Modal` — não faz parte da API do `Button`.
 
 ### `UIP-FEEDBACK-LOADING_STATE` — Botão com ícone animado durante operação
 

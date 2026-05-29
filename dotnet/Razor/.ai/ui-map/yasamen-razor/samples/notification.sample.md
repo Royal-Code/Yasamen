@@ -18,7 +18,7 @@
 
 ## Exemplos
 
-### `UIP-FEEDBACK-TOAST_ALERT` — Toast via NotificationService (modo principal de uso)
+### `UIP-FEEDBACK-TOAST_ALERT, UIP-SYSTEM-NOTIFICATION_CENTER` — Toast via NotificationService (modo principal de uso)
 
 Injete `NotificationService` e chame os helpers de tema para exibir toasts programáticos.
 
@@ -92,16 +92,16 @@ Toasts de sistema para mudanças de conectividade e expiração de sessão.
 ```razor
 @inject NotificationService NotifService
 
-@* Ao detectar reconexão *@
-private async Task OnReconectado()
-{
-    await NotifService.ShowSuccess("Conexão restaurada. Sincronizando...");
-}
+@code {
+    private async Task OnReconectado()
+    {
+        await NotifService.ShowSuccess("Conexão restaurada. Sincronizando...");
+    }
 
-@* Ao detectar sessão expirando *@
-private async Task OnSessaoExpirando()
-{
-    await NotifService.ShowWarning("Sua sessão expira em 5 minutos.");
+    private async Task OnSessaoExpirando()
+    {
+        await NotifService.ShowWarning("Sua sessão expira em 5 minutos.");
+    }
 }
 
 @* Notificação com CloseOnClick=false para manter visível *@

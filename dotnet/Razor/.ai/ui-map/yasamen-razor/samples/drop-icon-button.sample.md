@@ -18,7 +18,7 @@
 
 ## Exemplos
 
-### `UIP-ACTION-CONTEXTUAL_MENU, UIP-DATA-LIST_ITEM` — Menu de contexto em linha de lista
+### `UIP-ACTION-CONTEXTUAL_MENU, UIP-OVERLAY-POPOVER, UIP-DATA-LIST_ITEM` — Menu de contexto em linha de lista
 
 Use `WellKnownIcons.MoreVertical` como ícone padrão de "mais ações" em listas.
 

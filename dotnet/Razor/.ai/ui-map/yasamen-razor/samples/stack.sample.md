@@ -18,7 +18,7 @@
 
 ## Exemplos
 
-### `UIP-STRUCT-STACK_CONTAINER, UIP-INPUT-FORM_FIELD_GROUP` — Campos de formulário empilhados
+### `UIP-STRUCT-STACK_CONTAINER, UIP-INPUT-FORM_FIELD_GROUP, UIP-CONTENT-METRIC_CARD` — Campos de formulário empilhados e cards de métrica
 
 Stack é o container padrão para grupos de campos em formulários; use `AdditionalClasses="gap-4"` para espaçamento entre campos.
 
@@ -95,7 +95,7 @@ Stack é ideal para timelines e threads onde a ordem vertical é semântica.
 </Stack>
 ```
 
-### `UIP-DATA-KANBAN_COLUMN, UIP-DATA-TREE_VIEW, UIP-FEEDBACK-EMPTY_STATE` — Colunas e estados
+### `UIP-DATA-KANBAN_COLUMN, UIP-DATA-TREE_VIEW, UIP-FEEDBACK-EMPTY_STATE, UIP-FEEDBACK-ERROR_STATE` — Colunas e estados
 
 ```razor
 @* Kanban column — Stack de cards *@

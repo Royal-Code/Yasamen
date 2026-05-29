@@ -7,7 +7,7 @@
 **Propósito**: Menu de navegação do app exibido via `OffCanvas`. Carrega itens via `MenuService`, suporta busca, breadcrumbs de submenu e favoritos.
 **Patterns**:
 - `implementa`: UIP-NAV-NAVIGATION_MENU
-- `compõe`: -
+- `compõe`: SHP-WORKSPACE_ADMIN
 **Setup necessário**: `builder.Services.AddYasamenOffCanvas().AddYasamenMenu()` + `<YasamenStyles />` no `<head>`
 
 ## Regras rápidas
@@ -18,7 +18,7 @@
 
 ## Exemplos
 
-### `UIP-NAV-NAVIGATION_MENU` — Menu com OffCanvasHandler
+### `UIP-NAV-NAVIGATION_MENU, SHP-WORKSPACE_ADMIN` — Menu com OffCanvasHandler
 
 Na maioria dos casos, `AppMenu` é instanciado via `AppSideMenuButton`. Use diretamente apenas quando precisar de um trigger customizado.
 
@@ -29,7 +29,7 @@ Na maioria dos casos, `AppMenu` é instanciado via `AppSideMenuButton`. Use dire
 
 @* Trigger customizado *@
 <Button Style="Themes.Default" Label="Menu" Icon="WellKnownIcons.Menu"
-        OnClick="async () => await menuHandler.ShowAsync()" />
+        OnClick="async () => await menuHandler.Show()" />
 
 @* AppMenu com handler externo *@
 <AppMenu Handler="@menuHandler" />

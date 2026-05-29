@@ -7,7 +7,7 @@
 **Propósito**: Controle de paginação com versões desktop (janela de páginas, ellipsis, first/prev/next/last) e mobile (prev/next + summary). Totalmente acessível com aria-labels.
 **Patterns**:
 - `implementa`: UIP-NAV-PAGINATION
-- `compõe`: -
+- `compõe`: UIP-FEEDBACK-LOADING_STATE
 **Setup necessário**: `<YasamenStyles />` no `<head>`
 
 ## Regras rápidas
@@ -18,7 +18,7 @@
 
 ## Exemplos
 
-### `UIP-NAV-PAGINATION` — Paginação básica de listagem
+### `UIP-NAV-PAGINATION, UIP-FEEDBACK-LOADING_STATE` — Paginação básica de listagem
 
 Use abaixo da lista ou tabela; `OnPageChanged` recebe o número da nova página.
 

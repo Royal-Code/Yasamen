@@ -43,7 +43,7 @@ Use `@ref` para abrir via C# ou `ModalHandler` para controle externo; inclua sem
     }
 }
 
-<Modal @ref="modalExclusao" Id="modal-excluir" Size="ModalSize.Small">
+<Modal @ref="modalExclusao" Id="modal-excluir">
     <ChildContent>
         <div class="p-6">
             <h2 class="text-lg font-semibold text-dark-700 mb-2">Confirmar exclusão</h2>
@@ -62,9 +62,8 @@ Use `@ref` para abrir via C# ou `ModalHandler` para controle externo; inclua sem
 ```
 
 **API usada**: `@ref`, `Id`, `OpenAsync()`, `CloseAsync()`
-**Nota**: `ModalSize` pode ser `Small`, `Medium`, `Large`. `[inferido]` — verificar enum exato.
 
-### `UIP-OVERLAY-MODAL` — Modal de formulário com ModalHandler
+### `UIP-OVERLAY-MODAL, UIP-SYSTEM-PERMISSION_FLOW, UIP-SYSTEM-AUTH_SESSION` — Modal de formulário com ModalHandler
 
 `ModalHandler` permite controle externo desacoplado do componente pai.
 

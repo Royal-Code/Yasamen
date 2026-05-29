@@ -152,23 +152,25 @@ Use `MiddleContent` quando o layout precisa de três colunas bem distribuídas.
 ### `UIP-OVERLAY-MODAL, UIP-OVERLAY-DRAWER` — Rodapé de modal e header de drawer
 
 ```razor
-@* Footer de Modal com ações *@
-<Modal Id="modal-editar">
-    <ChildContent>@* ... *@</ChildContent>
-    <FooterContent>
-        <Bar>
-            <EndContent>
-                <Button Style="Themes.Default" Label="Cancelar"
-                        OnClick="() => modalHandler.CloseAsync()" />
-                <Button Style="Themes.Primary" Label="Confirmar"
-                        OnClick="Confirmar" />
-            </EndContent>
-        </Bar>
-    </FooterContent>
+@* Footer de Modal com ações — Bar dentro do ChildContent *@
+<Modal Id="modal-editar" Handler="@modalHandler">
+    <ChildContent>
+        <div class="p-6">@* conteúdo principal *@</div>
+        <div class="px-6 py-4 border-t border-light-200">
+            <Bar>
+                <EndContent>
+                    <Button Style="Themes.Default" Label="Cancelar"
+                            OnClick="async () => await modalHandler.CloseAsync()" />
+                    <Button Style="Themes.Primary" Label="Confirmar"
+                            OnClick="Confirmar" />
+                </EndContent>
+            </Bar>
+        </div>
+    </ChildContent>
 </Modal>
 
-@* Header customizado de OffCanvas *@
-<OffCanvas Position="Positions.End" Handler="@drawerHandler">
+@* Header customizado de OffCanvas com UseBox=false *@
+<OffCanvas Position="Positions.End" Handler="@drawerHandler" UseBox=false>
     <Bar AdditionalClasses="px-6 py-4 border-b border-light-200 shrink-0">
         <StartContent>
             <h2 class="text-base font-semibold text-dark-700">Detalhes</h2>

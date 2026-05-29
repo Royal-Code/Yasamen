@@ -120,7 +120,7 @@ Badge como marcador de tipo/prioridade; combinação com ícone.
 
 ```razor
 @* Item de timeline com badge de tipo *@
-<Stack Gap="Gaps.None">
+<Stack AdditionalClasses="gap-0">
     @foreach (var evento in eventos)
     {
         <div class="flex gap-3 pb-4">
