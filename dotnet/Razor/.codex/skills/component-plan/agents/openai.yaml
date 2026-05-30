@@ -1,0 +1,4 @@
+interface:
+  display_name: "Component Plan"
+  short_description: "Planeja e cria specs de componentes da biblioteca."
+  default_prompt: "Use $component-plan para planejar e criar uma lib spec de componente."
