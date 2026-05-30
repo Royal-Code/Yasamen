@@ -1,4 +1,4 @@
-# PP-FEED - Blueprint resumido
+﻿# PP-FEED - Blueprint resumido
 
 ## Pattern
 
@@ -15,7 +15,7 @@ A lib cobre bem os itens do feed. O gap é orientar: scroll infinito com botão 
 
 ## Componentes usados
 
-- `Stack` — papel: principal (lista do feed) — ver `bar.sample.md`
+- `Stack` — papel: principal (lista do feed) — ver `stack.sample.md`
 - `Box` — papel: composição (card de item) — ver `box.sample.md`
 - `Bar` — papel: composição (header do item e da página) — ver `bar.sample.md`
 - `Badge` — papel: composição (tipo de item) — ver `badge.sample.md`

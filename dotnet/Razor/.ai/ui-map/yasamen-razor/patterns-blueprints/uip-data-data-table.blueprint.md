@@ -1,4 +1,4 @@
-# UIP-DATA-DATA_TABLE - Blueprint completo
+﻿# UIP-DATA-DATA_TABLE - Blueprint completo
 
 ## Pattern
 
@@ -22,7 +22,7 @@ A lib não tem componente de DataTable. A tabela é HTML `<table>` + Tailwind CS
 ## Componentes usados
 
 - `Bar` — papel: principal (toolbar da tabela) — ver `bar.sample.md`
-- `Pagination` — papel: principal (paginação) — ver `bar.sample.md`
+- `Pagination` — papel: principal (paginação) — ver `pagination.sample.md`
 - `DropIconButton` — papel: composição (ações por linha) — ver `button.sample.md`
 - `DropItem` — papel: composição (itens de ação) — ver `button.sample.md`
 - `Badge` — papel: composição (status por célula) — ver `badge.sample.md`

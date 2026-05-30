@@ -1,4 +1,4 @@
-# UIP-SYSTEM-NOTIFICATION_CENTER - Blueprint resumido
+﻿# UIP-SYSTEM-NOTIFICATION_CENTER - Blueprint resumido
 
 ## Pattern
 
@@ -18,7 +18,7 @@ A lib tem `Notification` para toasts mas não tem centro de notificações persi
 - `OffCanvas` — papel: principal (painel de notificações) — ver `modal.sample.md`
 - `Badge` — papel: composição (contador de não lidas no trigger) — ver `badge.sample.md`
 - `IconButton` — papel: composição (trigger sino) — ver `button.sample.md`
-- `Stack` — papel: composição (lista de notificações) — ver `bar.sample.md`
+- `Stack` — papel: composição (lista de notificações) — ver `stack.sample.md`
 - `Box` — papel: composição (item de notificação) — ver `box.sample.md`
 - `Bar` — papel: composição (header do painel) — ver `bar.sample.md`
 - `Feedback` — papel: composição (empty state) — ver `feedback.sample.md`
@@ -34,13 +34,16 @@ A lib tem `Notification` para toasts mas não tem centro de notificações persi
 `IconButton + Badge` no header → `OffCanvas` com `Stack + Box` para lista → `Bar` com "Marcar todas como lidas".
 
 ```razor
-@inject OffCanvasService OffCanvasService
 @inject NotificationCenterService NotifCenter
+
+@code {
+    private OffCanvas? notifCenter;
+}
 
 @* Trigger no header (ex.: dentro do AppTopBar) *@
 <div class="relative">
     <IconButton Icon="WellKnownIcons.Bell" Style="Themes.Default"
-                OnClick="() => OffCanvasService.OpenAsync("notif-center")" />
+                OnClick="async () => await notifCenter!.OpenAsync()" />
     @if (NotifCenter.NaoLidas > 0)
     {
         <Badge Style="Themes.Danger"
@@ -50,7 +53,7 @@ A lib tem `Notification` para toasts mas não tem centro de notificações persi
 </div>
 
 @* Painel de notificações *@
-<OffCanvas Id="notif-center" Title="Notificações">
+<OffCanvas @ref="notifCenter" Id="notif-center" Title="Notificações">
     <ChildContent>
         <Bar AdditionalClasses="mb-4">
             <EndContent>

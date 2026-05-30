@@ -1,4 +1,4 @@
-# UIP-INPUT-FORM_FIELD_GROUP - Blueprint resumido
+﻿# UIP-INPUT-FORM_FIELD_GROUP - Blueprint resumido
 
 ## Pattern
 
@@ -15,7 +15,7 @@ A lib não tem `FormGroup` ou `Fieldset` component. O gap é orientar a composi�
 
 ## Componentes usados
 
-- `Stack` — papel: principal (layout de campos) — ver `bar.sample.md`
+- `Stack` — papel: principal (layout de campos) — ver `stack.sample.md`
 - `Box` — papel: composição (seção delimitada) — ver `box.sample.md`
 - `Bar` — papel: composição (rodapé de ações) — ver `bar.sample.md`
 

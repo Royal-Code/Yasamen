@@ -1,4 +1,4 @@
-# UIP-DATA-KANBAN_COLUMN - Blueprint completo
+﻿# UIP-DATA-KANBAN_COLUMN - Blueprint completo
 
 ## Pattern
 
@@ -22,7 +22,7 @@ A lib não tem componente de kanban ou board. O gap é coordenar: layout horizon
 ## Componentes usados
 
 - `Box` — papel: principal (container de coluna e de card) — ver `box.sample.md`
-- `Stack` — papel: composição (lista de cards por coluna) — ver `bar.sample.md`
+- `Stack` — papel: composição (lista de cards por coluna) — ver `stack.sample.md`
 - `Bar` — papel: composição (header de coluna e de card) — ver `bar.sample.md`
 - `Badge` — papel: composição (contagem de cards, tags) — ver `badge.sample.md`
 - `DropIconButton` — papel: composição (ações por card) — ver `button.sample.md`
@@ -48,10 +48,10 @@ Board kanban com três colunas e movimentação via menu.
 
 ```razor
 @page "/board"
-@inject ModalService ModalService
 @inject TarefaService TarefaService
 
 @code {
+    private Modal? cardFormModal;
     private Dictionary<string, List<TarefaDto>> colunas = new()
     {
         ["A fazer"]       = [],
@@ -78,18 +78,18 @@ Board kanban com três colunas e movimentação via menu.
         colunas[colunaDestino].Insert(0, tarefa);
     }
 
-    private void AbrirNovoCard(string coluna)
+    private async Task AbrirNovoCard(string coluna)
     {
         colunaNovoCard = coluna;
         cardEdicao = new TarefaDto { Status = coluna };
-        ModalService.OpenAsync("card-form");
+        await cardFormModal!.OpenAsync();
     }
 
-    private void EditarCard(TarefaDto tarefa)
+    private async Task EditarCard(TarefaDto tarefa)
     {
         colunaNovoCard = tarefa.Status;
         cardEdicao = tarefa with { };
-        ModalService.OpenAsync("card-form");
+        await cardFormModal!.OpenAsync();
     }
 
     private async Task SalvarCard()
@@ -107,7 +107,7 @@ Board kanban com três colunas e movimentação via menu.
             var idx = coluna.Value.FindIndex(t => t.Id == cardEdicao.Id);
             coluna.Value[idx] = cardEdicao;
         }
-        ModalService.CloseAsync("card-form");
+        await cardFormModal!.CloseAsync();
     }
 
     private async Task ExcluirCard(TarefaDto tarefa, string coluna)
@@ -206,7 +206,7 @@ Board kanban com três colunas e movimentação via menu.
 </div>
 
 @* Modal de criar/editar card *@
-<Modal Id="card-form"
+<Modal @ref="cardFormModal" Id="card-form"
        Title="@(cardEdicao?.Id > 0 ? "Editar card" : $"Novo card em \"{colunaNovoCard}\"")">
     <ChildContent>
         @if (cardEdicao is not null)
@@ -232,12 +232,12 @@ Board kanban com três colunas e movimentação via menu.
                         {
                             <Button Style="Themes.Danger" Outline="true" Size="Sizes.Small"
                                     Label="Excluir"
-                                    OnClick='() => { ExcluirCard(cardEdicao, colunaNovoCard!); ModalService.CloseAsync("card-form"); }' />
+                                    OnClick='async () => await ExcluirCard(cardEdicao, colunaNovoCard!)' />
                         }
                     </StartContent>
                     <EndContent>
                         <Button Style="Themes.Default" Label="Cancelar"
-                                OnClick='() => ModalService.CloseAsync("card-form")' />
+                                OnClick='async () => await cardFormModal!.CloseAsync()' />
                         <Button Style="Themes.Primary" Label="Salvar" Type="submit" />
                     </EndContent>
                 </Bar>

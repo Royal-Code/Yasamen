@@ -65,9 +65,9 @@ A lib não tem componente de gerenciamento de sessão. O gap é orientar: `Autho
 </AuthorizeView>
 
 @* Reautenticação inline (sem redirect — preserva contexto) *@
-@inject ModalService ModalService
 
 @code {
+    private Modal? modalReauth;
     private string senha = "";
     private bool reautenticando;
     private string? erroReauth;
@@ -79,13 +79,13 @@ A lib não tem componente de gerenciamento de sessão. O gap é orientar: `Autho
         var sucesso = await AuthService.ReautenticarAsync(senha);
         reautenticando = false;
         if (sucesso)
-            await ModalService.CloseAsync("reauth-modal");
+            await modalReauth!.CloseAsync();
         else
             erroReauth = "Senha incorreta. Tente novamente.";
     }
 }
 
-<Modal Id="reauth-modal" Title="Confirme sua identidade">
+<Modal @ref="modalReauth" Id="reauth-modal" Title="Confirme sua identidade">
     <ChildContent>
         <Stack Gap="Gaps.Medium">
             <p class="text-sm text-dark-500">
@@ -101,7 +101,7 @@ A lib não tem componente de gerenciamento de sessão. O gap é orientar: `Autho
             <Bar>
                 <EndContent>
                     <Button Style="Themes.Secondary" Outline=true Label="Cancelar"
-                            OnClick="() => ModalService.CloseAsync("reauth-modal")" />
+                            OnClick="async () => await modalReauth!.CloseAsync()" />
                     <Button Style="Themes.Primary" Label="Confirmar"
                             Loading="@reautenticando"
                             OnClick="Reautenticar" />

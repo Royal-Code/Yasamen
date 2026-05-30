@@ -1,4 +1,4 @@
-# PP-LANDING - Blueprint resumido
+﻿# PP-LANDING - Blueprint resumido
 
 ## Pattern
 
@@ -16,7 +16,7 @@ A lib é focada em apps operacionais. O gap é orientar o uso de `Button + Conta
 ## Componentes usados
 
 - `Button` — papel: principal (CTAs) — ver `button.sample.md`
-- `Container + Slot` — papel: composição (grade de features) — ver `bar.sample.md`
+- `Container + Slot` — papel: composição (grade de features) — ver `container.sample.md`
 - `Box` — papel: composição (card de feature) — ver `box.sample.md`
 - `Bar` — papel: composição (header e footer da landing) — ver `bar.sample.md`
 - `Feedback` — papel: composição (callout editorial) — ver `feedback.sample.md`

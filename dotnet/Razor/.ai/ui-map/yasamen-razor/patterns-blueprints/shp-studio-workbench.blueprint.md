@@ -1,4 +1,4 @@
-# SHP-STUDIO_WORKBENCH - Blueprint completo
+﻿# SHP-STUDIO_WORKBENCH - Blueprint completo
 
 ## Pattern
 
@@ -27,7 +27,7 @@ A lib cobre controles periféricos mas não tem shell de workbench. O gap é coo
 - `DropItem` — papel: composição (itens dos menus) — ver `button.sample.md`
 - `IconButton` — papel: composição (undo/redo, fechar painel) — ver `button.sample.md`
 - `Box` — papel: composição (seções do inspector) — ver `box.sample.md`
-- `Stack` — papel: composição (campos do inspector) — ver `bar.sample.md`
+- `Stack` — papel: composição (campos do inspector) — ver `stack.sample.md`
 - `Button` — papel: composição (publicar, salvar) — ver `button.sample.md`
 - `Modal` — papel: composição (confirmações de arquivo) — ver `modal.sample.md`
 
@@ -49,9 +49,8 @@ A lib cobre controles periféricos mas não tem shell de workbench. O gap é coo
 @* StudioLayout.razor — shell de Studio/Workbench *@
 @inherits LayoutComponentBase
 @inject IJSRuntime JS
-@inject ModalService ModalService
-
 @code {
+    private Modal? confirmarNovoModal;
     private bool explorerAberto = true;
     private bool inspectorAberto = true;
     private bool consoleAberto;
@@ -262,7 +261,7 @@ A lib cobre controles periféricos mas não tem shell de workbench. O gap é coo
 </div>
 
 @* Modal de confirmação *@
-<Modal Id="confirmar-novo" Title="Novo projeto">
+<Modal @ref="confirmarNovoModal" Id="confirmar-novo" Title="Novo projeto">
     <ChildContent>
         <p class="text-sm text-dark-600">
             Você tem alterações não salvas. Deseja descartar e criar um novo projeto?
@@ -270,7 +269,7 @@ A lib cobre controles periféricos mas não tem shell de workbench. O gap é coo
     </ChildContent>
     <FooterContent>
         <Button Style="Themes.Default" Label="Cancelar"
-                OnClick='() => ModalService.CloseAsync("confirmar-novo")' />
+                OnClick='async () => await confirmarNovoModal!.CloseAsync()' />
         <Button Style="Themes.Danger" Label="Descartar e criar"
                 OnClick="CriarNovoProjeto" />
     </FooterContent>
@@ -286,7 +285,7 @@ A lib cobre controles periféricos mas não tem shell de workbench. O gap é coo
     private async Task NovoComConfirmacao()
     {
         if (modificado)
-            await ModalService.OpenAsync("confirmar-novo");
+            await confirmarNovoModal!.OpenAsync();
         else
             await CriarNovoProjeto();
     }
@@ -295,7 +294,7 @@ A lib cobre controles periféricos mas não tem shell de workbench. O gap é coo
     {
         await JS.InvokeVoidAsync("studio.reset");
         modificado = false;
-        await ModalService.CloseAsync("confirmar-novo");
+        await confirmarNovoModal!.CloseAsync();
     }
 }
 ```

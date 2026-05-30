@@ -1,4 +1,4 @@
-# UIP-INPUT-REPEATING_GROUP - Blueprint resumido
+﻿# UIP-INPUT-REPEATING_GROUP - Blueprint resumido
 
 ## Pattern
 
@@ -15,7 +15,7 @@ A lib não tem componente de repeating group. O gap é orientar a composição c
 
 ## Componentes usados
 
-- `Stack` — papel: principal (container da lista de itens) — ver `bar.sample.md`
+- `Stack` — papel: principal (container da lista de itens) — ver `stack.sample.md`
 - `Box` — papel: composição (card de cada item) — ver `box.sample.md`
 - `Bar` — papel: composição (cabeçalho do item com ação remover) — ver `bar.sample.md`
 - `Button / IconButton` — papel: composição (adicionar/remover/reordenar) — ver `button.sample.md`

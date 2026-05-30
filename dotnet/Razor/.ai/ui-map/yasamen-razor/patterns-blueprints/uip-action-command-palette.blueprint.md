@@ -31,10 +31,10 @@ A lib não tem componente de command palette. O gap é orientar a composição c
 `Modal` com `FieldText` + lista filtrada em C# + navegação via `indiceAtivo`.
 
 ```razor
-@inject ModalService ModalService
 @inject NavigationManager Navigation
 
 @code {
+    private Modal? commandPalette;
     private string filtro = "";
     private int indiceAtivo = 0;
 
@@ -57,12 +57,12 @@ A lib não tem componente de command palette. O gap é orientar a composição c
     {
         filtro = "";
         indiceAtivo = 0;
-        await ModalService.OpenAsync("command-palette");
+        await commandPalette!.OpenAsync();
     }
 
     private async Task ExecutarItem(CommandItem item)
     {
-        await ModalService.CloseAsync("command-palette");
+        await commandPalette!.CloseAsync();
         if (item.Url is not null)
             Navigation.NavigateTo(item.Url);
         else if (item.Acao is not null)
@@ -88,7 +88,7 @@ A lib não tem componente de command palette. O gap é orientar a composição c
         AdditionalClasses="text-dark-400 font-normal w-64"
         OnClick="AbrirPaleta" />
 
-<Modal Id="command-palette" HideHeader=true AdditionalClasses="max-w-lg w-full mt-24">
+<Modal @ref="commandPalette" Id="command-palette" HideHeader=true AdditionalClasses="max-w-lg w-full mt-24">
     <ChildContent>
         <div class="p-2 border-b border-light-200">
             <FieldText @bind-Value="filtro"

@@ -1,4 +1,4 @@
-# SHP-KIOSK_EMBEDDED - Blueprint completo
+﻿# SHP-KIOSK_EMBEDDED - Blueprint completo
 
 ## Pattern
 
@@ -25,11 +25,11 @@ A lib cobre fluxos transacionais mas não tem shell de kiosk. O gap é coordenar
 
 - `Bar` — papel: principal (header do kiosk) — ver `bar.sample.md`
 - `Button` — papel: composição (CTA principal, Sair) — ver `button.sample.md`
-- `Container + Slot` — papel: composição (grade de opções na tela inicial) — ver `bar.sample.md`
+- `Container + Slot` — papel: composição (grade de opções na tela inicial) — ver `container.sample.md`
 - `Box` — papel: composição (cards de opção, área de conteúdo) — ver `box.sample.md`
 - `Modal` — papel: composição (confirmação crítica antes de finalizar) — ver `modal.sample.md`
 - `Feedback` — papel: composição (processando, sucesso, erro, hardware offline) — ver `feedback.sample.md`
-- `Stack` — papel: composição (agrupamento de campos no fluxo) — ver `bar.sample.md`
+- `Stack` — papel: composição (agrupamento de campos no fluxo) — ver `stack.sample.md`
 
 ## Recursos visuais
 
@@ -170,6 +170,7 @@ A lib cobre fluxos transacionais mas não tem shell de kiosk. O gap é coordenar
 @layout KioskLayout
 
 @code {
+    private Modal? confirmarModal;
     private RetiradaModel model = new();
     private bool processando;
     private bool concluido;
@@ -177,12 +178,12 @@ A lib cobre fluxos transacionais mas não tem shell de kiosk. O gap é coordenar
 
     private async Task Confirmar()
     {
-        await ModalService.OpenAsync("confirmar-retirada");
+        await confirmarModal!.OpenAsync();
     }
 
     private async Task ExecutarRetirada()
     {
-        await ModalService.CloseAsync("confirmar-retirada");
+        await confirmarModal!.CloseAsync();
         processando = true;
         try
         {
@@ -243,7 +244,7 @@ else
 }
 
 @* Confirmação crítica *@
-<Modal Id="confirmar-retirada" Title="Confirmar retirada">
+<Modal @ref="confirmarModal" Id="confirmar-retirada" Title="Confirmar retirada">
     <ChildContent>
         <p class="text-base text-dark-600">
             Código <strong>@model.Codigo</strong>. Confirma a retirada do pedido?
@@ -252,7 +253,7 @@ else
     <FooterContent>
         <Button Style="Themes.Default" Label="Cancelar"
                 AdditionalClasses="text-lg py-3 px-6"
-                OnClick='() => ModalService.CloseAsync("confirmar-retirada")' />
+                OnClick='async () => await confirmarModal!.CloseAsync()' />
         <Button Style="Themes.Primary" Label="Confirmar"
                 AdditionalClasses="text-lg py-3 px-6"
                 OnClick="ExecutarRetirada" />

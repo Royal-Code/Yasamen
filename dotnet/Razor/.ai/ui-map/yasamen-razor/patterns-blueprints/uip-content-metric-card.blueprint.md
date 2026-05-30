@@ -1,4 +1,4 @@
-# UIP-CONTENT-METRIC_CARD - Blueprint resumido
+﻿# UIP-CONTENT-METRIC_CARD - Blueprint resumido
 
 ## Pattern
 
@@ -18,7 +18,7 @@ A lib não tem componente de metric card dedicado. O gap é orientar a composiç
 - `Box` — papel: principal (container do card) — ver `box.sample.md`
 - `Bar` — papel: composição (label + badge de variação) — ver `bar.sample.md`
 - `Badge` — papel: composição (variação percentual, status) — ver `badge.sample.md`
-- `Container + Slot` — papel: composição (grade de cards) — ver `bar.sample.md`
+- `Container + Slot` — papel: composição (grade de cards) — ver `container.sample.md`
 
 ## Recursos visuais
 

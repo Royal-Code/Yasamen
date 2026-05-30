@@ -1,4 +1,4 @@
-# PP-MAP - Blueprint resumido
+﻿# PP-MAP - Blueprint resumido
 
 ## Pattern
 
@@ -20,7 +20,7 @@ PP-MAP — Map Page — ver `pp-map.ui-map.md`
 - `Modal` — papel: composição (formulário novo marcador) — ver `modal.sample.md`
 - `IconButton` — papel: composição (geolocalização, fechar, ações) — ver `button.sample.md`
 - `Button` — papel: composição (ações no painel e modal) — ver `button.sample.md`
-- `Stack` — papel: composição (lista de campos no painel) — ver `bar.sample.md`
+- `Stack` — papel: composição (lista de campos no painel) — ver `stack.sample.md`
 - `Badge` — papel: composição (categoria/status do marcador) — ver `badge.sample.md`
 - `TextField` — papel: composição (campos no formulário de novo marcador) — ver `field-text.sample.md`
 
@@ -37,12 +37,12 @@ Container de mapa `flex-1`; toolbar absoluta com `Bar`; `OffCanvas` para detalhe
 ```razor
 @page "/mapa"
 @inject IJSRuntime JS
-@inject OffCanvasService OffCanvasService
-@inject ModalService ModalService
 @inject MarcadorService MarcadorService
 @implements IAsyncDisposable
 
 @code {
+    private OffCanvas? marcadorDetalheDrawer;
+    private Modal? novoMarcadorModal;
     private MarcadorDto? marcadorSelecionado;
     private bool carregandoLocalizacao;
 
@@ -60,7 +60,7 @@ Container de mapa `flex-1`; toolbar absoluta com `Bar`; `OffCanvas` para detalhe
     public async Task OnMarcadorClicado(int marcadorId)
     {
         marcadorSelecionado = await MarcadorService.ObterAsync(marcadorId);
-        await OffCanvasService.OpenAsync("marcador-detalhe");
+        await marcadorDetalheDrawer!.OpenAsync();
         StateHasChanged();
     }
 
@@ -92,7 +92,7 @@ Container de mapa `flex-1`; toolbar absoluta com `Bar`; `OffCanvas` para detalhe
                 <EndContent>
                     <IconButton Icon="WellKnownIcons.MapPin" Style="Themes.Primary"
                                 Size="Sizes.Small"
-                                OnClick="() => ModalService.OpenAsync("novo-marcador")"
+                                OnClick="async () => await novoMarcadorModal!.OpenAsync()"
                                 Title="Novo marcador" />
                     <IconButton Icon="WellKnownIcons.Locate" Style="Themes.Default"
                                 Size="Sizes.Small"
@@ -106,7 +106,7 @@ Container de mapa `flex-1`; toolbar absoluta com `Bar`; `OffCanvas` para detalhe
 </div>
 
 @* Painel de detalhe do marcador *@
-<OffCanvas Id="marcador-detalhe" Title="@(marcadorSelecionado?.Nome ?? "Marcador")">
+<OffCanvas @ref="marcadorDetalheDrawer" Id="marcador-detalhe" Title="@(marcadorSelecionado?.Nome ?? "Marcador")">
     <ChildContent>
         @if (marcadorSelecionado is null)
         {
@@ -159,7 +159,7 @@ Container de mapa `flex-1`; toolbar absoluta com `Bar`; `OffCanvas` para detalhe
 </OffCanvas>
 
 @* Modal de novo marcador *@
-<Modal Id="novo-marcador" Title="Novo marcador">
+<Modal @ref="novoMarcadorModal" Id="novo-marcador" Title="Novo marcador">
     <ChildContent>
         <EditForm Model="novoMarcador" OnValidSubmit="SalvarMarcador">
             <DataAnnotationsValidator />
@@ -174,7 +174,7 @@ Container de mapa `flex-1`; toolbar absoluta com `Bar`; `OffCanvas` para detalhe
             <Bar AdditionalClasses="mt-4">
                 <EndContent>
                     <Button Style="Themes.Default" Label="Cancelar"
-                            OnClick="() => ModalService.CloseAsync("novo-marcador")" />
+                            OnClick="async () => await novoMarcadorModal!.CloseAsync()" />
                     <Button Style="Themes.Primary" Label="Salvar" Type="submit" />
                 </EndContent>
             </Bar>

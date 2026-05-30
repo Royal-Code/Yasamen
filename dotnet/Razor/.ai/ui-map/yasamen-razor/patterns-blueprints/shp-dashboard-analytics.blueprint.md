@@ -1,4 +1,4 @@
-# SHP-DASHBOARD_ANALYTICS - Blueprint completo
+﻿# SHP-DASHBOARD_ANALYTICS - Blueprint completo
 
 ## Pattern
 
@@ -22,16 +22,16 @@ A lib cobre o shell e os KPIs. O gap é coordenar: `AppLayout + AppSideBar` com 
 
 ## Componentes usados
 
-- `AppLayout` — papel: principal (estrutura do shell analítico) — ver `bar.sample.md`
-- `AppSideBar` — papel: principal (navegação de áreas analíticas) — ver `bar.sample.md`
+- `AppLayout` — papel: principal (estrutura do shell analítico) — ver `app-layout.sample.md`
+- `AppSideBar` — papel: principal (navegação de áreas analíticas) — ver `app-side-bar.sample.md`
 - `Bar` — papel: composição (header com filtros globais) — ver `bar.sample.md`
 - `ButtonGroup + Button` — papel: composição (seletor de período) — ver `button.sample.md`
-- `Container + Slot` — papel: composição (grade de KPIs) — ver `bar.sample.md`
+- `Container + Slot` — papel: composição (grade de KPIs) — ver `container.sample.md`
 - `Box` — papel: composição (KPI, seção de gráfico, lista) — ver `box.sample.md`
 - `Badge` — papel: composição (variação KPI, alertas na nav) — ver `badge.sample.md`
 - `OffCanvas` — papel: composição (drill-down de métrica) — ver `modal.sample.md`
 - `Feedback` — papel: composição (alertas, empty state) — ver `feedback.sample.md`
-- `Stack` — papel: composição (lista de atividade recente) — ver `bar.sample.md`
+- `Stack` — papel: composição (lista de atividade recente) — ver `stack.sample.md`
 
 ## Recursos visuais
 
@@ -50,10 +50,10 @@ A lib cobre o shell e os KPIs. O gap é coordenar: `AppLayout + AppSideBar` com 
 ```razor
 @* AnalyticsLayout.razor — shell de Dashboard/Analytics *@
 @inherits LayoutComponentBase
-@inject OffCanvasService OffCanvasService
 @inject NotificationService NotificationService
 
 @code {
+    private readonly OffCanvasHandler drillDownHandler = new();
     private string periodoGlobal = "30d";
     private int alertasAtivos;
     private bool carregandoRefresh;
@@ -73,6 +73,7 @@ A lib cobre o shell e os KPIs. O gap é coordenar: `AppLayout + AppSideBar` com 
     }
 }
 
+<CascadingValue Value="drillDownHandler" Name="DrillDownHandler">
 <AppLayout>
     <AppSideBar>
         <div class="px-4 py-3 border-b border-light-200 flex-shrink-0">
@@ -134,11 +135,12 @@ A lib cobre o shell e os KPIs. O gap é coordenar: `AppLayout + AppSideBar` com 
 </AppLayout>
 
 @* OffCanvas de drill-down *@
-<OffCanvas Id="drill-down" Title="Detalhe">
+<OffCanvas Handler="@drillDownHandler" Id="drill-down" Title="Detalhe">
     <ChildContent>
         @* Conteúdo injetado via serviço ou componente filho *@
     </ChildContent>
 </OffCanvas>
+</CascadingValue>
 ```
 
 ### Cenários de composição
@@ -229,11 +231,15 @@ A lib cobre o shell e os KPIs. O gap é coordenar: `AppLayout + AppSideBar` com 
 
 ```razor
 @code {
+    [CascadingParameter(Name = "DrillDownHandler")]
+    private OffCanvasHandler? DrillDownHandler { get; set; }
+
     private async Task AbrirDrillDown(KpiDto kpi)
     {
         // Carregar dados detalhados do KPI
         drillDownData = await AnalyticsService.ObterDetalheKpiAsync(kpi.Id, periodoGlobal);
-        await OffCanvasService.OpenAsync("drill-down");
+        if (DrillDownHandler is not null)
+            await DrillDownHandler.Show();
     }
 }
 ```

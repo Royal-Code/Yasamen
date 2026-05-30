@@ -1,4 +1,4 @@
-# UIP-CONTENT-MEDIA_COLLECTION - Blueprint resumido
+﻿# UIP-CONTENT-MEDIA_COLLECTION - Blueprint resumido
 
 ## Pattern
 
@@ -17,7 +17,7 @@ A lib não tem galeria ou coleção de mídias. O gap é orientar: lista de anex
 
 - `Box` — papel: principal (container da coleção e por item) — ver `box.sample.md`
 - `Bar` — papel: composição (header da coleção e por item) — ver `bar.sample.md`
-- `Stack` — papel: composição (lista de itens) — ver `bar.sample.md`
+- `Stack` — papel: composição (lista de itens) — ver `stack.sample.md`
 - `Badge` — papel: composição (contador de itens) — ver `badge.sample.md`
 - `IconButton / Button` — papel: composição (ações por item e global) — ver `button.sample.md`
 - `Feedback` — papel: composição (empty state) — ver `feedback.sample.md`

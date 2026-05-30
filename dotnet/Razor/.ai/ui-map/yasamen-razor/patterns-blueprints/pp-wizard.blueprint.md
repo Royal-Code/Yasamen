@@ -1,4 +1,4 @@
-# PP-WIZARD - Blueprint completo
+﻿# PP-WIZARD - Blueprint completo
 
 ## Pattern
 
@@ -23,7 +23,7 @@ A lib não tem componente de stepper. O gap é coordenar: indicador de progresso
 
 - `Box` — papel: principal (container de etapa) — ver `box.sample.md`
 - `Bar` — papel: composição (ações de navegação) — ver `bar.sample.md`
-- `Stack` — papel: composição (campos dentro da etapa) — ver `bar.sample.md`
+- `Stack` — papel: composição (campos dentro da etapa) — ver `stack.sample.md`
 - `Button` — papel: composição (Anterior, Próximo, Concluir) — ver `button.sample.md`
 - `TextField` — papel: composição (campos de texto nas etapas) — ver `field-text.sample.md`
 - `Feedback` — papel: composição (erro de validação da etapa) — ver `feedback.sample.md`

@@ -1,4 +1,4 @@
-# SHP-TRANSACTIONAL_COMMERCE - Blueprint resumido
+﻿# SHP-TRANSACTIONAL_COMMERCE - Blueprint resumido
 
 ## Pattern
 
@@ -21,7 +21,7 @@ A lib cobre bem o fluxo de e-commerce. O gap é orientar: header de loja com `Ba
 - `Stack + Box` — papel: composição (itens do carrinho) — ver `box.sample.md`
 - `IconButton` — papel: composição (trigger do carrinho) — ver `button.sample.md`
 - `Button` — papel: composição (CTA de checkout, conta) — ver `button.sample.md`
-- `Container + Slot` — papel: composição (footer editorial) — ver `bar.sample.md`
+- `Container + Slot` — papel: composição (footer editorial) — ver `container.sample.md`
 - `Feedback` — papel: composição (carrinho vazio) — ver `feedback.sample.md`
 
 ## Recursos visuais
@@ -41,8 +41,8 @@ A lib cobre bem o fluxo de e-commerce. O gap é orientar: header de loja com `Ba
 @inject CarrinhoService CarrinhoService
 
 @code {
+    private readonly OffCanvasHandler carrinhoHandler = new();
     private int itensCarrinho;
-    private bool carrinhoAberto;
     private List<ItemCarrinhoDto> itensDoCarrinho = [];
     private decimal totalCarrinho;
     private string busca = "";
@@ -63,7 +63,7 @@ A lib cobre bem o fluxo de e-commerce. O gap é orientar: header de loja com `Ba
     {
         itensDoCarrinho = await CarrinhoService.ObterItensAsync();
         totalCarrinho = itensDoCarrinho.Sum(i => i.PrecoTotal);
-        carrinhoAberto = true;
+        await carrinhoHandler.Show();
     }
 
     private async Task RemoverDoCarrinho(int itemId)
@@ -148,8 +148,8 @@ A lib cobre bem o fluxo de e-commerce. O gap é orientar: header de loja com `Ba
 </div>
 
 @* Drawer do carrinho *@
-<OffCanvas Title="Seu carrinho" @bind-IsOpen="carrinhoAberto"
-           Position="OffCanvasPosition.End">
+<OffCanvas Handler="@carrinhoHandler" Title="Seu carrinho"
+           Position="Positions.End">
     <ChildContent>
         @if (!itensDoCarrinho.Any())
         {
@@ -204,10 +204,10 @@ A lib cobre bem o fluxo de e-commerce. O gap é orientar: header de loja com `Ba
     </ChildContent>
     <FooterContent>
         <Button Style="Themes.Default" Label="Continuar comprando"
-                OnClick="() => carrinhoAberto = false" />
+                OnClick="async () => await carrinhoHandler.Hide()" />
         <Button Style="Themes.Primary" Label="Finalizar compra"
                 Disabled="@(!itensDoCarrinho.Any())"
-                OnClick='() => { carrinhoAberto = false; Nav.NavigateTo("/checkout"); }' />
+                OnClick='async () => { await carrinhoHandler.Hide(); Nav.NavigateTo("/checkout"); }' />
     </FooterContent>
 </OffCanvas>
 ```

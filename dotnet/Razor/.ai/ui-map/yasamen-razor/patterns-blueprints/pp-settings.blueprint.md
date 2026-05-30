@@ -1,4 +1,4 @@
-# PP-SETTINGS - Blueprint resumido
+﻿# PP-SETTINGS - Blueprint resumido
 
 ## Pattern
 
@@ -16,7 +16,7 @@ A lib cobre bem os campos e ações. O gap é orientar: nav lateral de seções 
 ## Componentes usados
 
 - `Box` — papel: composição (container de grupo de configuração) — ver `box.sample.md`
-- `Stack` — papel: composição (campos dentro do grupo) — ver `bar.sample.md`
+- `Stack` — papel: composição (campos dentro do grupo) — ver `stack.sample.md`
 - `Bar` — papel: composição (header da página e ações) — ver `bar.sample.md`
 - `TextField` — papel: composição (campos de texto) — ver `field-text.sample.md`
 - `Button` — papel: composição (salvar/cancelar/restaurar) — ver `button.sample.md`

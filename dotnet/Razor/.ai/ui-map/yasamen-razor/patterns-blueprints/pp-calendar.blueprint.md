@@ -1,4 +1,4 @@
-# PP-CALENDAR - Blueprint resumido
+﻿# PP-CALENDAR - Blueprint resumido
 
 ## Pattern
 
@@ -17,7 +17,7 @@ PP-CALENDAR — Calendar Page — ver `pp-calendar.ui-map.md`
 
 - `Bar` — papel: composição (header de navegação e por dia) — ver `bar.sample.md`
 - `Box` — papel: composição (card de evento) — ver `box.sample.md`
-- `Stack` — papel: composição (lista de eventos por dia) — ver `bar.sample.md`
+- `Stack` — papel: composição (lista de eventos por dia) — ver `stack.sample.md`
 - `Badge` — papel: composição (categoria do evento) — ver `badge.sample.md`
 - `ButtonGroup + Button` — papel: composição (seletor de vista e ações) — ver `button.sample.md`
 - `Modal` — papel: composição (criar/editar evento) — ver `modal.sample.md`
@@ -36,10 +36,10 @@ Header com navegação de mês + seletor de vista; vista Agenda = dias agrupados
 
 ```razor
 @page "/calendario"
-@inject ModalService ModalService
 @inject EventoService EventoService
 
 @code {
+    private Modal? eventoFormModal;
     private DateTime mesAtual = DateTime.Today;
     private List<EventoDto> eventos = [];
     private bool carregando = true;
@@ -67,16 +67,16 @@ Header com navegação de mês + seletor de vista; vista Agenda = dias agrupados
         eventos.OrderBy(e => e.DataHora)
                .GroupBy(e => e.DataHora.Date);
 
-    private void AbrirNovoEvento()
+    private async Task AbrirNovoEvento()
     {
         eventoEdicao = new EventoDto { DataHora = DateTime.Now };
-        ModalService.OpenAsync("evento-form");
+        await eventoFormModal!.OpenAsync();
     }
 
-    private void AbrirEdicaoEvento(EventoDto ev)
+    private async Task AbrirEdicaoEvento(EventoDto ev)
     {
         eventoEdicao = ev with { };
-        ModalService.OpenAsync("evento-form");
+        await eventoFormModal!.OpenAsync();
     }
 }
 
@@ -196,7 +196,7 @@ else
 }
 
 @* Modal de evento *@
-<Modal Id="evento-form"
+<Modal @ref="eventoFormModal" Id="evento-form"
        Title="@(eventoEdicao?.Id > 0 ? "Editar evento" : "Novo evento")">
     <ChildContent>
         @if (eventoEdicao is not null)
@@ -238,7 +238,7 @@ else
                     </StartContent>
                     <EndContent>
                         <Button Style="Themes.Default" Label="Cancelar"
-                                OnClick='() => ModalService.CloseAsync("evento-form")' />
+                                OnClick='async () => await eventoFormModal!.CloseAsync()' />
                         <Button Style="Themes.Primary" Label="Salvar" Type="submit" />
                     </EndContent>
                 </Bar>

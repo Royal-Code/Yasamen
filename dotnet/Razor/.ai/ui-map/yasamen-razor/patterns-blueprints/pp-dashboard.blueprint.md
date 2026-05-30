@@ -1,4 +1,4 @@
-# PP-DASHBOARD - Blueprint completo
+﻿# PP-DASHBOARD - Blueprint completo
 
 ## Pattern
 
@@ -23,12 +23,12 @@ A lib cobre KPIs e listas. O gap é documentar: (a) **GAP crítico de gráficos*
 ## Componentes usados
 
 - `Bar` — papel: principal (header com filtros) — ver `bar.sample.md`
-- `Container + Slot` — papel: principal (grades de zonas) — ver `bar.sample.md`
+- `Container + Slot` — papel: principal (grades de zonas) — ver `container.sample.md`
 - `Box` — papel: composição (card de KPI, seção de gráfico, lista, alertas) — ver `box.sample.md`
 - `Badge` — papel: composição (variação de KPI, tipo de evento, contador de alertas) — ver `badge.sample.md`
 - `ButtonGroup + Button` — papel: composição (seletor de período) — ver `button.sample.md`
 - `Feedback` — papel: composição (empty state, alertas, error) — ver `feedback.sample.md`
-- `Stack` — papel: composição (listas de atividade) — ver `bar.sample.md`
+- `Stack` — papel: composição (listas de atividade) — ver `stack.sample.md`
 
 ## Recursos visuais
 

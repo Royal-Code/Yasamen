@@ -1,4 +1,4 @@
-# UIP-INPUT-FILTER_PANEL - Blueprint resumido
+﻿# UIP-INPUT-FILTER_PANEL - Blueprint resumido
 
 ## Pattern
 
@@ -19,7 +19,7 @@ A lib não tem filter panel. O gap é orientar: drawer de filtros via `OffCanvas
 - `Bar` — papel: composição (barra com trigger de filtros) — ver `bar.sample.md`
 - `Badge` — papel: composição (contador de filtros ativos) — ver `badge.sample.md`
 - `Button` — papel: composição (aplicar, limpar) — ver `button.sample.md`
-- `Stack` — papel: composição (controles de filtro) — ver `bar.sample.md`
+- `Stack` — papel: composição (controles de filtro) — ver `stack.sample.md`
 
 ## Recursos visuais
 
@@ -32,9 +32,8 @@ A lib não tem filter panel. O gap é orientar: drawer de filtros via `OffCanvas
 `OffCanvas` com controles de filtro + `Badge` de contagem no trigger + chips removíveis acima da coleção.
 
 ```razor
-@inject OffCanvasService OffCanvasService
-
 @code {
+    private OffCanvas? offCanvasFiltros;
     private FiltroDto filtros = new();
     private int FiltrosAtivos =>
         (filtros.Status is not null ? 1 : 0) +
@@ -43,7 +42,7 @@ A lib não tem filter panel. O gap é orientar: drawer de filtros via `OffCanvas
 
     private async Task AplicarFiltros()
     {
-        await OffCanvasService.CloseAsync("filtros");
+        await offCanvasFiltros!.CloseAsync();
         CarregarDados();
     }
 }
@@ -59,7 +58,7 @@ A lib não tem filter panel. O gap é orientar: drawer de filtros via `OffCanvas
             <Button Style="Themes.Secondary" Outline=true
                     Label="Filtros"
                     Icon="WellKnownIcons.Filter"
-                    OnClick="() => OffCanvasService.OpenAsync("filtros")" />
+                    OnClick="async () => await offCanvasFiltros!.OpenAsync()" />
             @if (FiltrosAtivos > 0)
             {
                 <Badge Style="Themes.Primary"
@@ -102,7 +101,7 @@ A lib não tem filter panel. O gap é orientar: drawer de filtros via `OffCanvas
 }
 
 @* Drawer de filtros *@
-<OffCanvas Id="filtros" Title="Filtros">
+<OffCanvas @ref="offCanvasFiltros" Id="filtros" Title="Filtros">
     <ChildContent>
         <Stack Gap="Gaps.Medium">
             <div class="flex flex-col gap-1">
@@ -129,7 +128,7 @@ A lib não tem filter panel. O gap é orientar: drawer de filtros via `OffCanvas
         <Bar AdditionalClasses="mt-6">
             <StartContent>
                 <Button Style="Themes.Default" Label="Limpar"
-                        OnClick="() => { filtros = new(); OffCanvasService.CloseAsync("filtros"); CarregarDados(); }" />
+                        OnClick="async () => { filtros = new(); await offCanvasFiltros!.CloseAsync(); CarregarDados(); }" />
             </StartContent>
             <EndContent>
                 <Button Style="Themes.Primary" Label="Aplicar"

@@ -1,4 +1,4 @@
-# UIP-STRUCT-DOCKED_PANEL_SET - Blueprint completo
+﻿# UIP-STRUCT-DOCKED_PANEL_SET - Blueprint completo
 
 ## Pattern
 
@@ -20,11 +20,11 @@ A lib tem `AppLayout + AppSideBar` para dois painéis (sidebar esquerda + área 
 
 ## Componentes usados
 
-- `AppLayout` — papel: principal (estrutura de dois painéis raiz) — ver `bar.sample.md`
-- `AppSideBar` — papel: principal (painel esquerdo nativo) — ver `bar.sample.md`
+- `AppLayout` — papel: principal (estrutura de dois painéis raiz) — ver `app-layout.sample.md`
+- `AppSideBar` — papel: principal (painel esquerdo nativo) — ver `app-side-bar.sample.md`
 - `Bar` — papel: composição (header de cada painel) — ver `bar.sample.md`
 - `IconButton` — papel: composição (toggle de painel) — ver `button.sample.md`
-- `Stack` — papel: composição (conteúdo de painel de lista) — ver `bar.sample.md`
+- `Stack` — papel: composição (conteúdo de painel de lista) — ver `stack.sample.md`
 
 ## Recursos visuais
 

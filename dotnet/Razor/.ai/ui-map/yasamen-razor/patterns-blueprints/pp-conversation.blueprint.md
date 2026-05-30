@@ -47,9 +47,9 @@ Split conversa com lista + thread + composição e auto-scroll.
 ```razor
 @page "/mensagens/{ConversaId:int?}"
 @inject IJSRuntime JS
-@inject OffCanvasService OffCanvasService
 
 @code {
+    private OffCanvas? conversaInfoDrawer;
     [Parameter] public int? ConversaId { get; set; }
     private List<ConversaDto> conversas = [];
     private ConversaDto? conversaAtiva;
@@ -185,7 +185,7 @@ Split conversa com lista + thread + composição e auto-scroll.
                 </StartContent>
                 <EndContent>
                     <IconButton Icon="WellKnownIcons.Info" Style="Themes.Default"
-                                OnClick='() => OffCanvasService.OpenAsync("conversa-info")' />
+                                OnClick='async () => await conversaInfoDrawer!.OpenAsync()' />
                 </EndContent>
             </Bar>
 
@@ -253,7 +253,7 @@ Split conversa com lista + thread + composição e auto-scroll.
 </div>
 
 @* Painel de informações da conversa *@
-<OffCanvas Id="conversa-info" Title="Informações">
+<OffCanvas @ref="conversaInfoDrawer" Id="conversa-info" Title="Informações">
     <ChildContent>
         @if (conversaAtiva is not null)
         {

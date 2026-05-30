@@ -1,4 +1,4 @@
-# UIP-CONTENT-DETAIL_BLOCK - Blueprint resumido
+﻿# UIP-CONTENT-DETAIL_BLOCK - Blueprint resumido
 
 ## Pattern
 
@@ -18,7 +18,7 @@ A lib não tem componente de detail block. O gap é orientar a composição de s
 - `Box` — papel: principal (container de seção) — ver `box.sample.md`
 - `Bar` — papel: composição (header de seção) — ver `bar.sample.md`
 - `Badge` — papel: composição (status de atributo) — ver `badge.sample.md`
-- `Stack` — papel: composição (sequência de seções) — ver `bar.sample.md`
+- `Stack` — papel: composição (sequência de seções) — ver `stack.sample.md`
 - `Button` — papel: composição (ação editar seção) — ver `button.sample.md`
 
 ## Recursos visuais

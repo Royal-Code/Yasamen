@@ -1,4 +1,4 @@
-# UIP-INPUT-LOOKUP_FIELD - Blueprint resumido
+﻿# UIP-INPUT-LOOKUP_FIELD - Blueprint resumido
 
 ## Pattern
 
@@ -19,7 +19,7 @@ A lib não tem entity picker ou autocomplete remoto. O gap é orientar dois cen�
 - `TextField` — papel: composição (campo de filtro) — ver `field-text.sample.md`
 - `Button / IconButton` — papel: composição (trigger e ações) — ver `button.sample.md`
 - `Box` — papel: composição (item de resultado) — ver `box.sample.md`
-- `Stack` — papel: composição (lista de resultados) — ver `bar.sample.md`
+- `Stack` — papel: composição (lista de resultados) — ver `stack.sample.md`
 
 ## Recursos visuais
 
@@ -32,9 +32,8 @@ A lib não tem entity picker ou autocomplete remoto. O gap é orientar dois cen�
 Lookup via `Modal` para entidades ricas; estado `(Id, Display)` para entidade selecionada; botão limpar.
 
 ```razor
-@inject ModalService ModalService
-
 @code {
+    private Modal? modalLookup;
     private int? clienteId;
     private string? clienteNome;
     private string filtroCliente = "";
@@ -47,7 +46,7 @@ Lookup via `Modal` para entidades ricas; estado `(Id, Display)` para entidade se
     {
         clienteId = c.Id;
         clienteNome = c.Nome;
-        await ModalService.CloseAsync("lookup-cliente");
+        await modalLookup!.CloseAsync();
     }
 
     private void LimparSelecao()
@@ -73,12 +72,12 @@ Lookup via `Modal` para entidades ricas; estado `(Id, Display)` para entidade se
         <Button Style="Themes.Secondary" Outline=true
                 Label="Selecionar cliente..."
                 Icon="WellKnownIcons.Search"
-                OnClick="() => ModalService.OpenAsync("lookup-cliente")" />
+                OnClick="async () => await modalLookup!.OpenAsync()" />
     }
 </div>
 
 @* Modal de lookup *@
-<Modal Id="lookup-cliente" Title="Selecionar cliente">
+<Modal @ref="modalLookup" Id="lookup-cliente" Title="Selecionar cliente">
     <ChildContent>
         <div class="mb-3">
             <TextField @bind-Value="filtroCliente"

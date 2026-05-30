@@ -1,4 +1,4 @@
-# SHP-MEDIA_CONTENT - Blueprint completo
+﻿# SHP-MEDIA_CONTENT - Blueprint completo
 
 ## Pattern
 
@@ -25,13 +25,13 @@ A lib é focada em apps operacionais. O gap é orientar o shell de catálogo/mí
 
 - `Bar` — papel: principal (header do shell) — ver `bar.sample.md`
 - `OffCanvas` — papel: principal (menu mobile de categorias) — ver `modal.sample.md`
-- `Container + Slot` — papel: composição (grade de catálogo) — ver `bar.sample.md`
+- `Container + Slot` — papel: composição (grade de catálogo) — ver `container.sample.md`
 - `Box` — papel: composição (card de item, detalhe editorial) — ver `box.sample.md`
 - `Badge` — papel: composição (categoria, tags, metadados) — ver `badge.sample.md`
-- `Pagination` — papel: composição (paginação de catálogo) — ver `bar.sample.md`
+- `Pagination` — papel: composição (paginação de catálogo) — ver `pagination.sample.md`
 - `TextField` — papel: composição (busca global) — ver `field-text.sample.md`
 - `DropIconButton` — papel: composição (menu de conta do usuário) — ver `button.sample.md`
-- `Stack` — papel: composição (links do menu mobile) — ver `bar.sample.md`
+- `Stack` — papel: composição (links do menu mobile) — ver `stack.sample.md`
 
 ## Recursos visuais
 
@@ -53,7 +53,7 @@ A lib é focada em apps operacionais. O gap é orientar o shell de catálogo/mí
 @inject NavigationManager Nav
 
 @code {
-    private bool menuMobileAberto;
+    private readonly OffCanvasHandler menuMobileHandler = new();
     private string busca = "";
 
     private void Buscar(ChangeEventArgs e)
@@ -124,7 +124,7 @@ A lib é focada em apps operacionais. O gap é orientar o shell de catálogo/mí
                     @* Trigger menu mobile *@
                     <IconButton Icon="WellKnownIcons.Menu" Style="Themes.Default"
                                 AdditionalClasses="md:hidden"
-                                OnClick="() => menuMobileAberto = true" />
+                                OnClick="async () => await menuMobileHandler.Show()" />
                 </EndContent>
             </Bar>
         </div>
@@ -156,8 +156,8 @@ A lib é focada em apps operacionais. O gap é orientar o shell de catálogo/mí
 </div>
 
 @* Menu mobile de categorias *@
-<OffCanvas Title="Navegar" @bind-IsOpen="menuMobileAberto"
-           Position="OffCanvasPosition.Start" Size="OffCanvasSize.Small">
+<OffCanvas Handler="@menuMobileHandler" Title="Navegar"
+           Position="Positions.Start" BoxSize="Sizes.Small">
     <ChildContent>
         <div class="px-3 py-2 border-b border-light-100">
             <TextField @bind-Value="busca" Placeholder="Buscar..." @oninput="Buscar" />
@@ -171,7 +171,7 @@ A lib é focada em apps operacionais. O gap é orientar o shell de catálogo/mí
                     <a href="@item.Item1"
                        class="block px-4 py-3 text-sm text-dark-600 hover:bg-light-50
                               border-b border-light-100 last:border-0"
-                       @onclick="() => menuMobileAberto = false">
+                       @onclick="async () => await menuMobileHandler.Hide()">
                         @item.Item2
                     </a>
                 }

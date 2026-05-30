@@ -1,4 +1,4 @@
-# SHP-COMMUNICATION - Blueprint completo
+﻿# SHP-COMMUNICATION - Blueprint completo
 
 ## Pattern
 
@@ -25,7 +25,7 @@ A lib tem `AppLayout` mas não tem shell de comunicação dedicado. O gap é coo
 - `Badge` — papel: composição (não lidas por thread e global) — ver `badge.sample.md`
 - `OffCanvas` — papel: composição (contexto da conversa ativa) — ver `modal.sample.md`
 - `FieldText` — papel: composição (busca de conversas) — ver `field-text.sample.md`
-- `Stack` — papel: composição (lista de conversas no inbox) — ver `bar.sample.md`
+- `Stack` — papel: composição (lista de conversas no inbox) — ver `stack.sample.md`
 - `IconButton` — papel: composição (nova mensagem, info, voltar mobile) — ver `button.sample.md`
 - `Feedback` — papel: composição (empty state inbox e thread) — ver `feedback.sample.md`
 
@@ -46,7 +46,6 @@ A lib tem `AppLayout` mas não tem shell de comunicação dedicado. O gap é coo
 ```razor
 @* CommunicationLayout.razor — shell de comunicação *@
 @inherits LayoutComponentBase
-@inject OffCanvasService OffCanvasService
 
 @code {
     private bool mostrarThreadMobile;

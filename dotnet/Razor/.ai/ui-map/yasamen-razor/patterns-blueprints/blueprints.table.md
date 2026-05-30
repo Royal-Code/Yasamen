@@ -176,64 +176,128 @@
 
 ## Resultado da geração
 
-*(Populado durante a etapa PB.3 — Geração)*
-
 ### UI-STRUCT — Estruturais
 
 | Pattern Id | Classificação final | Status | Tipo de artefato | Componentes propostos | Limites declarados |
 |---|---|---|---|---|---|
+| UIP-STRUCT-SCROLLABLE_REGION | resumido | gerado | composição apenas | - | min-h-0 obrigatório em filhos flex; scroll programático requer JS |
+| UIP-STRUCT-SPLIT_PANEL | resumido | gerado | composição apenas | - | resize requer JS drag; sem nativo |
+| UIP-STRUCT-COLLAPSIBLE_SECTION | resumido | gerado | composição apenas | - | animação de abertura requer JS ou transition CSS |
+| UIP-STRUCT-DOCKED_PANEL_SET | completo | gerado | composição apenas | - | resize de painéis requer JS; persistência requer localStorage; abas manuais |
 
 ### UI-FEEDBACK — Feedback e Estado
 
 | Pattern Id | Classificação final | Status | Tipo de artefato | Componentes propostos | Limites declarados |
 |---|---|---|---|---|---|
+| UIP-FEEDBACK-EMPTY_STATE | resumido | gerado | composição apenas | - | ilustrações/SVG a cargo do app |
+| UIP-FEEDBACK-LOADING_STATE | resumido | gerado | composição apenas | - | skeleton por zona é CSS manual animate-pulse |
+| UIP-FEEDBACK-ERROR_STATE | resumido | gerado | composição apenas | - | sem retry automático nativo |
 
 ### UI-INTERACTION — Interação
 
 | Pattern Id | Classificação final | Status | Tipo de artefato | Componentes propostos | Limites declarados |
 |---|---|---|---|---|---|
+| UIP-INTERACTION-KEYBOARD_FLOW | resumido | gerado | composição apenas | - | focus ring nativo do browser; tabindex manual |
+| UIP-INTERACTION-SELECTION | resumido | gerado | composição apenas | - | sem componente de checkbox com estilo nativo da lib |
+| UIP-INTERACTION-UNDO_REDO | resumido | gerado | composição apenas | - | histórico de estado é responsabilidade do app |
 
 ### UI-NAV — Navegação
 
 | Pattern Id | Classificação final | Status | Tipo de artefato | Componentes propostos | Limites declarados |
 |---|---|---|---|---|---|
+| UIP-NAV-SECTION_NAV | resumido | gerado | composição apenas | - | scroll suave requer JS scrollIntoView; IntersectionObserver para seção ativa |
+| UIP-NAV-TABS | resumido | gerado | composição apenas | - | animação de conteúdo requer CSS transition manual |
+| UIP-NAV-STEPPER_INDICATOR | resumido | gerado | composição apenas | - | sem componente nativo; CSS manual com flex |
+| UIP-NAV-TAB_BAR | resumido | gerado | composição apenas | - | barra inferior mobile é CSS manual; sem nativo |
 
 ### UI-ACTION — Ação
 
 | Pattern Id | Classificação final | Status | Tipo de artefato | Componentes propostos | Limites declarados |
 |---|---|---|---|---|---|
+| UIP-ACTION-FLOATING_ACTION | resumido | gerado | composição apenas | - | position:fixed; z-index manual |
+| UIP-ACTION-COMMAND_PALETTE | resumido | gerado | composição apenas | - | atalho de teclado requer JS; sem nativo |
 
 ### UI-INPUT — Entrada
 
 | Pattern Id | Classificação final | Status | Tipo de artefato | Componentes propostos | Limites declarados |
 |---|---|---|---|---|---|
+| UIP-INPUT-FORM_FIELD_GROUP | resumido | gerado | composição apenas | - | sem FormGroup dedicado; agrupamento por Box+Stack manual |
+| UIP-INPUT-INPUT_FIELD | resumido | gerado | composição apenas | - | date/select/textarea sem FieldDate/FieldSelect/FieldTextArea nativos |
+| UIP-INPUT-CHOICE_GROUP | resumido | gerado | composição apenas | - | checkbox/radio HTML nativo sem estilo da lib |
+| UIP-INPUT-OPTION_PICKER | resumido | gerado | composição apenas | - | InputSelect Blazor com label Tailwind manual; sem FieldSelect |
+| UIP-INPUT-LOOKUP_FIELD | resumido | gerado | composição apenas | - | FieldAction + Modal; sem autocomplete nativo |
+| UIP-INPUT-FILE_UPLOAD | resumido | gerado | composição apenas | - | InputFile Blazor; sem preview de imagem nativo |
+| UIP-INPUT-REPEATING_GROUP | resumido | gerado | composição apenas | - | @for obrigatório (não @foreach) para closures corretas |
+| UIP-INPUT-VALIDATION_SUMMARY | resumido | gerado | composição apenas | - | Feedback(Danger) + ValidationSummary Blazor |
+| UIP-INPUT-SEARCH_BAR | resumido | gerado | composição apenas | - | debounce requer Timer C# ou JS; sugestões requerem dropdown manual |
+| UIP-INPUT-FILTER_PANEL | resumido | gerado | composição apenas | - | OffCanvas (drawer) ou Box inline; sem componente de filtro dedicado |
+| UIP-INPUT-DATE_PICKER | resumido | gerado | composição apenas | - | input[type=date] nativo sem customização visual cross-browser |
+| UIP-INPUT-INLINE_EDITOR | resumido | gerado | composição apenas | - | toggle bool + TextField; sem componente de edição inline |
 
 ### UI-CONTENT — Conteúdo
 
 | Pattern Id | Classificação final | Status | Tipo de artefato | Componentes propostos | Limites declarados |
 |---|---|---|---|---|---|
+| UIP-CONTENT-DETAIL_BLOCK | resumido | gerado | composição apenas | - | dl HTML com grid Tailwind; sem FieldDisplay dedicado |
+| UIP-CONTENT-METRIC_CARD | resumido | gerado | composição apenas | - | tendência CSS manual; gráfico sparkline requer lib externa |
+| UIP-CONTENT-RICH_TEXT_BLOCK | resumido | gerado | composição apenas | - | MarkupString requer sanitização — risco XSS; Markdig externo |
+| UIP-CONTENT-MEDIA_VIEWER | resumido | gerado | composição apenas | - | video/audio HTML nativo sem customização cross-browser |
+| UIP-CONTENT-MEDIA_COLLECTION | resumido | gerado | composição apenas | - | carrossel requer CSS snap ou lib externa |
+| UIP-CONTENT-COMPARISON_BLOCK | resumido | gerado | composição apenas | - | slider de comparação requer JS drag |
+| UIP-CONTENT-COMMENT_THREAD | resumido | gerado | composição apenas | - | recursão Razor para respostas aninhadas; sem paginação lazy nativa |
 
 ### UI-DATA — Dados e Listagem
 
 | Pattern Id | Classificação final | Status | Tipo de artefato | Componentes propostos | Limites declarados |
 |---|---|---|---|---|---|
+| UIP-DATA-LIST_ITEM | resumido | gerado | composição apenas | - | sem componente de item dedicado; Bar+Box+DropIconButton |
+| UIP-DATA-CARD_GRID | resumido | gerado | composição apenas | - | Container+Slot cobre; sem gap |
+| UIP-DATA-TIMELINE_ITEM | resumido | gerado | composição apenas | - | linha vertical CSS manual; sem componente de timeline |
+| UIP-DATA-DATA_TABLE | completo | gerado | composição apenas | - | sem DataTable nativo; HTML table+Tailwind; sem virtualização |
+| UIP-DATA-TREE_VIEW | completo | gerado | composição apenas | - | componente recursivo Razor próprio; lazy load requer Func<> |
+| UIP-DATA-KANBAN_COLUMN | completo | gerado | composição apenas | - | DnD requer HTML5 DnD API ou lib; movimentação via DropItem |
 
 ### UI-OVERLAY — Overlays
 
 | Pattern Id | Classificação final | Status | Tipo de artefato | Componentes propostos | Limites declarados |
 |---|---|---|---|---|---|
+| UIP-OVERLAY-POPOVER | resumido | gerado | composição apenas | - | DropButton para ações; position:absolute para conteúdo arbitrário |
+| UIP-OVERLAY-TOOLTIP | resumido | gerado | composição apenas | - | title HTML ou CSS group hover; sem posicionamento inteligente |
 
 ### UI-SYSTEM — Sistema e Host
 
 | Pattern Id | Classificação final | Status | Tipo de artefato | Componentes propostos | Limites declarados |
 |---|---|---|---|---|---|
+| UIP-SYSTEM-PERMISSION_FLOW | resumido | gerado | composição apenas | - | lógica de permissão é responsabilidade do app |
+| UIP-SYSTEM-OFFLINE_SYNC | resumido | gerado | composição apenas | - | Service Worker/IndexedDB externos ao scope da lib |
+| UIP-SYSTEM-AUTH_SESSION | resumido | gerado | composição apenas | - | AuthorizeView + Modal de expiração; refresh token a cargo do app |
+| UIP-SYSTEM-BACKGROUND_PROGRESS | resumido | gerado | composição apenas | - | progresso real requer IProgress<T> ou serviço singleton C# |
+| UIP-SYSTEM-NOTIFICATION_CENTER | resumido | gerado | composição apenas | - | OffCanvas + Badge + Stack; sem centro de notificações nativo |
 
 ### PAGE — Padrões de Página
 
 | Pattern Id | Classificação final | Status | Tipo de artefato | Componentes propostos | Limites declarados |
 |---|---|---|---|---|---|
+| PP-LANDING | resumido | gerado | composição apenas | - | hero/testimonials/pricing HTML livre; sem componente de seção nativo |
+| PP-FEED | resumido | gerado | composição apenas | - | infinite scroll requer IntersectionObserver JS |
+| PP-SETTINGS | resumido | gerado | composição apenas | - | sidebar CSS manual; select/checkbox sem estilo nativo da lib |
+| PP-CALENDAR | resumido | gerado | composição apenas | - | vista Agenda como alternativa; grade semana/mês requer lib externa |
+| PP-MAP | resumido | gerado | composição apenas | - | superfície de mapa GAP crítico — Leaflet/Google Maps obrigatório |
+| PP-CANVAS | resumido | gerado | composição apenas | - | superfície de canvas GAP crítico — Fabric.js/Konva obrigatório |
+| PP-LIST-DETAIL | completo | gerado | composição apenas | - | resize requer JS; mobile toggle via hidden/flex CSS |
+| PP-WIZARD | completo | gerado | composição apenas | - | stepper CSS manual; sem componente nativo; EditContext por etapa |
+| PP-DASHBOARD | completo | gerado | composição apenas | - | gráficos GAP crítico — lib externa obrigatória; fallback CSS bars |
+| PP-CONVERSATION | completo | gerado | composição apenas | - | balões CSS manual; scroll programático JS; tempo real requer SignalR |
+| PP-BOARD | completo | gerado | composição apenas | - | DnD requer lib externa; movimentação via DropItem; scroll horizontal |
 
 ### SHELL — Padrões de Shell
 
 | Pattern Id | Classificação final | Status | Tipo de artefato | Componentes propostos | Limites declarados |
 |---|---|---|---|---|---|
+| SHP-TRANSACTIONAL_COMMERCE | resumido | gerado | composição apenas | - | CarrinhoService.OnChanged requer IDisposable; checkout externo |
+| SHP-PORTAL | completo | gerado | composição apenas | - | sem mega-menu nativo; hero/pricing HTML livre; SEO via HeadContent |
+| SHP-COMMUNICATION | completo | gerado | composição apenas | - | SignalR externo; balões CSS manual; sem indicadores de presença |
+| SHP-MEDIA_CONTENT | completo | gerado | composição apenas | - | MarkupString requer sanitização XSS; carrossel requer lib externa |
+| SHP-DASHBOARD_ANALYTICS | completo | gerado | composição apenas | - | gráficos GAP crítico — lib externa; periodoGlobal via CascadingValue |
+| SHP-STUDIO_WORKBENCH | completo | gerado | composição apenas | - | canvas GAP crítico — lib externa; resize JS; mobile não suportado |
+| SHP-KIOSK_EMBEDDED | completo | gerado | composição apenas | - | Timer? IDisposable obrigatório; hardware via IJSRuntime externo |

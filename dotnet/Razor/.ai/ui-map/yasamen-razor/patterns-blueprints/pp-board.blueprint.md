@@ -1,4 +1,4 @@
-# PP-BOARD - Blueprint completo
+﻿# PP-BOARD - Blueprint completo
 
 ## Pattern
 
@@ -23,7 +23,7 @@ A lib não tem componente de kanban. O gap é coordenar: scroll horizontal de co
 ## Componentes usados
 
 - `Box` — papel: principal (container de coluna e de card) — ver `box.sample.md`
-- `Stack` — papel: composição (lista de cards por coluna) — ver `bar.sample.md`
+- `Stack` — papel: composição (lista de cards por coluna) — ver `stack.sample.md`
 - `Bar` — papel: composição (header da página, coluna e card) — ver `bar.sample.md`
 - `Badge` — papel: composição (contagem, prioridade, tags) — ver `badge.sample.md`
 - `DropIconButton` — papel: composição (ações por card) — ver `button.sample.md`
@@ -51,9 +51,9 @@ Board com 5 colunas, filtros por busca e responsável, e CRUD via modal.
 
 ```razor
 @page "/board"
-@inject ModalService ModalService
 
 @code {
+    private Modal? cardFormModal;
     private Dictionary<string, List<TarefaDto>> colunas = new()
     {
         ["Backlog"]       = [],
@@ -90,18 +90,18 @@ Board com 5 colunas, filtros por busca e responsável, e CRUD via modal.
              t.Titulo.Contains(busca, StringComparison.OrdinalIgnoreCase)) &&
             (filtroResponsavel is null || t.ResponsavelId == filtroResponsavel));
 
-    private void AbrirNovoCard(string coluna)
+    private async Task AbrirNovoCard(string coluna)
     {
         colunaNovoCard = coluna;
         cardEdicao = new TarefaDto { Status = coluna };
-        ModalService.OpenAsync("card-form");
+        await cardFormModal!.OpenAsync();
     }
 
-    private void AbrirEdicaoCard(TarefaDto tarefa, string coluna)
+    private async Task AbrirEdicaoCard(TarefaDto tarefa, string coluna)
     {
         colunaNovoCard = coluna;
         cardEdicao = tarefa with { };
-        ModalService.OpenAsync("card-form");
+        await cardFormModal!.OpenAsync();
     }
 
     private async Task SalvarCard()
@@ -119,14 +119,14 @@ Board com 5 colunas, filtros por busca e responsável, e CRUD via modal.
             var idx = colunaAtual.Value.FindIndex(t => t.Id == cardEdicao.Id);
             colunaAtual.Value[idx] = cardEdicao;
         }
-        ModalService.CloseAsync("card-form");
+        await cardFormModal!.CloseAsync();
     }
 
     private async Task ExcluirCard(TarefaDto tarefa, string coluna)
     {
         await TarefaService.ExcluirAsync(tarefa.Id);
         colunas[coluna].Remove(tarefa);
-        ModalService.CloseAsync("card-form");
+        await cardFormModal!.CloseAsync();
     }
 }
 
@@ -290,7 +290,7 @@ else
 }
 
 @* Modal de criar/editar card *@
-<Modal Id="card-form"
+<Modal @ref="cardFormModal" Id="card-form"
        Title="@(cardEdicao?.Id > 0 ? "Editar tarefa" : $"Nova tarefa em \"{colunaNovoCard}\"")">
     <ChildContent>
         @if (cardEdicao is not null)
@@ -322,7 +322,7 @@ else
                     </StartContent>
                     <EndContent>
                         <Button Style="Themes.Default" Label="Cancelar"
-                                OnClick='() => ModalService.CloseAsync("card-form")' />
+                                OnClick='async () => await cardFormModal!.CloseAsync()' />
                         <Button Style="Themes.Primary" Label="Salvar" Type="submit" />
                     </EndContent>
                 </Bar>

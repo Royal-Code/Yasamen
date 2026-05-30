@@ -1,4 +1,4 @@
-# UIP-DATA-LIST_ITEM - Blueprint resumido
+﻿# UIP-DATA-LIST_ITEM - Blueprint resumido
 
 ## Pattern
 
@@ -15,7 +15,7 @@ A lib não tem list item dedicado. O gap é orientar duas variantes: lista densa
 
 ## Componentes usados
 
-- `Stack` — papel: principal (container da lista) — ver `bar.sample.md`
+- `Stack` — papel: principal (container da lista) — ver `stack.sample.md`
 - `Bar` — papel: principal (linha do item) — ver `bar.sample.md`
 - `Box` — papel: composição (card do item) — ver `box.sample.md`
 - `Badge` — papel: composição (status do item) — ver `badge.sample.md`

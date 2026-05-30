@@ -1,4 +1,4 @@
-# PP-LIST-DETAIL - Blueprint completo
+﻿# PP-LIST-DETAIL - Blueprint completo
 
 ## Pattern
 
@@ -23,7 +23,7 @@ A lib cobre bem os itens da lista e o detalhe. O gap é coordenar: layout split 
 ## Componentes usados
 
 - `Bar` — papel: principal (toolbar, header do detalhe, linha de item) — ver `bar.sample.md`
-- `Stack` — papel: composição (lista de itens) — ver `bar.sample.md`
+- `Stack` — papel: composição (lista de itens) — ver `stack.sample.md`
 - `Box` — papel: composição (container do detalhe) — ver `box.sample.md`
 - `Badge` — papel: composição (status por item e no detalhe) — ver `badge.sample.md`
 - `DropIconButton` — papel: composição (ações contextuais por item) — ver `button.sample.md`
@@ -50,9 +50,9 @@ Split page com lista de itens, busca, detalhe em painel direito e responsividade
 ```razor
 @page "/itens"
 @inject NavigationManager Nav
-@inject ModalService ModalService
 
 @code {
+    private Modal? novoItemModal;
     private List<ItemDto> itens = [];
     private ItemDto? selecionado;
     private bool mostrarDetalheMobile;
@@ -89,7 +89,7 @@ Split page com lista de itens, busca, detalhe em painel direito e responsividade
     </StartContent>
     <EndContent>
         <Button Style="Themes.Primary" Label="Novo item"
-                OnClick="() => ModalService.OpenAsync("novo-item")" />
+                OnClick="async () => await novoItemModal!.OpenAsync()" />
     </EndContent>
 </Bar>
 
@@ -224,6 +224,13 @@ Split page com lista de itens, busca, detalhe em painel direito e responsividade
         }
     </div>
 </div>
+
+@* Modal de criação de item *@
+<Modal @ref="novoItemModal" Id="novo-item" Title="Novo item">
+    <ChildContent>
+        @* Formulário de novo item — ver PP-FORM *@
+    </ChildContent>
+</Modal>
 ```
 
 ### Cenários de composição

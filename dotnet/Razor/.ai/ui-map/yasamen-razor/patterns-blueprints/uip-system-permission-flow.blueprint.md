@@ -1,4 +1,4 @@
-# UIP-SYSTEM-PERMISSION_FLOW - Blueprint resumido
+﻿# UIP-SYSTEM-PERMISSION_FLOW - Blueprint resumido
 
 ## Pattern
 
@@ -18,30 +18,30 @@ A lib não tem componente de permission flow. O gap é orientar: `Modal` como pr
 - `Modal` — papel: principal (pré-contexto de permissão) — ver `modal.sample.md`
 - `Feedback` — papel: composição (estado recusado) — ver `feedback.sample.md`
 - `Button` — papel: composição (CTAs) — ver `button.sample.md`
-- `Stack` — papel: composição (layout interno do modal) — ver `bar.sample.md`
+- `Stack` — papel: composição (layout interno do modal) — ver `stack.sample.md`
 
 ## Recursos visuais
 
 - `Feedback(Themes.Info/Warning)` — contexto informativo e estado de permissão recusada
-- `ModalService.OpenAsync("id")` — abrir pré-contexto antes do pedido nativo
+- `Modal @ref + OpenAsync()` — abrir pré-contexto antes do pedido nativo
 
 ## Receita
 
 `Modal` com pré-contexto → JS interop para pedido nativo → `Feedback(Warning)` se recusado.
 
 ```razor
-@inject ModalService ModalService
 @inject IJSRuntime JS
 
 @code {
+    private Modal? modalPermissao;
     private bool permissaoRecusada;
 
     private async Task SolicitarLocalizacao()
-        => await ModalService.OpenAsync("permissao-localizacao");
+        => await modalPermissao!.OpenAsync();
 
     private async Task ConfirmarPermissao()
     {
-        await ModalService.CloseAsync("permissao-localizacao");
+        await modalPermissao!.CloseAsync();
         try
         {
             await JS.InvokeVoidAsync("navigator.geolocation.getCurrentPosition",
@@ -75,7 +75,7 @@ A lib não tem componente de permission flow. O gap é orientar: `Modal` como pr
 }
 
 @* Modal de pré-contexto *@
-<Modal Id="permissao-localizacao" Title="Usar sua localização">
+<Modal @ref="modalPermissao" Id="permissao-localizacao" Title="Usar sua localização">
     <ChildContent>
         <Stack Gap="Gaps.Medium">
             <Feedback Style="Themes.Info"
@@ -83,7 +83,7 @@ A lib não tem componente de permission flow. O gap é orientar: `Modal` como pr
             <Bar>
                 <StartContent>
                     <Button Style="Themes.Secondary" Outline=true Label="Não agora"
-                            OnClick="() => ModalService.CloseAsync("permissao-localizacao")" />
+                            OnClick="async () => await modalPermissao!.CloseAsync()" />
                 </StartContent>
                 <EndContent>
                     <Button Style="Themes.Primary" Label="Permitir localização"

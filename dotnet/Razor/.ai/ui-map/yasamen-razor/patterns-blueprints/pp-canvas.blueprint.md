@@ -1,4 +1,4 @@
-# PP-CANVAS - Blueprint resumido
+﻿# PP-CANVAS - Blueprint resumido
 
 ## Pattern
 
@@ -11,7 +11,7 @@ PP-CANVAS — Canvas / Visual Editor Page — ver `pp-canvas.ui-map.md`
 ## Estratégia
 
 - `tipo de artefato`: composição apenas
-- `decisão`: `flex flex-col h-full` como shell do editor; toolbar superior com `Bar + ButtonGroup(ferramentas) + DropButton(exportar) + Button(salvar)`; `<canvas id="editor-canvas" class="w-full h-full">` gerenciado por lib externa; inspector lateral `w-64 shrink-0 border-l` com `Box + Stack + InputNumber` para propriedades do elemento selecionado; `ModalService` para diálogo de exportação.
+- `decisão`: `flex flex-col h-full` como shell do editor; toolbar superior com `Bar + ButtonGroup(ferramentas) + DropButton(exportar) + Button(salvar)`; `<canvas id="editor-canvas" class="w-full h-full">` gerenciado por lib externa; inspector lateral `w-64 shrink-0 border-l` com `Box + Stack + InputNumber` para propriedades do elemento selecionado; `Modal @ref + OpenAsync()` para diálogo de exportação.
 
 ## Componentes usados
 
@@ -20,7 +20,7 @@ PP-CANVAS — Canvas / Visual Editor Page — ver `pp-canvas.ui-map.md`
 - `IconButton` — papel: composição (undo/redo, zoom, fechar inspector) — ver `button.sample.md`
 - `DropButton` — papel: composição (menu de exportação) — ver `button.sample.md`
 - `Box` — papel: composição (seção do inspector) — ver `box.sample.md`
-- `Stack` — papel: composição (campos do inspector) — ver `bar.sample.md`
+- `Stack` — papel: composição (campos do inspector) — ver `stack.sample.md`
 - `Modal` — papel: composição (confirmar exportação/fechar sem salvar) — ver `modal.sample.md`
 
 ## Recursos visuais
@@ -37,7 +37,6 @@ Toolbar `Bar` no topo; `div.flex.flex-1` com `<canvas>` e inspector lateral; `IJ
 ```razor
 @page "/editor/{ProjetoId:int}"
 @inject IJSRuntime JS
-@inject ModalService ModalService
 @inject ProjetoService ProjetoService
 @implements IAsyncDisposable
 

@@ -1,4 +1,4 @@
-# UIP-CONTENT-COMMENT_THREAD - Blueprint resumido
+﻿# UIP-CONTENT-COMMENT_THREAD - Blueprint resumido
 
 ## Pattern
 
@@ -15,7 +15,7 @@ A lib não tem componente de comment thread. O gap é orientar a composição co
 
 ## Componentes usados
 
-- `Stack` — papel: principal (lista de comentários) — ver `bar.sample.md`
+- `Stack` — papel: principal (lista de comentários) — ver `stack.sample.md`
 - `Box` — papel: composição (card por comentário) — ver `box.sample.md`
 - `Bar` — papel: composição (header da seção e por comentário) — ver `bar.sample.md`
 - `Badge` — papel: composição (contador de comentários) — ver `badge.sample.md`

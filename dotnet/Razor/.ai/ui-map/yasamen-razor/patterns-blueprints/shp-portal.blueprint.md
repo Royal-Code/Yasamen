@@ -1,4 +1,4 @@
-# SHP-PORTAL - Blueprint completo
+﻿# SHP-PORTAL - Blueprint completo
 
 ## Pattern
 
@@ -24,11 +24,11 @@ A lib é focada em apps operacionais. O gap é orientar o shell público (portal
 
 - `Bar` — papel: principal (header do portal) — ver `bar.sample.md`
 - `OffCanvas` — papel: principal (menu mobile) — ver `modal.sample.md`
-- `Container + Slot` — papel: composição (grades de conteúdo e footer) — ver `bar.sample.md`
+- `Container + Slot` — papel: composição (grades de conteúdo e footer) — ver `container.sample.md`
 - `Box` — papel: composição (cards de seção, feature, artigo) — ver `box.sample.md`
 - `Button` — papel: composição (CTAs e ações) — ver `button.sample.md`
 - `IconButton` — papel: composição (trigger do menu mobile) — ver `button.sample.md`
-- `Stack` — papel: composição (links do menu mobile) — ver `bar.sample.md`
+- `Stack` — papel: composição (links do menu mobile) — ver `stack.sample.md`
 - `Feedback` — papel: composição (callouts editoriais) — ver `feedback.sample.md`
 
 ## Recursos visuais
@@ -51,7 +51,7 @@ A lib é focada em apps operacionais. O gap é orientar o shell público (portal
 @inject NavigationManager Nav
 
 @code {
-    private bool menuMobileAberto;
+    private readonly OffCanvasHandler menuMobileHandler = new();
 }
 
 @* Header fixo *@
@@ -101,7 +101,7 @@ A lib é focada em apps operacionais. O gap é orientar o shell público (portal
                 @* Trigger menu mobile *@
                 <IconButton Icon="WellKnownIcons.Menu" Style="Themes.Default"
                             AdditionalClasses="md:hidden"
-                            OnClick="() => menuMobileAberto = true" />
+                            OnClick="async () => await menuMobileHandler.Show()" />
             </EndContent>
         </Bar>
     </div>
@@ -193,8 +193,8 @@ A lib é focada em apps operacionais. O gap é orientar o shell público (portal
 </footer>
 
 @* Menu mobile *@
-<OffCanvas Title="Menu" @bind-IsOpen="menuMobileAberto"
-           Position="OffCanvasPosition.Start" Size="OffCanvasSize.Small">
+<OffCanvas Handler="@menuMobileHandler" Title="Menu"
+           Position="Positions.Start" BoxSize="Sizes.Small">
     <ChildContent>
         <nav>
             <Stack Gap="Gaps.None">
@@ -204,7 +204,7 @@ A lib é focada em apps operacionais. O gap é orientar o shell público (portal
                     <a href="@item.Item1"
                        class="block px-4 py-3 text-sm text-dark-600 hover:bg-light-50
                               border-b border-light-100 last:border-0"
-                       @onclick="() => menuMobileAberto = false">
+                       @onclick="async () => await menuMobileHandler.Hide()">
                         @item.Item2
                     </a>
                 }
@@ -213,9 +213,9 @@ A lib é focada em apps operacionais. O gap é orientar o shell público (portal
     </ChildContent>
     <FooterContent>
         <Button Style="Themes.Default" Label="Entrar"
-                OnClick='() => { Nav.NavigateTo("/login"); menuMobileAberto = false; }' />
+                OnClick='async () => { Nav.NavigateTo("/login"); await menuMobileHandler.Hide(); }' />
         <Button Style="Themes.Primary" Label="Criar conta"
-                OnClick='() => { Nav.NavigateTo("/registro"); menuMobileAberto = false; }' />
+                OnClick='async () => { Nav.NavigateTo("/registro"); await menuMobileHandler.Hide(); }' />
     </FooterContent>
 </OffCanvas>
 ```

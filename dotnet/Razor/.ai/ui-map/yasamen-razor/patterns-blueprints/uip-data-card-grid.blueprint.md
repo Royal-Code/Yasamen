@@ -1,4 +1,4 @@
-# UIP-DATA-CARD_GRID - Blueprint resumido
+﻿# UIP-DATA-CARD_GRID - Blueprint resumido
 
 ## Pattern
 
@@ -15,7 +15,7 @@ UIP-DATA-CARD_GRID — Card Grid — ver `uip-data-card-grid.ui-map.md`
 
 ## Componentes usados
 
-- `Container + Slot` — papel: principal (grade responsiva) — ver `bar.sample.md`
+- `Container + Slot` — papel: principal (grade responsiva) — ver `container.sample.md`
 - `Box` — papel: composição (card individual) — ver `box.sample.md`
 - `Bar` — papel: composição (header e footer do card) — ver `bar.sample.md`
 - `Badge` — papel: composição (status do item) — ver `badge.sample.md`
