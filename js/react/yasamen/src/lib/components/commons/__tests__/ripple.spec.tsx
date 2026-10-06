@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render } from '@testing-library/react';
-import Button from '../../button/Button';
+import Button from '../../button/button';
 
 // Tests rely on spying add/removeEventListener to ensure cleanup.
 

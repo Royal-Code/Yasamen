@@ -47,6 +47,7 @@ const DemoMainLayout: React.FC = () => {
 							<Link to="/section" className={navLinkClass('/section')}>Section</Link>
 							<Link to="/bar" className={navLinkClass('/bar')}>Bar</Link>
 							<Link to="/modal" className={navLinkClass('/modal')}>Modal</Link>
+							<Link to="/offcanvas" className={navLinkClass('/offcanvas')}>Offcanvas</Link>
 						</nav>
 					</Bar.Center>
 					<Bar.End>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button from '../../lib/components/button/Button';
+import { Button } from '../../lib/components/button';
 import { Themes, Sizes, Positions } from '../../lib/components/commons';
 import { WellKnownIcons } from '../../lib/components/icon/well-known-icons';
 

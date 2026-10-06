@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import IconButton from '../../lib/components/button/IconButton';
+import { IconButton } from '../../lib/components/button';
 import { Themes, Sizes } from '../../lib/components/commons';
 import { WellKnownIcons } from '../../lib/components/icon/well-known-icons';
 import { BsIcons } from '../../lib/components/bsicons';

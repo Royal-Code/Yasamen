@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Button from '../Button';
+import Button from '../button';
 import { Themes, ButtonClasses, Sizes, getNavigator, setNavigator } from '../../commons';
 
 describe('Button component', () => {

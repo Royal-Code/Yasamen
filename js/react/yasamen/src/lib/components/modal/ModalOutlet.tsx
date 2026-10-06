@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useModalSystem } from "./modal-context";
 import { ModalClasses } from "./modal-classes";
 import { SectionOutlet } from "../outlet";
-import type { ModalItem } from "./Modal";
+import type { ModalItem } from "./modal";
 import { ModalBackdrop, type BackdropAction } from './ModalBackdrop';
 
 export interface ModalSystemState {

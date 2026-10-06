@@ -2,6 +2,7 @@ import { attachSlots, createSlot, hasContent, pickSlots } from "../../../utils";
 import { Heights, Paddings, Sides, Widths } from "../../commons";
 import type { Spacing } from "../../commons/spacing";
 import { ModalOutlet } from "../../modal/ModalOutlet";
+import { OffcanvasOutlet } from "../../offcanvas";
 import { AppLayoutClasses } from "./app-layout-classes";
 import { AppLayoutContext } from "./app-layout-context";
 
@@ -69,6 +70,7 @@ const AppLayoutRoot : React.FC<AppLayoutProps> = ({
     return (
         <AppLayoutContext.Provider value={context}>
             <ModalOutlet />
+            <OffcanvasOutlet />
             {hasContent(slots.PreContent) && slots.PreContent}
             <div {...rest} className={containerClasses}>
                 <header className={headerClasses}>

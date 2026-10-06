@@ -1,4 +1,4 @@
-import Button from '../lib/components/button/Button';
+import { Button } from '../lib/components/button';
 import { Themes } from '../lib/components/commons/themes';
 import './header.css';
 

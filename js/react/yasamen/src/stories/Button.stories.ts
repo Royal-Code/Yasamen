@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Button from '../lib/components/button/Button';
+import { Button } from '../lib/components/button';
 import { Themes } from '../lib/components/commons/themes';
 import { Sizes } from '../lib/components/commons/sizes';
 import { Positions } from '../lib/components/commons/positions';

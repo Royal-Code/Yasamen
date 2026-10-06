@@ -1,4 +1,3 @@
-
 export const OffcanvasClasses = {
     Outlet: {
         Base: 'ya-offcanvas-outlet',
@@ -10,10 +9,14 @@ export const OffcanvasClasses = {
         Opening: 'ya-offcanvas-backdrop-opening',
         Open: 'ya-offcanvas-backdrop-open',
         Closing: 'ya-offcanvas-backdrop-closing',
-        Closed: 'ya-offcanvas-backdrop-closed'
+        Closed: 'ya-offcanvas-backdrop-closed',
+        Show: 'ya-offcanvas-backdrop-show',
     },
     Offcanvas: {
         Base: 'ya-offcanvas',
+        Start: 'ya-offcanvas-start',
+        End: 'ya-offcanvas-end',
+        Show: 'ya-offcanvas-show',
         OpeningStart: 'ya-offcanvas-opening-start',
         Opening: 'ya-offcanvas-opening',
         Open: 'ya-offcanvas-open',

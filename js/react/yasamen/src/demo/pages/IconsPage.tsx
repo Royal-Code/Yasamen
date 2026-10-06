@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import Icon from '../../lib/components/icon/Icon';
+import { Icon } from '../../lib/components/icon';
 import { WellKnownIcons } from '../../lib/components/icon/well-known-icons';
 
 const IconsPage: React.FC = () => {

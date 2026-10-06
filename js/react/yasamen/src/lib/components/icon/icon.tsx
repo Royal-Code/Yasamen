@@ -2,7 +2,7 @@ import React from 'react';
 import { WellKnownIcons } from './well-known-icons';
 import { tryGetIconRenderer } from './factory/icon-registry';
 
-interface IconProps extends React.HTMLAttributes<HTMLElement> {
+export interface IconProps extends React.HTMLAttributes<HTMLElement> {
 	/** Icon name (well known or custom). */
 	name?: string;
 	/** Extra class names applied to underlying element */

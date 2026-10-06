@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '../../lib/components/button';
 import { Sizes, Themes } from '../../lib/components/commons';
-import Modal, { type ModalHandler } from '../../lib/components/modal/Modal';
+import { Modal, type ModalHandler } from '../../lib/components/modal';
 
 // Conteúdo do Modal B
 const ModalBContent: React.FC<{ onClose: () => void }> = ({ onClose }) => (

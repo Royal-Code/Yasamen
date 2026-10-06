@@ -10,6 +10,7 @@ import LayoutPage from './pages/LayoutPage';
 import SectionPage from './pages/SectionPage';
 import BarPage from './pages/BarPage';
 import ModalPage from './pages/ModalPage';
+import OffcanvasPage from './pages/OffcanvasPage';
 import DemoMainLayout from './layout/DemoMainLayout';
 import { Status404 } from '../lib/components/status';
 
@@ -26,6 +27,7 @@ const App: React.FC = () => (
       <Route path="/section" element={<SectionPage />} />
       <Route path="/bar" element={<BarPage />} />
       <Route path="/modal" element={<ModalPage />} />
+      <Route path="/offcanvas" element={<OffcanvasPage />} />
     </Route>
     <Route element={<DemoMainLayout />}>
       <Route path="*" element={<Status404 />} />

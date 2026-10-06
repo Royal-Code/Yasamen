@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import reactLogo from '../assets/react.svg';
 import viteLogo from '/vite.svg';
-import Button from '../../lib/components/button/Button';
+import { Button } from '../../lib/components/button';
 import { Sizes } from '../../lib/components/commons';
 
 const HomePage: React.FC = () => {
