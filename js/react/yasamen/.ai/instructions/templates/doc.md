@@ -21,10 +21,22 @@ Regras do template:
 | Item | Caminho | Status |
 |---|---|---|
 | Página da demo | src/demo/pages/<Nome>Page.tsx | *a fazer* |
-| Histórias | src/stories/components/<Nome>.stories.tsx | *a fazer* |
+| Histórias Storybook | src/stories/components/<Nome>.stories.tsx | *a fazer* |
+| Página MDX | src/stories/components/<Nome>.mdx | *a fazer* |
 | JSDoc das props | src/lib/components/<dominio>/<Nome>.tsx | *a fazer* |
 | Roadmap | .ai/roadmap/roadmap.md | *a fazer* |
 | Regras técnicas | .ai/rules/<arquivo>.md | *a fazer* |
+
+## Casos de uso e stories
+
+[DERIVAR]
+Responde: qual story do Storybook materializa e testa cada caso de uso?
+
+| UC | Story | CA | TC | Tipo |
+|---|---|---|---|---|
+| UC<n> | <NomeDaStory> | CA<n> | TC<n> | feliz |
+| UC<n> | <NomeDaStory> | CA<n> | TC<n> | infeliz |
+| UC<n> | <NomeDaStory> | CA<n> | TC<n> | borda |
 
 ## Conteúdo por item
 
@@ -36,7 +48,9 @@ Responde: o que o item exibe ou descreve?
 
 ## Regras deste documento
 
+- Mapear cada `UC<n>` para ao menos uma story com `play` function.
 - Cobrir toda prop pública com JSDoc.
+- Incluir página MDX descritiva por componente.
 - Marcar o componente no roadmap ao concluir a spec.
 - Atualizar `.ai/rules/` somente quando a spec criar convenção nova.
 - Incluir tarefa em `tasks-{slug}.md` para cada item.
@@ -44,6 +58,7 @@ Responde: o que o item exibe ou descreve?
 
 ## Checklist final
 
-- [ ] Demo, Storybook, JSDoc e roadmap listados.
+- [ ] Demo, Storybook, MDX, JSDoc e roadmap listados.
+- [ ] Tabela de rastreabilidade UC ↔ Story ↔ CA ↔ TC preenchida.
 - [ ] Cada item tem condição de pronto observável.
 - [ ] Cada item tem tarefa em `tasks-{slug}.md`.

@@ -15,13 +15,15 @@ Regras que a IA deve seguir estritamente:
 
 ## 1. Planejar
 
-1. Listar os itens de `templates/doc.md`.
-2. Descrever em cada item o que ele exibe e a condição de pronto.
-3. Escrever `doc-{slug}.md` conforme `templates/doc.md`.
-4. Apresentar ao humano os itens e as condições de pronto.
+1. Mapear a tabela de rastreabilidade `UC` ↔ Story ↔ `CA` ↔ `TC` de `templates/doc.md`.
+2. Listar os itens de documentação (demo, Storybook, MDX, JSDoc e roadmap).
+3. Descrever em cada item o que ele exibe e a condição de pronto.
+4. Escrever `doc-{slug}.md` conforme `templates/doc.md`.
+5. Apresentar ao humano os itens e as condições de pronto.
 
 ### GATE DP.1
 
 Use as regras de GATE de `kernel.rules.md` para validar os itens:
 - todo item tem condição de pronto observável;
+- a matriz UC ↔ Story ↔ CA ↔ TC está preenchida;
 - o item de roadmap está listado.

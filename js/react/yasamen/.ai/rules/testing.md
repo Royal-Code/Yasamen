@@ -37,6 +37,7 @@ Regras que a IA deve seguir estritamente:
 Regras que a IA deve seguir estritamente:
 - Criar um arquivo `__tests__/<Nome>.spec.tsx` por componente.
 - Isolar em arquivo próprio o cenário que altera estado global (navigator, registry de ícones, timers).
+- Orientar a cobertura de cada caso de uso (`UC<n>`) com múltiplos testes: caminho feliz, caminhos infelizes e casos de borda.
 - Consultar por papel e rótulo (`getByRole`, `getByLabelText`). Usar `data-testid` somente sem alternativa.
 - Escrever nome do teste como comportamento observável.
 - Fazer a mensagem de falha trazer valor obtido e valor esperado.
@@ -56,19 +57,21 @@ Regras que a IA deve seguir estritamente:
 | Camada | Ferramenta | Prova |
 |---|---|---|
 | L1 | Vitest + happy-dom | Lógica, DOM, eventos, ARIA |
-| L2 | Vitest browser + Playwright | CSS real, estilo computado, layout, foco |
-| L3 | Storybook e demo | Verificação visual, `play` functions |
+| L2 | Vitest browser + Playwright | Stories no browser real, CSS computado, layout, foco, transições (`test:stories`) |
+| L3 | Storybook e demo | Verificação visual manual, diagnóstico |
 
 Limites de L1 (happy-dom):
 - Não processa Tailwind nem o CSS de `yasamen.css`.
-- Não calcula layout.
-- Não dispara `transitionend`.
-- Não renderiza foco visual.
+- Não calcula layout real nem dimensões.
+- Não dispara `transitionend` nativo.
+- Não renderiza foco visual no documento.
 
 Regras que a IA deve seguir estritamente:
-- Declarar a camada de cada `TC<n>`.
+- Declarar a camada e o tipo de cada `TC<n>`.
+- Exigir Playwright e testes L2 de stories no browser para validar efeito visual, CSS real ou interação complexa.
+- Habilitar e executar validação de acessibilidade automática (axe) nas stories.
 - Não aceitar teste L1 como prova de efeito visual, de posição ou de CSS.
-- Marcar `V<n>` de efeito visual como verificação humana na demo ou no Storybook quando L2 não estiver configurado.
+- Marcar `V<n>` de verificação humana na demo ou no Storybook quando L2 não estiver disponível no ambiente.
 - Tratar screenshot como diagnóstico. Não usar como critério de aceite.
 - Reportar falha de captura sem derrubar a suíte.
 

@@ -41,6 +41,7 @@ Prefixos, únicos entre todos os arquivos de uma spec:
 | `DC` | Decisão confirmada |
 | `Q` | Questão |
 | `CA` | Critério de aceite |
+| `UC` | Caso de uso |
 | `T` | Tarefa |
 | `R` | Risco |
 | `V` | Validação |
@@ -80,13 +81,15 @@ Comandos, na raiz de `js/react/yasamen/`:
 
 | Ação | Comando |
 |---|---|
-| Testes | `bun run test` |
+| Testes unitários (happy-dom) | `bun run test` |
+| Testes de stories (browser) | `bun run test:stories` |
 | Build da lib | `bun run build` |
 | Lint | `bun run lint` |
 | Build da demo | `bun run build:demo` |
 
 Regras que a IA deve seguir estritamente:
 - Rodar `test`, `build` e `lint` antes de declarar tarefa de código concluída.
+- Rodar `test:stories` quando a spec incluir ou alterar stories. Caso o script `test:stories` não esteja configurado no `package.json`, avisar e propor a configuração.
 - Rodar `build:demo` quando a spec tocar a demo.
 - Não declarar `[x]` com comando falhando.
 - Registrar comando e resultado em `Resultado das tarefas` de `tasks-{slug}.md`.

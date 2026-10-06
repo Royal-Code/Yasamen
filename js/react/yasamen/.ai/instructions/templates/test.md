@@ -22,22 +22,26 @@ Regras do template:
 
 [DERIVAR]
 Responde: quais camadas L1, L2 e L3 cobrem a spec?
-- **L1:** <o que cobre>
-- **L2:** <o que cobre ou N/A>
-- **L3:** <o que cobre>
+- **L1:** <o que cobre em happy-dom>
+- **L2:** <stories testadas no browser via Playwright>
+- **L3:** <o que cobre na demo/manual>
 
 ## Casos de teste
 
 ### TC<n> — <nome como comportamento observável>
-- **Atende:** CA<n>
-- **Camada:** L1 | L2 | L3
+- **Atende:** CA<n> | UC<n>
+- **Tipo:** feliz | infeliz | borda
+- **Camada:** L1 | L2 (story browser) | L3
+- **Story:** <NomeDaStory ou N/A>
 - **Cenário:** <preparação, ação, resultado esperado>
 - **Falha que pega:** <defeito concreto>
 - **Prova de falha:** *a fazer*
 
 ### TC<n> — <nome>
-- **Atende:** CA<n>
+- **Atende:** CA<n> | UC<n>
+- **Tipo:** feliz | infeliz | borda
 - **Camada:** L1
+- **Story:** N/A
 - **Cenário:** <descrição>
 - **Falha que pega:** <defeito concreto>
 - **Prova de falha:** *a fazer*
@@ -63,7 +67,9 @@ Responde: quais camadas L1, L2 e L3 cobrem a spec?
 
 ## Regras deste documento
 
-- Fazer cada `TC<n>` referenciar pelo menos um `CA<n>`.
+- Fazer cada `TC<n>` referenciar pelo menos um `CA<n>` ou `UC<n>`.
+- Orientar a suíte a cobrir caminhos felizes, infelizes e casos de borda por caso de uso.
+- Todo `TC<n>` de camada L2 deve apontar para uma história correspondente no Storybook.
 - Preencher `Prova de falha` com a mutação aplicada e a quantidade de testes que caíram.
 - Não marcar teste como pronto sem `Prova de falha` preenchida.
 - Marcar item sem teste automatizado possível como verificação manual `V<n>`.
@@ -71,6 +77,6 @@ Responde: quais camadas L1, L2 e L3 cobrem a spec?
 ## Checklist final
 
 - [ ] Todo `CA<n>` tem pelo menos um `TC<n>`.
-- [ ] Todo `TC<n>` declara camada e falha que pega.
-- [ ] Nenhum `TC<n>` de efeito visual está só em L1.
+- [ ] Todo `TC<n>` declara tipo, camada e falha que pega.
+- [ ] Nenhum `TC<n>` de efeito visual ou interação de layout está só em L1 sem teste L2 ou `V<n>`.
 - [ ] Armadilhas de `.ai/rules/testing.md` conferidas.

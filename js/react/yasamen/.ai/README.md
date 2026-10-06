@@ -19,7 +19,7 @@ Pasta `.ai/specs/spec-{slug}/`:
 
 | Arquivo | Conteúdo |
 |---|---|
-| `req-{slug}.md` | Problema, escopo, casos de uso, requisitos, critérios de aceite |
+| `req-{slug}.md` | Problema, características, escopo, casos de uso, requisitos, critérios de aceite |
 | `ds-{slug}.md` | Arquitetura, API, CSS, tokens, riscos |
 | `dec-{slug}.md` | Questões, decisões confirmadas, próximos IDs |
 | `tasks-{slug}.md` | Tarefas, grupos, resultado das tarefas |

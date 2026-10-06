@@ -27,6 +27,15 @@ Regras do template:
 Responde: quem obtém qual resultado observável?
 <uma frase>
 
+## Características
+[DERIVAR]
+Responde: quais características foram selecionadas no protocolo de caracterização?
+| Característica | Categoria | Escopo | Fonte |
+|---|---|---|---|
+| <nome> | <categoria> | incluir | <fonte> |
+| <nome> | <categoria> | futuro | <fonte> |
+| <nome> | <categoria> | excluir | <fonte> |
+
 ## Escopo
 [ELICITAR]
 Responde: quais comportamentos entram?
@@ -40,9 +49,18 @@ Responde: o que não entra nesta spec?
 
 ## Casos de uso
 [ELICITAR]
-Responde: qual o uso principal, uma variação e um caso de borda?
-- **Principal:** <descrição>
-- **Variação:** <descrição>
+Responde: quais fluxos observáveis os usuários ou consumidores do componente executam?
+
+### UC<n> — <título do caso de uso>
+- **Ator e objetivo:** <quem quer qual resultado>
+- **Fluxo:** <passos observáveis>
+- **Variações:** <caminhos alternativos ou infelizes>
+- **Borda:** <limites, estado vazio ou erro>
+
+### UC<n> — <título>
+- **Ator e objetivo:** <descrição>
+- **Fluxo:** <passos>
+- **Variações:** <descrição>
 - **Borda:** <descrição>
 
 ## Fluxo
@@ -77,6 +95,7 @@ Responde: qual comportamento observável prova que o requisito foi atendido?
 
 ## Regras deste documento
 - Referenciar `CA<n>` em `test-{slug}.md` e `tasks-{slug}.md`. Não copiar o texto.
+- Mapear cada `UC<n>` para casos de teste `TC<n>` e histórias no Storybook.
 - Não alterar critério de aceite aprovado sem registrar `DC<n>` em `dec-{slug}.md`.
 - Cada `CA<n>` tem pelo menos um `TC<n>` em `test-{slug}.md`.
 ```

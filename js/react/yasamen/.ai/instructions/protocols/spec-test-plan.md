@@ -18,19 +18,19 @@ Regras que a IA deve seguir estritamente:
 
 ## 1. Derivar casos
 
-1. Listar os `CA<n>`.
-2. Criar `TC<n>` por `CA<n>`: caminho feliz, cada prop pública, cada tema e tamanho usados, estados desabilitado, vazio e erro, evento, teclado e foco.
-3. Criar `TC<n>` de borda: primeiro e último `Sizes`, lista vazia, lista com um item.
+1. Obter os `UC<n>` e `CA<n>` de `req-{slug}.md`.
+2. Finalizar os `TC<n>` rascunhados na discovery: orientar a cobertura com múltiplos testes (caminho feliz, caminhos infelizes e casos de borda).
+3. Mapear cada `TC<n>` de efeito visual ou interação de layout para uma história no Storybook (camada L2 via Playwright).
 4. Criar `TC<n>` de contrato: componente exportado em `src/lib/index.ts`; toda classe de `<nome>-classes.ts` existe em `<nome>.css`.
-5. Declarar camada, falha que pega e `Prova de falha: *a fazer*` em cada `TC<n>`.
-6. Criar `V<n>` de verificação manual para o efeito visual que L1 não prova.
+5. Declarar tipo, camada, falha que pega e `Prova de falha: *a fazer*` em cada `TC<n>`.
+6. Criar `V<n>` de verificação manual para o efeito visual quando L2 não estiver disponível no ambiente.
 
 ### GATE TP.1
 
 Use as regras de GATE de `kernel.rules.md` para validar os itens:
-- todo `CA<n>` tem `TC<n>`;
-- todo `TC<n>` declara camada e falha que pega;
-- nenhum efeito visual está só em L1 sem `V<n>`.
+- todo `CA<n>` e `UC<n>` possuem casos de teste `TC<n>`;
+- todo `TC<n>` declara tipo, camada e falha que pega;
+- nenhum efeito visual está só em L1 sem teste L2 ou `V<n>`.
 
 ## 2. Registrar
 

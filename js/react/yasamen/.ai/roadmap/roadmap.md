@@ -148,6 +148,8 @@ Regras que a IA deve seguir estritamente:
 
 ## Pendências de qualidade existentes
 
+- [ ] Infraestrutura de testes de stories no browser (`test:stories`) com Playwright e checagem automática de acessibilidade (`@storybook/addon-a11y`).
+- [ ] Cobertura de casos de uso (`UC`) e stories com `play` functions para componentes legados (Ripple, Button, Modal, Bar, Stack, etc.).
 - [ ] `src/lib/styles/css/components/status.css` não está importado em `yasamen.css`.
 - [ ] Testes ausentes: Modal, Stack, Container, Cols, AppLayout, Status, SectionOutlet, Icon.
 - [ ] Páginas de demo ausentes para: Status.

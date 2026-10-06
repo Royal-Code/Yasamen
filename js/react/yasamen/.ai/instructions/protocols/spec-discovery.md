@@ -11,7 +11,8 @@ Regras que a IA deve seguir estritamente:
 ## Arquivos a ler
 
 - `.ai/roadmap/roadmap.md`: localizar o item, a prioridade e a paridade com o Razor.
-- `.ai/rules/architecture.md`, `component-anatomy.md`, `css-contract.md`, `tokens.md`: aplicar ao design.
+- `.ai/rules/architecture.md`, `component-anatomy.md`, `component-profiles.md`, `css-contract.md`, `tokens.md`: aplicar ao design.
+- `.ai/instructions/protocols/spec-characterization.md`: protocolo de caracterização e escopo.
 - `.ai/specs/specs.index.md`: conferir se já existe spec do componente.
 - Componente equivalente em `dotnet/Razor`: derivar paridade, quando existir.
 - `.ai/instructions/templates/req.md`, `ds.md`, `dec.md`: seguir o shape.
@@ -35,14 +36,16 @@ Use as regras de GATE de `kernel.rules.md` para validar os itens:
 
 Somente após gate `SD.1` satisfeito.
 
-1. Executar `protocols/spec-refinement.md` para as questões de produto: resultado, escopo, fluxo, acessibilidade e critérios de aceite.
-2. Escrever `req-{slug}.md` conforme `templates/req.md`.
+1. Executar `protocols/spec-characterization.md` para classificar o perfil, mapear características e confirmar inclusões/exclusões com o humano.
+2. Executar `protocols/spec-refinement.md` para as questões pontuais de produto: resultado, fluxo e critérios de aceite.
+3. Escrever `req-{slug}.md` conforme `templates/req.md`, registrando a matriz em `Características` e os fluxos em `Casos de uso` (`UC<n>`).
+4. Rascunhar os casos de teste (`TC<n>`) e itens de documentação derivados de cada `UC<n>`.
 
 ### GATE SD.2
 
 Use as regras de GATE de `kernel.rules.md` para validar os itens:
-- `req-{slug}.md` existe com todas as seções do shape;
-- humano respondeu todas as questões de escopo e de critério de aceite;
+- `req-{slug}.md` existe com as seções `Características` e `Casos de uso` (`UC<n>`);
+- humano respondeu a entrevista de características e questões de aceite;
 - todo `CA<n>` usa `Dado / Quando / Então`.
 
 ## 3. Projetar

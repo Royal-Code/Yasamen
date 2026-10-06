@@ -6,6 +6,7 @@ Identificar o pedido do humano. Ler o protocolo da linha correspondente. Seguir 
 
 | Pedido do humano | Protocolo |
 |---|---|
+| Caracterizar perfil ou levantar escopo de componente | `protocols/spec-characterization.md` |
 | Planejar, especificar ou iniciar componente | `protocols/spec-discovery.md` |
 | Refinar, responder questões ou decidir pendências da spec | `protocols/spec-refinement.md` |
 | Revisar a spec | `protocols/review-spec.md` |
