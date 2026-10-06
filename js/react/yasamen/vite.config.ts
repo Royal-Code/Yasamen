@@ -26,7 +26,7 @@ export default defineConfig(({ mode }) => {
     ],
     build: {
       lib: {
-        entry: resolve(__dirname, 'src/lib/index.ts'),
+        entry: resolve(process.cwd(), 'src/lib/index.ts'),
         name: 'Yasamen',
         fileName: (format) => `yasamen.${format === 'es' ? 'js' : 'cjs'}`,
         formats: ['es', 'cjs'],
