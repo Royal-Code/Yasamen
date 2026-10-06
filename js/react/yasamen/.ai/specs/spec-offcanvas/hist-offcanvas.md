@@ -6,7 +6,7 @@
 | Status Final | Concluído |
 | Data | 2026-10-06 |
 | Autor | IA (Antigravity) |
-| Spec | `specs/offcanvas/` |
+| Spec | `.ai/specs/spec-offcanvas/` |
 
 ## Resumo da Entrega
 Implementação completa da arquitetura do componente `<Offcanvas>` (drawer lateral retrátil), espelhando o padrão de transição e gerenciamento por máquina de estados do Modal e a paridade com o Blazor `RoyalCode.Razor.OffCanvas`.
@@ -34,7 +34,7 @@ A entrega engloba:
 - Suíte de testes unitários `src/lib/components/offcanvas/__tests__/Offcanvas.spec.tsx`
 - Página na demo SPA `src/demo/pages/OffcanvasPage.tsx` e rota `/offcanvas`
 - Histórias no Storybook `src/stories/components/Offcanvas.stories.tsx`
-- Especificação completa Dual Track em `specs/offcanvas/` (`requirements.md`, `design.md`, `tasks.md`, `delivery.md`)
+- Especificação completa Dual Track em `.ai/specs/spec-offcanvas/` (`req-offcanvas.md`, `ds-offcanvas.md`, `tasks-offcanvas.md`, `hist-offcanvas.md`)
 
 ## Rastreabilidade
 | Origem | Item | Evidência no Código | Status |
@@ -53,6 +53,6 @@ A entrega engloba:
 | **Sensibilidade de Caixa** | Scan script powershell | OK (0 discrepâncias de case) |
 
 ## Fechamento de Tasks
-- [x] Todas as tarefas de `tasks.md` concluídas.
+- [x] Todas as tarefas de `tasks-offcanvas.md` concluídas.
 - [x] Código com zero avisos ou erros de tipagem.
 - [x] Testes unitários e build 100% verdes.

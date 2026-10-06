@@ -69,5 +69,5 @@
 ## 4. Validações Finais
 - [ ] `bun run test` verde sem falhas.
 - [ ] `bun run build` gerando `dist/` com sucesso.
-- [ ] `specs/offcanvas/delivery.md` preenchido.
+- [ ] `.ai/specs/spec-offcanvas/hist-offcanvas.md` preenchido.
 - [ ] Aceite com o humano.
