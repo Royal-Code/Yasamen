@@ -15,13 +15,13 @@ describe('Ripple behavior', () => {
 
   it('adds click and animationend listeners on mount and cleans on unmount', () => {
     const { unmount } = render(<Button label="RippleTest" />);
-    const clickAdds = addSpy.mock.calls.filter(c => c[0] === 'click').length;
-    const animAdds = addSpy.mock.calls.filter(c => c[0] === 'animationend').length;
+    const clickAdds = addSpy.mock.calls.filter(([type]: [string, ...unknown[]]) => type === 'click').length;
+    const animAdds = addSpy.mock.calls.filter(([type]: [string, ...unknown[]]) => type === 'animationend').length;
     expect(clickAdds > 0).toBe(true);
     expect(animAdds > 0).toBe(true);
     unmount();
-    const clickRemoves = removeSpy.mock.calls.filter(c => c[0] === 'click').length;
-    const animRemoves = removeSpy.mock.calls.filter(c => c[0] === 'animationend').length;
+    const clickRemoves = removeSpy.mock.calls.filter(([type]: [string, ...unknown[]]) => type === 'click').length;
+    const animRemoves = removeSpy.mock.calls.filter(([type]: [string, ...unknown[]]) => type === 'animationend').length;
     expect(clickRemoves > 0).toBe(true);
     expect(animRemoves > 0).toBe(true);
   });

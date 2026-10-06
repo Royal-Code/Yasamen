@@ -23,8 +23,7 @@ describe('Button component', () => {
   });
 
   it('throws for invalid center icon position', () => {
-    //// @ts-expect-error test invalid position
-    expect(() => render(<Button label="X" icon="x" iconPosition="center" />)).toThrow();
+    expect(() => render(<Button label="X" icon="x" iconPosition={"center" as never} />)).toThrow();
   });
 
   it('suppresses click when disabled (no onClick, no navigation)', () => {

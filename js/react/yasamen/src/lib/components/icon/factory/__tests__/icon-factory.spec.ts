@@ -18,7 +18,7 @@ describe('Icon Factory / Registry', () => {
     };
     setIconFactory(factory);
     const renderer = getIconRenderer('ok');
-    const el = renderer('x', {} as any);
+    const el = renderer('x', {}) as React.ReactElement<{ className?: string }>;
     expect(el.props.className).toContain('custom-ok');
   });
 
@@ -28,7 +28,7 @@ describe('Icon Factory / Registry', () => {
 
   it('tryGetIconRenderer returns fallback for unknown', () => {
     const r = tryGetIconRenderer('unknown-123');
-    const el = r('', {} as any);
+    const el = r('', {}) as React.ReactElement;
     expect(el.type).toBe(React.Fragment); // NoIconRenderer returns Fragment wrapping SVG
   });
 });

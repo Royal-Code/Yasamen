@@ -1,10 +1,9 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link, useLocation } from 'react-router';
 import AppLayout from '../../lib/components/layouts/apps/AppLayout';
 import { Bar } from '../../lib/components/layouts';
 import { Button } from '../../lib/components/button';
 import { IconButton } from '../../lib/components/button';
-import { Link, useLocation } from 'react-router-dom';
 import { BsIcons } from '../../lib/components/bsicons';
 import { SectionOutlet } from '../../lib/components/outlet';
 

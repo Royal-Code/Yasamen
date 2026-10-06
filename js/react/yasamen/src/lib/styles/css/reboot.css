@@ -1,4 +1,4 @@
-﻿@layer base {
+@layer base {
     :root {
         /* Font */
         --font-color: var(--text-dark, #38333c);
@@ -91,7 +91,7 @@
         --dl--margin-right: var(--list--margin-right);
         --dl--margin-bottom: var(--list--margin-bottom);
         --dl--margin-left: var(--list--margin-left);
-        --dl--padding-top: var(--list--padding-top:);
+        --dl--padding-top: var(--list--padding-top);
         --dl--padding-right: var(--list--padding-right);
         --dl--padding-bottom: var(--list--padding-bottom);
         --dl--padding-left: var(--list--padding-left);

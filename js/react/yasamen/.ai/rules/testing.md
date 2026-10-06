@@ -1,6 +1,6 @@
 # Testes e QA
 
-Stack: Vitest, Testing Library, jsdom. `vitest.setup.ts` roda `cleanup()` após cada teste. Comando: `bun run test`.
+Stack: Vitest, Testing Library, happy-dom. `vitest.setup.ts` roda `cleanup()` após cada teste. Comando: `bun run test`.
 
 ## Regra central
 
@@ -20,7 +20,7 @@ Regras que a IA deve seguir estritamente:
 | 1 | Verificar a própria conta | Assertar o DOM renderizado contra literal. Não recalcular o esperado com a função de `*-classes.ts`. |
 | 2 | Snapshot de elemento animado | Congelar com `vi.useFakeTimers()` ou assertar atributo/classe específico. Não comparar snapshots de `Ripple` ou de transição. |
 | 3 | Andaime fornece o efeito | Renderizar duas versões que diferem somente na prop testada. Assertar a diferença. |
-| 4 | Fase escondida por transição | Disparar `fireEvent.transitionEnd` e assertar cada fase. jsdom não dispara `transitionend`. |
+| 4 | Fase escondida por transição | Disparar `fireEvent.transitionEnd` e assertar cada fase. happy-dom não dispara `transitionend`. |
 | 5 | Coleção sem tamanho | Assertar `length` em toda asserção sobre coleção. `every` sobre lista vazia passa. |
 | 6 | Atalho sobre o caminho real | Interagir por `userEvent` ou `fireEvent` no elemento. Não chamar handler nem setter direto. |
 | 7 | Sintoma que o modelo não produz | Aplicar a regra central: declarar a falha que o teste pega. |
@@ -55,11 +55,11 @@ Regras que a IA deve seguir estritamente:
 
 | Camada | Ferramenta | Prova |
 |---|---|---|
-| L1 | Vitest + jsdom | Lógica, DOM, eventos, ARIA |
+| L1 | Vitest + happy-dom | Lógica, DOM, eventos, ARIA |
 | L2 | Vitest browser + Playwright | CSS real, estilo computado, layout, foco |
 | L3 | Storybook e demo | Verificação visual, `play` functions |
 
-Limites de L1 (jsdom):
+Limites de L1 (happy-dom):
 - Não processa Tailwind nem o CSS de `yasamen.css`.
 - Não calcula layout.
 - Não dispara `transitionend`.

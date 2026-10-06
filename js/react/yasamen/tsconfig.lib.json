@@ -6,6 +6,7 @@
     "emitDeclarationOnly": true,
     "declarationMap": true,
     "outDir": "./dist",
+    "rootDir": "./src",
     "allowImportingTsExtensions": false
   },
   "include": ["src/lib", "src/vite-env.d.ts"],

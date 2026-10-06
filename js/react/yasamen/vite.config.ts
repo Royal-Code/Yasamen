@@ -37,7 +37,7 @@ export default defineConfig(({ mode }) => {
           'react-dom',
           'react/jsx-runtime',
           'react/jsx-dev-runtime',
-          'react-router-dom',
+          'react-router',
         ],
         output: {
           assetFileNames: (assetInfo) => {
@@ -47,7 +47,7 @@ export default defineConfig(({ mode }) => {
           globals: {
             react: 'React',
             'react-dom': 'ReactDOM',
-            'react-router-dom': 'ReactRouterDOM',
+            'react-router': 'ReactRouter',
           },
         },
       },

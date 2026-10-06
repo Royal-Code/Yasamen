@@ -26,7 +26,7 @@ const Container: React.FC<ContainerProps> = ({
     ...rest
 }) => {
 
-    let classes = '';
+    let classes: string;
 
     if (type == LayoutTypes.Grid) {
         const baseClass = LayoutClasses.Base.Container;

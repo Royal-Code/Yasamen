@@ -3,6 +3,7 @@ import React, { useRef } from 'react';
 import { Offcanvas, useOffcanvasHandler, type OffcanvasHandler } from '../../lib/components/offcanvas';
 import { Button } from '../../lib/components/button';
 import { SectionProvider } from '../../lib/components/outlet';
+import { Themes } from '../../lib/components/commons';
 
 const meta: Meta<typeof Offcanvas> = {
     title: 'Components/Offcanvas',
@@ -34,34 +35,38 @@ const DrawerInner: React.FC<{ title: string }> = ({ title }) => {
     );
 };
 
+const RightDrawerStory: React.FC = () => {
+    const handler = useRef<OffcanvasHandler>({ open: () => {}, close: () => {} }).current;
+    return (
+        <SectionProvider>
+            <div className="p-8">
+                <Button label="Abrir Offcanvas (Direita)" theme={Themes.Primary} onClick={() => handler.open()} />
+                <Offcanvas id="sb-right-drawer" position="right" handler={handler}>
+                    <DrawerInner title="Painel Direito" />
+                </Offcanvas>
+            </div>
+        </SectionProvider>
+    );
+};
+
 export const RightDrawer: Story = {
-    render: () => {
-        const handler = useRef<OffcanvasHandler>({ open: () => {}, close: () => {} }).current;
-        return (
-            <SectionProvider>
-                <div className="p-8">
-                    <Button label="Abrir Offcanvas (Direita)" theme="primary" onClick={() => handler.open()} />
-                    <Offcanvas id="sb-right-drawer" position="right" handler={handler}>
-                        <DrawerInner title="Painel Direito" />
-                    </Offcanvas>
-                </div>
-            </SectionProvider>
-        );
-    },
+    render: () => <RightDrawerStory />
+};
+
+const LeftDrawerStory: React.FC = () => {
+    const handler = useRef<OffcanvasHandler>({ open: () => {}, close: () => {} }).current;
+    return (
+        <SectionProvider>
+            <div className="p-8">
+                <Button label="Abrir Offcanvas (Esquerda)" theme={Themes.Tertiary} onClick={() => handler.open()} />
+                <Offcanvas id="sb-left-drawer" position="left" handler={handler}>
+                    <DrawerInner title="Painel Esquerdo" />
+                </Offcanvas>
+            </div>
+        </SectionProvider>
+    );
 };
 
 export const LeftDrawer: Story = {
-    render: () => {
-        const handler = useRef<OffcanvasHandler>({ open: () => {}, close: () => {} }).current;
-        return (
-            <SectionProvider>
-                <div className="p-8">
-                    <Button label="Abrir Offcanvas (Esquerda)" theme="tertiary" onClick={() => handler.open()} />
-                    <Offcanvas id="sb-left-drawer" position="left" handler={handler}>
-                        <DrawerInner title="Painel Esquerdo" />
-                    </Offcanvas>
-                </div>
-            </SectionProvider>
-        );
-    },
+    render: () => <LeftDrawerStory />
 };

@@ -3,12 +3,14 @@ import { useOffcanvasSystem } from "./offcanvas-context";
 import { OffcanvasClasses } from "./offcanvas-classes";
 import { SectionOutlet } from "../outlet";
 import { OffcanvasBackdrop, type OffcanvasBackdropAction } from "./OffcanvasBackdrop";
+import type { OffcanvasAction } from "./Offcanvas";
 
 export interface OffcanvasItem {
     id: string;
-    dispatch: React.Dispatch<any>;
+    dispatch: React.ActionDispatch<[action: OffcanvasAction]>;
     closeable: boolean;
     backdrop: boolean;
+    closeOnBackdropClick?: boolean;
 }
 
 export interface OffcanvasSystemState {
@@ -209,23 +211,26 @@ export const OffcanvasOutlet: React.FC<OffcanvasOutletProps> = ({ className, ...
 
 const OffcanvasOutletEffects: React.FC = () => {
     const system = useOffcanvasSystem();
-    if (!system) return null;
-    const { state, dispatch } = system;
+    const state = system?.state;
+    const dispatch = system?.dispatch;
 
     useEffect(() => {
+        if (!state || !dispatch) return;
         if (state.processQueue) {
             dispatch({ type: 'PROCESS_QUEUE' });
         }
-    }, [state.processQueue, dispatch]);
+    }, [state, dispatch]);
 
     useEffect(() => {
+        if (!state || !dispatch) return;
         if (state.effectQueue.length > 0) {
             state.effectQueue[0]();
             dispatch({ type: 'EFFECT_PROCESSED' });
         }
-    }, [state.effectQueue, dispatch]);
+    }, [state, dispatch]);
 
     useEffect(() => {
+        if (!state || !dispatch) return;
         if (state.openedItemsIds.length === 0) return;
 
         const onKey = (e: KeyboardEvent) => {
@@ -236,7 +241,7 @@ const OffcanvasOutletEffects: React.FC = () => {
 
         window.addEventListener('keydown', onKey);
         return () => window.removeEventListener('keydown', onKey);
-    }, [state.openedItemsIds.length, dispatch]);
+    }, [state, dispatch]);
 
     return null;
 };

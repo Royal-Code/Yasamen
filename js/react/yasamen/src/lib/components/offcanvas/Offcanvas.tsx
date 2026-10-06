@@ -24,7 +24,7 @@ interface OffcanvasState {
     position: 'left' | 'right';
 }
 
-type OffcanvasAction =
+export type OffcanvasAction =
     | { type: 'OPEN' }
     | { type: 'OPEN_PROMOTE' }
     | { type: 'OPEN_DONE' }
@@ -92,13 +92,14 @@ export const Offcanvas: React.FC<OffcanvasProps> = ({
             id: sectionId,
             dispatch,
             closeable,
-            backdrop
+            backdrop,
+            closeOnBackdropClick
         };
         systemDispatch({ type: 'REGISTER', item });
         return () => {
             systemDispatch({ type: 'UNREGISTER', item });
         };
-    }, [systemDispatch, sectionId, closeable, backdrop]);
+    }, [systemDispatch, sectionId, closeable, backdrop, closeOnBackdropClick]);
 
     // Animação: promoção de fases
     useEffect(() => {
