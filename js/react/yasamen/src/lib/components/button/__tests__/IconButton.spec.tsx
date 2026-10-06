@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import IconButton from '../iconbutton';
+import IconButton from '../IconButton';
 import { Themes, IconButtonClasses, Sizes } from '../../commons';
 import { type IconRenderer } from '../../icon/factory/icon-renderer';
 

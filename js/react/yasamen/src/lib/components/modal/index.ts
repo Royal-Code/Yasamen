@@ -1,10 +1,10 @@
-import Modal from './modal';
+import Modal from './Modal';
 import ModalBackdrop from './ModalBackdrop';
 import { ModalOutlet } from './ModalOutlet';
 import { ModalProvider } from './ModalProvider';
 import { useModalSystem, ModalContext } from './modal-context';
 import { ModalClasses } from './modal-classes';
-import type { ModalProps, ModalHandler, ModalItem } from './modal';
+import type { ModalProps, ModalHandler, ModalItem } from './Modal';
 import type { ModalBackdropProps } from './ModalBackdrop';
 
 export {

@@ -1,5 +1,5 @@
 import { type IconRenderer } from "./icon-renderer";
-import { NoIconRenderer } from "./noIconRenderer";
+import { NoIconRenderer } from "./NoIconRenderer";
 import { type IconFactory } from "./icon-factory";
 
 class CurrentIconFactory {

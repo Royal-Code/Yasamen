@@ -1,7 +1,7 @@
-import Button from "./button";
-import IconButton from "./iconbutton";
+import Button from "./Button";
+import IconButton from "./IconButton";
 
-export type { ButtonProps } from "./button";
-export type { IconButtonProps } from "./iconbutton";
+export type { ButtonProps } from "./Button";
+export type { IconButtonProps } from "./IconButton";
 
 export { Button, IconButton };
